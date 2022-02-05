@@ -2,14 +2,21 @@ site_name: Tom's Note
 theme:
   name: material
   palette:
-    - scheme: default
-      toggle:
-        icon: material/weather-night
-        name: Switch to dark mode
     - scheme: slate
-      toggle:
-        icon: material/weather-sunny
-        name: Switch to light mode
+      primary: red
+      accent: cyan
+  font:
+    text: Noto Sans Traditional Chinese
+    code: Source Code Pro
+  language: zh-TW
+  features:
+    - navigation.instant
+    - navigation.tabs
+    - navigation.sections
+    - navigation.indexes
+    - navigation.top
 dev_addr: '0.0.0.0:8116'
 extra_css:
   - stylesheets/extra.css
+nav:
+  - Home: index.md
