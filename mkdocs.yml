@@ -24,8 +24,10 @@ repo_name: tomleesm/notes
 edit_uri: edit/main/docs/
 plugins:
   - git-revision-date
+markdown_extensions:
+  - pymdownx.superfences:
 extra_css:
   - stylesheets/extra.css
 nav:
   - 筆記:
-    - Material for Mkdocs: material-for-mkdocs.md
+    - 我是怎麼寫程式的？: how-do-i-program.md
