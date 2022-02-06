@@ -1,49 +1,10 @@
-## 安裝
+# 關於本站
 
-本站使用 [Material for Mkdocs](https://squidfunk.github.io/mkdocs-material/)。[Mkdocs](https://www.mkdocs.org/) 是用 Python 寫的網站產生器，所以先安裝 Python3 和 pip
+一邊讀書、一邊在這裡寫筆記，因爲我記憶力之短堪比金魚。順便可能交個朋友
 
-``` bash
-sudo apt install python3 python3-pip
-```
+例如寫了 Vim 的介紹，那 Vim 愛好者可能會看你的文章，覺得可以認識一下，於是加你推特，之後約在麥當勞見面，大家聊 Vim 外掛、設定與新功能，工作時的心得，最近在寫什麼程式，學什麼東西。知道其他公司的情況，有助於避免以管窺天，以為自己工作的公司做法就是對的，避免不知不覺技能被淘汰
 
-然後用 pip 安裝佈景主題 [Material for Mkdocs](https://squidfunk.github.io/mkdocs-material/)
-```
-pip install mkdocs-material
-```
+你看了一本程式設計的書，一邊閱讀、一邊寫筆記：
 
-## 指令
-
-* `mkdocs new [dir-name]` - 新增專案
-* `mkdocs serve` - 預覽網站
-* `mkdocs build` - 產生網站的 HTML
-* `mkdocs -h` - 顯示說明
-
-## 網站結構
-
-所有設定和文件導覽結構都放在 `mkdocs.yml`，markdown 檔案放在目錄 docs
-
-使用 GitHub Actions 部署到 GitHub Pages
-
-新增檔案 .github/workflows/deploy.yml，輸入以下設定：
-``` yaml
-name: deploy
-on:
-  push:
-    branches:
-      - master
-      - main
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
-        with:
-          python-version: 3.x
-      - run: pip install mkdocs-material
-      - run: mkdocs gh-deploy --force
-```
-
-## 設定
-
-
+- 教學相長：解釋它，會讓你真正理解，否則只是看過去而已，而且經過你的腦子整理後的東西，適合你的思考方式
+- 不要覺得自己還很嫩就不寫。由於你會的不多，你的解釋會很簡單，不需要其他知識，通常這就是最好的解釋

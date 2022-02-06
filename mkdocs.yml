@@ -27,4 +27,5 @@ plugins:
 extra_css:
   - stylesheets/extra.css
 nav:
-  - Home: index.md
+  - 筆記:
+    - Material for Mkdocs: material-for-mkdocs.md
