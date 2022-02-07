@@ -17,6 +17,8 @@ theme:
     - navigation.indexes
     - navigation.top
     - header.autohide
+    - search.highlight
+    - search.share
   icon:
     repo: fontawesome/brands/github
 repo_url: https://github.com/tomleesm/notes
@@ -24,6 +26,10 @@ repo_name: tomleesm/notes
 edit_uri: edit/main/docs/
 plugins:
   - git-revision-date
+  - search:
+      lang:
+        - en
+        - ja
 markdown_extensions:
   - pymdownx.superfences:
 extra_css:
