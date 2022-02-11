@@ -32,7 +32,7 @@ in the next installment -
 ```
 開頭的 `FORMAT: 1A` 表示文件格式是 markdown，不寫也可以
 
-接著一定要有一個 h1 標題（`# The simplest API`）作爲文件主標題，一般是說明這是哪一個 API 文件，標題下方可以加上摘要描述，寫法和一般的markdown 一樣。
+接著一定要有一個 h1 標題（`# The Simplest API`）作爲文件主標題，一般是說明這是哪一個 API 文件，標題下方可以加上摘要描述，寫法和一般的markdown 一樣。
 
 ``` markdown
 # GET /message
@@ -41,6 +41,6 @@ in the next installment -
         Hello World!
 ```
 
-這是一個簡單的例子，說明 HTTP 請求與回應。`#` 之後的是 HTTP method `GET` 和 RESTful 資源 `/message`，回應則寫成 `+ Response`，使用了 markdown 的無序清單語法 `+`（清單可用 `+`、`-` 或 `*` 開頭），Response 後面接著是 HTTP 狀態碼 200 和 Content-Type text/plain，最後回應的 body 則用 markdown 的 code 區塊語法表示，所以 Hello World 前面要有 8 個空格或是 2 個 Tab，或是用成對的三個 ` 包起來，不過一般都是用空格或 Tab，之後會看到，那是因爲 body 會和 Headers 等其它設定構成巢狀結構。
+這是一個簡單的例子，說明 HTTP 請求與回應。`#` 之後的是 HTTP method `GET` 和 RESTful 資源 `/message`，回應則寫成 `+ Response`，使用了 markdown 的無序清單語法 `+`（清單可用 `+`、`-` 或 `*` 開頭），Response 後面接著是 HTTP 狀態碼 200 和 Content-Type text/plain（要寫在小括號內），最後回應的 body 則用 markdown 的 code 區塊語法表示，所以 Hello World 前面要有 8 個空格或是 2 個 Tab，或是用成對的三個 ` 包起來，不過一般都是用空格或 Tab，之後會看到，那是因爲 body 會和 Headers 等其它設定構成巢狀結構。
 
 請注意，使用 aglio 轉換時，如果在資源或動作中定義 Attributes，最好使用英文名稱，因爲中文名稱無法在 `+Attributes ()` 中使用，會沒有 body，但是在 Data Structures 定義就沒有這個問題。此外， attribute 在 `+ Body` 區塊中無法使用。
