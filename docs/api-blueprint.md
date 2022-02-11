@@ -17,120 +17,30 @@ sudo npm install -g aglio
 
 ## 語法
 
-沒有學過 API Blueprint 的人，推薦官方文件的[範例](https://github.com/apiaryio/api-blueprint/tree/master/examples)，雖然是英文的，但是每一個篇幅都不長，循序漸進很好懂。
+以下筆記參考自官方文件的[範例](https://github.com/apiaryio/api-blueprint/tree/master/examples)
 
-之前[RESTful API：請求與回應](/posts/restful-api-request-response/)的 API 文件可以用 API Blueprint 寫成如下格式：
+### 開始
 
 ``` markdown
 FORMAT: 1A
 
-# 文章 API
+# The Simplest API
+This is one of the simplest APIs written in the **API Blueprint**. One plain
+resource combined with a method and that's it! We will explain what is going on
+in the next installment -
+[Resource and Actions](02.%20Resource%20and%20Actions.md).
+```
+開頭的 `FORMAT: 1A` 表示文件格式是 markdown，不寫也可以
 
-文章的 API 文件
+接著一定要有一個 h1 標題（`# The simplest API`）作爲文件主標題，一般是說明這是哪一個 API 文件，標題下方可以加上摘要描述，寫法和一般的markdown 一樣。
 
-# Group 文章
+``` markdown
+# GET /message
++ Response 200 (text/plain)
 
-文章群組
-
-## 新增文章 [POST /posts]
-
-+ Request (application/json)
-
-    + Attributes (一篇文章內容)
-
-+ Response 201
-
-    + Headers
-
-            Location: /posts/1
-
-## 回傳全部文章 [GET /posts?page={page}&per_page={per_page}]
-
-+ Parameters
-
-    + page: 1 (number, optional) - 頁碼
-        + Default: 1
-    + per_page: 20 (number, optional) - 每一頁有幾篇文章
-        + Default: 10
-
-+ Response 200 (application/json)
-
-        {
-          "data": [
-            {
-              "title": "文章標題 1",
-              "content": "文章內容 1"
-            },
-            {
-              "title": "文章標題 2",
-              "content": "文章內容 2"
-            },
-            {
-              "title": "文章標題 3",
-              "content": "文章內容 3"
-            },
-            // 以下省略
-          ],
-          "pagination": {
-            "total": 1000,
-            "count": 10,
-            "perPage": 10,
-            "currentPage": 2,
-            "totalPages": 100,
-            "nextUrl": "/posts?page=2&per_page=10"
-          }
-        }
-
-## 一篇文章 [/posts/{post}]
-
-+ Parameters
-
-    + post: 1 (number, required) - 文章的 id
-
-### 回傳指定的文章 [GET]
-
-+ Response 200 (application/json)
-    + Attributes (一篇文章)
-
-### 修改指定的文章所有欄位 [PUT]
-
-+ Request (application/json)
-    + Attributes (一篇文章)
-
-+ Response 204
-
-### 修改指定的文章部分欄位 [PATCH]
-
-+ Request (application/json)
-
-    + Attributes (一篇文章內容)
-
-+ Response 204
-
-### 刪除指定的文章 [DELETE]
-
-+ Response 204
-
-# Data Structures
-
-## 一篇文章內容 (object)
-
-+ title: 文章標題 (string) - 文章標題
-+ content: 文章內容 (string) - 文章內容
-
-## 一篇文章 (一篇文章內容)
-
-+ id: 1 (number) - 文章的 id
-+ createdAt: `2022-01-20T18:39:27.774000+08:00` (string)
-
-    文章新增時間，格式爲 %Y-%M-%DT%h:%m:%s.%u%Z:%z
-
-+ updatedAt: `2022-01-20T18:39:27.774000+08:00` (string)
-
-    文章修改時間，格式爲 %Y-%M-%DT%h:%m:%s.%u%Z:%z
-
+        Hello World!
 ```
 
-用 aglio 轉換後產生 [api-blueprint-example.html](/api-blueprint-example.html)
+這是一個簡單的例子，說明 HTTP 請求與回應。`#` 之後的是 HTTP method `GET` 和 RESTful 資源 `/message`，回應則寫成 `+ Response`，使用了 markdown 的無序清單語法 `+`（清單可用 `+`、`-` 或 `*` 開頭），Response 後面接著是 HTTP 狀態碼 200 和 Content-Type text/plain，最後回應的 body 則用 markdown 的 code 區塊語法表示，所以 Hello World 前面要有 8 個空格或是 2 個 Tab，或是用成對的三個 ` 包起來，不過一般都是用空格或 Tab，之後會看到，那是因爲 body 會和 Headers 等其它設定構成巢狀結構。
 
 請注意，使用 aglio 轉換時，如果在資源或動作中定義 Attributes，最好使用英文名稱，因爲中文名稱無法在 `+Attributes ()` 中使用，會沒有 body，但是在 Data Structures 定義就沒有這個問題。此外， attribute 在 `+ Body` 區塊中無法使用。
