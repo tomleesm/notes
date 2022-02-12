@@ -239,4 +239,74 @@ in the next installment -
 
 ### 屬性 Attributes
 
-請注意，使用 aglio 轉換時，如果在資源或動作中定義 Attributes，最好使用英文名稱，因爲中文名稱無法在 `+Attributes ()` 中使用，會沒有 body，但是在 Data Structures 定義就沒有這個問題。此外， attribute 在 `+ Body` 區塊中無法使用。
+請求或回應的 body 常常是重複的，可以用屬性 Attributes 來定義 body，然後在請求或回應中引用它。
+
+``` markdown
+## 折價卷 [/coupons/{id}]
+折價卷資料。屬性定義在資源中如下：
+
++ Parameters
+    + id (string)
+
+        折價卷 ID
+
++ Attributes (object)
+    + id: 250FF (string, required)
+    + created: 1415203908 (number) - 新增時間戳
+    + percent_off: 25 (number)
+
+        打折的百分比，從 1 到 100
+
+    + redeem_by (number) - 兌換有效期限，此爲時間戳
+
+### 收到一張折價卷 [GET]
+
++ Response 200 (application/json)
+    + Attributes (折價卷)
+
+### 新增一個折價卷 [POST]
+屬性也可以定義在動作中：
+
++ Attributes (object)
+    + percent_off: 25 (number)
+    + redeem_by (number)
+
+### 列出所有折價卷 [GET /coupons]
+
++ Response 200 (application/json)
+    + Attributes (array[折價卷, 折價卷])
+```
+
+屬性 Attributes 可以定義在資源或動作中，上面的例子裡，在資源折價卷中定義了一個 Attributes，有 4 個欄位，欄位的定義方式和 Parameters 一樣，然後在動作 GET 的回應中使用 `+ Attributes (折價卷)` 引用，會自動依照回應的 Content-Type 轉成對映的格式，在此是 application/json，所以 body 會是 JSON 如下所示：
+
+``` json
+{
+  "id": "250FF",
+  "created": 1415203908,
+  "percent_off": 25,
+  "redeem_by": 0
+}
+```
+
+不過在 apiary 實測，只能轉成 JSON，其它都不行。
+
+然後在列出所有折價卷的回應中，`+ Attributes (array[折價卷, 折價卷])` 表示屬性折價卷是陣列的元素，總共有 2 個元素，所以回應的 body 會是這樣：
+
+``` json
+[
+  {
+    "id": "250FF",
+    "created": 1415203908,
+    "percent_off": 25,
+    "redeem_by": 0
+  },
+  {
+    "id": "250FF",
+    "created": 1415203908,
+    "percent_off": 25,
+    "redeem_by": 0
+  }
+]
+```
+
+請注意，使用 aglio 轉換時，如果在資源或動作中定義 Attributes，會沒有 body，但是在 Data Structures 定義就沒有這個問題。此外， attribute 在 `+ Body` 區塊中無法使用。
