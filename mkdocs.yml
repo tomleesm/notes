@@ -2,6 +2,7 @@ site_name: Tom's Notes
 dev_addr: '0.0.0.0:8116'
 theme:
   name: material
+  custom_dir: overrides
   palette:
     - scheme: slate
       primary: red
