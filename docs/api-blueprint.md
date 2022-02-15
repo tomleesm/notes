@@ -309,4 +309,88 @@ in the next installment -
 ]
 ```
 
+不能引用自己內部定義的屬性。如下所示，在動作 get users 內定義的屬性，不能用在自己的回應。而且不能在動作內定義屬性，會在被引用時顯示錯誤訊息 (not defined)。
+
+``` markdown
+# users [/users]
+
+## get users [GET]
+
++ Attributes (object)
+  + name (string)
+  + email (string)
+
++ Response 200 (application/json)
+  + Attributes (get users)
+```
+
+### 資料結構 Data Structures
+
+屬性 Attributes 不一定要屬於某個資源或動作，可以單獨放到外面，名爲資料結構 Data Structures 的區塊中。
+
+``` markdown
+### 收到折價卷 [GET /coupons]
+
++ Response 200 (application/json)
+    + Attributes (折價卷)
+
+# Data Structures
+
+## 折價卷 (object)
+
++ id: 250FF (string, required)
++ created: 1415203908 (number) - 新增時間戳
++ percent_off: 25 (number)
+
+    打折的百分比，從 1 到 100
+
++ redeem_by (number) - 兌換有效期限，此爲時間戳
+```
+
+上述放在折價卷資源中的屬性，改成放在資料結構中，則 `+ Attributes (object)` 改成 `## 折價卷 (object)`，內含的欄位 id, created, percent_off 和 redeem_by 都不變，只是沒有向內縮排
+
 請注意，使用 aglio 轉換時，如果在資源或動作中定義 Attributes，會沒有 body，但是在 Data Structures 定義就沒有這個問題。此外， attribute 在 `+ Body` 區塊中無法使用。
+
+**屬性只能在有命名的資源和資料結構中定義，不能在動作中定義**。
+
+### 繼承屬性
+
+屬性之間可以有類似類別的繼承關係，例如定義折價卷屬性基礎的 2 個欄位 percent_off 和 redeem_by，然後在需要時繼承它，再新增 2 個欄位
+
+``` markdown
+### 收到折價卷 [GET /coupons]
+
++ Response 200 (application/json)
+    + Attributes (折價卷)
+
+# Data Structures
+
+## 折價卷基礎 (object)
+
++ percent_off: 25 (number)
+
+    打折的百分比，從 1 到 100
+
++ redeem_by (number) - 兌換有效期限，此爲時間戳
+
+## 折價卷 (折價卷基礎)
+
++ id: 250FF (string, required)
++ created: 1415203908 (number) - 新增時間戳
+```
+
+折價卷基礎先定義 2 個欄位 percent_off 和 redeem_by，然後折價卷屬性在小括號中指定繼承它，再新增 2 個欄位 id 和 created，資源中的屬性也能這樣繼承。
+
+``` json
+{
+  "percent_off": 25,
+  "redeem_by": 0,
+  "id": "250FF",
+  "created": 1415203908
+}
+```
+子屬性折價卷的欄位會加在親屬性折價卷基礎的下方
+
+### 資源模型 Resource Model
+
+
