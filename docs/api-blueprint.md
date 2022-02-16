@@ -52,14 +52,14 @@ in the next installment -
 在這裡定義了一個資源 `/message`
 
 ## GET
-裡面定義了動作 `GET`，所以等同於路由 `GET /message`
+裡面定義了動作 GET，所以等同於路由 GET /message
 
 + Response 200 (text/plain)
 
         Hello World!
 
 ## PUT
-這裡是另一個動作 PUT，等同於路由 `PUT /message`，用來修改資料。
+這裡是另一個動作 PUT，等同於路由 PUT /message，用來修改資料。
 
 + Request (text/plain)
 
@@ -74,13 +74,13 @@ in the next installment -
 
 ``` markdown
 # 訊息 [/message]
-資源 `/message` 取名爲訊息
+資源 /message 取名爲訊息
 
 ## 接收訊息 [GET]
-`GET /message` 的名稱是接收訊息。
+GET /message 的名稱是接收訊息。
 
 ## 更新訊息 [PUT]
-`PUT /message` 的名稱是更新訊息。
+PUT /message 的名稱是更新訊息。
 ```
 可以爲資源取一個名稱，方便識別，則名稱在`#` 之後，資源和動作改成放在中括號裡。名稱可以用中文。
 
@@ -424,7 +424,7 @@ in the next installment -
 
 + Model (application/vnd.siren+json)
 
-    一個 `application/vnd.siren+json` 訊息資源範例
+    一個 application/vnd.siren+json 訊息資源範例
 
     + Headers
 
