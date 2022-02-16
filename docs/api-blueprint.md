@@ -265,11 +265,14 @@ in the next installment -
     + Attributes (折價卷)
 
 ### 新增一個折價卷 [POST]
-屬性也可以定義在動作中：
+屬性也可以定義在請求和回應中：
 
-+ Attributes (object)
-    + percent_off: 25 (number)
-    + redeem_by (number)
++ Request
+
+    + Attributes (object)
+
+        + percent_off: 25 (number)
+        + redeem_by (number)
 
 ### 列出所有折價卷 [GET /coupons]
 
@@ -290,6 +293,19 @@ in the next installment -
 
 不過在 apiary 實測，只能轉成 JSON，其它都不行。
 
+動作「新增一個折價卷」的請求定義了一個屬性作爲 body，所以屬性可以定義在請求和回應中作爲 body，但是寫法是如上所示，不是在 `+ Body` 中內含 `+ Attributes`，如下所示：
+
+```
++ Response 200 (application/json)
+
+    + Body
+
+        + Attributes (object)
+
+            + percent_off: 25 (number)
+            + redeem_by (number)
+```
+
 然後在列出所有折價卷的回應中，`+ Attributes (array[折價卷, 折價卷])` 表示屬性折價卷是陣列的元素，總共有 2 個元素，所以回應的 body 會是這樣：
 
 ``` json
@@ -309,7 +325,7 @@ in the next installment -
 ]
 ```
 
-不能引用自己內部定義的屬性。如下所示，在動作 get users 內定義的屬性，不能用在自己的回應。而且不能在動作內定義屬性，會在被引用時顯示錯誤訊息 (not defined)。
+不能引用自己內部定義的屬性。如下所示，在動作 get users 內定義的屬性，不能用在自己的回應中引用。
 
 ``` markdown
 # users [/users]
@@ -349,9 +365,9 @@ in the next installment -
 
 上述放在折價卷資源中的屬性，改成放在資料結構中，則 `+ Attributes (object)` 改成 `## 折價卷 (object)`，內含的欄位 id, created, percent_off 和 redeem_by 都不變，只是沒有向內縮排
 
-請注意，使用 aglio 轉換時，如果在資源或動作中定義 Attributes，會沒有 body，但是在 Data Structures 定義就沒有這個問題。此外， attribute 在 `+ Body` 區塊中無法使用。
+請注意，使用 aglio 轉換時，如果在資源或動作中定義 Attributes，會沒有 body，但是在 Data Structures 定義就沒有這個問題。
 
-**屬性只能在有命名的資源和資料結構中定義，不能在動作中定義**。
+總結：屬性可以定義在資源、動作、請求與回應和資料結構，但是只能引用定義在其他資源和資料結構的屬性。
 
 ### 繼承屬性
 
@@ -391,6 +407,121 @@ in the next installment -
 ```
 子屬性折價卷的欄位會加在親屬性折價卷基礎的下方
 
+只有定義在資源和資料結構的屬性可以被引用，所以也只有這 2 個地方的屬性可以被繼承。
+
 ### 資源模型 Resource Model
 
+可以把請求或回應的內容獨立出來，重複引用，名爲資源模型。
 
+``` markdown
+## My Resource [/resource]
+
++ Model (text/plain)
+
+        Hello World
+
+## My Message [/message]
+
++ Model (application/vnd.siren+json)
+
+    一個 `application/vnd.siren+json` 訊息資源範例
+
+    + Headers
+
+            Location: http://api.acme.com/message
+
+    + Body
+
+            {
+              "class": [ "message" ],
+              "properties": {
+                    "message": "Hello World!"
+              },
+              "links": [
+                    { "rel": "self" , "href": "/message" }
+              ]
+            }
+
+### Retrieve a Message [GET]
+在回應和請求中引用
+
++ Request 接收訊息的請求
+
+    [My Resource][]
+
++ Response 200
+
+    [My Message][]
+
+```
+
+上述有兩個資源模型，格式是 `+ Model (Content-Type)`，底下必須要向內縮 4 個空格或 1 個 Tab，表示這些都隸屬於這個資源模型。第一個的內容是簡寫，表示 body 的內容是 Hello World，第二個定義在資源 My Message 中，內含說明、`Headers` 和 `Body`，然後在 `+ Request` 或 `+ Response` 向內縮 4 個空格或 1 個 Tab，使用 `[資源名稱][]` 引用它。
+
+資源模型中的小括號在請求或回應中都代表 Content-Type，所以 Accept 需要在 `+ Headers` 中明確指出才行。不過即使如此，在請求和回應中，Accept 也不會覆蓋 Content-Type，而是兩者併呈。
+
+一個資源模型只能在資源中定義，而且一個資源只能有一個資源模型，所以上面的範例只有一個資源模型。模型本身不能像請求一樣命名，它使用資源的名稱作爲引用的名稱，所以沒有 `+ Model A (application/json)` 這樣的寫法。
+
+引用使用的是 Markdown 的[參考語法](https://daringfireball.net/projects/markdown/syntax#link)，不過第二個中括號要空著，否則無法引用。
+
+### JSON Schema
+
+[JSON Schema](https://json-schema.org)用來描述 JSON 的資料格式，例如欄位 name 的型別是字串，欄位 quantity 的型別是整數，方便自動測試。使用屬性 Attributes 時，會自動產生 Schema，你也可以手動輸入 Schema。
+
+``` markdown
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "id": "abc123",
+                "title": "This is a note",
+                "content": "This is the note content."
+                "tags": [
+                    "todo",
+                    "home"
+                ]
+            }
+
+    + Schema
+
+            {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "title": {
+                        "type": "string"
+                    },
+                    "content": {
+                        "type": "string"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+```
+
+使用 `+ Schema` 手動輸入 JSON Schema，如上所示。apiary 自動產生的 JSON Schema 如下所示，所以 `+ Schema` 手動輸入的內容會覆蓋掉屬性自動產生的 JSON Schema。
+
+``` json
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string"
+    },
+    "content": {
+      "type": "string"
+    },
+    "tags": {
+      "type": "array"
+    }
+  }
+}
+```
