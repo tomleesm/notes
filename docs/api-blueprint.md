@@ -4,16 +4,9 @@
 
 ## 工具
 
-API Blueprint 官網有列出許多工具，我推薦 Aglio 和 apiary。Aglio 是用 javascript 寫的工具，可以把 API Blueprint markdown 檔案轉成 html，安裝指令如下：
+API Blueprint 官網有列出許多工具，我推薦網站[Apiary](https://apiary.io)。免費註冊後就能在線上編輯文件，左右對照 Markdown 和預覽結果，對於屬性有文整支援。
 
-```
-# 使用 yarn 全域安裝 Aglio
-sudo yarn global add aglio
-# 或使用 npm
-sudo npm install -g aglio
-```
-
-接著編輯好 markdown 檔案，例如 example.md，然後執行 `aglio -i example.md -o example.html` ，轉換成 example.html。可以執行 `aglio` 指令看看參數有哪些。可以使用 `aglio -i example.md -s -h 0.0.0.0 -p 8000` 產生即時預覽。但是實測的結果發現更新不是很可靠，所以我都是在 [apiary](https://apiary.io) 編輯好再使用 aglio
+aglio 在屬性 attributes 的支援不足，所以不推薦。
 
 ## 語法
 
@@ -231,7 +224,7 @@ PUT /message 的名稱是更新訊息。
 ```
 
 - 名稱：參數的名稱，這是唯一必須要有的，其它都是可選的。
-- 範例值在 aglio 會放在 URI 中，顯示成例如 GET /messages/1
+- 範例值用來示範這個參數的值，有些 render 例如 aglio 會顯示在 URI，例如 GET /users/123
 - 型別：number, string, 或 boolean。預設是 string
 - optional 或 required：表明這個參數是可選的或是必須要有的，預設是 required
 - 描述和額外的描述：描述參數的用途等資訊，可用 markdown 語法。額外的描述要向內縮 4 個空格或 1 個 Tab
@@ -365,7 +358,7 @@ PUT /message 的名稱是更新訊息。
 
 上述放在折價卷資源中的屬性，改成放在資料結構中，則 `+ Attributes (object)` 改成 `## 折價卷 (object)`，內含的欄位 id, created, percent_off 和 redeem_by 都不變，只是沒有向內縮排
 
-請注意，使用 aglio 轉換時，如果在資源或動作中定義 Attributes，會沒有 body，但是在 Data Structures 定義就沒有這個問題。
+請注意，使用 aglio 轉換時，如果在資源或動作中定義屬性，會沒有 body，但是在 Data Structures 定義就沒有這個問題。
 
 總結：屬性可以定義在資源、動作、請求與回應和資料結構，但是只能引用定義在其他資源和資料結構的屬性。
 
