@@ -4,9 +4,38 @@
 
 ## 工具
 
-API Blueprint 官網有列出許多工具，我推薦網站[Apiary](https://apiary.io)。免費註冊後就能在線上編輯文件，左右對照 Markdown 和預覽結果，對於屬性有完整支援。
+API Blueprint 官網有列出許多工具，推薦網站[Apiary](https://apiary.io)。免費註冊後就能在線上編輯文件，左右對照 Markdown 和預覽結果，對於屬性有完整支援。
 
-aglio 在屬性 attributes 的支援不足，所以不推薦。
+Aglio 則用來把 Markdown 轉成 HTML，安裝與使用方法如下：
+
+```
+# 在 Debian 11 上安裝
+
+# 先安裝 Node.js
+sudo apt install curl build-essential
+curl -sL https://deb.nodesource.com/setup_16.x | sudo bash -
+sudo apt install nodejs
+
+node -v
+npm -v
+
+# 使用 npm 全域安裝
+sudo npm install -g aglio
+
+# 也可以用 yarn 安裝
+# 安裝 yarn
+sudo apt install curl gnupg
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+sudo apt-get update
+sudo apt-get install yarn
+yarn --version
+
+# 使用 yarn 全域安裝
+sudo yarn global add aglio
+```
+
+接著編輯好 markdown 檔案，例如 example.md，然後執行 `aglio -i example.md -o example.html` ，轉換成 example.html。可以執行 `aglio` 指令看看參數有哪些。可以使用 `aglio -i example.md -s -h 0.0.0.0 -p 8000` 產生即時預覽。但是實測的結果發現更新不是很可靠，所以我都是在 [Apiary](https://apiary.io) 編輯好再使用 aglio
 
 ## 語法
 
@@ -223,184 +252,14 @@ PUT /message 的名稱是更新訊息。
         + Default: 預設值
 ```
 
+參數 Parameters 和之後會提到的屬性 Attributes、資料結構 Data Structures 都使用[Markdown Syntax for Object Notation (MSON)](https://github.com/apiaryio/mson)的語法。
+
 - 名稱：參數的名稱，這是唯一必須要有的，其它都是可選的。
 - 範例值用來示範這個參數的值，有些 render 例如 aglio 會顯示在 URI，例如 GET /users/123
 - 型別：number, string, 或 boolean。預設是 string
 - optional 或 required：表明這個參數是可選的或是必須要有的，預設是 required
 - 描述和額外的描述：描述參數的用途等資訊，可用 markdown 語法。額外的描述要向內縮 4 個空格或 1 個 Tab
 - `+ Default`：預設值，沒有指定參數值時所用的值，只在參數設定爲 optional 時可用，可用 ` 包起值，確保可以正確轉換成 HTML，尤其是字串。要向內縮 4 個空格或 1 個 Tab
-
-### 屬性 Attributes
-
-請求或回應的 body 常常是重複的，可以用屬性 Attributes 來定義 body，然後在請求或回應中引用它。
-
-``` markdown
-## 折價卷 [/coupons/{id}]
-折價卷資料。屬性定義在資源中如下：
-
-+ Parameters
-    + id (string)
-
-        折價卷 ID
-
-+ Attributes (object)
-    + id: 250FF (string, required)
-    + created: 1415203908 (number) - 新增時間戳
-    + percent_off: 25 (number)
-
-        打折的百分比，從 1 到 100
-
-    + redeem_by (number) - 兌換有效期限，此爲時間戳
-
-### 收到一張折價卷 [GET]
-
-+ Response 200 (application/json)
-    + Attributes (折價卷)
-
-### 新增一個折價卷 [POST]
-屬性也可以定義在請求和回應中：
-
-+ Request
-
-    + Attributes (object)
-
-        + percent_off: 25 (number)
-        + redeem_by (number)
-
-### 列出所有折價卷 [GET /coupons]
-
-+ Response 200 (application/json)
-    + Attributes (array[折價卷, 折價卷])
-```
-
-屬性 Attributes 可以定義在資源或動作中，上面的例子裡，在資源折價卷中定義了一個 Attributes，有 4 個欄位，欄位的定義方式和 Parameters 一樣，然後在動作 GET 的回應中使用 `+ Attributes (折價卷)` 引用，會自動依照回應的 Content-Type 轉成對映的格式，在此是 application/json，所以 body 會是 JSON 如下所示：
-
-``` json
-{
-  "id": "250FF",
-  "created": 1415203908,
-  "percent_off": 25,
-  "redeem_by": 0
-}
-```
-
-不過在 apiary 實測，只能轉成 JSON，其它都不行。
-
-動作「新增一個折價卷」的請求定義了一個屬性作爲 body，所以屬性可以定義在請求和回應中作爲 body，但是寫法是如上所示，不是在 `+ Body` 中內含 `+ Attributes`，如下所示：
-
-```
-+ Response 200 (application/json)
-
-    + Body
-
-        + Attributes (object)
-
-            + percent_off: 25 (number)
-            + redeem_by (number)
-```
-
-然後在列出所有折價卷的回應中，`+ Attributes (array[折價卷, 折價卷])` 表示屬性折價卷是陣列的元素，總共有 2 個元素，所以回應的 body 會是這樣：
-
-``` json
-[
-  {
-    "id": "250FF",
-    "created": 1415203908,
-    "percent_off": 25,
-    "redeem_by": 0
-  },
-  {
-    "id": "250FF",
-    "created": 1415203908,
-    "percent_off": 25,
-    "redeem_by": 0
-  }
-]
-```
-
-不能引用自己內部定義的屬性。如下所示，在動作 get users 內定義的屬性，不能用在自己的回應中引用。
-
-``` markdown
-# users [/users]
-
-## get users [GET]
-
-+ Attributes (object)
-  + name (string)
-  + email (string)
-
-+ Response 200 (application/json)
-  + Attributes (get users)
-```
-
-### 資料結構 Data Structures
-
-屬性 Attributes 不一定要屬於某個資源或動作，可以單獨放到外面，名爲資料結構 Data Structures 的區塊中。
-
-``` markdown
-### 收到折價卷 [GET /coupons]
-
-+ Response 200 (application/json)
-    + Attributes (折價卷)
-
-# Data Structures
-
-## 折價卷 (object)
-
-+ id: 250FF (string, required)
-+ created: 1415203908 (number) - 新增時間戳
-+ percent_off: 25 (number)
-
-    打折的百分比，從 1 到 100
-
-+ redeem_by (number) - 兌換有效期限，此爲時間戳
-```
-
-上述放在折價卷資源中的屬性，改成放在資料結構中，則 `+ Attributes (object)` 改成 `## 折價卷 (object)`，內含的欄位 id, created, percent_off 和 redeem_by 都不變，只是沒有向內縮排
-
-請注意，使用 aglio 轉換時，如果在資源或動作中定義屬性，會沒有 body，但是在 Data Structures 定義就沒有這個問題。
-
-總結：屬性可以定義在資源、動作、請求與回應和資料結構，但是只能引用定義在其他資源和資料結構的屬性。
-
-### 繼承屬性
-
-屬性之間可以有類似類別的繼承關係，例如定義折價卷屬性基礎的 2 個欄位 percent_off 和 redeem_by，然後在需要時繼承它，再新增 2 個欄位
-
-``` markdown
-### 收到折價卷 [GET /coupons]
-
-+ Response 200 (application/json)
-    + Attributes (折價卷)
-
-# Data Structures
-
-## 折價卷基礎 (object)
-
-+ percent_off: 25 (number)
-
-    打折的百分比，從 1 到 100
-
-+ redeem_by (number) - 兌換有效期限，此爲時間戳
-
-## 折價卷 (折價卷基礎)
-
-+ id: 250FF (string, required)
-+ created: 1415203908 (number) - 新增時間戳
-```
-
-折價卷基礎先定義 2 個欄位 percent_off 和 redeem_by，然後折價卷屬性在小括號中指定繼承它，再新增 2 個欄位 id 和 created，資源中的屬性也能這樣繼承。
-
-``` json
-{
-  "percent_off": 25,
-  "redeem_by": 0,
-  "id": "250FF",
-  "created": 1415203908
-}
-```
-子屬性折價卷的欄位會加在親屬性折價卷基礎的下方
-
-只有定義在資源和資料結構的屬性可以被引用，所以也只有這 2 個地方的屬性可以被繼承。
 
 ### 資源模型 Resource Model
 
@@ -518,3 +377,157 @@ PUT /message 的名稱是更新訊息。
   }
 }
 ```
+
+之後的內容是在請求和回應的 body 中使用[Markdown Syntax for Object Notation (MSON)](https://github.com/apiaryio/mson)描述 JSON 格式，aglio 沒有完整支援，而且使用 apiary 時只能把 MSON 轉成 JSON，稍微複雜一點的 JSON 就會需要更複雜的語法，所以我覺得直接寫 JSON 就好了，沒有必要多加一層語法。如果單純爲了避免重複程式碼，可以使用模型就好了，沒有必要使用接下來介紹的屬性和資料結構。
+
+### 屬性 Attributes
+
+請求或回應的 body 常常是重複的，可以用屬性 Attributes 來定義 body，然後在請求或回應中引用它。
+
+``` markdown
+## 折價卷 [/coupons/{id}]
+折價卷資料。屬性定義在資源中如下：
+
++ Parameters
+    + id (string)
+
+        折價卷 ID
+
++ Attributes (object)
+    + id: 250FF (string, required)
+    + created: 1415203908 (number) - 新增時間戳
+    + percent_off: 25 (number)
+
+        打折的百分比，從 1 到 100
+
+    + redeem_by (number) - 兌換有效期限，此爲時間戳
+
+### 收到一張折價卷 [GET]
+
++ Response 200 (application/json)
+    + Attributes (折價卷)
+
+### 新增一個折價卷 [POST]
+屬性也可以定義在請求和回應中：
+
++ Request
+
+    + Attributes (object)
+
+        + percent_off: 25 (number)
+        + redeem_by (number)
+
+### 列出所有折價卷 [GET /coupons]
+
++ Response 200 (application/json)
+    + Attributes (array[折價卷, 折價卷])
+```
+
+屬性 Attributes 可以定義在資源或動作中，上面的例子裡，在資源折價卷中定義了一個屬性，有 4 個欄位，欄位的定義方式使用[Markdown Syntax for Object Notation (MSON)](https://github.com/apiaryio/mson)，然後在動作 GET 的回應中使用 `+ Attributes (折價卷)` 引用，會自動轉成 JSON，所以 body 會是如下所示：
+
+``` json
+{
+  "id": "250FF",
+  "created": 1415203908,
+  "percent_off": 25,
+  "redeem_by": 0
+}
+```
+
+動作「新增一個折價卷」的請求定義了一個屬性作爲 body，所以屬性可以定義在請求和回應中作爲 body，但是寫法是如上所示，不是在 `+ Body` 中內含 `+ Attributes`，如下所示：
+
+```
++ Response 200 (application/json)
+
+    + Body
+
+        + Attributes (object)
+
+            + percent_off: 25 (number)
+            + redeem_by (number)
+```
+
+不能引用自己內部定義的屬性。如下所示，在動作 get users 內定義的屬性，不能用在自己的回應中引用。
+
+``` markdown
+# users [/users]
+
+## get users [GET]
+
++ Attributes (object)
+  + name (string)
+  + email (string)
+
++ Response 200 (application/json)
+  + Attributes (get users)
+```
+
+### 資料結構 Data Structures
+
+屬性 Attributes 不一定要屬於某個資源或動作，可以單獨放到外面，名爲資料結構 Data Structures 的區塊中。
+
+``` markdown
+### 收到折價卷 [GET /coupons]
+
++ Response 200 (application/json)
+    + Attributes (折價卷)
+
+# Data Structures
+
+## 折價卷 (object)
+
++ id: 250FF (string, required)
++ created: 1415203908 (number) - 新增時間戳
++ percent_off: 25 (number)
+
+    打折的百分比，從 1 到 100
+
++ redeem_by (number) - 兌換有效期限，此爲時間戳
+```
+
+上述放在折價卷資源中的屬性，改成放在資料結構中，則 `+ Attributes (object)` 改成 `## 折價卷 (object)`，內含的欄位 id, created, percent_off 和 redeem_by 都不變，只是沒有向內縮排
+
+請注意，使用 aglio 轉換時，如果在資源或動作中定義屬性，會沒有 body，但是在 Data Structures 定義就沒有這個問題。
+
+總結：屬性可以定義在資源、動作、請求與回應和資料結構，但是只能引用定義在其他資源和資料結構的屬性。
+
+### 繼承屬性
+
+屬性之間可以有類似類別的繼承關係，例如定義折價卷屬性基礎的 2 個欄位 percent_off 和 redeem_by，然後在需要時繼承它，再新增 2 個欄位
+
+``` markdown
+### 收到折價卷 [GET /coupons]
+
++ Response 200 (application/json)
+    + Attributes (折價卷)
+
+# Data Structures
+
+## 折價卷基礎 (object)
+
++ percent_off: 25 (number)
+
+    打折的百分比，從 1 到 100
+
++ redeem_by (number) - 兌換有效期限，此爲時間戳
+
+## 折價卷 (折價卷基礎)
+
++ id: 250FF (string, required)
++ created: 1415203908 (number) - 新增時間戳
+```
+
+折價卷基礎先定義 2 個欄位 percent_off 和 redeem_by，然後折價卷屬性在小括號中指定繼承它，再新增 2 個欄位 id 和 created，資源中的屬性也能這樣繼承。
+
+``` json
+{
+  "percent_off": 25,
+  "redeem_by": 0,
+  "id": "250FF",
+  "created": 1415203908
+}
+```
+子屬性折價卷的欄位會加在親屬性折價卷基礎的下方
+
+只有定義在資源和資料結構的屬性可以被引用，所以也只有這 2 個地方的屬性可以被繼承。
+
