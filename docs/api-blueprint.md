@@ -4,7 +4,7 @@
 
 ## 工具
 
-API Blueprint 官網有列出許多工具，我推薦網站[Apiary](https://apiary.io)。免費註冊後就能在線上編輯文件，左右對照 Markdown 和預覽結果，對於屬性有文整支援。
+API Blueprint 官網有列出許多工具，我推薦網站[Apiary](https://apiary.io)。免費註冊後就能在線上編輯文件，左右對照 Markdown 和預覽結果，對於屬性有完整支援。
 
 aglio 在屬性 attributes 的支援不足，所以不推薦。
 
