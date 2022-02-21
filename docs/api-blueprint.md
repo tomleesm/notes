@@ -45,6 +45,7 @@ sudo yarn global add aglio
 
 ``` markdown
 FORMAT: 1A
+HOST: https://api.example.com/v1
 
 # The Simplest API
 This is one of the simplest APIs written in the **API Blueprint**. One plain
@@ -52,7 +53,9 @@ resource combined with a method and that's it! We will explain what is going on
 in the next installment -
 [Resource and Actions](02.%20Resource%20and%20Actions.md).
 ```
-開頭的 `FORMAT: 1A` 表示文件格式是 markdown，不寫也可以
+開頭的 `FORMAT: 1A` 表示文件格式是 markdown，不寫也可以。
+
+`HOST` 表示 API 所在的網站網址，如果有一個路由是 GET /users，在 aglio 的示範會顯示爲 `GET https://api.example.com/v1/users`。`HOST` 可以不寫，則示範會顯示爲 `GET /users`
 
 接著一定要有一個 h1 標題（`# The Simplest API`）作爲文件主標題，一般是說明這是哪一個 API 文件，標題下方可以加上摘要描述，寫法和一般的markdown 一樣。
 
