@@ -77,19 +77,32 @@ info:
   title: Sample API
   description: API description in Markdown.
   version: 1.0.0
-host: api.example.com
-basePath: /v1
+```
+第 1 行的 `swagger: "2.0"` 指定 Swagger 的版本是 2.0，每一個 Swagger API 文件都必須要有這一行，放在第幾行倒是無所謂。有趣的是，2.0 需要用引號包起來，否則無法產生文件。YAML 會自動依照值決定型別，所以 `swagger: 2.0` 會自動把鍵 swagger 的值設爲浮點數 2.0，用引號包起來表示強制轉型成字串2.0
+
+接著 info 表示這個文件的相關資訊，包含 3 個鍵 title、description 和 version，代表文件的標題、描述和版本。description 是這個文件的相關描述，可以用 Markdown 格式，可以沒有這個鍵。version 是指這個文件的版本，不是 Swagger 的版本，所以它的值只是字串，可以用任何你喜歡的格式，例如數字 1.0-beta，日期 2016.11.15。
+
+### API Host and Base URL
+
+host, basePath 和 schemes 指定 API 文件所在的網址
+
+``` yaml
+host: petstore.swagger.io
+basePath: /v2
 schemes:
   - https
-
-paths:
-  /users:
-    get:
-      summary: Returns a list of users.
-      description: Optional extended description in Markdown.
-      produces:
-        - application/json
-      responses:
-        200:
-          description: OK
+  - http
 ```
+
+在此借用官方文件上的圖片
+![Swagger URL Structure](images/swagger-url-structure.png)
+
+host 是網站的網址或 IP 位址，不能包含通訊協定，例如 `http://`，因爲改在 schemes 設定。有 port 的話要指明。
+
+basePath 的值一定要以斜線開頭，例如 `/v2`。如果沒有 basePath，預設是 `/`。
+
+schemes 可以使用的通訊協定有 http 和 https，以及 WebSocket 的 ws 和 wss，使用 YAML 的清單語法，也就是開頭爲橫線的方式 `- https`，或是陣列實字語法 `schemes: [http, https]`。
+
+如果沒有設定 host 或 schemes，預設值是文件所在的網站網址和通訊協定。如果文件放在 http://192.168.56.10:8115，則 host 預設值爲 192.168.56.10:8115，schemes 預設值爲 `- http`
+
+### MIME Types
