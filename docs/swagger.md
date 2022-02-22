@@ -103,6 +103,43 @@ basePath 的值一定要以斜線開頭，例如 `/v2`。如果沒有 basePath�
 
 schemes 可以使用的通訊協定有 http 和 https，以及 WebSocket 的 ws 和 wss，使用 YAML 的清單語法，也就是開頭爲橫線的方式 `- https`，或是陣列實字語法 `schemes: [http, https]`。
 
-如果沒有設定 host 或 schemes，預設值是文件所在的網站網址和通訊協定。如果文件放在 http://192.168.56.10:8115，則 host 預設值爲 192.168.56.10:8115，schemes 預設值爲 `- http`
+如果沒有設定 host 或 schemes，預設值是文件所在的網站網址和通訊協定。如果文件放在 http://192.168.56.10:8115 ，則 host 預設值爲 192.168.56.10:8115，schemes 預設值爲 `- http`
 
-### MIME Types
+### Paths and Operations
+
+如果有一個 RESTful 路由，請求 `GET /message`，回應是字串 Hello World，用 Swagger 寫成文件會是這樣：
+
+``` yaml
+swagger: "2.0"
+info:
+  title: Message API
+  version: 1.0.0
+paths:
+  /message:
+    get:
+      summary: 回傳字串 Hello World
+      description: 可以用 markdown 語法的附加描述
+      produces:
+        - text/plain
+      responses:
+        200:
+          description: Hello World
+```
+所有的 RESTful 資源和 HTTP methods 都要定義在 paths 內，上述的例子中，資源 `/message` 寫成 `/message:`，HTTP method `GET` 則在下一層的 `get:`，請注意 get 必須是小寫，不能是大寫的 GET。summary 和 description 是這個路由的簡要描述和附加描述，都是可以省略的。
+
+Swagger 使用 Consumes 代表請求的表頭欄位 Accept，用 Produces 代表回應的表頭欄位 Content-Type，所以下面的例子描述 Accept 和 Content-Type 都是 application/json 或 application/xml
+
+``` yaml
+consumes:
+  - application/json
+  - application/xml
+produces:
+  - application/json
+  - application/xml
+```
+
+回應定義在 `responses`，必須先寫 HTTP 狀態碼，例如200，然後是內容。如果內容是單純的字串，寫在 description 即可，如果是 JSON 之類的樹狀結構，則要寫在 `schema` 內，description 則變成單純的附加描述。`GET /message` 的回應只是字串 Hello World，所以寫在 description。
+
+### Parameters
+
+
