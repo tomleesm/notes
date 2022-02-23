@@ -127,7 +127,7 @@ paths:
 ```
 所有的 RESTful 資源和 HTTP methods 都要定義在 paths 內，上述的例子中，資源 `/message` 寫成 `/message:`，HTTP method `GET` 則在下一層的 `get:`，請注意 get 必須是小寫，不能是大寫的 GET。summary 和 description 是這個路由的簡要描述和附加描述，都是可以省略的。
 
-Swagger 使用 Consumes 代表請求的表頭欄位 Accept，用 Produces 代表回應的表頭欄位 Content-Type，所以下面的例子描述 Accept 和 Content-Type 都是 application/json 或 application/xml
+Swagger 使用 consumes 代表請求的 Content-Type，用 produces 代表回應的 Content-Type，所以下面的例子描述請求和回應的 Content-Type 都是 application/json 或 application/xml。如果像上面例子中只有一個 produces，表示請求的 Accept 和回應的 Content-Type 是一樣的
 
 ``` yaml
 consumes:
@@ -140,6 +140,185 @@ produces:
 
 回應定義在 `responses`，必須先寫 HTTP 狀態碼，例如200，然後是內容。如果內容是單純的字串，寫在 description 即可，如果是 JSON 之類的樹狀結構，則要寫在 `schema` 內，description 則變成單純的附加描述。`GET /message` 的回應只是字串 Hello World，所以寫在 description。
 
-### Parameters
+```
+paths:
+  /pet/findByTags:
+    get:
+      deprecated: true
+```
+`deprecated: true` 標示這個路由已經放棄使用，Swagger Editor 會把這個路由顏色變成灰色，並加上刪除線，如下所示：
+
+![deprecated](images/deprecated.png)
+
+### 參數 Parameters
+
+資源通常有 id 或關鍵字包含其中，例如 /users/123 或 /search?q=關鍵字，這時使用參數 Parameters 來定義。
+
+#### path parameters
+
+``` yaml linenums="1" hl_lines="6 7 8 9 10"
+paths:
+  /users/{userId}:
+    get:
+      summary: 依照 id 抓取使用者
+      parameters:
+        - in: path
+          name: userId
+          type: integer
+          required: true
+          description: 使用者 id
+      responses:
+        200:
+          description: OK
+```
+請注意第 6 行，in 的前面有橫線，表示此爲陣列，所以第 6 到 10 行是一體的，是陣列的一個元素
+
+第 6 行的 `in: path` 表示這個參數 parameters 是用來定義路徑，也就是路由大括號的內容，因此第 7 行 `name: ` 的值必須和大括號內的變數名稱 userId 相同。
+
+第 8 行 type 表示參數的型別，因爲路由是 `/users/123` 這樣，所以是整數 integer。type 的值是基本型別，有 integer, number, string 可用
+
+第 9 行 required 表示這個參數是否爲必填，必填爲 true，否則爲 false。path parameters 一定是 `required: true`，其他種類的 parameters 則是可以設定爲 false
+
+第 10 行 description 用來描述參數的用途，注意事項等，可以沒有 description
+
+#### query parameters
+
+``` yaml linenums="1" hl_lines="5 6 7 8 9"
+  /search:
+    get:
+      summary: 回傳搜尋關鍵字的結果
+      parameters:
+        - in: query
+          name: q
+          type: string
+          required: true
+          description: 用來搜尋的關鍵字
+      responses:
+        200:
+          description: OK
+```
+
+上面的例子產生 `/search?q=` 的路由，關鍵字是字串，所以 `type: string`
+
+如果路由是 `GET /notes?offset=100&limit=50`，因爲 parameters 的值是陣列，所以需要 2 個元素 offset 和 limit，如下所示：
+
+``` yaml
+parameters:
+  - in: query
+    name: offset
+    type: integer
+    description: The number of items to skip before starting to collect the result set.
+  - in: query
+    name: limit
+    type: integer
+    description: The numbers of items to return.
+```
+
+#### Header Parameters
+
+參數也可用來定義自訂的 headers 欄位，如果以下的 HTTP headers 內容：
+``` http
+GET /ping HTTP/1.1
+Host: example.com
+X-Request-ID: 77e1c83b-7bb0-437b-bc50-a7a58e5660ac
+```
+
+用 Swagger 文件是這樣的：
+
+``` yaml linenums="1" hl_lines="6 7"
+paths:
+  /ping:
+    get:
+      summary: Checks if the server is alive.
+      parameters:
+        - in: header
+          name: X-Request-ID
+          type: string
+          required: true
+```
+
+#### Form Parameters
+
+傳統的表單如下：
+``` html
+<form action="http://example.com/survey" method="post">
+  <input type="text"   name="name" />
+  <input type="number" name="fav_number" />
+  <input type="submit"/>
+ </form>
+```
+會產生 HTTP headers 如下：
+``` http
+POST /survey HTTP/1.1
+Host: example.com
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 29
+
+name=Amy+Smith&fav_number=321
+```
+
+寫成 Swagger 文件如下：
+``` yaml
+paths:
+  /survey:
+    post:
+      summary: A sample survey.
+      consumes:
+        - application/x-www-form-urlencoded
+      parameters:
+        - in: formData
+          name: name
+          type: string
+          description: A person's name.
+        - in: formData
+          name: fav_number
+          type: number
+          description: A person's favorite number.
+      responses:
+        200:
+          description: OK
+```
+
+consumes 是請求的 Content-Type，所以指定其值爲 `application/x-www-form-urlencoded`
+
+請求的 body `name=Amy+Smith&fav_number=321`，有兩個欄位 name 和 fav_number，所以使用兩個 formData parameters。
+
+`in: formData` 是專門用來指定表單 body 的(以及檔案上傳)，不能和之後介紹的 `in: body` 放在同一個 parameters。
+
+#### 預設參數值
+
+path parameters 一定 `required: true` ，其他種類的 parameters 可以是 `required: false`，這時候通常會需要預設值，如下所示：
+
+``` yaml linenums="1" hl_lines="15 16 17"
+paths:
+  /search:
+    get:
+      summary: 回傳搜尋關鍵字的結果
+      parameters:
+        - in: query
+          name: q
+          type: string
+          required: true
+          description: 用來搜尋的關鍵字
+        - in: query
+          name: limit
+          type: integer
+          required: false
+          default: 20
+          minimum: 1
+          maximum: 100
+          description: The numbers of items to return.
+      responses:
+        200:
+          description: OK
+```
+
+第 15 行的 default 設定 parameters 預設爲 20，同時 minimum 和 maximum 用來設定最小和最大值。Swagger Editor 會依照最小和最大值範圍提出警告。
+
+![Swagger parameters mini](images/swagger-parameters-mini.png)
+
+點選路由 `/search` 後，點選按鈕 Try it out，在第二個輸入框輸入 0，點選按鈕 Execute，輸入框變成紅色，同時不會執行
+
+預設參數值只會在 `required: false` 時使用，所以 `required: true` 時設定 `default: 10` 是沒有意義的。
 
 
