@@ -230,6 +230,56 @@ tags:
 
 ![Swagger tags](images/swagger-tags.png)
 
+### 自訂 headers
+
+``` yaml
+paths:
+  /message:
+    get:
+      summary: 接收訊息
+      produces:
+        - text/plain
+      parameters:
+        - in: header
+          name: X-RateLimit-Limit
+          type: integer
+          required: true
+          description: Request limit per hour.
+        - in: header
+          name: X-RateLimit-Remaining
+          type: integer
+          required: true
+          description: The number of requests left for the time window.
+        - in: header
+          name: X-RateLimit-Reset
+          type: string
+          required: true
+          description: The UTC date/time at which the current rate limit window resets.
+      responses:
+        200:
+          description: 回傳字串 Hello World
+          headers:
+            X-RateLimit-Limit:
+              type: integer
+              description: Request limit per hour.
+            X-RateLimit-Remaining:
+              type: integer
+              description: The number of requests left for the time window.
+            X-RateLimit-Reset:
+              type: string
+              format: date-time
+              description: The UTC date/time at which the current rate limit window resets.
+          examples:
+            text/plain: >
+              Hello World
+```
+
+請求和回應都有自訂 headers X-RateLimit-Limit、X-RateLimit-Remaining 和 X-RateLimit-Reset，但是請求使用 parameters 定義，回應則是用 `headers:`。
+
+請求的 parameters 可以定義很多東西，headers 是其中一種，和之前提到的一樣，首先它是清單，所以開頭是橫線，後面接著 in, name, type, 和 required 是清單的一個項目。用 `in: header` 指明要定義 headers，name 寫上要自訂的 headers 名稱。自訂 headers 例如 `X-RateLimit-Limit: 20`，所以 `type: integer`，使用 `required: true` 表示它必填。最後 description 寫明 headers 欄位的用途
+
+回應的 headers 直接用 `headers:` 就好。
+
 ### 參數 Parameters
 
 資源通常有 id 或關鍵字包含其中，例如 /users/123 或 /search?q=關鍵字，這時使用參數 Parameters 來定義。
