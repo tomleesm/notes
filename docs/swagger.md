@@ -123,7 +123,10 @@ paths:
         - text/plain
       responses:
         200:
-          description: Hello World
+          description: 回傳字串 Hello World
+          examples:
+            text/plain: >
+              Hello World
 ```
 所有的 RESTful 資源和 HTTP methods 都要定義在 paths 內，上述的例子中，資源 `/message` 寫成 `/message:`，HTTP method `GET` 則在下一層的 `get:`，請注意 get 必須是小寫，不能是大寫的 GET。summary 和 description 是這個路由的簡要描述和附加描述，都是可以省略的。
 
@@ -138,9 +141,12 @@ produces:
   - application/xml
 ```
 
-回應定義在 `responses`，必須先寫 HTTP 狀態碼，例如200，然後是內容。如果內容是單純的字串，寫在 description 即可，如果是 JSON 之類的樹狀結構，則要寫在 `schema` 內，description 則變成單純的附加描述。`GET /message` 的回應只是字串 Hello World，所以寫在 description。
+回應定義在 `responses`，必須先寫 HTTP 狀態碼，例如200，然後是 description，最後是 body 內容。responses 一定要有 description，不知道爲什麼。最後 examples 是舉例說這個回應會有怎樣的值，因爲 Content-Type 可以有很多種，所以必須要先指定 `text/plain`，然後是作爲範例的文字
+ Hello World
 
-```
+有兩種方法可以在 YAML 中書寫多行文字，一種為保留換行（使用 `|` 字元），另一種為摺疊換行（使用 `>` 字元），請參考 [YAML 區塊的字元](https://zh.wikipedia.org/wiki/YAML#%E5%8D%80%E5%A1%8A%E7%9A%84%E5%AD%97%E7%AC%A6)，上面的例子是使用了摺疊換行。
+
+``` yaml
 paths:
   /pet/findByTags:
     get:
@@ -149,6 +155,80 @@ paths:
 `deprecated: true` 標示這個路由已經放棄使用，Swagger Editor 會把這個路由顏色變成灰色，並加上刪除線，如下所示：
 
 ![deprecated](images/deprecated.png)
+
+
+### Request
+
+``` yaml
+paths:
+  /message:
+    get:
+      summary: 接收訊息
+      description: 裡面定義了動作 GET，所以等同於路由 GET /message
+      produces:
+        - text/plain
+      responses:
+        200:
+          description: 回傳字串 Hello World
+          examples:
+            text/plain: >
+              Hello World
+    put:
+      summary: 更新訊息
+      description: 這裡是另一個動作 PUT，等同於路由 PUT /message，用來修改資料。
+      consumes:
+        - text/plain
+      parameters:
+        - in: body
+          name: newMessage
+          required: true
+          schema:
+            type: string
+            example: All your base are belong to us.
+      responses:
+        204:
+          description: No Content
+```
+RESTful 資源 `/message` 包含兩個 HTTP methods，`GET` 和 `PUT`，所以上述例子有 `get:` 和 `put:`，這 2 個縮排的空格數必須相同，才會被認爲是相同的階層，才不會有錯誤。在 `put:` 中，consumes 表示請求的 Content-Type，需要用清單格式，所以是橫線開頭的 `- text/plain`。
+
+請求的內容 body 必須使用 parameters 來定義，之後會看到，它可以用來定義很多東西，例如 `/users/{id}` 的參數 id，`/search?q=keyword` 查詢參數 q，所以必須使用 `in: body` 表明這個參數是用在請求 body 的。必須使用清單格式。
+
+parameters 必須要有一個 name，即使在請求 body 內沒必要也必須有一個。
+
+required 表示這個參數是否爲必填，必填爲 true，否則爲 false。
+
+schema 表示在此開始定義 body 的內容，型別 type 是字串 string，然後給一個例子 example
+
+回應 `responses:` 除了 HTTP 狀態碼 204 以及描述 description 外，沒有其他東西，所以代表回應沒有 body
+
+### tags
+
+``` yaml
+paths:
+  /message:
+    get:
+      tags:
+        - pets
+      summary: 接收訊息
+```
+
+每一個 HTTP methods 可以加上標籤 `tags`，把路由進行分組，方便管理大量的 API。沒有設定標籤的路由，會自動歸類在群組 default
+
+``` yaml
+tags:
+  - name: pets
+    description: Everything about your Pets
+    externalDocs:
+      url: http://docs.my-api.com/pet-operations.htm
+  - name: store
+    description: Access to Petstore orders
+    externalDocs:
+      url: http://docs.my-api.com/store-orders.htm
+```
+
+可以把標籤加上額外的描述，分組的結果如下圖：
+
+![Swagger tags](images/swagger-tags.png)
 
 ### 參數 Parameters
 
@@ -320,5 +400,3 @@ paths:
 點選路由 `/search` 後，點選按鈕 Try it out，在第二個輸入框輸入 0，點選按鈕 Execute，輸入框變成紅色，同時不會執行
 
 預設參數值只會在 `required: false` 時使用，所以 `required: true` 時設定 `default: 10` 是沒有意義的。
-
-
