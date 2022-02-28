@@ -71,4 +71,3 @@ nav:
     - 我是怎麼寫程式的？: how-do-i-program.md
     - RESTful API 簡介: restful-api-introduction.md
     - 使用 API Blueprint 寫文件: api-blueprint.md
-    - 使用 Swagger 寫文件: swagger.md
