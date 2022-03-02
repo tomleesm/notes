@@ -72,14 +72,19 @@ sudo service nginx restart
 ### 開始
 
 ``` yaml
-# 指定 Swagger 的版本是 2.0，每一個 Swagger API 文件都必須要有這一行，放在第幾行倒是無所謂。
+# 指定 Swagger 的版本是 2.0，每一個 Swagger API 文件都必須要有這一行，
+# 放在第幾行倒是無所謂。
 # 有趣的是，2.0 需要用引號包起來，否則無法產生文件
-# YAML 會自動依照值決定型別，所以 swagger: 2.0 會自動把鍵 swagger 的值設為浮點數 2.0，用引號包起來表示強制轉型成字串2.0
+# YAML 會自動依照值決定型別，所以 swagger: 2.0 會自動把鍵 swagger 的值
+# 設為浮點數 2.0，用引號包起來表示強制轉型成字串2.0
 swagger: "2.0"
 # info 表示這個文件的相關資訊
 info:
   # 描述：可以使用 markdown 語法，可以省略
-  description: "This is a sample server Petstore server.  You can find out more about     Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).      For this sample, you can use the api key `special-key` to test the authorization     filters."
+  description: "This is a sample server Petstore server.
+  You can find out more about Swagger at [http://swagger.io](http://swagger.io)
+  or on [irc.freenode.net, #swagger](http://swagger.io/irc/). For this sample,
+  you can use the api key `special-key` to test the authorization filters."
   # version 是指這個文件的版本，不是 Swagger 的版本，
   # 所以它的值只是字串，可以用任何你喜歡的格式，例如數字 1.0-beta，日期 2016.11.15
   version: "1.0.0"
@@ -105,7 +110,7 @@ schemes:
 在此借用官方文件上的圖片
 ![Swagger URL Structure](images/swagger-url-structure.png)
 
-host 是網站的網址或 IP 位址，不能包含通訊協定，例如 `http://`，因為改在 schemes 設定。有 port 的話要指明。
+host 是網站的網址或 IP 位址和port，不能包含通訊協定，例如 `http://`，因為改在 schemes 設定。
 
 basePath 的值一定要以斜線開頭，例如 `/v2`。如果沒有 basePath，預設是 `/`。
 
@@ -139,7 +144,8 @@ tags:
 path:
   # RESTful 資源(URI)
   /pet/findByStatus:
-    # HTTP methods GET, POST, PUT 等緊接著放在 URI 之下，注意必須用小寫的 get，不能用大寫 GET
+    # HTTP methods GET, POST, PUT 等緊接著放在 URI 之下，
+    # 注意必須用小寫的 get，不能用大寫 GET
     get:
       # 可以加上標籤，路由會自動歸類在這個群組，沒有標籤的話，預設是 default 群組
       tags:
@@ -148,6 +154,9 @@ path:
       summary: "Finds Pets by status"
       # 可選的描述則顯示在展開的內容
       description: "Multiple status values can be provided with comma separated strings"
+      # operationId 有些工具會用到，官方文件解釋：
+      # Some code generators use this value to name the corresponding methods in code.
+      # 不過 Swagger Editor 沒有用到
       operationId: "findPetsByStatus"
       produces:
       - "application/xml"
