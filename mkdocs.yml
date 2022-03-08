@@ -26,7 +26,6 @@ repo_url: https://github.com/tomleesm/notes
 repo_name: tomleesm/notes
 edit_uri: edit/main/docs/
 plugins:
-  - git-revision-date
   - search:
       lang:
         - en
