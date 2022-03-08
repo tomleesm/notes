@@ -140,7 +140,7 @@ tags:
 ### 請求與回應
 
 ``` yaml
-# 所有 RESTful 路由都定義在 paths
+# 所有 RESTful 路由都定義在 path
 path:
   # RESTful 資源(URI)
   /pet/findByStatus:
@@ -158,30 +158,219 @@ path:
       # Some code generators use this value to name the corresponding methods in code.
       # 不過 Swagger Editor 沒有用到
       operationId: "findPetsByStatus"
+      # consumes：請求的 body Content-Type
+      # produces：回應的 body Content-Type 和請求的 Accept
+      # 如果定義在 path 外，此爲整個 API 的預設值。定義在 path 內的則會覆蓋預設值。
       produces:
       - "application/xml"
       - "application/json"
+      # parameters 定義請求的 body, header 和網址
+      # - in: path：定義 /users/{id} 網址的參數 id
+      # - in: query：定義網址中的查詢參數，例如 /search?q=keyword 的 q
+      #   所以路由網址不能有查詢參數，例如 /search?q=keyword，而要改成 /search
+      # - in: body：定義 body
+      # - in: header：自訂標頭，例如 X-RateLimit
       parameters:
+      # 所以是定義 /pet/findPetsByStatus?status=
       - name: "status"
         in: "query"
         description: "Status values that need to be considered for filter"
+        # 是否爲必填，in: path 一定是必填，因爲 /users 和 /users/{id} 對於 Swagger 是不同的 path
         required: true
+        # 型別有 boolean, number, integer, string, array 和 object
+        # 型別是陣列
         type: "array"
+        # 定義陣列元素
         items:
           type: "string"
+          # enum：列舉，所以只能是以下這三種
           enum:
           - "available"
           - "pending"
           - "sold"
+          # default 預設值，用在 required: false，而且沒有輸入時使用，
+          # 因爲上面設定 required: true，所以這裡其實不用定義 default
           default: "available"
+        # 相隔方式
+        # csv: 逗號相隔，例如 foo,bar,baz
+        # ssv: 空格相隔，例如 foo bar baz
+        # tsv: Tab 相隔，例如 "foo\tbar\tbaz"
+        # pipes: 用 | 相隔，例如 foo|bar|baz
+        # multi: 重複出現，例如 foo=value&foo=another_value
         collectionFormat: "multi"
+      # 回應都在這裡定義
+      responses:
+        # 必須先寫 HTTP 狀態碼，然後再描述內容
+        "200":
+          # 一般來說 description 是可有可無，但是在回應卻是必填，不然會產生錯誤
+          description: "successful operation"
+          # schema：使用 YAML 定義 JSON 或 XML 之類的樹狀結構
+          # 而且定義的是欄位的型別、最大最小值之類的抽象結構，不是 { name: "Tom" } 這樣的具體內容
+          schema:
+            # 和 parameters 一樣，指定型別爲陣列
+            type: "array"
+            # 定義陣列元素
+            items:
+              # 定義放在不遠處的 definitions 中，然後使用 $ref 引用
+              $ref: "#/definitions/Pet"
+        "400":
+          # 只有 description 表示回應沒有 body
+          description: "Invalid status value"
+
+# 定義共用的結構
+definitions:
+  # 以下的 schema 名稱爲 Pet
+  Pet:
+    # 型別有 boolean, number, integer, string, array 和 object
+    type: "object"
+    # 必填的屬性 properties 有 name 和 photoUrls
+    required:
+    - "name"
+    - "photoUrls"
+    # 定義 schema 的屬性，所以以下可以轉成 JSON
+    # [
+    #   {
+    #     "id": 0,
+    #     "category": {
+    #       "id": 0,
+    #       "name": "string"
+    #     },
+    #     "name": "doggie",
+    #     "photoUrls": [
+    #       "string"
+    #     ],
+    #     "tags": [
+    #       {
+    #         "id": 0,
+    #         "name": "string"
+    #       }
+    #     ],
+    #     "status": "available"
+    #   }
+    # ]
+    properties:
+      id:
+        # 型別是整數
+        type: "integer"
+        # format 是可以自己隨意輸入的字串，用來更準確說明型別格式，int64 表示 64 位元整數
+        format: "int64"
+      category:
+        # 可以引用其他的 schema
+        $ref: "#/definitions/Category"
+      name:
+        type: "string"
+        # Swagger schema 只有抽象的結構，example 用來定義具體的範例，
+        # 如果沒有 example，Swagger Editor 會自動給予 0, "string" 的預設值
+        # 如果有 example，則使用它
+        example: "doggie"
+      photoUrls:
+        type: "array"
+        items:
+          type: "string"
+        # xml：好像是專屬於 XML 的設定，目前都用 JSON，所以跳過
+        xml:
+          name: "photoUrl"
+          wrapped: true
+      tags:
+        type: "array"
+        items:
+          $ref: "#/definitions/Tag"
+        xml:
+          name: "tag"
+          wrapped: true
+      status:
+        type: "string"
+        description: "pet status in the store"
+        enum:
+        - "available"
+        - "pending"
+        - "sold"
+    # xml：好像是專屬於 XML 的設定，目前都用 JSON，所以跳過
+    xml:
+      name: "Pet"
+```
+
+type 和 format 可用的清單參考 [Swagger v2.0 規格](https://swagger.io/specification/v2/) 的 Data Types 小節
+
+``` yaml
+path:
+  # 有 {petId}，所以在 parameters in: path 有定義
+  /pet/{petId}/uploadImage:
+    # HTTP method 爲 POST
+    post:
+      tags:
+      - "pet"
+      summary: "uploads an image"
+      description: ""
+      operationId: "uploadFile"
+      # consumes 指定請求的 body Content-Type 是 multipart/form-data
+      consumes:
+      - "multipart/form-data"
+      # 回應的 body Content-Type 是 application/json
+      produces:
+      - "application/json"
+      parameters:
+      # 定義 /pet/{petId}/uploadImage 的參數 petId
+      # 所以 name 一定要是 petId，有區分大小寫
+      - name: "petId"
+        in: "path"
+        description: "ID of pet to update"
+        # in: path 的 required 一定是 true
+        required: true
+        type: "integer"
+        format: "int64"
+      - name: "additionalMetadata"
+        # in: formData 定義請求的 body 使用傳統的字串格式，例如 foo=bar&tar=bar
+        in: "formData"
+        description: "Additional data to pass to server"
+        required: false
+        type: "string"
+      - name: "file"
+        in: "formData"
+        description: "file to upload"
+        required: false
+        # 上傳檔案時，使用 in: formData 而且 type: file
+        # Swagger Editor 會產生選擇檔案的按鈕，點選按鈕會有對話框
+        type: "file"
       responses:
         "200":
           description: "successful operation"
           schema:
-            type: "array"
-            items:
-              $ref: "#/definitions/Pet"
-        "400":
-          description: "Invalid status value"
+            $ref: "#/definitions/ApiResponse"
+```
+
+``` yaml
+  parameters:
+  - name: "orderId"
+    in: "path"
+    description: "ID of pet that needs to be fetched"
+    required: true
+    type: "integer"
+    # 設定參數的最大和最小值範圍
+    maximum: 10.0
+    minimum: 1.0
+    format: "int64"
+  - name: "api_key"
+    # 使用 parameters in: header 定義請求的自訂 header
+    in: "header"
+    required: false
+    type: "string"
+  # ...
+  responses:
+    "200":
+      description: "successful operation"
+      schema:
+        type: "string"
+      # 回應的自訂 header 則是直接列在 headers 中
+      headers:
+        X-Rate-Limit:
+          type: "integer"
+          format: "int32"
+          description: "calls per hour allowed by the user"
+        X-Expires-After:
+          type: "string"
+          format: "date-time"
+          description: "date in UTC when token expires"
+    "400":
+      description: "Invalid username/password supplied"
 ```
