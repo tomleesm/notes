@@ -67,7 +67,7 @@ sudo service nginx restart
 
 ## 語法
 
-以下筆記參考自 [Swagger v2 官方文件](https://swagger.io/docs/specification/2-0/basic-structure/)。建議新手可以先去 [YAML 的維基百科](https://zh.wikipedia.org/wiki/YAML) 看一下基本語法。
+以下筆記參考自 [Swagger v2 官方文件](https://swagger.io/docs/specification/2-0/basic-structure/)。建議新手可以先去 [YAML 的維基百科](https://zh.wikipedia.org/wiki/YAML) 看一下基本語法。Swagger Editor 安裝後會提供一個寵物店 API 作爲範例，提供[在此作爲參考](pet-store-api.yaml)。
 
 ### 開始
 
