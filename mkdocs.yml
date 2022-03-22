@@ -71,4 +71,4 @@ nav:
     - RESTful API 簡介: restful-api-introduction.md
     - 使用 API Blueprint 寫文件: api-blueprint.md
     - 使用 Swagger 寫文件: swagger.md
-    - UML: uml.md
+    - 自建 GitHub + Slack 的免費替代方案: github-slack-alternative.md
