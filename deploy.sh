@@ -1,2 +1,2 @@
 source ~/.bash_profile
-git push origin main
+git push origin --all
