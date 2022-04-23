@@ -1,11 +1,10 @@
 # 待寫文章清單
-1. MySQL 懶人包
-2. 1NF 到 6NF
-3. PHP 物件導向：class, interface, trait, namespace
-6. Laravel 懶人包
-7. Git 懶人包
-8. 我的 Vim 設定
-9. From Apprentice to Artisan 筆記
-10. 深入淺出物件導向
-11. 重構
-12. PostgreSQL 懶人包
+1. MySQL 和 PostgreSQL 懶人包 (book)
+2. 1NF 到 6NF (internet)
+3. PHP 懶人包：物件導向：class, interface, trait, namespace (book)
+4. Laravel 懶人包 (internet)
+5. Git 懶人包 (book)
+6. 我的 Vim 設定 (internet)
+7. From Apprentice to Artisan 筆記 (internet)
+8. 深入淺出物件導向 (book)
+9. 重構 (book)
