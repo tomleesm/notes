@@ -1,10 +1,10 @@
 # 待寫文章清單
-1. MySQL 和 PostgreSQL 懶人包 (book)
-2. 1NF 到 6NF (internet)
-3. PHP 懶人包：物件導向：class, interface, trait, namespace (book)
-4. Laravel 懶人包 (internet)
-5. Git 懶人包 (book)
-6. 我的 Vim 設定 (internet)
-7. From Apprentice to Artisan 筆記 (internet)
-8. 深入淺出物件導向 (book)
-9. 重構 (book)
+1. PostgreSQL 懶人包
+2. 資料庫基本觀念：關聯/非關聯子查詢、inner join 和 outer join 等
+3. 1NF 到 6NF
+4. PHP 物件導向: class, interface, trait, namespace
+6. Git
+7. 我的 Vim 設定
+8. From Apprentice to Artisan 筆記
+9. 深入淺出設計模式
+10. 重構
