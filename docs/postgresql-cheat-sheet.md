@@ -29,6 +29,13 @@ CREATE TABLE 資料表名稱 (
   name varchar(255) NOT NULL DEFAULT '',
   資料表名稱 資料形態 選項
 );
+
+ALTER TABLE 資料表名稱 ADD COLUMN 欄位名稱 資料形態;
+ALTER TABLE 資料表名稱 DROP COLUMN 欄位名稱;
+ALTER TABLE 資料表名稱 ALTER COLUMN 欄位名稱 SET DATA TYPE 資料形態;
+ALTER TABLE 資料表 RENAME TO 新的資料表名稱;
+-- 把 SELECT 查詢結果存到新增的資料表，不會原查詢的索引
+CREATE TABLE 資料表名稱 AS SELECT 查詢;
 ```
 
 ### 資料形態
@@ -47,9 +54,9 @@ CREATE TABLE 資料表名稱 (
 | serial | 1 到 2,147,483,647 |
 | bigserial | 1 到 9,223,372,036,854,775,807 |
 | **小數** |  |
-| numeric(precision, scale) 或 decimal(precision, scale) | 例如 numeric(3, 1) 或 decimal(4, 2) |
-| real | 6 位數 precision |
-| double precision | 15 位數 precision |
+| numeric(precision, scale) 或 decimal(precision, scale) | 例如 numeric(3, 1) 或 decimal(4, 2) (fixed-point) |
+| real | 6 位數 precision (floating-point) |
+| double precision | 15 位數 precision (floating-point) |
 | 日期和時間 |  |
 | timestamp (with timezone) 或 timestamptz | 日期與時間，西元前 4,713 年到 294,276 年 |
 | date | 只記錄日期，西元前 4,713 年到 5,874,897 年 |
@@ -69,21 +76,96 @@ serial 是 PostgreSQL 獨有的資料形態，通常用於主鍵
 * precision 和 scale 都省略，則自動依值決定直到上限爲止
 * 上限是小數點前 131,072位數，小數點後 16,383 位數
 * 超過設定的 precision 或 scale，則用下一位數決定 4 捨 5 入
-* 注意：如果需要精確數學計算，要使用 numeric 或 decimal。real 和 double precision 是浮點數，相加減是不準確的
+* 注意：如果需要精確數學計算，要使用 numeric 或 decimal。real 和 double precision 是浮點數，數學計算是不準確的
 
 ### 時區
 
 timestamp 輸入時通常要有時區，例如 '2018-12-31 01:00 EST'，時區可用縮寫 EST、和 UTC 的時差 +8，或時區資料庫 Asia/Taipei
 
-# 新增資料
+# 約束條件
+
+主鍵
+``` sql
+CREATE TABLE table_name (
+  id serial,
+  CONSTRAINT 主鍵名稱 PRIMARY KEY (id)
+);
+CREATE TABLE table_name (
+  column_1 integer,
+  column_2 integer,
+  CONSTRAINT 主鍵名稱 PRIMARY KEY (column_1, column_2)
+);
+CREATE TABLE table_name ( id serial CONSTRAINT 主鍵名稱 PRIMARY KEY );
+CREATE TABLE table_name ( id serial PRIMARY KEY );
+
+ALTER TABLE table_name ADD CONSTRAINT 主鍵名稱 PRIMARY KEY (column_1, column_2);
+ALTER TABLE table_name DROP CONSTRAINT 主鍵名稱;
+```
+
+外鍵
+``` sql
+CREATE TABLE table_name (
+  foreign_key_name serial
+    CONSTRAINT 外鍵名稱 FOREIGN KEY REFERENCES 資料表 (資料欄)
+    ON DELETE CASCADE -- 自動刪除外鍵參考的主鍵資料
+);
+```
+
+檢查
+``` sql
+CREATE TABLE table_name (
+  user_role varchar(50),
+  salary integer,
+  -- CHECK () 括號內的語法和 WHERE 子句相同
+  CONSTRAINT 檢查條件名稱 CHECK ( user_role IN ('admin', 'staff') ),
+  CONSTRAINT 檢查條件名稱 CHECK ( salary > 0 )
+);
+```
+
+UNIQUE
+
+PostgreSQL 認爲 NULL 和 NULL 是無法比較的，所以欄位是 UNIQUE 時，可以儲存多筆資料是 NULL
+
+``` sql
+CREATE TABLE table_name (
+  email varchar(255),
+  CONSTRAINT 名稱 UNIQUE (email)
+);
+```
+
+NOT NULL
+
+``` sql
+CREATE TABLE table_name (
+  欄位名稱 varchar(20) NOT NULL
+);
+ALTER TABLE table_name ALTER COLUMN 欄位名稱 SET NOT NULL;
+ALTER TABLE table_name ALTER COLUMN 欄位名稱 DROP NOT NULL;
+```
+# 新增修改刪除資料
 
 ``` sql
 -- 指定新增的欄位，PostgreSQL 使用單引號包住字串值
 INSERT INTO 資料表 (欄位1, 欄位2) VALUES (123, 'text'), (456, 'text');
 -- 依照資料表欄位順序新增資料
 INSERT INTO 資料表 VALUES (123, 'text');
+
+UPDATE 資料表
+SET 欄位名稱1 = 值1,
+    欄位名稱2 = 值2
+WHERE id = 1
+
+DELETE FROM 資料表 WHERE id = 1;
 ```
 
+
+## 交易
+
+``` sql
+START TRANSACTION;
+COMMIT;
+ROLLBACK;
+```
 # 探索資料
 
 ``` sql
@@ -142,9 +224,37 @@ SELECT avg(欄位) FROM table_name; -- 平均
 -- 4 捨 5 入到小數點第幾位，scale：小數點右邊的位數 (預設爲0，即取到整數)
 SELECT round(欄位, scale) FROM table_name;
 -- 百分位數，取平均數。例如 1, 2, 3, 4, 5, 6 中會自動取平均 3.5
-SELECT percentile_cont(0.5) FROM table_name;
+SELECT percentile_cont(0.5) WITHIN GROUP (ORDER BY 欄位) FROM table_name;
 -- 百分位數，取前 50% 的最後一個數。例如 1, 2, 3, 4, 5, 6 中會自動取前 50% 的最後一個數 3
-SELECT percentile_disc(0.5) FROM table_name; --
+SELECT percentile_disc(0.5) WITHIN GROUP (ORDER BY 欄位) FROM table_name;
+-- unnest() 把陣列多筆資料，array[]：建立一個陣列
+SELECT unnest(array['25%', '50%', '75%']) AS "百分比";
+-- percentile_test 只有一個資料欄 numbers，內含6筆資料 1, 2, 3, 4, 5, 6
+-- percentile_cont() 和 percentile_disc() 參數可以給它陣列，它回傳的也是陣列，
+-- 所以用 unnest() 轉成多筆資料
+SELECT unnest(array['25%', '50%', '75%']) AS "百分比",
+       unnest(
+         percentile_cont(array[.25, .50, .75])
+           WITHIN GROUP (ORDER BY numbers)
+       ) AS "百分位數(連續)",
+       unnest(
+         percentile_disc(array[.25, .50, .75])
+           WITHIN GROUP (ORDER BY numbers)
+       ) AS "百分位數(離散)"
+FROM percentile_test;
+
+-- 依照欄位 price 排名
+-- rank(): 排名，平手時留白，dense_rank(): 排名，平手時不留白(名次不會跳下一位)
+SELECT name, price,
+       rank() OVER (ORDER BY price DESC)
+         AS "依照欄位 price 的總排名",
+       dense_rank() OVER (ORDER BY price DESC)
+         AS "依照欄位 price 的總排名(不留白)",
+       rank() OVER (PARTION BY category ORDER BY price DESC)
+         AS "依照欄位 category 分組後，欄位 price 在分組內的排名",
+       dense_rank() OVER (PARTION BY category ORDER BY price DESC)
+         AS "依照欄位 category 分組後，欄位 price 在分組內的排名(不留白)",
+FROM products;
 ```
 
 ## ETL 工具 COPY
@@ -176,4 +286,20 @@ WITH (FORMAT CSV,
 COPY (SELECT * FROM table_name)
 TO 'C:\your_dir\your_file.csv'
 WITH ...
+```
+
+## 判斷查詢效能
+
+``` sql
+-- 顯示 PostreSQL 查詢計畫：如何掃描資料表、是否用到索引等
+EXPLAIN SELECT ...;
+-- 除了顯示 PostreSQL 查詢計畫，還會執行查詢，顯示實際執行時間
+EXPLAIN ANALYZE SELECT ...;
+```
+
+索引
+``` sql
+CREATE INDEX 索引名稱 ON 資料表名稱 (欄位名稱);
+-- 排除索引 NULL，增加搜尋速度 (PostgreSQL 才能在新增索引時用 WHERE 子句)
+CREATE INDEX 索引名稱 ON 資料表名稱 (欄位名稱) WHERE 欄位名稱 IS NOT NULL;
 ```
