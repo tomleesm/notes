@@ -21,6 +21,21 @@ CREATE DATABASE 資料庫名稱 OWNER 使用者名稱;
 GRANT ALL PRIVILEGES ON DATABASE 資料庫名稱 to 使用者名稱;
 ```
 
+psql
+
+``` bash
+# 測試使用者能否登入
+psql -U 使用者名稱 -d 資料庫名稱 -h 127.0.0.1
+# 使用指定的資料庫和使用者執行 test.sql 儲存的 SQL，然後離開 psql
+psql -U 使用者名稱 -d 資料庫名稱 -h 127.0.0.1 -f test.sql
+# 顯示 psql 所有指令
+\?
+# 更改連線的資料庫、使用者
+\c[onnect] 資料庫名稱 使用者名稱
+# 離開 psql
+\q
+```
+
 # 新增資料表
 
 ``` sql
@@ -58,13 +73,23 @@ CREATE TABLE 資料表名稱 AS SELECT 查詢;
 | real | 6 位數 precision (floating-point) |
 | double precision | 15 位數 precision (floating-point) |
 | 日期和時間 |  |
-| timestamp (with timezone) 或 timestamptz | 日期與時間，西元前 4,713 年到 294,276 年 |
-| date | 只記錄日期，西元前 4,713 年到 5,874,897 年 |
-| time with timezone| 只記錄時間，0000:00:00 到 24:00:00 |
-| interval | 時間區隔，例如 1 day 或 2 weeks，範圍是正負 178,000,000 年 |
+| date | September 21, 2018、9/21/2018 或 2018-09-21，從西元前 4,713 年到 5,874,897 年 |
+| time (with timezone) | 15:37 +8 或 12:24:06 PST，從 0000:00:00 到 24:00:00 |
+| timestamp (with timezone) 或 timestamptz | 2018-09-21 15:06:27 Asia/Taipei，從西元前 4,713 年到 294,276 年 |
+| interval | 時間區隔，例如 1 hour, 2 day 或 3 weeks，範圍是正負 178,000,000 年 |
 
 ### 字元
 3 種沒有明顯效能差異，不用爲了效能改用 char(n)
+
+| 語法 | 說明 |
+|---------------------------------------- | -------------------------------------- |
+| upper(字串) | 轉成大寫 |
+| lower(字串) | 轉成小寫 |
+| initcap(字串) | 每個單字第一個字母轉大寫，其餘字母轉小寫(PostgreSQL 獨有) |
+| char_length(字串) | 字元數，注意：一個字中文回傳 1 |
+| length(字串) | 字元數，注意：一個字中文回傳 1 (PostgreSQL 獨有) |
+| position(', ' in 'Tan, Bella') | 回傳 ', ' 在 'Tan, Bella' 中的第一次出現的起始位置 (4)，注意：不是從 0 開始 |
+
 
 ### 整數
 
@@ -82,29 +107,40 @@ serial 是 PostgreSQL 獨有的資料形態，通常用於主鍵
 
 timestamp 輸入時通常要有時區，例如 '2018-12-31 01:00 EST'，時區可用縮寫 EST、和 UTC 的時差 +8，或時區資料庫 Asia/Taipei
 
+`SELECT * FROM pg_catalog.pg_timezone_names ORDER BY utc_offset;` 查詢時區資料庫清單，欄位 is_dst 代表是否使用日光節約時間
+
+時間戳記欄位例如 `'2019-12-01 18:37:12 EST'`
+| 語法 | 說明 |
+| -------------------------------- | --------------------------------------- |
+| date_part('year', cast(時間戳記欄位 AS timestamptz)) return 2019 | 擷取型別 date, time 或 timestamptz 的資料值 |
+| extract('year' from cast(時間戳記欄位 AS timestamptz)) return 2019 | 擷取型別 date, time 或 timestamptz 的資料值 (SQL 標準) |
+| make_date(2018, 2, 22) | 回傳 date 型別資料 2018-02-22 |
+| make_time(18, 4, 30.3) | 回傳 time 型別資料 18:04:30.3，沒有時區 |
+| make_timestamptz(2018, 2, 22, 18, 4, 30.3, 'Asia/Tokyo') | 回傳 timestamp with time zone 型別資料 2018-02-22 17:04:30.3+8，系統時區設定爲 Asia/Taipei，所以是 17 點 |
+
 # 約束條件
 
 主鍵
 ``` sql
-CREATE TABLE table_name (
+CREATE TABLE 資料表 (
   id serial,
   CONSTRAINT 主鍵名稱 PRIMARY KEY (id)
 );
-CREATE TABLE table_name (
+CREATE TABLE 資料表 (
   column_1 integer,
   column_2 integer,
   CONSTRAINT 主鍵名稱 PRIMARY KEY (column_1, column_2)
 );
-CREATE TABLE table_name ( id serial CONSTRAINT 主鍵名稱 PRIMARY KEY );
-CREATE TABLE table_name ( id serial PRIMARY KEY );
+CREATE TABLE 資料表 ( id serial CONSTRAINT 主鍵名稱 PRIMARY KEY );
+CREATE TABLE 資料表 ( id serial PRIMARY KEY );
 
-ALTER TABLE table_name ADD CONSTRAINT 主鍵名稱 PRIMARY KEY (column_1, column_2);
-ALTER TABLE table_name DROP CONSTRAINT 主鍵名稱;
+ALTER TABLE 資料表 ADD CONSTRAINT 主鍵名稱 PRIMARY KEY (column_1, column_2);
+ALTER TABLE 資料表 DROP CONSTRAINT 主鍵名稱;
 ```
 
 外鍵
 ``` sql
-CREATE TABLE table_name (
+CREATE TABLE 資料表 (
   foreign_key_name serial
     CONSTRAINT 外鍵名稱 FOREIGN KEY REFERENCES 資料表 (資料欄)
     ON DELETE CASCADE -- 自動刪除外鍵參考的主鍵資料
@@ -113,7 +149,7 @@ CREATE TABLE table_name (
 
 檢查
 ``` sql
-CREATE TABLE table_name (
+CREATE TABLE 資料表 (
   user_role varchar(50),
   salary integer,
   -- CHECK () 括號內的語法和 WHERE 子句相同
@@ -127,7 +163,7 @@ UNIQUE
 PostgreSQL 認爲 NULL 和 NULL 是無法比較的，所以欄位是 UNIQUE 時，可以儲存多筆資料是 NULL
 
 ``` sql
-CREATE TABLE table_name (
+CREATE TABLE 資料表 (
   email varchar(255),
   CONSTRAINT 名稱 UNIQUE (email)
 );
@@ -136,11 +172,11 @@ CREATE TABLE table_name (
 NOT NULL
 
 ``` sql
-CREATE TABLE table_name (
+CREATE TABLE 資料表 (
   欄位名稱 varchar(20) NOT NULL
 );
-ALTER TABLE table_name ALTER COLUMN 欄位名稱 SET NOT NULL;
-ALTER TABLE table_name ALTER COLUMN 欄位名稱 DROP NOT NULL;
+ALTER TABLE 資料表 ALTER COLUMN 欄位名稱 SET NOT NULL;
+ALTER TABLE 資料表 ALTER COLUMN 欄位名稱 DROP NOT NULL;
 ```
 # 新增修改刪除資料
 
@@ -149,6 +185,8 @@ ALTER TABLE table_name ALTER COLUMN 欄位名稱 DROP NOT NULL;
 INSERT INTO 資料表 (欄位1, 欄位2) VALUES (123, 'text'), (456, 'text');
 -- 依照資料表欄位順序新增資料
 INSERT INTO 資料表 VALUES (123, 'text');
+-- 把 SELECT 查詢的結果新增到資料表
+INSERT INTO 資料表 SELECT * FROM ...;
 
 UPDATE 資料表
 SET 欄位名稱1 = 值1,
@@ -156,6 +194,8 @@ SET 欄位名稱1 = 值1,
 WHERE id = 1
 
 DELETE FROM 資料表 WHERE id = 1;
+-- 清空資料表
+TRUNCATE TABLE 資料表;
 ```
 
 
@@ -170,18 +210,20 @@ ROLLBACK;
 
 ``` sql
 -- 顯示所有欄位
-SELECT * FROM table_name;
+SELECT * FROM 資料表;
 -- 顯示欄位 t1, t2
-SELECT t1, t2 FROM table_name;
+SELECT t1, t2 FROM 資料表;
 -- 只顯示欄位 t1 不重複的值
-SELECT DISTINCT t1 FROM table_name;
+SELECT DISTINCT t1 FROM 資料表;
 -- 每個選區的候選人，只顯示不重複的欄位組合
 SELECT DISTINCT 選區, 候選人姓名 FROM 候選人名冊;
 -- DESC 遞減，ASC 遞增（預設）
-SELECT * FROM table_name ORDER BY t1 DESC, t2 ASC
+SELECT * FROM 資料表 ORDER BY t1 DESC, t2 ASC
 -- 顯示 server 設定
 -- lc_collate：locale for collation 會影響排序順序
 SHOW ALL;
+-- 顯示系統設定的時區
+SHOW timezone;
 ```
 
 字元表對映著數字，排序依據此數字排序。例如 Unicode 字元表 A 對應到 65，a 對應到 97，所以遞增時 A 排在 a 前面。
@@ -219,14 +261,14 @@ SELECT 4!; -- 階乘，4! = 4 x 3 x 2 x 1 = 24
 -- 優先順序：指數和根 --> 乘除餘數 --> 加減
 
 -- 彙總函式
-SELECT sum(欄位) FROM table_name; -- 加總
-SELECT avg(欄位) FROM table_name; -- 平均
+SELECT sum(欄位) FROM 資料表; -- 加總
+SELECT avg(欄位) FROM 資料表; -- 平均
 -- 4 捨 5 入到小數點第幾位，scale：小數點右邊的位數 (預設爲0，即取到整數)
-SELECT round(欄位, scale) FROM table_name;
+SELECT round(欄位, scale) FROM 資料表;
 -- 百分位數，取平均數。例如 1, 2, 3, 4, 5, 6 中會自動取平均 3.5
-SELECT percentile_cont(0.5) WITHIN GROUP (ORDER BY 欄位) FROM table_name;
+SELECT percentile_cont(0.5) WITHIN GROUP (ORDER BY 欄位) FROM 資料表;
 -- 百分位數，取前 50% 的最後一個數。例如 1, 2, 3, 4, 5, 6 中會自動取前 50% 的最後一個數 3
-SELECT percentile_disc(0.5) WITHIN GROUP (ORDER BY 欄位) FROM table_name;
+SELECT percentile_disc(0.5) WITHIN GROUP (ORDER BY 欄位) FROM 資料表;
 -- unnest() 把陣列多筆資料，array[]：建立一個陣列
 SELECT unnest(array['25%', '50%', '75%']) AS "百分比";
 -- percentile_test 只有一個資料欄 numbers，內含6筆資料 1, 2, 3, 4, 5, 6
@@ -259,12 +301,12 @@ FROM products;
 
 ## ETL 工具 COPY
 
-PostgreSQL 可以用 COPY 指令，從 CSV 等文字檔匯入到資料庫，或匯出成文字檔
+PostgreSQL 可以用 COPY 查詢，從 CSV 等文字檔匯入到資料庫，或匯出成文字檔。缺點是匯入或匯出的檔案必須和 PostgreSQL 在同一台機器上，但是用 `\copy` 就沒有這樣的限制
 
 ``` sql
 -- 匯入 CSV 檔到資料庫，資料表必須自行新增
 -- (欄位1, 欄位2)：可以指定匯入的欄位名稱，省略的話則依照資料欄順序
-COPY table_name (欄位1, 欄位2)
+COPY 資料表 (欄位1, 欄位2)
 -- csv 檔位址，必須用絕對位址
 FROM 'C:\your_dir\your_file.csv'
 WITH (FORMAT CSV, -- 指定格式是 CSV，另一常見格式是 TEXT
@@ -274,7 +316,7 @@ WITH (FORMAT CSV, -- 指定格式是 CSV，另一常見格式是 TEXT
 	  );
 
 -- 匯出資料到 CSV 檔，選項同匯入
-COPY table_name (欄位1, 欄位2)
+COPY 資料表 (欄位1, 欄位2)
 TO 'C:\your_dir\your_file.csv'
 WITH (FORMAT CSV,
 	  HEADER,
@@ -283,9 +325,28 @@ WITH (FORMAT CSV,
 	  );
 
 -- 可以把 SELECT 查詢結果匯出到 CSV 檔
-COPY (SELECT * FROM table_name)
+COPY (SELECT * FROM 資料表)
 TO 'C:\your_dir\your_file.csv'
 WITH ...
+
+-- 基本上和上面的 COPY 查詢一樣，只是 COPY 改成 \copy
+\copy 資料表 (欄位1, 欄位2) FROM 'C:\your_dir\your_file.csv' WITH (...);
+\copy 資料表 (欄位1, 欄位2) TO 'C:\your_dir\your_file.csv' WITH (...);
+\copy (SELECT * FROM 資料表)
+TO 'C:\your_dir\your_file.csv'
+WITH ...
+```
+
+## 備份與還原
+``` bash
+# 備份到 SQL 文字檔
+pg_dump -U 使用者名稱 -d 資料庫名稱 -h 127.0.0.1 --blobs > 備份.sql
+# 用 SQL 文字檔還原資料庫
+psql -U 使用者名稱 -d 資料庫名稱 -h 127.0.0.1 -f 備份.sql
+# 備份到壓縮檔
+pg_dump -U 使用者名稱 -d 資料庫名稱 -h 127.0.0.1 --blobs -Ft > 備份.tar.gz
+# 用壓縮檔還原資料庫
+pg_restore -U 使用者名稱 -d 資料庫名稱 -h 127.0.0.1 備份.tar.gz
 ```
 
 ## 判斷查詢效能
