@@ -4,6 +4,8 @@
 
 資料庫、資料表和資料欄名稱如果要用引號，必須用雙引號，資料欄的值如果要用引號，必須用單引號。
 
+## 新增和管理資料庫
+
 在 Linux 執行以下指令，用 PostgreSQL 預設的管理員帳號執行 psql 管理程式
 
 ``` bash
@@ -21,7 +23,7 @@ CREATE DATABASE 資料庫名稱 OWNER 使用者名稱;
 GRANT ALL PRIVILEGES ON DATABASE 資料庫名稱 to 使用者名稱;
 ```
 
-psql
+### psql
 
 ``` bash
 # 測試使用者能否登入
@@ -36,7 +38,7 @@ psql -U 使用者名稱 -d 資料庫名稱 -h 127.0.0.1 -f test.sql
 \q
 ```
 
-# 新增資料表
+## 新增資料表
 
 ``` sql
 CREATE TABLE 資料表名稱 (
@@ -79,6 +81,7 @@ CREATE TABLE 資料表名稱 AS SELECT 查詢;
 | interval | 時間區隔，例如 1 hour, 2 day 或 3 weeks，範圍是正負 178,000,000 年 |
 
 ### 字元
+
 3 種沒有明顯效能差異，不用爲了效能改用 char(n)
 
 | 語法 | 說明 |
@@ -96,6 +99,7 @@ CREATE TABLE 資料表名稱 AS SELECT 查詢;
 serial 是 PostgreSQL 獨有的資料形態，通常用於主鍵
 
 ### 小數
+
 * precision：小數點左右兩側最多一共有幾位數
 * scale：小數點右邊的位數 (預設爲0，即設爲整數)，不足會自動補 0
 * precision 和 scale 都省略，則自動依值決定直到上限爲止
@@ -110,6 +114,7 @@ timestamp 輸入時通常要有時區，例如 '2018-12-31 01:00 EST'，時區�
 `SELECT * FROM pg_catalog.pg_timezone_names ORDER BY utc_offset;` 查詢時區資料庫清單，欄位 is_dst 代表是否使用日光節約時間
 
 時間戳記欄位例如 `'2019-12-01 18:37:12 EST'`
+
 | 語法 | 說明 |
 | -------------------------------- | --------------------------------------- |
 | date_part('year', cast(時間戳記欄位 AS timestamptz)) return 2019 | 擷取型別 date, time 或 timestamptz 的資料值 |
@@ -118,9 +123,10 @@ timestamp 輸入時通常要有時區，例如 '2018-12-31 01:00 EST'，時區�
 | make_time(18, 4, 30.3) | 回傳 time 型別資料 18:04:30.3，沒有時區 |
 | make_timestamptz(2018, 2, 22, 18, 4, 30.3, 'Asia/Tokyo') | 回傳 timestamp with time zone 型別資料 2018-02-22 17:04:30.3+8，系統時區設定爲 Asia/Taipei，所以是 17 點 |
 
-# 約束條件
+## 約束條件
 
-主鍵
+### 主鍵
+
 ``` sql
 CREATE TABLE 資料表 (
   id serial,
@@ -138,7 +144,8 @@ ALTER TABLE 資料表 ADD CONSTRAINT 主鍵名稱 PRIMARY KEY (column_1, column_
 ALTER TABLE 資料表 DROP CONSTRAINT 主鍵名稱;
 ```
 
-外鍵
+### 外鍵
+
 ``` sql
 CREATE TABLE 資料表 (
   foreign_key_name serial
@@ -147,7 +154,8 @@ CREATE TABLE 資料表 (
 );
 ```
 
-檢查
+### 檢查
+
 ``` sql
 CREATE TABLE 資料表 (
   user_role varchar(50),
@@ -158,7 +166,7 @@ CREATE TABLE 資料表 (
 );
 ```
 
-UNIQUE
+### UNIQUE
 
 PostgreSQL 認爲 NULL 和 NULL 是無法比較的，所以欄位是 UNIQUE 時，可以儲存多筆資料是 NULL
 
@@ -169,7 +177,7 @@ CREATE TABLE 資料表 (
 );
 ```
 
-NOT NULL
+### NOT NULL
 
 ``` sql
 CREATE TABLE 資料表 (
@@ -178,7 +186,8 @@ CREATE TABLE 資料表 (
 ALTER TABLE 資料表 ALTER COLUMN 欄位名稱 SET NOT NULL;
 ALTER TABLE 資料表 ALTER COLUMN 欄位名稱 DROP NOT NULL;
 ```
-# 新增修改刪除資料
+
+## 新增修改刪除資料
 
 ``` sql
 -- 指定新增的欄位，PostgreSQL 使用單引號包住字串值
@@ -198,7 +207,6 @@ DELETE FROM 資料表 WHERE id = 1;
 TRUNCATE TABLE 資料表;
 ```
 
-
 ## 交易
 
 ``` sql
@@ -206,7 +214,8 @@ START TRANSACTION;
 COMMIT;
 ROLLBACK;
 ```
-# 探索資料
+
+## 探索資料
 
 ``` sql
 -- 顯示所有欄位
@@ -338,6 +347,7 @@ WITH ...
 ```
 
 ## 備份與還原
+
 ``` bash
 # 備份到 SQL 文字檔
 pg_dump -U 使用者名稱 -d 資料庫名稱 -h 127.0.0.1 --blobs > 備份.sql
@@ -358,7 +368,8 @@ EXPLAIN SELECT ...;
 EXPLAIN ANALYZE SELECT ...;
 ```
 
-索引
+## 索引
+
 ``` sql
 CREATE INDEX 索引名稱 ON 資料表名稱 (欄位名稱);
 -- 排除索引 NULL，增加搜尋速度 (PostgreSQL 才能在新增索引時用 WHERE 子句)
