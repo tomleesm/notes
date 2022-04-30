@@ -38,6 +38,26 @@ psql -U 使用者名稱 -d 資料庫名稱 -h 127.0.0.1 -f test.sql
 \q
 ```
 
+## SELECT 子句執行順序
+
+``` sql
+SELECT 欄位清單
+FROM 資料表
+WHERE 條件式
+GROUP BY 條件式
+HAVING 條件式
+ORDER BY 條件式
+```
+
+1. `FROM` 產生資料集合
+2. `WHERE` 過濾 `FROM` 產生的集合
+3. `GROUP BY` 彙整 `WHERE` 過濾後的集合
+4. `HAVING` 過濾 `GROUP BY` 彙整的集合
+5. `SELECT` 轉換過濾與彙集過的集合（通常是透過彙整函式）
+6. `ORDER BY` 排序 `SELECT` 轉換後的集合
+
+(上述順序和說明來自 Effective SQL 中文版 P. 122，有稍加修改)
+
 ## 新增資料表和 View
 
 ``` sql
@@ -253,6 +273,10 @@ SELECT DISTINCT t1 FROM 資料表;
 SELECT DISTINCT 選區, 候選人姓名 FROM 候選人名冊;
 -- DESC 遞減，ASC 遞增（預設）
 SELECT * FROM 資料表 ORDER BY t1 DESC, t2 ASC;
+-- SELECT 子句中的欄位，有套用彙整函式，則可以不用出現在 GROUP BY
+-- 如果欄位沒有套用彙整函式，則必須出現在 GROUP BY
+-- 此爲 ANSI SQL 標準的規定
+SELECT 欄位1, 欄位2, count(*) FROM 資料表 GROUP BY 欄位1, 欄位2
 -- 只顯示 1 筆資料
 SELECT * FROM 資料表 LMIT 1;
 -- 從索引值 0 的資料開始，只顯示 5 筆（注意，第 1 筆資料的索引值是 0，不是 1）
@@ -267,6 +291,56 @@ SHOW timezone;
 
 字元表對映著數字，排序依據此數字排序。例如 Unicode 字元表 A 對應到 65，a 對應到 97，所以遞增時 A 排在 a 前面。
 
+## JOIN
+
+``` sql
+-- CROSS JOIN：將兩個資料表中所有可能的排列組合顯示出來。
+-- 如果表格 A 和 B 各有 4 和 5 筆資料，則所有可能的排列組合是 4 x 5 = 20 種，所以聯結顯示出來的結果是一個 20 列的表格
+SELECT * FROM 資料表1 CROSS JOIN 資料表2;
+-- 更常見的是這種語法
+SELECT * FROM 資料表1, 資料表2;
+
+-- INNER JOIN：透過條件過濾不需要的資料的 CROSS JOIN
+-- Tom 在2022-04-30 訂購的商品名稱、價格和產品分類
+SELECT p."name" AS product, p.price, c."name" AS category
+FROM users AS u
+INNER JOIN orders AS o ON u.id = o.user_id
+INNER JOIN order_details AS od ON o.id = od.order_id
+INNER JOIN products AS p ON p.id = od.product_id
+INNER JOIN product_categories AS c ON p.category_id = c.id
+WHERE u."name" = 'Tom' AND o.order_date = '2022-04-30'
+
+-- LEFT OUTER JOIN：以左邊的資料表爲主的 INNER JOIN，如果右邊資料表找不到值，則右邊欄位顯示爲 NULL
+-- RIGHT OUTER JOIN：以右邊的資料表爲主
+-- 常用來做「差集」，找出沒有什麼
+SELECT R."name"
+FROM 左邊的資料表 AS L
+LEFT OUTER JOIN 右邊的資料表 AS R
+ON L.id = R.id
+WHERE R.id IS NULL;
+
+-- FULL OUTER JOIN：LEFT 加上 RIGHT OUTER JOIN，基本上沒什麼用
+SELECT R."name"
+FROM 左邊的資料表 AS L
+FULL OUTER JOIN 右邊的資料表 AS R
+ON L.id = R.id
+
+-- NATURAL JOIN：自動尋找兩個表之間，名稱相同的欄位，進行 INNER JOIN，ON 條件為「等於」
+SELECT * FROM 資料表1 NATURAL JOIN 資料表2;
+```
+
+## UNION
+
+兩個資料表的連結(OR)。UNION 會去除重複的資料，UNION ALL 則保留重複的資料。應用參考 Effective SQL 做法 03 和 21，以及 P. 90
+
+``` sql
+SELECT 欄位1, 欄位2 FROM 資料表1
+UNION
+SELECT 欄位1, 欄位2 FROM 資料表2
+```
+
+## 子查詢
+
 ## 過濾條件
 
 ``` sql
@@ -280,8 +354,6 @@ WHERE 欄位 LIKE '%abc'
 -- _ 單獨一個字元， _abc 表示結尾是 abc，開頭是一個字元的字串
 WHERE 欄位 LIKE '_abc'
 ```
-
-## CASE WHEN
 
 ## 數學計算
 
