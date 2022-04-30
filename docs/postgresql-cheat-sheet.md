@@ -38,21 +38,44 @@ psql -U 使用者名稱 -d 資料庫名稱 -h 127.0.0.1 -f test.sql
 \q
 ```
 
-## 新增資料表
+## 新增資料表和 View
 
 ``` sql
+-- 最常見的方式
 CREATE TABLE 資料表名稱 (
   id serial,
   name varchar(255) NOT NULL DEFAULT '',
   資料表名稱 資料形態 選項
 );
 
+-- 用 SELECT 查詢結果新增資料表。AS 不能省略
+-- 注意：只有複製新增資料表時的資料
+-- 主鍵、外鍵、檢查、NOT NULL、UNIQUE 和 serial 等約束條件不會複製到新的資料表
+CREATE TABLE 資料表 AS
+  SELECT 欄位1, 欄位2 FROM 資料表名稱;
+
+-- 主鍵等約束條件需要新增資料表後再設定
+ALTER TABLE 資料表 ADD COLUMN id serial, ADD PRIMARY KEY (id);
+
+-- 複製來源資料表的欄位名稱、資料型別和 NOT NULL，建立新的資料表
+-- LIKE 來源資料表要用括號包起來
+-- 注意：新的資料表只有複製 NOT NULL，沒有主鍵、外鍵、檢查、UNIQUE 和 serial 等約束條件
+CREATE TABLE 新的資料表 (LIKE 來源資料表);
+
+-- 新增 VIEW
+CREATE VIEW VIEW名稱 AS SELECT ...;
+DROP VIEW VIEW名稱;
+
+-- 修改資料表
 ALTER TABLE 資料表名稱 ADD COLUMN 欄位名稱 資料形態;
 ALTER TABLE 資料表名稱 DROP COLUMN 欄位名稱;
 ALTER TABLE 資料表名稱 ALTER COLUMN 欄位名稱 SET DATA TYPE 資料形態;
 ALTER TABLE 資料表 RENAME TO 新的資料表名稱;
 -- 把 SELECT 查詢結果存到新增的資料表，不會原查詢的索引
 CREATE TABLE 資料表名稱 AS SELECT 查詢;
+
+-- 刪除資料表
+DROP TABLE 資料表名稱;
 ```
 
 ### 資料形態
@@ -196,7 +219,10 @@ INSERT INTO 資料表 (欄位1, 欄位2) VALUES (123, 'text'), (456, 'text');
 INSERT INTO 資料表 VALUES (123, 'text');
 -- 把 SELECT 查詢的結果新增到資料表
 INSERT INTO 資料表 SELECT * FROM ...;
-
+-- 用 SELECT 查詢結果新增到指定欄位
+INSERT INTO 目標資料表 (欄位1, 欄位2)
+  SELECT 欄位A, 欄位B FROM 欄位資料表;
+  
 UPDATE 資料表
 SET 欄位名稱1 = 值1,
     欄位名稱2 = 值2
@@ -227,7 +253,12 @@ SELECT DISTINCT t1 FROM 資料表;
 -- 每個選區的候選人，只顯示不重複的欄位組合
 SELECT DISTINCT 選區, 候選人姓名 FROM 候選人名冊;
 -- DESC 遞減，ASC 遞增（預設）
-SELECT * FROM 資料表 ORDER BY t1 DESC, t2 ASC
+SELECT * FROM 資料表 ORDER BY t1 DESC, t2 ASC;
+-- 只顯示 1 筆資料
+SELECT * FROM 資料表 LMIT 1;
+-- 從索引值 0 的資料開始，只顯示 5 筆（注意，第 1 筆資料的索引值是 0，不是 1）
+SELECT * FROM 資料表 LMIT 0, 5;
+
 -- 顯示 server 設定
 -- lc_collate：locale for collation 會影響排序順序
 SHOW ALL;
@@ -240,8 +271,9 @@ SHOW timezone;
 ## 過濾條件
 
 ``` sql
--- a <= x <= b
+-- a <= x <= b。a 一定要大於或等於 b，所以如果 BETWEEN 5 AND 3，會回傳空值
 WHERE x BETWEEN a AND b
+WHERE tags IN ('A', 'B', 'C')
 -- LIKE 區分大小寫
 -- ILIKE 不區分大小寫(PostgreSQL 獨有 ILIKE 語法)
 -- % 一或多個字元，%abc 表示結尾是 abc，開頭是一或多個字元的字串
@@ -249,6 +281,8 @@ WHERE 欄位 LIKE '%abc'
 -- _ 單獨一個字元， _abc 表示結尾是 abc，開頭是一個字元的字串
 WHERE 欄位 LIKE '_abc'
 ```
+
+## CASE WHEN
 
 ## 數學計算
 
