@@ -375,7 +375,7 @@ SELECT * FROM 資料表 WHERE id IN
 |         3  |      1 |
 |         3  |      3 |
 
-``` sql
+``` sql linenums="1"
 SELECT mc.first_name, mc.last_name
 FROM my_contacts AS mc
 WHERE
@@ -430,7 +430,7 @@ WHERE 欄位 LIKE '_abc'
 |         3  |      3 |
 |         5  |      3 |
 
-``` sql
+``` sql linenums="1"
 SELECT mc.first_name, mc.last_name, mc.email
 FROM my_contacts AS mc
 WHERE NOT EXISTS (
