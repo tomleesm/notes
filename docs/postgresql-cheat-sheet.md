@@ -341,6 +341,56 @@ SELECT 欄位1, 欄位2 FROM 資料表2
 
 ## 子查詢
 
+### 非關聯子查詢
+
+先執行括號內的查詢，其結果傳給外層繼續執行。非關聯性子查詢完全獨立執行，和外層查詢沒有關聯
+
+``` sql
+SELECT * FROM 資料表 WHERE id IN
+  (SELECT order_id FROM orders WHERE ...);
+```
+
+### 關聯性子查詢
+
+先執行外層查詢，並傳回結果給內層子查詢以便執行。所以子查詢依賴外層查詢的結果，和外層查詢有關聯
+
+範例：計算 my_contacts 每個人有幾項興趣，並且回傳具有三項興趣的人，顯示姓名
+
+**my_contacts**
+
+| contact_id | first_name | last_name |
+| ---------: | :--------- | :-------- |
+|          1 | Jillian    | Anderson  |
+|          2 | Leo        | Kenton    |
+|          3 | Darrin     | McGavin   |
+
+**contact_interest**
+
+| contact_id | int_id |
+| ---------: | -----: |
+|         1  |      2 |
+|         1  |      3 |
+|         1  |      4 |
+|         2  |      1 |
+|         3  |      1 |
+|         3  |      3 |
+
+``` sql
+SELECT mc.first_name, mc.last_name
+FROM my_contacts AS mc
+WHERE
+3 = (
+  SELECT COUNT(*) FROM contact_interest
+  WHERE contact_id = mc.contact_id
+);
+```
+
+1. 首先執行外層查詢：產生表格 my_contacts 的所有 SELECT 結果，包括 contact_id 和別名 mc
+2. 1 的結果傳給內層子查詢，(第 6 行) mc.contact_id 一次使用傳來的一列資料，例如這次是 1 ，下次是 2，然後是 3
+3. 所以依次執行子查詢 `SELECT COUNT(*) FROM contact_interest WHERE contact_id = 1` (下次就是 2，然後 3)，回傳 contact_id = 1 的這個人有幾項興趣，在這個例子中是 3 項（PS. 聯絡人和興趣是多對多關係）
+4. 第 4 行的 `3 = (子查詢)`：數字 3 在等號的左邊，表示「比較等號兩邊的數值是否相等」。子查詢的結果依序是 3, 1, 2 (項興趣)，所以只有第一個結果是 `3 = (3)`，回傳 TRUE 等號兩邊數值相同
+5. 顯示等號兩邊數值相同的聯絡人姓名(第 1 行)，所以顯示 Jillian Anderson
+
 ## 過濾條件
 
 ``` sql
@@ -354,6 +404,53 @@ WHERE 欄位 LIKE '%abc'
 -- _ 單獨一個字元， _abc 表示結尾是 abc，開頭是一個字元的字串
 WHERE 欄位 LIKE '_abc'
 ```
+
+## EXISTS
+
+尋找「沒有」個人興趣的聯絡人姓名和電子郵件
+
+**my_contacts**
+
+| contact_id | first_name | last_name |
+| ---------: | :--------- | :-------- |
+|          1 | Jillian    | Anderson  |
+|          2 | Leo        | Kenton    |
+|          3 | Darrin     | McGavin   |
+|          4 | Joe        | Franklin  |
+
+**contact_interest**
+
+| contact_id | int_id |
+| ---------: | -----: |
+|         1  |      2 |
+|         1  |      3 |
+|         1  |      4 |
+|         2  |      1 |
+|         3  |      1 |
+|         3  |      3 |
+|         5  |      3 |
+
+``` sql
+SELECT mc.first_name, mc.last_name, mc.email
+FROM my_contacts AS mc
+WHERE NOT EXISTS (
+  SELECT * FROM contact_interest AS ci
+  WHERE mc.contact_id = ci.contact_id
+);
+```
+
+1. 首先執行外層查詢：產生表格 my_contacts 的所有 SELECT 結果，包括 contact_id 和別名 mc
+2. 1 的結果傳給內層子查詢，(第 5 行) mc.contact_id 一次使用傳來的一列資料，例如這次是 1 ，下次是 2，然後是 3
+3. 所以依次執行子查詢 `SELECT * FROM contact_interest AS ci WHERE 1 = ci.contact_id` (下次就是 2，然後 3)，表示尋找 contact_interest 的 contact_id 是否也有 1，也就是這個人是否有個人興趣
+4. `1 = ci.contact_id`：不論數字 1 是在左還是右，都是「比較等號兩邊的數值是否相等」，所以 RDBMS 會去尋找所有的 ci.contact_id ( = 1, 2, 3, 5)，看看是否可能會相等，是的話回傳 TRUE，否則回傳 FALSE。mc.contact_id = 1，WHERE 條件得到 1 = 1，所以子查詢結果是 contact_id = 1 的 contact_interest 所有欄位資料
+5. 但是 NOT EXISTS 要的是「不存在」的，「子查詢結果是有資料的」代表 TRUE，NOT EXISTS (TRUE) 結果是 FALSE。直到 `mc.contact_id = 4`，而 `ci.contact_id = 1, 2, 3, 5`，沒有 4，所以「不存在」`4 = 4`，子查詢結果回傳 FALSE，NOT EXISTS (FALSE)，回傳 TRUE
+6. 所有 NOT EXISTS () 回傳 TRUE 的，表示這些人沒有個人興趣，則顯示他們的姓名和電子郵件
+
+EXISTS () 和 NOT EXISTS () 功用相反，它要的是「有存在」
+
+雖然 NOT EXISTS 搭配子查詢不好懂但很好用，通常用來尋找「沒有」的資料，例如哪些人沒有保險紀錄、哪些貓狗沒有打過疫苗，這樣就不用程式語言的   `if(empty($sqlResult)) { // 顯示他們的資料 }`
+
+除了 SELECT，子查詢也可以用在 INSERT、UPDATE 和 DELETE
 
 ## 數學計算
 
