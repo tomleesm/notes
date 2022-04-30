@@ -50,11 +50,10 @@ CREATE TABLE 資料表名稱 (
 
 -- 用 SELECT 查詢結果新增資料表。AS 不能省略
 -- 注意：只有複製新增資料表時的資料
--- 主鍵、外鍵、檢查、NOT NULL、UNIQUE 和 serial 等約束條件不會複製到新的資料表
 CREATE TABLE 資料表 AS
   SELECT 欄位1, 欄位2 FROM 資料表名稱;
-
--- 主鍵等約束條件需要新增資料表後再設定
+-- 主鍵、外鍵、檢查、NOT NULL、UNIQUE 和 serial 等約束條件不會複製到新的資料表
+-- 所以主鍵等約束條件需要新增資料表後再設定
 ALTER TABLE 資料表 ADD COLUMN id serial, ADD PRIMARY KEY (id);
 
 -- 複製來源資料表的欄位名稱、資料型別和 NOT NULL，建立新的資料表
