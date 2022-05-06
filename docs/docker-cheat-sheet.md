@@ -74,3 +74,62 @@ docker network inspect 網路名稱
 
 ## Docker Compose
 
+一句話說完 docker compose：因爲 `docker run` 的參數太多了，把指令放在一個 YAML 檔，之後如果要安裝就方便多了
+
+上述安裝完 docker 後，其實已安裝好 docker compose 了，執行 `docker compose` 顯示有哪些指令可用
+
+以下用 Docker Compose 安裝 WordPress 進行說明，參考[Quickstart: Compose and WordPress](https://docs.docker.com/samples/wordpress/)
+
+新增檔案 docker-compose.yml 如下
+
+``` yaml
+version: "3.9"
+
+services:
+  db:
+    image: mysql:latest
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: wordpress
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
+
+  wordpress:
+    depends_on:
+      - db
+    image: wordpress:latest
+    volumes:
+      - wordpress_data:/var/www/html
+    ports:
+      - "8000:80"
+    restart: always
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+      WORDPRESS_DB_NAME: wordpress
+volumes:
+  db_data: {}
+  wordpress_data: {}
+```
+- `version`：docker compose 的 YAML 檔案規格版本，Docker 需要有對映的版本，參考[Compatibility matrix](https://docs.docker.com/compose/compose-file/compose-versioning/#compatibility-matrix)
+
+services 底下的 db 和 wordpress 是服務名稱，其內含的 image, volume 等基本上可以猜到和 `docker run` 的參數很像
+
+以 detached 模式執行 docker compose，自動尋找目前目錄的 docker-compose.yml 檔案，依照檔案內容下載安裝所有的 Docker image，並啓動容器
+
+``` bash
+docker compose up -d
+```
+
+此時執行 `sudo docker ps` 應該會看到有兩個容器 wordpress 和 mysql
+
+在瀏覽器上連到 http://127.0.0.1:8000/ 應該會看到 wordpress 設定頁面
+
+停止並刪除用 docker-compose.yml 新增的容器、預設網路，並刪除資料庫(`--volumes`)
+``` bash
+docker compose down --volumes
+```
