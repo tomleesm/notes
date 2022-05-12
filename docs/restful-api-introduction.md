@@ -5,6 +5,7 @@
 先思考名詞，再來是如何操作名詞
 
 Posts 文章 (名詞)
+
 - Create 新增
 - Read 讀取
 - Update 修改
