@@ -46,3 +46,85 @@ PHP 沒有和 Java 一樣，可以對建構式 overloading，一個類別只有�
 - `parent::myFunction()`：父類別的靜態和「一般」方法
 
 但是 `parent::$var` 不是存取父類別的一般變數，而是父類別靜態變數。而且沒有 `parent->$var` 這樣的語法
+
+## Object Inheritance
+
+子類別必須和父類別相同，或比父類別更開放或更多。參考 [Signature compatibility rules](https://www.php.net/manual/en/language.oop5.basic.php#language.oop.lsp)
+
+- 父類別方法 `protected`；子類別方法必須是 `protected` 或 `public`
+- 父類別方法有一個參數，而且參數沒有預設值；子類別方法必須有一個參數以上，而且參數可以有預設值
+- 父類別方法沒有 return  [Type declarations](https://www.php.net/manual/en/language.types.declarations.php#language.types.declarations)，子類別方法可以有 return  [Type declarations](https://www.php.net/manual/en/language.types.declarations.php#language.types.declarations)`
+
+## Traits
+方法名稱衝突時
+
+``` php
+<?php
+trait A {
+    public function smallTalk() {
+        echo 'a';
+    }
+    public function bigTalk() {
+        echo 'A';
+    }
+    public function otherTalk() {
+        echo '+';
+    }
+}
+trait B {
+    public function smallTalk() {
+        echo 'b';
+    }
+    public function bigTalk() {
+        echo 'B';
+    }
+    public function otherTalk() {
+        echo '-';
+    }
+}
+trait C {
+    public function smallTalk() {
+        echo 'c';
+    }
+    public function bigTalk() {
+        echo 'C';
+    }
+    public function otherTalk() {
+        echo '*';
+    }
+}
+class Talker
+{
+    // 三個 trait 方法名稱都一樣，在 use {} 中指定用哪個
+    use A, B, C {
+        // 使用 B 的 smallTalk() 而不是 A 或 C 的
+        // 注意是 B::smallTalk，沒有小括號！沒有小括號！沒有小括號！
+        B::smallTalk insteadof A, C;
+        A::bigTalk insteadof B, C;
+        C::otherTalk insteadof A, B;
+        // C 的 otherTalk 可以改名 talk
+        // 所以 $t->talk() 和 $t->otherTalk() 都可以
+        C::otherTalk as talk;
+    }
+}
+
+$t = new Talker();
+$t->smallTalk(); // b
+$t->bigTalk(); // A
+$t->otherTalk(); // *
+$t->talk(); // *
+?>
+```
+
+trait 可以定義靜態屬性，如果類別使用這個 trait，則此靜態屬性是隨著物件生成的，不是隨著 trait，也就是說以下的 trait Counter，如果被類別 C1 和 C2 使用，則會有兩個靜態屬性 `$c` 分屬 C1 和 C2，不是只有一個
+
+``` php
+trait Counter {
+  private static $c = 0;
+  
+  public function inc() {
+    self::$c++;
+    echo self::$c . "\n";
+  }
+}
+```
