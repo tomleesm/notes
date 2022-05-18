@@ -12,6 +12,7 @@ PHP 7.4.0 開始，可以有 [Type declarations](https://www.php.net/manual/en/l
 一個類別建立一個 class constant，不是一個物件建立一個。
 
 ``` php
+<?php
 class A
 {
   const C = 'C';
@@ -120,6 +121,7 @@ $t->talk(); // *
 trait 可以定義靜態屬性，如果類別使用這個 trait，則此靜態屬性是隨著物件生成的，不是隨著 trait，也就是說以下的 trait Counter，如果被類別 C1 和 C2 使用，則會有兩個靜態屬性 `$c` 分屬 C1 和 C2，不是只有一個
 
 ``` php
+<?php
 trait Counter {
   private static $c = 0;
   
