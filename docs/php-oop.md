@@ -54,6 +54,7 @@ PHP 沒有和 Java 一樣，可以對建構式 overloading，一個類別只有�
 - 父類別方法 `protected`；子類別方法必須是 `protected` 或 `public`
 - 父類別方法有一個參數，而且參數沒有預設值；子類別方法必須有一個參數以上，而且參數可以有預設值
 - 父類別方法沒有 return  [Type declarations](https://www.php.net/manual/en/language.types.declarations.php#language.types.declarations)，子類別方法可以有 return  [Type declarations](https://www.php.net/manual/en/language.types.declarations.php#language.types.declarations)`
+- 如果 return  [Type declarations](https://www.php.net/manual/en/language.types.declarations.php#language.types.declarations) 是類別，爲了遵守基本的多型機制(里式替換原則)，所以子類別可以比父類別的 return type 更緊縮，方法的參數型別則是子類別可以比父類別更開放。參考 [Covariance and Contravariance](https://www.php.net/manual/en/language.oop5.variance.php "Covariance and Contravariance")
 
 ## Traits
 方法名稱衝突時
@@ -128,3 +129,83 @@ trait Counter {
   }
 }
 ```
+
+## Overloading
+
+一般程式語言的 overloading 是指 function 可以有不同的參數種類和數量，例如 [Java String](https://docs.oracle.com/javase/7/docs/api/java/lang/String.html) Constructors 有 15 個(Java 使用和類別相同名稱的 method 作爲建構式)， Java 程式依照參數數量(0 ~ 4 個)和參數型別決定要呼叫哪一個建構式。
+
+但是 PHP 的 overloading 指的是動態產生類別的屬性和方法。下表的屬性 `name` 在類別中沒有定義或不是設爲 `public` ，所以是在類別定義外面直接設定和存取的
+
+| magic function | 何時執行 | 參數意義 | 回傳值 |
+| --------------- | -------- | ---------- | ------- |
+| `__set(string, $name, mix $value): void` | `$object->name = 123` | `$name`：屬性的名稱(字串 name)，`$value`：屬性被設定的值(123) | 沒有回傳值 |
+| `__get(string $name): mix` | 存取 `$object->name` | `$name`：屬性的名稱(字串 name) | 在`__get()` 中回傳的值，決定 `$object->name` 屬性的值 |
+| `__isset(string $name): bool` | `isset($object->name)` | `$name`：屬性的名稱(字串 name) | 在 `__isset()` 中回傳的值，決定 `isset()` 的值。回傳值如果不是 bool 型別，會自動轉型 |
+| `__unset(string $name): void` | `unset($object->name)` | `$name`：屬性的名稱(字串 name) | 沒有回傳值 |
+
+下表的方法 `run` 在類別中沒有定義或不是設爲 `public`，所以是在類別定義外面直接呼叫
+
+| magic function | 何時執行 | 參數意義 | 回傳值 |
+| --------------- | -------- | ---------- | ------ |
+| `public __call(string $name, array $arguments): mix` | `object->run('arg 1', 123)` | `$name`：呼叫的方法名稱(字串 run)，`$arguments`：呼叫方法時所有的參數( `['arg 1', 123]` ) | 呼叫方法的回傳值 |
+| `public __callStatic(string $name, array $arguments): mix` | `MyClass::run('arg 2', 456)` | `$name`：呼叫的靜態方法名稱(字串 run)，`$arguments`：呼叫靜態方法時所有的參數( `['arg 2', 456]` ) | 呼叫靜態方法的回傳值 |
+
+## Final
+
+final 只能用在類別、屬性和方法。顧名思義爲「最後」，表示不會改變。
+
+- 屬性不能設爲 `final`，而是使用 `const` 代表屬性是不能改變的常數
+- 方法設爲 `final`，則不能被子類別 `override` ，改變成另一種方法
+- 類別設爲 `final`，則不能被繼承，改變成另一種類別
+
+## Object Cloning
+
+使用 `clone $obj` 或 `clone($obj)` 複製物件的所有屬性和值，包含 `private` 和 `protected` 屬性，如果有定義 `__clone()`，則會在複製屬性後執行它
+
+## Object Serialization
+
+`serialize()` 會把物件轉成 byte-stream 字串，`unserialize()` 根據此字串還原成物件。所以可以把物件 Serialization 後存成檔案放到其他地方，之後再 Unserialization 還原成物件後繼續執行
+
+``` php
+<?php
+// classa.inc:
+  
+  class A {
+      public $one = 1;
+    
+      public function show_one() {
+          echo $this->one;
+      }
+  }
+  
+// page1.php:
+
+  include("classa.inc");
+  
+  $a = new A;
+  $s = serialize($a);
+  // store $s somewhere where page2.php can find it.
+  file_put_contents('store', $s);
+
+// page2.php:
+  
+  // this is needed for the unserialize to work properly.
+  include("classa.inc");
+
+  $s = file_get_contents('store');
+  $a = unserialize($s);
+
+  // now use the function show_one() of the $a object.  
+  $a->show_one();
+?>
+```
+
+執行 `php page1.php` 會在同一目錄新增檔案 store，內容是字串 `O:1:"A":1:{s:3:"one";i:1;}`，然後 `php page2.php` 會依據此字串還原成物件，繼續執行
+
+官方文件的讀者留言
+
+> Note that static members of an object are not serialized.
+
+但是實測結果，新增一個 `public static $two = 2` ，結果完全可以存取
+
+官方文件寫說如果在 Object Serialization 前沒有類別定義，PHP 會把它變成 `__PHP_Incomplete_Class_Name` 類別的物件，基本上沒什麼用。實測會產生 PHP Fatal error，無法繼續執行
