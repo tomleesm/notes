@@ -73,5 +73,6 @@ nav:
     - 使用 Swagger 寫文件: swagger.md
     - 使用 Cypress 測試網站: cypress.md
     - PostgreSQL 懶人包: postgresql-cheat-sheet.md
+    - 資料庫正規化: database-normalization.md
     - Docker 懶人包: docker-cheat-sheet.md
     - PHP 物件導向語法: php-oop.md
