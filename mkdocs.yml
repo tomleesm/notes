@@ -75,5 +75,6 @@ nav:
     - PostgreSQL 懶人包: postgresql-cheat-sheet.md
     - 資料庫正規化: database-normalization.md
     - Docker 懶人包: docker-cheat-sheet.md
+    - HTTP 通訊協議簡介: http-protocol-introduction.md
     - PHP 物件導向語法: php-oop.md
     - Laravel 基礎: laravel-basic.md
