@@ -72,7 +72,7 @@ Transfer-Encoding: chunked
 
 ### 過期
 
-cookie 和 session 會設定一段時間後就過期被刪除，避免很久沒用的 cookie 和 session 佔用磁碟空間。重新產生 session 和 Cookie 的過程如下：
+cookie 和 session 會設定一段時間後就過期被刪除，避免很久沒用的 cookie 和 session 佔用磁碟空間。重新產生 session 和 cookie 的過程如下：
 
 1. 儲存著 `session_id=ABC123` 的 cookie 過期，瀏覽器刪除這個 cookie
 2. 瀏覽器發出 HTTP 請求，header 沒有 `Cookie: session_id=ABC123`
