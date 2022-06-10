@@ -217,7 +217,7 @@ Route::fallback('Fallback@show');
 
 ### 頻率限制
 
-``` 
+``` php
 <?php
 # 每 1 分鐘查詢此路由最多 60 次，超過會丟出 429 Too many requests
 Route::middleware('throttle:60,1')->group(function () {
