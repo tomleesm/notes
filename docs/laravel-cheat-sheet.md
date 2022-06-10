@@ -193,8 +193,10 @@ public function boot()
     });
 }
 
-# 或者覆寫 \App\User 繼承的 resolveRouteBinding() 也可以
+# 或者覆寫 \App\User 繼承的 resolveRouteBinding() 也可以。
+# 隱性或顯性都適用
 # 如果同時定義有上面的 Route::bind()，則以 Route::bind() 優先
+# 
 /**
  * Retrieve the model for a bound value.
  *
