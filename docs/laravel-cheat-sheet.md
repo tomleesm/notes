@@ -9,6 +9,7 @@
 Laravel 會由上到下匹配路由規則，匹配到就執行。`routes/api.php` 用來定義 API，URI 開頭自動加上 /api，定義在 `app/Providers/RouteServiceProvider.php` 的 `mapApiRoutes()`
 
 ``` php
+<?php
 # GET /hello，回傳文字 Hello World
 Route::get('hello', function () {
     return 'Hello World';
@@ -35,6 +36,7 @@ Route::any('bar', function () {
 ### redirect() 和 view()
 
 ``` php
+<?php
 # GET /here，回傳一個 HTML 要求瀏覽器重新導向 /there。routes/api.php 也一樣
 ## HTML 片段：<meta http-equiv="refresh" content="0;url='/there'" />
 Route::redirect('/here', '/there');
@@ -50,6 +52,7 @@ Route::view('/welcome', 'welcome', ['name' => 'Tom']);
 ### 路由參數 {id}
 
 ``` php
+<?php
 # 路由參數：{id} 不能是空值
 # GET /posts/123/comments/456，則 $postId = 123，$commentId = 456
 Route::get('posts/{post}/comments/{comment}', function ($postId, $commentId) {
@@ -66,6 +69,7 @@ Route::get('user/{name?}', function ($name = 'John') {
 ### 正規約束
 
 ``` php
+<?php
 # where(路由參數名稱, 正規表示法) 或 where(關聯陣列)
 Route::get('user/{name}', function ($name) {
     # $name 必須是英文字母且不能為空值
@@ -101,6 +105,7 @@ Route::get('{search}/search', function ($search) {
 ### 命名路由
 
 ``` php
+<?php
 # GET /user/123/profile 回傳 my url: http://localhost:8114/user/123/profile
 # 因爲 .env 的 APP_URL 設定爲 http://localhost
 Route::get('user/{id}/profile', function ($id) {
@@ -113,6 +118,7 @@ Route::get('user/{id}/profile', function ($id) {
 ### 路由群組
 
 ``` php
+<?php
 # 等於 Route::get('user/{id}', function($id) {});
 Route::prefix('user')->group(function() {
   Route::get('{id}', function($id) {});
@@ -155,6 +161,7 @@ Route::group($routeProperties, function() {
 分爲隱性綁定和顯性綁定：
 
 ``` php
+<?php
 # 隱性綁定
 # GET /users/123 會自動執行 $user = \App\User::findOrFail(123)
 Route::get('users/{user}', function (\App\User $user) {
@@ -203,13 +210,15 @@ public function resolveRouteBinding($value)
 ### 匹配不到任何路由時，自訂頁面
 
 ``` php
+<?php
 # 由上到下匹配路由規則，匹配到就執行，所以這個要放在 routes/web.php 的最底下
 Route::fallback('Fallback@show');
 ```
 
 ### 頻率限制
 
-``` php
+``` 
+<?php
 # 每 1 分鐘查詢此路由最多 60 次，超過會丟出 429 Too many requests
 Route::middleware('throttle:60,1')->group(function () {
 });
