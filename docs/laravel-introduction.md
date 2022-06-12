@@ -1,10 +1,6 @@
-# Laravel 懶人包
-
-看完一個章節後，不看文件，花幾分鐘大概說明一下內容，這差不多就是重點，值得寫成筆記
+# Laravel 簡介
 
 ## 路由
-
-### 基本觀念
 
 Laravel 會由上到下匹配路由規則，匹配到就執行。`routes/api.php` 用來定義 API，URI 開頭自動加上 /api，定義在 `app/Providers/RouteServiceProvider.php` 的 `mapApiRoutes()`
 
@@ -233,3 +229,15 @@ Route::middleware('auth:api', 'throttle:10|rate_limit,1')->group(function () {
 ## CSRF 保護
 
 定義在 `routes/web.php` 的路由，如果HTTP 動詞是 POST, PUT, PATCH 和 DELETE，會需要 CSRF token，`routes/api.php` 則不用。
+
+### 產生 CSRF token
+
+``` html
+<form method="POST" action="/profile">
+    <!--
+    產生 <input type="hidden" name="_token" value="ozrUaeXZUx0riFNOkn7J2uGZ2OnjLSfHmga4Riw6">
+    -->
+    @csrf
+    {{ csrf_field() }}
+</form>
+```

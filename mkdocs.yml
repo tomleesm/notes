@@ -77,4 +77,4 @@ nav:
     - Docker 懶人包: docker-cheat-sheet.md
     - HTTP 通訊協議簡介: http-protocol-introduction.md
     - PHP 物件導向語法: php-oop.md
-    - Laravel 懶人包: laravel-cheat-sheet.md
+    - Laravel 簡介: laravel-introduction.md
