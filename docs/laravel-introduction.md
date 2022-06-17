@@ -64,6 +64,8 @@ Route::get('user/{name?}', function ($name = 'John') {
 
 ### 正規約束
 
+以下的正規表示法使用 PHP 的正規表示法，例如 `/[0-9]+/`，但是不用斜線 `/` 包起兩側
+
 ``` php
 <?php
 # where(路由參數名稱, 正規表示法) 或 where(關聯陣列)
@@ -228,14 +230,16 @@ Route::middleware('auth:api', 'throttle:10|rate_limit,1')->group(function () {
 ```
 ## CSRF 保護
 
-定義在 `routes/web.php` 的路由，如果HTTP 動詞是 POST, PUT, PATCH 和 DELETE，會需要 CSRF token，`routes/api.php` 則不用。
+對於會修改資料的 HTTP 請求，(POST、PUT、PATCH、DELETE)，Laravel 會自動提供 CSRF 保護。Laravel 會自動產生一個字串，類似 XjPG16nkhyTaeG0dTx2zkFhosWynfsOcI79kuSna，儲存在 session 中，然後必須在 HTTP 請求中包含同樣的字串（隱藏欄位、header X-CSRF-TOKEN、cookie），Laravel 會用 middleware VerifyCsrfToken 檢查 session 和請求中的字串兩者是否相同，是的話繼續執行，否則產生狀態碼 419 錯誤。
+
+在 app/Http/Kernel.php 的 `$middlewareGroups` 設定 web 有套用 VerifyCsrfToken，所以 routes/web.php 會自動給予 CSRF 保護，routes/api.php 則沒有。
 
 ### 產生 CSRF token
 
 ``` html
 <form method="POST" action="/profile">
     <!--
-    產生 <input type="hidden" name="_token" value="ozrUaeXZUx0riFNOkn7J2uGZ2OnjLSfHmga4Riw6">
+    以下這兩個都是產生 <input type="hidden" name="_token" value="ozrUaeXZUx0riFNOkn7J2uGZ2OnjLSfHmga4Riw6">
     -->
     @csrf
     {{ csrf_field() }}
