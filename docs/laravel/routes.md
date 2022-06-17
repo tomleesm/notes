@@ -1,6 +1,4 @@
-# Laravel 簡介
-
-## 路由
+# 路由
 
 Laravel 會由上到下匹配路由規則，匹配到就執行。`routes/api.php` 用來定義 API，URI 開頭自動加上 /api，定義在 `app/Providers/RouteServiceProvider.php` 的 `mapApiRoutes()`
 
@@ -29,7 +27,7 @@ Route::any('bar', function () {
 });
 ```
 
-### redirect() 和 view()
+## redirect() 和 view()
 
 ``` php
 <?php
@@ -45,7 +43,7 @@ Route::permanentRedirect('/here', '/there');
 Route::view('/welcome', 'welcome', ['name' => 'Tom']);
 ```
 
-### 路由參數 {id}
+## 路由參數 {id}
 
 ``` php
 <?php
@@ -62,7 +60,7 @@ Route::get('user/{name?}', function ($name = 'John') {
 });
 ```
 
-### 正規約束
+## 正規約束
 
 以下的正規表示法使用 PHP 的正規表示法，例如 `/[0-9]+/`，但是不用斜線 `/` 包起兩側
 
@@ -100,7 +98,7 @@ Route::get('{search}/search', function ($search) {
 })->where('search', '.*');
 ```
 
-### 命名路由
+## 命名路由
 
 ``` php
 <?php
@@ -113,7 +111,7 @@ Route::get('user/{id}/profile', function ($id) {
 })->name('profile');
 ```
 
-### 路由群組
+## 路由群組
 
 ``` php
 <?php
@@ -154,7 +152,7 @@ Route::group($routeProperties, function() {
 });
 ```
 
-### 路由模型綁定
+## 路由模型綁定
 
 分爲隱性綁定和顯性綁定：
 
@@ -207,7 +205,7 @@ public function resolveRouteBinding($value)
 }
 ```
 
-### 匹配不到任何路由時，自訂頁面
+## 匹配不到任何路由時，自訂頁面
 
 ``` php
 <?php
@@ -215,7 +213,7 @@ public function resolveRouteBinding($value)
 Route::fallback('Fallback@show');
 ```
 
-### 頻率限制
+## 頻率限制
 
 ``` php
 <?php
@@ -227,21 +225,4 @@ Route::middleware('throttle:60,1')->group(function () {
 # 未登入的訪客則爲 10 次
 Route::middleware('auth:api', 'throttle:10|rate_limit,1')->group(function () {
 });
-```
-## CSRF 保護
-
-對於會修改資料的 HTTP 請求，(POST、PUT、PATCH、DELETE)，Laravel 會自動提供 CSRF 保護。Laravel 會自動產生一個字串，類似 XjPG16nkhyTaeG0dTx2zkFhosWynfsOcI79kuSna，儲存在 session 中，然後必須在 HTTP 請求中包含同樣的字串（隱藏欄位、header X-CSRF-TOKEN、cookie），Laravel 會用 middleware VerifyCsrfToken 檢查 session 和請求中的字串兩者是否相同，是的話繼續執行，否則產生狀態碼 419 錯誤。
-
-在 app/Http/Kernel.php 的 `$middlewareGroups` 設定 web 有套用 VerifyCsrfToken，所以 routes/web.php 會自動給予 CSRF 保護，routes/api.php 則沒有。
-
-### 產生 CSRF token
-
-``` html
-<form method="POST" action="/profile">
-    <!--
-    以下這兩個都是產生 <input type="hidden" name="_token" value="ozrUaeXZUx0riFNOkn7J2uGZ2OnjLSfHmga4Riw6">
-    -->
-    @csrf
-    {{ csrf_field() }}
-</form>
 ```
