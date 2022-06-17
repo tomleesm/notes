@@ -78,5 +78,5 @@ nav:
     - HTTP 通訊協議簡介: http-protocol-introduction.md
     - PHP 物件導向語法: php-oop.md
     - Laravel:
-      - 路由: routes.md
-      - CSRF 保護: csrf-protection.md
+      - 路由: laravel/routes.md
+      - CSRF 保護: laravel/csrf-protection.md
