@@ -76,7 +76,7 @@ fetch('/ajax', {
 }).then(function( response ) {
    return response.json();
 }).then(function ( response ) {
-// 載入頁面時會用 alert 顯示 Data Saved: Alice
+// 載入頁面時會用 alert 顯示 Fetch Data Saved: Alice
     alert( "Fetch Data Saved: " + response.message );
 });
 ```
