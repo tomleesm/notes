@@ -105,6 +105,7 @@ $.ajaxSetup({
 `routes/api.php` 自動排除在 CSRF 保護中，或設定 `app/Http/middleware/VerifyCsrfToken.php` 的屬性 `$except` ，把路由加到字串陣列中，就能排除 CSRF 保護
 
 ``` php
+<?php
 protected $except = [
   'pay/*',
   'http://example.com/foo/bar',
