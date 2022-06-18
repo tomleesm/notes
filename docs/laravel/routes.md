@@ -32,10 +32,10 @@ Route::any('bar', function () {
 ``` php
 <?php
 # GET /here，回傳一個 HTML 要求瀏覽器重新導向 /there。routes/api.php 也一樣
-## HTML 片段：<meta http-equiv="refresh" content="0;url='/there'" />
+# HTML 片段：<meta http-equiv="refresh" content="0;url='/there'" />
+# 第三個參數是 HTTP 狀態碼，預設是 302
 Route::redirect('/here', '/there');
-# Route::redirect() 第三個參數是 HTTP 狀態碼，預設是 302
-# Route::permanentRedirect() 則是 301
+# 等於 Route::redirect('/here', '/there', 301);
 Route::permanentRedirect('/here', '/there');
 
 # GET /welcome，回傳 resources/views/ 的 welcome.blade.php 或 welcome.php 產生的 HTML
