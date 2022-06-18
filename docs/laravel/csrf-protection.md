@@ -6,6 +6,7 @@
 
 ## 產生 CSRF token
 
+### 表單欄位
 ``` html
 <form method="POST" action="/profile">
     <!--
@@ -16,7 +17,7 @@
 </form>
 ```
 
-## X-CSRF-TOKEN
+### header X-CSRF-TOKEN
 
 在 `<meta>` 設定 CSRF token
 ``` html
@@ -25,7 +26,7 @@
 
 然後設定 header X-CSRF-TOKEN
 
-### jQuery
+#### jQuery
 
 ```javascript
 $.ajaxSetup({
@@ -45,7 +46,7 @@ $.ajax({
 });
 ```
 
-### Fetch
+#### Fetch
 
 路由設定
 ``` php
@@ -81,7 +82,7 @@ fetch('/ajax', {
 });
 ```
 
-## X-XSRF-TOKEN
+### X-XSRF-TOKEN
 
 把 CSRF token 儲存在名爲 `XSRF-TOKEN` 的 Cookie 中，可以用它來設定 HTTP request 的 header X-XSRF-TOKEN，也能有 CSRF 保護，如下所示。
 
