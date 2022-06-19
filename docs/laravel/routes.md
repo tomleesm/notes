@@ -119,14 +119,39 @@ Route::get('user/{id}/profile', function ($id) {
 Route::prefix('user')->group(function() {
   Route::get('{id}', function($id) {});
 });
-# 多個 middlewawre 則改成
-## Route::middleware(['A', 'B']) 或 Route::middleware('A', 'B')
-# 則會先執行 A，再執行 B
-Route::middleware('auth')->group(function() {
+
+# 套用 middleware。先執行 A，再執行 B
+Route::get(...)->middlewawre('A', 'B');
+Route::get(...)->middlewawre(['A', 'B']);
+# Route::middleware('A', 'B') 或 Route::middleware(['A', 'B']) 
+Route::middleware('A', 'B')->group(function() {
   Route::get(...);
 });
-# 會呼叫 app/Http/Controller/A/B/UserController
+# 在 controller 建構式套用 middleware
+class UserController extends Controller
+{
+    public function __construct()
+    {
+        $this->middleware('A');
+        $this->middleware( [ 'A', 'B' ] );
+        # 特別注意！兩個 middleware 以上只能用陣列
+        # 所以 $this->middleware('A', 'B') 會產生錯誤訊息
+        # only() 只套用在指定的 method
+        $this->middleware('A')->only('methodA', 'methodB');
+        $this->middleware('A')->only( [ 'methodA', 'methodB' ] );
+        # except() 除了指定的 method 外都套用
+        $this->middleware('A')->except('methodA', 'methodB');
+        $this->middleware('A')->except( [ 'methodA', 'methodB' ] );
+        # 臨時註冊一個 middleware
+        $this->middleware(function (Request $request, $next) {
+            return $next($request);
+        });
+    }
+}
+
+# 會呼叫 app/Http/Controller/A/B/UserController.php
 Route::namespace('A\B')->group(function() {
+  # 等於 Route::get('user', 'A\B\UserController@show');
   Route::get('user', 'UserController@show');
 });
 # 網址 tom.blog.dev，則 $account = 'tom'
