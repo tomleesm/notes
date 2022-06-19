@@ -360,3 +360,14 @@ Route::resource('posts', 'PostController',
 # 產生上面表格的路由規則
 Route::resource('posts.comments', 'PostController');
 ```
+
+## Route cache
+
+路由必須都是指向 controller 才能用 route cache，因爲 php 序列化無法處理 Closure
+
+``` bash
+# 更新 route cache
+php artisan route:cache
+# 刪除 route cache
+php artisan route:clear
+```
