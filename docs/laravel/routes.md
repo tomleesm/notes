@@ -251,3 +251,112 @@ Route::middleware('throttle:60,1')->group(function () {
 Route::middleware('auth:api', 'throttle:10|rate_limit,1')->group(function () {
 });
 ```
+
+## 一般的 controller
+
+``` bash
+php artisan make:controller Namespace/Controller名稱
+```
+
+``` php
+<?php
+Route::get('路由規則', 'Namespace\Controller名稱@方法名稱');
+```
+
+## Single action controller
+
+``` bash
+## 如果已經定義路由設定是 single action controller
+## 無論有沒有 --invokable，都會產生錯誤訊息
+php artisan make:controller Namespace/Controller名稱 --invokable
+```
+
+``` php
+<?php
+# single action controller，只有一個方法 __invoke()
+Route::get('路由規則', 'Namespace\Controller名稱');
+```
+
+## Resource controller
+
+| Method     | URI               | Name          | Action                 | 說明         |
+| ---------- | ----------------  | ------------- | ---------------------- | ----------- |
+| GET, HEAD  | posts             | posts.index   | PostController@index   | 文章列表     |
+| POST       | posts             | posts.store   | PostController@store   | 新增文章     |
+| GET, HEAD  | posts/{post}      | posts.show    | PostController@show    | 檢視文章     |
+| GET, HEAD  | posts/create      | posts.create  | PostController@create  | 新增文章頁面  |
+| GET, HEAD  | posts/{post}/edit | posts.edit    | PostController@edit    | 編輯文章頁面  |
+| PUT, PATCH | posts/{post}      | posts.update  | PostController@update  | 更新文章     |
+| DELETE     | posts/{post}      | posts.destroy | PostController@destroy | 刪除文章     |
+
+``` bash
+# 顯示路由設定
+php artisan route:list
+# 產生以上表格的 PostController 和 method
+# 可再加上 --api 或把 --resource 換成 --api，產生的 method 會排除 create 和 edit
+php artisan make:controller PostController --resource
+# 可再加上 --model=Post 新增 model Post
+# 並在 method 參數注入 Post 物件
+php artisan make:controller PostController --resource --model=Post
+```
+
+``` php
+<?php
+# 產生以上表格的路由設定
+Route::resource('posts', 'PostController');
+# 產生以上表格的路由設定，但是排除 create 和 edit
+Route::apiResource('posts', 'PostController');
+# Route::resource() 和 Route::apiResource()
+# 功能相同，只差排除 create 和 edit，所以以下就不重複列出了
+
+# 等於這兩行
+# Route::resource('posts', 'PostController');
+# Route::resource('photos', 'PhotoController');
+# 注意 Route::resources() 結尾有 s
+Route::resources([
+    'posts' => 'PostController',
+    'photos' => 'PhotoController'
+]);
+
+# only 陣列：只產生指定路由
+Route::resource('post', 'PostController',
+  [
+      'only' => ['index', 'show']
+  ]
+);
+# except 陣列：除了指定路由外都產生
+Route::resource('post', 'PostController',
+  [
+    'except' => ['create', 'store', 'update', 'destroy']
+  ]
+);
+
+Route::resource('posts', 'PostController',
+  [
+    # 把路由名稱從 posts.create 改成 articles.build
+    # 注意 names 結尾有 s
+    'names' => ['create' => 'articles.build'],
+    # /posts/{post} 改成 /posts/{article}
+    # 注意 parameters 結尾有 s
+    'parameters' => ['post' => 'article']
+  ]
+);
+```
+
+## Nested resource
+
+| Method     | URI               | Name          | Action                 |
+| ---------- | ----------------  | ------------- | ---------------------- |
+| GET, HEAD  | posts/{post}/comments | posts.comments.index | PostController@index |
+| POST       | posts/{post}/comments | posts.comments.store | PostController@store |
+| GET, HEAD  | posts/{post}/comments/{comment} | posts.comments.show | PostController@show |
+| GET, HEAD  | posts/{post}/comments/create | posts.comments.create | PostController@create  |
+| GET, HEAD  | posts/{post}/comments/{comment}/edit | posts.comments.edit | PostController@edit |
+| PUT, PATCH | posts/{post}/comments/{comment} | posts.comments.update | PostController@update |
+| DELETE     | posts/{post}/comments/{comment} | posts.comments.destroy| PostController@destroy |
+
+``` php
+<?php
+# 產生上面表格的路由規則
+Route::resource('posts.comments', 'PostController');
+```
