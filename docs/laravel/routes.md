@@ -189,10 +189,17 @@ Route::get('users/{user}', function (\App\User $user) {
     return $user->email;
 });
 # 在 app/User.php
-# 則會執行 $user = \App\User::where('name', 123)->first();
+# 則會執行 $user = \App\User::where('email', 123)->first();
 public function getRouteKeyName() {
-    return 'name';
+    return 'email';
 }
+# 在 app/User.php
+# 則會執行 $user = \App\User::where('id', 'someone@email.com')->first();
+public function getRouteKey() {
+    return $this->email;
+}
+# 所以同時修改 getRouteKeyName() 和 getRouteKey() 才能執行
+# $user = \App\User::where('email', 'someone@email.com')->first();
 
 # 顯性綁定
 # 在 RouteServiceProvider 定義 Route::model()
