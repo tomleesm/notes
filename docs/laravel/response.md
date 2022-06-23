@@ -100,9 +100,9 @@ return response()->json([
 return response()->json([
     'name' => 'Tom', 
     'status' => 'OK'
-])->withCallback($request->input('callback'));
+])->withCallback($request->input('abc123'));
 # 用 jsonp() 也一樣
-return response()->jsonp($request->input('callback'), [
+return response()->jsonp($request->input('abc123'), [
     'name' => 'Tom', 
     'status' => 'OK'
 ]);
