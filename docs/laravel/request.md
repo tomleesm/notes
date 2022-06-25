@@ -11,6 +11,21 @@ $request->path();
 $request->url();
 # 回傳字串 http://www.example.com/users/123?name=tom&message=hello
 $request->fullUrl();
+# 回傳字串 http://www.example.com/users/123
+url('/users/123');
+# 目前的 URL，不包含 query，回傳字串 http://www.example.com/users/123
+url()->current();
+# 目前的 URL，包含 query
+# 回傳字串 http://www.example.com/users/123?name=tom&message=hello
+url()->full();
+# 上一個請求的 URL，包含 query
+# 回傳字串 http://www.example.com/users/123?name=tom&message=hello
+url()->previous();
+# 上述的 url() 都可以改成 URL Facades
+use Illuminate\Support\Facades\URL;
+URL::current();
+URL::full();
+URL::previous();
 # 回傳字串 GET
 $request->method();
 # HTTP 方法是否爲 GET。實測參數是 'get', 'GeT' 都可以
