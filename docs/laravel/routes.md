@@ -58,6 +58,24 @@ Route::get('posts/{post}/comments/{comment}', function ($postId, $commentId) {
 Route::get('user/{name?}', function ($name = 'John') {
     return $name;
 });
+
+# 新增 middleware SetDefaultLocaleForUrls
+# 套用後 route() 不用傳遞 ['locale' => 'en']，會自動給預設值，不是指路由設定可以省略 locale
+namespace App\Http\Middleware;
+
+use Closure;
+use Illuminate\Support\Facades\URL;
+
+class SetDefaultLocaleForUrls
+{
+    public function handle($request, Closure $next)
+    {
+        # 抓 User 資料表的欄位 locale，或者預設值 en
+        $locale = $request->user()->locale ?? 'en';
+        URL::defaults(['locale' => $locale]);
+        return $next($request);
+    }
+}
 ```
 
 ## 正規約束
@@ -108,6 +126,13 @@ Route::get('user/{id}/profile', function ($id) {
     // route(路由名稱, 變數關聯陣列)：通過路由名稱生成 URL
     // 第二個參數傳送變數 $id = 123 給 {id}
     return 'my url: ' . route('profile', ['id' => $id]);
+})->name('profile');
+# 改成傳遞 User Eloquent 物件，會自動抓欄位 id 給 {id}
+# 要改成其他欄位，參考「路由模型綁定」
+Route::get('user/{id}/profile', function (User $user) {
+    // route(路由名稱, 變數關聯陣列)：通過路由名稱生成 URL
+    // 第二個參數傳送變數 $id = 123 給 {id}
+    return 'my url: ' . route('profile', ['id' => $user]);
 })->name('profile');
 ```
 
