@@ -153,3 +153,5 @@ if ($request->session()->exists('key')) {
 <?php
 $request->session()->regenerate();
 ```
+
+如果要在建構式中存取、新增 session，必須用全域函式 `session()`，因爲 Request 物件無法注入建構式
