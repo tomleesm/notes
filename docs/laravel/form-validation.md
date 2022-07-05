@@ -128,7 +128,7 @@ class MyFormRequest extends FormRequest
 
 ## `\Validator\make()`
 
-手動新增 `Validator` 物件
+手動新增 `Validator` 物件。物件本身有 `validate()`，和 `$request->validate()` 一樣驗證失敗會跳轉回上一頁。
 
 ``` php
 <?php
@@ -417,8 +417,9 @@ return [
 ];
 ```
 
-## 驗證規則索引
+## 驗證規則清單
 
+不想要讓這一篇文章太長，所以移到[驗證規則清單](laravel/form-validation-rules)
 
 ## 自訂驗證規則
 
