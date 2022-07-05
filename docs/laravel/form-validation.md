@@ -329,6 +329,34 @@ return [
 ]
 ```
 
+### 欄位存在才驗證規則
+
+如果最前面加上 `sometimes`，則 HTTP request 的 body 有這個欄位時，才驗證之後的規則
+
+``` php
+<?php
+[
+    # 有信用卡這個欄位時，才驗證規則 required 和 numeric
+    'credit_card_number' => 'sometimes|required|numeric',
+]
+```
+
+### 符合條件，欄位才驗證規則
+
+如果有兩個表單欄位 games 和 reason。當第三個參數的 Closure 回傳 true 時，欄位 reason 才驗證規則 `required|max:500`
+
+Closure 的參數 `$input` 用來存取輸入和檔案，所以 `$input->games` 表示表單欄位 games 的輸入值，可以看成 `$request->games`
+
+``` php
+<?php
+# $validator->sometimes(表單欄位名稱, 驗證規則, 要符合的條件)
+# 第一個參數可以是陣列 [ 'A', 'B' ]，表示欄位 A 和 B
+# sometimes() 只有動態版本，所以沒有 \Validator::sometimes()
+$validator->sometimes('reason', 'required|max:500', function($input) {
+    return $input->games >= 100;
+});
+```
+
 ### 表單欄位名稱
 
 如果表單 HTML 如下
@@ -373,9 +401,139 @@ return [
 | `author[0]` | X (all pass) | O | X (all not pass) | O |
 | `author[1]` | X (all pass) | X (all not pass) | O | O |
 
-結論是驗證規則請使用 `athor.數字`，不要用 `author.*`。`[ 'author.*' => 'required' ]` 會代表 HTML 表單欄位 `author[0]` 和 `author[1]`，並在兩個欄位都有輸入時才通過，但最好還是分開成兩個規則比較好
+結論是驗證規則請使用 `athor.數字`，不要用 `author.*`。`[ 'author.*' => 'required' ]` 會代表表單欄位 `author[0]` 和 `author[1]`(事實上也代表 `author['名稱']` )，並在兩個欄位都有輸入時才通過，但最好還是分開成兩個規則比較好
+
+在語言文件中也可用 `author.*` 代表表單欄位 `author[0]` 和 `author[1]`
+
+``` php
+<?php
+return [
+    # 自訂訊息
+    'custom' => [
+        'author.*' => [
+            'required' => '作者需要填寫',
+        ]
+    ]
+];
+```
 
 ## 驗證規則索引
+
+
+## 自訂驗證規則
+
+### Rule 物件
+
+新增驗證規則 Uppercase。預設新增在目錄 app/Rules/
+
+``` bash
+php artisan make:rule Uppercase
+```
+
+``` php
+<?php
+# app/Rules/Uppercase.php
+
+# passes(表單欄位名稱, 表單欄位值)：如果 <input name="title"> 輸入 hello
+# 則 $attribute = 'title', $value = 'hello'
+# return true：通過驗證條件，return false：驗證失敗
+public function passes($attribute, $value)
+{
+    return strtoupper($value) === $value;
+}
+
+# 驗證失敗的訊息
+public function message()
+{
+    # 可改用 return trans('validation.uppercase'); 使用語言文件定義
+    return 'The :attribute must be uppercase.';
+}
+```
+
+使用自訂驗證規則：new 物件之後放在驗證規則陣列中，不能用 | 分隔規則
+
+``` php
+<?php
+use App\Rules\Uppercase;
+
+[
+    'title' => [ 'required', new Uppercase() ],
+]
+```
+
+### Closure
+
+也可以直接在驗證規則中新增一個 Closure。以下的 Closure 和 Uppercase Rule 物件都是驗證欄位 title 的值是否爲英文字母大寫
+
+``` php
+<?php
+/**
+function(表單欄位名稱, 表單欄位值, 驗證失敗時呼叫的 Closure) {
+  // ...
+}
+**/
+[
+    'title' => [
+        'required',
+        'min:5',
+        function($attribute, $value, $fail) {
+            if(strtoupper($value) !== $value) {
+                return $fail('The ' . $attribute . ' must be uppercase.');
+            }
+        }
+    ]
+]
+```
+
+### `Validator::extend()`
+
+可以在 Service Provider 的 boot() 中用 `Validator::extend()` 定義驗證規則。當 `extend()` 的第二個參數 Closure 回傳 true，表示驗證通過，否則爲驗證失敗
+
+`Validator::extend(規則名稱, function(表單欄位名稱, 表單欄位值, 傳遞給規則的參數陣列, Validator 物件) {});`
+
+`Validator::replacer(規則名稱, function(預設的驗證失敗訊息, 表單欄位名稱, 規則名稱, 傳遞給規則的參數陣列)`
+
+以下的規則表示欄位 title 要輸入 foo 才能通過驗證。`foo:A,B` 參數 A 和 B 會傳給陣列 `$parameters = [ 'A', 'B' ]`。經實測，參數 `$validator` 似乎不是 `Validator` 物件，因爲 `$validator instanceof Validator` return false
+``` php
+<?php
+# 經實測，改用 use Validator; 也可以
+use Illuminate\Support\Facades\Validator;
+
+class AppServiceProvider extends ServiceProvider
+{
+    public function boot()
+    {
+        # 定義驗證規則
+        Validator::extend('foo', function($attribute, $value, $parameters, $validator) {
+            return $value == 'foo'
+        });
+
+        # 自訂驗證失敗訊息
+        Validator::replacer('foo', function($message, $attribute, $rule, $parameters) {
+            # 錯誤訊息爲 validation.foo, title, foo, A
+            return $message . ', ' .  $attribute . ', ' . $rule . ', ' . $parameters[0];
+        });
+
+        # Implicit Extensions：表單欄位的值是空字串，或 HTTP 請求沒有這個表單欄位
+        # 則依照 Validator::extendImplicit() 決定是否驗證通過
+        Validator::extendImplicit('foo', function($attribute, $value, $parameters, $validator) {
+            return $value == 'foo';
+        });
+    }
+}
+
+// 使用方式
+[
+    'title' => 'required|foo:A,B'
+]
+```
+
+官方文件提到可以改成 `Validator::extend('foo', 'FooValidator@validate');`，卻沒有說放在哪個資料夾，所以用 Closure 的方式。
+
+使用 `Validator::replacer()` 自訂驗證失敗訊息，或是用 `$request->validate()`、`\Validator::make()` 提供的方式，或放在語言文件中。官方文件提到訊息不能放在 custom 中，其實是可以的
+
+表單欄位的值是空字串，或 HTTP 請求沒有這個表單欄位，則 Laravel 不會驗證規則。如果想要在上述的兩個情況中依然驗證規則，則使用 `Validator::extendImplicit()` ，它會在這兩種情況時依照 Closure 的回傳值是 true 或 false 決定是否驗證通過。如果一個 Rule 物件也需要在這兩種情況下驗證規則，只要 implements `Illuminate\Contracts\Validation\ImplicitRule`
+介面即可，它沒有需要實作的 method
 
 ## 頁面上有多個表單
 
