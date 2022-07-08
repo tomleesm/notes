@@ -164,7 +164,37 @@ PHP 函式 [strtotime()](https://www.php.net/manual/en/function.strtotime)可以
 
 ## date_format:format 指定日期格式
 
-PHP 可以接受的[日期格式](https://www.php.net/manual/en/datetime.format.php)，實測結果比較特別的列在以下表格。「應該通過卻沒有」的最好都別用，時分秒出人意料的可以正常運作也都通過驗證
+PHP 可以接受的[日期格式](https://www.php.net/manual/en/datetime.format.php)，實測結果比較特別的列在以下表格。「應該通過卻沒有」的最好都別用，「時分秒」出人意料的可以正常運作也都通過驗證
+
+原始碼在  Laravel 6 的 
+[vendor/laravel/framework/src/Illuminate/Validation/Concerns/ValidatesAttributes.php](https://github.com/illuminate/validation/blob/934f75b6afd5b731881e3226df429470c62a9f3a/Concerns/ValidatesAttributes.php#L402)
+
+關鍵在於以下程式碼的最後兩行 [DateTime::createFromFormat()](https://www.php.net/manual/en/datetime.createfromformat.php)，使用範例參考[DateTimeImmutable::createFromFormat()](https://www.php.net/manual/en/datetimeimmutable.createfromformat.php)
+
+``` php
+<?php
+/**
+規則 date_format:Y-m-d，輸入值 2022-07-08
+
+$attribute: 表單欄位名稱
+$value: 表單欄位的值，例如 2022-07-08
+$parameters: 冒號右邊的 Y-m-d 參數，可以用逗號分隔多個參數，所以是陣列
+**/
+public function validateDateFormat($attribute, $value, $parameters)
+{
+    $this->requireParameterCount(1, $parameters, 'date_format');
+    
+    if (! is_string($value) && ! is_numeric($value)) {
+        return false;
+    }
+
+    $format = $parameters[0];
+
+    $date = DateTime::createFromFormat('!'.$format, $value);
+
+    return $date && $date->format($format) == $value;
+}
+```
 
 | format | 輸入值(皆爲字串) | 說明 |
 | ---- | ------------------------- | --- |
@@ -202,3 +232,23 @@ PHP 可以接受的[日期格式](https://www.php.net/manual/en/datetime.format.
 | r | Thu, 21 Dec 2000 16:01:07 +0200 | 失敗 |
 | U | 1657160589 | 通過 |
 | D Y-m-d H:i:s a | Thu 2022-07-07 04:31:33 am | 通過 |
+
+## different:field 和指定欄位不同
+
+test 指定和欄位 A 的值不同，所以以下會驗證通過
+
+``` php
+<?php
+$input = [
+    'test' => 'a',
+    'A' => 'A'
+];
+$rule = [
+    'test' => 'different:A'
+];
+$validator = \Validator::make($input, $rule)->validate();
+```
+
+## digits:value 指定位數
+
+`digits:3` 是指欄位值是數字，而且是十進位 3 位數
