@@ -44,16 +44,29 @@
 
 ## array
 
-輸入必須是 PHP 陣列，例如以下這樣，但是表單欄位無法產生這樣的輸入，所以實際上無法使用這個規則
+輸入必須是 PHP 陣列，例如以下這樣
+
+``` html
+<p>
+    <label>author 0</label>
+    <input type="text" name="author[]">
+</p>
+<p>
+    <label>author 1</label>
+    <input type="text" name="author[]">
+</p>
+<p>
+    <label>author 2</label>
+    <input type="text" name="author[]">
+</p>
+```
 
 ``` php
 <?php
-$input = [
-    'test' => [ 'A', 'B' ]
-];
 $rule = [
-    'test' => 'array'
+    'author' => 'array'
 ];
+$validator = \Validator::make($request->all(), $rule)->validate();
 ```
 
 ## bail 驗證失敗後停止後續規則驗證
@@ -251,4 +264,86 @@ $validator = \Validator::make($input, $rule)->validate();
 
 ## digits:value 指定位數
 
-`digits:3` 是指欄位值是數字，而且是十進位 3 位數
+`digits:3` 是指欄位值是數字，而且是十進位 3 位數。注意，實測發現輸入空字串，不管規則是幾位數都會通過，但是輸入 `null` 則不會通過
+
+## digits_between:min,max 指定位數範圍
+
+`digits:1,3` 是指欄位值是數字，而且是十進位 1 到 3 位數。注意，實測發現輸入空字串，不管規則是幾位數都會通過，但是輸入 `null` 則不會通過
+
+## dimensions:條件 圖片尺寸
+
+可用條件包含 `min_width`, `max_width`, `min_height`, `max_height`, `width`, `height`, `ratio`
+
+寬度/高度的比例 `ratio`，可以用分數例如 `4/5` 或小數例如 0.8
+
+可以用 `Rule::dimensions` 建立規則
+
+``` php
+<?php
+use Illuminate\Validation\Rule;
+
+[
+    'photo' => 'dimensions:min_width=100,min_height=200',
+    'pic' => [
+        Rule::dimensions()->maxWidth(1000)->maxHeight(500)->ratio(3 / 2)
+    ]
+]
+```
+
+## distinct 陣列值沒有重複
+
+``` html
+<p>
+    <label>author 0</label>
+    <input type="text" name="author[]">
+</p>
+<p>
+    <label>author 1</label>
+    <input type="text" name="author[]">
+</p>
+<p>
+    <label>author 2</label>
+    <input type="text" name="author[]">
+</p>
+```
+
+以下驗證 author 是否爲陣列，以及陣列值是否沒有重複
+
+``` php
+<?php
+$rule = [
+    'author' => 'array',
+    'author.*' => 'distinct'
+];
+$validator = \Validator::make($request->all(), $rule)->validate();
+```
+
+## email
+
+使用 [egulias/email-validator](https://github.com/egulias/EmailValidator) 驗證電子郵件位址的格式是否正確，有以下幾種驗證器，預設使用 rfc
+
+-   `rfc`：`RFCValidation`
+-   `strict`：`NoRFCWarningsValidation`
+-   `dns`：`DNSCheckValidation` (會檢查 @ 之後的網址是否有效，所以 tom@example.com 會驗證失敗)
+-   `spoof`：`SpoofCheckValidation` (文件提到：Will check for multi-utf-8 chars that can signal an erroneous email name，看不太懂)
+-   `filter`：`FilterEmailValidation` (透過 PHP `filter_var()`，Laravel 5.8 之前使用)
+
+``` php
+<?php
+[
+    'email' => 'email:rfc,dns,spoof'
+]
+```
+
+SpoofCheckValidation 需要安裝 php intl extension
+
+``` bash
+sudo apt install php-intl
+```
+
+## ends_with: A,B 結尾是 A 或 B
+
+`ends_with:A,B` 結尾是 A 或 B，所以 `'123ab'` 會驗證失敗，`'123AB'` 會通過
+
+## exists:table,column
+
