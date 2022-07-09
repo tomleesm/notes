@@ -345,5 +345,55 @@ sudo apt install php-intl
 
 `ends_with:A,B` 結尾是 A 或 B，所以 `'123ab'` 會驗證失敗，`'123AB'` 會通過
 
-## exists:table,column
+## exists:table,column 輸入值存在資料庫
+
+如果有一個資料表 states
+
+|   name     | abbreviation | 
+| ---------- | ------- |
+| Alabama    | AL |
+| Alaska     | AK |
+| Arizona    | AZ |
+| Arkansas   | AR |
+| California | CA |
+
+以下規則會去搜尋表單輸入值有沒有在資料表中，前三個的 SQL 是這樣的：
+
+``` sql
+select count(*) as aggregate from "states" where "abbreviation" = AL
+```
+
+但是最後一個條件，使用 `Rule::exists()` 那個，SQL 是這樣的：
+
+``` sql
+select count(*) as aggregate from "states" where "abbreviation" = AL and ("name" = ALABAMA)
+```
+
+``` php
+<?php
+use Illuminate\Validation\Rule;
+
+[
+    # 表單輸入 abbreviation => 'AL'
+    # 沒有指定資料欄，則預設使用表單欄位名稱
+    'abbreviation' => 'exists:states',
+    # 表單輸入 test => 'AL'
+    # exists:table,column
+    'test' => 'exists:states,abbreviation',
+    # 表單輸入 test => 'AL'
+    # pqsql 是指定使用在 config/database.php 的 connections 設定
+    # 請注意 pqsql 和 states 使用 . 連接
+    'test' => 'exists:pqsql.states,abbreviation',
+    # 表單輸入 abbreviation => 'AL'
+    # 雖然用 exists() 的參數指定資料表是 states，但是它會把表單欄位名稱作爲 WHERE 條件
+    # 同時合併 $query->where() 的條件
+    'abbreviation' => [
+        Rule::exists('states')->where(function ($query) {
+            $query->where('name', 'ALABAMA');
+        })
+    ]
+]
+```
+
+## file 上傳成功的檔案
 
