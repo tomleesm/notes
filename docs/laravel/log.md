@@ -42,6 +42,7 @@ syslog 頻道是寫入到檔案 /var/log/syslog（要有 sudo 才能看到內容
 ## 自訂 Monolog channel
 
 tap 元素是一個陣列，裡面是類別清單。當執行 single 頻道時就執行這些類別
+
 ``` php
 <?php
 'single' => [
@@ -83,4 +84,4 @@ class CustomizeFormatter
 
 ## Creating Monolog Handler Channels
 
-依照官方文件，實際上沒有試成功
+依照官方文件，實際上沒有試成功，自訂 channel 也是
