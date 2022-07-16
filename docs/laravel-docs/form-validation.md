@@ -419,7 +419,7 @@ return [
 
 ## 驗證規則清單
 
-不想要讓這一篇文章太長，所以移到[驗證規則清單](laravel/form-validation-rules)
+不想要讓這一篇文章太長，所以移到[驗證規則清單](form-validation-rules.md)
 
 ## 自訂驗證規則
 

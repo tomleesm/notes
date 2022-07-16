@@ -77,6 +77,18 @@ nav:
     - Docker 懶人包: docker-cheat-sheet.md
     - HTTP 通訊協議簡介: http-protocol-introduction.md
     - PHP 物件導向語法: php-oop.md
-    - Laravel:
-      - 路由: laravel/routes.md
-      - CSRF 保護: laravel/csrf-protection.md
+  - Laravel 官方文件懶人包:
+    - 路由: laravel-docs/routes.md
+    - CSRF 保護: laravel-docs/csrf-protection.md
+    - Controllers: laravel-docs/controllers.md
+    - CSRF 保護: laravel-docs/csrf-protection.md
+    - HTTP 請求: laravel-docs/request.md
+    - HTTP 回應: laravel-docs/response.md
+    - View: laravel-docs/view.md
+    - Signed URLs: laravel-docs/signed-urls.md
+    - Cookie 和 Session: laravel-docs/cookie-session.md
+    - 表單驗證: laravel-docs/form-validation.md
+    - 驗證規則清單: laravel-docs/form-validation-rules.md
+    - 例外處理: laravel-docs/exception-handling.md
+    - Log: laravel-docs/log.md
+    - 檔案上傳和下載: laravel-docs/file-upload-download.md
