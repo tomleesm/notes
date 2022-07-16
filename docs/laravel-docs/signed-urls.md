@@ -5,6 +5,7 @@
 它是把 /unsubscribe/users/1 的 checksum 加到後面的 signature，網址如果被修改就不會有效。可以用在E-mail 驗證、電子報退訂等。
 
 ``` php
+<?php
 use Illuminate\Support\Facades\URL;
 # 回傳字串 http://www.example.com/unsubscribe/users/1
 # ?signature=ebedccaa0ef1fbfbe81bbda05338d6634e9c2f7eb65cb58b8b435da4e491f
