@@ -1,5 +1,7 @@
 # Blade
 
+## 顯示值
+
 ``` blade
 # 顯示變數的值，$name 使用 htmlentities() 處理，以避免 XSS
 {{ $name }}
@@ -10,6 +12,8 @@
 # 不使用 htmlentities() 處理
 {!! $name !!}
 
+{{-- 註解 --}}
+
 # 如果 $array = [ 'name' => 'Tom' ]
 # json = { "name" => "Tom" }，方便設定 JavaScript 變數初始值
 # 結尾的分號不能省略
@@ -17,8 +21,6 @@ var json = @json($array);
 # 整齊的縮排
 json = @json($array, JSON_PRETTY_PRINT);
 ```
-
-## JavaScript Framework
 
 Vue 之類的 JavaScript Framework 同樣使用 `{{ }}`  顯示變數的值，Blade 使用 `@{{ }}` 或 `@verbatim` 輸出 `{{ }}`
 
@@ -41,19 +43,37 @@ Vue 之類的 JavaScript Framework 同樣使用 `{{ }}`  顯示變數的值，Bl
 <h3>{{ message }}</h3>
 ```
 
-## 流程控制
+## 指令
+
+`@` 開頭是指令，例如：
 
 ``` blade
-# if...elseif...else
-@if (count($records) === 1)
-    One record
-@elseif (count($records) > 1)
-    More records
-@else
-    No any records
+@if(count($array) === 1)
+...
 @endif
+```
 
+等於
 
+``` php
+<?php
+if(count($array) === 1) {
+  ...
+}
+```
+
+### include
+
+``` blade
+# 執行原始的 php code
+@php
+  $a = 'a';
+@endphp
+
+# 包含其他的 blade.php，並傳遞 $i = '123' 給 resources/views/partials/sidebar.blade.php
+# 上面的 $a = 'a' 可以在 partials.sidebar 中存取
+# 但是在 partials.sidebar 定義的變數無法給 include 它的 view 存取
+@include('partials.sidebar', [ 'i' => '123' ])
 ```
 
 ## 繼承
