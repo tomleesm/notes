@@ -43,26 +43,80 @@ Vue 之類的 JavaScript Framework 同樣使用 `{{ }}`  顯示變數的值，Bl
 <h3>{{ message }}</h3>
 ```
 
-## 指令
-
-`@` 開頭是指令，例如：
+## 流程控制
 
 ``` blade
-@if(count($array) === 1)
-...
+@if (count($records) === 1)
+    One record
+@elseif (count($records) > 1)
+    More records
+@else
+    No any records
 @endif
+
+# 等於 @if( ! 條件 )，不好理解，建議少用
+@unless($records === 0)
+    Something here
+@endunless
+
+# isset() 和 empty()
+@isset($i)
+    <p>i is set and not null.</p>
+@else
+    <p>i is not set or null.</p>
+@endisset
+
+@empty($j)
+    <p>j is empty or null.</p>
+@else
+    <p>i is not empty or null.</p>
+@endempty
+
+# 登入
+@auth
+    <p>You are login</p>
+@else
+    <p>You are NOT login</p>
+@endauth
+
+@guest
+    <p>You are a guest, not login.
+@else
+    <p>You are NOT a guest, you login.</p>
+@endguest
+
+# 是否有 section nav。注意：結束是 @endif，不是 @endhasSection
+@hasSection('nav')
+    <div class="nav">
+      @yield('nav')
+    </div>
+@endif
+
+# Switch：$i = 1 或 '1'，顯示 First case
+@switch($i)
+  @case(1)
+    <p>First case</p>
+    @break
+  @case(2)
+    <p>Second case</p>
+    @break
+
+  @default
+    <p>Default case</p>
+@endswitch
 ```
 
-等於
+## 迴圈
 
-``` php
-<?php
-if(count($array) === 1) {
-  ...
-}
+``` blade
+@for($i = 0; $i < 10; $i++)
+  <p>{{ $i }}</p>
+@endfor
+
+@foreach ($users as $user)
+  <p>{{ $user['name'] }}</p>
+@endforeach
 ```
-
-### include
 
 ``` blade
 # 執行原始的 php code
