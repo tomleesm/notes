@@ -95,4 +95,4 @@ nav:
       - Log: laravel-docs/basic/log.md
       - 檔案上傳和下載: laravel-docs/basic/file-upload-download.md
     - 前端:
-      - Blade: laravel/front-end/blade.md
+      - Blade: laravel-docs/front-end/blade.md
