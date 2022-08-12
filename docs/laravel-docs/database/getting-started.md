@@ -146,3 +146,44 @@ class AppServiceProvider extends ServiceProvider
     }
 }
 ```
+
+## 交易
+
+### 自動
+
+使用 `DB::transaction(Closure, 重試次數)` 把多個資料庫操作包起來。
+
+- 執行成功，會自動 commit
+- 執行失敗，也就是丟出 Exception，會自動 rollback
+
+重試次數是指發生 deadlock 時的最大重試次數
+
+``` php
+<?php
+use Illuminate\Support\Facades\DB;
+
+DB::transaction(function() {
+    DB::update('UPDATE users SET name = :name WHERE id = :id ',
+		    [ 'name' => 'Peter', 'id' => 1 ]);
+});
+```
+
+### 手動
+
+``` php
+<?php
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+
+try {
+    DB::beginTransaction();
+    // 一些資料庫操作
+    DB::commit();
+} catch (Exception $e) {
+    DB::rollBack();
+
+    Log::error($e->getMessage());
+}
+```
+
+注意：經實測，使用交易時，如果操作時有使用 `dd()`，例如在 AppServiceProvider 中的 `DB::listen()` 使用 `dd()`，交易會自動 rollback，只是 echo 的話沒有這個問題。所以最好在 `DB::commit()` 之後才使用 `dd()`
