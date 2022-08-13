@@ -21,6 +21,7 @@ DB_PASSWORD=密碼
 
 ``` php
 <?php
+# config/database.php
 return [
     # 設定使用哪個 connections 陣列的值，預設是 mysql
     'default' => env('DB_CONNECTION', 'mysql'),
@@ -29,8 +30,11 @@ return [
         'sqlite' => [
             'driver' => 'sqlite',
             'url' => env('DATABASE_URL'),
-            # DB_DATABASE = 完整的檔案路徑，例如 /home/tom/database.db，不是 ~/database.db
-            # database_path('database.sqlite') 回傳網站根目錄加上 database/database.sqlite
+            # DB_DATABASE = 完整的檔案路徑
+            # 例如 /home/tom/database.db，不是 ~/database.db
+            
+            # database_path('database.sqlite')
+            # 回傳網站根目錄加上 database/database.sqlite
             'database' => env('DB_DATABASE', database_path('database.sqlite')),
             'prefix' => '',
             'foreign_key_constraints' => env('DB_FOREIGN_KEYS', true),
@@ -63,32 +67,36 @@ touch your/dir/database.sqlite3
 ``` php
 <?php
 use Illuminate\Support\Facades\DB;
-#  DB::connection() 的參數是 config/database.php connections 陣列的值
+# 改用 PostgreSQL 資料庫連線設定
+## DB::connection() 的參數是 config/database.php connections 陣列的值
 DB::connection('pgsql')->select('SELECT * FROM users WHERE id = ?', [ 1 ]);
 
 # 如果 config/database.php 是這樣
 'connections' => [
-        'sqlite' => [
-            'A' => [
-                'database' => database_path('A.db')
-            ],
-            'B' => [
-                'database' => database_path('B.db')
-            ],
-            'driver' => 'sqlite',
-            'url' => env('DATABASE_URL'),
-            'prefix' => '',
-            'foreign_key_constraints' => env('DB_FOREIGN_KEYS', true),
-        ]
-# 讀取 database_path('A.db') 的資料庫
+    'sqlite' => [
+        'A' => [
+            'database' => database_path('A.db')
+        ],
+        'B' => [
+            'database' => database_path('B.db')
+        ],
+        'driver' => 'sqlite',
+        'url' => env('DATABASE_URL'),
+        'prefix' => '',
+        'foreign_key_constraints' => env('DB_FOREIGN_KEYS', true),
+    ]
+
+# 使用 database_path('A.db') 的資料庫連線設定
 DB::connection('sqlite::A')->select('SELECT * FROM users WHERE id = ?', [ 1 ]);
 
-# 使用 PDO 物件操作資料庫
+# getPdo(): 使用 PDO 物件操作資料庫
 $pdo = DB::connection('sqlite::A')->getPdo();
-get_class($pdo); // return 'PDO'
+get_class($pdo); // PDO
 ```
 
 ## 原生 SQL 查詢
+
+`INSERT`, `UPDATE`, `DELETE` 執行 SQL 失敗時，回傳更新的資料筆數 0，或是 `Illuminate\Database\QueryException` (SQL 拼錯時)
 
 ``` php
 <?php
@@ -100,13 +108,13 @@ use Illuminate\Support\Facades\DB;
 $result = DB::select('SELECT * FROM users WHERE id = ?', [ 1 ]);
 ## 或是命名綁定，注意參數陣列 id 沒有冒號
 $result = DB::select('SELECT * FROM users WHERE id = :id', [ 'id' => 1 ]);
-## $result 是陣列，每一個元素都是 stdClass 物件
+## $result 是陣列，每一個元素都是 stdClass 物件，沒有資料的話回傳空陣列 []
 $user = $result[0]; # $user->id 爲 1
 
 # INSERT
-## DB::insert(SQL, 參數陣列)，注意回傳值是 true，而不是 id 值
+## DB::insert(SQL, 參數陣列)，注意成功時回傳值是 true，而不是 id 值
 DB::insert('INSERT INTO users(name) VALUES (?)', [ 'Alice' ]);
-DB::insert('INSERT INTO users(name) VALUES ( :name )', [ 'name' => $name ]);
+DB::insert('INSERT INTO users(name) VALUES ( :name )', [ 'name' => 'Alice' ]);
 
 # UPDATE
 ## DB::update(SQL, 參數陣列)，回傳更新的資料筆數
@@ -163,8 +171,7 @@ class AppServiceProvider extends ServiceProvider
 use Illuminate\Support\Facades\DB;
 
 DB::transaction(function() {
-    DB::update('UPDATE users SET name = :name WHERE id = :id ',
-		    [ 'name' => 'Peter', 'id' => 1 ]);
+    // 一些資料庫操作
 });
 ```
 
@@ -182,7 +189,12 @@ try {
 } catch (Exception $e) {
     DB::rollBack();
 
-    Log::error($e->getMessage());
+    $message = sprintf('%s, line: %d, message: %s',
+                       __FILE__,
+                       __LINE__,
+                       $e->getMessage());
+    # 通常在 storage/logs/laravel.log
+    Log::error($message);
 }
 ```
 
