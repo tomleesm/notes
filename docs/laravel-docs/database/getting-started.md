@@ -199,3 +199,50 @@ try {
 ```
 
 注意：經實測，使用交易時，如果操作時有使用 `dd()`，例如在 AppServiceProvider 中的 `DB::listen()` 使用 `dd()`，交易會自動 rollback，只是 echo 的話沒有這個問題。所以最好在 `DB::commit()` 之後才使用 `dd()`
+
+## 輸出執行的 SQL
+
+`toSql()`
+
+``` php
+<?php
+# 方法 1
+# 回傳字串 select * from "users" where "id" = ?
+DB::table('users')->where('id', 1)->toSql();
+
+# 方法 2
+$query = DB::table('users')->where('id', 1);
+# select * from "users" where "id" = ?
+dd($query->toSql());
+/**
+陣列
+[
+  1
+]
+**/
+dd($query->getBindings());
+```
+
+用 `DB::enableQueryLog()` 啓用記錄，`DB::getQueryLog()` 回傳 SQL
+
+``` php
+<?php
+use Illuminate\Support\Facades\DB;
+
+DB::enableQueryLog();
+
+$users = DB::table('users')->where('id', 1)->get();
+/**
+輸出陣列
+  [
+     [
+       "query" => "select * from "users" where "id" = ?",
+       "bindings" => [
+         1,
+       ],
+       "time" => 2.42,
+     ]
+   ]
+**/
+dd(DB::getQueryLog());
+```
