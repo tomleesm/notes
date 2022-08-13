@@ -223,7 +223,7 @@ dd($query->toSql());
 dd($query->getBindings());
 ```
 
-用 `DB::enableQueryLog()` 啓用記錄，`DB::getQueryLog()` 回傳 SQL
+用 `DB::enableQueryLog()` 啓用記錄，`DB::getQueryLog()` 回傳 SQL。不過輸出的陣列會把目前爲止執行的資料庫查詢都列出來，不好尋找剛剛執行的是哪一個
 
 ``` php
 <?php
@@ -245,4 +245,17 @@ $users = DB::table('users')->where('id', 1)->get();
    ]
 **/
 dd(DB::getQueryLog());
+```
+
+目前最推薦的。會在每次執行資料庫查詢後都列出剛剛的 SQL
+
+``` php
+<?php
+use Illuminate\Support\Facades\DB;
+
+DB::listen(function ($query) {
+    dump($query->sql);
+    dump($query->bindings);
+    dump('time: ' . $query->time . ' ms');
+});
 ```
