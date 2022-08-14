@@ -87,3 +87,49 @@ DB::table('users')->chunkById(100, function($users) {
   }
 });
 ```
+
+### 聚合函式
+
+products 資料表
+
+| id | name | price |
+| --- | ----- | ----- |
+| 1 | jaiABaMP0a | 3075.2101462 |
+
+```php
+<?php
+use Illuminate\Support\Facades\DB;
+
+# 資料表 products 有多少筆資料，回傳整數
+# select count(*) as aggregate from "products"
+DB::table('products')->count();
+
+# 資料表 products 的欄位 price 最大值，回傳數字
+# select max("price") as aggregate from "products"
+DB::table('products')->max('price');
+
+# 資料表 products 的欄位 price 最小值，回傳數字
+# select min("price") as aggregate from "products"
+DB::table('products')->min('price');
+
+# 資料表 products 的欄位 price 平均值，回傳數字
+# select avg("price") as aggregate from "products"
+DB::table('products')->avg('price');
+
+# 資料表 products 的欄位 price 加總，回傳數字
+# select sum("price") as aggregate from "products"
+DB::table('products')->sum('price');
+```
+
+### exists
+
+``` php
+<?php
+# 資料表 products，回傳 true 或 false
+# select exists(select * from "products" where "price" = 2525) as "exists"
+DB::table('products')->where('price', 2525)->exists();
+
+# 和 exists() 相反。產生的 SQL 一樣，但是回傳值是相反的
+# select exists(select * from "products" where "price" = ?) as "exists"
+DB::table('products')->where('price', 2525)->doesntExist();
+```
