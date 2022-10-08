@@ -8,7 +8,6 @@
 # 傳遞 $name = 'Tom' 給 view
 return view('admin.profile', [ 'name' => 'Tom' ]);
 return view('admin.profile')->with( 'name', 'Tom' );
-return view('admin.profile')->with( [ 'name', 'Tom' ] );
 # first() 第一個參數是 view 陣列，回傳第一個存在的 view。所以如果不存在 A，則回傳 B
 # 適合用在 A 是使用者自訂 view，B 是系統預設 view
 return view()->first( [ 'A', 'B' ], [ 'name' => 'Tom' ]);

@@ -21,6 +21,7 @@ DB_PASSWORD=密碼
 
 ``` php
 <?php
+# config/database.php
 return [
     # 設定使用哪個 connections 陣列的值，預設是 mysql
     'default' => env('DB_CONNECTION', 'mysql'),
@@ -29,8 +30,11 @@ return [
         'sqlite' => [
             'driver' => 'sqlite',
             'url' => env('DATABASE_URL'),
-            # DB_DATABASE = 完整的檔案路徑，例如 /home/tom/database.db，不是 ~/database.db
-            # database_path('database.sqlite') 回傳網站根目錄加上 database/database.sqlite
+            # DB_DATABASE = 完整的檔案路徑
+            # 例如 /home/tom/database.db，不是 ~/database.db
+
+            # database_path('database.sqlite')
+            # 回傳網站根目錄加上 database/database.sqlite
             'database' => env('DB_DATABASE', database_path('database.sqlite')),
             'prefix' => '',
             'foreign_key_constraints' => env('DB_FOREIGN_KEYS', true),
@@ -63,32 +67,36 @@ touch your/dir/database.sqlite3
 ``` php
 <?php
 use Illuminate\Support\Facades\DB;
-#  DB::connection() 的參數是 config/database.php connections 陣列的值
+# 改用 PostgreSQL 資料庫連線設定
+## DB::connection() 的參數是 config/database.php connections 陣列的值
 DB::connection('pgsql')->select('SELECT * FROM users WHERE id = ?', [ 1 ]);
 
 # 如果 config/database.php 是這樣
 'connections' => [
-        'sqlite' => [
-            'A' => [
-                'database' => database_path('A.db')
-            ],
-            'B' => [
-                'database' => database_path('B.db')
-            ],
-            'driver' => 'sqlite',
-            'url' => env('DATABASE_URL'),
-            'prefix' => '',
-            'foreign_key_constraints' => env('DB_FOREIGN_KEYS', true),
-        ]
-# 讀取 database_path('A.db') 的資料庫
+    'sqlite' => [
+        'A' => [
+            'database' => database_path('A.db')
+        ],
+        'B' => [
+            'database' => database_path('B.db')
+        ],
+        'driver' => 'sqlite',
+        'url' => env('DATABASE_URL'),
+        'prefix' => '',
+        'foreign_key_constraints' => env('DB_FOREIGN_KEYS', true),
+    ]
+
+# 使用 database_path('A.db') 的資料庫連線設定
 DB::connection('sqlite::A')->select('SELECT * FROM users WHERE id = ?', [ 1 ]);
 
-# 使用 PDO 物件操作資料庫
+# getPdo(): 使用 PDO 物件操作資料庫
 $pdo = DB::connection('sqlite::A')->getPdo();
-get_class($pdo); // return 'PDO'
+get_class($pdo); // PDO
 ```
 
 ## 原生 SQL 查詢
+
+`INSERT`, `UPDATE`, `DELETE` 執行 SQL 失敗時，回傳更新的資料筆數 0，或是 `Illuminate\Database\QueryException` (SQL 拼錯時)
 
 ``` php
 <?php
@@ -100,13 +108,13 @@ use Illuminate\Support\Facades\DB;
 $result = DB::select('SELECT * FROM users WHERE id = ?', [ 1 ]);
 ## 或是命名綁定，注意參數陣列 id 沒有冒號
 $result = DB::select('SELECT * FROM users WHERE id = :id', [ 'id' => 1 ]);
-## $result 是陣列，每一個元素都是 stdClass 物件
+## $result 是陣列，每一個元素都是 stdClass 物件，沒有資料的話回傳空陣列 []
 $user = $result[0]; # $user->id 爲 1
 
 # INSERT
-## DB::insert(SQL, 參數陣列)，注意回傳值是 true，而不是 id 值
+## DB::insert(SQL, 參數陣列)，注意成功時回傳值是 true，而不是 id 值
 DB::insert('INSERT INTO users(name) VALUES (?)', [ 'Alice' ]);
-DB::insert('INSERT INTO users(name) VALUES ( :name )', [ 'name' => $name ]);
+DB::insert('INSERT INTO users(name) VALUES ( :name )', [ 'name' => 'Alice' ]);
 
 # UPDATE
 ## DB::update(SQL, 參數陣列)，回傳更新的資料筆數
@@ -145,4 +153,109 @@ class AppServiceProvider extends ServiceProvider
         });
     }
 }
+```
+
+## 交易
+
+### 自動
+
+使用 `DB::transaction(Closure, 重試次數)` 把多個資料庫操作包起來。
+
+- 執行成功，會自動 commit
+- 執行失敗，也就是丟出 Exception，會自動 rollback
+
+重試次數是指發生 deadlock 時的最大重試次數
+
+``` php
+<?php
+use Illuminate\Support\Facades\DB;
+
+DB::transaction(function() {
+    // 一些資料庫操作
+});
+```
+
+### 手動
+
+``` php
+<?php
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+
+try {
+    DB::beginTransaction();
+    // 一些資料庫操作
+    DB::commit();
+} catch (Exception $e) {
+    DB::rollBack();
+
+    $message = sprintf('%s, line: %d, message: %s',
+                       __FILE__,
+                       __LINE__,
+                       $e->getMessage());
+    # 通常在 storage/logs/laravel.log
+    Log::error($message);
+}
+```
+
+注意：經實測，使用交易時，如果操作時有使用 `dd()`，例如在 AppServiceProvider 中的 `DB::listen()` 使用 `dd()`，交易會自動 rollback，只是 echo 的話沒有這個問題。所以最好在 `DB::commit()` 之後才使用 `dd()`
+
+## 輸出執行的 SQL
+
+`toSql()`
+
+``` php
+<?php
+# 方法 1
+# 回傳字串 select * from "users" where "id" = ?
+DB::table('users')->where('id', 1)->toSql();
+
+# 方法 2
+$query = DB::table('users')->where('id', 1);
+# select * from "users" where "id" = ?
+dd($query->toSql());
+/**
+陣列
+[
+  1
+]
+**/
+dd($query->getBindings());
+```
+
+用 `DB::enableQueryLog()` 啓用記錄，`DB::getQueryLog()` 回傳 SQL。不過輸出的陣列會把目前爲止執行的資料庫查詢都列出來，不好尋找剛剛執行的是哪一個
+
+``` php
+<?php
+use Illuminate\Support\Facades\DB;
+
+DB::enableQueryLog();
+
+$users = DB::table('users')->where('id', 1)->get();
+/**
+輸出陣列
+  [
+     [
+       "query" => "select * from "users" where "id" = ?",
+       "bindings" => [
+         1,
+       ],
+       "time" => 2.42,
+     ]
+   ]
+**/
+dd(DB::getQueryLog());
+```
+
+目前最推薦的。會在每次執行資料庫查詢後都列出剛剛的 SQL
+
+``` php
+<?php
+use Illuminate\Support\Facades\DB;
+
+DB::listen(function ($query) {
+    dump($query->sql);
+    dump($query->bindings);
+    dump('time: ' . $query->time . ' ms');
+});
 ```
