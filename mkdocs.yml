@@ -66,18 +66,6 @@ markdown_extensions:
 extra_css:
   - stylesheets/extra.css
 nav:
-  - 筆記:
-    - 我是怎麼寫程式的？: how-do-i-program.md
-    - RESTful API 簡介: restful-api-introduction.md
-    - 使用 API Blueprint 寫文件: api-blueprint.md
-    - 使用 Swagger 寫文件: swagger.md
-    - 使用 Cypress 測試網站: cypress.md
-    - PostgreSQL 懶人包: postgresql-cheat-sheet.md
-    - 資料庫正規化: database-normalization.md
-    - Docker 懶人包: docker-cheat-sheet.md
-    - HTTP 通訊協議簡介: http-protocol-introduction.md
-    - PHP 物件導向語法: php-oop.md
-    - Laravel RESTful controller 範例: laravel-docs/restful-controller-example.md
   - Laravel 官方文件懶人包:
     - 基礎:
       - 路由: laravel-docs/basic/routes.md
