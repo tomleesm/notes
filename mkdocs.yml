@@ -148,3 +148,38 @@ nav:
     - Scout 全文搜尋: 08官方擴展包/15Scout全文搜尋.md
     - Socialite 第三方登入: 08官方擴展包/16Socialite第三方登入.md
     - Telescope 偵錯工具: 08官方擴展包/17Telescope偵錯工具.md
+  - 語法速查表:
+    - Artisan: cheatsheets/artisan.md
+    - Auth 使用者認證: cheatsheets/auth.md
+    - Blade 範本: cheatsheets/blade.md
+    - Cache: cheatsheets/cache.md
+    - Collection: cheatsheets/collection.md
+    - Composer: cheatsheets/composer.md
+    - Config: cheatsheets/config.md
+    - Container: cheatsheets/container.md
+    - Cookie: cheatsheets/cookie.md
+    - Database: cheatsheets/db.md
+    - Environment: cheatsheets/environment.md
+    - Event: cheatsheets/event.md
+    - File: cheatsheets/file.md
+    - Helper: cheatsheets/helper.md
+    - Input: cheatsheets/input.md
+    - Lang: cheatsheets/lang.md
+    - Log: cheatsheets/Log.md
+    - Mail: cheatsheets/mail.md
+    - Model (Eloquent ORM): cheatsheets/model.md
+    - Pagination: cheatsheets/pagination.md
+    - Queue: cheatsheets/queue.md
+    - Redirect: cheatsheets/redirect.md
+    - Request: cheatsheets/request.md
+    - Response: cheatsheets/response.md
+    - Route: cheatsheets/route.md
+    - Schema 資料庫結構: cheatsheets/schema.md
+    - Security (Hash 和加解密): cheatsheets/security.md
+    - Session: cheatsheets/session.md
+    - Storage: cheatsheets/storage.md
+    - String: cheatsheets/string.md
+    - Unit Test 單元測試: cheatsheets/unittest.md
+    - URL: cheatsheets/url.md
+    - Validation 表單驗證: cheatsheets/validation.md
+    - View: cheatsheets/view.md
