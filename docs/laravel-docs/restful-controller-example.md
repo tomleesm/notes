@@ -1,1 +1,0 @@
-新增一個 controller 範例，包含 7 個 resource method，表單驗證、驗證失敗時讀取上一步的輸入、orm 和 cache、對應的 view
