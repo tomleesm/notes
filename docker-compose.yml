@@ -1,11 +1,9 @@
 version: "2"
 
 services:
-  mkdocs-for-material:
-    container_name: mkdocs-for-material
-    image: squidfunk/mkdocs-material
+  notes:
+    image: squidfunk/mkdocs-material:latest
     ports:
       - "127.0.0.1:8001:8000"
     volumes:
       - .:/docs/:ro
-    restart: always
