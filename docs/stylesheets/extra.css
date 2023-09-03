@@ -2,3 +2,7 @@
 .md-main {
     letter-spacing: 1px;
 }
+
+.md-typeset {
+    line-height: 2;
+}
