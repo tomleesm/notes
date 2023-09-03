@@ -1,0 +1,7101 @@
+
+<!doctype html>
+<html lang="zh-TW" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../03%E5%91%BD%E4%BB%A4%E5%88%97%E6%B8%AC%E8%A9%A6/">
+      
+      
+        <link rel="next" href="../05%E8%B3%87%E6%96%99%E5%BA%AB%E6%B8%AC%E8%A9%A6/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-9.2.7">
+    
+    
+      
+        <title>Laravel Dusk - Tom 株式會社</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.046329b4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.85d0ee34.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+Traditional+Chinese:300,300i,400,400i,700,700i%7CSource+Code+Pro:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans Traditional Chinese";--md-code-font:"Source Code Pro"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="red" data-md-color-accent="red">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#laravel-dusk" class="md-skip">
+          跳轉到
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="頁首">
+    <a href="../.." title="Tom 株式會社" class="md-header__button md-logo" aria-label="Tom 株式會社" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Tom 株式會社
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Laravel Dusk
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="red" data-md-color-accent="red"  aria-hidden="true"  type="radio" name="__palette" id="__palette_1">
+    
+  
+</form>
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜尋" placeholder="搜尋" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="搜尋">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清除" aria-label="清除" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜尋引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/tomleesm/notes" title="前往倉庫" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    tomleesm/notes
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="標籤" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../01%E6%A0%B8%E5%BF%83%E6%9E%B6%E6%A7%8B/01%E8%AB%8B%E6%B1%82%E7%9A%84%E7%94%9F%E5%91%BD%E9%80%B1%E6%9C%9F/" class="md-tabs__link">
+          
+  
+    
+  
+  核心架構
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/01%E8%B7%AF%E7%94%B1/" class="md-tabs__link">
+          
+  
+    
+  
+  基礎功能
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/01Artisan%E5%91%BD%E4%BB%A4%E5%88%97/" class="md-tabs__link">
+          
+  
+    
+  
+  繼續深入
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../04%E5%AE%89%E5%85%A8%E7%9B%B8%E9%97%9C/01%E4%BD%BF%E7%94%A8%E8%80%85%E8%AA%8D%E8%AD%89/" class="md-tabs__link">
+          
+  
+    
+  
+  安全相關
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../05%E8%B3%87%E6%96%99%E5%BA%AB/01%E5%BF%AB%E9%80%9F%E5%85%A5%E9%96%80/" class="md-tabs__link">
+          
+  
+    
+  
+  資料庫
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../06EloquentORM/01%E5%BF%AB%E9%80%9F%E5%85%A5%E9%96%80/" class="md-tabs__link">
+          
+  
+    
+  
+  Eloquent ORM
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../01%E5%85%A5%E9%96%80/" class="md-tabs__link">
+          
+  
+    
+  
+  測試相關
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/01Cashier%E4%BA%A4%E6%98%93%E5%B7%A5%E5%85%B7%E5%8C%85Stripe/" class="md-tabs__link">
+          
+  
+    
+  
+  官方擴展包
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../cheatsheets/artisan/" class="md-tabs__link">
+          
+  
+    
+  
+  語法速查表
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="導覽列" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Tom 株式會社" class="md-nav__button md-logo" aria-label="Tom 株式會社" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Tom 株式會社
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/tomleesm/notes" title="前往倉庫" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    tomleesm/notes
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    核心架構
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            核心架構
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01%E6%A0%B8%E5%BF%83%E6%9E%B6%E6%A7%8B/01%E8%AB%8B%E6%B1%82%E7%9A%84%E7%94%9F%E5%91%BD%E9%80%B1%E6%9C%9F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    請求的生命週期
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01%E6%A0%B8%E5%BF%83%E6%9E%B6%E6%A7%8B/02%E6%9C%8D%E5%8B%99%E5%AE%B9%E5%99%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    服務容器
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01%E6%A0%B8%E5%BF%83%E6%9E%B6%E6%A7%8B/03%E6%9C%8D%E5%8B%99%E6%8F%90%E4%BE%9B%E8%80%85/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    服務提供者
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01%E6%A0%B8%E5%BF%83%E6%9E%B6%E6%A7%8B/04Facades/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Facades
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    基礎功能
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            基礎功能
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/01%E8%B7%AF%E7%94%B1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    路由
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/02%E4%B8%AD%E4%BB%8B%E8%BB%9F%E9%AB%94/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    中介軟體
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/03CSRF%E4%BF%9D%E8%AD%B7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CSRF 保護
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/04Controller/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Controller
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/05HTTP%E8%AB%8B%E6%B1%82/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTTP 請求
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/06HTTP%E9%9F%BF%E6%87%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTTP 響應
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/07%E6%AA%A2%E8%A6%96/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    檢視
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/08Blade%E7%AF%84%E6%9C%AC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Blade 範本
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/09Vite%E7%B7%A8%E8%AD%AFAssets/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vite 編譯 Assets
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/10%E7%94%9F%E6%88%90URL/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    生成 URL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/11Session/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Session
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/12%E8%A1%A8%E5%96%AE%E9%A9%97%E8%AD%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    表單驗證
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/13%E9%8C%AF%E8%AA%A4%E8%99%95%E7%90%86/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    錯誤處理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/14%E6%97%A5%E8%AA%8C/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    日誌
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    繼續深入
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            繼續深入
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/01Artisan%E5%91%BD%E4%BB%A4%E5%88%97/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Artisan 命令列
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/02%E5%BB%A3%E6%92%AD/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    廣播
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/03%E5%BF%AB%E5%8F%96%E7%B3%BB%E7%B5%B1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    快取系統
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/04%E9%9B%86%E5%90%88/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    集合
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/05%E5%A5%91%E7%B4%84Contract/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    契約 Contract
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/06%E4%BA%8B%E4%BB%B6%E7%B3%BB%E7%B5%B1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    事件系統
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/07%E6%AA%94%E6%A1%88%E5%84%B2%E5%AD%98/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    檔案儲存
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/09HTTPClient/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTTP Client
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/10%E6%9C%AC%E5%9C%B0%E5%8C%96/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    本地化
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/11%E9%83%B5%E4%BB%B6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    郵件
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/12%E6%B6%88%E6%81%AF%E9%80%9A%E7%9F%A5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    消息通知
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/13Package%E9%96%8B%E7%99%BC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Package 開發
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/14%E8%99%95%E7%90%86%E7%A8%8B%E5%BA%8F%E7%AE%A1%E7%90%86/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    處理程序管理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/15%E4%BD%87%E5%88%97/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    佇列
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/16%E9%99%90%E6%B5%81/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    限流
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/17%E4%BB%BB%E5%8B%99%E8%AA%BF%E5%BA%A6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    任務調度
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    安全相關
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            安全相關
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04%E5%AE%89%E5%85%A8%E7%9B%B8%E9%97%9C/01%E4%BD%BF%E7%94%A8%E8%80%85%E8%AA%8D%E8%AD%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    使用者認證
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04%E5%AE%89%E5%85%A8%E7%9B%B8%E9%97%9C/02%E4%BD%BF%E7%94%A8%E8%80%85%E6%8E%88%E6%AC%8A/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    使用者授權
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04%E5%AE%89%E5%85%A8%E7%9B%B8%E9%97%9C/03Email%E8%AA%8D%E8%AD%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Email 認證
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04%E5%AE%89%E5%85%A8%E7%9B%B8%E9%97%9C/04%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    加密解密
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04%E5%AE%89%E5%85%A8%E7%9B%B8%E9%97%9C/05%E9%9B%9C%E6%B9%8A/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    雜湊
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04%E5%AE%89%E5%85%A8%E7%9B%B8%E9%97%9C/06%E9%87%8D%E8%A8%AD%E5%AF%86%E7%A2%BC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    重設密碼
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    資料庫
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            資料庫
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05%E8%B3%87%E6%96%99%E5%BA%AB/01%E5%BF%AB%E9%80%9F%E5%85%A5%E9%96%80/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    快速入門
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05%E8%B3%87%E6%96%99%E5%BA%AB/02%E6%9F%A5%E8%A9%A2%E7%94%9F%E6%88%90%E5%99%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    查詢生成器
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05%E8%B3%87%E6%96%99%E5%BA%AB/03%E5%88%86%E9%A0%81/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    分頁
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05%E8%B3%87%E6%96%99%E5%BA%AB/04%E9%81%B7%E7%A7%BB/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    遷移
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05%E8%B3%87%E6%96%99%E5%BA%AB/05%E8%B3%87%E6%96%99%E5%A1%AB%E5%85%85/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    資料填充
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05%E8%B3%87%E6%96%99%E5%BA%AB/06Redis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Redis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Eloquent ORM
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Eloquent ORM
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06EloquentORM/01%E5%BF%AB%E9%80%9F%E5%85%A5%E9%96%80/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    快速入門
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06EloquentORM/02%E9%97%9C%E8%81%AF/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    關聯
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06EloquentORM/03%E9%9B%86%E5%90%88/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    集合
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06EloquentORM/04%E5%B1%AC%E6%80%A7%E4%BF%AE%E6%94%B9%E5%99%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    屬性修改器
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06EloquentORM/05API%E8%B3%87%E6%BA%90/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    API 資源
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06EloquentORM/06%E5%BA%8F%E5%88%97%E5%8C%96/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    序列化
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06EloquentORM/07%E8%B3%87%E6%96%99%E5%B7%A5%E5%BB%A0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    資料工廠
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    測試相關
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            測試相關
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01%E5%85%A5%E9%96%80/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    入門
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02HTTP%E6%B8%AC%E8%A9%A6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTTP 測試
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03%E5%91%BD%E4%BB%A4%E5%88%97%E6%B8%AC%E8%A9%A6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    命令列測試
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Laravel Dusk
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Laravel Dusk
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目錄">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目錄
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    介紹
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    安裝
+  </a>
+  
+    <nav class="md-nav" aria-label="安裝">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#chromedriver" class="md-nav__link">
+    管理 ChromeDriver 安裝
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    使用其他瀏覽器
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    入門
+  </a>
+  
+    <nav class="md-nav" aria-label="入門">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    生成測試
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    在每次測試後重設資料庫
+  </a>
+  
+    <nav class="md-nav" aria-label="在每次測試後重設資料庫">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    使用資料庫遷移
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    使用資料庫截斷
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    運行測試
+  </a>
+  
+    <nav class="md-nav" aria-label="運行測試">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#chromedriver_1" class="md-nav__link">
+    手動啟動 ChromeDriver
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    環境處理
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    瀏覽器基礎知識
+  </a>
+  
+    <nav class="md-nav" aria-label="瀏覽器基礎知識">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    建立瀏覽器
+  </a>
+  
+    <nav class="md-nav" aria-label="建立瀏覽器">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    建立多個瀏覽器
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    導航
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    調整瀏覽器窗口大小
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    瀏覽器宏
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    使用者認證
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cookies" class="md-nav__link">
+    Cookies
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#javascript" class="md-nav__link">
+    運行 JavaScript
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    獲取截圖
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    控制台輸出結果保存到硬碟
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    頁面原始碼保存到硬碟
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    與元素互動
+  </a>
+  
+    <nav class="md-nav" aria-label="與元素互動">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dusk" class="md-nav__link">
+    Dusk 選擇器
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    文字、值 &amp; 屬性
+  </a>
+  
+    <nav class="md-nav" aria-label="文字、值 & 屬性">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    獲取 &amp; 設定值
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    獲取文字
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    獲取屬性
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    使用表單
+  </a>
+  
+    <nav class="md-nav" aria-label="使用表單">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    輸入值
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    下拉菜單
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    複選框
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    單選按鈕
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    附件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    點選按鈕
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    點選連結
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    使用鍵盤
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_35" class="md-nav__link">
+    使用滑鼠
+  </a>
+  
+    <nav class="md-nav" aria-label="使用滑鼠">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_36" class="md-nav__link">
+    點選元素
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_37" class="md-nav__link">
+    滑鼠懸停
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_38" class="md-nav__link">
+    拖放
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#javascript_1" class="md-nav__link">
+    JavaScript 對話方塊
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_39" class="md-nav__link">
+    選擇器作用範圍
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_40" class="md-nav__link">
+    等待元素
+  </a>
+  
+    <nav class="md-nav" aria-label="等待元素">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_41" class="md-nav__link">
+    等待
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_42" class="md-nav__link">
+    等待選擇器
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_43" class="md-nav__link">
+    限定範疇範圍（可用時）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_44" class="md-nav__link">
+    等待文字
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_45" class="md-nav__link">
+    等待連結
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_46" class="md-nav__link">
+    等待輸入
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_47" class="md-nav__link">
+    等待頁面跳轉
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_48" class="md-nav__link">
+    等待頁面重新載入
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#javascript_2" class="md-nav__link">
+    等待 JavaScript 表示式
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vue" class="md-nav__link">
+    等待 Vue 表示式
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#javascript_3" class="md-nav__link">
+    等待 JavaScript 事件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_49" class="md-nav__link">
+    等待回呼
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_50" class="md-nav__link">
+    滾動元素到檢視中
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_51" class="md-nav__link">
+    可用的斷言
+  </a>
+  
+    <nav class="md-nav" aria-label="可用的斷言">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#asserttitle" class="md-nav__link">
+    assertTitle
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#asserttitlecontains" class="md-nav__link">
+    assertTitleContains
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#asserturlis" class="md-nav__link">
+    assertUrlIs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertschemeis" class="md-nav__link">
+    assertSchemeIs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertschemeisnot" class="md-nav__link">
+    assertSchemeIsNot
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#asserthostis" class="md-nav__link">
+    assertHostIs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#asserthostisnot" class="md-nav__link">
+    assertHostIsNot
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertportis" class="md-nav__link">
+    assertPortIs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertportisnot" class="md-nav__link">
+    assertPortIsNot
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertpathbeginswith" class="md-nav__link">
+    assertPathBeginsWith
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertpathis" class="md-nav__link">
+    assertPathIs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertpathisnot" class="md-nav__link">
+    assertPathIsNot
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertrouteis" class="md-nav__link">
+    assertRouteIs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertquerystringhas" class="md-nav__link">
+    assertQueryStringHas
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertquerystringmissing" class="md-nav__link">
+    assertQueryStringMissing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertfragmentis" class="md-nav__link">
+    assertFragmentIs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertfragmentbeginswith" class="md-nav__link">
+    assertFragmentBeginsWith
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertfragmentisnot" class="md-nav__link">
+    assertFragmentIsNot
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#asserthascookie" class="md-nav__link">
+    assertHasCookie
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#asserthasplaincookie" class="md-nav__link">
+    assertHasPlainCookie
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertcookiemissing" class="md-nav__link">
+    assertCookieMissing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertplaincookiemissing" class="md-nav__link">
+    assertPlainCookieMissing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertcookievalue" class="md-nav__link">
+    assertCookieValue
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertplaincookievalue" class="md-nav__link">
+    assertPlainCookieValue
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertsee" class="md-nav__link">
+    assertSee
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertdontsee" class="md-nav__link">
+    assertDontSee
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertseein" class="md-nav__link">
+    assertSeeIn
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertdontseein" class="md-nav__link">
+    assertDontSeeIn
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertseeanythingin" class="md-nav__link">
+    assertSeeAnythingIn
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertscript" class="md-nav__link">
+    assertScript
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertsourcehas" class="md-nav__link">
+    assertSourceHas
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertsourcemissing" class="md-nav__link">
+    assertSourceMissing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertseelink" class="md-nav__link">
+    assertSeeLink
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertdontseelink" class="md-nav__link">
+    assertDontSeeLink
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertinputvalue" class="md-nav__link">
+    assertInputValue
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertinputvalueisnot" class="md-nav__link">
+    assertInputValueIsNot
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertchecked" class="md-nav__link">
+    assertChecked
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertnotchecked" class="md-nav__link">
+    assertNotChecked
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertradioselected" class="md-nav__link">
+    assertRadioSelected
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertradionotselected" class="md-nav__link">
+    assertRadioNotSelected
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertselected" class="md-nav__link">
+    assertSelected
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertselecthasoptions" class="md-nav__link">
+    assertSelectHasOptions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertselectmissingoptions" class="md-nav__link">
+    assertSelectMissingOptions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertselecthasoption" class="md-nav__link">
+    assertSelectHasOption
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertselectmissingoption" class="md-nav__link">
+    assertSelectMissingOption
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertvalue" class="md-nav__link">
+    assertValue
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertvalueisnot" class="md-nav__link">
+    assertValueIsNot
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertattribute" class="md-nav__link">
+    assertAttribute
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertattributecontains" class="md-nav__link">
+    assertAttributeContains
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertariaattribute" class="md-nav__link">
+    assertAriaAttribute
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertdataattribute" class="md-nav__link">
+    assertDataAttribute
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertvisible" class="md-nav__link">
+    assertVisible
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertpresent" class="md-nav__link">
+    assertPresent
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertnotpresent" class="md-nav__link">
+    assertNotPresent
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertmissing" class="md-nav__link">
+    assertMissing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertinputpresent" class="md-nav__link">
+    assertInputPresent
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertinputmissing" class="md-nav__link">
+    assertInputMissing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertdialogopened" class="md-nav__link">
+    assertDialogOpened
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertenabled" class="md-nav__link">
+    assertEnabled
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertdisabled" class="md-nav__link">
+    assertDisabled
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertbuttonenabled" class="md-nav__link">
+    assertButtonEnabled
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertbuttondisabled" class="md-nav__link">
+    assertButtonDisabled
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertfocused" class="md-nav__link">
+    assertFocused
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertnotfocused" class="md-nav__link">
+    assertNotFocused
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertauthenticated" class="md-nav__link">
+    assertAuthenticated
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertguest" class="md-nav__link">
+    assertGuest
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertauthenticatedas" class="md-nav__link">
+    assertAuthenticatedAs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertvue" class="md-nav__link">
+    assertVue
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertvueisnot" class="md-nav__link">
+    assertVueIsNot
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertvuecontains" class="md-nav__link">
+    assertVueContains
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertvuedoesnotcontain" class="md-nav__link">
+    assertVueDoesNotContain
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pages" class="md-nav__link">
+    Pages
+  </a>
+  
+    <nav class="md-nav" aria-label="Pages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pages_1" class="md-nav__link">
+    生成 Pages
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pages_2" class="md-nav__link">
+    組態 Pages
+  </a>
+  
+    <nav class="md-nav" aria-label="組態 Pages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#url" class="md-nav__link">
+    url 方法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assert" class="md-nav__link">
+    assert 方法
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_52" class="md-nav__link">
+    導航至頁面
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_53" class="md-nav__link">
+    選擇器簡寫
+  </a>
+  
+    <nav class="md-nav" aria-label="選擇器簡寫">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_54" class="md-nav__link">
+    全域的選擇器簡寫
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_55" class="md-nav__link">
+    頁面方法
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_56" class="md-nav__link">
+    元件
+  </a>
+  
+    <nav class="md-nav" aria-label="元件">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_57" class="md-nav__link">
+    生成元件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_58" class="md-nav__link">
+    使用元件
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_59" class="md-nav__link">
+    持續整合
+  </a>
+  
+    <nav class="md-nav" aria-label="持續整合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#heroku-ci" class="md-nav__link">
+    Heroku CI
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#travis-ci" class="md-nav__link">
+    Travis CI
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#github-actions" class="md-nav__link">
+    GitHub Actions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05%E8%B3%87%E6%96%99%E5%BA%AB%E6%B8%AC%E8%A9%A6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    資料庫測試
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06Mocking/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mocking
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    官方擴展包
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            官方擴展包
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/01Cashier%E4%BA%A4%E6%98%93%E5%B7%A5%E5%85%B7%E5%8C%85Stripe/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cashier 交易工具包 Stripe
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/02Cashier%E4%BA%A4%E6%98%93%E5%B7%A5%E5%85%B7%E5%8C%85Paddle/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cashier 交易工具包 Paddle
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/03Envoy%E9%83%A8%E7%BD%B2%E5%B7%A5%E5%85%B7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Envoy 部署工具
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/04Fortify%E8%88%87%E5%89%8D%E7%AB%AF%E7%84%A1%E9%97%9C%E7%9A%84%E8%BA%AB%E4%BB%BD%E8%AA%8D%E8%AD%89%E5%BE%8C%E7%AB%AF%E5%AF%A6%E7%8F%BE/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fortify 與前端無關的身份認證後端實現
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/05Homestead%E8%99%9B%E6%93%AC%E6%A9%9F%E5%99%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Homestead 虛擬機器
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/06Horizon%E4%BD%87%E5%88%97%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Horizon 佇列管理工具
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/09Octane%E5%8A%A0%E9%80%9F%E5%BC%95%E6%93%8E/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Octane 加速引擎
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/10PassportOAuth%E8%AA%8D%E8%AD%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Passport OAuth 認證
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/11Pennant%E6%B8%AC%E8%A9%A6%E6%96%B0%E5%8A%9F%E8%83%BD/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pennant 測試新功能
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/12Pint%E7%A8%8B%E5%BC%8F%E7%A2%BC%E9%A2%A8%E6%A0%BC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pint 程式碼風格
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/13SailDocker%E9%96%8B%E7%99%BC%E7%92%B0%E5%A2%83/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sail Docker 開發環境
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/14SanctumAPI%E6%8E%88%E6%AC%8A/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sanctum API 授權
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/15Scout%E5%85%A8%E6%96%87%E6%90%9C%E5%B0%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Scout 全文搜尋
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/16Socialite%E7%AC%AC%E4%B8%89%E6%96%B9%E7%99%BB%E5%85%A5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Socialite 第三方登入
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/17Telescope%E5%81%B5%E9%8C%AF%E5%B7%A5%E5%85%B7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Telescope 偵錯工具
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    語法速查表
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            語法速查表
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/artisan/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Artisan
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/auth/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Auth 使用者認證
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/blade/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Blade 範本
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/cache/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cache
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/collection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Collection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/composer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Composer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/config/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Config
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/container/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Container
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/cookie/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cookie
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/db/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Database
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/environment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Environment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/event/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Event
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/file/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    File
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/helper/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Helper
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/input/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Input
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/lang/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lang
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/Log/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Log
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/mail/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mail
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/model/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Model (Eloquent ORM)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/pagination/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pagination
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/queue/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Queue
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/redirect/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Redirect
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/request/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Request
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/response/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Response
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/route/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Route
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/schema/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Schema 資料庫結構
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/security/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Security (Hash 和加解密)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/session/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Session
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/storage/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Storage
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/string/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    String
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/unittest/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Unit Test 單元測試
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/url/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    URL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/validation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Validation 表單驗證
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/view/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    View
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目錄">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目錄
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    介紹
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    安裝
+  </a>
+  
+    <nav class="md-nav" aria-label="安裝">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#chromedriver" class="md-nav__link">
+    管理 ChromeDriver 安裝
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    使用其他瀏覽器
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    入門
+  </a>
+  
+    <nav class="md-nav" aria-label="入門">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    生成測試
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    在每次測試後重設資料庫
+  </a>
+  
+    <nav class="md-nav" aria-label="在每次測試後重設資料庫">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    使用資料庫遷移
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    使用資料庫截斷
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    運行測試
+  </a>
+  
+    <nav class="md-nav" aria-label="運行測試">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#chromedriver_1" class="md-nav__link">
+    手動啟動 ChromeDriver
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    環境處理
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    瀏覽器基礎知識
+  </a>
+  
+    <nav class="md-nav" aria-label="瀏覽器基礎知識">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    建立瀏覽器
+  </a>
+  
+    <nav class="md-nav" aria-label="建立瀏覽器">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    建立多個瀏覽器
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    導航
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    調整瀏覽器窗口大小
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    瀏覽器宏
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    使用者認證
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cookies" class="md-nav__link">
+    Cookies
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#javascript" class="md-nav__link">
+    運行 JavaScript
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    獲取截圖
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    控制台輸出結果保存到硬碟
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    頁面原始碼保存到硬碟
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    與元素互動
+  </a>
+  
+    <nav class="md-nav" aria-label="與元素互動">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dusk" class="md-nav__link">
+    Dusk 選擇器
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    文字、值 &amp; 屬性
+  </a>
+  
+    <nav class="md-nav" aria-label="文字、值 & 屬性">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    獲取 &amp; 設定值
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    獲取文字
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    獲取屬性
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    使用表單
+  </a>
+  
+    <nav class="md-nav" aria-label="使用表單">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    輸入值
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    下拉菜單
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    複選框
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    單選按鈕
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    附件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    點選按鈕
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    點選連結
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    使用鍵盤
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_35" class="md-nav__link">
+    使用滑鼠
+  </a>
+  
+    <nav class="md-nav" aria-label="使用滑鼠">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_36" class="md-nav__link">
+    點選元素
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_37" class="md-nav__link">
+    滑鼠懸停
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_38" class="md-nav__link">
+    拖放
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#javascript_1" class="md-nav__link">
+    JavaScript 對話方塊
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_39" class="md-nav__link">
+    選擇器作用範圍
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_40" class="md-nav__link">
+    等待元素
+  </a>
+  
+    <nav class="md-nav" aria-label="等待元素">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_41" class="md-nav__link">
+    等待
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_42" class="md-nav__link">
+    等待選擇器
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_43" class="md-nav__link">
+    限定範疇範圍（可用時）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_44" class="md-nav__link">
+    等待文字
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_45" class="md-nav__link">
+    等待連結
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_46" class="md-nav__link">
+    等待輸入
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_47" class="md-nav__link">
+    等待頁面跳轉
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_48" class="md-nav__link">
+    等待頁面重新載入
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#javascript_2" class="md-nav__link">
+    等待 JavaScript 表示式
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vue" class="md-nav__link">
+    等待 Vue 表示式
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#javascript_3" class="md-nav__link">
+    等待 JavaScript 事件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_49" class="md-nav__link">
+    等待回呼
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_50" class="md-nav__link">
+    滾動元素到檢視中
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_51" class="md-nav__link">
+    可用的斷言
+  </a>
+  
+    <nav class="md-nav" aria-label="可用的斷言">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#asserttitle" class="md-nav__link">
+    assertTitle
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#asserttitlecontains" class="md-nav__link">
+    assertTitleContains
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#asserturlis" class="md-nav__link">
+    assertUrlIs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertschemeis" class="md-nav__link">
+    assertSchemeIs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertschemeisnot" class="md-nav__link">
+    assertSchemeIsNot
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#asserthostis" class="md-nav__link">
+    assertHostIs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#asserthostisnot" class="md-nav__link">
+    assertHostIsNot
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertportis" class="md-nav__link">
+    assertPortIs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertportisnot" class="md-nav__link">
+    assertPortIsNot
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertpathbeginswith" class="md-nav__link">
+    assertPathBeginsWith
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertpathis" class="md-nav__link">
+    assertPathIs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertpathisnot" class="md-nav__link">
+    assertPathIsNot
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertrouteis" class="md-nav__link">
+    assertRouteIs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertquerystringhas" class="md-nav__link">
+    assertQueryStringHas
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertquerystringmissing" class="md-nav__link">
+    assertQueryStringMissing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertfragmentis" class="md-nav__link">
+    assertFragmentIs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertfragmentbeginswith" class="md-nav__link">
+    assertFragmentBeginsWith
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertfragmentisnot" class="md-nav__link">
+    assertFragmentIsNot
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#asserthascookie" class="md-nav__link">
+    assertHasCookie
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#asserthasplaincookie" class="md-nav__link">
+    assertHasPlainCookie
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertcookiemissing" class="md-nav__link">
+    assertCookieMissing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertplaincookiemissing" class="md-nav__link">
+    assertPlainCookieMissing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertcookievalue" class="md-nav__link">
+    assertCookieValue
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertplaincookievalue" class="md-nav__link">
+    assertPlainCookieValue
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertsee" class="md-nav__link">
+    assertSee
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertdontsee" class="md-nav__link">
+    assertDontSee
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertseein" class="md-nav__link">
+    assertSeeIn
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertdontseein" class="md-nav__link">
+    assertDontSeeIn
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertseeanythingin" class="md-nav__link">
+    assertSeeAnythingIn
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertscript" class="md-nav__link">
+    assertScript
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertsourcehas" class="md-nav__link">
+    assertSourceHas
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertsourcemissing" class="md-nav__link">
+    assertSourceMissing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertseelink" class="md-nav__link">
+    assertSeeLink
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertdontseelink" class="md-nav__link">
+    assertDontSeeLink
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertinputvalue" class="md-nav__link">
+    assertInputValue
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertinputvalueisnot" class="md-nav__link">
+    assertInputValueIsNot
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertchecked" class="md-nav__link">
+    assertChecked
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertnotchecked" class="md-nav__link">
+    assertNotChecked
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertradioselected" class="md-nav__link">
+    assertRadioSelected
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertradionotselected" class="md-nav__link">
+    assertRadioNotSelected
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertselected" class="md-nav__link">
+    assertSelected
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertselecthasoptions" class="md-nav__link">
+    assertSelectHasOptions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertselectmissingoptions" class="md-nav__link">
+    assertSelectMissingOptions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertselecthasoption" class="md-nav__link">
+    assertSelectHasOption
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertselectmissingoption" class="md-nav__link">
+    assertSelectMissingOption
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertvalue" class="md-nav__link">
+    assertValue
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertvalueisnot" class="md-nav__link">
+    assertValueIsNot
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertattribute" class="md-nav__link">
+    assertAttribute
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertattributecontains" class="md-nav__link">
+    assertAttributeContains
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertariaattribute" class="md-nav__link">
+    assertAriaAttribute
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertdataattribute" class="md-nav__link">
+    assertDataAttribute
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertvisible" class="md-nav__link">
+    assertVisible
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertpresent" class="md-nav__link">
+    assertPresent
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertnotpresent" class="md-nav__link">
+    assertNotPresent
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertmissing" class="md-nav__link">
+    assertMissing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertinputpresent" class="md-nav__link">
+    assertInputPresent
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertinputmissing" class="md-nav__link">
+    assertInputMissing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertdialogopened" class="md-nav__link">
+    assertDialogOpened
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertenabled" class="md-nav__link">
+    assertEnabled
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertdisabled" class="md-nav__link">
+    assertDisabled
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertbuttonenabled" class="md-nav__link">
+    assertButtonEnabled
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertbuttondisabled" class="md-nav__link">
+    assertButtonDisabled
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertfocused" class="md-nav__link">
+    assertFocused
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertnotfocused" class="md-nav__link">
+    assertNotFocused
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertauthenticated" class="md-nav__link">
+    assertAuthenticated
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertguest" class="md-nav__link">
+    assertGuest
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertauthenticatedas" class="md-nav__link">
+    assertAuthenticatedAs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertvue" class="md-nav__link">
+    assertVue
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertvueisnot" class="md-nav__link">
+    assertVueIsNot
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertvuecontains" class="md-nav__link">
+    assertVueContains
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertvuedoesnotcontain" class="md-nav__link">
+    assertVueDoesNotContain
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pages" class="md-nav__link">
+    Pages
+  </a>
+  
+    <nav class="md-nav" aria-label="Pages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pages_1" class="md-nav__link">
+    生成 Pages
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pages_2" class="md-nav__link">
+    組態 Pages
+  </a>
+  
+    <nav class="md-nav" aria-label="組態 Pages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#url" class="md-nav__link">
+    url 方法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assert" class="md-nav__link">
+    assert 方法
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_52" class="md-nav__link">
+    導航至頁面
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_53" class="md-nav__link">
+    選擇器簡寫
+  </a>
+  
+    <nav class="md-nav" aria-label="選擇器簡寫">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_54" class="md-nav__link">
+    全域的選擇器簡寫
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_55" class="md-nav__link">
+    頁面方法
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_56" class="md-nav__link">
+    元件
+  </a>
+  
+    <nav class="md-nav" aria-label="元件">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_57" class="md-nav__link">
+    生成元件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_58" class="md-nav__link">
+    使用元件
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_59" class="md-nav__link">
+    持續整合
+  </a>
+  
+    <nav class="md-nav" aria-label="持續整合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#heroku-ci" class="md-nav__link">
+    Heroku CI
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#travis-ci" class="md-nav__link">
+    Travis CI
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#github-actions" class="md-nav__link">
+    GitHub Actions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+  
+                  
+
+  
+  
+
+
+<h1 id="laravel-dusk">Laravel Dusk<a class="headerlink" href="#laravel-dusk" title="Permanent link">&para;</a></h1>
+<h2 id="_1">介紹<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p><a href="https://github.com/laravel/dusk">Laravel Dusk</a> 提供了一套富有表現力、易於使用的瀏覽器自動化和測試 API。默認情況下，Dusk 不需要在本地電腦上安裝 JDK 或 Selenium。相反，Dusk 使用一個獨立的 <a href="https://sites.google.com/chromium.org/driver">ChromeDriver</a> 安裝包。你可以自由地使用任何其他相容 Selenium 的驅動程式。</p>
+<h2 id="_2">安裝<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>為了開始使用，你需要先安裝 <a href="https://www.google.com/chrome">Google Chrome</a> 並將 <code>laravel/dusk</code> Composer 依賴新增到你的項目中：</p>
+<div class="highlight"><pre><span></span><code>composer<span class="w"> </span>require<span class="w"> </span>--dev<span class="w"> </span>laravel/dusk
+</code></pre></div>
+<blockquote>
+<p><strong>警告</strong>
+如果你手動註冊 Dusk 的服務提供者，在生產環境中 <strong>絕不要</strong> 註冊，因為這可能導致任意使用者能夠認證你的應用程式。</p>
+</blockquote>
+<p>安裝 Dusk 包後，執行 <code>dusk:install</code> Artisan 命令。<code>dusk:install</code> 命令將會建立一個 <code>tests/Browser</code> 目錄，一個示例 Dusk 測試，並為你的作業系統安裝 Chrome 驅動程式二進制檔案：</p>
+<div class="highlight"><pre><span></span><code>php<span class="w"> </span>artisan<span class="w"> </span>dusk:install
+</code></pre></div>
+<p>接下來，在應用程式的 <code>.env</code> 檔案中設定 <code>APP_URL</code> 環境變數。該值應該與你用於在瀏覽器中訪問應用程式的 URL 匹配。</p>
+<blockquote>
+<p><strong>注意</strong>
+如果你正在使用 <a href="/docs/laravel/10.x/sail">Laravel Sail</a> 管理你的本地開發環境，請參閱 Sail 文件中有關<a href="/docs/laravel/10.x/sail#laravel-dusk">組態和運行 Dusk 測試</a>的內容。</p>
+</blockquote>
+<h3 id="chromedriver">管理 ChromeDriver 安裝<a class="headerlink" href="#chromedriver" title="Permanent link">&para;</a></h3>
+<p>如果你想安裝與 Laravel Dusk 通過 <code>dusk:install</code> 命令安裝的不同版本的 ChromeDriver，則可以使用 <code>dusk:chrome-driver</code> 命令：</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 為你的作業系統安裝最新版本的 ChromeDriver...</span>
+php<span class="w"> </span>artisan<span class="w"> </span>dusk:chrome-driver
+
+<span class="c1"># 為你的作業系統安裝指定版本的 ChromeDriver...</span>
+php<span class="w"> </span>artisan<span class="w"> </span>dusk:chrome-driver<span class="w"> </span><span class="m">86</span>
+
+<span class="c1"># 為所有支援的作業系統安裝指定版本的 ChromeDriver...</span>
+php<span class="w"> </span>artisan<span class="w"> </span>dusk:chrome-driver<span class="w"> </span>--all
+
+<span class="c1"># 為你的作業系統安裝與 Chrome / Chromium 檢測到的版本匹配的 ChromeDriver...</span>
+php<span class="w"> </span>artisan<span class="w"> </span>dusk:chrome-driver<span class="w"> </span>--detect
+</code></pre></div>
+<blockquote>
+<p><strong>警告</strong>
+Dusk 需要 <code>chromedriver</code> 二進制檔案可執行。如果你無法運行 Dusk，你應該使用以下命令確保二進制檔案可執行：<code>chmod -R 0755 vendor/laravel/dusk/bin/</code>。</p>
+</blockquote>
+<h3 id="_3">使用其他瀏覽器<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>默認情況下，Dusk 使用 Google Chrome 和獨立的 <a href="https://sites.google.com/chromium.org/driver">ChromeDriver</a> 安裝來運行你的瀏覽器測試。但是，你可以啟動自己的 Selenium 伺服器，並運行你希望的任何瀏覽器來運行測試。</p>
+<p>要開始，請打開你的 <code>tests/DuskTestCase.php</code> 檔案，該檔案是你的應用程式的基本 Dusk 測試用例。在這個檔案中，你可以刪除對 <code>startChromeDriver</code> 方法的呼叫。這將停止 Dusk 自動啟動 ChromeDriver：</p>
+<div class="highlight"><pre><span></span><code>/**
+ * 準備執行 Dusk 測試。
+ *
+ * @beforeClass
+ */
+public static function prepare(): void
+{
+    // static::startChromeDriver();
+}
+</code></pre></div>
+<p>接下來，你可以修改 <code>driver</code> 方法來連接到你選擇的 URL 和連接埠。此外，你可以修改應該傳遞給 WebDriver 的“期望能力”：</p>
+<div class="highlight"><pre><span></span><code>use Facebook\WebDriver\Remote\RemoteWebDriver;
+
+/**
+ * 建立 RemoteWebDriver 實例。
+ */
+protected function driver(): RemoteWebDriver
+{
+    return RemoteWebDriver::create(
+        &#39;http://localhost:4444/wd/hub&#39;, DesiredCapabilities::phantomjs()
+    );
+}
+</code></pre></div>
+<h2 id="_4">入門<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<h3 id="_5">生成測試<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>要生成 Dusk 測試，請使用 <code>dusk:make</code> Artisan 命令。生成的測試將放在 <code>tests/Browser</code> 目錄中：</p>
+<div class="highlight"><pre><span></span><code>php<span class="w"> </span>artisan<span class="w"> </span>dusk:make<span class="w"> </span>LoginTest
+</code></pre></div>
+<h3 id="_6">在每次測試後重設資料庫<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p>你編寫的大多數測試將與從應用程式資料庫檢索資料的頁面互動；然而，你的 Dusk 測試不應該使用 <code>RefreshDatabase</code> trait。<code>RefreshDatabase</code> trait 利用資料庫事務，這些事務將不適用或不可用於 HTTP 請求。相反，你有兩個選項：<code>DatabaseMigrations</code> trait 和 <code>DatabaseTruncation</code> trait。</p>
+<h4 id="_7">使用資料庫遷移<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<p><code>DatabaseMigrations</code> trait 會在每次測試之前運行你的資料庫遷移。但是，為了每次測試而刪除和重新建立資料庫表通常比截斷表要慢：</p>
+<div class="highlight"><pre><span></span><code>&lt;?php
+
+namespace Tests\Browser;
+
+use App\Models\User;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Laravel\Dusk\Chrome;
+use Tests\DuskTestCase;
+
+class ExampleTest extends DuskTestCase
+{
+    use DatabaseMigrations;
+}
+</code></pre></div>
+<blockquote>
+<p><strong>警告</strong>
+當執行 Dusk 測試時，不能使用 SQLite 記憶體資料庫。由於瀏覽器在其自己的處理程序中執行，因此它將無法訪問其他處理程序的記憶體資料庫。</p>
+</blockquote>
+<h4 id="_8">使用資料庫截斷<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<p>在使用 <code>DatabaseTruncation</code> trait 之前，你必須使用 Composer 包管理器安裝 <code>doctrine/dbal</code> 包：</p>
+<div class="highlight"><pre><span></span><code>composer<span class="w"> </span>require<span class="w"> </span>--dev<span class="w"> </span>doctrine/dbal
+</code></pre></div>
+<p><code>DatabaseTruncation</code> trait 將在第一次測試時遷移你的資料庫，以確保你的資料庫表已經被正確建立。但是，在後續測試中，資料庫表將僅被截斷 - 相比重新運行所有的資料庫遷移，這樣做可以提高速度：</p>
+<div class="highlight"><pre><span></span><code>&lt;?php
+
+namespace Tests\Browser;
+
+use App\Models\User;
+use Illuminate\Foundation\Testing\DatabaseTruncation;
+use Laravel\Dusk\Chrome;
+use Tests\DuskTestCase;
+
+class ExampleTest extends DuskTestCase
+{
+    use DatabaseTruncation;
+}
+</code></pre></div>
+<p>默認情況下，此 trait 將截斷除 <code>migrations</code> 表以外的所有表。如果你想自訂應該截斷的表，則可以在測試類上定義 <code>$tablesToTruncate</code> 屬性：</p>
+<div class="highlight"><pre><span></span><code>/**
+ * 表示應該截斷哪些表。
+ *
+ * @var array
+ */
+protected $tablesToTruncate = [&#39;users&#39;];
+</code></pre></div>
+<p>或者，你可以在測試類上定義 <code>$exceptTables</code> 屬性，以指定應該從截斷中排除的表：</p>
+<div class="highlight"><pre><span></span><code>/**
+ * 表示應該從截斷中排除哪些表。
+ *
+ * @var array
+ */
+protected $exceptTables = [&#39;users&#39;];
+</code></pre></div>
+<p>為了指定需要清空表格的資料庫連接，你可以在測試類中定義一個 <code>$connectionsToTruncate</code> 屬性：</p>
+<div class="highlight"><pre><span></span><code>/**
+ * 表示哪些連接需要清空表格。
+ *
+ * @var array
+ */
+protected $connectionsToTruncate = [&#39;mysql&#39;];
+</code></pre></div>
+<h3 id="_9">運行測試<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<p>要運行瀏覽器測試，執行 <code>dusk</code> Artisan 命令：</p>
+<div class="highlight"><pre><span></span><code>php<span class="w"> </span>artisan<span class="w"> </span>dusk
+</code></pre></div>
+<p>如果上一次運行 <code>dusk</code> 命令時出現了測試失敗，你可以通過 <code>dusk:fails</code> 命令先重新運行失敗的測試，以節省時間：</p>
+<div class="highlight"><pre><span></span><code>php<span class="w"> </span>artisan<span class="w"> </span>dusk:fails
+</code></pre></div>
+<p><code>dusk</code> 命令接受任何 PHPUnit 測試運行器通常接受的參數，例如你可以只運行給定<a href="https://phpunit.readthedocs.io/en/9.5/annotations.html#group">組</a>的測試：</p>
+<div class="highlight"><pre><span></span><code>php<span class="w"> </span>artisan<span class="w"> </span>dusk<span class="w"> </span>--group<span class="o">=</span>foo
+</code></pre></div>
+<blockquote>
+<p><strong>注意</strong>
+如果你正在使用 <a href="/docs/laravel/10.x/sail">Laravel Sail</a> 來管理本地開發環境，請參考 Sail 文件中有關<a href="/docs/laravel/10.x/sail#laravel-dusk">組態和運行 Dusk 測試</a>的部分。</p>
+</blockquote>
+<h4 id="chromedriver_1">手動啟動 ChromeDriver<a class="headerlink" href="#chromedriver_1" title="Permanent link">&para;</a></h4>
+<p>默認情況下，Dusk 會自動嘗試啟動 ChromeDriver。如果對於你的特定系統無法自動啟動，你可以在運行 <code>dusk</code> 命令之前手動啟動 ChromeDriver。如果你選擇手動啟動 ChromeDriver，則應該註釋掉 <code>tests/DuskTestCase.php</code> 檔案中的以下程式碼：</p>
+<div class="highlight"><pre><span></span><code>/**
+ * 為 Dusk 測試執行做準備。
+ *
+ * @beforeClass
+ */
+public static function prepare(): void
+{
+    // static::startChromeDriver();
+}
+</code></pre></div>
+<p>此外，如果你在連接埠 9515 以外的連接埠上啟動 ChromeDriver，你需要修改同一類中的 <code>driver</code> 方法以反映正確的連接埠：</p>
+<div class="highlight"><pre><span></span><code>use Facebook\WebDriver\Remote\RemoteWebDriver;
+
+/**
+ * 建立 RemoteWebDriver 實例。
+ */
+protected function driver(): RemoteWebDriver
+{
+    return RemoteWebDriver::create(
+        &#39;http://localhost:9515&#39;, DesiredCapabilities::chrome()
+    );
+}
+</code></pre></div>
+<h3 id="_10">環境處理<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<p>如果要在運行測試時強制 Dusk 使用自己的環境檔案，請在項目根目錄中建立一個 <code>.env.dusk.{當前環境}</code> 檔案。例如，如果你將從你的 <code>local</code> 環境啟動 <code>dusk</code> 命令，你應該建立一個 <code>.env.dusk.local</code> 檔案。</p>
+<p>在運行測試時，Dusk 將備份你的 <code>.env</code> 檔案，並將你的 Dusk 環境重新命名為 <code>.env</code>。測試完成後，會將你的 <code>.env</code> 檔案還原。</p>
+<h2 id="_11">瀏覽器基礎知識<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
+<h3 id="_12">建立瀏覽器<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<p>為了開始學習，我們編寫一個測試，驗證我們能否登錄到我們的應用程式。生成測試後，我們可以修改它以導航到登錄頁面，輸入一些憑據並點選“登錄”按鈕。為了建立一個瀏覽器實例，你可以在 Dusk 測試中呼叫 <code>browse</code> 方法：</p>
+<div class="highlight"><pre><span></span><code>&lt;?php
+
+namespace Tests\Browser;
+
+use App\Models\User;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Laravel\Dusk\Browser;
+use Laravel\Dusk\Chrome;
+use Tests\DuskTestCase;
+
+class ExampleTest extends DuskTestCase
+{
+    use DatabaseMigrations;
+
+    /**
+     * 一個基本的瀏覽器測試示例。
+     */
+    public function test_basic_example(): void
+    {
+        $user = User::factory()-&gt;create([
+            &#39;email&#39; =&gt; &#39;taylor@laravel.com&#39;,
+        ]);
+
+        $this-&gt;browse(function (Browser $browser) use ($user) {
+            $browser-&gt;visit(&#39;/login&#39;)
+                    -&gt;type(&#39;email&#39;, $user-&gt;email)
+                    -&gt;type(&#39;password&#39;, &#39;password&#39;)
+                    -&gt;press(&#39;Login&#39;)
+                    -&gt;assertPathIs(&#39;/home&#39;);
+        });
+    }
+}
+</code></pre></div>
+<p>如上面的例子所示，<code>browse</code> 方法接受一個閉包。瀏覽器實例將由 Dusk 自動傳遞給此閉包，並且是與應用程式互動和進行斷言的主要對象。</p>
+<h4 id="_13">建立多個瀏覽器<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
+<p>有時你可能需要多個瀏覽器來正確地進行測試。例如，測試與 WebSockets 互動的聊天螢幕可能需要多個瀏覽器。要建立多個瀏覽器，只需將更多的瀏覽器參數新增到傳遞給 <code>browse</code> 方法的閉包簽名中即可：</p>
+<div class="highlight"><pre><span></span><code>$this-&gt;browse(function (Browser $first, Browser $second) {
+    $first-&gt;loginAs(User::find(1))
+          -&gt;visit(&#39;/home&#39;)
+          -&gt;waitForText(&#39;Message&#39;);
+
+    $second-&gt;loginAs(User::find(2))
+           -&gt;visit(&#39;/home&#39;)
+           -&gt;waitForText(&#39;Message&#39;)
+           -&gt;type(&#39;message&#39;, &#39;Hey Taylor&#39;)
+           -&gt;press(&#39;Send&#39;);
+
+    $first-&gt;waitForText(&#39;Hey Taylor&#39;)
+          -&gt;assertSee(&#39;Jeffrey Way&#39;);
+});
+</code></pre></div>
+<h3 id="_14">導航<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<p><code>visit</code> 方法可用於在應用程式中導航到給定的 URI：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;visit(&#39;/login&#39;);
+</code></pre></div>
+<p>你可以使用 <code>visitRoute</code> 方法來導航到 <a href="/docs/laravel/10.x/routing#named-routes">命名路由</a>：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;visitRoute(&#39;login&#39;);
+</code></pre></div>
+<p>你可以使用 <code>back</code> 和 <code>forward</code> 方法來導航「後退」和「前進」：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;back();
+
+$browser-&gt;forward();
+</code></pre></div>
+<p>你可以使用 <code>refresh</code> 方法來刷新頁面：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;refresh();
+</code></pre></div>
+<h3 id="_15">調整瀏覽器窗口大小<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
+<p>你可以使用 <code>resize</code> 方法來調整瀏覽器窗口的大小：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;resize(1920, 1080);
+</code></pre></div>
+<p>你可以使用 <code>maximize</code> 方法來最大化瀏覽器窗口：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;maximize();
+</code></pre></div>
+<p><code>fitContent</code> 方法將調整瀏覽器窗口的大小以匹配其內容的大小：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;fitContent();
+</code></pre></div>
+<p>當測試失敗時，Dusk 將在擷取螢幕截圖之前自動調整瀏覽器大小以適合內容。你可以在測試中呼叫 <code>disableFitOnFailure</code> 方法來停用此功能：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;disableFitOnFailure();
+</code></pre></div>
+<p>你可以使用<code>move</code>方法將瀏覽器窗口移動到螢幕上的其他位置：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;move($x = 100, $y = 100);
+</code></pre></div>
+<h3 id="_16">瀏覽器宏<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
+<p>如果你想定義一個可以在各種測試中重複使用的自訂瀏覽器方法，可以在<code>Browser</code>類中使用<code>macro</code>方法。通常，你應該從<a href="/docs/laravel/10.x/providers">服務提供者</a>的<code>boot</code>方法中呼叫它：</p>
+<div class="highlight"><pre><span></span><code>&lt;?php
+
+namespace App\Providers;
+
+use Illuminate\Support\ServiceProvider;
+use Laravel\Dusk\Browser;
+
+class DuskServiceProvider extends ServiceProvider
+{
+    /**
+     * 註冊 《Dusk》 的瀏覽器宏。
+     */
+    public function boot(): void
+    {
+        Browser::macro(&#39;scrollToElement&#39;, function (string $element = null) {
+            $this-&gt;script(&quot;$(&#39;html, body&#39;).animate({ scrollTop: $(&#39;$element&#39;).offset().top }, 0);&quot;);
+
+            return $this;
+        });
+    }
+}
+</code></pre></div>
+<p>該 <code>macro</code> 函數接收方法名作為其第一個參數，並接收閉包作為其第二個參數。 將宏作為<code>Browser</code>實現上的方法呼叫宏時，將執行宏的閉包：</p>
+<div class="highlight"><pre><span></span><code>$this-&gt;browse(function (Browser $browser) use ($user) {
+    $browser-&gt;visit(&#39;/pay&#39;)
+            -&gt;scrollToElement(&#39;#credit-card-details&#39;)
+            -&gt;assertSee(&#39;Enter Credit Card Details&#39;);
+});
+</code></pre></div>
+<h3 id="_17">使用者認證<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
+<p>我們經常會測試需要身份驗證的頁面，你可以使用 Dusk 的<code>loginAs</code>方法來避免在每次測試期間與登錄頁面進行互動。該<code>loginAs</code>方法接收使用者 ID 或者使用者模型實例</p>
+<div class="highlight"><pre><span></span><code>use App\Models\User;
+use Laravel\Dusk\Browser;
+
+$this-&gt;browse(function (Browser $browser) {
+    $browser-&gt;loginAs(User::find(1))
+          -&gt;visit(&#39;/home&#39;);
+});
+</code></pre></div>
+<blockquote>
+<p><strong>注意</strong>
+使用<code>loginAs</code>方法後，使用者 session 在檔案中的所有測試被維護。</p>
+</blockquote>
+<h3 id="cookies">Cookies<a class="headerlink" href="#cookies" title="Permanent link">&para;</a></h3>
+<p>你可以使用<code>cookie</code>方法來獲取或者設定加密過的 cookie 的值：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;cookie(&#39;name&#39;);
+
+$browser-&gt;cookie(&#39;name&#39;, &#39;Taylor&#39;);
+</code></pre></div>
+<p>使用<code>plainCookie</code>則可以獲取或者設定未加密過的 cookie 的值：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;plainCookie(&#39;name&#39;);
+
+$browser-&gt;plainCookie(&#39;name&#39;, &#39;Taylor&#39;);
+</code></pre></div>
+<p>你可以使用<code>deleteCookie</code>方法刪除指定的 cookie：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;deleteCookie(&#39;name&#39;);
+</code></pre></div>
+<h3 id="javascript">運行 JavaScript<a class="headerlink" href="#javascript" title="Permanent link">&para;</a></h3>
+<p>可以使用<code>script</code>方法在瀏覽器中執行任意 JavaScript 語句：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;script(&#39;document.documentElement.scrollTop = 0&#39;);
+
+$browser-&gt;script([
+    &#39;document.body.scrollTop = 0&#39;,
+    &#39;document.documentElement.scrollTop = 0&#39;,
+]);
+
+$output = $browser-&gt;script(&#39;return window.location.pathname&#39;);
+</code></pre></div>
+<h3 id="_18">獲取截圖<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
+<p>你可以使用<code>screenshot</code>方法來截圖並將其指定檔案名稱儲存，所有截圖都將存放在<code>tests/Browser/screenshots</code>目錄下：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;screenshot(&#39;filename&#39;);
+</code></pre></div>
+<p><code>responsiveScreenshots</code>方法可用於在不同斷點處擷取一系列截圖:</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;responsiveScreenshots(&#39;filename&#39;);
+</code></pre></div>
+<h3 id="_19">控制台輸出結果保存到硬碟<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
+<p>你可以使用<code>storeConsoleLog</code>方法將控制台輸出指定檔案名稱並寫入磁碟，控制台輸出默認存放在<code>tests/Browser/console</code>目錄下：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;storeConsoleLog(&#39;filename&#39;);
+</code></pre></div>
+<h3 id="_20">頁面原始碼保存到硬碟<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h3>
+<p>你可以使用<code>storeSource</code>方法將頁面當前原始碼指定檔案名稱並寫入磁碟，頁面原始碼默認會存放到<code>tests/Browser/source</code>目錄：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;storeSource(&#39;filename&#39;);
+</code></pre></div>
+<h2 id="_21">與元素互動<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h2>
+<h3 id="dusk">Dusk 選擇器<a class="headerlink" href="#dusk" title="Permanent link">&para;</a></h3>
+<p>編寫 Dusk 測試最困難的部分之一就是選擇良好的 CSS 選擇器與元素進行互動。 隨著時間的推移，前端的更改可能會導致如下所示的 CSS 選擇器無法通過測試：</p>
+<div class="highlight"><pre><span></span><code>// HTML...
+
+&lt;button&gt;Login&lt;/button&gt;
+
+// Test...
+
+$browser-&gt;click(&#39;.login-page .container div &gt; button&#39;);
+</code></pre></div>
+<p>Dusk 選擇器可以讓你專注於編寫有效的測試，而不必記住 CSS 選擇器。要定義一個選擇器，你需要新增一個<code>dusk</code>屬性在 HTML 元素中。然後在選擇器前面加上<code>@</code>用來在 Dusk 測試中操作元素：</p>
+<div class="highlight"><pre><span></span><code>// HTML...
+
+&lt;button dusk=&quot;login-button&quot;&gt;Login&lt;/button&gt;
+
+// Test...
+
+$browser-&gt;click(&#39;@login-button&#39;);
+</code></pre></div>
+<h3 id="_22">文字、值 &amp; 屬性<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h3>
+<h4 id="_23">獲取 &amp; 設定值<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h4>
+<p>Dusk 提供了多個方法用於和頁面元素的當前顯示文字、值和屬性進行互動，例如，要獲取匹配指定選擇器的元素的「值」，使用<code>value</code>方法：</p>
+<div class="highlight"><pre><span></span><code>// 獲取值...
+$value = $browser-&gt;value(&#39;selector&#39;);
+
+// 設定值...
+$browser-&gt;value(&#39;selector&#39;, &#39;value&#39;);
+</code></pre></div>
+<p>你可以使用<code>inputValue</code>方法來獲取包含指定欄位名稱的輸入元素的「值」：</p>
+<div class="highlight"><pre><span></span><code>$value = $browser-&gt;inputValue(&#39;field&#39;);
+</code></pre></div>
+<h4 id="_24">獲取文字<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h4>
+<p>該<code>text</code>方法可以用於獲取匹配指定選擇器元素文字：</p>
+<div class="highlight"><pre><span></span><code>$text = $browser-&gt;text(&#39;selector&#39;);
+</code></pre></div>
+<h4 id="_25">獲取屬性<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h4>
+<p>最後，該<code>attribute</code>方法可以用於獲取匹配指定選擇器元素屬性：</p>
+<div class="highlight"><pre><span></span><code>$attribute = $browser-&gt;attribute(&#39;selector&#39;, &#39;value&#39;);
+</code></pre></div>
+<h3 id="_26">使用表單<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h3>
+<h4 id="_27">輸入值<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h4>
+<p>Dusk 提供了多種方法來與表單和輸入元素進行互動。首先，讓我們看一個在欄位中輸入值的示例：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;type(&#39;email&#39;, &#39;taylor@laravel.com&#39;);
+</code></pre></div>
+<p>注意，儘管該方法在需要時接收，但是我們不需要將 CSS 選擇器傳遞給<code>type</code>方法。如果沒有提供 CSS 選擇器，Dusk 會搜尋包含指定<code>name</code>屬性的<code>input</code>或<code>textarea</code>欄位。</p>
+<p>要想將文字附加到一個欄位之後而且不清除其內容， 你可以使用<code>append</code>方法：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;type(&#39;tags&#39;, &#39;foo&#39;)
+        -&gt;append(&#39;tags&#39;, &#39;, bar, baz&#39;);
+</code></pre></div>
+<p>你可以使用<code>clear</code>方法清除輸入值：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;clear(&#39;email&#39;);
+</code></pre></div>
+<p>你可以使用<code>typeSlowly</code>方法指示 Dusk 緩慢鍵入。 默認情況下，Dusk 在兩次按鍵之間將暫停 100 毫秒。 要自訂按鍵之間的時間量，你可以將適當的毫秒數作為方法的第二個參數傳遞：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;typeSlowly(&#39;mobile&#39;, &#39;+1 (202) 555-5555&#39;);
+
+$browser-&gt;typeSlowly(&#39;mobile&#39;, &#39;+1 (202) 555-5555&#39;, 300);
+</code></pre></div>
+<p>你可以使用<code>appendSlowly</code>方法緩慢新增文字：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;type(&#39;tags&#39;, &#39;foo&#39;)
+        -&gt;appendSlowly(&#39;tags&#39;, &#39;, bar, baz&#39;);
+</code></pre></div>
+<h4 id="_28">下拉菜單<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h4>
+<p>需要在下拉菜單中選擇值，你可以使用<code>select</code>方法。 類似於<code>type</code>方法， 該<code>select</code>方法並不是一定要傳入 CSS 選擇器。 當使用<code>select</code>方法時，你應該傳遞選項實際的值而不是它的顯示文字：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;select(&#39;size&#39;, &#39;Large&#39;);
+</code></pre></div>
+<p>你也可以通過省略第二個參數來隨機選擇一個選項：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;select(&#39;size&#39;);
+</code></pre></div>
+<p>通過將陣列作為<code>select</code>方法的第二個參數，可以指示該方法選擇多個選項：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;select(&#39;categories&#39;, [&#39;Art&#39;, &#39;Music&#39;]);
+</code></pre></div>
+<h4 id="_29">複選框<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h4>
+<p>使用「check」 複選框時，你可以使用<code>check</code>方法。 像其他許多與 input 相關的方法，並不是必須傳入 CSS 選擇器。 如果精準的選擇器無法找到的時候，Dusk 會搜尋能夠與<code>name</code>屬性匹配的複選框：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;check(&#39;terms&#39;);
+</code></pre></div>
+<p>該<code>uncheck</code>方法可用於「取消選中」複選框輸入：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;uncheck(&#39;terms&#39;);
+</code></pre></div>
+<h4 id="_30">單選按鈕<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h4>
+<p>使用 「select」中單選按鈕選項時，你可以使用<code>radio</code>這個方法。 像很多其他的與輸入相關的方法一樣， 它也並不是必須傳入 CSS 選擇器。如果精準的選擇器無法被找到的時候， Dusk 會搜尋能夠與<code>name</code>屬性或者<code>value</code>屬性相匹配的<code>radio</code>單選按鈕：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;radio(&#39;size&#39;, &#39;large&#39;);
+</code></pre></div>
+<h3 id="_31">附件<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h3>
+<p>該<code>attach</code>方法可以附加一個檔案到<code>file</code>input 元素中。 像很多其他的與輸入相關的方法一樣，他也並不是必須傳入 CSS 選擇器。如果精準的選擇器沒有被找到的時候，Dusk 會搜尋與<code>name</code>屬性匹配的檔案輸入框：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;attach(&#39;photo&#39;, __DIR__.&#39;/photos/mountains.png&#39;);
+</code></pre></div>
+<blockquote>
+<p><strong>注意</strong>
+attach 方法需要使用 PHP<code>Zip</code>擴展，你的伺服器必須安裝了此擴展。</p>
+</blockquote>
+<h3 id="_32">點選按鈕<a class="headerlink" href="#_32" title="Permanent link">&para;</a></h3>
+<p>可以使用<code>press</code>方法來點選頁面上的按鈕元素。該<code>press</code>方法的第一個參數可以是按鈕的顯示文字，也可以是 CSS/ Dusk 選擇器：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;press(&#39;Login&#39;);
+</code></pre></div>
+<p>提交表單時，許多應用程式在按下表單後會停用表單的提交按鈕，然後在表單提交的 HTTP 請求完成後重新啟用該按鈕。要按下按鈕並等待按鈕被重新啟用，可以使用<code>pressAndWaitFor</code>方法：</p>
+<div class="highlight"><pre><span></span><code>// 按下按鈕並等待最多5秒，它將被啟用…
+$browser-&gt;pressAndWaitFor(&#39;Save&#39;);
+
+// 按下按鈕並等待最多1秒，它將被啟用…
+$browser-&gt;pressAndWaitFor(&#39;Save&#39;, 1);
+</code></pre></div>
+<h3 id="_33">點選連結<a class="headerlink" href="#_33" title="Permanent link">&para;</a></h3>
+<p>要點選連結，可以在瀏覽器實例下使用<code>clickLink</code>方法。該<code>clickLink</code>方法將點選指定文字的連結：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;clickLink($linkText);
+</code></pre></div>
+<p>你可以使用<code>seeLink</code>方法來確定具有給定顯示文字的連結在頁面上是否可見：</p>
+<div class="highlight"><pre><span></span><code>if ($browser-&gt;seeLink($linkText)) {
+    // ...
+}
+</code></pre></div>
+<blockquote>
+<p><strong>注意</strong>
+這些方法與 jQuery 互動。 如果頁面上沒有 jQuery，Dusk 會自動將其注入到頁面中，以便在測試期間可用。</p>
+</blockquote>
+<h3 id="_34">使用鍵盤<a class="headerlink" href="#_34" title="Permanent link">&para;</a></h3>
+<p>該<code>keys</code>方法讓你可以再指定元素中輸入比<code>type</code>方法更加複雜的輸入序列。例如，你可以在輸入值的同時按下按鍵。在這個例子中，輸入<code>taylor</code>時，<code>shift</code>鍵也同時被按下。當<code>taylor</code>輸入完之後， 將會輸入<code>swift</code>而不會按下任何按鍵：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;keys(&#39;selector&#39;, [&#39;{shift}&#39;, &#39;taylor&#39;], &#39;swift&#39;);
+</code></pre></div>
+<p><code>keys</code>方法的另一個有價值的用例是向你的應用程式的主要 CSS 選擇器傳送「鍵盤快速鍵」組合：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;keys(&#39;.app&#39;, [&#39;{command}&#39;, &#39;j&#39;]);
+</code></pre></div>
+<blockquote>
+<p><strong>技巧</strong>
+所有修飾符鍵如<code>{command}</code>都包裹在<code>{}</code>字元中，並且與在 <code>Facebook\WebDriver\WebDriverKeys</code>類中定義的常數匹配，該類可以<a href="https://github.com/php-webdriver/php-webdriver/blob/master/lib/WebDriverKeys.php">在 GitHub 上找到</a>.</p>
+</blockquote>
+<h3 id="_35">使用滑鼠<a class="headerlink" href="#_35" title="Permanent link">&para;</a></h3>
+<h4 id="_36">點選元素<a class="headerlink" href="#_36" title="Permanent link">&para;</a></h4>
+<p>該<code>click</code>方法可用於「點選」與給定選擇器匹配的元素：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;click(&#39;.selector&#39;);
+</code></pre></div>
+<p>該<code>clickAtXPath</code>方法可用於「點選」與給定 XPath 表示式匹配的元素：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;clickAtXPath(&#39;//div[@class = &quot;selector&quot;]&#39;);
+</code></pre></div>
+<p>該<code>clickAtPoint</code>方法可用於「點選」相對於瀏覽器可視區域的給定坐標對上的最高元素：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;clickAtPoint($x = 0, $y = 0);
+</code></pre></div>
+<p>該<code>doubleClick</code>方法可用於模擬滑鼠的連按兩下：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;doubleClick();
+</code></pre></div>
+<p>該<code>rightClick</code>方法可用於模擬滑鼠的右擊：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;rightClick();
+
+$browser-&gt;rightClick(&#39;.selector&#39;);
+</code></pre></div>
+<p>該<code>clickAndHold</code>方法可用於模擬被點選並按住的滑鼠按鈕。 隨後呼叫 <code>releaseMouse</code> 方法將撤消此行為並釋放滑鼠按鈕：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;clickAndHold()
+        -&gt;pause(1000)
+        -&gt;releaseMouse();
+</code></pre></div>
+<h4 id="_37">滑鼠懸停<a class="headerlink" href="#_37" title="Permanent link">&para;</a></h4>
+<p>該<code>mouseover</code>方法可用於與給定選擇器匹配的元素的滑鼠懸停動作：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;mouseover(&#39;.selector&#39;);
+</code></pre></div>
+<h4 id="_38">拖放<a class="headerlink" href="#_38" title="Permanent link">&para;</a></h4>
+<p>該<code>drag</code>方法用於將與指定選擇器匹配的元素拖到其它元素：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;drag(&#39;.from-selector&#39;, &#39;.to-selector&#39;);
+</code></pre></div>
+<p>或者，可以在單一方向上拖動元素：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;dragLeft(&#39;.selector&#39;, $pixels = 10);
+$browser-&gt;dragRight(&#39;.selector&#39;, $pixels = 10);
+$browser-&gt;dragUp(&#39;.selector&#39;, $pixels = 10);
+$browser-&gt;dragDown(&#39;.selector&#39;, $pixels = 10);
+</code></pre></div>
+<p>最後，你可以將元素拖動給定的偏移量：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;dragOffset(&#39;.selector&#39;, $x = 10, $y = 10);
+</code></pre></div>
+<h3 id="javascript_1">JavaScript 對話方塊<a class="headerlink" href="#javascript_1" title="Permanent link">&para;</a></h3>
+<p>Dusk 提供了各種與 JavaScript 對話方塊進行互動的方法。例如，你可以使用<code>waitForDialog</code>方法來等待 JavaScript 對話方塊的出現。此方法接受一個可選參數，該參數指示等待對話方塊出現多少秒：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;waitForDialog($seconds = null);
+</code></pre></div>
+<p>該<code>assertDialogOpened</code>方法，斷言對話方塊已經顯示，並且其消息與給定值匹配：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;assertDialogOpened(&#39;Dialog message&#39;);
+</code></pre></div>
+<p><code>typeInDialog</code>方法，在打開的 JavaScript 提示對話方塊中輸入給定值：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;typeInDialog(&#39;Hello World&#39;);
+</code></pre></div>
+<p><code>acceptDialog</code>方法，通過點選確定按鈕關閉打開的 JavaScript 對話方塊：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;acceptDialog();
+</code></pre></div>
+<p><code>dismissDialog</code>方法，通過點選取消按鈕關閉打開的 JavaScript 對話方塊（僅對確認對話方塊有效）：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;dismissDialog();
+</code></pre></div>
+<h3 id="_39">選擇器作用範圍<a class="headerlink" href="#_39" title="Permanent link">&para;</a></h3>
+<p>有時可能希望在給定的選擇器範圍內執行多個操作。比如，可能想要斷言表格中存在某些文字，然後點選表格中的一個按鈕。那麼你可以使用<code>with</code>方法實現此需求。在傳遞給<code>with</code>方法的閉包內執行的所有操作都將限於原始選擇器：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;with(&#39;.table&#39;, function (Browser $table) {
+    $table-&gt;assertSee(&#39;Hello World&#39;)
+          -&gt;clickLink(&#39;Delete&#39;);
+});
+</code></pre></div>
+<p>你可能偶爾需要在當前範圍之外執行斷言。 你可以使用<code>elsewhere</code>和<code>elsewhereWhenAvailable</code>方法來完成此操作：</p>
+<div class="highlight"><pre><span></span><code> $browser-&gt;with(&#39;.table&#39;, function ($table) {
+    // 當前範圍是 `body .table`...
+
+    $browser-&gt;elsewhere(&#39;.page-title&#39;, function ($title) {
+        // 當前範圍是 `body .page-title`...
+        $title-&gt;assertSee(&#39;Hello World&#39;);
+    });
+
+    $browser-&gt;elsewhereWhenAvailable(&#39;.page-title&#39;, function ($title) {
+        // 當前範圍是 `body .page-title`...
+        $title-&gt;assertSee(&#39;Hello World&#39;);
+    });
+ });
+</code></pre></div>
+<h3 id="_40">等待元素<a class="headerlink" href="#_40" title="Permanent link">&para;</a></h3>
+<p>在測試大面積使用 JavaScript 的應用時，在進行測試之前，通常有必要 「等待」 某些元素或資料可用。Dusk 可輕鬆實現。使用一系列方法，可以等到頁面元素可用，甚至給定的 JavaScript 表示式執行結果為<code>true</code>。</p>
+<h4 id="_41">等待<a class="headerlink" href="#_41" title="Permanent link">&para;</a></h4>
+<p>如果需要測試暫停指定的毫秒數， 使用<code>pause</code>方法：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;pause(1000);
+</code></pre></div>
+<p>如果你只需要在給定條件為<code>true</code>時暫停測試，請使用<code>pauseIf</code>方法:</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;pauseIf(App::environment(&#39;production&#39;), 1000);
+</code></pre></div>
+<p>同樣地，如果你需要暫停測試，除非給定的條件是<code>true</code>，你可以使用<code>pauseUnless</code>方法:</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;pauseUnless(App::environment(&#39;testing&#39;), 1000);
+</code></pre></div>
+<h4 id="_42">等待選擇器<a class="headerlink" href="#_42" title="Permanent link">&para;</a></h4>
+<p>該<code>waitFor</code>方法可以用於暫停執行測試，直到頁面上與給定 CSS 選擇器匹配的元素被顯示。默認情況下，將在暫停超過 5 秒後拋出異常。如有必要，可以傳遞自訂超時時長作為其第二個參數：</p>
+<div class="highlight"><pre><span></span><code>// 等待選擇器不超過 5 秒...
+$browser-&gt;waitFor(&#39;.selector&#39;);
+
+// 等待選擇器不超過 1 秒...
+$browser-&gt;waitFor(&#39;.selector&#39;, 1);
+</code></pre></div>
+<p>你也可以等待選擇器顯示給定文字：</p>
+<div class="highlight"><pre><span></span><code>//  等待選擇器不超過 5 秒包含給定文字...
+$browser-&gt;waitForTextIn(&#39;.selector&#39;, &#39;Hello World&#39;);
+
+//  等待選擇器不超過 1 秒包含給定文字...
+$browser-&gt;waitForTextIn(&#39;.selector&#39;, &#39;Hello World&#39;, 1);
+</code></pre></div>
+<p>你也可以等待指定選擇器從頁面消失:</p>
+<div class="highlight"><pre><span></span><code>// 等待不超過 5 秒 直到選擇器消失...
+$browser-&gt;waitUntilMissing(&#39;.selector&#39;);
+
+// 等待不超過 1 秒 直到選擇器消失...
+$browser-&gt;waitUntilMissing(&#39;.selector&#39;, 1);
+</code></pre></div>
+<p>或者，你可以等待與給定選擇器匹配的元素被啟用或停用：</p>
+<div class="highlight"><pre><span></span><code>// 最多等待 5 秒鐘，直到選擇器啟用...
+$browser-&gt;waitUntilEnabled(&#39;.selector&#39;);
+
+// 最多等待 1 秒鐘，直到選擇器啟用...
+$browser-&gt;waitUntilEnabled(&#39;.selector&#39;, 1);
+
+// 最多等待 5 秒鐘，直到選擇器被停用...
+$browser-&gt;waitUntilDisabled(&#39;.selector&#39;);
+
+// 最多等待 1 秒鐘，直到選擇器被停用...
+$browser-&gt;waitUntilDisabled(&#39;.selector&#39;, 1);
+</code></pre></div>
+<h4 id="_43">限定範疇範圍（可用時）<a class="headerlink" href="#_43" title="Permanent link">&para;</a></h4>
+<p>有時，你或許希望等待給定選擇器出現，然後與匹配選擇器的元素進行互動。例如，你可能希望等到模態窗口可用，然後在模態窗口中點選「確定」按鈕。在這種情況下，可以使用<code>whenAvailable</code>方法。給定回呼內的所有要執行的元素操作都將被限定在起始選擇器上:</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;whenAvailable(&#39;.modal&#39;, function (Browser $modal) {
+    $modal-&gt;assertSee(&#39;Hello World&#39;)
+          -&gt;press(&#39;OK&#39;);
+});
+</code></pre></div>
+<h4 id="_44">等待文字<a class="headerlink" href="#_44" title="Permanent link">&para;</a></h4>
+<p><code>waitForText</code>方法可以用於等待頁面上給定文字被顯示：</p>
+<div class="highlight"><pre><span></span><code>// 等待指定文字不超過 5 秒...
+$browser-&gt;waitForText(&#39;Hello World&#39;);
+
+// 等待指定文字不超過 1 秒...
+$browser-&gt;waitForText(&#39;Hello World&#39;, 1);
+</code></pre></div>
+<p>你可以使用<code>waitUntilMissingText</code>方法來等待，直到顯示的文字已從頁面中刪除為止:</p>
+<div class="highlight"><pre><span></span><code>// 等待 5 秒刪除文字...
+$browser-&gt;waitUntilMissingText(&#39;Hello World&#39;);
+
+// 等待 1 秒刪除文字...
+$browser-&gt;waitUntilMissingText(&#39;Hello World&#39;, 1);
+</code></pre></div>
+<h4 id="_45">等待連結<a class="headerlink" href="#_45" title="Permanent link">&para;</a></h4>
+<p><code>waitForLink</code>方法用於等待給定連結文字在頁面上顯示:</p>
+<div class="highlight"><pre><span></span><code>// 等待連結 5 秒...
+$browser-&gt;waitForLink(&#39;Create&#39;);
+
+// 等待連結 1 秒...
+$browser-&gt;waitForLink(&#39;Create&#39;, 1);
+</code></pre></div>
+<h4 id="_46">等待輸入<a class="headerlink" href="#_46" title="Permanent link">&para;</a></h4>
+<p><code>waitForInput</code>方法可用於等待，直到給定的輸入欄位在頁面上可見:</p>
+<div class="highlight"><pre><span></span><code>// 等待 5 秒的輸入…
+$browser-&gt;waitForInput($field);
+
+// 等待 1 秒的輸入…
+$browser-&gt;waitForInput($field, 1);
+</code></pre></div>
+<h4 id="_47">等待頁面跳轉<a class="headerlink" href="#_47" title="Permanent link">&para;</a></h4>
+<p>當給出類似<code>$browser-&gt;assertPathIs('/home')</code>的路徑斷言時，如果<code>window.location.pathname</code>被非同步更新，斷言就會失敗。可以使用<code>waitForLocation</code>方法等待頁面跳轉到給定路徑：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;waitForLocation(&#39;/secret&#39;);
+</code></pre></div>
+<p><code>waitForLocation</code>方法還可用於等待當前窗口位置成為完全限定的 URL：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;waitForLocation(&#39;https://example.com/path&#39;);
+</code></pre></div>
+<p>還可以使用<a href="/docs/laravel/10.x/routing#named-routes">被命名的路由</a>等待跳轉：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;waitForRoute($routeName, $parameters);
+</code></pre></div>
+<h4 id="_48">等待頁面重新載入<a class="headerlink" href="#_48" title="Permanent link">&para;</a></h4>
+<p>如果要在頁面重新載入後斷言，可以使用<code>waitForReload</code>方法：</p>
+<div class="highlight"><pre><span></span><code>use Laravel\Dusk\Browser;
+
+$browser-&gt;waitForReload(function (Browser $browser) {
+    $browser-&gt;press(&#39;Submit&#39;);
+})
+-&gt;assertSee(&#39;Success!&#39;);
+</code></pre></div>
+<p>由於需要等待頁面重新載入通常發生在點選按鈕之後，為了方便起見，你可以使用<code>clickAndWaitForReload</code>方法：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;clickAndWaitForReload(&#39;.selector&#39;)
+        -&gt;assertSee(&#39;something&#39;);
+</code></pre></div>
+<h4 id="javascript_2">等待 JavaScript 表示式<a class="headerlink" href="#javascript_2" title="Permanent link">&para;</a></h4>
+<p>有時候會希望暫停測試的執行，直到給定的 JavaScript 表示式執行結果為<code>true</code>。可以使用<code>waitUntil</code>方法輕鬆地達成此目的。 通過這個方法執行表示式，不需要包含<code>return</code>關鍵字或者結束分號：</p>
+<div class="highlight"><pre><span></span><code>// 等待表示式為 true 5 秒時間...
+$browser-&gt;waitUntil(&#39;App.data.servers.length &gt; 0&#39;);
+
+// 等待表示式為 true 1 秒時間...
+$browser-&gt;waitUntil(&#39;App.data.servers.length &gt; 0&#39;, 1);
+</code></pre></div>
+<h4 id="vue">等待 Vue 表示式<a class="headerlink" href="#vue" title="Permanent link">&para;</a></h4>
+<p><code>waitUntilVue</code>和<code>waitUntilVueIsNot</code>方法可以一直等待，直到 <a href="https://vuejs.org">Vue 元件</a> 的屬性包含給定的值：</p>
+<div class="highlight"><pre><span></span><code>// 一直等待，直到元件屬性包含給定的值...
+$browser-&gt;waitUntilVue(&#39;user.name&#39;, &#39;Taylor&#39;, &#39;@user&#39;);
+
+// 一直等待，直到元件屬性不包含給定的值...
+$browser-&gt;waitUntilVueIsNot(&#39;user.name&#39;, null, &#39;@user&#39;);
+</code></pre></div>
+<h4 id="javascript_3">等待 JavaScript 事件<a class="headerlink" href="#javascript_3" title="Permanent link">&para;</a></h4>
+<p><code>waitForEvent</code>方法可用於暫停測試的執行，直到 JavaScript 事件發生:</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;waitForEvent(&#39;load&#39;);
+</code></pre></div>
+<p>事件監聽器附加到當前範疇，默認情況下是<code>body</code>元素。當使用範圍選擇器時，事件監聽器將被附加到匹配的元素上:</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;with(&#39;iframe&#39;, function (Browser $iframe) {
+    // 等待 iframe 的載入事件…
+    $iframe-&gt;waitForEvent(&#39;load&#39;);
+});
+</code></pre></div>
+<p>你也可以提供一個選擇器作為<code>waitForEvent</code>方法的第二個參數，將事件監聽器附加到特定的元素上:</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;waitForEvent(&#39;load&#39;, &#39;.selector&#39;);
+</code></pre></div>
+<p>你也可以等待<code>document</code>和<code>window</code>對象上的事件:</p>
+<div class="highlight"><pre><span></span><code>// 等待文件被滾動…
+$browser-&gt;waitForEvent(&#39;scroll&#39;, &#39;document&#39;);
+
+// 等待 5 秒，直到窗口大小被調整…
+$browser-&gt;waitForEvent(&#39;resize&#39;, &#39;window&#39;, 5);
+</code></pre></div>
+<h4 id="_49">等待回呼<a class="headerlink" href="#_49" title="Permanent link">&para;</a></h4>
+<p>Dusk 中的許多 「wait」 方法都依賴於底層方法 waitUsing。你可以直接用這個方法去等待一個回呼函數返回<code>waitUsing</code>。你可以直接用這個方法去等待一個回呼函數返回<code>true</code>。該<code>waitUsing</code>方法接收一個最大的等待秒數，閉包執行間隔時間，閉包，以及一個可選的失敗資訊：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;waitUsing(10, 1, function () use ($something) {
+    return $something-&gt;isReady();
+}, &quot;有些東西沒有及時準備好。&quot;);
+</code></pre></div>
+<h3 id="_50">滾動元素到檢視中<a class="headerlink" href="#_50" title="Permanent link">&para;</a></h3>
+<p>有時你可能無法點選某個元素，因為該元素在瀏覽器的可見區域之外。該<code>scrollIntoView</code>方法可以將元素滾動到瀏覽器可視窗口內：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;scrollIntoView(&#39;.selector&#39;)
+        -&gt;click(&#39;.selector&#39;);
+</code></pre></div>
+<h2 id="_51">可用的斷言<a class="headerlink" href="#_51" title="Permanent link">&para;</a></h2>
+<p>Dusk 提供了各種你可以對應用使用的斷言。所有可用的斷言羅列如下：</p>
+<style>
+    .collection-method-list > p {
+        columns: 10.8em 3; -moz-columns: 10.8em 3; -webkit-columns: 10.8em 3;
+    }
+
+    .collection-method-list a {
+        display: block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+</style>
+
+<div class="collection-method-list">
+<p><a href="#assert-title">assertTitle</a>
+<a href="#assert-title-contains">assertTitleContains</a>
+<a href="#assert-url-is">assertUrlIs</a>
+<a href="#assert-scheme-is">assertSchemeIs</a>
+<a href="#assert-scheme-is-not">assertSchemeIsNot</a>
+<a href="#assert-host-is">assertHostIs</a>
+<a href="#assert-host-is-not">assertHostIsNot</a>
+<a href="#assert-port-is">assertPortIs</a>
+<a href="#assert-port-is-not">assertPortIsNot</a>
+<a href="#assert-path-begins-with">assertPathBeginsWith</a>
+<a href="#assert-path-is">assertPathIs</a>
+<a href="#assert-path-is-not">assertPathIsNot</a>
+<a href="#assert-route-is">assertRouteIs</a>
+<a href="#assert-query-string-has">assertQueryStringHas</a>
+<a href="#assert-query-string-missing">assertQueryStringMissing</a>
+<a href="#assert-fragment-is">assertFragmentIs</a>
+<a href="#assert-fragment-begins-with">assertFragmentBeginsWith</a>
+<a href="#assert-fragment-is-not">assertFragmentIsNot</a>
+<a href="#assert-has-cookie">assertHasCookie</a>
+<a href="#assert-has-plain-cookie">assertHasPlainCookie</a>
+<a href="#assert-cookie-missing">assertCookieMissing</a>
+<a href="#assert-plain-cookie-missing">assertPlainCookieMissing</a>
+<a href="#assert-cookie-value">assertCookieValue</a>
+<a href="#assert-plain-cookie-value">assertPlainCookieValue</a>
+<a href="#assert-see">assertSee</a>
+<a href="#assert-dont-see">assertDontSee</a>
+<a href="#assert-see-in">assertSeeIn</a>
+<a href="#assert-dont-see-in">assertDontSeeIn</a>
+<a href="#assert-see-anything-in">assertSeeAnythingIn</a>
+<a href="#assert-see-nothing-in">assertSeeNothingIn</a>
+<a href="#assert-script">assertScript</a>
+<a href="#assert-source-has">assertSourceHas</a>
+<a href="#assert-source-missing">assertSourceMissing</a>
+<a href="#assert-see-link">assertSeeLink</a>
+<a href="#assert-dont-see-link">assertDontSeeLink</a>
+<a href="#assert-input-value">assertInputValue</a>
+<a href="#assert-input-value-is-not">assertInputValueIsNot</a>
+<a href="#assert-checked">assertChecked</a>
+<a href="#assert-not-checked">assertNotChecked</a>
+<a href="#assert-indeterminate">assertIndeterminate</a>
+<a href="#assert-radio-selected">assertRadioSelected</a>
+<a href="#assert-radio-not-selected">assertRadioNotSelected</a>
+<a href="#assert-selected">assertSelected</a>
+<a href="#assert-not-selected">assertNotSelected</a>
+<a href="#assert-select-has-options">assertSelectHasOptions</a>
+<a href="#assert-select-missing-options">assertSelectMissingOptions</a>
+<a href="#assert-select-has-option">assertSelectHasOption</a>
+<a href="#assert-select-missing-option">assertSelectMissingOption</a>
+<a href="#assert-value">assertValue</a>
+<a href="#assert-value-is-not">assertValueIsNot</a>
+<a href="#assert-attribute">assertAttribute</a>
+<a href="#assert-attribute-contains">assertAttributeContains</a>
+<a href="#assert-aria-attribute">assertAriaAttribute</a>
+<a href="#assert-data-attribute">assertDataAttribute</a>
+<a href="#assert-visible">assertVisible</a>
+<a href="#assert-present">assertPresent</a>
+<a href="#assert-not-present">assertNotPresent</a>
+<a href="#assert-missing">assertMissing</a>
+<a href="#assert-input-present">assertInputPresent</a>
+<a href="#assert-input-missing">assertInputMissing</a>
+<a href="#assert-dialog-opened">assertDialogOpened</a>
+<a href="#assert-enabled">assertEnabled</a>
+<a href="#assert-disabled">assertDisabled</a>
+<a href="#assert-button-enabled">assertButtonEnabled</a>
+<a href="#assert-button-disabled">assertButtonDisabled</a>
+<a href="#assert-focused">assertFocused</a>
+<a href="#assert-not-focused">assertNotFocused</a>
+<a href="#assert-authenticated">assertAuthenticated</a>
+<a href="#assert-guest">assertGuest</a>
+<a href="#assert-authenticated-as">assertAuthenticatedAs</a>
+<a href="#assert-vue">assertVue</a>
+<a href="#assert-vue-is-not">assertVueIsNot</a>
+<a href="#assert-vue-contains">assertVueContains</a>
+<a href="#assert-vue-does-not-contain">assertVueDoesNotContain</a></p>
+</div>
+<h4 id="asserttitle">assertTitle<a class="headerlink" href="#asserttitle" title="Permanent link">&para;</a></h4>
+<p>斷言頁面標題為給定文字：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;assertTitle($title);
+</code></pre></div>
+<h4 id="asserttitlecontains">assertTitleContains<a class="headerlink" href="#asserttitlecontains" title="Permanent link">&para;</a></h4>
+<p>斷言頁面標題包含給定文字：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;assertTitleContains($title);
+</code></pre></div>
+<h4 id="asserturlis">assertUrlIs<a class="headerlink" href="#asserturlis" title="Permanent link">&para;</a></h4>
+<p>斷言當前的 URL（不包含 query string）是給定的字串：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;assertUrlIs($url);
+</code></pre></div>
+<h4 id="assertschemeis">assertSchemeIs<a class="headerlink" href="#assertschemeis" title="Permanent link">&para;</a></h4>
+<p>斷言當前的 URL scheme 是給定的 scheme：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;assertSchemeIs($scheme);
+</code></pre></div>
+<h4 id="assertschemeisnot">assertSchemeIsNot<a class="headerlink" href="#assertschemeisnot" title="Permanent link">&para;</a></h4>
+<p>斷言當前的 URL scheme 不是給定的 scheme：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;assertSchemeIsNot($scheme);
+</code></pre></div>
+<h4 id="asserthostis">assertHostIs<a class="headerlink" href="#asserthostis" title="Permanent link">&para;</a></h4>
+<p>斷言當前的 URL host 是給定的 host：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;assertHostIs($host);
+</code></pre></div>
+<h4 id="asserthostisnot">assertHostIsNot<a class="headerlink" href="#asserthostisnot" title="Permanent link">&para;</a></h4>
+<p>斷言當前的 URL host 不是給定的 host：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;assertHostIsNot($host);
+</code></pre></div>
+<h4 id="assertportis">assertPortIs<a class="headerlink" href="#assertportis" title="Permanent link">&para;</a></h4>
+<p>斷言當前的 URL 連接埠是給定的連接埠：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;assertPortIs($port);
+</code></pre></div>
+<h4 id="assertportisnot">assertPortIsNot<a class="headerlink" href="#assertportisnot" title="Permanent link">&para;</a></h4>
+<p>斷言當前的 URL 連接埠不是給定的連接埠：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;assertPortIsNot($port);
+</code></pre></div>
+<h4 id="assertpathbeginswith">assertPathBeginsWith<a class="headerlink" href="#assertpathbeginswith" title="Permanent link">&para;</a></h4>
+<p>斷言當前的 URL 路徑以給定的路徑開始：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;assertPathBeginsWith(&#39;/home&#39;);
+</code></pre></div>
+<h4 id="assertpathis">assertPathIs<a class="headerlink" href="#assertpathis" title="Permanent link">&para;</a></h4>
+<p>斷言當前的路徑是給定的路徑：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;assertPathIs(&#39;/home&#39;);
+</code></pre></div>
+<h4 id="assertpathisnot">assertPathIsNot<a class="headerlink" href="#assertpathisnot" title="Permanent link">&para;</a></h4>
+<p>斷言當前的路徑不是給定的路徑：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;assertPathIsNot(&#39;/home&#39;);
+</code></pre></div>
+<h4 id="assertrouteis">assertRouteIs<a class="headerlink" href="#assertrouteis" title="Permanent link">&para;</a></h4>
+<p>斷言給定的 URL 是給定的<a href="/docs/laravel/10.x/routing#named-routes">命名路由</a>的 URL:</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;assertRouteIs($name, $parameters);
+</code></pre></div>
+<h4 id="assertquerystringhas">assertQueryStringHas<a class="headerlink" href="#assertquerystringhas" title="Permanent link">&para;</a></h4>
+<p>斷言給定的查詢字串參數存在：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;assertQueryStringHas($name);
+</code></pre></div>
+<p>斷言給定的查詢字串參數存在並且具有給定的值：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;assertQueryStringHas($name, $value);
+</code></pre></div>
+<h4 id="assertquerystringmissing">assertQueryStringMissing<a class="headerlink" href="#assertquerystringmissing" title="Permanent link">&para;</a></h4>
+<p>斷言缺少給定的查詢字串參數：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;assertQueryStringMissing($name);
+</code></pre></div>
+<h4 id="assertfragmentis">assertFragmentIs<a class="headerlink" href="#assertfragmentis" title="Permanent link">&para;</a></h4>
+<p>斷言 URL 的當前雜湊片段與給定的片段匹配：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;assertFragmentIs(&#39;anchor&#39;);
+</code></pre></div>
+<h4 id="assertfragmentbeginswith">assertFragmentBeginsWith<a class="headerlink" href="#assertfragmentbeginswith" title="Permanent link">&para;</a></h4>
+<p>斷言 URL 的當前雜湊片段以給定片段開頭：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;assertFragmentBeginsWith(&#39;anchor&#39;);
+</code></pre></div>
+<h4 id="assertfragmentisnot">assertFragmentIsNot<a class="headerlink" href="#assertfragmentisnot" title="Permanent link">&para;</a></h4>
+<p>斷言 URL 的當前雜湊片段與給定的片段不匹配：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;assertFragmentIsNot(&#39;anchor&#39;);
+</code></pre></div>
+<h4 id="asserthascookie">assertHasCookie<a class="headerlink" href="#asserthascookie" title="Permanent link">&para;</a></h4>
+<p>斷言給定的加密 cookie 存在:</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;assertHasCookie($name);
+</code></pre></div>
+<h4 id="asserthasplaincookie">assertHasPlainCookie<a class="headerlink" href="#asserthasplaincookie" title="Permanent link">&para;</a></h4>
+<p>斷言給定的未加密 cookie 存在：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;assertHasPlainCookie($name);
+</code></pre></div>
+<h4 id="assertcookiemissing">assertCookieMissing<a class="headerlink" href="#assertcookiemissing" title="Permanent link">&para;</a></h4>
+<p>斷言給定的加密 cookie 不存在：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;assertCookieMissing($name);
+</code></pre></div>
+<h4 id="assertplaincookiemissing">assertPlainCookieMissing<a class="headerlink" href="#assertplaincookiemissing" title="Permanent link">&para;</a></h4>
+<p>斷言給定的未加密 cookie 不存在：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;assertPlainCookieMissing($name);
+</code></pre></div>
+<h4 id="assertcookievalue">assertCookieValue<a class="headerlink" href="#assertcookievalue" title="Permanent link">&para;</a></h4>
+<p>斷言加密的 cookie 具有給定值：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;assertCookieValue($name, $value);
+</code></pre></div>
+<h4 id="assertplaincookievalue">assertPlainCookieValue<a class="headerlink" href="#assertplaincookievalue" title="Permanent link">&para;</a></h4>
+<p>斷言未加密的 cookie 具有給定值：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;assertPlainCookieValue($name, $value);
+</code></pre></div>
+<h4 id="assertsee">assertSee<a class="headerlink" href="#assertsee" title="Permanent link">&para;</a></h4>
+<p>斷言在頁面中有給定的文字：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;assertSee($text);
+</code></pre></div>
+<h4 id="assertdontsee">assertDontSee<a class="headerlink" href="#assertdontsee" title="Permanent link">&para;</a></h4>
+<p>斷言在頁面中沒有給定的文字：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;assertDontSee($text);
+</code></pre></div>
+<h4 id="assertseein">assertSeeIn<a class="headerlink" href="#assertseein" title="Permanent link">&para;</a></h4>
+<p>斷言在選擇器中有給定的文字：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;assertSeeIn($selector, $text);
+</code></pre></div>
+<h4 id="assertdontseein">assertDontSeeIn<a class="headerlink" href="#assertdontseein" title="Permanent link">&para;</a></h4>
+<p>斷言在選擇器中不存在給定的文字：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;assertDontSeeIn($selector, $text);
+</code></pre></div>
+<h4 id="assertseeanythingin">assertSeeAnythingIn<a class="headerlink" href="#assertseeanythingin" title="Permanent link">&para;</a></h4>
+<p>斷言在選擇器中存在任意的文字：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;assertSeeAnythingIn($selector);
+</code></pre></div>
+<p>斷言在選擇器中不存在文字：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;assertSeeNothingIn($selector);
+</code></pre></div>
+<h4 id="assertscript">assertScript<a class="headerlink" href="#assertscript" title="Permanent link">&para;</a></h4>
+<p>斷言給定的 JavaScript 表示式結果為給定的值：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;assertScript(&#39;window.isLoaded&#39;)
+        -&gt;assertScript(&#39;document.readyState&#39;, &#39;complete&#39;);
+</code></pre></div>
+<h4 id="assertsourcehas">assertSourceHas<a class="headerlink" href="#assertsourcehas" title="Permanent link">&para;</a></h4>
+<p>斷言在頁面中存在給定的原始碼：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;assertSourceHas($code);
+</code></pre></div>
+<h4 id="assertsourcemissing">assertSourceMissing<a class="headerlink" href="#assertsourcemissing" title="Permanent link">&para;</a></h4>
+<p>斷言頁面中沒有給定的原始碼：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;assertSourceMissing($code);
+</code></pre></div>
+<h4 id="assertseelink">assertSeeLink<a class="headerlink" href="#assertseelink" title="Permanent link">&para;</a></h4>
+<p>斷言在頁面中存在指定的連結：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;assertSeeLink($linkText);
+</code></pre></div>
+<h4 id="assertdontseelink">assertDontSeeLink<a class="headerlink" href="#assertdontseelink" title="Permanent link">&para;</a></h4>
+<p>斷言頁面中沒有指定的連結：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;assertDontSeeLink($linkText);
+</code></pre></div>
+<h4 id="assertinputvalue">assertInputValue<a class="headerlink" href="#assertinputvalue" title="Permanent link">&para;</a></h4>
+<p>斷言輸入框（input）有給定的值：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;assertInputValue($field, $value);
+</code></pre></div>
+<h4 id="assertinputvalueisnot">assertInputValueIsNot<a class="headerlink" href="#assertinputvalueisnot" title="Permanent link">&para;</a></h4>
+<p>斷言輸入框沒有給定的值：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;assertInputValueIsNot($field, $value);
+</code></pre></div>
+<h4 id="assertchecked">assertChecked<a class="headerlink" href="#assertchecked" title="Permanent link">&para;</a></h4>
+<p>斷言複選框（checkbox）被選中：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;assertChecked($field);
+</code></pre></div>
+<h4 id="assertnotchecked">assertNotChecked<a class="headerlink" href="#assertnotchecked" title="Permanent link">&para;</a></h4>
+<p>斷言複選框沒有被選中：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;assertNotChecked($field);
+</code></pre></div>
+<h4 id="assertradioselected">assertRadioSelected<a class="headerlink" href="#assertradioselected" title="Permanent link">&para;</a></h4>
+<p>斷言單選框（radio）被選中：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;assertRadioSelected($field, $value);
+</code></pre></div>
+<h4 id="assertradionotselected">assertRadioNotSelected<a class="headerlink" href="#assertradionotselected" title="Permanent link">&para;</a></h4>
+<p>斷言單選框（radio）沒有被選中：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;assertRadioNotSelected($field, $value);
+</code></pre></div>
+<p><a name="assert-selected"></a></p>
+<h4 id="assertselected">assertSelected<a class="headerlink" href="#assertselected" title="Permanent link">&para;</a></h4>
+<p>斷言下拉框有給定的值:</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;assertSelected($field, $value);
+</code></pre></div>
+<p>斷言下拉框沒有給定的值：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;assertNotSelected($field, $value);
+</code></pre></div>
+<p><a name="assert-select-has-options"></a></p>
+<h4 id="assertselecthasoptions">assertSelectHasOptions<a class="headerlink" href="#assertselecthasoptions" title="Permanent link">&para;</a></h4>
+<p>斷言給定的陣列值是可選的：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;assertSelectHasOptions($field, $values);
+</code></pre></div>
+<p><a name="assert-select-missing-options"></a></p>
+<h4 id="assertselectmissingoptions">assertSelectMissingOptions<a class="headerlink" href="#assertselectmissingoptions" title="Permanent link">&para;</a></h4>
+<p>斷言給定的陣列值是不可選的：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;assertSelectMissingOptions($field, $values);
+</code></pre></div>
+<p><a name="assert-select-has-option"></a></p>
+<h4 id="assertselecthasoption">assertSelectHasOption<a class="headerlink" href="#assertselecthasoption" title="Permanent link">&para;</a></h4>
+<p>斷言給定的值在給定的地方是可供選擇的：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;assertSelectHasOption($field, $value);
+</code></pre></div>
+<p><a name="assert-select-missing-option"></a></p>
+<h4 id="assertselectmissingoption">assertSelectMissingOption<a class="headerlink" href="#assertselectmissingoption" title="Permanent link">&para;</a></h4>
+<p>斷言給定的值不可選：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;assertSelectMissingOption($field, $value);
+</code></pre></div>
+<p><a name="assert-value"></a></p>
+<h4 id="assertvalue">assertValue<a class="headerlink" href="#assertvalue" title="Permanent link">&para;</a></h4>
+<p>斷言選擇器範圍內的元素存在指定的值：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;assertValue($selector, $value);
+</code></pre></div>
+<p><a name="assert-value-is-not"></a></p>
+<h4 id="assertvalueisnot">assertValueIsNot<a class="headerlink" href="#assertvalueisnot" title="Permanent link">&para;</a></h4>
+<p>斷言選擇器範圍內的元素不存在指定的值：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;assertValueIsNot($selector, $value);
+</code></pre></div>
+<p><a name="assert-attribute"></a></p>
+<h4 id="assertattribute">assertAttribute<a class="headerlink" href="#assertattribute" title="Permanent link">&para;</a></h4>
+<p>斷言與給定選擇器匹配的元素在提供的屬性中具有給定的值：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;assertAttribute($selector, $attribute, $value);
+</code></pre></div>
+<p><a name="assert-attribute-contains"></a></p>
+<h4 id="assertattributecontains">assertAttributeContains<a class="headerlink" href="#assertattributecontains" title="Permanent link">&para;</a></h4>
+<p>斷言匹配給定選擇器的元素在提供的屬性中包含給定值：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;assertAttributeContains($selector, $attribute, $value);
+</code></pre></div>
+<p><a name="assert-aria-attribute"></a></p>
+<h4 id="assertariaattribute">assertAriaAttribute<a class="headerlink" href="#assertariaattribute" title="Permanent link">&para;</a></h4>
+<p>斷言與給定選擇器匹配的元素在給定的 aria 屬性中具有給定的值：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;assertAriaAttribute($selector, $attribute, $value);
+</code></pre></div>
+<p>例如，給定標記<code>&lt;button aria-label="Add"&gt;&lt;/button&gt;</code>，你可以像這樣聲明<code>aria-label</code>屬性：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;assertAriaAttribute(&#39;button&#39;, &#39;label&#39;, &#39;Add&#39;)
+</code></pre></div>
+<p><a name="assert-data-attribute"></a></p>
+<h4 id="assertdataattribute">assertDataAttribute<a class="headerlink" href="#assertdataattribute" title="Permanent link">&para;</a></h4>
+<p>斷言與給定選擇器匹配的元素在提供的 data 屬性中具有給定的值：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;assertDataAttribute($selector, $attribute, $value);
+</code></pre></div>
+<p>例如，給定標記<code>&lt;tr id="row-1" data-content="attendees"&gt;&lt;/tr&gt;</code>，你可以像這樣斷言<code>data-label</code>屬性：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;assertDataAttribute(&#39;#row-1&#39;, &#39;content&#39;, &#39;attendees&#39;)
+</code></pre></div>
+<p><a name="assert-visible"></a></p>
+<h4 id="assertvisible">assertVisible<a class="headerlink" href="#assertvisible" title="Permanent link">&para;</a></h4>
+<p>斷言匹配給定選擇器的元素可見:</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;assertVisible($selector);
+</code></pre></div>
+<p><a name="assert-present"></a></p>
+<h4 id="assertpresent">assertPresent<a class="headerlink" href="#assertpresent" title="Permanent link">&para;</a></h4>
+<p>斷言匹配給定選擇器的元素存在：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;assertPresent($selector);
+</code></pre></div>
+<p><a name="assert-not-present"></a></p>
+<h4 id="assertnotpresent">assertNotPresent<a class="headerlink" href="#assertnotpresent" title="Permanent link">&para;</a></h4>
+<p>斷言源中不存在與給定選擇器匹配的元素：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;assertNotPresent($selector);
+</code></pre></div>
+<p><a name="assert-missing"></a></p>
+<h4 id="assertmissing">assertMissing<a class="headerlink" href="#assertmissing" title="Permanent link">&para;</a></h4>
+<p>斷言匹配給定選擇器的元素不可見：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;assertMissing($selector);
+</code></pre></div>
+<p><a name="assert-input-present"></a></p>
+<h4 id="assertinputpresent">assertInputPresent<a class="headerlink" href="#assertinputpresent" title="Permanent link">&para;</a></h4>
+<p>斷言具有給定名稱的輸入存在：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;assertInputPresent($name);
+</code></pre></div>
+<p><a name="assert-input-missing"></a></p>
+<h4 id="assertinputmissing">assertInputMissing<a class="headerlink" href="#assertinputmissing" title="Permanent link">&para;</a></h4>
+<p>斷言源中不存在具有給定名稱的輸入：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;assertInputMissing($name);
+</code></pre></div>
+<p><a name="assert-dialog-opened"></a></p>
+<h4 id="assertdialogopened">assertDialogOpened<a class="headerlink" href="#assertdialogopened" title="Permanent link">&para;</a></h4>
+<p>斷言已打開帶有給定消息的 JavaScript 對話方塊：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;assertDialogOpened($message);
+</code></pre></div>
+<p><a name="assert-enabled"></a></p>
+<h4 id="assertenabled">assertEnabled<a class="headerlink" href="#assertenabled" title="Permanent link">&para;</a></h4>
+<p>斷言給定的欄位已啟用：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;assertEnabled($field);
+</code></pre></div>
+<p><a name="assert-disabled"></a></p>
+<h4 id="assertdisabled">assertDisabled<a class="headerlink" href="#assertdisabled" title="Permanent link">&para;</a></h4>
+<p>斷言給定的欄位被停用：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;assertDisabled($field);
+</code></pre></div>
+<p><a name="assert-button-enabled"></a></p>
+<h4 id="assertbuttonenabled">assertButtonEnabled<a class="headerlink" href="#assertbuttonenabled" title="Permanent link">&para;</a></h4>
+<p>斷言給定的按鈕已啟用：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;assertButtonEnabled($button);
+</code></pre></div>
+<p><a name="assert-button-disabled"></a></p>
+<h4 id="assertbuttondisabled">assertButtonDisabled<a class="headerlink" href="#assertbuttondisabled" title="Permanent link">&para;</a></h4>
+<p>斷言給定的按鈕被停用：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;assertButtonDisabled($button);
+</code></pre></div>
+<p><a name="assert-focused"></a></p>
+<h4 id="assertfocused">assertFocused<a class="headerlink" href="#assertfocused" title="Permanent link">&para;</a></h4>
+<p>斷言給定的欄位是焦點：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;assertFocused($field);
+</code></pre></div>
+<p><a name="assert-not-focused"></a></p>
+<h4 id="assertnotfocused">assertNotFocused<a class="headerlink" href="#assertnotfocused" title="Permanent link">&para;</a></h4>
+<p>斷言給定欄位未聚焦：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;assertNotFocused($field);
+</code></pre></div>
+<p><a name="assert-authenticated"></a></p>
+<h4 id="assertauthenticated">assertAuthenticated<a class="headerlink" href="#assertauthenticated" title="Permanent link">&para;</a></h4>
+<p>斷言使用者已通過身份驗證：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;assertAuthenticated();
+</code></pre></div>
+<p><a name="assert-guest"></a></p>
+<h4 id="assertguest">assertGuest<a class="headerlink" href="#assertguest" title="Permanent link">&para;</a></h4>
+<p>斷言使用者未通過身份驗證：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;assertGuest();
+</code></pre></div>
+<p><a name="assert-authenticated-as"></a></p>
+<h4 id="assertauthenticatedas">assertAuthenticatedAs<a class="headerlink" href="#assertauthenticatedas" title="Permanent link">&para;</a></h4>
+<p>斷言使用者已作為給定使用者進行身份驗證：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;assertAuthenticatedAs($user);
+</code></pre></div>
+<p><a name="assert-vue"></a></p>
+<h4 id="assertvue">assertVue<a class="headerlink" href="#assertvue" title="Permanent link">&para;</a></h4>
+<p>Dusk 甚至允許你對 <a href="https://vuejs.org">Vue 元件</a>資料的狀態進行斷言。例如，假設你的應用程式包含以下 Vue 元件：</p>
+<div class="highlight"><pre><span></span><code>// HTML...
+
+&lt;profile dusk=&quot;profile-component&quot;&gt;&lt;/profile&gt;
+
+// 元件定義...
+
+Vue.component(&#39;profile&#39;, {
+    template: &#39;&lt;div&gt;{{ user.name }}&lt;/div&gt;&#39;,
+
+    data: function () {
+        return {
+            user: {
+                name: &#39;Taylor&#39;
+            }
+        };
+    }
+});
+</code></pre></div>
+<p>你可以像這樣斷言 Vue 元件的狀態：</p>
+<div class="highlight"><pre><span></span><code>/**
+ * 一個基本的 Vue 測試示例
+ *
+ * @return void
+ */
+public function testVue()
+{
+    $this-&gt;browse(function (Browser $browser) {
+        $browser-&gt;visit(&#39;/&#39;)
+                -&gt;assertVue(&#39;user.name&#39;, &#39;Taylor&#39;, &#39;@profile-component&#39;);
+    });
+}
+</code></pre></div>
+<p><a name="assert-vue-is-not"></a></p>
+<h4 id="assertvueisnot">assertVueIsNot<a class="headerlink" href="#assertvueisnot" title="Permanent link">&para;</a></h4>
+<p>斷言 Vue 元件資料的屬性不匹配給定的值：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;assertVueIsNot($property, $value, $componentSelector = null);
+</code></pre></div>
+<p><a name="assert-vue-contains"></a></p>
+<h4 id="assertvuecontains">assertVueContains<a class="headerlink" href="#assertvuecontains" title="Permanent link">&para;</a></h4>
+<p>斷言 Vue 元件資料的屬性是一個陣列，并包含給定的值：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;assertVueContains($property, $value, $componentSelector = null);
+</code></pre></div>
+<p><a name="assert-vue-does-not-contain"></a></p>
+<h4 id="assertvuedoesnotcontain">assertVueDoesNotContain<a class="headerlink" href="#assertvuedoesnotcontain" title="Permanent link">&para;</a></h4>
+<p>斷言 Vue 元件資料的屬性是一個陣列，且不包含給定的值：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;assertVueDoesNotContain($property, $value, $componentSelector = null);
+</code></pre></div>
+<p><a name="pages"></a></p>
+<h2 id="pages">Pages<a class="headerlink" href="#pages" title="Permanent link">&para;</a></h2>
+<p>有時，測試需要按順序執行幾個複雜的操作。這會使測試程式碼更難閱讀和理解。 Dusk Pages 允許你定義語義化的操作，然後可以通過單一方法在給定頁面上執行這些操作。Pages 還可以為應用或單個頁面定義通用選擇器的快捷方式。</p>
+<p><a name="generating-pages"></a></p>
+<h3 id="pages_1">生成 Pages<a class="headerlink" href="#pages_1" title="Permanent link">&para;</a></h3>
+<p><code>dusk:page</code>Artisan 命令可以生成頁面對象。所有的頁面對象都位於<code>tests/Browser/Pages</code>目錄：</p>
+<div class="highlight"><pre><span></span><code>php artisan dusk:page Login
+</code></pre></div>
+<p><a name="configuring-pages"></a></p>
+<h3 id="pages_2">組態 Pages<a class="headerlink" href="#pages_2" title="Permanent link">&para;</a></h3>
+<p>默認情況下，頁面具有三種方法：<code>url</code>、<code>assert</code>和<code>elements</code>。我們現在將討論 <code>url</code>和<code>assert</code>方法。<code>elements</code>方法將<a href="#shorthand-selectors">在下面更詳細地討論</a>。</p>
+<p><a name="the-url-method"></a></p>
+<h4 id="url"><code>url</code> 方法<a class="headerlink" href="#url" title="Permanent link">&para;</a></h4>
+<p><code>url</code>方法應該返回表示頁面 URL 的路徑。 Dusk 將會在瀏覽器中使用這個 URL 來導航到具體頁面：</p>
+<div class="highlight"><pre><span></span><code>/**
+ * 獲取頁面的 URL。
+ *
+ * @return string
+ */
+public function url()
+{
+    return &#39;/login&#39;;
+}
+</code></pre></div>
+<p><a name="the-assert-method"></a></p>
+<h4 id="assert"><code>assert</code> 方法<a class="headerlink" href="#assert" title="Permanent link">&para;</a></h4>
+<p><code>assert</code>方法可以作出任何斷言來驗證瀏覽器是否在指定頁面上。實際上沒有必要在這個方法中放置任何東西；但是，你可以按自己的需求來做出這些斷言。導航到頁面時，這些斷言將自動運行：</p>
+<div class="highlight"><pre><span></span><code>/**
+ * 斷言瀏覽器當前處於指定頁面。
+ */
+public function assert(Browser $browser): void
+{
+    $browser-&gt;assertPathIs($this-&gt;url());
+}
+</code></pre></div>
+<p><a name="navigating-to-pages"></a></p>
+<h3 id="_52">導航至頁面<a class="headerlink" href="#_52" title="Permanent link">&para;</a></h3>
+<p>一旦頁面定義好之後，你可以使用<code>visit</code>方法導航至頁面：</p>
+<div class="highlight"><pre><span></span><code>use Tests\Browser\Pages\Login;
+
+$browser-&gt;visit(new Login);
+</code></pre></div>
+<p>有時你可能已經在給定的頁面上，需要將頁面的選擇器和方法「載入」到當前的測試上下文中。 這在通過按鈕重新導向到指定頁面而沒有明確導航到該頁面時很常見。 在這種情況下，你可以使用<code>on</code>方法載入頁面：</p>
+<div class="highlight"><pre><span></span><code>use Tests\Browser\Pages\CreatePlaylist;
+
+$browser-&gt;visit(&#39;/dashboard&#39;)
+        -&gt;clickLink(&#39;Create Playlist&#39;)
+        -&gt;on(new CreatePlaylist)
+        -&gt;assertSee(&#39;@create&#39;);
+</code></pre></div>
+<p><a name="shorthand-selectors"></a></p>
+<h3 id="_53">選擇器簡寫<a class="headerlink" href="#_53" title="Permanent link">&para;</a></h3>
+<p>該<code>elements</code>方法允許你為頁面中的任何 CSS 選擇器定義簡單易記的簡寫。例如，讓我們為應用登錄頁中的 email 輸入框定義一個簡寫：</p>
+<div class="highlight"><pre><span></span><code>/**
+ * 獲取頁面元素的簡寫。
+ *
+ * @return array&lt;string, string&gt;
+ */
+public function elements(): array
+{
+    return [
+        &#39;@email&#39; =&gt; &#39;input[name=email]&#39;,
+    ];
+}
+</code></pre></div>
+<p>一旦定義了簡寫，你就可以用這個簡寫來代替之前在頁面中使用的完整 CSS 選擇器：</p>
+<div class="highlight"><pre><span></span><code>$browser-&gt;type(&#39;@email&#39;, &#39;taylor@laravel.com&#39;);
+</code></pre></div>
+<p><a name="global-shorthand-selectors"></a></p>
+<h4 id="_54">全域的選擇器簡寫<a class="headerlink" href="#_54" title="Permanent link">&para;</a></h4>
+<p>安裝 Dusk 之後，<code>Page</code>基類存放在你的<code>tests/Browser/Pages</code>目錄。該類中包含一個<code>siteElements</code>方法，這個方法可以用來定義全域的選擇器簡寫，這樣在你應用中每個頁面都可以使用這些全域選擇器簡寫了：</p>
+<div class="highlight"><pre><span></span><code>/**
+ * 獲取站點全域的選擇器簡寫。
+ *
+ * @return array&lt;string, string&gt;
+ */
+public static function siteElements(): array
+{
+    return [
+        &#39;@element&#39; =&gt; &#39;#selector&#39;,
+    ];
+}
+</code></pre></div>
+<p><a name="page-methods"></a></p>
+<h3 id="_55">頁面方法<a class="headerlink" href="#_55" title="Permanent link">&para;</a></h3>
+<p>除了頁面中已經定義的默認方法之外，你還可以定義在整個測試過程中會使用到的其他方法。例如，假設我們正在開發一個音樂管理應用，在應用中每個頁面都可能需要一個公共的方法來建立播放列表，而不是在每一個測試類中都重寫一遍建立播放列表的邏輯，這時候你可以在你的頁面類中定義一個<code>createPlaylist</code>方法：</p>
+<div class="highlight"><pre><span></span><code>&lt;?php
+
+namespace Tests\Browser\Pages;
+
+use Laravel\Dusk\Browser;
+
+class Dashboard extends Page
+{
+    // 其他頁面方法...
+
+    /**
+     * 建立一個新的播放列表。
+     */
+    public function createPlaylist(Browser $browser, string $name): void
+    {
+        $browser-&gt;type(&#39;name&#39;, $name)
+                -&gt;check(&#39;share&#39;)
+                -&gt;press(&#39;Create Playlist&#39;);
+    }
+}
+</code></pre></div>
+<p>方法被定義之後，你可以在任何使用到該頁的測試中使用它了。瀏覽器實例會自動作為第一個參數傳遞給自訂頁面方法：</p>
+<div class="highlight"><pre><span></span><code>use Tests\Browser\Pages\Dashboard;
+
+$browser-&gt;visit(new Dashboard)
+        -&gt;createPlaylist(&#39;My Playlist&#39;)
+        -&gt;assertSee(&#39;My Playlist&#39;);
+</code></pre></div>
+<p><a name="components"></a></p>
+<h2 id="_56">元件<a class="headerlink" href="#_56" title="Permanent link">&para;</a></h2>
+<p>元件類似於 Dusk 的 「頁面對象」，不過它更多的是貫穿整個應用程式中頻繁重用的 UI 和功能片斷，比如說導覽列或資訊通知彈窗。因此，元件並不會繫結於某個明確的 URL。</p>
+<p><a name="generating-components"></a></p>
+<h3 id="_57">生成元件<a class="headerlink" href="#_57" title="Permanent link">&para;</a></h3>
+<p>使用<code>dusk:component</code>Artisan 命令即可生成元件。新生成的元件位於<code>tests/Browser/Components</code>目錄下：</p>
+<div class="highlight"><pre><span></span><code>php artisan dusk:component DatePicker
+</code></pre></div>
+<p>如上所示，這是生成一個「日期選擇器」（date picker）元件的示例，這個元件可能會貫穿使用在你應用程式的許多頁面中。在整個測試套件的大量測試頁面中，手動編寫日期選擇的瀏覽器自動化邏輯會非常麻煩。 更方便的替代辦法是，定義一個表示日期選擇器的 Dusk 元件，然後把自動化邏輯封裝在該元件內：</p>
+<div class="highlight"><pre><span></span><code>&lt;?php
+
+namespace Tests\Browser\Components;
+
+use Laravel\Dusk\Browser;
+use Laravel\Dusk\Component as BaseComponent;
+
+class DatePicker extends BaseComponent
+{
+    /**
+     * 獲取元件的 root selector。
+     */
+    public function selector(): string
+    {
+        return &#39;.date-picker&#39;;
+    }
+
+    /**
+     * 斷言瀏覽器包含元件。
+     */
+    public function assert(Browser $browser): void
+    {
+        $browser-&gt;assertVisible($this-&gt;selector());
+    }
+
+    /**
+     * 讀取元件的元素簡寫。
+     *
+     * @return array&lt;string, string&gt;
+     */
+    public function elements(): array
+    {
+        return [
+            &#39;@date-field&#39; =&gt; &#39;input.datepicker-input&#39;,
+            &#39;@year-list&#39; =&gt; &#39;div &gt; div.datepicker-years&#39;,
+            &#39;@month-list&#39; =&gt; &#39;div &gt; div.datepicker-months&#39;,
+            &#39;@day-list&#39; =&gt; &#39;div &gt; div.datepicker-days&#39;,
+        ];
+    }
+
+    /**
+     * 選擇給定日期。
+     */
+    public function selectDate(Browser $browser, int $year, int $month, int $day): void
+    {
+        $browser-&gt;click(&#39;@date-field&#39;)
+                -&gt;within(&#39;@year-list&#39;, function (Browser $browser) use ($year) {
+                    $browser-&gt;click($year);
+                })
+                -&gt;within(&#39;@month-list&#39;, function (Browser $browser) use ($month) {
+                    $browser-&gt;click($month);
+                })
+                -&gt;within(&#39;@day-list&#39;, function (Browser $browser) use ($day) {
+                    $browser-&gt;click($day);
+                });
+    }
+}
+</code></pre></div>
+<p><a name="using-components"></a></p>
+<h3 id="_58">使用元件<a class="headerlink" href="#_58" title="Permanent link">&para;</a></h3>
+<p>當元件被定義了之後，我們就可以輕鬆的在任意測試頁面通過日期選擇器選擇一個日期。並且，如果選擇日期的邏輯發生了變化，我們只需要更新元件即可：</p>
+<div class="highlight"><pre><span></span><code>&lt;?php
+
+namespace Tests\Browser;
+
+use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Laravel\Dusk\Browser;
+use Tests\Browser\Components\DatePicker;
+use Tests\DuskTestCase;
+
+class ExampleTest extends DuskTestCase
+{
+    /**
+     * 一個基礎的元件測試用例.
+     */
+    public function test_basic_example(): void
+    {
+        $this-&gt;browse(function (Browser $browser) {
+            $browser-&gt;visit(&#39;/&#39;)
+                    -&gt;within(new DatePicker, function (Browser $browser) {
+                        $browser-&gt;selectDate(2019, 1, 30);
+                    })
+                    -&gt;assertSee(&#39;January&#39;);
+        });
+    }
+}
+</code></pre></div>
+<p><a name="continuous-integration"></a></p>
+<h2 id="_59">持續整合<a class="headerlink" href="#_59" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p><strong>注意</strong>
+大多數 Dusk 持續整合組態都希望你的 Laravel 應用程式使用連接埠 8000 上的內建 PHP 開發伺服器提供服務。因此，你應該確保持續整合環境有一個值為 <code>http://127.0.0.1:8000</code> 的 <code>APP_URL</code> 環境變數。</p>
+</blockquote>
+<p><a name="running-tests-on-heroku-ci"></a></p>
+<h3 id="heroku-ci">Heroku CI<a class="headerlink" href="#heroku-ci" title="Permanent link">&para;</a></h3>
+<p>要在 <a href="https://www.heroku.com/continuous-integration">Heroku CI</a> 中運行 Dusk 測試，請將以下 Google Chrome buildpack 和 指令碼新增到 Heroku 的 <code>app.json</code> 檔案中：</p>
+<div class="highlight"><pre><span></span><code>{
+  &quot;environments&quot;: {
+    &quot;test&quot;: {
+      &quot;buildpacks&quot;: [
+        { &quot;url&quot;: &quot;heroku/php&quot; },
+        { &quot;url&quot;: &quot;https://github.com/heroku/heroku-buildpack-google-chrome&quot; }
+      ],
+      &quot;scripts&quot;: {
+        &quot;test-setup&quot;: &quot;cp .env.testing .env&quot;,
+        &quot;test&quot;: &quot;nohup bash -c &#39;./vendor/laravel/dusk/bin/chromedriver-linux &gt; /dev/null 2&gt;&amp;1 &amp;&#39; &amp;&amp; nohup bash -c &#39;php artisan serve --no-reload &gt; /dev/null 2&gt;&amp;1 &amp;&#39; &amp;&amp; php artisan dusk&quot;
+      }
+    }
+  }
+}
+</code></pre></div>
+<p><a name="running-tests-on-travis-ci"></a></p>
+<h3 id="travis-ci">Travis CI<a class="headerlink" href="#travis-ci" title="Permanent link">&para;</a></h3>
+<p>要在 <a href="https://travis-ci.org">Travis CI</a> 運行 Dusk 測試，可以使用下面這個 <code>.travis.yml</code> 組態。由於 Travis CI 不是一個圖形化的環境，我們還需要一些額外的步驟以便啟動 Chrome 瀏覽器。此外，我們將會使用 <code>php artisan serve</code> 來啟動 PHP 自帶的 Web 伺服器：</p>
+<div class="highlight"><pre><span></span><code><span class="nt">language</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">php</span>
+
+<span class="nt">php</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">7.3</span>
+
+<span class="nt">addons</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">chrome</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">stable</span>
+
+<span class="nt">install</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cp .env.testing .env</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">travis_retry composer install --no-interaction --prefer-dist</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">php artisan key:generate</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">php artisan dusk:chrome-driver</span>
+
+<span class="nt">before_script</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &amp;</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">php artisan serve --no-reload &amp;</span>
+
+<span class="nt">script</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">php artisan dusk</span>
+</code></pre></div>
+<p><a name="running-tests-on-github-actions"></a></p>
+<h3 id="github-actions">GitHub Actions<a class="headerlink" href="#github-actions" title="Permanent link">&para;</a></h3>
+<p>如果你正在使用 <a href="https://github.com/features/actions">Github Actions</a> 來運行你的 Dusk 測試，你應該使用以下這份組態檔案為範本。像 TravisCI 一樣，我們使用 <code>php artisan serve</code> 命令來啟動 PHP 的內建 Web 服務：</p>
+<div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CI</span>
+<span class="nt">on</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">push</span><span class="p p-Indicator">]</span>
+<span class="nt">jobs</span><span class="p">:</span>
+
+<span class="w">  </span><span class="nt">dusk-php</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+<span class="w">    </span><span class="nt">env</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">APP_URL</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;http://127.0.0.1:8000&quot;</span>
+<span class="w">      </span><span class="nt">DB_USERNAME</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">root</span>
+<span class="w">      </span><span class="nt">DB_PASSWORD</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">root</span>
+<span class="w">      </span><span class="nt">MAIL_MAILER</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">log</span>
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v3</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Prepare The Environment</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cp .env.example .env</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Create Database</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">          </span><span class="no">sudo systemctl start mysql</span>
+<span class="w">          </span><span class="no">mysql --user=&quot;root&quot; --password=&quot;root&quot; -e &quot;CREATE DATABASE \`my-database\` character set UTF8mb4 collate utf8mb4_bin;&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Install Composer Dependencies</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">composer install --no-progress --prefer-dist --optimize-autoloader</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Generate Application Key</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">php artisan key:generate</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Upgrade Chrome Driver</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">php artisan dusk:chrome-driver --detect</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Start Chrome Driver</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./vendor/laravel/dusk/bin/chromedriver-linux &amp;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Run Laravel Server</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">php artisan serve --no-reload &amp;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Run Dusk Tests</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">php artisan dusk</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Upload Screenshots</span>
+<span class="w">        </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">failure()</span>
+<span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/upload-artifact@v2</span>
+<span class="w">        </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">screenshots</span>
+<span class="w">          </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tests/Browser/screenshots</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Upload Console Logs</span>
+<span class="w">        </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">failure()</span>
+<span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/upload-artifact@v2</span>
+<span class="w">        </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">console</span>
+<span class="w">          </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tests/Browser/console</span>
+</code></pre></div>
+
+
+
+
+
+                
+
+  <!-- Giscus -->
+  <h2 id="__comments">留言</h2>
+  <script src="https://giscus.app/client.js"
+          data-repo="tomleesm/notes"
+          data-repo-id="R_kgDOGuSz4g"
+          data-category="Announcements"
+          data-category-id="DIC_kwDOGuSz4s4CBI6T"
+          data-mapping="title"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="bottom"
+          data-theme="dark"
+          data-lang="zh-TW"
+          crossorigin="anonymous"
+          async>
+  </script>
+
+  <!-- Reload on palette change -->
+  <script>
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object")
+      if (palette.color.scheme === "slate") {
+        var giscus = document.querySelector("script[src*=giscus]")
+        giscus.setAttribute("data-theme", "dark")
+      }
+
+    /* Register event handlers after documented loaded */
+    document.addEventListener("DOMContentLoaded", function() {
+      var ref = document.querySelector("[data-md-component=palette]")
+      ref.addEventListener("change", function() {
+        var palette = __md_get("__palette")
+        if (palette && typeof palette.color === "object") {
+          var theme = palette.color.scheme === "slate" ? "dark" : "light"
+
+          /* Instruct Giscus to change theme */
+          var frame = document.querySelector(".giscus-frame")
+          frame.contentWindow.postMessage(
+            { giscus: { setConfig: { theme } } },
+            "https://giscus.app"
+          )
+        }
+      })
+    })
+  </script>
+
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            回到頂端
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tabs", "navigation.sections", "navigation.indexes", "navigation.top", "header.autohide", "search.highlight", "search.share"], "search": "../../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "\u5df2\u8907\u88fd", "clipboard.copy": "\u8907\u88fd", "search.result.more.one": "\u6b64\u9801\u5c1a\u6709 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.more.other": "\u6b64\u9801\u5c1a\u6709 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.none": "\u6c92\u6709\u7b26\u5408\u7684\u9805\u76ee", "search.result.one": "\u627e\u5230 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.other": "\u627e\u5230 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.placeholder": "\u6253\u5b57\u9032\u884c\u641c\u5c0b", "search.result.term.missing": "\u7f3a\u5c11\u5b57\u8a5e", "select.version": "\u9078\u64c7\u7248\u672c"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.dff1b7c8.min.js"></script>
+      
+    
+  </body>
+</html>

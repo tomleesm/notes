@@ -1,0 +1,4469 @@
+
+<!doctype html>
+<html lang="zh-TW" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../05%E5%A5%91%E7%B4%84Contract/">
+      
+      
+        <link rel="next" href="../07%E6%AA%94%E6%A1%88%E5%84%B2%E5%AD%98/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-9.2.7">
+    
+    
+      
+        <title>事件系統 - Tom 株式會社</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.046329b4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.85d0ee34.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+Traditional+Chinese:300,300i,400,400i,700,700i%7CSource+Code+Pro:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans Traditional Chinese";--md-code-font:"Source Code Pro"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="red" data-md-color-accent="red">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳轉到
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="頁首">
+    <a href="../.." title="Tom 株式會社" class="md-header__button md-logo" aria-label="Tom 株式會社" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Tom 株式會社
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              事件系統
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="red" data-md-color-accent="red"  aria-hidden="true"  type="radio" name="__palette" id="__palette_1">
+    
+  
+</form>
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜尋" placeholder="搜尋" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="搜尋">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清除" aria-label="清除" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜尋引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/tomleesm/notes" title="前往倉庫" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    tomleesm/notes
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="標籤" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../01%E6%A0%B8%E5%BF%83%E6%9E%B6%E6%A7%8B/01%E8%AB%8B%E6%B1%82%E7%9A%84%E7%94%9F%E5%91%BD%E9%80%B1%E6%9C%9F/" class="md-tabs__link">
+          
+  
+    
+  
+  核心架構
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/01%E8%B7%AF%E7%94%B1/" class="md-tabs__link">
+          
+  
+    
+  
+  基礎功能
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../01Artisan%E5%91%BD%E4%BB%A4%E5%88%97/" class="md-tabs__link">
+          
+  
+    
+  
+  繼續深入
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../04%E5%AE%89%E5%85%A8%E7%9B%B8%E9%97%9C/01%E4%BD%BF%E7%94%A8%E8%80%85%E8%AA%8D%E8%AD%89/" class="md-tabs__link">
+          
+  
+    
+  
+  安全相關
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../05%E8%B3%87%E6%96%99%E5%BA%AB/01%E5%BF%AB%E9%80%9F%E5%85%A5%E9%96%80/" class="md-tabs__link">
+          
+  
+    
+  
+  資料庫
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../06EloquentORM/01%E5%BF%AB%E9%80%9F%E5%85%A5%E9%96%80/" class="md-tabs__link">
+          
+  
+    
+  
+  Eloquent ORM
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../07%E6%B8%AC%E8%A9%A6%E7%9B%B8%E9%97%9C/01%E5%85%A5%E9%96%80/" class="md-tabs__link">
+          
+  
+    
+  
+  測試相關
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/01Cashier%E4%BA%A4%E6%98%93%E5%B7%A5%E5%85%B7%E5%8C%85Stripe/" class="md-tabs__link">
+          
+  
+    
+  
+  官方擴展包
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../cheatsheets/artisan/" class="md-tabs__link">
+          
+  
+    
+  
+  語法速查表
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="導覽列" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Tom 株式會社" class="md-nav__button md-logo" aria-label="Tom 株式會社" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Tom 株式會社
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/tomleesm/notes" title="前往倉庫" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    tomleesm/notes
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    核心架構
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            核心架構
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01%E6%A0%B8%E5%BF%83%E6%9E%B6%E6%A7%8B/01%E8%AB%8B%E6%B1%82%E7%9A%84%E7%94%9F%E5%91%BD%E9%80%B1%E6%9C%9F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    請求的生命週期
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01%E6%A0%B8%E5%BF%83%E6%9E%B6%E6%A7%8B/02%E6%9C%8D%E5%8B%99%E5%AE%B9%E5%99%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    服務容器
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01%E6%A0%B8%E5%BF%83%E6%9E%B6%E6%A7%8B/03%E6%9C%8D%E5%8B%99%E6%8F%90%E4%BE%9B%E8%80%85/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    服務提供者
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01%E6%A0%B8%E5%BF%83%E6%9E%B6%E6%A7%8B/04Facades/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Facades
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    基礎功能
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            基礎功能
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/01%E8%B7%AF%E7%94%B1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    路由
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/02%E4%B8%AD%E4%BB%8B%E8%BB%9F%E9%AB%94/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    中介軟體
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/03CSRF%E4%BF%9D%E8%AD%B7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CSRF 保護
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/04Controller/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Controller
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/05HTTP%E8%AB%8B%E6%B1%82/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTTP 請求
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/06HTTP%E9%9F%BF%E6%87%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTTP 響應
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/07%E6%AA%A2%E8%A6%96/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    檢視
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/08Blade%E7%AF%84%E6%9C%AC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Blade 範本
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/09Vite%E7%B7%A8%E8%AD%AFAssets/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vite 編譯 Assets
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/10%E7%94%9F%E6%88%90URL/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    生成 URL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/11Session/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Session
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/12%E8%A1%A8%E5%96%AE%E9%A9%97%E8%AD%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    表單驗證
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/13%E9%8C%AF%E8%AA%A4%E8%99%95%E7%90%86/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    錯誤處理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/14%E6%97%A5%E8%AA%8C/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    日誌
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    繼續深入
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            繼續深入
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01Artisan%E5%91%BD%E4%BB%A4%E5%88%97/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Artisan 命令列
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02%E5%BB%A3%E6%92%AD/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    廣播
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03%E5%BF%AB%E5%8F%96%E7%B3%BB%E7%B5%B1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    快取系統
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04%E9%9B%86%E5%90%88/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    集合
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05%E5%A5%91%E7%B4%84Contract/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    契約 Contract
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    事件系統
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    事件系統
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目錄">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目錄
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    介紹
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    註冊事件和監聽器
+  </a>
+  
+    <nav class="md-nav" aria-label="註冊事件和監聽器">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    生成事件和監聽器
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    手動註冊事件
+  </a>
+  
+    <nav class="md-nav" aria-label="手動註冊事件">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    可排隊匿名事件監聽器
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    萬用字元事件監聽器
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    事件的發現
+  </a>
+  
+    <nav class="md-nav" aria-label="事件的發現">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    生產中的事件發現
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    定義事件
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    定義監聽器
+  </a>
+  
+    <nav class="md-nav" aria-label="定義監聽器">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    停止事件傳播
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    佇列事件監聽器
+  </a>
+  
+    <nav class="md-nav" aria-label="佇列事件監聽器">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    自訂佇列連接和佇列名稱
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    有條件地佇列監聽器
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    手動與佇列互動
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    佇列事件監聽器和資料庫事務
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    處理失敗的佇列
+  </a>
+  
+    <nav class="md-nav" aria-label="處理失敗的佇列">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    指定佇列監聽器的最大嘗試次數
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    調度事件
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    事件訂閱者
+  </a>
+  
+    <nav class="md-nav" aria-label="事件訂閱者">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    建構事件訂閱者
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    註冊事件訂閱者
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    測試
+  </a>
+  
+    <nav class="md-nav" aria-label="測試">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    偽造一部分事件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fakes" class="md-nav__link">
+    Fakes 範疇事件
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07%E6%AA%94%E6%A1%88%E5%84%B2%E5%AD%98/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    檔案儲存
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09HTTPClient/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTTP Client
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10%E6%9C%AC%E5%9C%B0%E5%8C%96/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    本地化
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11%E9%83%B5%E4%BB%B6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    郵件
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12%E6%B6%88%E6%81%AF%E9%80%9A%E7%9F%A5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    消息通知
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13Package%E9%96%8B%E7%99%BC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Package 開發
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14%E8%99%95%E7%90%86%E7%A8%8B%E5%BA%8F%E7%AE%A1%E7%90%86/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    處理程序管理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15%E4%BD%87%E5%88%97/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    佇列
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16%E9%99%90%E6%B5%81/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    限流
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17%E4%BB%BB%E5%8B%99%E8%AA%BF%E5%BA%A6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    任務調度
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    安全相關
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            安全相關
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04%E5%AE%89%E5%85%A8%E7%9B%B8%E9%97%9C/01%E4%BD%BF%E7%94%A8%E8%80%85%E8%AA%8D%E8%AD%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    使用者認證
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04%E5%AE%89%E5%85%A8%E7%9B%B8%E9%97%9C/02%E4%BD%BF%E7%94%A8%E8%80%85%E6%8E%88%E6%AC%8A/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    使用者授權
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04%E5%AE%89%E5%85%A8%E7%9B%B8%E9%97%9C/03Email%E8%AA%8D%E8%AD%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Email 認證
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04%E5%AE%89%E5%85%A8%E7%9B%B8%E9%97%9C/04%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    加密解密
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04%E5%AE%89%E5%85%A8%E7%9B%B8%E9%97%9C/05%E9%9B%9C%E6%B9%8A/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    雜湊
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04%E5%AE%89%E5%85%A8%E7%9B%B8%E9%97%9C/06%E9%87%8D%E8%A8%AD%E5%AF%86%E7%A2%BC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    重設密碼
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    資料庫
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            資料庫
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05%E8%B3%87%E6%96%99%E5%BA%AB/01%E5%BF%AB%E9%80%9F%E5%85%A5%E9%96%80/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    快速入門
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05%E8%B3%87%E6%96%99%E5%BA%AB/02%E6%9F%A5%E8%A9%A2%E7%94%9F%E6%88%90%E5%99%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    查詢生成器
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05%E8%B3%87%E6%96%99%E5%BA%AB/03%E5%88%86%E9%A0%81/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    分頁
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05%E8%B3%87%E6%96%99%E5%BA%AB/04%E9%81%B7%E7%A7%BB/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    遷移
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05%E8%B3%87%E6%96%99%E5%BA%AB/05%E8%B3%87%E6%96%99%E5%A1%AB%E5%85%85/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    資料填充
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05%E8%B3%87%E6%96%99%E5%BA%AB/06Redis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Redis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Eloquent ORM
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Eloquent ORM
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06EloquentORM/01%E5%BF%AB%E9%80%9F%E5%85%A5%E9%96%80/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    快速入門
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06EloquentORM/02%E9%97%9C%E8%81%AF/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    關聯
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06EloquentORM/03%E9%9B%86%E5%90%88/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    集合
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06EloquentORM/04%E5%B1%AC%E6%80%A7%E4%BF%AE%E6%94%B9%E5%99%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    屬性修改器
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06EloquentORM/05API%E8%B3%87%E6%BA%90/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    API 資源
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06EloquentORM/06%E5%BA%8F%E5%88%97%E5%8C%96/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    序列化
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06EloquentORM/07%E8%B3%87%E6%96%99%E5%B7%A5%E5%BB%A0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    資料工廠
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    測試相關
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            測試相關
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07%E6%B8%AC%E8%A9%A6%E7%9B%B8%E9%97%9C/01%E5%85%A5%E9%96%80/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    入門
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07%E6%B8%AC%E8%A9%A6%E7%9B%B8%E9%97%9C/02HTTP%E6%B8%AC%E8%A9%A6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTTP 測試
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07%E6%B8%AC%E8%A9%A6%E7%9B%B8%E9%97%9C/03%E5%91%BD%E4%BB%A4%E5%88%97%E6%B8%AC%E8%A9%A6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    命令列測試
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07%E6%B8%AC%E8%A9%A6%E7%9B%B8%E9%97%9C/04LaravelDusk/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Laravel Dusk
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07%E6%B8%AC%E8%A9%A6%E7%9B%B8%E9%97%9C/05%E8%B3%87%E6%96%99%E5%BA%AB%E6%B8%AC%E8%A9%A6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    資料庫測試
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07%E6%B8%AC%E8%A9%A6%E7%9B%B8%E9%97%9C/06Mocking/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mocking
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    官方擴展包
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            官方擴展包
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/01Cashier%E4%BA%A4%E6%98%93%E5%B7%A5%E5%85%B7%E5%8C%85Stripe/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cashier 交易工具包 Stripe
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/02Cashier%E4%BA%A4%E6%98%93%E5%B7%A5%E5%85%B7%E5%8C%85Paddle/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cashier 交易工具包 Paddle
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/03Envoy%E9%83%A8%E7%BD%B2%E5%B7%A5%E5%85%B7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Envoy 部署工具
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/04Fortify%E8%88%87%E5%89%8D%E7%AB%AF%E7%84%A1%E9%97%9C%E7%9A%84%E8%BA%AB%E4%BB%BD%E8%AA%8D%E8%AD%89%E5%BE%8C%E7%AB%AF%E5%AF%A6%E7%8F%BE/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fortify 與前端無關的身份認證後端實現
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/05Homestead%E8%99%9B%E6%93%AC%E6%A9%9F%E5%99%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Homestead 虛擬機器
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/06Horizon%E4%BD%87%E5%88%97%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Horizon 佇列管理工具
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/09Octane%E5%8A%A0%E9%80%9F%E5%BC%95%E6%93%8E/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Octane 加速引擎
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/10PassportOAuth%E8%AA%8D%E8%AD%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Passport OAuth 認證
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/11Pennant%E6%B8%AC%E8%A9%A6%E6%96%B0%E5%8A%9F%E8%83%BD/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pennant 測試新功能
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/12Pint%E7%A8%8B%E5%BC%8F%E7%A2%BC%E9%A2%A8%E6%A0%BC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pint 程式碼風格
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/13SailDocker%E9%96%8B%E7%99%BC%E7%92%B0%E5%A2%83/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sail Docker 開發環境
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/14SanctumAPI%E6%8E%88%E6%AC%8A/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sanctum API 授權
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/15Scout%E5%85%A8%E6%96%87%E6%90%9C%E5%B0%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Scout 全文搜尋
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/16Socialite%E7%AC%AC%E4%B8%89%E6%96%B9%E7%99%BB%E5%85%A5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Socialite 第三方登入
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/17Telescope%E5%81%B5%E9%8C%AF%E5%B7%A5%E5%85%B7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Telescope 偵錯工具
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    語法速查表
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            語法速查表
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/artisan/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Artisan
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/auth/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Auth 使用者認證
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/blade/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Blade 範本
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/cache/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cache
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/collection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Collection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/composer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Composer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/config/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Config
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/container/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Container
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/cookie/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cookie
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/db/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Database
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/environment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Environment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/event/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Event
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/file/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    File
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/helper/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Helper
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/input/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Input
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/lang/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lang
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/Log/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Log
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/mail/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mail
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/model/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Model (Eloquent ORM)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/pagination/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pagination
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/queue/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Queue
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/redirect/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Redirect
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/request/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Request
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/response/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Response
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/route/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Route
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/schema/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Schema 資料庫結構
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/security/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Security (Hash 和加解密)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/session/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Session
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/storage/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Storage
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/string/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    String
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/unittest/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Unit Test 單元測試
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/url/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    URL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/validation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Validation 表單驗證
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/view/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    View
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目錄">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目錄
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    介紹
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    註冊事件和監聽器
+  </a>
+  
+    <nav class="md-nav" aria-label="註冊事件和監聽器">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    生成事件和監聽器
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    手動註冊事件
+  </a>
+  
+    <nav class="md-nav" aria-label="手動註冊事件">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    可排隊匿名事件監聽器
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    萬用字元事件監聽器
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    事件的發現
+  </a>
+  
+    <nav class="md-nav" aria-label="事件的發現">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    生產中的事件發現
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    定義事件
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    定義監聽器
+  </a>
+  
+    <nav class="md-nav" aria-label="定義監聽器">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    停止事件傳播
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    佇列事件監聽器
+  </a>
+  
+    <nav class="md-nav" aria-label="佇列事件監聽器">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    自訂佇列連接和佇列名稱
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    有條件地佇列監聽器
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    手動與佇列互動
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    佇列事件監聽器和資料庫事務
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    處理失敗的佇列
+  </a>
+  
+    <nav class="md-nav" aria-label="處理失敗的佇列">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    指定佇列監聽器的最大嘗試次數
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    調度事件
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    事件訂閱者
+  </a>
+  
+    <nav class="md-nav" aria-label="事件訂閱者">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    建構事件訂閱者
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    註冊事件訂閱者
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    測試
+  </a>
+  
+    <nav class="md-nav" aria-label="測試">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    偽造一部分事件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fakes" class="md-nav__link">
+    Fakes 範疇事件
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+  
+                  
+
+  
+  
+
+
+<h1 id="_1">事件系統<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h2 id="_2">介紹<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>Laravel 的事件系統提供了一個簡單的觀察者模式的實現，允許你能夠訂閱和監聽在你的應用中的發生的各種事件。事件類一般來說儲存在 <code>app/Events</code> 目錄，監聽者的類儲存在 <code>app/Listeners</code> 目錄。不要擔心在你的應用中沒有看到這兩個目錄，因為通過 Artisan 命令列來建立事件和監聽者的時候目錄會同時被建立。</p>
+<p>事件系統可以作為一個非常棒的方式來解耦你的系統的方方面面，因為一個事件可以有多個完全不相關的監聽者。例如，你希望每當有訂單發出的時候都給你傳送一個 Slack 通知。你大可不必將你的處理訂單的程式碼和傳送 slack 消息的程式碼放在一起，你只需要觸發一個 App\Events\OrderShipped 事件，然後事件監聽者可以收到這個事件然後傳送 slack 通知</p>
+<h2 id="_3">註冊事件和監聽器<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>在系統的服務提供者 <code>App\Providers\EventServiceProvider</code> 中提供了一個簡單的方式來註冊你所有的事件監聽者。屬性 <code>listen</code> 包含所有的事件 (作為鍵) 和對應的監聽器 (值)。你可以新增任意多系統需要的監聽器在這個陣列中，讓我們新增一個 <code>OrderShipped</code> 事件：</p>
+<div class="highlight"><pre><span></span><code>use App\Events\OrderShipped;
+use App\Listeners\SendShipmentNotification;
+
+/**
+ * 系統中的事件和監聽器的對應關係。
+ *
+ * @var array
+ */
+protected $listen = [
+    OrderShipped::class =&gt; [
+        SendShipmentNotification::class,
+    ],
+];
+</code></pre></div>
+<blockquote>
+<p><strong>注意</strong>
+可以使用 <code>event:list</code> 命令顯示應用程式</p>
+</blockquote>
+<h3 id="_4">生成事件和監聽器<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>當然，為每個事件和監聽器手動建立檔案是很麻煩的。相反，將監聽器和事件新增到 <code>EventServiceProvider</code> 並使用 <code>event:generate</code> Artisan 命令。此命令將生成 <code>EventServiceProvider</code> 中列出的、尚不存在的任何事件或偵聽器：</p>
+<div class="highlight"><pre><span></span><code>php<span class="w"> </span>artisan<span class="w"> </span>event:generate
+</code></pre></div>
+<p>或者，你可以使用 <code>make:event</code> 以及 <code>make:listener</code> 用於生成單個事件和監聽器的 Artisan 命令：</p>
+<div class="highlight"><pre><span></span><code>php<span class="w"> </span>artisan<span class="w"> </span>make:event<span class="w"> </span>PodcastProcessed
+
+php<span class="w"> </span>artisan<span class="w"> </span>make:listener<span class="w"> </span>SendPodcastNotification<span class="w"> </span>--event<span class="o">=</span>PodcastProcessed
+</code></pre></div>
+<h3 id="_5">手動註冊事件<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>通常，事件應該通過 <code>EventServiceProvider</code> <code>$listen</code> 陣列註冊；但是，你也可以在 <code>EventServiceProvider</code> 的 <code>boot</code> 方法中手動註冊基於類或閉包的事件監聽器：</p>
+<div class="highlight"><pre><span></span><code>use App\Events\PodcastProcessed;
+use App\Listeners\SendPodcastNotification;
+use Illuminate\Support\Facades\Event;
+
+/**
+ * 註冊任意的其他事件和監聽器。
+ */
+public function boot(): void
+{
+    Event::listen(
+        PodcastProcessed::class,
+        [SendPodcastNotification::class, &#39;handle&#39;]
+    );
+
+    Event::listen(function (PodcastProcessed $event) {
+        // ...
+    });
+}
+</code></pre></div>
+<h4 id="_6">可排隊匿名事件監聽器<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<p>手動註冊基於閉包的事件監聽器時，可以將監聽器閉包包裝在 <code>Illuminate\Events\queueable</code> 函數中，以指示 Laravel 使用 <a href="/docs/laravel/10.x/queues">佇列</a> 執行偵聽器：</p>
+<div class="highlight"><pre><span></span><code>use App\Events\PodcastProcessed;
+use function Illuminate\Events\queueable;
+use Illuminate\Support\Facades\Event;
+
+/**
+ * 註冊任意的其他事件和監聽器。
+ */
+public function boot(): void
+{
+    Event::listen(queueable(function (PodcastProcessed $event) {
+        // ...
+    }));
+}
+</code></pre></div>
+<p>與佇列任務一樣，可以使用 <code>onConnection</code>、<code>onQueue</code> 和 <code>delay</code> 方法自訂佇列監聽器的執行：</p>
+<div class="highlight"><pre><span></span><code>Event::listen(queueable(function (PodcastProcessed $event) {
+    // ...
+})-&gt;onConnection(&#39;redis&#39;)-&gt;onQueue(&#39;podcasts&#39;)-&gt;delay(now()-&gt;addSeconds(10)));
+</code></pre></div>
+<p>如果你想處理匿名佇列監聽器失敗，你可以在定義 <code>queueable</code> 監聽器時為 <code>catch</code> 方法提供一個閉包。這個閉包將接收導致監聽器失敗的事件實例和 <code>Throwable</code> 實例：</p>
+<div class="highlight"><pre><span></span><code>use App\Events\PodcastProcessed;
+use function Illuminate\Events\queueable;
+use Illuminate\Support\Facades\Event;
+use Throwable;
+
+Event::listen(queueable(function (PodcastProcessed $event) {
+    // ...
+})-&gt;catch(function (PodcastProcessed $event, Throwable $e) {
+    // 佇列監聽器失敗了
+}));
+</code></pre></div>
+<h4 id="_7">萬用字元事件監聽器<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<p>你甚至可以使用 <code>*</code> 作為萬用字元參數註冊監聽器，這允許你在同一個監聽器上捕獲多個事件。萬用字元監聽器接收事件名作為其第一個參數，整個事件資料陣列作為其第二個參數：</p>
+<div class="highlight"><pre><span></span><code>Event::listen(&#39;event.*&#39;, function (string $eventName, array $data) {
+    // ...
+});
+</code></pre></div>
+<h3 id="_8">事件的發現<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<p>你可以啟用自動事件發現，而不是在 <code>EventServiceProvider</code> 的 <code>$listen</code> 陣列中手動註冊事件和偵聽器。當事件發現啟用，Laravel 將自動發現和註冊你的事件和監聽器掃描你的應用程式的 <code>Listeners</code> 目錄。此外，在 <code>EventServiceProvider</code> 中列出的任何顯式定義的事件仍將被註冊。</p>
+<p>Laravel 通過使用 PHP 的反射服務掃描監聽器類來尋找事件監聽器。當 Laravel 發現任何以 <code>handle</code> 或 <code>__invoke</code> 開頭的監聽器類方法時，Laravel 會將這些方法註冊為該方法簽名中類型暗示的事件的事件監聽器：</p>
+<div class="highlight"><pre><span></span><code>use App\Events\PodcastProcessed;
+
+class SendPodcastNotification
+{
+    /**
+     * 處理給定的事件
+     */
+    public function handle(PodcastProcessed $event): void
+    {
+        // ...
+    }
+}
+</code></pre></div>
+<p>事件發現在默認情況下是停用的，但你可以通過重寫應用程式的 <code>EventServiceProvider</code> 的 <code>shouldDiscoverEvents</code> 方法來啟用它：</p>
+<div class="highlight"><pre><span></span><code>/**
+ * 確定是否應用自動發現事件和監聽器。
+ */
+public function shouldDiscoverEvents(): bool
+{
+    return true;
+}
+</code></pre></div>
+<p>默認情況下，應用程式 <code>app/listeners</code> 目錄中的所有監聽器都將被掃描。如果你想要定義更多的目錄來掃描，你可以重寫 <code>EventServiceProvider</code> 中的 <code>discoverEventsWithin</code> 方法：</p>
+<div class="highlight"><pre><span></span><code>/**
+ * 獲取應用於發現事件的監聽器目錄。
+ *
+ * @return array&lt;int, string&gt;
+ */
+protected function discoverEventsWithin(): array
+{
+    return [
+        $this-&gt;app-&gt;path(&#39;Listeners&#39;),
+    ];
+}
+</code></pre></div>
+<h4 id="_9">生產中的事件發現<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<p>在生產環境中，框架在每個請求上掃描所有監聽器的效率並不高。因此，在你的部署過程中，你應該運行 <code>event:cache</code> Artisan 命令來快取你的應用程式的所有事件和監聽器清單。框架將使用該清單來加速事件註冊過程。<code>event:clear</code> 命令可以用來銷毀快取。</p>
+<h2 id="_10">定義事件<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
+<p>事件類本質上是一個資料容器，它保存與事件相關的資訊。例如，讓我們假設一個 <code>App\Events\OrderShipped</code> 事件接收到一個 <a href="/docs/laravel/10.x/eloquent">Eloquent ORM</a> 對象：</p>
+<div class="highlight"><pre><span></span><code>&lt;?php
+
+namespace App\Events;
+
+use App\Models\Order;
+use Illuminate\Broadcasting\InteractsWithSockets;
+use Illuminate\Foundation\Events\Dispatchable;
+use Illuminate\Queue\SerializesModels;
+
+class OrderShipped
+{
+    use Dispatchable, InteractsWithSockets, SerializesModels;
+
+    /**
+     * 建立一個新的事件實例。
+     */
+    public function __construct(
+        public Order $order,
+    ) {}
+}
+</code></pre></div>
+<p>如你所見，這個事件類不包含邏輯。它是一個被購買的 <code>App\Models\Order</code> 實例容器。 如果事件對像是使用 PHP 的 <code>SerializesModels</code> 函數序列化的，事件使用的 <code>SerializesModels</code> trait 將會優雅地序列化任何 Eloquent 模型，比如在使用 <a href="#queued-event-listeners">佇列偵聽器</a>。</p>
+<h2 id="_11">定義監聽器<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
+<p>接下來，讓我們看一下示例事件的監聽器。事件監聽器在其 <code>handle</code> 方法中接收事件實例。Artisan 命令 <code>event:generate</code> 和 <code>make:listener</code> 會自動匯入正確的事件類，並在 <code>handle</code> 方法上對事件進行類型提示。在 <code>handle</code> 方法中，你可以執行任何必要的操作來響應事件：</p>
+<div class="highlight"><pre><span></span><code>&lt;?php
+
+namespace App\Listeners;
+
+use App\Events\OrderShipped;
+
+class SendShipmentNotification
+{
+    /**
+     * 建立事件監聽器
+     */
+    public function __construct()
+    {
+        // ...
+    }
+
+    /**
+     * 處理事件
+     */
+    public function handle(OrderShipped $event): void
+    {
+        // 使用 $event-&gt;order 來訪問訂單 ...
+    }
+}
+</code></pre></div>
+<blockquote>
+<p><strong>技巧</strong>
+事件監聽器還可以在建構函式中加入任何依賴關係的類型提示。所有的事件監聽器都是通過 Laravel 的 <a href="/docs/laravel/10.x/container">服務容器</a> 解析的，因此所有的依賴都將會被自動注入。</p>
+</blockquote>
+<h4 id="_12">停止事件傳播<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
+<p>有時，你可能希望停止將事件傳播到其他監聽器。你可以通過從監聽器的 <code>handle</code> 方法中返回 <code>false</code> 來做到這一點。</p>
+<h2 id="_13">佇列事件監聽器<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h2>
+<p>如果你的監聽器要執行一個緩慢的任務，如傳送電子郵件或進行 HTTP 請求，那麼佇列化監聽器就很有用了。在使用佇列監聽器之前，請確保 <a href="/docs/laravel/10.x/queues">組態你的佇列</a> 並在你的伺服器或本地開發環境中啟動一個佇列 worker。</p>
+<p>要指定監聽器啟動佇列，請將 <code>ShouldQueue</code> 介面新增到監聽器類。 由 Artisan 命令 <code>event:generate</code> 和 <code>make:listener</code> 生成的監聽器已經將此介面匯入當前命名空間，因此你可以直接使用：</p>
+<div class="highlight"><pre><span></span><code>&lt;?php
+
+namespace App\Listeners;
+
+use App\Events\OrderShipped;
+use Illuminate\Contracts\Queue\ShouldQueue;
+
+class SendShipmentNotification implements ShouldQueue
+{
+    // ...
+}
+</code></pre></div>
+<p>就是這樣！ 現在，當此監聽器處理的事件被調度時，監聽器將使用 Laravel 的 <a href="/docs/laravel/10.x/queues">佇列系統</a> 自動由事件調度器排隊。 如果監聽器被佇列執行時沒有拋出異常，佇列中的任務處理完成後會自動刪除。</p>
+<h4 id="_14">自訂佇列連接和佇列名稱<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
+<p>如果你想自訂事件監聽器的佇列連接、佇列名稱或佇列延遲時間，可以在監聽器類上定義 <code>$connection</code>、<code>$queue</code> 或 <code>$delay</code> 屬性：</p>
+<div class="highlight"><pre><span></span><code>&lt;?php
+
+namespace App\Listeners;
+
+use App\Events\OrderShipped;
+use Illuminate\Contracts\Queue\ShouldQueue;
+
+class SendShipmentNotification implements ShouldQueue
+{
+    /**
+     * 任務傳送到的連接的名稱。
+     *
+     * @var string|null
+     */
+    public $connection = &#39;sqs&#39;;
+
+    /**
+     * 任務傳送到的佇列的名稱。
+     *
+     * @var string|null
+     */
+    public $queue = &#39;listeners&#39;;
+
+    /**
+     * 處理作業前的時間（秒）。
+     *
+     * @var int
+     */
+    public $delay = 60;
+}
+</code></pre></div>
+<p>如果你想在執行階段定義監聽器的佇列連接或佇列名稱，可以在監聽器上定義 <code>viaConnection</code> 或 <code>viaQueue</code> 方法：</p>
+<div class="highlight"><pre><span></span><code>/**
+ * 獲取偵聽器的佇列連接的名稱。
+ */
+public function viaConnection(): string
+{
+    return &#39;sqs&#39;;
+}
+
+/**
+ * 獲取偵聽器佇列的名稱。
+ */
+public function viaQueue(): string
+{
+    return &#39;listeners&#39;;
+}
+</code></pre></div>
+<h4 id="_15">有條件地佇列監聽器<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
+<p>有時，你可能需要根據一些僅在執行階段可用的資料來確定是否應將偵聽器排隊。 為此，可以將「shouldQueue」方法新增到偵聽器以確定是否應將偵聽器排隊。 如果 <code>shouldQueue</code> 方法返回 <code>false</code>，監聽器將不會被執行：</p>
+<div class="highlight"><pre><span></span><code>&lt;?php
+
+namespace App\Listeners;
+
+use App\Events\OrderCreated;
+use Illuminate\Contracts\Queue\ShouldQueue;
+
+class RewardGiftCard implements ShouldQueue
+{
+    /**
+     * 獎勵客戶一張禮品卡。
+     */
+    public function handle(OrderCreated $event): void
+    {
+        // ...
+    }
+
+    /**
+     * 確定偵聽器是否應排隊。
+     */
+    public function shouldQueue(OrderCreated $event): bool
+    {
+        return $event-&gt;order-&gt;subtotal &gt;= 5000;
+    }
+}
+</code></pre></div>
+<h3 id="_16">手動與佇列互動<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
+<p>如果你需要手動訪問偵聽器的底層佇列作業的 delete 和 release 方法，可以使用 <code>Illuminate\Queue\InteractsWithQueue</code> 特性來實現。 這個 trait 默認匯入生成的偵聽器並提供對這些方法的訪問：</p>
+<div class="highlight"><pre><span></span><code>&lt;?php
+
+namespace App\Listeners;
+
+use App\Events\OrderShipped;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Queue\InteractsWithQueue;
+
+class SendShipmentNotification implements ShouldQueue
+{
+    use InteractsWithQueue;
+
+    /**
+     * Handle the event.
+     */
+    public function handle(OrderShipped $event): void
+    {
+        if (true) {
+            $this-&gt;release(30);
+        }
+    }
+}
+</code></pre></div>
+<h3 id="_17">佇列事件監聽器和資料庫事務<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
+<p>當排隊的偵聽器在資料庫事務中被分派時，它們可能在資料庫事務提交之前由佇列處理。 發生這種情況時，在資料庫事務期間對模型或資料庫記錄所做的任何更新可能尚未反映在資料庫中。 此外，在事務中建立的任何模型或資料庫記錄可能不存在於資料庫中。 如果你的偵聽器依賴於這些模型，則在處理調度排隊偵聽器的作業時可能會發生意外錯誤。</p>
+<p>如果你的佇列連接的 <code>after_commit</code> 組態選項設定為 <code>false</code>，你仍然可以通過在偵聽器類上定義 <code>$afterCommit</code> 屬性來指示在提交所有打開的資料庫事務後應該調度特定的排隊偵聽器：</p>
+<div class="highlight"><pre><span></span><code>&lt;?php
+
+namespace App\Listeners;
+
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Queue\InteractsWithQueue;
+
+class SendShipmentNotification implements ShouldQueue
+{
+    use InteractsWithQueue;
+
+    public $afterCommit = true;
+}
+</code></pre></div>
+<blockquote>
+<p><strong>注意</strong>
+要瞭解有關解決這些問題的更多資訊，請查看有關<a href="/docs/laravel/10.x/queuesmd#jobs-and-database-transactions">佇列作業和資料庫事務</a> 的文件。</p>
+</blockquote>
+<h3 id="_18">處理失敗的佇列<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
+<p>有時佇列的事件監聽器可能會失敗。如果排隊的監聽器超過了佇列工作者定義的最大嘗試次數，則將對監聽器呼叫 <code>failed</code> 方法。<code>failed</code> 方法接收導致失敗的事件實例和 <code>Throwable</code>：</p>
+<div class="highlight"><pre><span></span><code>&lt;?php
+
+namespace App\Listeners;
+
+use App\Events\OrderShipped;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Queue\InteractsWithQueue;
+use Throwable;
+
+class SendShipmentNotification implements ShouldQueue
+{
+    use InteractsWithQueue;
+
+    /**
+     * 事件處理。
+     */
+    public function handle(OrderShipped $event): void
+    {
+        // ...
+    }
+
+    /**
+     * 處理失敗任務。
+     */
+    public function failed(OrderShipped $event, Throwable $exception): void
+    {
+        // ...
+    }
+}
+</code></pre></div>
+<h4 id="_19">指定佇列監聽器的最大嘗試次數<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
+<p>如果佇列中的某個監聽器遇到錯誤，你可能不希望它無限期地重試。因此，Laravel 提供了各種方法來指定監聽器的嘗試次數或嘗試時間。</p>
+<p>你可以在監聽器類上定義 <code>$tries</code> 屬性，以指定監聽器在被認為失敗之前可能嘗試了多少次：</p>
+<div class="highlight"><pre><span></span><code>&lt;?php
+
+namespace App\Listeners;
+
+use App\Events\OrderShipped;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Queue\InteractsWithQueue;
+
+class SendShipmentNotification implements ShouldQueue
+{
+    use InteractsWithQueue;
+
+    /**
+     * 嘗試佇列監聽器的次數。
+     *
+     * @var int
+     */
+    public $tries = 5;
+}
+</code></pre></div>
+<p>作為定義偵聽器在失敗之前可以嘗試多少次的替代方法，你可以定義不再嘗試偵聽器的時間。這允許在給定的時間範圍內嘗試多次監聽。若要定義不再嘗試監聽器的時間，請在你的監聽器類中新增 <code>retryUntil</code> 方法。此方法應返回一個 <code>DateTime</code> 實例：</p>
+<div class="highlight"><pre><span></span><code>use DateTime;
+
+/**
+ * 確定監聽器應該超時的時間。
+ */
+public function retryUntil(): DateTime
+{
+    return now()-&gt;addMinutes(5);
+}
+</code></pre></div>
+<h2 id="_20">調度事件<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h2>
+<p>要分派一個事件，你可以在事件上呼叫靜態的 <code>dispatch</code> 方法。這個方法是通過 <code>Illuminate\Foundation\Events\Dispatchable</code> 特性提供給事件的。 傳遞給 <code>dispatch</code> 方法的任何參數都將被傳遞給事件的建構函式：</p>
+<div class="highlight"><pre><span></span><code>&lt;?php
+
+namespace App\Http\Controllers;
+
+use App\Events\OrderShipped;
+use App\Http\Controllers\Controller;
+use App\Models\Order;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+
+class OrderShipmentController extends Controller
+{
+    /**
+     * 運送給定的訂單。
+     */
+    public function store(Request $request): RedirectResponse
+    {
+        $order = Order::findOrFail($request-&gt;order_id);
+
+        // 訂單出貨邏輯...
+
+        OrderShipped::dispatch($order);
+
+        return redirect(&#39;/orders&#39;);
+    }
+}
+</code></pre></div>
+<p>你可以使用 <code>dispatchIf</code> 和 <code>dispatchUnless</code> 方法根據條件分派事件：</p>
+<div class="highlight"><pre><span></span><code>OrderShipped::dispatchIf($condition, $order);
+
+OrderShipped::dispatchUnless($condition, $order);
+</code></pre></div>
+<blockquote>
+<p><strong>提示</strong><br />
+在測試時，斷言某些事件是在沒有實際觸發其偵聽器的情況下被分派的，這可能會有所幫助。 Laravel 的 <a href="#testing">內建助手</a> 讓它變得很簡單。</p>
+</blockquote>
+<h2 id="_21">事件訂閱者<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h2>
+<h3 id="_22">建構事件訂閱者<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h3>
+<p>事件訂閱者是可以從訂閱者類本身中訂閱多個事件的類，允許你在單個類中定義多個事件處理程序。訂閱者應該定義一個 <code>subscribe</code> 方法，它將被傳遞一個事件分派器實例。你可以在給定的分派器上呼叫 <code>listen</code> 方法來註冊事件監聽器：</p>
+<div class="highlight"><pre><span></span><code>&lt;?php
+
+namespace App\Listeners;
+
+use Illuminate\Auth\Events\Login;
+use Illuminate\Auth\Events\Logout;
+use Illuminate\Events\Dispatcher;
+
+class UserEventSubscriber
+{
+    /**
+     * 處理使用者登錄事件。
+     */
+    public function handleUserLogin(string $event): void {}
+
+    /**
+     * 處理使用者退出事件。
+     */
+    public function handleUserLogout(string $event): void {}
+
+    /**
+     * 為訂閱者註冊偵聽器。
+     */
+    public function subscribe(Dispatcher $events): void
+    {
+        $events-&gt;listen(
+            Login::class,
+            [UserEventSubscriber::class, &#39;handleUserLogin&#39;]
+        );
+
+        $events-&gt;listen(
+            Logout::class,
+            [UserEventSubscriber::class, &#39;handleUserLogout&#39;]
+        );
+    }
+}
+</code></pre></div>
+<p>如果你的事件偵聽器方法是在訂閱者本身中定義的，你可能會發現從訂閱者的「訂閱」方法返回一組事件和方法名稱會更方便。 Laravel 會在註冊事件監聽器時自動判斷訂閱者的類名：</p>
+<div class="highlight"><pre><span></span><code>&lt;?php
+
+namespace App\Listeners;
+
+use Illuminate\Auth\Events\Login;
+use Illuminate\Auth\Events\Logout;
+use Illuminate\Events\Dispatcher;
+
+class UserEventSubscriber
+{
+    /**
+     * 處理使用者登錄事件。
+     */
+    public function handleUserLogin(string $event): void {}
+
+    /**
+     * 處理使用者註銷事件。
+     */
+    public function handleUserLogout(string $event): void {}
+
+    /**
+     * 為訂閱者註冊監聽器。
+     *
+     * @return array&lt;string, string&gt;
+     */
+    public function subscribe(Dispatcher $events): array
+    {
+        return [
+            Login::class =&gt; &#39;handleUserLogin&#39;,
+            Logout::class =&gt; &#39;handleUserLogout&#39;,
+        ];
+    }
+}
+</code></pre></div>
+<h3 id="_23">註冊事件訂閱者<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h3>
+<p>編寫訂閱者後，你就可以將其註冊到事件調度程序。 可以使用 <code>EventServiceProvider</code> 上的 <code>$subscribe</code> 屬性註冊訂閱者。 例如，讓我們將 <code>UserEventSubscriber</code> 新增到列表中：</p>
+<div class="highlight"><pre><span></span><code>&lt;?php
+
+namespace App\Providers;
+
+use App\Listeners\UserEventSubscriber;
+use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
+
+class EventServiceProvider extends ServiceProvider
+{
+    /**
+     * The event listener mappings for the application.
+     *
+     * @var array
+     */
+    protected $listen = [
+        // ...
+    ];
+
+    /**
+     * The subscriber classes to register.
+     *
+     * @var array
+     */
+    protected $subscribe = [
+        UserEventSubscriber::class,
+    ];
+}
+</code></pre></div>
+<h2 id="_24">測試<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h2>
+<p>當測試分發事件的程式碼時，你可能希望指示 Laravel 不要實際執行事件的監聽器，因為監聽器的程式碼可以直接和分發相應事件的程式碼分開測試。 當然，要測試監聽器本身，你可以實例化一個監聽器實例並直接在測試中呼叫 handle 方法。</p>
+<p>使用 <code>Event</code> 門面的 <code>fake</code> 方法，你可以阻止偵聽器執行，執行測試程式碼，然後使用 <code>assertDispatched</code>、<code>assertNotDispatched</code> 和 <code>assertNothingDispatched</code> 方法斷言你的應用程式分派了哪些事件：</p>
+<div class="highlight"><pre><span></span><code>&lt;?php
+
+namespace Tests\Feature;
+
+use App\Events\OrderFailedToShip;
+use App\Events\OrderShipped;
+use Illuminate\Support\Facades\Event;
+use Tests\TestCase;
+
+class ExampleTest extends TestCase
+{
+    /**
+     * 測試訂單發貨。
+     */
+    public function test_orders_can_be_shipped(): void
+    {
+        Event::fake();
+
+        // 執行訂單發貨...
+
+        // 斷言事件已傳送...
+        Event::assertDispatched(OrderShipped::class);
+
+        // 斷言一個事件被傳送了兩次......
+        Event::assertDispatched(OrderShipped::class, 2);
+
+        // 斷言事件未被傳送...
+        Event::assertNotDispatched(OrderFailedToShip::class);
+
+        // 斷言沒有事件被傳送...
+        Event::assertNothingDispatched();
+    }
+}
+</code></pre></div>
+<p>你可以將閉包傳遞給 <code>assertDispatched</code> 或 <code>assertNotDispatched</code> 方法，以斷言已派發的事件通過了給定的「真實性測試」。 如果至少傳送了一個通過給定真值測試的事件，則斷言將成功：</p>
+<div class="highlight"><pre><span></span><code>Event::assertDispatched(function (OrderShipped $event) use ($order) {
+    return $event-&gt;order-&gt;id === $order-&gt;id;
+});
+</code></pre></div>
+<p>如果你只想斷言事件偵聽器正在偵聽給定事件，可以使用 <code>assertListening</code> 方法：</p>
+<div class="highlight"><pre><span></span><code>Event::assertListening(
+    OrderShipped::class,
+    SendShipmentNotification::class
+);
+</code></pre></div>
+<blockquote>
+<p><strong>警告</strong>
+呼叫 <code>Event::fake()</code> 後，不會執行任何事件偵聽器。 因此，如果你的測試使用依賴於事件的模型工廠，例如在模型的「建立」事件期間建立 UUID，則您應該在使用您的工廠**之後**呼叫“Event::fake()”。</p>
+</blockquote>
+<h3 id="_25">偽造一部分事件<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h3>
+<p>如果你只想為一組特定的事件偽造事件監聽器，你可以將它們傳遞給 <code>fake</code> 或 <code>fakeFor</code> 方法：</p>
+<div class="highlight"><pre><span></span><code>/**
+ * 測試訂單流程。
+ */
+public function test_orders_can_be_processed(): void
+{
+    Event::fake([
+        OrderCreated::class,
+    ]);
+
+    $order = Order::factory()-&gt;create();
+
+    Event::assertDispatched(OrderCreated::class);
+
+    // 其他事件正常傳送...
+    $order-&gt;update([...]);
+}
+</code></pre></div>
+<p>你可以使用 <code>except</code> 方法排除指定事件：</p>
+<div class="highlight"><pre><span></span><code>Event::fake()-&gt;except([
+    OrderCreated::class,
+]);
+</code></pre></div>
+<h3 id="fakes">Fakes 範疇事件<a class="headerlink" href="#fakes" title="Permanent link">&para;</a></h3>
+<p>如果你只想為測試的一部分建立事件偵聽器，你可以使用 <code>fakeFor</code> 方法：</p>
+<div class="highlight"><pre><span></span><code>&lt;?php
+
+namespace Tests\Feature;
+
+use App\Events\OrderCreated;
+use App\Models\Order;
+use Illuminate\Support\Facades\Event;
+use Tests\TestCase;
+
+class ExampleTest extends TestCase
+{
+    /**
+     * 測試訂單程序
+     */
+    public function test_orders_can_be_processed(): void
+    {
+        $order = Event::fakeFor(function () {
+            $order = Order::factory()-&gt;create();
+
+            Event::assertDispatched(OrderCreated::class);
+
+            return $order;
+        });
+
+        // 事件按正常方式調度，觀察者將會運行...
+        $order-&gt;update([...]);
+    }
+}
+</code></pre></div>
+
+
+
+
+
+                
+
+  <!-- Giscus -->
+  <h2 id="__comments">留言</h2>
+  <script src="https://giscus.app/client.js"
+          data-repo="tomleesm/notes"
+          data-repo-id="R_kgDOGuSz4g"
+          data-category="Announcements"
+          data-category-id="DIC_kwDOGuSz4s4CBI6T"
+          data-mapping="title"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="bottom"
+          data-theme="dark"
+          data-lang="zh-TW"
+          crossorigin="anonymous"
+          async>
+  </script>
+
+  <!-- Reload on palette change -->
+  <script>
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object")
+      if (palette.color.scheme === "slate") {
+        var giscus = document.querySelector("script[src*=giscus]")
+        giscus.setAttribute("data-theme", "dark")
+      }
+
+    /* Register event handlers after documented loaded */
+    document.addEventListener("DOMContentLoaded", function() {
+      var ref = document.querySelector("[data-md-component=palette]")
+      ref.addEventListener("change", function() {
+        var palette = __md_get("__palette")
+        if (palette && typeof palette.color === "object") {
+          var theme = palette.color.scheme === "slate" ? "dark" : "light"
+
+          /* Instruct Giscus to change theme */
+          var frame = document.querySelector(".giscus-frame")
+          frame.contentWindow.postMessage(
+            { giscus: { setConfig: { theme } } },
+            "https://giscus.app"
+          )
+        }
+      })
+    })
+  </script>
+
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            回到頂端
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tabs", "navigation.sections", "navigation.indexes", "navigation.top", "header.autohide", "search.highlight", "search.share"], "search": "../../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "\u5df2\u8907\u88fd", "clipboard.copy": "\u8907\u88fd", "search.result.more.one": "\u6b64\u9801\u5c1a\u6709 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.more.other": "\u6b64\u9801\u5c1a\u6709 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.none": "\u6c92\u6709\u7b26\u5408\u7684\u9805\u76ee", "search.result.one": "\u627e\u5230 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.other": "\u627e\u5230 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.placeholder": "\u6253\u5b57\u9032\u884c\u641c\u5c0b", "search.result.term.missing": "\u7f3a\u5c11\u5b57\u8a5e", "select.version": "\u9078\u64c7\u7248\u672c"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.dff1b7c8.min.js"></script>
+      
+    
+  </body>
+</html>

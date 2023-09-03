@@ -1,0 +1,4389 @@
+
+<!doctype html>
+<html lang="zh-TW" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../03CSRF%E4%BF%9D%E8%AD%B7/">
+      
+      
+        <link rel="next" href="../05HTTP%E8%AB%8B%E6%B1%82/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-9.2.7">
+    
+    
+      
+        <title>Controller - Tom 株式會社</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.046329b4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.85d0ee34.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+Traditional+Chinese:300,300i,400,400i,700,700i%7CSource+Code+Pro:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans Traditional Chinese";--md-code-font:"Source Code Pro"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="red" data-md-color-accent="red">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#controller" class="md-skip">
+          跳轉到
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="頁首">
+    <a href="../.." title="Tom 株式會社" class="md-header__button md-logo" aria-label="Tom 株式會社" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Tom 株式會社
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Controller
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="red" data-md-color-accent="red"  aria-hidden="true"  type="radio" name="__palette" id="__palette_1">
+    
+  
+</form>
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜尋" placeholder="搜尋" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="搜尋">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清除" aria-label="清除" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜尋引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/tomleesm/notes" title="前往倉庫" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    tomleesm/notes
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="標籤" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../01%E6%A0%B8%E5%BF%83%E6%9E%B6%E6%A7%8B/01%E8%AB%8B%E6%B1%82%E7%9A%84%E7%94%9F%E5%91%BD%E9%80%B1%E6%9C%9F/" class="md-tabs__link">
+          
+  
+    
+  
+  核心架構
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../01%E8%B7%AF%E7%94%B1/" class="md-tabs__link">
+          
+  
+    
+  
+  基礎功能
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/01Artisan%E5%91%BD%E4%BB%A4%E5%88%97/" class="md-tabs__link">
+          
+  
+    
+  
+  繼續深入
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../04%E5%AE%89%E5%85%A8%E7%9B%B8%E9%97%9C/01%E4%BD%BF%E7%94%A8%E8%80%85%E8%AA%8D%E8%AD%89/" class="md-tabs__link">
+          
+  
+    
+  
+  安全相關
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../05%E8%B3%87%E6%96%99%E5%BA%AB/01%E5%BF%AB%E9%80%9F%E5%85%A5%E9%96%80/" class="md-tabs__link">
+          
+  
+    
+  
+  資料庫
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../06EloquentORM/01%E5%BF%AB%E9%80%9F%E5%85%A5%E9%96%80/" class="md-tabs__link">
+          
+  
+    
+  
+  Eloquent ORM
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../07%E6%B8%AC%E8%A9%A6%E7%9B%B8%E9%97%9C/01%E5%85%A5%E9%96%80/" class="md-tabs__link">
+          
+  
+    
+  
+  測試相關
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/01Cashier%E4%BA%A4%E6%98%93%E5%B7%A5%E5%85%B7%E5%8C%85Stripe/" class="md-tabs__link">
+          
+  
+    
+  
+  官方擴展包
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../cheatsheets/artisan/" class="md-tabs__link">
+          
+  
+    
+  
+  語法速查表
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="導覽列" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Tom 株式會社" class="md-nav__button md-logo" aria-label="Tom 株式會社" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Tom 株式會社
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/tomleesm/notes" title="前往倉庫" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    tomleesm/notes
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    核心架構
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            核心架構
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01%E6%A0%B8%E5%BF%83%E6%9E%B6%E6%A7%8B/01%E8%AB%8B%E6%B1%82%E7%9A%84%E7%94%9F%E5%91%BD%E9%80%B1%E6%9C%9F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    請求的生命週期
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01%E6%A0%B8%E5%BF%83%E6%9E%B6%E6%A7%8B/02%E6%9C%8D%E5%8B%99%E5%AE%B9%E5%99%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    服務容器
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01%E6%A0%B8%E5%BF%83%E6%9E%B6%E6%A7%8B/03%E6%9C%8D%E5%8B%99%E6%8F%90%E4%BE%9B%E8%80%85/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    服務提供者
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01%E6%A0%B8%E5%BF%83%E6%9E%B6%E6%A7%8B/04Facades/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Facades
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    基礎功能
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            基礎功能
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01%E8%B7%AF%E7%94%B1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    路由
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02%E4%B8%AD%E4%BB%8B%E8%BB%9F%E9%AB%94/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    中介軟體
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03CSRF%E4%BF%9D%E8%AD%B7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CSRF 保護
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Controller
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Controller
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目錄">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目錄
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    介紹
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#controller_1" class="md-nav__link">
+    編寫 controller
+  </a>
+  
+    <nav class="md-nav" aria-label="編寫 controller">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#controller_2" class="md-nav__link">
+    基本 controller
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#controller_3" class="md-nav__link">
+    單動作 controller
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#controller_4" class="md-nav__link">
+    controller 中介軟體
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#controller_5" class="md-nav__link">
+    資源型 controller
+  </a>
+  
+    <nav class="md-nav" aria-label="資源型 controller">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#controller_6" class="md-nav__link">
+    資源 controller 操作處理
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    自訂缺失模型行為
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    軟刪除模型
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    指定資源模型
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    生成表單請求
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    部分資源路由
+  </a>
+  
+    <nav class="md-nav" aria-label="部分資源路由">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#api" class="md-nav__link">
+    API 資源路由
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    巢狀資源
+  </a>
+  
+    <nav class="md-nav" aria-label="巢狀資源">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    限定巢狀資源的範圍
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    淺層巢狀
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    命名資源路由
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    命名資源路由參數
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    限定範圍的資源路由
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uris" class="md-nav__link">
+    本地化資源 URIs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#controller_7" class="md-nav__link">
+    補充資源 controller
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#controller_8" class="md-nav__link">
+    單例資源 controller
+  </a>
+  
+    <nav class="md-nav" aria-label="單例資源 controller">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creatable" class="md-nav__link">
+    Creatable 單例資源
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api_1" class="md-nav__link">
+    API 單例資源
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#controller_9" class="md-nav__link">
+    依賴注入和 controller
+  </a>
+  
+    <nav class="md-nav" aria-label="依賴注入和 controller">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    建構函式注入
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    方法注入
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05HTTP%E8%AB%8B%E6%B1%82/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTTP 請求
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06HTTP%E9%9F%BF%E6%87%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTTP 響應
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07%E6%AA%A2%E8%A6%96/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    檢視
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08Blade%E7%AF%84%E6%9C%AC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Blade 範本
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09Vite%E7%B7%A8%E8%AD%AFAssets/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vite 編譯 Assets
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10%E7%94%9F%E6%88%90URL/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    生成 URL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11Session/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Session
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12%E8%A1%A8%E5%96%AE%E9%A9%97%E8%AD%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    表單驗證
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13%E9%8C%AF%E8%AA%A4%E8%99%95%E7%90%86/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    錯誤處理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14%E6%97%A5%E8%AA%8C/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    日誌
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    繼續深入
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            繼續深入
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/01Artisan%E5%91%BD%E4%BB%A4%E5%88%97/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Artisan 命令列
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/02%E5%BB%A3%E6%92%AD/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    廣播
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/03%E5%BF%AB%E5%8F%96%E7%B3%BB%E7%B5%B1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    快取系統
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/04%E9%9B%86%E5%90%88/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    集合
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/05%E5%A5%91%E7%B4%84Contract/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    契約 Contract
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/06%E4%BA%8B%E4%BB%B6%E7%B3%BB%E7%B5%B1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    事件系統
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/07%E6%AA%94%E6%A1%88%E5%84%B2%E5%AD%98/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    檔案儲存
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/09HTTPClient/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTTP Client
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/10%E6%9C%AC%E5%9C%B0%E5%8C%96/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    本地化
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/11%E9%83%B5%E4%BB%B6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    郵件
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/12%E6%B6%88%E6%81%AF%E9%80%9A%E7%9F%A5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    消息通知
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/13Package%E9%96%8B%E7%99%BC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Package 開發
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/14%E8%99%95%E7%90%86%E7%A8%8B%E5%BA%8F%E7%AE%A1%E7%90%86/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    處理程序管理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/15%E4%BD%87%E5%88%97/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    佇列
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/16%E9%99%90%E6%B5%81/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    限流
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/17%E4%BB%BB%E5%8B%99%E8%AA%BF%E5%BA%A6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    任務調度
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    安全相關
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            安全相關
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04%E5%AE%89%E5%85%A8%E7%9B%B8%E9%97%9C/01%E4%BD%BF%E7%94%A8%E8%80%85%E8%AA%8D%E8%AD%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    使用者認證
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04%E5%AE%89%E5%85%A8%E7%9B%B8%E9%97%9C/02%E4%BD%BF%E7%94%A8%E8%80%85%E6%8E%88%E6%AC%8A/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    使用者授權
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04%E5%AE%89%E5%85%A8%E7%9B%B8%E9%97%9C/03Email%E8%AA%8D%E8%AD%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Email 認證
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04%E5%AE%89%E5%85%A8%E7%9B%B8%E9%97%9C/04%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    加密解密
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04%E5%AE%89%E5%85%A8%E7%9B%B8%E9%97%9C/05%E9%9B%9C%E6%B9%8A/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    雜湊
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04%E5%AE%89%E5%85%A8%E7%9B%B8%E9%97%9C/06%E9%87%8D%E8%A8%AD%E5%AF%86%E7%A2%BC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    重設密碼
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    資料庫
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            資料庫
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05%E8%B3%87%E6%96%99%E5%BA%AB/01%E5%BF%AB%E9%80%9F%E5%85%A5%E9%96%80/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    快速入門
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05%E8%B3%87%E6%96%99%E5%BA%AB/02%E6%9F%A5%E8%A9%A2%E7%94%9F%E6%88%90%E5%99%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    查詢生成器
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05%E8%B3%87%E6%96%99%E5%BA%AB/03%E5%88%86%E9%A0%81/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    分頁
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05%E8%B3%87%E6%96%99%E5%BA%AB/04%E9%81%B7%E7%A7%BB/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    遷移
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05%E8%B3%87%E6%96%99%E5%BA%AB/05%E8%B3%87%E6%96%99%E5%A1%AB%E5%85%85/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    資料填充
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05%E8%B3%87%E6%96%99%E5%BA%AB/06Redis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Redis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Eloquent ORM
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Eloquent ORM
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06EloquentORM/01%E5%BF%AB%E9%80%9F%E5%85%A5%E9%96%80/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    快速入門
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06EloquentORM/02%E9%97%9C%E8%81%AF/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    關聯
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06EloquentORM/03%E9%9B%86%E5%90%88/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    集合
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06EloquentORM/04%E5%B1%AC%E6%80%A7%E4%BF%AE%E6%94%B9%E5%99%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    屬性修改器
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06EloquentORM/05API%E8%B3%87%E6%BA%90/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    API 資源
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06EloquentORM/06%E5%BA%8F%E5%88%97%E5%8C%96/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    序列化
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06EloquentORM/07%E8%B3%87%E6%96%99%E5%B7%A5%E5%BB%A0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    資料工廠
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    測試相關
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            測試相關
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07%E6%B8%AC%E8%A9%A6%E7%9B%B8%E9%97%9C/01%E5%85%A5%E9%96%80/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    入門
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07%E6%B8%AC%E8%A9%A6%E7%9B%B8%E9%97%9C/02HTTP%E6%B8%AC%E8%A9%A6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTTP 測試
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07%E6%B8%AC%E8%A9%A6%E7%9B%B8%E9%97%9C/03%E5%91%BD%E4%BB%A4%E5%88%97%E6%B8%AC%E8%A9%A6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    命令列測試
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07%E6%B8%AC%E8%A9%A6%E7%9B%B8%E9%97%9C/04LaravelDusk/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Laravel Dusk
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07%E6%B8%AC%E8%A9%A6%E7%9B%B8%E9%97%9C/05%E8%B3%87%E6%96%99%E5%BA%AB%E6%B8%AC%E8%A9%A6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    資料庫測試
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07%E6%B8%AC%E8%A9%A6%E7%9B%B8%E9%97%9C/06Mocking/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mocking
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    官方擴展包
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            官方擴展包
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/01Cashier%E4%BA%A4%E6%98%93%E5%B7%A5%E5%85%B7%E5%8C%85Stripe/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cashier 交易工具包 Stripe
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/02Cashier%E4%BA%A4%E6%98%93%E5%B7%A5%E5%85%B7%E5%8C%85Paddle/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cashier 交易工具包 Paddle
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/03Envoy%E9%83%A8%E7%BD%B2%E5%B7%A5%E5%85%B7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Envoy 部署工具
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/04Fortify%E8%88%87%E5%89%8D%E7%AB%AF%E7%84%A1%E9%97%9C%E7%9A%84%E8%BA%AB%E4%BB%BD%E8%AA%8D%E8%AD%89%E5%BE%8C%E7%AB%AF%E5%AF%A6%E7%8F%BE/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fortify 與前端無關的身份認證後端實現
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/05Homestead%E8%99%9B%E6%93%AC%E6%A9%9F%E5%99%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Homestead 虛擬機器
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/06Horizon%E4%BD%87%E5%88%97%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Horizon 佇列管理工具
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/09Octane%E5%8A%A0%E9%80%9F%E5%BC%95%E6%93%8E/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Octane 加速引擎
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/10PassportOAuth%E8%AA%8D%E8%AD%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Passport OAuth 認證
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/11Pennant%E6%B8%AC%E8%A9%A6%E6%96%B0%E5%8A%9F%E8%83%BD/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pennant 測試新功能
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/12Pint%E7%A8%8B%E5%BC%8F%E7%A2%BC%E9%A2%A8%E6%A0%BC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pint 程式碼風格
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/13SailDocker%E9%96%8B%E7%99%BC%E7%92%B0%E5%A2%83/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sail Docker 開發環境
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/14SanctumAPI%E6%8E%88%E6%AC%8A/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sanctum API 授權
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/15Scout%E5%85%A8%E6%96%87%E6%90%9C%E5%B0%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Scout 全文搜尋
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/16Socialite%E7%AC%AC%E4%B8%89%E6%96%B9%E7%99%BB%E5%85%A5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Socialite 第三方登入
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/17Telescope%E5%81%B5%E9%8C%AF%E5%B7%A5%E5%85%B7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Telescope 偵錯工具
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    語法速查表
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            語法速查表
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/artisan/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Artisan
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/auth/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Auth 使用者認證
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/blade/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Blade 範本
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/cache/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cache
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/collection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Collection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/composer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Composer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/config/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Config
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/container/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Container
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/cookie/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cookie
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/db/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Database
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/environment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Environment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/event/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Event
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/file/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    File
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/helper/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Helper
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/input/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Input
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/lang/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lang
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/Log/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Log
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/mail/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mail
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/model/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Model (Eloquent ORM)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/pagination/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pagination
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/queue/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Queue
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/redirect/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Redirect
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/request/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Request
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/response/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Response
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/route/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Route
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/schema/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Schema 資料庫結構
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/security/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Security (Hash 和加解密)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/session/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Session
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/storage/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Storage
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/string/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    String
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/unittest/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Unit Test 單元測試
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/url/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    URL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/validation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Validation 表單驗證
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/view/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    View
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目錄">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目錄
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    介紹
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#controller_1" class="md-nav__link">
+    編寫 controller
+  </a>
+  
+    <nav class="md-nav" aria-label="編寫 controller">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#controller_2" class="md-nav__link">
+    基本 controller
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#controller_3" class="md-nav__link">
+    單動作 controller
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#controller_4" class="md-nav__link">
+    controller 中介軟體
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#controller_5" class="md-nav__link">
+    資源型 controller
+  </a>
+  
+    <nav class="md-nav" aria-label="資源型 controller">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#controller_6" class="md-nav__link">
+    資源 controller 操作處理
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    自訂缺失模型行為
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    軟刪除模型
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    指定資源模型
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    生成表單請求
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    部分資源路由
+  </a>
+  
+    <nav class="md-nav" aria-label="部分資源路由">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#api" class="md-nav__link">
+    API 資源路由
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    巢狀資源
+  </a>
+  
+    <nav class="md-nav" aria-label="巢狀資源">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    限定巢狀資源的範圍
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    淺層巢狀
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    命名資源路由
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    命名資源路由參數
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    限定範圍的資源路由
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uris" class="md-nav__link">
+    本地化資源 URIs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#controller_7" class="md-nav__link">
+    補充資源 controller
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#controller_8" class="md-nav__link">
+    單例資源 controller
+  </a>
+  
+    <nav class="md-nav" aria-label="單例資源 controller">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creatable" class="md-nav__link">
+    Creatable 單例資源
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api_1" class="md-nav__link">
+    API 單例資源
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#controller_9" class="md-nav__link">
+    依賴注入和 controller
+  </a>
+  
+    <nav class="md-nav" aria-label="依賴注入和 controller">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    建構函式注入
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    方法注入
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+  
+                  
+
+  
+  
+
+
+<h1 id="controller">controller<a class="headerlink" href="#controller" title="Permanent link">&para;</a></h1>
+<h2 id="_1">介紹<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>你可能希望使用「controller」類來組織此行為，而不是將所有請求處理邏輯定義為路由檔案中的閉包。 controller 可以將相關的請求處理邏輯分組到一個類中。 例如，一個 <code>UserController</code> 類可能會處理所有與使用者相關的傳入請求，包括顯示、建立、更新和刪除使用者。 默認情況下， controller 儲存在 <code>app/Http/Controllers</code> 目錄中。</p>
+<h2 id="controller_1">編寫 controller<a class="headerlink" href="#controller_1" title="Permanent link">&para;</a></h2>
+<h3 id="controller_2">基本 controller<a class="headerlink" href="#controller_2" title="Permanent link">&para;</a></h3>
+<p>如果要快速生成新 controller ，可以使用 <code>make:controller</code> Artisan 命令。默認情況下，應用程式的所有 controller 都儲存在<code>app/Http/Controllers</code> 目錄中：</p>
+<div class="highlight"><pre><span></span><code>php<span class="w"> </span>artisan<span class="w"> </span>make:controller<span class="w"> </span>UserController
+</code></pre></div>
+<p>讓我們來看一個基本 controller 的示例。 controller 可以有任意數量的公共方法來響應傳入的HTTP請求：</p>
+<div class="highlight"><pre><span></span><code>&lt;?php
+
+namespace App\Http\Controllers;
+
+use App\Models\User;
+use Illuminate\View\View;
+
+class UserController extends Controller
+{
+    /**
+     * 顯示給定使用者的組態檔案。
+     */
+    public function show(string $id): View
+    {
+        return view(&#39;user.profile&#39;, [
+            &#39;user&#39; =&gt; User::findOrFail($id)
+        ]);
+    }
+}
+</code></pre></div>
+<p>編寫 controller 類和方法後，可以定義到 controller 方法的路由，如下所示：</p>
+<div class="highlight"><pre><span></span><code>use App\Http\Controllers\UserController;
+
+Route::get(&#39;/user/{id}&#39;, [UserController::class, &#39;show&#39;]);
+</code></pre></div>
+<p>當傳入的請求與指定的路由 URI 匹配時，將呼叫 <code>App\Http\Controllers\UserController</code> 類的 <code>show</code> 方法，並將路由參數傳遞給該方法。</p>
+<blockquote>
+<p>技巧： controller 並不是 <strong>必需</strong> 繼承基礎類。如果 controller 沒有繼承基礎類，你將無法使用一些便捷的功能，比如 <code>middleware</code> 和 <code>authorize</code> 方法。</p>
+</blockquote>
+<h3 id="controller_3">單動作 controller<a class="headerlink" href="#controller_3" title="Permanent link">&para;</a></h3>
+<p>如果 controller 動作特別複雜，你可能會發現將整個 controller 類專用於該單個動作很方便。為此，您可以在 controller 中定義一個 <code>__invoke</code> 方法：</p>
+<div class="highlight"><pre><span></span><code>&lt;?php
+
+namespace App\Http\Controllers;
+
+use App\Models\User;
+use Illuminate\Http\Response;
+
+class ProvisionServer extends Controller
+{
+    /**
+     * 設定新的web伺服器。
+     */
+    public function __invoke()
+    {
+        // ...
+    }
+}
+</code></pre></div>
+<p>為單動作 controller 註冊路由時，不需要指定 controller 方法。相反，你可以簡單地將 controller 的名稱傳遞給路由器：</p>
+<div class="highlight"><pre><span></span><code>use App\Http\Controllers\ProvisionServer;
+
+Route::post(&#39;/server&#39;, ProvisionServer::class);
+</code></pre></div>
+<p>你可以使用 <code>make:controller</code> Artisan 命令的 <code>--invokable</code> 選項生成可呼叫 controller ：</p>
+<div class="highlight"><pre><span></span><code>php<span class="w"> </span>artisan<span class="w"> </span>make:controller<span class="w"> </span>ProvisionServer<span class="w"> </span>--invokable
+</code></pre></div>
+<blockquote>
+<p>技巧：可以使用 <a href="/docs/laravel/10.x/artisan#stub-customization">stub 定製</a> 自訂 controller 範本。</p>
+</blockquote>
+<h2 id="controller_4">controller 中介軟體<a class="headerlink" href="#controller_4" title="Permanent link">&para;</a></h2>
+<p><a href="/docs/laravel/10.x/middleware">中介軟體</a> 可以在你的路由檔案中分配給 controller 的路由：</p>
+<div class="highlight"><pre><span></span><code>Route::get(&#39;profile&#39;, [UserController::class, &#39;show&#39;])-&gt;middleware(&#39;auth&#39;);
+</code></pre></div>
+<p>或者，你可能會發現在 controller 的建構函式中指定中介軟體很方便。使用 controller 建構函式中的 <code>middleware</code> 方法，你可以將中介軟體分配給 controller 的操作：</p>
+<div class="highlight"><pre><span></span><code>class UserController extends Controller
+{
+    /**
+     * Instantiate a new controller instance.
+     */
+    public function __construct()
+    {
+        $this-&gt;middleware(&#39;auth&#39;);
+        $this-&gt;middleware(&#39;log&#39;)-&gt;only(&#39;index&#39;);
+        $this-&gt;middleware(&#39;subscribed&#39;)-&gt;except(&#39;store&#39;);
+    }
+}
+</code></pre></div>
+<p>controller 還允許你使用閉包註冊中介軟體。這提供了一種方便的方法來為單個 controller 定義內聯中介軟體，而無需定義整個中介軟體類：</p>
+<div class="highlight"><pre><span></span><code>use Closure;
+use Illuminate\Http\Request;
+
+$this-&gt;middleware(function (Request $request, Closure $next) {
+    return $next($request);
+});
+</code></pre></div>
+<h2 id="controller_5">資源型 controller<a class="headerlink" href="#controller_5" title="Permanent link">&para;</a></h2>
+<p>如果你將應用程式中的每個 Eloquent 模型都視為資源，那麼通常對應用程式中的每個資源都執行相同的操作。例如，假設你的應用程式中包含一個 <code>Photo</code> 模型和一個 <code>Movie</code> 模型。使用者可能可以建立，讀取，更新或者刪除這些資源。</p>
+<p>Laravel 的資源路由通過單行程式碼即可將典型的增刪改查（“CURD”）路由分配給 controller 。首先，我們可以使用 Artisan 命令 <code>make:controller</code> 的 <code>--resource</code> 選項來快速建立一個 controller :</p>
+<div class="highlight"><pre><span></span><code>php<span class="w"> </span>artisan<span class="w"> </span>make:controller<span class="w"> </span>PhotoController<span class="w"> </span>--resource
+</code></pre></div>
+<p>這個命令將會生成一個 controller  <code>app/Http/Controllers/PhotoController.php</code>。其中包括每個可用資源操作的方法。接下來，你可以給 controller 註冊一個資源路由：</p>
+<div class="highlight"><pre><span></span><code>use App\Http\Controllers\PhotoController;
+
+Route::resource(&#39;photos&#39;, PhotoController::class);
+</code></pre></div>
+<p>這個單一的路由聲明建立了多個路由來處理資源上的各種行為。生成的 controller 為每個行為保留了方法，而且你可以通過運行 Artisan 命令 <code>route:list</code> 來快速瞭解你的應用程式。</p>
+<p>你可以通過將陣列傳參到 <code>resources</code> 方法中的方式來一次性的建立多個資源 controller ：</p>
+<div class="highlight"><pre><span></span><code>Route::resources([
+    &#39;photos&#39; =&gt; PhotoController::class,
+    &#39;posts&#39; =&gt; PostController::class,
+]);
+</code></pre></div>
+<h4 id="controller_6">資源 controller 操作處理<a class="headerlink" href="#controller_6" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>請求方式</th>
+<th>請求URI</th>
+<th>行為</th>
+<th>路由名稱</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GET</td>
+<td><code>/photos</code></td>
+<td>index</td>
+<td>photos.index</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/photos/create</code></td>
+<td>create</td>
+<td>photos.create</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/photos</code></td>
+<td>store</td>
+<td>photos.store</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/photos/{photo}</code></td>
+<td>show</td>
+<td>photos.show</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/photos/{photo}/edit</code></td>
+<td>edit</td>
+<td>photos.edit</td>
+</tr>
+<tr>
+<td>PUT/PATCH</td>
+<td><code>/photos/{photo}</code></td>
+<td>update</td>
+<td>photos.update</td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td><code>/photos/{photo}</code></td>
+<td>destroy</td>
+<td>photos.destroy</td>
+</tr>
+</tbody>
+</table>
+<h4 id="_2">自訂缺失模型行為<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
+<p>通常，如果未找到隱式繫結的資源模型，則會生成狀態碼為 404 的 HTTP 響應。 但是，你可以通過在定義資源路由時呼叫 <code>missing</code> 的方法來自訂該行為。<code>missing</code> 方法接受一個閉包，如果對於任何資源的路由都找不到隱式繫結模型，則將呼叫該閉包：</p>
+<div class="highlight"><pre><span></span><code>use App\Http\Controllers\PhotoController;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+
+Route::resource(&#39;photos&#39;, PhotoController::class)
+        -&gt;missing(function (Request $request) {
+            return Redirect::route(&#39;photos.index&#39;);
+        });
+</code></pre></div>
+<h4 id="_3">軟刪除模型<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<p>通常情況下，隱式模型繫結將不會檢索已經進行了 <a href="/docs/laravel/10.x/eloquent#soft-deleting">軟刪除</a> 的模型，並且會返回一個 404 HTTP 響應。但是，你可以在定義資源路由時呼叫 <code>withTrashed</code> 方法來告訴框架允許軟刪除的模型：</p>
+<div class="highlight"><pre><span></span><code>use App\Http\Controllers\PhotoController;
+
+Route::resource(&#39;photos&#39;, PhotoController::class)-&gt;withTrashed();
+</code></pre></div>
+<p>當不傳遞參數呼叫 <code>withTrashed</code> 時，將在 <code>show</code>、<code>edit</code> 和 <code>update</code> 資源路由中允許軟刪除的模型。你可以通過一個陣列指定這些路由的子集傳遞給 <code>withTrashed</code> 方法：</p>
+<div class="highlight"><pre><span></span><code>Route::resource(&#39;photos&#39;, PhotoController::class)-&gt;withTrashed([&#39;show&#39;]);
+</code></pre></div>
+<h4 id="_4">指定資源模型<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<p>如果你使用了路由模型的繫結 <a href="/docs/laravel/10.x/routing#route-model-binding">路由模型繫結</a> 並且想在資源 controller 的方法中使用類型提示，你可以在生成 controller 的時候使用 <code>--model</code> 選項：</p>
+<div class="highlight"><pre><span></span><code>php<span class="w"> </span>artisan<span class="w"> </span>make:controller<span class="w"> </span>PhotoController<span class="w"> </span>--model<span class="o">=</span>Photo<span class="w"> </span>--resource
+</code></pre></div>
+<h4 id="_5">生成表單請求<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<p>你可以在生成資源 controller 時提供 <code>--requests</code>  選項來讓 Artisan 為 controller 的 storage 和 update 方法生成 <a href="/docs/laravel/10.x/validation#form-request-validation">表單請求類</a>：</p>
+<div class="highlight"><pre><span></span><code>php<span class="w"> </span>artisan<span class="w"> </span>make:controller<span class="w"> </span>PhotoController<span class="w"> </span>--model<span class="o">=</span>Photo<span class="w"> </span>--resource<span class="w"> </span>--requests
+</code></pre></div>
+<h3 id="_6">部分資源路由<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p>當聲明資源路由時，你可以指定 controller 處理的部分行為，而不是所有默認的行為：</p>
+<div class="highlight"><pre><span></span><code>use App\Http\Controllers\PhotoController;
+
+Route::resource(&#39;photos&#39;, PhotoController::class)-&gt;only([
+    &#39;index&#39;, &#39;show&#39;
+]);
+
+Route::resource(&#39;photos&#39;, PhotoController::class)-&gt;except([
+    &#39;create&#39;, &#39;store&#39;, &#39;update&#39;, &#39;destroy&#39;
+]);
+</code></pre></div>
+<h4 id="api">API 資源路由<a class="headerlink" href="#api" title="Permanent link">&para;</a></h4>
+<p>當聲明用於 API 的資源路由時，通常需要排除顯示 HTML 範本的路由，例如 <code>create</code> 和 <code>edit</code>。為了方便，你可以使用 <code>apiResource</code> 方法來排除這兩個路由：</p>
+<div class="highlight"><pre><span></span><code>use App\Http\Controllers\PhotoController;
+
+Route::apiResource(&#39;photos&#39;, PhotoController::class);
+</code></pre></div>
+<p>你也可以傳遞一個陣列給 <code>apiResources</code> 方法來同時註冊多個 API 資源 controller ：</p>
+<div class="highlight"><pre><span></span><code>use App\Http\Controllers\PhotoController;
+use App\Http\Controllers\PostController;
+
+Route::apiResources([
+    &#39;photos&#39; =&gt; PhotoController::class,
+    &#39;posts&#39; =&gt; PostController::class,
+]);
+</code></pre></div>
+<p>要快速生成不包含 <code>create</code> 或 <code>edit</code> 方法的 API 資源 controller ，你可以在執行 <code>make:controller</code> 命令時使用 <code>--api</code> 參數：</p>
+<div class="highlight"><pre><span></span><code>php<span class="w"> </span>artisan<span class="w"> </span>make:controller<span class="w"> </span>PhotoController<span class="w"> </span>--api
+</code></pre></div>
+<h3 id="_7">巢狀資源<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p>有時可能需要定義一個巢狀的資源型路由。例如，照片資源可能被新增了多個評論。那麼可以在路由中使用 <code>.</code> 符號來聲明資源型 controller ：</p>
+<div class="highlight"><pre><span></span><code>use App\Http\Controllers\PhotoCommentController;
+
+Route::resource(&#39;photos.comments&#39;, PhotoCommentController::class);
+</code></pre></div>
+<p>該路由會註冊一個巢狀資源，可以使用如下 URI 訪問：</p>
+<div class="highlight"><pre><span></span><code>/photos/{photo}/comments/{comment}
+</code></pre></div>
+<h4 id="_8">限定巢狀資源的範圍<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<p>Laravel 的 <a href="/docs/laravel/10.x/routing#implicit-model-binding-scoping">隱式模型繫結</a> 特性可以自動限定巢狀繫結的範圍，以便確認已解析的子模型會自動屬於父模型。定義巢狀路由時，使用 scoped 方法，可以開啟自動範圍限定，也可以指定 Laravel 應該按照哪個欄位檢索子模型資源，有關如何完成此操作的更多資訊，請參見有關 <a href="#restful-scoping-resource-routes">範圍資源路由</a> 的文件。</p>
+<h4 id="_9">淺層巢狀<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<p>通常，並不是在所有情況下都需要在 URI 中同時擁有父 ID 和子 ID，因為子 ID 已經是唯一的識別碼。當使用唯一識別碼（如自動遞增的主鍵）來標識 URL 中的模型時，可以選擇使用「淺巢狀」的方式定義路由：</p>
+<div class="highlight"><pre><span></span><code>use App\Http\Controllers\CommentController;
+
+Route::resource(&#39;photos.comments&#39;, CommentController::class)-&gt;shallow();
+</code></pre></div>
+<p>上面的路由定義方式會定義以下路由：</p>
+<table>
+<thead>
+<tr>
+<th>請求方式</th>
+<th>請求URI</th>
+<th>行為</th>
+<th>路由名稱</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GET</td>
+<td><code>/photos/{photo}/comments</code></td>
+<td>index</td>
+<td>photos.comments.index</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/photos/{photo}/comments/create</code></td>
+<td>create</td>
+<td>photos.comments.create</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/photos/{photo}/comments</code></td>
+<td>store</td>
+<td>photos.comments.store</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/comments/{comment}</code></td>
+<td>show</td>
+<td>comments.show</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/comments/{comment}/edit</code></td>
+<td>edit</td>
+<td>comments.edit</td>
+</tr>
+<tr>
+<td>PUT/PATCH</td>
+<td><code>/comments/{comment}</code></td>
+<td>update</td>
+<td>comments.update</td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td><code>/comments/{comment}</code></td>
+<td>destroy</td>
+<td>comments.destroy</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_10">命名資源路由<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<p>默認情況下，所有的資源 controller 行為都有一個路由名稱。你可以傳入 <code>names</code> 陣列來覆蓋這些名稱：</p>
+<div class="highlight"><pre><span></span><code>use App\Http\Controllers\PhotoController;
+
+Route::resource(&#39;photos&#39;, PhotoController::class)-&gt;names([
+    &#39;create&#39; =&gt; &#39;photos.build&#39;
+]);
+</code></pre></div>
+<h3 id="_11">命名資源路由參數<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<p>默認情況下，<code>Route::resource</code> 會根據資源名稱的「單數」形式建立資源路由的路由參數。你可以使用 <code>parameters</code> 方法來輕鬆地覆蓋資源路由名稱。傳入 <code>parameters</code> 方法應該是資源名稱和參數名稱的關聯陣列：</p>
+<div class="highlight"><pre><span></span><code>use App\Http\Controllers\AdminUserController;
+
+Route::resource(&#39;users&#39;, AdminUserController::class)-&gt;parameters([
+    &#39;users&#39; =&gt; &#39;admin_user&#39;
+]);
+</code></pre></div>
+<p>上面的示例將會為資源的 <code>show</code> 路由生成以下的 URL：</p>
+<div class="highlight"><pre><span></span><code>/users/{admin_user}
+</code></pre></div>
+<h3 id="_12">限定範圍的資源路由<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<p>Laravel 的 <a href="/docs/laravel/10.x/routing#implicit-model-binding-scoping">範疇隱式模型繫結</a> 功能可以自動確定巢狀繫結的範圍，以便確認已解析的子模型屬於父模型。通過在定義巢狀資源時使用 <code>scoped</code> 方法，你可以啟用自動範圍界定，並指示 Laravel 應該通過以下方式來檢索子資源的哪個欄位：</p>
+<div class="highlight"><pre><span></span><code>use App\Http\Controllers\PhotoCommentController;
+
+Route::resource(&#39;photos.comments&#39;, PhotoCommentController::class)-&gt;scoped([
+    &#39;comment&#39; =&gt; &#39;slug&#39;,
+]);
+</code></pre></div>
+<p>此路由將註冊一個有範圍的巢狀資源，該資源可以通過以下 URI 進行訪問：</p>
+<div class="highlight"><pre><span></span><code>/photos/{photo}/comments/{comment:slug}
+</code></pre></div>
+<p>當使用一個自訂鍵的隱式繫結作為巢狀路由參數時，Laravel 會自動限定查詢範圍，按照約定的命名方式去父類中尋找關聯方法，然後檢索到對應的巢狀模型。在這種情況下，將假定 <code>Photo</code> 模型有一個叫 <code>comments</code> （路由參數名的複數）的關聯方法，通過這個方法可以檢索到 <code>Comment</code> 模型。</p>
+<h3 id="uris">本地化資源 URIs<a class="headerlink" href="#uris" title="Permanent link">&para;</a></h3>
+<p>默認情況下，<code>Route::resource</code> 將會用英文動詞建立資源 URIs。如果需要自訂 <code>create</code> 和 <code>edit</code> 行為的動名詞，你可以在 <code>App\Providers\RouteServiceProvider</code> 的 <code>boot</code> 方法中使用 <code>Route::resourceVerbs</code> 方法實現：</p>
+<div class="highlight"><pre><span></span><code>/**
+ * 定義你的路由模型繫結，模式過濾器等
+ */
+public function boot(): void
+{
+    Route::resourceVerbs([
+        &#39;create&#39; =&gt; &#39;crear&#39;,
+        &#39;edit&#39; =&gt; &#39;editar&#39;,
+    ]);
+
+    // ...
+}
+</code></pre></div>
+<p>Laravel 的複數器支援<a href="/docs/laravel/10.x/localization#pluralization-language">組態幾種不同的語言</a>。自訂動詞和複數語言後，諸如 <code>Route::resource('publicacion', PublicacionController::class)</code> 之類的資源路由註冊將生成以下URI：</p>
+<div class="highlight"><pre><span></span><code>/publicacion/crear
+
+/publicacion/{publicaciones}/editar
+</code></pre></div>
+<h3 id="controller_7">補充資源 controller<a class="headerlink" href="#controller_7" title="Permanent link">&para;</a></h3>
+<p>如果你需要向資源 controller 新增超出默認資源路由集的其他路由，則應在呼叫 <code>Route::resource</code> 方法之前定義這些路由；否則，由 <code>resource</code> 方法定義的路由可能會無意中優先於您的補充路由：
+單例資源
+    use App\Http\Controller\PhotoController;</p>
+<div class="highlight"><pre><span></span><code>Route::get(&#39;/photos/popular&#39;, [PhotoController::class, &#39;popular&#39;]);
+Route::resource(&#39;photos&#39;, PhotoController::class);
+</code></pre></div>
+<blockquote>
+<p>技巧：請記住讓你的 controller 保持集中。如果你發現自己經常需要典型資源操作集之外的方法，請考慮將 controller 拆分為兩個更小的 controller 。</p>
+</blockquote>
+<h3 id="controller_8">單例資源 controller<a class="headerlink" href="#controller_8" title="Permanent link">&para;</a></h3>
+<p>有時候，應用中的資源可能只有一個實例。比如，使用者「個人資料」可被編輯或更新，但是一個使用者只會有一份「個人資料」。同樣，一張圖片也只有一個「縮圖」。這些資源就是所謂「單例資源」，這意味著該資源有且只能有一個實例存在。這種情況下，你可以註冊成單例(signleton)資源 controller :</p>
+<div class="highlight"><pre><span></span><code><span class="x">use App\Http\Controllers\ProfileController;</span>
+<span class="x">use Illuminate\Support\Facades\Route;</span>
+
+<span class="x">Route::singleton(&#39;profile&#39;, ProfileController::class);</span>
+</code></pre></div>
+<p>上例中定義的單例資源會註冊如下所示的路由。如你所見，單例資源中「新建」路由沒有被註冊；並且註冊的路由不接收路由參數，因為該資源中只有一個實例存在：</p>
+<table>
+<thead>
+<tr>
+<th>請求方式</th>
+<th>請求 URI</th>
+<th>行為</th>
+<th>路由名稱</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GET</td>
+<td><code>/profile</code></td>
+<td>show</td>
+<td>profile.show</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/profile/edit</code></td>
+<td>edit</td>
+<td>profile.edit</td>
+</tr>
+<tr>
+<td>PUT/PATCH</td>
+<td><code>/profile</code></td>
+<td>update</td>
+<td>profile.update</td>
+</tr>
+</tbody>
+</table>
+<p>單例資源也可以在標準資源內巢狀使用：</p>
+<div class="highlight"><pre><span></span><code><span class="x">Route::singleton(&#39;photos.thumbnail&#39;, ThumbnailController::class);</span>
+</code></pre></div>
+<p>上例中， <code>photo</code> 資源將接收所有的<a href="#actions-handled-by-resource-controller">標準資源路由</a>；不過，<code>thumbnail</code> 資源將會是個單例資源，它的路由如下所示：</p>
+<table>
+<thead>
+<tr>
+<th>請求方式</th>
+<th>請求 URI</th>
+<th>行為</th>
+<th>路由名稱</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GET</td>
+<td><code>/photos/{photo}/thumbnail</code></td>
+<td>show</td>
+<td>photos.thumbnail.show</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/photos/{photo}/thumbnail/edit</code></td>
+<td>edit</td>
+<td>photos.thumbnail.edit</td>
+</tr>
+<tr>
+<td>PUT/PATCH</td>
+<td><code>/photos/{photo}/thumbnail</code></td>
+<td>update</td>
+<td>photos.thumbnail.update</td>
+</tr>
+</tbody>
+</table>
+<h4 id="creatable">Creatable 單例資源<a class="headerlink" href="#creatable" title="Permanent link">&para;</a></h4>
+<p>有時，你可能需要為單例資源定義 create 和 storage 路由。要實現這一功能，你可以在註冊單例資源路由時，呼叫 <code>creatable</code> 方法：</p>
+<div class="highlight"><pre><span></span><code><span class="x">Route::singleton(&#39;photos.thumbnail&#39;, ThumbnailController::class)-&gt;creatable();</span>
+</code></pre></div>
+<p>如下所示，將註冊以下路由。還為可建立的單例資源註冊 <code>DELETE</code> 路由：</p>
+<table>
+<thead>
+<tr>
+<th>Verb</th>
+<th>URI</th>
+<th>Action</th>
+<th>Route Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GET</td>
+<td><code>/photos/{photo}/thumbnail/create</code></td>
+<td>create</td>
+<td>photos.thumbnail.create</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/photos/{photo}/thumbnail</code></td>
+<td>store</td>
+<td>photos.thumbnail.store</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/photos/{photo}/thumbnail</code></td>
+<td>show</td>
+<td>photos.thumbnail.show</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/photos/{photo}/thumbnail/edit</code></td>
+<td>edit</td>
+<td>photos.thumbnail.edit</td>
+</tr>
+<tr>
+<td>PUT/PATCH</td>
+<td><code>/photos/{photo}/thumbnail</code></td>
+<td>update</td>
+<td>photos.thumbnail.update</td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td><code>/photos/{photo}/thumbnail</code></td>
+<td>destroy</td>
+<td>photos.thumbnail.destroy</td>
+</tr>
+</tbody>
+</table>
+<p>如果希望 Laravel 為單個資源註冊 <code>DELETE</code> 路由，但不註冊建立或儲存路由，則可以使用 <code>destroyable</code> 方法：</p>
+<div class="highlight"><pre><span></span><code><span class="x">Route::singleton(...)-&gt;destroyable();</span>
+</code></pre></div>
+<h4 id="api_1">API 單例資源<a class="headerlink" href="#api_1" title="Permanent link">&para;</a></h4>
+<p><code>apiSingleton</code> 方法可用於註冊將通過API操作的單例資源，從而不需要 <code>create</code> 和 <code>edit</code>  路由：</p>
+<div class="highlight"><pre><span></span><code><span class="x">Route::apiSingleton(&#39;profile&#39;, ProfileController::class);</span>
+</code></pre></div>
+<p>當然， API 單例資源也可以是 <code>可建立的</code> ，它將註冊 <code>store</code> 和 <code>destroy</code> 資源路由：</p>
+<div class="highlight"><pre><span></span><code><span class="x">Route::apiSingleton(&#39;photos.thumbnail&#39;, ProfileController::class)-&gt;creatable();</span>
+</code></pre></div>
+<h2 id="controller_9">依賴注入和 controller<a class="headerlink" href="#controller_9" title="Permanent link">&para;</a></h2>
+<h4 id="_13">建構函式注入<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
+<p>Laravel <a href="/docs/laravel/10.x/container">服務容器</a> 用於解析所有 Laravel  controller 。因此，可以在其建構函式中對 controller 可能需要的任何依賴項進行類型提示。聲明的依賴項將自動解析並注入到 controller 實例中：</p>
+<div class="highlight"><pre><span></span><code>&lt;?php
+
+namespace App\Http\Controllers;
+
+use App\Repositories\UserRepository;
+
+class UserController extends Controller
+{
+    /**
+     * 建立新 controller 實例。
+     */
+    public function __construct(
+        protected UserRepository $users,
+    ) {}
+}
+</code></pre></div>
+<h4 id="_14">方法注入<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
+<p>除了建構函式注入，還可以在 controller 的方法上鍵入提示依賴項。方法注入的一個常見用例是將 <code>Illuminate\Http\Request</code> 實例注入到 controller 方法中：</p>
+<div class="highlight"><pre><span></span><code>&lt;?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+
+class UserController extends Controller
+{
+    /**
+     * 儲存新使用者。
+     */
+    public function store(Request $request): RedirectResponse
+    {
+        $name = $request-&gt;name;
+
+        // 儲存使用者。。。
+
+        return redirect(&#39;/users&#39;);
+    }
+}
+</code></pre></div>
+<p>如果 controller 方法也需要路由參數，那就在其他依賴項之後列出路由參數。例如，路由是這樣定義的：</p>
+<div class="highlight"><pre><span></span><code>use App\Http\Controllers\UserController;
+
+Route::put(&#39;/user/{id}&#39;, [UserController::class, &#39;update&#39;]);
+</code></pre></div>
+<p>如下所示，你依然可以類型提示 <code>Illuminate\Http\Request</code> 並通過定義您的 controller 方法訪問 <code>id</code> 參數：</p>
+<div class="highlight"><pre><span></span><code>&lt;?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+
+class UserController extends Controller
+{
+    /**
+     * 更新給定使用者。
+     */
+    public function update(Request $request, string $id): RedirectResponse
+    {
+        // 更新使用者。。。
+
+        return redirect(&#39;/users&#39;);
+    }
+}
+</code></pre></div>
+
+
+
+
+
+                
+
+  <!-- Giscus -->
+  <h2 id="__comments">留言</h2>
+  <script src="https://giscus.app/client.js"
+          data-repo="tomleesm/notes"
+          data-repo-id="R_kgDOGuSz4g"
+          data-category="Announcements"
+          data-category-id="DIC_kwDOGuSz4s4CBI6T"
+          data-mapping="title"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="bottom"
+          data-theme="dark"
+          data-lang="zh-TW"
+          crossorigin="anonymous"
+          async>
+  </script>
+
+  <!-- Reload on palette change -->
+  <script>
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object")
+      if (palette.color.scheme === "slate") {
+        var giscus = document.querySelector("script[src*=giscus]")
+        giscus.setAttribute("data-theme", "dark")
+      }
+
+    /* Register event handlers after documented loaded */
+    document.addEventListener("DOMContentLoaded", function() {
+      var ref = document.querySelector("[data-md-component=palette]")
+      ref.addEventListener("change", function() {
+        var palette = __md_get("__palette")
+        if (palette && typeof palette.color === "object") {
+          var theme = palette.color.scheme === "slate" ? "dark" : "light"
+
+          /* Instruct Giscus to change theme */
+          var frame = document.querySelector(".giscus-frame")
+          frame.contentWindow.postMessage(
+            { giscus: { setConfig: { theme } } },
+            "https://giscus.app"
+          )
+        }
+      })
+    })
+  </script>
+
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            回到頂端
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tabs", "navigation.sections", "navigation.indexes", "navigation.top", "header.autohide", "search.highlight", "search.share"], "search": "../../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "\u5df2\u8907\u88fd", "clipboard.copy": "\u8907\u88fd", "search.result.more.one": "\u6b64\u9801\u5c1a\u6709 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.more.other": "\u6b64\u9801\u5c1a\u6709 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.none": "\u6c92\u6709\u7b26\u5408\u7684\u9805\u76ee", "search.result.one": "\u627e\u5230 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.other": "\u627e\u5230 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.placeholder": "\u6253\u5b57\u9032\u884c\u641c\u5c0b", "search.result.term.missing": "\u7f3a\u5c11\u5b57\u8a5e", "select.version": "\u9078\u64c7\u7248\u672c"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.dff1b7c8.min.js"></script>
+      
+    
+  </body>
+</html>

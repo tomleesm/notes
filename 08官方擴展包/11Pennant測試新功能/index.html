@@ -1,0 +1,4715 @@
+
+<!doctype html>
+<html lang="zh-TW" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../10PassportOAuth%E8%AA%8D%E8%AD%89/">
+      
+      
+        <link rel="next" href="../12Pint%E7%A8%8B%E5%BC%8F%E7%A2%BC%E9%A2%A8%E6%A0%BC/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-9.2.7">
+    
+    
+      
+        <title>Pennant 測試新功能 - Tom 株式會社</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.046329b4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.85d0ee34.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+Traditional+Chinese:300,300i,400,400i,700,700i%7CSource+Code+Pro:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans Traditional Chinese";--md-code-font:"Source Code Pro"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="red" data-md-color-accent="red">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#pennant" class="md-skip">
+          跳轉到
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="頁首">
+    <a href="../.." title="Tom 株式會社" class="md-header__button md-logo" aria-label="Tom 株式會社" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Tom 株式會社
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Pennant 測試新功能
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="red" data-md-color-accent="red"  aria-hidden="true"  type="radio" name="__palette" id="__palette_1">
+    
+  
+</form>
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜尋" placeholder="搜尋" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="搜尋">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清除" aria-label="清除" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜尋引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/tomleesm/notes" title="前往倉庫" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    tomleesm/notes
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="標籤" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../01%E6%A0%B8%E5%BF%83%E6%9E%B6%E6%A7%8B/01%E8%AB%8B%E6%B1%82%E7%9A%84%E7%94%9F%E5%91%BD%E9%80%B1%E6%9C%9F/" class="md-tabs__link">
+          
+  
+    
+  
+  核心架構
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/01%E8%B7%AF%E7%94%B1/" class="md-tabs__link">
+          
+  
+    
+  
+  基礎功能
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/01Artisan%E5%91%BD%E4%BB%A4%E5%88%97/" class="md-tabs__link">
+          
+  
+    
+  
+  繼續深入
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../04%E5%AE%89%E5%85%A8%E7%9B%B8%E9%97%9C/01%E4%BD%BF%E7%94%A8%E8%80%85%E8%AA%8D%E8%AD%89/" class="md-tabs__link">
+          
+  
+    
+  
+  安全相關
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../05%E8%B3%87%E6%96%99%E5%BA%AB/01%E5%BF%AB%E9%80%9F%E5%85%A5%E9%96%80/" class="md-tabs__link">
+          
+  
+    
+  
+  資料庫
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../06EloquentORM/01%E5%BF%AB%E9%80%9F%E5%85%A5%E9%96%80/" class="md-tabs__link">
+          
+  
+    
+  
+  Eloquent ORM
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../07%E6%B8%AC%E8%A9%A6%E7%9B%B8%E9%97%9C/01%E5%85%A5%E9%96%80/" class="md-tabs__link">
+          
+  
+    
+  
+  測試相關
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../01Cashier%E4%BA%A4%E6%98%93%E5%B7%A5%E5%85%B7%E5%8C%85Stripe/" class="md-tabs__link">
+          
+  
+    
+  
+  官方擴展包
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../cheatsheets/artisan/" class="md-tabs__link">
+          
+  
+    
+  
+  語法速查表
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="導覽列" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Tom 株式會社" class="md-nav__button md-logo" aria-label="Tom 株式會社" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Tom 株式會社
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/tomleesm/notes" title="前往倉庫" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    tomleesm/notes
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    核心架構
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            核心架構
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01%E6%A0%B8%E5%BF%83%E6%9E%B6%E6%A7%8B/01%E8%AB%8B%E6%B1%82%E7%9A%84%E7%94%9F%E5%91%BD%E9%80%B1%E6%9C%9F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    請求的生命週期
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01%E6%A0%B8%E5%BF%83%E6%9E%B6%E6%A7%8B/02%E6%9C%8D%E5%8B%99%E5%AE%B9%E5%99%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    服務容器
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01%E6%A0%B8%E5%BF%83%E6%9E%B6%E6%A7%8B/03%E6%9C%8D%E5%8B%99%E6%8F%90%E4%BE%9B%E8%80%85/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    服務提供者
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01%E6%A0%B8%E5%BF%83%E6%9E%B6%E6%A7%8B/04Facades/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Facades
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    基礎功能
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            基礎功能
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/01%E8%B7%AF%E7%94%B1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    路由
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/02%E4%B8%AD%E4%BB%8B%E8%BB%9F%E9%AB%94/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    中介軟體
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/03CSRF%E4%BF%9D%E8%AD%B7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CSRF 保護
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/04Controller/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Controller
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/05HTTP%E8%AB%8B%E6%B1%82/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTTP 請求
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/06HTTP%E9%9F%BF%E6%87%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTTP 響應
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/07%E6%AA%A2%E8%A6%96/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    檢視
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/08Blade%E7%AF%84%E6%9C%AC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Blade 範本
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/09Vite%E7%B7%A8%E8%AD%AFAssets/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vite 編譯 Assets
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/10%E7%94%9F%E6%88%90URL/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    生成 URL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/11Session/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Session
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/12%E8%A1%A8%E5%96%AE%E9%A9%97%E8%AD%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    表單驗證
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/13%E9%8C%AF%E8%AA%A4%E8%99%95%E7%90%86/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    錯誤處理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/14%E6%97%A5%E8%AA%8C/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    日誌
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    繼續深入
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            繼續深入
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/01Artisan%E5%91%BD%E4%BB%A4%E5%88%97/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Artisan 命令列
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/02%E5%BB%A3%E6%92%AD/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    廣播
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/03%E5%BF%AB%E5%8F%96%E7%B3%BB%E7%B5%B1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    快取系統
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/04%E9%9B%86%E5%90%88/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    集合
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/05%E5%A5%91%E7%B4%84Contract/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    契約 Contract
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/06%E4%BA%8B%E4%BB%B6%E7%B3%BB%E7%B5%B1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    事件系統
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/07%E6%AA%94%E6%A1%88%E5%84%B2%E5%AD%98/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    檔案儲存
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/09HTTPClient/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTTP Client
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/10%E6%9C%AC%E5%9C%B0%E5%8C%96/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    本地化
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/11%E9%83%B5%E4%BB%B6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    郵件
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/12%E6%B6%88%E6%81%AF%E9%80%9A%E7%9F%A5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    消息通知
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/13Package%E9%96%8B%E7%99%BC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Package 開發
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/14%E8%99%95%E7%90%86%E7%A8%8B%E5%BA%8F%E7%AE%A1%E7%90%86/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    處理程序管理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/15%E4%BD%87%E5%88%97/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    佇列
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/16%E9%99%90%E6%B5%81/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    限流
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/17%E4%BB%BB%E5%8B%99%E8%AA%BF%E5%BA%A6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    任務調度
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    安全相關
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            安全相關
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04%E5%AE%89%E5%85%A8%E7%9B%B8%E9%97%9C/01%E4%BD%BF%E7%94%A8%E8%80%85%E8%AA%8D%E8%AD%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    使用者認證
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04%E5%AE%89%E5%85%A8%E7%9B%B8%E9%97%9C/02%E4%BD%BF%E7%94%A8%E8%80%85%E6%8E%88%E6%AC%8A/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    使用者授權
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04%E5%AE%89%E5%85%A8%E7%9B%B8%E9%97%9C/03Email%E8%AA%8D%E8%AD%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Email 認證
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04%E5%AE%89%E5%85%A8%E7%9B%B8%E9%97%9C/04%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    加密解密
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04%E5%AE%89%E5%85%A8%E7%9B%B8%E9%97%9C/05%E9%9B%9C%E6%B9%8A/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    雜湊
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04%E5%AE%89%E5%85%A8%E7%9B%B8%E9%97%9C/06%E9%87%8D%E8%A8%AD%E5%AF%86%E7%A2%BC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    重設密碼
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    資料庫
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            資料庫
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05%E8%B3%87%E6%96%99%E5%BA%AB/01%E5%BF%AB%E9%80%9F%E5%85%A5%E9%96%80/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    快速入門
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05%E8%B3%87%E6%96%99%E5%BA%AB/02%E6%9F%A5%E8%A9%A2%E7%94%9F%E6%88%90%E5%99%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    查詢生成器
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05%E8%B3%87%E6%96%99%E5%BA%AB/03%E5%88%86%E9%A0%81/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    分頁
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05%E8%B3%87%E6%96%99%E5%BA%AB/04%E9%81%B7%E7%A7%BB/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    遷移
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05%E8%B3%87%E6%96%99%E5%BA%AB/05%E8%B3%87%E6%96%99%E5%A1%AB%E5%85%85/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    資料填充
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05%E8%B3%87%E6%96%99%E5%BA%AB/06Redis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Redis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Eloquent ORM
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Eloquent ORM
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06EloquentORM/01%E5%BF%AB%E9%80%9F%E5%85%A5%E9%96%80/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    快速入門
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06EloquentORM/02%E9%97%9C%E8%81%AF/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    關聯
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06EloquentORM/03%E9%9B%86%E5%90%88/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    集合
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06EloquentORM/04%E5%B1%AC%E6%80%A7%E4%BF%AE%E6%94%B9%E5%99%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    屬性修改器
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06EloquentORM/05API%E8%B3%87%E6%BA%90/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    API 資源
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06EloquentORM/06%E5%BA%8F%E5%88%97%E5%8C%96/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    序列化
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06EloquentORM/07%E8%B3%87%E6%96%99%E5%B7%A5%E5%BB%A0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    資料工廠
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    測試相關
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            測試相關
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07%E6%B8%AC%E8%A9%A6%E7%9B%B8%E9%97%9C/01%E5%85%A5%E9%96%80/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    入門
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07%E6%B8%AC%E8%A9%A6%E7%9B%B8%E9%97%9C/02HTTP%E6%B8%AC%E8%A9%A6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTTP 測試
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07%E6%B8%AC%E8%A9%A6%E7%9B%B8%E9%97%9C/03%E5%91%BD%E4%BB%A4%E5%88%97%E6%B8%AC%E8%A9%A6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    命令列測試
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07%E6%B8%AC%E8%A9%A6%E7%9B%B8%E9%97%9C/04LaravelDusk/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Laravel Dusk
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07%E6%B8%AC%E8%A9%A6%E7%9B%B8%E9%97%9C/05%E8%B3%87%E6%96%99%E5%BA%AB%E6%B8%AC%E8%A9%A6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    資料庫測試
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07%E6%B8%AC%E8%A9%A6%E7%9B%B8%E9%97%9C/06Mocking/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mocking
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    官方擴展包
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            官方擴展包
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01Cashier%E4%BA%A4%E6%98%93%E5%B7%A5%E5%85%B7%E5%8C%85Stripe/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cashier 交易工具包 Stripe
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02Cashier%E4%BA%A4%E6%98%93%E5%B7%A5%E5%85%B7%E5%8C%85Paddle/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cashier 交易工具包 Paddle
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03Envoy%E9%83%A8%E7%BD%B2%E5%B7%A5%E5%85%B7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Envoy 部署工具
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04Fortify%E8%88%87%E5%89%8D%E7%AB%AF%E7%84%A1%E9%97%9C%E7%9A%84%E8%BA%AB%E4%BB%BD%E8%AA%8D%E8%AD%89%E5%BE%8C%E7%AB%AF%E5%AF%A6%E7%8F%BE/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fortify 與前端無關的身份認證後端實現
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05Homestead%E8%99%9B%E6%93%AC%E6%A9%9F%E5%99%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Homestead 虛擬機器
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06Horizon%E4%BD%87%E5%88%97%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Horizon 佇列管理工具
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09Octane%E5%8A%A0%E9%80%9F%E5%BC%95%E6%93%8E/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Octane 加速引擎
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10PassportOAuth%E8%AA%8D%E8%AD%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Passport OAuth 認證
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Pennant 測試新功能
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Pennant 測試新功能
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目錄">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目錄
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    介紹
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    安裝
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    組態
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    定義特性
+  </a>
+  
+    <nav class="md-nav" aria-label="定義特性">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    基於類的特性
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    檢查特性
+  </a>
+  
+    <nav class="md-nav" aria-label="檢查特性">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    基於類的特徵
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#checking-features" class="md-nav__link">
+    Checking Features
+  </a>
+  
+    <nav class="md-nav" aria-label="Checking Features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    檢查基於類的特性
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    條件執行
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hasfeatures-trait" class="md-nav__link">
+    HasFeatures Trait
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#blade" class="md-nav__link">
+    Blade 指令
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    中介軟體
+  </a>
+  
+    <nav class="md-nav" aria-label="中介軟體">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    自訂響應
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    記憶體快取
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    範疇
+  </a>
+  
+    <nav class="md-nav" aria-label="範疇">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    指定範疇
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    默認範疇
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    空範疇
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    標識範疇
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    豐富的特徵值
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    獲取多個特性
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    預載入
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    更新值
+  </a>
+  
+    <nav class="md-nav" aria-label="更新值">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    批次更新
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    清除功能
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    測試
+  </a>
+  
+    <nav class="md-nav" aria-label="測試">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    儲存組態
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pennant_1" class="md-nav__link">
+    新增自訂Pennant驅動程式
+  </a>
+  
+    <nav class="md-nav" aria-label="新增自訂Pennant驅動程式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    實現驅動程式
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    註冊驅動
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    事件
+  </a>
+  
+    <nav class="md-nav" aria-label="事件">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#laravelpennanteventsretrievingknownfeature" class="md-nav__link">
+    Laravel\Pennant\Events\RetrievingKnownFeature
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#laravelpennanteventsretrievingunknownfeature" class="md-nav__link">
+    Laravel\Pennant\Events\RetrievingUnknownFeature
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#laravelpennanteventsdynamicallydefiningfeature" class="md-nav__link">
+    Laravel\Pennant\Events\DynamicallyDefiningFeature
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12Pint%E7%A8%8B%E5%BC%8F%E7%A2%BC%E9%A2%A8%E6%A0%BC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pint 程式碼風格
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13SailDocker%E9%96%8B%E7%99%BC%E7%92%B0%E5%A2%83/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sail Docker 開發環境
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14SanctumAPI%E6%8E%88%E6%AC%8A/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sanctum API 授權
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15Scout%E5%85%A8%E6%96%87%E6%90%9C%E5%B0%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Scout 全文搜尋
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16Socialite%E7%AC%AC%E4%B8%89%E6%96%B9%E7%99%BB%E5%85%A5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Socialite 第三方登入
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17Telescope%E5%81%B5%E9%8C%AF%E5%B7%A5%E5%85%B7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Telescope 偵錯工具
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    語法速查表
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            語法速查表
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/artisan/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Artisan
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/auth/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Auth 使用者認證
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/blade/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Blade 範本
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/cache/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cache
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/collection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Collection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/composer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Composer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/config/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Config
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/container/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Container
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/cookie/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cookie
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/db/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Database
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/environment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Environment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/event/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Event
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/file/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    File
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/helper/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Helper
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/input/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Input
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/lang/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lang
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/Log/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Log
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/mail/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mail
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/model/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Model (Eloquent ORM)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/pagination/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pagination
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/queue/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Queue
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/redirect/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Redirect
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/request/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Request
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/response/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Response
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/route/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Route
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/schema/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Schema 資料庫結構
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/security/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Security (Hash 和加解密)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/session/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Session
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/storage/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Storage
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/string/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    String
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/unittest/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Unit Test 單元測試
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/url/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    URL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/validation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Validation 表單驗證
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/view/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    View
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目錄">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目錄
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    介紹
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    安裝
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    組態
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    定義特性
+  </a>
+  
+    <nav class="md-nav" aria-label="定義特性">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    基於類的特性
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    檢查特性
+  </a>
+  
+    <nav class="md-nav" aria-label="檢查特性">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    基於類的特徵
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#checking-features" class="md-nav__link">
+    Checking Features
+  </a>
+  
+    <nav class="md-nav" aria-label="Checking Features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    檢查基於類的特性
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    條件執行
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hasfeatures-trait" class="md-nav__link">
+    HasFeatures Trait
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#blade" class="md-nav__link">
+    Blade 指令
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    中介軟體
+  </a>
+  
+    <nav class="md-nav" aria-label="中介軟體">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    自訂響應
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    記憶體快取
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    範疇
+  </a>
+  
+    <nav class="md-nav" aria-label="範疇">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    指定範疇
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    默認範疇
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    空範疇
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    標識範疇
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    豐富的特徵值
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    獲取多個特性
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    預載入
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    更新值
+  </a>
+  
+    <nav class="md-nav" aria-label="更新值">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    批次更新
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    清除功能
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    測試
+  </a>
+  
+    <nav class="md-nav" aria-label="測試">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    儲存組態
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pennant_1" class="md-nav__link">
+    新增自訂Pennant驅動程式
+  </a>
+  
+    <nav class="md-nav" aria-label="新增自訂Pennant驅動程式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    實現驅動程式
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    註冊驅動
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    事件
+  </a>
+  
+    <nav class="md-nav" aria-label="事件">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#laravelpennanteventsretrievingknownfeature" class="md-nav__link">
+    Laravel\Pennant\Events\RetrievingKnownFeature
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#laravelpennanteventsretrievingunknownfeature" class="md-nav__link">
+    Laravel\Pennant\Events\RetrievingUnknownFeature
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#laravelpennanteventsdynamicallydefiningfeature" class="md-nav__link">
+    Laravel\Pennant\Events\DynamicallyDefiningFeature
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+  
+                  
+
+  
+  
+
+
+<h1 id="pennant">Pennant 測試新功能<a class="headerlink" href="#pennant" title="Permanent link">&para;</a></h1>
+<h2 id="_1">介紹<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p><a href="https://github.com/laravel/pennant">Laravel Pennant</a> 是一個簡單輕量的特性標誌包，沒有臃腫。特性標誌使你可以有信心地逐步推出新的應用程式功能，測試新的介面設計，支援基幹開發策略等等。</p>
+<h2 id="_2">安裝<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>首先，使用 Composer 包管理器將 Pennant 安裝到你的項目中：</p>
+<div class="highlight"><pre><span></span><code>composer<span class="w"> </span>require<span class="w"> </span>laravel/pennant
+</code></pre></div>
+<p>接下來，你應該使用 <code>vendor:publish</code> Artisan 命令發佈 Pennant 組態和遷移檔案： <code>vendor:publish</code> Artisan command:</p>
+<div class="highlight"><pre><span></span><code>php<span class="w"> </span>artisan<span class="w"> </span>vendor:publish<span class="w"> </span>--provider<span class="o">=</span><span class="s2">&quot;Laravel\Pennant\PennantServiceProvider&quot;</span>
+</code></pre></div>
+<p>最後，你應該運行應用程式的資料庫遷移。這將建立一個 <code>features</code> 表，<code>Pennant</code> 使用它來驅動其 <code>database</code> 驅動程式：</p>
+<div class="highlight"><pre><span></span><code>php<span class="w"> </span>artisan<span class="w"> </span>migrate
+</code></pre></div>
+<h2 id="_3">組態<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>在發佈 Pennant 資源之後，組態檔案將位於 <code>config/pennant.php</code>。此組態檔案允許你指定 Pennant 用於儲存已解析的特性標誌值的默認儲存機制。</p>
+<p>Pennant 支援使用 <code>array</code> 驅動程式在記憶體陣列中儲存已解析的特性標誌值。或者，Pennant 可以使用 <code>database</code> 驅動程式在關聯式資料庫中持久儲存已解析的特性標誌值，這是 Pennant 使用的默認儲存機制。</p>
+<h2 id="_4">定義特性<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>要定義特性，你可以使用 <code>Feature</code> 門面提供的 <code>define</code> 方法。你需要為該特性提供一個名稱以及一個閉包，用於解析該特性的初始值。</p>
+<p>通常，特性是在服務提供程序中使用 <code>Feature</code> 門面定義的。閉包將接收特性檢查的“範疇”。最常見的是，範疇是當前已認證的使用者。在此示例中，我們將定義一個功能，用於逐步嚮應用程序使用者推出新的 API：</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">App\Providers</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">App\Models\User</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Illuminate\Support\Lottery</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Illuminate\Support\ServiceProvider</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Laravel\Pennant\Feature</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">AppServiceProvider</span> <span class="k">extends</span> <span class="nx">ServiceProvider</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * Bootstrap any application services.</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">boot</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span>
+    <span class="p">{</span>
+        <span class="nx">Feature</span><span class="o">::</span><span class="na">define</span><span class="p">(</span><span class="s1">&#39;new-api&#39;</span><span class="p">,</span> <span class="nx">fn</span> <span class="p">(</span><span class="nx">User</span> <span class="nv">$user</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="k">match</span> <span class="p">(</span><span class="k">true</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nv">$user</span><span class="o">-&gt;</span><span class="na">isInternalTeamMember</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+            <span class="nv">$user</span><span class="o">-&gt;</span><span class="na">isHighTrafficCustomer</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="k">false</span><span class="p">,</span>
+            <span class="k">default</span> <span class="o">=&gt;</span> <span class="nx">Lottery</span><span class="o">::</span><span class="na">odds</span><span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="mi">100</span><span class="p">),</span>
+        <span class="p">});</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>正如你所看到的，我們對我們的特性有以下規則：</p>
+<ul>
+<li>所有內部團隊成員應使用新 API。</li>
+<li>任何高流量客戶不應使用新 API。</li>
+<li>否則，該特性應在具有 1/100 機率啟動的使用者中隨機分配。</li>
+</ul>
+<p>首次檢查給定使用者的 <code>new-api</code>特性時，儲存驅動程式將儲存閉包的結果。下一次針對相同使用者檢查特性時，將從儲存中檢索該值，不會呼叫閉包。</p>
+<p>為方便起見，如果特性定義僅返回一個 Lottery，你可以完全省略閉包：</p>
+<div class="highlight"><pre><span></span><code>Feature::define(&#39;site-redesign&#39;, Lottery::odds(1, 1000));
+</code></pre></div>
+<h3 id="_5">基於類的特性<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>Pennant 還允許你定義基於類的特性。不像基於閉包的特性定義，不需要在服務提供者中註冊基於類的特性。為了建立一個基於類的特性，你可以呼叫 <code>pennant:feature</code> Artisan 命令。默認情況下，特性類將被放置在你的應用程式的 <code>app/Features</code> 目錄中：</p>
+<div class="highlight"><pre><span></span><code>php<span class="w"> </span>artisan<span class="w"> </span>pennant:feature<span class="w"> </span>NewApi
+</code></pre></div>
+<p>在編寫特性類時，你只需要定義一個 <code>resolve</code> 方法，用於為給定的範圍解析特性的初始值。同樣，範圍通常是當前經過身份驗證的使用者：</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">App\Features</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Illuminate\Support\Lottery</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">NewApi</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * 解析特性的初始值.</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">resolve</span><span class="p">(</span><span class="nx">User</span> <span class="nv">$user</span><span class="p">)</span><span class="o">:</span> <span class="nx">mixed</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="k">match</span> <span class="p">(</span><span class="k">true</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nv">$user</span><span class="o">-&gt;</span><span class="na">isInternalTeamMember</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+            <span class="nv">$user</span><span class="o">-&gt;</span><span class="na">isHighTrafficCustomer</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="k">false</span><span class="p">,</span>
+            <span class="k">default</span> <span class="o">=&gt;</span> <span class="nx">Lottery</span><span class="o">::</span><span class="na">odds</span><span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="mi">100</span><span class="p">),</span>
+        <span class="p">};</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<p><strong>注</strong> 特性類是通過<a href="/docs/laravel/10.x/container">容器</a>,解析的，因此在需要時可以在特性類的建構函式中注入依賴項。</p>
+</blockquote>
+<h2 id="_6">檢查特性<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<p>要確定一個特性是否處於活動狀態，你可以在 <code>Feature</code> 門面上使用 <code>active</code> 方法。默認情況下，特性針對當前已認證的使用者進行檢查：</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">App\Http\Controllers</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Illuminate\Http\Request</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Illuminate\Http\Response</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Laravel\Pennant\Feature</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">PodcastController</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * 顯示資源的列表.</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">index</span><span class="p">(</span><span class="nx">Request</span> <span class="nv">$request</span><span class="p">)</span><span class="o">:</span> <span class="nx">Response</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">Feature</span><span class="o">::</span><span class="na">active</span><span class="p">(</span><span class="s1">&#39;new-api&#39;</span><span class="p">)</span>
+                <span class="o">?</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">resolveNewApiResponse</span><span class="p">(</span><span class="nv">$request</span><span class="p">)</span>
+                <span class="o">:</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">resolveLegacyApiResponse</span><span class="p">(</span><span class="nv">$request</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="c1">// ...</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>為了方便起見，如果一個特徵定義只返回一個抽獎結果，你可以完全省略閉包:</p>
+<div class="highlight"><pre><span></span><code>Feature::define(&#39;site-redesign&#39;, Lottery::odds(1, 1000));
+</code></pre></div>
+<h3 id="_7">基於類的特徵<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p>Pennant 還允許你定義基於類的特徵。與基於閉包的特徵定義不同，無需在服務提供者中註冊基於類的特徵。要建立基於類的特徵，你可以呼叫 pennant:feature Artisan 命令。默認情況下，特徵類將被放置在你的應用程式的 app/Features 目錄中。:</p>
+<div class="highlight"><pre><span></span><code><span class="x">php artisan pennant:feature NewApi</span>
+</code></pre></div>
+<p>編寫特徵類時，你只需要定義一個 <code>resolve</code> 方法，該方法將被呼叫以解析給定範疇的特徵的初始值。同樣，該範疇通常是當前已驗證的使用者。:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">App\Features</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Illuminate\Support\Lottery</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">NewApi</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * 解析特徵的初始值.</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">resolve</span><span class="p">(</span><span class="nx">User</span> <span class="nv">$user</span><span class="p">)</span><span class="o">:</span> <span class="nx">mixed</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="k">match</span> <span class="p">(</span><span class="k">true</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nv">$user</span><span class="o">-&gt;</span><span class="na">isInternalTeamMember</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+            <span class="nv">$user</span><span class="o">-&gt;</span><span class="na">isHighTrafficCustomer</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="k">false</span><span class="p">,</span>
+            <span class="k">default</span> <span class="o">=&gt;</span> <span class="nx">Lottery</span><span class="o">::</span><span class="na">odds</span><span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="mi">100</span><span class="p">),</span>
+        <span class="p">};</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<p><strong>注意</strong> 特徵類通過 <a href="/docs/laravel/10.x/container">容器</a>, 解析，因此在需要時，你可以將依賴項注入到特徵類的建構函式中.</p>
+</blockquote>
+<h2 id="checking-features">Checking Features<a class="headerlink" href="#checking-features" title="Permanent link">&para;</a></h2>
+<p>要確定特徵是否處於活動狀態，你可以在 Feature 門面上使用 <code>active</code> 方法。默認情況下，特徵將針對當前已驗證的使用者進行檢查。:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">App\Http\Controllers</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Illuminate\Http\Request</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Illuminate\Http\Response</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Laravel\Pennant\Feature</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">PodcastController</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     *顯示資源的列表.</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">index</span><span class="p">(</span><span class="nx">Request</span> <span class="nv">$request</span><span class="p">)</span><span class="o">:</span> <span class="nx">Response</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">Feature</span><span class="o">::</span><span class="na">active</span><span class="p">(</span><span class="s1">&#39;new-api&#39;</span><span class="p">)</span>
+                <span class="o">?</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">resolveNewApiResponse</span><span class="p">(</span><span class="nv">$request</span><span class="p">)</span>
+                <span class="o">:</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">resolveLegacyApiResponse</span><span class="p">(</span><span class="nv">$request</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="c1">// ...</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>雖然默認情況下特性針對當前已認證的使用者進行檢查，但你可以輕鬆地針對其他使用者或範圍檢查特性。為此，使用 <code>Feature</code> 門面提供的 <code>for</code> 方法：</p>
+<div class="highlight"><pre><span></span><code><span class="x">return Feature::for($user)-&gt;active(&#39;new-api&#39;)</span>
+<span class="x">        ? $this-&gt;resolveNewApiResponse($request)</span>
+<span class="x">        : $this-&gt;resolveLegacyApiResponse($request);</span>
+</code></pre></div>
+<p>Pennant 還提供了一些額外的方便方法，在確定特性是否活動或不活動時可能非常有用：</p>
+<div class="highlight"><pre><span></span><code><span class="x">//確定所有給定的特性是否都活動...</span>
+<span class="x">Feature::allAreActive([&#39;new-api&#39;, &#39;site-redesign&#39;]);</span>
+
+<span class="x">// 確定任何給定的特性是否都活動...</span>
+<span class="x">Feature::someAreActive([&#39;new-api&#39;, &#39;site-redesign&#39;]);</span>
+
+<span class="x">// 確定特性是否處於非活動狀態...</span>
+<span class="x">Feature::inactive(&#39;new-api&#39;);</span>
+
+<span class="x">// 確定所有給定的特性是否都處於非活動狀態...</span>
+<span class="x">Feature::allAreInactive([&#39;new-api&#39;, &#39;site-redesign&#39;]);</span>
+
+<span class="x">// 確定任何給定的特性是否都處於非活動狀態...</span>
+<span class="x">Feature::someAreInactive([&#39;new-api&#39;, &#39;site-redesign&#39;]);</span>
+</code></pre></div>
+<blockquote>
+<p><strong>注</strong></p>
+<p>當在 HTTP 上下文之外使用 Pennant（例如在 Artisan 命令或排隊作業中）時，你通常應<a href="#specifying-the-scope">明確指定特性的範疇</a>。或者，你可以定義一個<a href="#default-scope">默認範疇</a>，該範疇考慮到已認證的 HTTP 上下文和未經身份驗證的上下文。</p>
+</blockquote>
+<h4 id="_8">檢查基於類的特性<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<p>對於基於類的特性，應該在檢查特性時提供類名：</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">App\Http\Controllers</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">App\Features\NewApi</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Illuminate\Http\Request</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Illuminate\Http\Response</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Laravel\Pennant\Feature</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">PodcastController</span>
+<span class="p">{</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * 顯示資源的列表.</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">index</span><span class="p">(</span><span class="nx">Request</span> <span class="nv">$request</span><span class="p">)</span><span class="o">:</span> <span class="nx">Response</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">Feature</span><span class="o">::</span><span class="na">active</span><span class="p">(</span><span class="nx">NewApi</span><span class="o">::</span><span class="na">class</span><span class="p">)</span>
+                <span class="o">?</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">resolveNewApiResponse</span><span class="p">(</span><span class="nv">$request</span><span class="p">)</span>
+                <span class="o">:</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">resolveLegacyApiResponse</span><span class="p">(</span><span class="nv">$request</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="c1">// ...</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="_9">條件執行<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<p><code>when</code> 方法可用於在特性啟動時流暢地執行給定的閉包。此外，可以提供第二個閉包，如果特性未啟動，則將執行它：</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">App\Http\Controllers</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">App\Features\NewApi</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Illuminate\Http\Request</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Illuminate\Http\Response</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Laravel\Pennant\Feature</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">PodcastController</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * 顯示資源的列表.</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">index</span><span class="p">(</span><span class="nx">Request</span> <span class="nv">$request</span><span class="p">)</span><span class="o">:</span> <span class="nx">Response</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">Feature</span><span class="o">::</span><span class="na">when</span><span class="p">(</span><span class="nx">NewApi</span><span class="o">::</span><span class="na">class</span><span class="p">,</span>
+            <span class="nx">fn</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">resolveNewApiResponse</span><span class="p">(</span><span class="nv">$request</span><span class="p">),</span>
+            <span class="nx">fn</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">resolveLegacyApiResponse</span><span class="p">(</span><span class="nv">$request</span><span class="p">),</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+    <span class="c1">// ...</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><code>unless</code> 方法是 <code>when</code> 方法的相反，如果特性未啟動，則執行第一個閉包：</p>
+<div class="highlight"><pre><span></span><code>return Feature::unless(NewApi::class,
+
+    fn () =&gt; $this-&gt;resolveLegacyApiResponse($request),
+
+    fn () =&gt; $this-&gt;resolveNewApiResponse($request),
+
+);
+</code></pre></div>
+<h3 id="hasfeatures-trait">HasFeatures Trait<a class="headerlink" href="#hasfeatures-trait" title="Permanent link">&para;</a></h3>
+<p>Pennant 的 <code>HasFeatures</code> Trait 可以新增到你的應用的 <code>User</code> 模型（或其他具有特性的模型）中，以提供一種流暢、方便的方式從模型直接檢查特性：</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">App\Models</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Illuminate\Foundation\Auth\User</span> <span class="k">as</span> <span class="nx">Authenticatable</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Laravel\Pennant\Concerns\HasFeatures</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">User</span> <span class="k">extends</span> <span class="nx">Authenticatable</span>
+<span class="p">{</span>
+    <span class="k">use</span> <span class="nx">HasFeatures</span><span class="p">;</span>
+    <span class="c1">// ...</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>一旦將 HasFeatures Trait 新增到你的模型中，你可以通過呼叫 <code>features</code> 方法輕鬆檢查特性：</p>
+<div class="highlight"><pre><span></span><code><span class="x">if ($user-&gt;features()-&gt;active(&#39;new-api&#39;)) {</span>
+<span class="x">    // ...</span>
+<span class="x">}</span>
+</code></pre></div>
+<p>當然，<code>features</code> 方法提供了許多其他方便的方法來與特性互動：</p>
+<div class="highlight"><pre><span></span><code><span class="x">// 值...</span>
+<span class="x">$value = $user-&gt;features()-&gt;value(&#39;purchase-button&#39;)</span>
+<span class="x">$values = $user-&gt;features()-&gt;values([&#39;new-api&#39;, &#39;purchase-button&#39;]);</span>
+
+<span class="x">// 狀態...</span>
+<span class="x">$user-&gt;features()-&gt;active(&#39;new-api&#39;);</span>
+<span class="x">$user-&gt;features()-&gt;allAreActive([&#39;new-api&#39;, &#39;server-api&#39;]);</span>
+<span class="x">$user-&gt;features()-&gt;someAreActive([&#39;new-api&#39;, &#39;server-api&#39;]);</span>
+<span class="x">$user-&gt;features()-&gt;inactive(&#39;new-api&#39;);</span>
+<span class="x">$user-&gt;features()-&gt;allAreInactive([&#39;new-api&#39;, &#39;server-api&#39;]);</span>
+<span class="x">$user-&gt;features()-&gt;someAreInactive([&#39;new-api&#39;, &#39;server-api&#39;]);</span>
+
+<span class="x">// 條件執行...</span>
+<span class="x">$user-&gt;features()-&gt;when(&#39;new-api&#39;,</span>
+<span class="x">    fn () =&gt; /* ... */,</span>
+<span class="x">    fn () =&gt; /* ... */,</span>
+<span class="x">);</span>
+
+<span class="x">$user-&gt;features()-&gt;unless(&#39;new-api&#39;,</span>
+<span class="x">    fn () =&gt; /* ... */,</span>
+<span class="x">    fn () =&gt; /* ... */,</span>
+<span class="x">);</span>
+</code></pre></div>
+<h3 id="blade">Blade 指令<a class="headerlink" href="#blade" title="Permanent link">&para;</a></h3>
+<p>為了使在 Blade 中檢查特性的體驗更加流暢，Pennant提供了一個 <code>@feature</code> 指令：</p>
+<div class="highlight"><pre><span></span><code>@feature(&#39;site-redesign&#39;)
+&lt;!-- &#39;site-redesign&#39; 活躍中 --&gt;
+@else
+&lt;!-- &#39;site-redesign&#39; 不活躍--&gt;
+@endfeature
+</code></pre></div>
+<h3 id="_10">中介軟體<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<p>Pennant 還包括一個<a href="/docs/laravel/10.x/middleware">中介軟體</a>，它可以在路由呼叫之前驗證當前認證使用者是否有訪問功能的權限。首先，你應該將 <code>EnsureFeaturesAreActive</code> 中介軟體的別名新增到你的應用程式的 <code>app/Http/Kernel.php</code> 檔案中：</p>
+<div class="highlight"><pre><span></span><code><span class="x">use Laravel\Pennant\Middleware\EnsureFeaturesAreActive;</span>
+
+<span class="x">protected $middlewareAliases = [</span>
+<span class="x">    // ...</span>
+<span class="x"> &#39;features&#39; =&gt; EnsureFeaturesAreActive::class,</span>
+<span class="x">];</span>
+</code></pre></div>
+<p>接下來，你可以將中介軟體分配給一個路由並指定需要訪問該路由的功能。如果當前認證使用者的任何指定功能未啟動，則路由將返回 <code>400 Bad Request</code> HTTP 響應。可以使用逗號分隔的列表指定多個功能：</p>
+<div class="highlight"><pre><span></span><code><span class="x">Route::get(&#39;/api/servers&#39;, function () {</span>
+<span class="x">    // ...</span>
+<span class="x">})-&gt;middleware([&#39;features:new-api,servers-api&#39;]);</span>
+</code></pre></div>
+<h4 id="_11">自訂響應<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
+<p>如果你希望在未啟動列表中的任何一個功能時自訂中介軟體返回的響應，可以使用 <code>EnsureFeaturesAreActive</code> 中介軟體提供的 <code>whenInactive</code> 方法。通常，這個方法應該在應用程式的服務提供者的 boot 方法中呼叫：</p>
+<div class="highlight"><pre><span></span><code><span class="x">use Illuminate\Http\Request;</span>
+<span class="x">use Illuminate\Http\Response;</span>
+<span class="x">use Laravel\Pennant\Middleware\EnsureFeaturesAreActive;</span>
+
+<span class="x">/**</span>
+<span class="x"> * 載入服務.</span>
+<span class="x"> */</span>
+<span class="x">public function boot(): void</span>
+<span class="x">{</span>
+<span class="x">    EnsureFeaturesAreActive::whenInactive(</span>
+<span class="x">        function (Request $request, array $features) {</span>
+<span class="x">            return new Response(status: 403);</span>
+<span class="x">        }</span>
+<span class="x">    );</span>
+<span class="x">    // ...</span>
+<span class="x">}</span>
+</code></pre></div>
+<h3 id="_12">記憶體快取<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<p>當檢查特性時，Pennant 將建立一個記憶體快取以儲存結果。如果你使用的是 <code>database</code> 驅動程式，則在單個請求中重新檢查相同的功能標誌將不會觸發額外的資料庫查詢。這也確保了該功能在請求的持續時間內具有一致的結果。</p>
+<p>如果你需要手動刷新記憶體快取，可以使用 <code>Feature</code> 門面提供的 <code>flushCache</code> 方法：</p>
+<div class="highlight"><pre><span></span><code>Feature::flushCache();
+</code></pre></div>
+<h2 id="_13">範疇<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h2>
+<h3 id="_14">指定範疇<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<p>如前所述，特性通常會針對當前已驗證的使用者進行檢查。但這可能並不總是適合你的需求。因此，你可以通過 <code>Feature</code> 門面的 <code>for</code> 方法來指定要針對哪個範疇檢查給定的特性：</p>
+<div class="highlight"><pre><span></span><code><span class="x">return Feature::for($user)-&gt;active(&#39;new-api&#39;)</span>
+<span class="x">        ? $this-&gt;resolveNewApiResponse($request)</span>
+<span class="x">        : $this-&gt;resolveLegacyApiResponse($request);</span>
+</code></pre></div>
+<p>當然，特性範疇不限於“使用者”。假設你建構了一個新的結算體驗，你要將其推出給整個團隊而不是單個使用者。也許你希望年齡最大的團隊的推出速度比年輕的團隊慢。你的特性解析閉包可能如下所示：</p>
+<div class="highlight"><pre><span></span><code><span class="x">use App\Models\Team;</span>
+<span class="x">use Carbon\Carbon;</span>
+<span class="x">use Illuminate\Support\Lottery;</span>
+<span class="x">use Laravel\Pennant\Feature;</span>
+
+<span class="x">Feature::define(&#39;billing-v2&#39;, function (Team $team) {</span>
+<span class="x">    if ($team-&gt;created_at-&gt;isAfter(new Carbon(&#39;1st Jan, 2023&#39;))) {</span>
+<span class="x">        return true;</span>
+<span class="x">    }</span>
+
+<span class="x">    if ($team-&gt;created_at-&gt;isAfter(new Carbon(&#39;1st Jan, 2019&#39;))) {</span>
+<span class="x">        return Lottery::odds(1 / 100);</span>
+<span class="x">    }</span>
+
+<span class="x">    return Lottery::odds(1 / 1000);</span>
+<span class="x">});</span>
+</code></pre></div>
+<p>你會注意到，我們定義的閉包不需要 <code>User</code>，而是需要一個 <code>Team</code> 模型。要確定該特性是否對使用者的團隊可用，你應該將團隊傳遞給 <code>Feature</code> 門面提供的 <code>for</code> 方法：</p>
+<div class="highlight"><pre><span></span><code><span class="x">if (Feature::for($user-&gt;team)-&gt;active(&#39;billing-v2&#39;)) {</span>
+<span class="x">    return redirect()-&gt;to(&#39;/billing/v2&#39;);</span>
+<span class="x">}</span>
+<span class="x">// ...</span>
+</code></pre></div>
+<h3 id="_15">默認範疇<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
+<p>還可以自訂 Pennant 用於檢查特性的默認範疇。例如，你可能希望所有特性都針對當前認證使用者的團隊進行檢查，而不是針對使用者。你可以在應用程式的服務提供程序中指定此範疇。通常，應該在一個應用程式的服務提供程序中完成這個過程:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">App\Providers</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Illuminate\Support\Facades\Auth</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Illuminate\Support\ServiceProvider</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Laravel\Pennant\Feature</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">AppServiceProvider</span> <span class="k">extends</span> <span class="nx">ServiceProvider</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * 載入程序服務.</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">boot</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span>
+    <span class="p">{</span>
+        <span class="nx">Feature</span><span class="o">::</span><span class="na">resolveScopeUsing</span><span class="p">(</span><span class="nx">fn</span> <span class="p">(</span><span class="nv">$driver</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">Auth</span><span class="o">::</span><span class="na">user</span><span class="p">()</span><span class="o">?-&gt;</span><span class="na">team</span><span class="p">);</span>
+        <span class="c1">// ...</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>如果沒有通過 <code>for</code> 方法顯式提供範疇，則特性檢查將使用當前認證使用者的團隊作為默認範疇：</p>
+<div class="highlight"><pre><span></span><code><span class="x">Feature::active(&#39;billing-v2&#39;);</span>
+
+<span class="x">// 目前等價於...</span>
+<span class="x">Feature::for($user-&gt;team)-&gt;active(&#39;billing-v2&#39;);</span>
+</code></pre></div>
+<h3 id="_16">空範疇<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
+<p>如果你檢查特性時提供的範疇範圍為 <code>null</code>，且特性定義中不支援 <code>null</code>（即不是 nullable type 或者沒有在 union type 中包含<code>null</code>），那麼 Pennant 將自動返回 <code>false</code> 作為特性的結果值。</p>
+<p>因此，如果你傳遞給特性的範疇可能為 null 並且你想要特性值的解析器被呼叫，你應該在特性定義邏輯中處理 <code>null</code> 範圍值。在一個 Artisan 命令、排隊作業或未經身份驗證的路由中檢查特性可能會出現 <code>null</code> 範疇。因為在這些情況下通常沒有經過身份驗證的使用者，所以默認的範疇將為 <code>null</code>。</p>
+<p>如果你不總是<a href="#specifying-the-scope">明確指定特性範疇</a>，則應確保範圍類型為"nullable"，並在特性定義邏輯中處理 <code>null</code> 範圍值:</p>
+<div class="highlight"><pre><span></span><code><span class="x">use App\Models\User;</span>
+<span class="x">use Illuminate\Support\Lottery;</span>
+<span class="x">use Laravel\Pennant\Feature;</span>
+
+<span class="x">Feature::define(&#39;new-api&#39;, fn (User $user) =&gt; match (true) {// [tl! remove]</span>
+<span class="x">Feature::define(&#39;new-api&#39;, fn (User|null $user) =&gt; match (true) {// [tl! add]</span>
+<span class="x">    $user === null =&gt; true,// [tl! add]</span>
+<span class="x">    $user-&gt;isInternalTeamMember() =&gt; true,</span>
+<span class="x">    $user-&gt;isHighTrafficCustomer() =&gt; false,</span>
+<span class="x">    default =&gt; Lottery::odds(1 / 100),</span>
+<span class="x">});</span>
+</code></pre></div>
+<h3 id="_17">標識範疇<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
+<p>Pennant 的內建 <code>array</code> 和 <code>database</code> 儲存驅動程式可以正確地儲存所有 PHP 資料類型以及 Eloquent 模型的範疇識別碼。但是，如果你的應用程式使用第三方的 Pennant 驅動程式，該驅動程式可能不知道如何正確地儲存 Eloquent 模型或應用程式中其他自訂類型的識別碼。</p>
+<p>因此，Pennant 允許你通過在應用程式中用作 Pennant 範疇的對象上實現 <code>FeatureScopeable</code> 協議來格式化儲存範圍值。</p>
+<p>例如，假設你在單個應用程式中使用了兩個不同的特性驅動程式：內建 <code>database</code> 驅動程式和第三方的“Flag Rocket”驅動程式。 "Flag Rocket"驅動程式不知道如何正確地儲存 Eloquent 模型。相反，它需要一個<code>FlagRocketUser</code> 實例。通過實現 <code>FeatureScopeable</code> 協議中的 <code>toFeatureIdentifier</code> 方法，我們可以自訂提供給應用程式中每個驅動程式的可儲存範圍值：</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">App\Models</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">FlagRocket\FlagRocketUser</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Illuminate\Database\Eloquent\Model</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Laravel\Pennant\Contracts\FeatureScopeable</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">User</span> <span class="k">extends</span> <span class="nx">Model</span> <span class="k">implements</span> <span class="nx">FeatureScopeable</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * 將對象強制轉換為給定驅動程式的功能範圍識別碼.</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">toFeatureIdentifier</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$driver</span><span class="p">)</span><span class="o">:</span> <span class="nx">mixed</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="k">match</span><span class="p">(</span><span class="nv">$driver</span><span class="p">)</span> <span class="p">{</span>
+        <span class="s1">&#39;database&#39;</span> <span class="o">=&gt;</span> <span class="nv">$this</span><span class="p">,</span>
+        <span class="s1">&#39;flag-rocket&#39;</span> <span class="o">=&gt;</span> <span class="nx">FlagRocketUser</span><span class="o">::</span><span class="na">fromId</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">flag_rocket_id</span><span class="p">),</span>
+        <span class="p">};</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="_18">豐富的特徵值<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h2>
+<p>到目前為止，我們主要展示了特性的二進制狀態，即它們是「活動的」還是「非活動的」，但是 Pennant 也允許你儲存豐富的值。</p>
+<p>例如，假設你正在測試應用程式的「立即購買」按鈕的三種新顏色。你可以從特性定義中返回一個字串，而不是 <code>true</code> 或 <code>false</code>：</p>
+<div class="highlight"><pre><span></span><code><span class="x">use Illuminate\Support\Arr;</span>
+<span class="x">use Laravel\Pennant\Feature;</span>
+
+<span class="x">Feature::define(&#39;purchase-button&#39;, fn (User $user) =&gt; Arr::random([</span>
+<span class="x"> &#39;blue-sapphire&#39;,</span>
+<span class="x"> &#39;seafoam-green&#39;,</span>
+<span class="x"> &#39;tart-orange&#39;,</span>
+<span class="x">]));</span>
+</code></pre></div>
+<p>你可以使用 <code>value</code> 方法檢索 <code>purchase-button</code> 特性的值：</p>
+<div class="highlight"><pre><span></span><code><span class="x">$color = Feature::value(&#39;purchase-button&#39;);</span>
+</code></pre></div>
+<p>Pennant 提供的 Blade 指令也使得根據特性的當前值條件性地呈現內容變得容易：</p>
+<div class="highlight"><pre><span></span><code>@feature(&#39;purchase-button&#39;, &#39;blue-sapphire&#39;)
+&lt;!-- &#39;blue-sapphire&#39; is active --&gt;
+@elsefeature(&#39;purchase-button&#39;, &#39;seafoam-green&#39;)
+&lt;!-- &#39;seafoam-green&#39; is active --&gt;
+@elsefeature(&#39;purchase-button&#39;, &#39;tart-orange&#39;)
+&lt;!-- &#39;tart-orange&#39; is active --&gt;
+@endfeature
+</code></pre></div>
+<blockquote>
+<p>使用豐富值時，重要的是要知道，只要特性具有除 <code>false</code> 以外的任何值，它就被視為「活動」。</p>
+</blockquote>
+<p>在呼叫<a href="#conditional-execution">條件</a> <code>when</code> 方法時，特性的豐富值將提供給第一個閉包：</p>
+<div class="highlight"><pre><span></span><code>Feature::when(&#39;purchase-button&#39;,
+    fn ($color) =&gt; /* ... */,
+    fn () =&gt; /* ... */,
+);
+</code></pre></div>
+<p>同樣，當呼叫條件 <code>unless</code> 方法時，特性的豐富值將提供給可選的第二個閉包：</p>
+<div class="highlight"><pre><span></span><code>Feature::unless(&#39;purchase-button&#39;,
+    fn () =&gt; /* ... */,
+    fn ($color) =&gt; /* ... */,
+);
+</code></pre></div>
+<h2 id="_19">獲取多個特性<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h2>
+<p><code>values</code> 方法允許檢索給定範疇的多個特徵：</p>
+<div class="highlight"><pre><span></span><code><span class="x">Feature::values([&#39;billing-v2&#39;, &#39;purchase-button&#39;]);</span>
+
+<span class="x">// [</span>
+<span class="x">// &#39;billing-v2&#39; =&gt; false,</span>
+<span class="x">// &#39;purchase-button&#39; =&gt; &#39;blue-sapphire&#39;,</span>
+<span class="x">// ]</span>
+</code></pre></div>
+<p>或者，你可以使用 <code>all</code> 方法檢索給定範圍內所有已定義功能的值：</p>
+<div class="highlight"><pre><span></span><code><span class="x">Feature::all();</span>
+
+<span class="x">// [</span>
+<span class="x">// &#39;billing-v2&#39; =&gt; false,</span>
+<span class="x">// &#39;purchase-button&#39; =&gt; &#39;blue-sapphire&#39;,</span>
+<span class="x">// &#39;site-redesign&#39; =&gt; true,</span>
+<span class="x">// ]</span>
+</code></pre></div>
+<p>但是，基於類的功能是動態註冊的，直到它們被顯式檢查之前，Pennant並不知道它們的存在。這意味著，如果在當前請求期間尚未檢查過應用程式的基於類的功能，則這些功能可能不會出現在 <code>all</code> 方法返回的結果中。</p>
+<p>如果你想確保使用 <code>all</code> 方法時始終包括功能類，你可以使用Pennant的功能發現功能。要開始使用，請在你的應用程式的任何服務提供程序之一中呼叫 <code>discover</code> 方法：</p>
+<div class="highlight"><pre><span></span><code>&lt;?php
+
+namespace App\Providers;
+
+use Illuminate\Support\ServiceProvider;
+use Laravel\Pennant\Feature;
+
+class AppServiceProvider extends ServiceProvider
+{
+    /**
+     * Bootstrap any application services.
+     */
+    public function boot(): void
+    {
+        Feature::discover();
+        // ...
+    }
+}
+</code></pre></div>
+<p><code>discover</code> 方法將註冊應用程式 <code>app/Features</code> 目錄中的所有功能類。<code>all</code> 方法現在將在其結果中包括這些類，無論它們是否在當前請求期間進行了檢查：</p>
+<div class="highlight"><pre><span></span><code><span class="x">Feature::all();</span>
+
+<span class="x">// [</span>
+<span class="x">// &#39;App\Features\NewApi&#39; =&gt; true,</span>
+<span class="x">// &#39;billing-v2&#39; =&gt; false,</span>
+<span class="x">// &#39;purchase-button&#39; =&gt; &#39;blue-sapphire&#39;,</span>
+<span class="x">// &#39;site-redesign&#39; =&gt; true,</span>
+<span class="x">// ]</span>
+</code></pre></div>
+<h2 id="_20">預載入<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h2>
+<p>儘管 Pennant 在單個請求中保留了所有已解析功能的記憶體快取，但仍可能遇到性能問題。為了緩解這種情況，Pennant 提供了預載入功能。</p>
+<p>為了說明這一點，想像一下我們正在循環中檢查功能是否處於活動狀態：</p>
+<div class="highlight"><pre><span></span><code><span class="x">use Laravel\Pennant\Feature;</span>
+
+<span class="x">foreach ($users as $user) {</span>
+<span class="x">    if (Feature::for($user)-&gt;active(&#39;notifications-beta&#39;)) {</span>
+<span class="x">        $user-&gt;notify(new RegistrationSuccess);</span>
+<span class="x">    }</span>
+<span class="x">}</span>
+</code></pre></div>
+<p>假設我們正在使用資料庫驅動程式，此程式碼將為循環中的每個使用者執行資料庫查詢-執行潛在的數百個查詢。但是，使用 Pennant 的 <code>load</code> 方法，我們可以通過預載入一組使用者或範疇的功能值來消除這種潛在的性能瓶頸：</p>
+<div class="highlight"><pre><span></span><code><span class="x">Feature::for($users)-&gt;load([&#39;notifications-beta&#39;]);</span>
+
+<span class="x">foreach ($users as $user) {</span>
+<span class="x">    if (Feature::for($user)-&gt;active(&#39;notifications-beta&#39;)) {</span>
+<span class="x">        $user-&gt;notify(new RegistrationSuccess);</span>
+<span class="x">    }</span>
+<span class="x">}</span>
+</code></pre></div>
+<p>為了僅在尚未載入功能值時載入它們，你可以使用 <code>loadMissing</code> 方法：</p>
+<div class="highlight"><pre><span></span><code><span class="x">Feature::for($users)-&gt;loadMissing([</span>
+<span class="x"> &#39;new-api&#39;,</span>
+<span class="x"> &#39;purchase-button&#39;,</span>
+<span class="x"> &#39;notifications-beta&#39;,</span>
+<span class="x">]);</span>
+</code></pre></div>
+<h2 id="_21">更新值<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h2>
+<p>當首次解析功能的值時，底層驅動程式將把結果儲存在儲存中。這通常是為了確保在請求之間為你的使用者提供一致的體驗。但是，有時你可能想手動更新功能的儲存值。</p>
+<p>為了實現這一點，你可以使用 <code>activate</code> 和 <code>deactivate</code> 方法來切換功能的 「打開」或「關閉」狀態：</p>
+<div class="highlight"><pre><span></span><code><span class="x">use Laravel\Pennant\Feature;</span>
+
+<span class="x">// 啟動默認範疇的功能...</span>
+<span class="x">Feature::activate(&#39;new-api&#39;);</span>
+
+<span class="x">// 在給定的範圍中停用功能...</span>
+<span class="x">Feature::for($user-&gt;team)-&gt;deactivate(&#39;billing-v2&#39;);</span>
+</code></pre></div>
+<p>還可以通過向 <code>activate</code> 方法提供第二個參數來手動設定功能的豐富值：</p>
+<div class="highlight"><pre><span></span><code><span class="x">Feature::activate(&#39;purchase-button&#39;, &#39;seafoam-green&#39;);</span>
+</code></pre></div>
+<p>要指示 Pennant 忘記功能的儲存值，你可以使用 <code>forget</code> 方法。當再次檢查功能時，Pennant 將從其功能定義中解析功能的值：</p>
+<div class="highlight"><pre><span></span><code><span class="x">Feature::forget(&#39;purchase-button&#39;);</span>
+</code></pre></div>
+<h3 id="_22">批次更新<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h3>
+<p>要批次更新儲存的功能值，你可以使用 <code>activateForEveryone</code> 和 <code>deactivateForEveryone</code> 方法。</p>
+<p>例如，假設你現在對 <code>new-api</code> 功能的穩定性有信心，並為結帳流程找到了最佳的「purchase-button」顏色-你可以相應地更新所有使用者的儲存值：</p>
+<div class="highlight"><pre><span></span><code><span class="x">use Laravel\Pennant\Feature;</span>
+
+<span class="x">Feature::activateForEveryone(&#39;new-api&#39;);</span>
+<span class="x">Feature::activateForEveryone(&#39;purchase-button&#39;, &#39;seafoam-green&#39;);</span>
+</code></pre></div>
+<p>或者，你可以停用所有使用者的該功能：</p>
+<div class="highlight"><pre><span></span><code><span class="x">Feature::deactivateForEveryone(&#39;new-api&#39;);</span>
+</code></pre></div>
+<blockquote>
+<p>**注意：**這將僅更新已由 Pennant 儲存驅動程式儲存的已解析功能值。你還需要更新應用程式中的功能定義。</p>
+</blockquote>
+<h3 id="_23">清除功能<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h3>
+<p>有時，清除儲存中的整個功能可以非常有用。如果你已從應用程式中刪除了功能或已對功能的定義進行了調整，並希望將其部署到所有使用者，則通常需要這樣做。</p>
+<p>你可以使用 <code>purge</code> 方法刪除功能的所有儲存值：</p>
+<div class="highlight"><pre><span></span><code><span class="x">// 清除單個功能...</span>
+<span class="x">Feature::purge(&#39;new-api&#39;);</span>
+
+<span class="x">// 清除多個功能...</span>
+<span class="x">Feature::purge([&#39;new-api&#39;, &#39;purchase-button&#39;]);</span>
+</code></pre></div>
+<p>如果你想從儲存中清除所有功能，則可以呼叫 <code>purge</code> 方法而不帶任何參數：</p>
+<div class="highlight"><pre><span></span><code><span class="x">Feature::purge();</span>
+</code></pre></div>
+<p>由於在應用程式的部署流程中清除功能可能非常有用，因此 Pennant 包括一個<code>pennant:purge</code> Artisan命令：</p>
+<div class="highlight"><pre><span></span><code>php<span class="w"> </span>artisan<span class="w"> </span>pennant:purge<span class="w"> </span>new-api
+php<span class="w"> </span>artisan<span class="w"> </span>pennant:purge<span class="w"> </span>new-api<span class="w"> </span>purchase-button
+</code></pre></div>
+<h2 id="_24">測試<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h2>
+<p>當測試與功能標誌互動的程式碼時，控制測試中返回的功能標誌的最簡單方法是簡單地重新定義該功能。例如，假設你在應用程式的一個服務提供程序中定義了以下功能：</p>
+<div class="highlight"><pre><span></span><code><span class="x">use Illuminate\Support\Arr;</span>
+<span class="x">use Laravel\Pennant\Feature;</span>
+
+<span class="x">Feature::define(&#39;purchase-button&#39;, fn () =&gt; Arr::random([</span>
+<span class="x"> &#39;blue-sapphire&#39;,</span>
+<span class="x"> &#39;seafoam-green&#39;,</span>
+<span class="x"> &#39;tart-orange&#39;,</span>
+<span class="x">]));</span>
+</code></pre></div>
+<p>要在測試中修改功能的返回值，你可以在測試開始時重新定義該功能。以下測試將始終通過，即使 <code>Arr::random()</code> 實現仍然存在於服務提供程序中：</p>
+<div class="highlight"><pre><span></span><code><span class="x">use Laravel\Pennant\Feature;</span>
+
+<span class="x">public function test_it_can_control_feature_values()</span>
+<span class="x">{</span>
+<span class="x">    Feature::define(&#39;purchase-button&#39;, &#39;seafoam-green&#39;);</span>
+<span class="x">    $this-&gt;assertSame(&#39;seafoam-green&#39;, Feature::value(&#39;purchase-button&#39;));</span>
+<span class="x">}</span>
+</code></pre></div>
+<p>相同的方法也可以用於基於類的功能：</p>
+<div class="highlight"><pre><span></span><code><span class="x">use App\Features\NewApi;</span>
+<span class="x">use Laravel\Pennant\Feature;</span>
+
+<span class="x">public function test_it_can_control_feature_values()</span>
+<span class="x">{</span>
+<span class="x">    Feature::define(NewApi::class, true);</span>
+<span class="x">    $this-&gt;assertTrue(Feature::value(NewApi::class));</span>
+<span class="x">}</span>
+</code></pre></div>
+<p>如果你的功能返回一個 <code>Lottery</code> 實例，那麼有一些有用的<a href="/docs/laravel/10.x/helpers#testing-lotteries">測試輔助函數可用</a>。</p>
+<h4 id="_25">儲存組態<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h4>
+<p>你可以通過在應用程式的 <code>phpunit.xml</code> 檔案中定義 <code>PENNANT_STORE</code> 環境變數來組態 Pennant 在測試期間使用的儲存：</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?xml version=&quot;1.0&quot;  encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="nt">&lt;phpunit</span><span class="w"> </span><span class="na">colors=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="cm">&lt;!-- ... --&gt;</span>
+<span class="w">    </span><span class="nt">&lt;php&gt;</span>
+<span class="nt">&lt;env</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;PENNANT_STORE&quot;</span><span class="w">  </span><span class="na">value=</span><span class="s">&quot;array&quot;</span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="cm">&lt;!-- ... --&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/php&gt;</span>
+<span class="nt">&lt;/phpunit&gt;</span>
+</code></pre></div>
+<h2 id="pennant_1">新增自訂Pennant驅動程式<a class="headerlink" href="#pennant_1" title="Permanent link">&para;</a></h2>
+<h4 id="_26">實現驅動程式<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h4>
+<p>如果 Pennant 現有的儲存驅動程式都不符合你的應用程式需求，則可以編寫自己的儲存驅動程式。你的自訂驅動程式應實現 <code>Laravel\Pennant\Contracts\Driver</code> 介面：</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">App\Extensions</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Laravel\Pennant\Contracts\Driver</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">RedisFeatureDriver</span> <span class="k">implements</span> <span class="nx">Driver</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">define</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$feature</span><span class="p">,</span> <span class="nx">callable</span> <span class="nv">$resolver</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{}</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">defined</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span> <span class="p">{}</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getAll</span><span class="p">(</span><span class="k">array</span> <span class="nv">$features</span><span class="p">)</span><span class="o">:</span> <span class="k">array</span> <span class="p">{}</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">get</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$feature</span><span class="p">,</span> <span class="nx">mixed</span> <span class="nv">$scope</span><span class="p">)</span><span class="o">:</span> <span class="nx">mixed</span> <span class="p">{}</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">set</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$feature</span><span class="p">,</span> <span class="nx">mixed</span> <span class="nv">$scope</span><span class="p">,</span> <span class="nx">mixed</span> <span class="nv">$value</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{}</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">setForAllScopes</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$feature</span><span class="p">,</span> <span class="nx">mixed</span> <span class="nv">$value</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{}</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">delete</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$feature</span><span class="p">,</span> <span class="nx">mixed</span> <span class="nv">$scope</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{}</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">purge</span><span class="p">(</span><span class="k">array</span><span class="o">|</span><span class="k">null</span> <span class="nv">$features</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>現在，我們只需要使用 Redis 連接實現這些方法。可以在 <a href="https://github.com/laravel/pennant/blob/1.x/src/Drivers/DatabaseDriver.php">Pennant</a> 原始碼中查看如何實現這些方法的示例。</p>
+<blockquote>
+<p><strong>注意</strong></p>
+<p>Laravel 不附帶包含擴展的目錄。你可以自由地將它們放在任何你喜歡的位置。在這個示例中，我們建立了一個 <code>Extensions</code> 目錄來存放 <code>RedisFeatureDriver</code>。</p>
+</blockquote>
+<h4 id="_27">註冊驅動<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h4>
+<p>一旦你的驅動程式被實現，就可以將其註冊到 Laravel 中。要向 Pennant 新增其他驅動程式，可以使用 <code>Feature</code> 門面提供的 <code>extend</code> 方法。應該在應用程式的 <a href="/docs/laravel/10.x/providers">服務提供者</a> 的 <code>boot</code> 方法中呼叫 <code>extend</code> 方法：</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">App\Providers</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">App\Extensions\RedisFeatureDriver</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Illuminate\Contracts\Foundation\Application</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Illuminate\Support\ServiceProvider</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Laravel\Pennant\Feature</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">AppServiceProvider</span> <span class="k">extends</span> <span class="nx">ServiceProvider</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * 註冊任何應用程式服務。</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">register</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span>
+    <span class="p">{</span>
+        <span class="c1">// ...</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * 引導任何應用程式服務。</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">boot</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span>
+    <span class="p">{</span>
+        <span class="nx">Feature</span><span class="o">::</span><span class="na">extend</span><span class="p">(</span><span class="s1">&#39;redis&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nx">Application</span> <span class="nv">$app</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="k">new</span> <span class="nx">RedisFeatureDriver</span><span class="p">(</span><span class="nv">$app</span><span class="o">-&gt;</span><span class="na">make</span><span class="p">(</span><span class="s1">&#39;redis&#39;</span><span class="p">),</span> <span class="nv">$app</span><span class="o">-&gt;</span><span class="na">make</span><span class="p">(</span><span class="s1">&#39;events&#39;</span><span class="p">),</span> <span class="p">[]);</span>
+        <span class="p">});</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>一旦驅動程式被註冊，就可以在應用程式的 <code>config/pennant.php</code> 組態檔案中使用 <code>redis</code> 驅動程式：</p>
+<div class="highlight"><pre><span></span><code><span class="x">&#39;stores&#39; =&gt; [</span>
+<span class="x">    &#39;redis&#39; =&gt; [</span>
+<span class="x">        &#39;driver&#39; =&gt; &#39;redis&#39;,</span>
+<span class="x">        &#39;connection&#39; =&gt; null,</span>
+<span class="x">    ],</span>
+<span class="x">    // ...</span>
+<span class="x">],</span>
+</code></pre></div>
+<h2 id="_28">事件<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h2>
+<p>Pennant 分發了各種事件，這些事件在跟蹤應用程式中的特性標誌時非常有用。</p>
+<h3 id="laravelpennanteventsretrievingknownfeature"><code>Laravel\Pennant\Events\RetrievingKnownFeature</code><a class="headerlink" href="#laravelpennanteventsretrievingknownfeature" title="Permanent link">&para;</a></h3>
+<p>該事件在請求特定範疇的已知特徵值第一次被檢索時被觸發。此事件可用於建立和跟蹤應用程式中使用的特徵標記的度量標準。</p>
+<h3 id="laravelpennanteventsretrievingunknownfeature"><code>Laravel\Pennant\Events\RetrievingUnknownFeature</code><a class="headerlink" href="#laravelpennanteventsretrievingunknownfeature" title="Permanent link">&para;</a></h3>
+<p>當在請求特定範疇的情況下第一次檢索未知特性時，將分派此事件。如果你打算從應用程式中刪除功能標誌，但可能在整個應用程式中留下了某些零散的引用，此事件可能會有用。你可能會發現有用的是監聽此事件並在其發生時 <code>report</code> 或拋出異常：</p>
+<p>例如，你可能會發現在監聽到此事件並出現此情況時，使用 <code>report</code> 或引發異常會很有用：</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">App\Providers</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Illuminate\Foundation\Support\Providers\EventServiceProvider</span> <span class="k">as</span> <span class="nx">ServiceProvider</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Illuminate\Support\Facades\Event</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Laravel\Pennant\Events\RetrievingUnknownFeature</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">EventServiceProvider</span> <span class="k">extends</span> <span class="nx">ServiceProvider</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * Register any other events for your application.</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">boot</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span>
+    <span class="p">{</span>
+        <span class="nx">Event</span><span class="o">::</span><span class="na">listen</span><span class="p">(</span><span class="k">function</span> <span class="p">(</span><span class="nx">RetrievingUnknownFeature</span> <span class="nv">$event</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">report</span><span class="p">(</span><span class="s2">&quot;Resolving unknown feature [</span><span class="si">{</span><span class="nv">$event</span><span class="o">-&gt;</span><span class="na">feature</span><span class="si">}</span><span class="s2">].&quot;</span><span class="p">);</span>
+        <span class="p">});</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="laravelpennanteventsdynamicallydefiningfeature"><code>Laravel\Pennant\Events\DynamicallyDefiningFeature</code><a class="headerlink" href="#laravelpennanteventsdynamicallydefiningfeature" title="Permanent link">&para;</a></h3>
+<p>當在請求期間首次動態檢查基於類的特性時，將分派此事件。</p>
+
+
+
+
+
+                
+
+  <!-- Giscus -->
+  <h2 id="__comments">留言</h2>
+  <script src="https://giscus.app/client.js"
+          data-repo="tomleesm/notes"
+          data-repo-id="R_kgDOGuSz4g"
+          data-category="Announcements"
+          data-category-id="DIC_kwDOGuSz4s4CBI6T"
+          data-mapping="title"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="bottom"
+          data-theme="dark"
+          data-lang="zh-TW"
+          crossorigin="anonymous"
+          async>
+  </script>
+
+  <!-- Reload on palette change -->
+  <script>
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object")
+      if (palette.color.scheme === "slate") {
+        var giscus = document.querySelector("script[src*=giscus]")
+        giscus.setAttribute("data-theme", "dark")
+      }
+
+    /* Register event handlers after documented loaded */
+    document.addEventListener("DOMContentLoaded", function() {
+      var ref = document.querySelector("[data-md-component=palette]")
+      ref.addEventListener("change", function() {
+        var palette = __md_get("__palette")
+        if (palette && typeof palette.color === "object") {
+          var theme = palette.color.scheme === "slate" ? "dark" : "light"
+
+          /* Instruct Giscus to change theme */
+          var frame = document.querySelector(".giscus-frame")
+          frame.contentWindow.postMessage(
+            { giscus: { setConfig: { theme } } },
+            "https://giscus.app"
+          )
+        }
+      })
+    })
+  </script>
+
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            回到頂端
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tabs", "navigation.sections", "navigation.indexes", "navigation.top", "header.autohide", "search.highlight", "search.share"], "search": "../../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "\u5df2\u8907\u88fd", "clipboard.copy": "\u8907\u88fd", "search.result.more.one": "\u6b64\u9801\u5c1a\u6709 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.more.other": "\u6b64\u9801\u5c1a\u6709 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.none": "\u6c92\u6709\u7b26\u5408\u7684\u9805\u76ee", "search.result.one": "\u627e\u5230 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.other": "\u627e\u5230 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.placeholder": "\u6253\u5b57\u9032\u884c\u641c\u5c0b", "search.result.term.missing": "\u7f3a\u5c11\u5b57\u8a5e", "select.version": "\u9078\u64c7\u7248\u672c"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.dff1b7c8.min.js"></script>
+      
+    
+  </body>
+</html>

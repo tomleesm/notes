@@ -1,0 +1,4747 @@
+
+<!doctype html>
+<html lang="zh-TW" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../../01%E6%A0%B8%E5%BF%83%E6%9E%B6%E6%A7%8B/04Facades/">
+      
+      
+        <link rel="next" href="../02%E4%B8%AD%E4%BB%8B%E8%BB%9F%E9%AB%94/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-9.2.7">
+    
+    
+      
+        <title>路由 - Tom 株式會社</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.046329b4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.85d0ee34.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+Traditional+Chinese:300,300i,400,400i,700,700i%7CSource+Code+Pro:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans Traditional Chinese";--md-code-font:"Source Code Pro"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="red" data-md-color-accent="red">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳轉到
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="頁首">
+    <a href="../.." title="Tom 株式會社" class="md-header__button md-logo" aria-label="Tom 株式會社" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Tom 株式會社
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              路由
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="red" data-md-color-accent="red"  aria-hidden="true"  type="radio" name="__palette" id="__palette_1">
+    
+  
+</form>
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜尋" placeholder="搜尋" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="搜尋">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清除" aria-label="清除" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜尋引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/tomleesm/notes" title="前往倉庫" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    tomleesm/notes
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="標籤" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../01%E6%A0%B8%E5%BF%83%E6%9E%B6%E6%A7%8B/01%E8%AB%8B%E6%B1%82%E7%9A%84%E7%94%9F%E5%91%BD%E9%80%B1%E6%9C%9F/" class="md-tabs__link">
+          
+  
+    
+  
+  核心架構
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+    
+  
+  基礎功能
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/01Artisan%E5%91%BD%E4%BB%A4%E5%88%97/" class="md-tabs__link">
+          
+  
+    
+  
+  繼續深入
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../04%E5%AE%89%E5%85%A8%E7%9B%B8%E9%97%9C/01%E4%BD%BF%E7%94%A8%E8%80%85%E8%AA%8D%E8%AD%89/" class="md-tabs__link">
+          
+  
+    
+  
+  安全相關
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../05%E8%B3%87%E6%96%99%E5%BA%AB/01%E5%BF%AB%E9%80%9F%E5%85%A5%E9%96%80/" class="md-tabs__link">
+          
+  
+    
+  
+  資料庫
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../06EloquentORM/01%E5%BF%AB%E9%80%9F%E5%85%A5%E9%96%80/" class="md-tabs__link">
+          
+  
+    
+  
+  Eloquent ORM
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../07%E6%B8%AC%E8%A9%A6%E7%9B%B8%E9%97%9C/01%E5%85%A5%E9%96%80/" class="md-tabs__link">
+          
+  
+    
+  
+  測試相關
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/01Cashier%E4%BA%A4%E6%98%93%E5%B7%A5%E5%85%B7%E5%8C%85Stripe/" class="md-tabs__link">
+          
+  
+    
+  
+  官方擴展包
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../cheatsheets/artisan/" class="md-tabs__link">
+          
+  
+    
+  
+  語法速查表
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="導覽列" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Tom 株式會社" class="md-nav__button md-logo" aria-label="Tom 株式會社" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Tom 株式會社
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/tomleesm/notes" title="前往倉庫" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    tomleesm/notes
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    核心架構
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            核心架構
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01%E6%A0%B8%E5%BF%83%E6%9E%B6%E6%A7%8B/01%E8%AB%8B%E6%B1%82%E7%9A%84%E7%94%9F%E5%91%BD%E9%80%B1%E6%9C%9F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    請求的生命週期
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01%E6%A0%B8%E5%BF%83%E6%9E%B6%E6%A7%8B/02%E6%9C%8D%E5%8B%99%E5%AE%B9%E5%99%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    服務容器
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01%E6%A0%B8%E5%BF%83%E6%9E%B6%E6%A7%8B/03%E6%9C%8D%E5%8B%99%E6%8F%90%E4%BE%9B%E8%80%85/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    服務提供者
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01%E6%A0%B8%E5%BF%83%E6%9E%B6%E6%A7%8B/04Facades/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Facades
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    基礎功能
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            基礎功能
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    路由
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    路由
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目錄">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目錄
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    基本路由
+  </a>
+  
+    <nav class="md-nav" aria-label="基本路由">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    默認路由檔案
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    可用的路由方法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    依賴注入
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#csrf" class="md-nav__link">
+    CSRF 保護
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    重新導向路由
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    檢視路由
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#routelist" class="md-nav__link">
+    route:list 命令
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    路由參數
+  </a>
+  
+    <nav class="md-nav" aria-label="路由參數">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    必需參數
+  </a>
+  
+    <nav class="md-nav" aria-label="必需參數">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    必填參數
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    可選參數
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    正規表示式約束
+  </a>
+  
+    <nav class="md-nav" aria-label="正規表示式約束">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    全域約束
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    編碼正斜槓
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    命名路由
+  </a>
+  
+    <nav class="md-nav" aria-label="命名路由">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#url" class="md-nav__link">
+    生成命名路由的 URL
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    檢查當前路由
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    路由組
+  </a>
+  
+    <nav class="md-nav" aria-label="路由組">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    路由中介軟體
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#controller" class="md-nav__link">
+    controller
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    子域路由
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    路由前綴
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    路由名稱前綴
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    路由模型繫結
+  </a>
+  
+    <nav class="md-nav" aria-label="路由模型繫結">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    隱式繫結
+  </a>
+  
+    <nav class="md-nav" aria-label="隱式繫結">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    軟刪除模型
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    自訂金鑰
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    自訂鍵和範圍
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    自訂缺失模型行為
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    隱式列舉繫結
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    顯式繫結
+  </a>
+  
+    <nav class="md-nav" aria-label="顯式繫結">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    自訂解析邏輯
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fallback" class="md-nav__link">
+    Fallback 路由
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    速率限制
+  </a>
+  
+    <nav class="md-nav" aria-label="速率限制">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    定義速率限製器
+  </a>
+  
+    <nav class="md-nav" aria-label="定義速率限製器">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    分段速率限制
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    多個速率限制
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_35" class="md-nav__link">
+    將速率限製器附加到路由
+  </a>
+  
+    <nav class="md-nav" aria-label="將速率限製器附加到路由">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#redis" class="md-nav__link">
+    使用 Redis 節流
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_36" class="md-nav__link">
+    偽造表單方法
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_37" class="md-nav__link">
+    訪問當前路由
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cors" class="md-nav__link">
+    跨域資源共享 (CORS)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_38" class="md-nav__link">
+    路由快取
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02%E4%B8%AD%E4%BB%8B%E8%BB%9F%E9%AB%94/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    中介軟體
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03CSRF%E4%BF%9D%E8%AD%B7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CSRF 保護
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04Controller/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Controller
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05HTTP%E8%AB%8B%E6%B1%82/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTTP 請求
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06HTTP%E9%9F%BF%E6%87%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTTP 響應
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07%E6%AA%A2%E8%A6%96/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    檢視
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08Blade%E7%AF%84%E6%9C%AC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Blade 範本
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09Vite%E7%B7%A8%E8%AD%AFAssets/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vite 編譯 Assets
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10%E7%94%9F%E6%88%90URL/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    生成 URL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11Session/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Session
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12%E8%A1%A8%E5%96%AE%E9%A9%97%E8%AD%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    表單驗證
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13%E9%8C%AF%E8%AA%A4%E8%99%95%E7%90%86/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    錯誤處理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14%E6%97%A5%E8%AA%8C/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    日誌
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    繼續深入
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            繼續深入
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/01Artisan%E5%91%BD%E4%BB%A4%E5%88%97/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Artisan 命令列
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/02%E5%BB%A3%E6%92%AD/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    廣播
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/03%E5%BF%AB%E5%8F%96%E7%B3%BB%E7%B5%B1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    快取系統
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/04%E9%9B%86%E5%90%88/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    集合
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/05%E5%A5%91%E7%B4%84Contract/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    契約 Contract
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/06%E4%BA%8B%E4%BB%B6%E7%B3%BB%E7%B5%B1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    事件系統
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/07%E6%AA%94%E6%A1%88%E5%84%B2%E5%AD%98/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    檔案儲存
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/09HTTPClient/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTTP Client
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/10%E6%9C%AC%E5%9C%B0%E5%8C%96/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    本地化
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/11%E9%83%B5%E4%BB%B6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    郵件
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/12%E6%B6%88%E6%81%AF%E9%80%9A%E7%9F%A5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    消息通知
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/13Package%E9%96%8B%E7%99%BC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Package 開發
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/14%E8%99%95%E7%90%86%E7%A8%8B%E5%BA%8F%E7%AE%A1%E7%90%86/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    處理程序管理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/15%E4%BD%87%E5%88%97/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    佇列
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/16%E9%99%90%E6%B5%81/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    限流
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/17%E4%BB%BB%E5%8B%99%E8%AA%BF%E5%BA%A6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    任務調度
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    安全相關
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            安全相關
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04%E5%AE%89%E5%85%A8%E7%9B%B8%E9%97%9C/01%E4%BD%BF%E7%94%A8%E8%80%85%E8%AA%8D%E8%AD%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    使用者認證
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04%E5%AE%89%E5%85%A8%E7%9B%B8%E9%97%9C/02%E4%BD%BF%E7%94%A8%E8%80%85%E6%8E%88%E6%AC%8A/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    使用者授權
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04%E5%AE%89%E5%85%A8%E7%9B%B8%E9%97%9C/03Email%E8%AA%8D%E8%AD%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Email 認證
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04%E5%AE%89%E5%85%A8%E7%9B%B8%E9%97%9C/04%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    加密解密
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04%E5%AE%89%E5%85%A8%E7%9B%B8%E9%97%9C/05%E9%9B%9C%E6%B9%8A/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    雜湊
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04%E5%AE%89%E5%85%A8%E7%9B%B8%E9%97%9C/06%E9%87%8D%E8%A8%AD%E5%AF%86%E7%A2%BC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    重設密碼
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    資料庫
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            資料庫
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05%E8%B3%87%E6%96%99%E5%BA%AB/01%E5%BF%AB%E9%80%9F%E5%85%A5%E9%96%80/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    快速入門
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05%E8%B3%87%E6%96%99%E5%BA%AB/02%E6%9F%A5%E8%A9%A2%E7%94%9F%E6%88%90%E5%99%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    查詢生成器
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05%E8%B3%87%E6%96%99%E5%BA%AB/03%E5%88%86%E9%A0%81/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    分頁
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05%E8%B3%87%E6%96%99%E5%BA%AB/04%E9%81%B7%E7%A7%BB/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    遷移
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05%E8%B3%87%E6%96%99%E5%BA%AB/05%E8%B3%87%E6%96%99%E5%A1%AB%E5%85%85/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    資料填充
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05%E8%B3%87%E6%96%99%E5%BA%AB/06Redis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Redis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Eloquent ORM
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Eloquent ORM
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06EloquentORM/01%E5%BF%AB%E9%80%9F%E5%85%A5%E9%96%80/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    快速入門
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06EloquentORM/02%E9%97%9C%E8%81%AF/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    關聯
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06EloquentORM/03%E9%9B%86%E5%90%88/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    集合
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06EloquentORM/04%E5%B1%AC%E6%80%A7%E4%BF%AE%E6%94%B9%E5%99%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    屬性修改器
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06EloquentORM/05API%E8%B3%87%E6%BA%90/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    API 資源
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06EloquentORM/06%E5%BA%8F%E5%88%97%E5%8C%96/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    序列化
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06EloquentORM/07%E8%B3%87%E6%96%99%E5%B7%A5%E5%BB%A0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    資料工廠
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    測試相關
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            測試相關
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07%E6%B8%AC%E8%A9%A6%E7%9B%B8%E9%97%9C/01%E5%85%A5%E9%96%80/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    入門
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07%E6%B8%AC%E8%A9%A6%E7%9B%B8%E9%97%9C/02HTTP%E6%B8%AC%E8%A9%A6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTTP 測試
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07%E6%B8%AC%E8%A9%A6%E7%9B%B8%E9%97%9C/03%E5%91%BD%E4%BB%A4%E5%88%97%E6%B8%AC%E8%A9%A6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    命令列測試
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07%E6%B8%AC%E8%A9%A6%E7%9B%B8%E9%97%9C/04LaravelDusk/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Laravel Dusk
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07%E6%B8%AC%E8%A9%A6%E7%9B%B8%E9%97%9C/05%E8%B3%87%E6%96%99%E5%BA%AB%E6%B8%AC%E8%A9%A6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    資料庫測試
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07%E6%B8%AC%E8%A9%A6%E7%9B%B8%E9%97%9C/06Mocking/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mocking
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    官方擴展包
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            官方擴展包
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/01Cashier%E4%BA%A4%E6%98%93%E5%B7%A5%E5%85%B7%E5%8C%85Stripe/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cashier 交易工具包 Stripe
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/02Cashier%E4%BA%A4%E6%98%93%E5%B7%A5%E5%85%B7%E5%8C%85Paddle/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cashier 交易工具包 Paddle
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/03Envoy%E9%83%A8%E7%BD%B2%E5%B7%A5%E5%85%B7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Envoy 部署工具
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/04Fortify%E8%88%87%E5%89%8D%E7%AB%AF%E7%84%A1%E9%97%9C%E7%9A%84%E8%BA%AB%E4%BB%BD%E8%AA%8D%E8%AD%89%E5%BE%8C%E7%AB%AF%E5%AF%A6%E7%8F%BE/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fortify 與前端無關的身份認證後端實現
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/05Homestead%E8%99%9B%E6%93%AC%E6%A9%9F%E5%99%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Homestead 虛擬機器
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/06Horizon%E4%BD%87%E5%88%97%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Horizon 佇列管理工具
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/09Octane%E5%8A%A0%E9%80%9F%E5%BC%95%E6%93%8E/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Octane 加速引擎
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/10PassportOAuth%E8%AA%8D%E8%AD%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Passport OAuth 認證
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/11Pennant%E6%B8%AC%E8%A9%A6%E6%96%B0%E5%8A%9F%E8%83%BD/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pennant 測試新功能
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/12Pint%E7%A8%8B%E5%BC%8F%E7%A2%BC%E9%A2%A8%E6%A0%BC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pint 程式碼風格
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/13SailDocker%E9%96%8B%E7%99%BC%E7%92%B0%E5%A2%83/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sail Docker 開發環境
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/14SanctumAPI%E6%8E%88%E6%AC%8A/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sanctum API 授權
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/15Scout%E5%85%A8%E6%96%87%E6%90%9C%E5%B0%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Scout 全文搜尋
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/16Socialite%E7%AC%AC%E4%B8%89%E6%96%B9%E7%99%BB%E5%85%A5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Socialite 第三方登入
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/17Telescope%E5%81%B5%E9%8C%AF%E5%B7%A5%E5%85%B7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Telescope 偵錯工具
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    語法速查表
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            語法速查表
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/artisan/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Artisan
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/auth/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Auth 使用者認證
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/blade/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Blade 範本
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/cache/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cache
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/collection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Collection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/composer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Composer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/config/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Config
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/container/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Container
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/cookie/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cookie
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/db/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Database
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/environment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Environment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/event/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Event
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/file/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    File
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/helper/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Helper
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/input/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Input
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/lang/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lang
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/Log/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Log
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/mail/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mail
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/model/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Model (Eloquent ORM)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/pagination/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pagination
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/queue/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Queue
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/redirect/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Redirect
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/request/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Request
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/response/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Response
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/route/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Route
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/schema/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Schema 資料庫結構
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/security/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Security (Hash 和加解密)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/session/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Session
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/storage/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Storage
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/string/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    String
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/unittest/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Unit Test 單元測試
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/url/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    URL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/validation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Validation 表單驗證
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/view/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    View
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目錄">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目錄
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    基本路由
+  </a>
+  
+    <nav class="md-nav" aria-label="基本路由">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    默認路由檔案
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    可用的路由方法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    依賴注入
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#csrf" class="md-nav__link">
+    CSRF 保護
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    重新導向路由
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    檢視路由
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#routelist" class="md-nav__link">
+    route:list 命令
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    路由參數
+  </a>
+  
+    <nav class="md-nav" aria-label="路由參數">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    必需參數
+  </a>
+  
+    <nav class="md-nav" aria-label="必需參數">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    必填參數
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    可選參數
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    正規表示式約束
+  </a>
+  
+    <nav class="md-nav" aria-label="正規表示式約束">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    全域約束
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    編碼正斜槓
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    命名路由
+  </a>
+  
+    <nav class="md-nav" aria-label="命名路由">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#url" class="md-nav__link">
+    生成命名路由的 URL
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    檢查當前路由
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    路由組
+  </a>
+  
+    <nav class="md-nav" aria-label="路由組">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    路由中介軟體
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#controller" class="md-nav__link">
+    controller
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    子域路由
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    路由前綴
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    路由名稱前綴
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    路由模型繫結
+  </a>
+  
+    <nav class="md-nav" aria-label="路由模型繫結">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    隱式繫結
+  </a>
+  
+    <nav class="md-nav" aria-label="隱式繫結">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    軟刪除模型
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    自訂金鑰
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    自訂鍵和範圍
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    自訂缺失模型行為
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    隱式列舉繫結
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    顯式繫結
+  </a>
+  
+    <nav class="md-nav" aria-label="顯式繫結">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    自訂解析邏輯
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fallback" class="md-nav__link">
+    Fallback 路由
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    速率限制
+  </a>
+  
+    <nav class="md-nav" aria-label="速率限制">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    定義速率限製器
+  </a>
+  
+    <nav class="md-nav" aria-label="定義速率限製器">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    分段速率限制
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    多個速率限制
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_35" class="md-nav__link">
+    將速率限製器附加到路由
+  </a>
+  
+    <nav class="md-nav" aria-label="將速率限製器附加到路由">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#redis" class="md-nav__link">
+    使用 Redis 節流
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_36" class="md-nav__link">
+    偽造表單方法
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_37" class="md-nav__link">
+    訪問當前路由
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cors" class="md-nav__link">
+    跨域資源共享 (CORS)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_38" class="md-nav__link">
+    路由快取
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+  
+                  
+
+  
+  
+
+
+<h1 id="_1">路由<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h2 id="_2">基本路由<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>最基本的 Laravel 路由接受一個 URI 和一個閉包，提供了一個簡單優雅的方法來定義路由和行為，而不需要複雜的路由組態檔案：</p>
+<div class="highlight"><pre><span></span><code>use Illuminate\Support\Facades\Route;
+
+Route::get(&#39;/greeting&#39;, function () {
+    return &#39;Hello World&#39;;
+});
+</code></pre></div>
+<h4 id="_3">默認路由檔案<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<p>所有 Laravel 路由都定義在你的路由檔案中，它位於 <code>routes</code> 目錄。這些檔案會被你的應用程式中的 <code>App\Providers\RouteServiceProvider</code> 自動載入。<code>routes/web.php</code> 檔案用於定義 web 介面的路由。這些路由被分配給 <code>web</code> 中介軟體組，它提供了  session 狀態和 CSRF 保護等功能。定義在 <code>routes/api.php</code> 中的路由都是無狀態的，並且被分配了 <code>api</code> 中介軟體組。</p>
+<p>對於大多數應用程式，都是以在 <code>routes/web.php</code> 檔案定義路由開始的。可以通過在瀏覽器中輸入定義的路由 URL 來訪問 <code>routes/web.php</code> 中定義的路由。例如，你可以在瀏覽器中輸入 <code>http://example.com/user</code> 來訪問以下路由：</p>
+<div class="highlight"><pre><span></span><code>use App\Http\Controllers\UserController;
+
+Route::get(&#39;/user&#39;, [UserController::class, &#39;index&#39;]);
+</code></pre></div>
+<p>定義在 <code>routes/api.php</code> 檔案中的路由是被 <code>RouteServiceProvider</code> 巢狀在一個路由組內。 在這個路由組內，將自動應用 <code>/api</code> URI 前綴，所以你無需手動將其應用於檔案中的每個路由。你可以通過修改 <code>RouteServiceProvider</code> 類來修改前綴和其他路由組選項。</p>
+<h4 id="_4">可用的路由方法<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<p>路由器允許你註冊能響應任何 HTTP 請求的路由</p>
+<div class="highlight"><pre><span></span><code>Route::get($uri, $callback);
+Route::post($uri, $callback);
+Route::put($uri, $callback);
+Route::patch($uri, $callback);
+Route::delete($uri, $callback);
+Route::options($uri, $callback);
+</code></pre></div>
+<p>有的時候你可能需要註冊一個可響應多個 HTTP 請求的路由，這時你可以使用 <code>match</code> 方法，也可以使用 <code>any</code> 方法註冊一個實現響應所有 HTTP 請求的路由：</p>
+<div class="highlight"><pre><span></span><code>Route::match([&#39;get&#39;, &#39;post&#39;], &#39;/&#39;, function () {
+    // ...
+});
+
+Route::any(&#39;/&#39;, function () {
+    // ...
+});
+</code></pre></div>
+<blockquote>
+<p><strong>技巧</strong>
+當定義多個相同路由時，使用 <code>get</code>， <code>post</code>， <code>put</code>， <code>patch</code>， <code>delete</code>， 和 <code>options</code> 方法的路由應該在使用 <code>any</code>， <code>match</code>， 和 <code>redirect</code> 方法的路由之前定義，這樣可以確保請求與正確的路由匹配。</p>
+</blockquote>
+<h4 id="_5">依賴注入<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<p>你可以在路由的回呼方法中，以形參的方式聲明路由所需要的任何依賴項。這些依賴會被 Laravel 的 <a href="/docs/laravel/10.x/container">容器</a> 自動解析並注入。 例如，你可以在閉包中聲明 <code>Illuminate\Http\Request</code> 類， 讓當前的 HTTP 請求自動注入依賴到你的路由回呼中：</p>
+<div class="highlight"><pre><span></span><code>use Illuminate\Http\Request;
+
+Route::get(&#39;/users&#39;, function (Request $request) {
+    // ...
+});
+</code></pre></div>
+<h4 id="csrf">CSRF 保護<a class="headerlink" href="#csrf" title="Permanent link">&para;</a></h4>
+<p>請記住，任何指向<code>POST</code>、<code>PUT</code>、<code>PATCH</code> 或 <code>DELETE</code> 路由(在 <code>web</code> 路由檔案中定義)的 HTML 表單都應該包含 CSRF 令牌字，否則請求會被拒絕。更多 CSRF 保護的相關資訊請閱讀<a href="/docs/laravel/10.x/csrf">CSRF 文件</a>：</p>
+<div class="highlight"><pre><span></span><code>&lt;form method=&quot;POST&quot; action=&quot;/profile&quot;&gt;
+    @csrf
+    ...
+&lt;/form&gt;
+</code></pre></div>
+<h3 id="_6">重新導向路由<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p>如果要定義一個重新導向到另一個 URI 的路由，可以使用 <code>Route::redirect</code> 方法。這個方法可以快速的實現重新導向，而不再需要去定義完整的路由或者 controller ：</p>
+<div class="highlight"><pre><span></span><code>Route::redirect(&#39;/here&#39;, &#39;/there&#39;);
+</code></pre></div>
+<p>默認情況下，<code>Route::redirect</code> 返回 <code>302</code> 狀態碼。你可以使用可選的第三個參數自訂狀態碼：</p>
+<div class="highlight"><pre><span></span><code>Route::redirect(&#39;/here&#39;, &#39;/there&#39;, 301);
+</code></pre></div>
+<p>或者，你也可以使用 <code>Route::permanentRedirect</code> 方法返回 <code>301</code>狀態碼：</p>
+<div class="highlight"><pre><span></span><code>Route::permanentRedirect(&#39;/here&#39;, &#39;/there&#39;);
+</code></pre></div>
+<blockquote>
+<p><strong>警告</strong><br />
+在重新導向路由中使用路由參數時，以下參數由 Laravel 保留，不能使用：<code>destination</code> 和 <code>status</code>。</p>
+</blockquote>
+<h3 id="_7">檢視路由<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p>如果你的路由只需返回一個<a href="/docs/laravel/10.x/views">檢視</a>，你可以使用 <code>Route::view</code> 方法。就像 <code>redirect</code> 方法，該方法提供了一個讓你不必定義完整路由或 controller 的便捷操作。這個<code>view</code>方法的第一個參數是URI，第二個參數為檢視名稱。此外，你也可以在可選的第三個參數中傳入陣列，將陣列的資料傳遞給檢視：</p>
+<div class="highlight"><pre><span></span><code>Route::view(&#39;/welcome&#39;, &#39;welcome&#39;);
+
+Route::view(&#39;/welcome&#39;, &#39;welcome&#39;, [&#39;name&#39; =&gt; &#39;Taylor&#39;]);
+</code></pre></div>
+<blockquote>
+<p><strong>警告</strong><br />
+在檢視路由中使用參數時，下列參數由 Laravel 保留，不能使用：<code>view</code>、<code>data</code>, <code>status</code> 及 <code>headers</code>。</p>
+</blockquote>
+<h3 id="routelist">route:list 命令<a class="headerlink" href="#routelist" title="Permanent link">&para;</a></h3>
+<p>使用 <code>route:list</code> Artisan命令可以輕鬆提供應用程式定義的所有路線的概述：</p>
+<div class="highlight"><pre><span></span><code>php<span class="w"> </span>artisan<span class="w"> </span>route:list
+</code></pre></div>
+<p>正常情況下，<code>route:list</code>不會顯示分配給路由的中介軟體資訊；但是你可以通過在命令中新增 <code>-v</code> 選項 來顯示路由中的中介軟體資訊：</p>
+<div class="highlight"><pre><span></span><code>php<span class="w"> </span>artisan<span class="w"> </span>route:list<span class="w"> </span>-v
+</code></pre></div>
+<p>你也可以通過 <code>--path</code> 來顯示指定的 URL 開頭的路由：</p>
+<div class="highlight"><pre><span></span><code>php<span class="w"> </span>artisan<span class="w"> </span>route:list<span class="w"> </span>--path<span class="o">=</span>api
+</code></pre></div>
+<p>此外，在執行 <code>route:list</code> 命令時，可以通過提供 <code>--except vendor</code> 選項來隱藏由第三方包定義的任何路由：</p>
+<div class="highlight"><pre><span></span><code>php<span class="w"> </span>artisan<span class="w"> </span>route:list<span class="w"> </span>--except-vendor
+</code></pre></div>
+<p>同理，也可以通過在執行 <code>route:list</code> 命令時提供 <code>--only vendor</code> 選項來顯示由第三方包定義的路由：</p>
+<div class="highlight"><pre><span></span><code>php<span class="w"> </span>artisan<span class="w"> </span>route:list<span class="w"> </span>--only-vendor
+</code></pre></div>
+<h2 id="_8">路由參數<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<h3 id="_9">必需參數<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<p>有時你將需要捕獲路由內的 URI 段。例如，你可能需要從 URL 中捕獲使用者的 ID。你可以通過定義路由參數來做到這一點：</p>
+<div class="highlight"><pre><span></span><code>Route::get(&#39;/user/{id}&#39;, function (string $id) {
+    return &#39;User &#39;.$id;
+});
+</code></pre></div>
+<p>也可以根據你的需要在路由中定義多個參數：</p>
+<div class="highlight"><pre><span></span><code>Route::get(&#39;/posts/{post}/comments/{comment}&#39;, function (string $postId, string $commentId) {
+    // ...
+});
+</code></pre></div>
+<p>路由的參數通常都會被放在 <code>{}</code> ，並且參數名只能為字母。下劃線 (<code>_</code>) 也可以用於路由參數名中。路由參數會按路由定義的順序依次注入到路由回呼或者 controller 中，而不受回呼或者 controller 的參數名稱的影響。</p>
+<h4 id="_10">必填參數<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<p>如果你的路由具有依賴關係，而你希望 Laravel 服務容器自動注入到路由的回呼中，則應在依賴關係之後列出路由參數：</p>
+<div class="highlight"><pre><span></span><code>use Illuminate\Http\Request;
+
+Route::get(&#39;/user/{id}&#39;, function (Request $request, string $id) {
+    return &#39;User &#39;.$id;
+});
+</code></pre></div>
+<h3 id="_11">可選參數<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<p>有時，你可能需要指定一個路由參數，但你希望這個參數是可選的。你可以在參數後面加上 <code>?</code> 標記來實現，但前提是要確保路由的相應變數有預設值：</p>
+<div class="highlight"><pre><span></span><code>Route::get(&#39;/user/{name?}&#39;, function (string $name = null) {
+    return $name;
+});
+
+Route::get(&#39;/user/{name?}&#39;, function (string $name = &#39;John&#39;) {
+    return $name;
+});
+</code></pre></div>
+<h3 id="_12">正規表示式約束<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<p>你可以使用路由實例上的 <code>where</code> 方法來限制路由參數的格式。 <code>where</code> 方法接受參數的名稱和定義如何約束參數的正規表示式：</p>
+<div class="highlight"><pre><span></span><code>Route::get(&#39;/user/{name}&#39;, function (string $name) {
+    // ...
+})-&gt;where(&#39;name&#39;, &#39;[A-Za-z]+&#39;);
+
+Route::get(&#39;/user/{id}&#39;, function (string $id) {
+    // ...
+})-&gt;where(&#39;id&#39;, &#39;[0-9]+&#39;);
+
+Route::get(&#39;/user/{id}/{name}&#39;, function (string $id, string $name) {
+    // ...
+})-&gt;where([&#39;id&#39; =&gt; &#39;[0-9]+&#39;, &#39;name&#39; =&gt; &#39;[a-z]+&#39;]);
+</code></pre></div>
+<p>為方便起見，一些常用的正規表示式模式具有幫助方法，可讓你快速將模式約束新增到路由：</p>
+<div class="highlight"><pre><span></span><code>Route::get(&#39;/user/{id}/{name}&#39;, function (string $id, string $name) {
+    // ...
+})-&gt;whereNumber(&#39;id&#39;)-&gt;whereAlpha(&#39;name&#39;);
+
+Route::get(&#39;/user/{name}&#39;, function (string $name) {
+    // ...
+})-&gt;whereAlphaNumeric(&#39;name&#39;);
+
+Route::get(&#39;/user/{id}&#39;, function (string $id) {
+    // ...
+})-&gt;whereUuid(&#39;id&#39;);
+
+Route::get(&#39;/user/{id}&#39;, function (string $id) {
+    //
+})-&gt;whereUlid(&#39;id&#39;);
+
+Route::get(&#39;/category/{category}&#39;, function (string $category) {
+    // ...
+})-&gt;whereIn(&#39;category&#39;, [&#39;movie&#39;, &#39;song&#39;, &#39;painting&#39;]);
+</code></pre></div>
+<p>如果傳入請求與路由模式約束不匹配，將返回 404 HTTP 響應。</p>
+<h4 id="_13">全域約束<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
+<p>如果你希望路由參數始終受給定正規表示式的約束，你可以使用 <code>pattern</code> 方法。 你應該在 <code>App\Providers\RouteServiceProvider</code> 類的 <code>boot</code> 方法中定義這些模式：</p>
+<div class="highlight"><pre><span></span><code>/**
+ * 定義路由模型繫結、模式篩選器等。
+ */
+public function boot(): void
+{
+    Route::pattern(&#39;id&#39;, &#39;[0-9]+&#39;);
+}
+</code></pre></div>
+<p>一旦定義了模式，它就會自動應用到使用該參數名稱的所有路由：</p>
+<div class="highlight"><pre><span></span><code>Route::get(&#39;/user/{id}&#39;, function (string $id) {
+    // 僅當 {id} 是數字時執行。。。
+});
+</code></pre></div>
+<h4 id="_14">編碼正斜槓<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
+<p>Laravel 路由元件允許除 <code>/</code> 之外的所有字元出現在路由參數值中。 你必須使用 <code>where</code> 條件正規表示式明確允許 <code>/</code> 成為預留位置的一部分：</p>
+<div class="highlight"><pre><span></span><code>Route::get(&#39;/search/{search}&#39;, function (string $search) {
+    return $search;
+})-&gt;where(&#39;search&#39;, &#39;.*&#39;);
+</code></pre></div>
+<blockquote>
+<p>注意：僅在最後一個路由段中支援編碼的正斜槓。</p>
+</blockquote>
+<h2 id="_15">命名路由<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h2>
+<p>命名路由允許為特定路由方便地生成 URL 或重新導向。通過將 <code>name</code> 方法連結到路由定義上，可以指定路由的名稱：</p>
+<div class="highlight"><pre><span></span><code>Route::get(&#39;/user/profile&#39;, function () {
+    // ...
+})-&gt;name(&#39;profile&#39;);
+</code></pre></div>
+<p>你還可以為 controller 操作指定路由名稱：</p>
+<div class="highlight"><pre><span></span><code>Route::get(
+    &#39;/user/profile&#39;,
+    [UserProfileController::class, &#39;show&#39;]
+)-&gt;name(&#39;profile&#39;);
+</code></pre></div>
+<blockquote>
+<p>注意：路由名稱應始終是唯一的。</p>
+</blockquote>
+<h4 id="url">生成命名路由的 URL<a class="headerlink" href="#url" title="Permanent link">&para;</a></h4>
+<p>一旦你為給定的路由分配了一個名字，你可以在通過 Laravel 的 <code>route</code> 和 <code>redirect</code> 輔助函數生成 URL 或重新導向時使用該路由的名稱：</p>
+<div class="highlight"><pre><span></span><code>// 生成URL。。。
+$url = route(&#39;profile&#39;);
+
+// 生成重新導向。。。
+return redirect()-&gt;route(&#39;profile&#39;);
+
+return to_route(&#39;profile&#39;);
+</code></pre></div>
+<p>如果命名路由定義了參數，你可以將參數作為第二個參數傳遞給 <code>route</code> 函數。 給定的參數將自動插入到生成的 URL 的正確位置：</p>
+<div class="highlight"><pre><span></span><code>Route::get(&#39;/user/{id}/profile&#39;, function (string $id) {
+    // ...
+})-&gt;name(&#39;profile&#39;);
+
+$url = route(&#39;profile&#39;, [&#39;id&#39; =&gt; 1]);
+</code></pre></div>
+<p>如果你在陣列中傳遞其他參數，這些鍵 / 值對將自動新增到生成的 URL 的查詢字串中：</p>
+<div class="highlight"><pre><span></span><code>Route::get(&#39;/user/{id}/profile&#39;, function (string $id) {
+    // ...
+})-&gt;name(&#39;profile&#39;);
+
+$url = route(&#39;profile&#39;, [&#39;id&#39; =&gt; 1, &#39;photos&#39; =&gt; &#39;yes&#39;]);
+
+// /user/1/profile?photos=yes
+</code></pre></div>
+<blockquote>
+<p>技巧：有時，你可能希望為 URL 參數指定請求範圍的預設值，例如當前語言環境。 為此，你可以使用 <a href="/docs/laravel/10.x/urlsmd/14854#default-values"><code>URL::defaults</code> 方法</a>.</p>
+</blockquote>
+<h4 id="_16">檢查當前路由<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
+<p>如果你想確定當前請求是否路由到給定的命名路由，你可以在 Route 實例上使用 <code>named</code> 方法。 例如，你可以從路由中介軟體檢查當前路由名稱：</p>
+<div class="highlight"><pre><span></span><code>/**
+ * 處理傳入請求。
+  * @param  \Illuminate\Http\Request  $request
+  * @param  \Closure  $next
+  * @return mixed
+ */
+public function handle(Request $request, Closure $next): Response
+{
+    if ($request-&gt;route()-&gt;named(&#39;profile&#39;)) {
+        // ...
+    }
+
+    return $next($request);
+}
+</code></pre></div>
+<h2 id="_17">路由組<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h2>
+<p>路由組允許你共享路由屬性，例如中介軟體，而無需在每個單獨的路由上定義這些屬性。</p>
+<p>巢狀組嘗試智能地將屬性與其父組 "合併"。中介軟體和 <code>where</code> 條件合併，同時附加名稱和前綴。 URI 前綴中的命名空間分隔符和斜槓會在適當的地方自動新增。</p>
+<h3 id="_18">路由中介軟體<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
+<p>要將 <a href="/docs/laravel/10.x/middleware">中介軟體</a> 分配給組內的所有路由，你可以在定義組之前使用 <code>middleware</code> 方法。 中介軟體按照它們在陣列中列出的順序執行：</p>
+<div class="highlight"><pre><span></span><code>Route::middleware([&#39;first&#39;, &#39;second&#39;])-&gt;group(function () {
+    Route::get(&#39;/&#39;, function () {
+        // 使用第一個和第二個中介軟體。。。
+    });
+
+    Route::get(&#39;/user/profile&#39;, function () {
+        // 使用第一個和第二個中介軟體。。。
+    });
+});
+</code></pre></div>
+<h3 id="controller">controller<a class="headerlink" href="#controller" title="Permanent link">&para;</a></h3>
+<p>如果一組路由都使用相同的 <a href="/docs/laravel/10.x/controllers"> controller </a>, 你可以使用 <code>controller</code> 方法為組內的所有路由定義公共 controller 。然後，在定義路由時，你只需要提供它們呼叫的 controller 方法：</p>
+<div class="highlight"><pre><span></span><code>use App\Http\Controllers\OrderController;
+
+Route::controller(OrderController::class)-&gt;group(function () {
+    Route::get(&#39;/orders/{id}&#39;, &#39;show&#39;);
+    Route::post(&#39;/orders&#39;, &#39;store&#39;);
+});
+</code></pre></div>
+<h3 id="_19">子域路由<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
+<p>路由組也可以用來處理子域路由。子域可以像路由 uri 一樣被分配路由參數，允許你捕獲子域的一部分以便在路由或 controller 中使用。子域可以在定義組之前呼叫 <code>domain</code> 方法來指定:</p>
+<div class="highlight"><pre><span></span><code>Route::domain(&#39;{account}.example.com&#39;)-&gt;group(function () {
+    Route::get(&#39;user/{id}&#39;, function (string $account, string $id) {
+        // ...
+    });
+});
+</code></pre></div>
+<blockquote>
+<p>注意：為了確保子域路由是可以訪問的，你應該在註冊根域路由之前註冊子域路由。這將防止根域路由覆蓋具有相同 URI 路徑的子域路由。</p>
+</blockquote>
+<h3 id="_20">路由前綴<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h3>
+<p><code>prefix</code> 方法可以用給定的 URI 為組中的每個路由做前綴。例如，你可能想要在組內的所有路由 uri 前面加上 <code>admin</code> 前綴：</p>
+<div class="highlight"><pre><span></span><code>Route::prefix(&#39;admin&#39;)-&gt;group(function () {
+    Route::get(&#39;/users&#39;, function () {
+        // 對應 &quot;/admin/users&quot; 的 URL
+    });
+});
+</code></pre></div>
+<h3 id="_21">路由名稱前綴<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h3>
+<p><code>name</code> 方法可以用給定字串作為組中的每個路由名的前綴。例如，你可能想要用 <code>admin</code> 作為所有分組路由的前綴。因為給定字串的前綴與指定的路由名完全一致，所以我們一定要提供末尾 <code>.</code> 字元在前綴中：</p>
+<div class="highlight"><pre><span></span><code>Route::name(&#39;admin.&#39;)-&gt;group(function () {
+    Route::get(&#39;/users&#39;, function () {
+        // 被分配的路由名為：&quot;admin.users&quot;
+    })-&gt;name(&#39;users&#39;);
+});
+</code></pre></div>
+<h2 id="_22">路由模型繫結<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h2>
+<p>將模型 ID 注入到路由或 controller 操作時，你通常會查詢資料庫以檢索與該 ID 對應的模型。Laravel 路由模型繫結提供了一種方便的方法來自動將模型實例直接注入到你的路由中。例如，你可以注入與給定 ID 匹配的整個 <code>User</code> 模型實例，而不是注入使用者的 ID。</p>
+<h3 id="_23">隱式繫結<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h3>
+<p>Laravel 自動解析定義在路由或 controller 操作中的 Eloquent 模型，其類型提示的變數名稱與路由段名稱匹配。例如：</p>
+<div class="highlight"><pre><span></span><code>use App\Models\User;
+
+Route::get(&#39;/users/{user}&#39;, function (User $user) {
+    return $user-&gt;email;
+});
+</code></pre></div>
+<p>由於 <code>$user</code> 變數被類型提示為 <code>App\Models\User</code> Eloquent 模型，並且變數名稱與 <code>{user}</code> URI 段匹配，Laravel 將自動注入 ID 匹配相應的模型實例 來自請求 URI 的值。如果在資料庫中沒有找到匹配的模型實例，將自動生成 404 HTTP 響應。</p>
+<p>當然，使用 controller 方法時也可以使用隱式繫結。同樣，請注意 <code>{user}</code> URI 段與 controller 中的 <code>$user</code> 變數匹配，該變數包含 <code>App\Models\User</code> 類型提示：</p>
+<div class="highlight"><pre><span></span><code>use App\Http\Controllers\UserController;
+use App\Models\User;
+
+// 路由定義。。。
+Route::get(&#39;/users/{user}&#39;, [UserController::class, &#39;show&#39;]);
+
+// 定義 controller 方法。。。
+public function show(User $user)
+{
+    return view(&#39;user.profile&#39;, [&#39;user&#39; =&gt; $user]);
+}
+</code></pre></div>
+<h4 id="_24">軟刪除模型<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h4>
+<p>通常，隱式模型繫結不會檢索已 <a href="/docs/laravel/10.x/eloquent#soft-deleting">軟刪除</a> 的模型。但是，你可以通過將 <code>withTrashed</code> 方法連結到你的路由定義來指示隱式繫結來檢索這些模型：</p>
+<div class="highlight"><pre><span></span><code>use App\Models\User;
+
+Route::get(&#39;/users/{user}&#39;, function (User $user) {
+    return $user-&gt;email;
+})-&gt;withTrashed();
+</code></pre></div>
+<h4 id="_25">自訂金鑰<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h4>
+<p>有時你可能希望使用 <code>id</code> 外的列來解析 Eloquent 模型。為此，你可以在路由參數定義中指定列：</p>
+<div class="highlight"><pre><span></span><code>use App\Models\Post;
+
+Route::get(&#39;/posts/{post:slug}&#39;, function (Post $post) {
+    return $post;
+});
+</code></pre></div>
+<p>如果你希望模型繫結在檢索給定模型類時始終使用 <code>id</code> 以外的資料庫列，則可以覆蓋 Eloquent 模型上的 <code>getRouteKeyName</code> 方法：</p>
+<div class="highlight"><pre><span></span><code>/**
+ * 獲取模型的路線金鑰。
+ */
+public function getRouteKeyName(): string
+{
+    return &#39;slug&#39;;
+}
+</code></pre></div>
+<h4 id="_26">自訂鍵和範圍<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h4>
+<p>當在單個路由定義中隱式繫結多個 Eloquent 模型時，你可能希望限定第二個 Eloquent 模型的範圍，使其必須是前一個 Eloquent 模型的子模型。例如，考慮這個通過 slug 為特定使用者檢索部落格文章的路由定義：</p>
+<div class="highlight"><pre><span></span><code>use App\Models\Post;
+use App\Models\User;
+
+Route::get(&#39;/users/{user}/posts/{post:slug}&#39;, function (User $user, Post $post) {
+    return $post;
+});
+</code></pre></div>
+<p>當使用自訂鍵控隱式繫結作為巢狀路由參數時，Laravel 將自動限定查詢範圍以通過其父級檢索巢狀模型，使用約定來猜測父級上的關係名稱。 在這種情況下，假設 <code>User</code> 模型有一個名為 <code>posts</code> 的關係（路由參數名稱的複數形式），可用於檢索 <code>Post</code> 模型。</p>
+<p>如果你願意，即使未提供自訂鍵，你也可以指示 Laravel 限定「子」繫結的範圍。為此，你可以在定義路由時呼叫 <code>scopeBindings</code> 方法：</p>
+<div class="highlight"><pre><span></span><code>use App\Models\Post;
+use App\Models\User;
+
+Route::get(&#39;/users/{user}/posts/{post}&#39;, function (User $user, Post $post) {
+    return $post;
+})-&gt;scopeBindings();
+</code></pre></div>
+<p>或者，你可以指示整個路由定義組使用範圍繫結：</p>
+<div class="highlight"><pre><span></span><code>Route::scopeBindings()-&gt;group(function () {
+    Route::get(&#39;/users/{user}/posts/{post}&#39;, function (User $user, Post $post) {
+        return $post;
+    });
+});
+</code></pre></div>
+<p>類似地，你可以通過呼叫 <code>withoutScopedBindings</code> 方法來明確的指示 Laravel 不做範疇繫結：</p>
+<div class="highlight"><pre><span></span><code>Route::get(&#39;/users/{user}/posts/{post:slug}&#39;, function (User $user, Post $post) {
+    return $post;
+})-&gt;withoutScopedBindings();
+</code></pre></div>
+<h4 id="_27">自訂缺失模型行為<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h4>
+<p>通常，如果未找到隱式繫結模型，則會生成 404 HTTP 響應。但是，你可以通過在定義路由時呼叫 <code>missing</code> 方法來自訂此行為。<code>missing</code> 方法接受一個閉包，如果找不到隱式繫結模型，則將呼叫該閉包：</p>
+<div class="highlight"><pre><span></span><code>use App\Http\Controllers\LocationsController;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+
+Route::get(&#39;/locations/{location:slug}&#39;, [LocationsController::class, &#39;show&#39;])
+        -&gt;name(&#39;locations.view&#39;)
+        -&gt;missing(function (Request $request) {
+            return Redirect::route(&#39;locations.index&#39;);
+        });
+</code></pre></div>
+<h3 id="_28">隱式列舉繫結<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h3>
+<p>PHP 8.1 引入了對 <a href="https://www.php.net/manual/en/language.enumerations.backed.php">Enums</a>. 的支援。為了補充這個特性，Laravel 允許你在你的路由定義中鍵入一個 <a href="https://www.php.net/manual/en/language.enumerations.backed.php">Enums</a> 並且 Laravel 只會在該路由段對應於一個有效的 Enum 值時呼叫該路由。否則，將自動返回 404 HTTP 響應。例如，給定以下列舉：</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">App\Enums</span><span class="p">;</span>
+
+<span class="nx">enum</span> <span class="nx">Category</span><span class="o">:</span> <span class="nx">string</span>
+<span class="p">{</span>
+    <span class="k">case</span> <span class="nx">Fruits</span> <span class="o">=</span> <span class="s1">&#39;fruits&#39;</span><span class="p">;</span>
+    <span class="k">case</span> <span class="nx">People</span> <span class="o">=</span> <span class="s1">&#39;people&#39;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>你可以定義一個只有在 <code>{category}</code> 路由段是 <code>fruits</code> 或 <code>people</code> 時才會被呼叫的路由。 否則，Laravel 將返回 404 HTTP 響應：</p>
+<div class="highlight"><pre><span></span><code><span class="x">use App\Enums\Category;</span>
+<span class="x">use Illuminate\Support\Facades\Route;</span>
+
+<span class="x">Route::get(&#39;/categories/{category}&#39;, function (Category $category) {</span>
+<span class="x">    return $category-&gt;value;</span>
+<span class="x">});</span>
+</code></pre></div>
+<h3 id="_29">顯式繫結<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h3>
+<p>不需要使用 Laravel 隱式的、基於約定的模型解析來使用模型繫結。你還可以顯式定義路由參數與模型的對應方式。要註冊顯式繫結，請使用路由器的 <code>model</code> 方法為給定參數指定類。在 <code>RouteServiceProvider</code> 類的 <code>boot</code> 方法的開頭定義顯式模型繫結：</p>
+<div class="highlight"><pre><span></span><code>use App\Models\User;
+use Illuminate\Support\Facades\Route;
+
+/**
+ * 定義路由模型繫結、模式篩選器等。
+ */
+public function boot(): void
+{
+    Route::model(&#39;user&#39;, User::class);
+
+    // ...
+}
+</code></pre></div>
+<p>接下來，定義一個包含 <code>{user}</code> 參數的路由：</p>
+<div class="highlight"><pre><span></span><code>use App\Models\User;
+
+Route::get(&#39;/users/{user}&#39;, function (User $user) {
+    // ...
+});
+</code></pre></div>
+<p>由於我們已將所有 <code>{user}</code> 參數繫結到 <code>App\Models\User</code> 模型，該類的一個實例將被注入到路由中。因此，例如，對 <code>users/1</code> 的請求將從 ID 為 <code>1</code> 的資料庫中注入 <code>User</code> 實例。</p>
+<p>如果在資料庫中沒有找到匹配的模型實例，則會自動生成 404 HTTP 響應。</p>
+<h4 id="_30">自訂解析邏輯<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h4>
+<p>如果你想定義你自己的模型繫結解析邏輯，你可以使用 <code>Route::bind</code> 方法。傳遞給 <code>bind</code> 方法的閉包將接收 URI 段的值，並應返回應注入路由的類的實例。同樣，這種定製應該在應用程式的 <code>RouteServiceProvider</code> 的 <code>boot</code> 方法中進行：</p>
+<div class="highlight"><pre><span></span><code>use App\Models\User;
+use Illuminate\Support\Facades\Route;
+
+/**
+ * 定義路由模型繫結、模式篩選器等。
+ */
+public function boot(): void
+{
+    Route::bind(&#39;user&#39;, function (string $value) {
+        return User::where(&#39;name&#39;, $value)-&gt;firstOrFail();
+    });
+
+    // ...
+}
+</code></pre></div>
+<p>或者，你可以覆蓋 Eloquent 模型上的 <code>resolveRouteBinding</code> 方法。此方法將接收 URI 段的值，並應返回應注入路由的類的實例：</p>
+<div class="highlight"><pre><span></span><code>/**
+ * 檢索繫結值的模型。
+ *
+ * @param  mixed  $value
+ * @param  string|null  $field
+ * @return \Illuminate\Database\Eloquent\Model|null
+ */
+public function resolveRouteBinding($value, $field = null)
+{
+    return $this-&gt;where(&#39;name&#39;, $value)-&gt;firstOrFail();
+}
+</code></pre></div>
+<p>如果路由正在使用 <a href="#implicit-model-binding-scoping">implicit binding scoping</a>, 則 <code>resolveChildRouteBinding</code> 方法將用於解析父模型的子繫結：</p>
+<div class="highlight"><pre><span></span><code>/**
+ * 檢索繫結值的子模型。
+ *
+ * @param  string  $childType
+ * @param  mixed  $value
+ * @param  string|null  $field
+ * @return \Illuminate\Database\Eloquent\Model|null
+ */
+public function resolveChildRouteBinding($childType, $value, $field)
+{
+    return parent::resolveChildRouteBinding($childType, $value, $field);
+}
+</code></pre></div>
+<h2 id="fallback">Fallback 路由<a class="headerlink" href="#fallback" title="Permanent link">&para;</a></h2>
+<p>使用 <code>Route::fallback</code> 方法，你可以定義一個在沒有其他路由匹配傳入請求時將執行的路由。通常，未處理的請求將通過應用程式的異常處理程序自動呈現「404」頁面。但是，由於你通常會在 <code>routes/web.php</code> 檔案中定義 fallback 路由，因此 web 中介軟體組中的所有中介軟體都將應用於該路由。你可以根據需要隨意向此路由新增額外的中介軟體：</p>
+<div class="highlight"><pre><span></span><code>Route::fallback(function () {
+    // ...
+});
+</code></pre></div>
+<blockquote>
+<p>注意：Fallback 路由應該始終是你的應用程式註冊的最後一個路由。</p>
+</blockquote>
+<h2 id="_31">速率限制<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h2>
+<h3 id="_32">定義速率限製器<a class="headerlink" href="#_32" title="Permanent link">&para;</a></h3>
+<p>Laravel 包括功能強大且可定製的限速服務，你可以利用這些服務來限制給定路線或一組路線的流量。首先，你應該定義滿足應用程式需求的速率限製器組態。通常，這應該在應用程式的 <code>App\Providers\RouteServiceProvider</code> 類的 <code>configureRateLimiting</code> 方法中完成，該類已經包含了一個速率限製器定義，該定義應用於應用程式 <code>routes/api.php</code> 檔案中的路由：</p>
+<div class="highlight"><pre><span></span><code><span class="x">use Illuminate\Cache\RateLimiting\Limit;</span>
+<span class="x">use Illuminate\Http\Request;</span>
+<span class="x">use Illuminate\Support\Facades\RateLimiter;</span>
+
+<span class="x">/**</span>
+<span class="x"> * 為應用程式組態速率限製器。</span>
+<span class="x"> */</span>
+<span class="x">protected function boot(): void</span>
+<span class="x">{</span>
+<span class="x">    RateLimiter::for(&#39;api&#39;, function (Request $request) {</span>
+<span class="x">        return Limit::perMinute(60)-&gt;by($request-&gt;user()?-&gt;id ?: $request-&gt;ip());</span>
+<span class="x">    });</span>
+
+<span class="x">    // ...</span>
+<span class="x">}</span>
+</code></pre></div>
+<p>速率限製器是使用 <code>RateLimiter</code> 外觀的 <code>for</code> 方法定義的。for 方法接受一個速率限製器名稱和一個閉包，該閉包返回應該應用於分配給速率限製器的路由的限制組態。限制組態是 <code>Illuminate\Cache\RateLimiting\Limit</code> 類的實例。此類包含有用的「建構器」方法，以便你可以快速定義限制。速率限製器名稱可以是你希望的任何字串：</p>
+<div class="highlight"><pre><span></span><code><span class="x">use Illuminate\Cache\RateLimiting\Limit;</span>
+<span class="x">use Illuminate\Http\Request;</span>
+<span class="x">use Illuminate\Support\Facades\RateLimiter;</span>
+
+<span class="x">/**</span>
+<span class="x"> * 為應用程式組態速率限製器。</span>
+<span class="x"> */</span>
+<span class="x">protected function boot(): void</span>
+<span class="x">{</span>
+<span class="x">    RateLimiter::for(&#39;global&#39;, function (Request $request) {</span>
+<span class="x">        return Limit::perMinute(1000);</span>
+<span class="x">    });</span>
+
+<span class="x">    // ...</span>
+<span class="x">}</span>
+</code></pre></div>
+<p>如果傳入的請求超過指定的速率限制，Laravel 將自動返回一個帶有 429 HTTP 狀態碼的響應。如果你想定義自己的響應，應該由速率限制返回，你可以使用 <code>response</code> 方法：</p>
+<div class="highlight"><pre><span></span><code>RateLimiter::for(&#39;global&#39;, function (Request $request) {
+    return Limit::perMinute(1000)-&gt;response(function (Request $request, array $headers) {
+        return response(&#39;Custom response...&#39;, 429, $headers);
+    });
+});
+</code></pre></div>
+<p>由於速率限製器回呼接收傳入的 HTTP 請求實例，你可以根據傳入的請求或經過身份驗證的使用者動態建構適當的速率限制：</p>
+<div class="highlight"><pre><span></span><code>RateLimiter::for(&#39;uploads&#39;, function (Request $request) {
+    return $request-&gt;user()-&gt;vipCustomer()
+                ? Limit::none()
+                : Limit::perMinute(100);
+});
+</code></pre></div>
+<h4 id="_33">分段速率限制<a class="headerlink" href="#_33" title="Permanent link">&para;</a></h4>
+<p>有時你可能希望按某個任意值對速率限制進行分段。例如，你可能希望每個 IP 地址每分鐘允許使用者訪問給定路由 100 次。為此，你可以在建構速率限制時使用 <code>by</code> 方法：</p>
+<div class="highlight"><pre><span></span><code>RateLimiter::for(&#39;uploads&#39;, function (Request $request) {
+    return $request-&gt;user()-&gt;vipCustomer()
+                ? Limit::none()
+                : Limit::perMinute(100)-&gt;by($request-&gt;ip());
+});
+</code></pre></div>
+<p>為了使用另一個示例來說明此功能，我們可以將每個經過身份驗證的使用者 ID 的路由訪問限製為每分鐘 100 次，或者對於訪客來說，每個 IP 地址每分鐘訪問 10 次：</p>
+<div class="highlight"><pre><span></span><code>RateLimiter::for(&#39;uploads&#39;, function (Request $request) {
+    return $request-&gt;user()
+                ? Limit::perMinute(100)-&gt;by($request-&gt;user()-&gt;id)
+                : Limit::perMinute(10)-&gt;by($request-&gt;ip());
+});
+</code></pre></div>
+<h4 id="_34">多個速率限制<a class="headerlink" href="#_34" title="Permanent link">&para;</a></h4>
+<p>如果需要，你可以返回給定速率限製器組態的速率限制陣列。將根據路由在陣列中的放置順序評估每個速率限制：</p>
+<div class="highlight"><pre><span></span><code>RateLimiter::for(&#39;login&#39;, function (Request $request) {
+    return [
+        Limit::perMinute(500),
+        Limit::perMinute(3)-&gt;by($request-&gt;input(&#39;email&#39;)),
+    ];
+});
+</code></pre></div>
+<h3 id="_35">將速率限製器附加到路由<a class="headerlink" href="#_35" title="Permanent link">&para;</a></h3>
+<p>可以使用 <code>throttle</code> <a href="/docs/laravel/10.x/middleware">middleware</a>。 將速率限製器附加到路由或路由組。路由中介軟體接受你希望分配給路由的速率限製器的名稱：</p>
+<div class="highlight"><pre><span></span><code>Route::middleware([&#39;throttle:uploads&#39;])-&gt;group(function () {
+    Route::post(&#39;/audio&#39;, function () {
+        // ...
+    });
+
+    Route::post(&#39;/video&#39;, function () {
+        // ...
+    });
+});
+</code></pre></div>
+<h4 id="redis">使用 Redis 節流<a class="headerlink" href="#redis" title="Permanent link">&para;</a></h4>
+<p>通常，<code>throttle</code> 中介軟體對應到 <code>Illuminate\Routing\Middleware\ThrottleRequests</code> 類。此對應在應用程式的 HTTP 核心 (App\Http\Kernel) 中定義。但是，如果你使用 Redis 作為應用程式的快取驅動程式，你可能希望更改此對應以使用 <code>Illuminate\Routing\Middleware\ThrottleRequestsWithRedis</code> 類。這個類在使用 Redis 管理速率限制方面更有效：</p>
+<div class="highlight"><pre><span></span><code>&#39;throttle&#39; =&gt; \Illuminate\Routing\Middleware\ThrottleRequestsWithRedis::class,
+</code></pre></div>
+<h2 id="_36">偽造表單方法<a class="headerlink" href="#_36" title="Permanent link">&para;</a></h2>
+<p>HTML 表單不支援 <code>PUT</code> ， <code>PATCH</code> 或 <code>DELETE</code> 請求。所以，當定義 <code>PUT</code> ， <code>PATCH</code> 或 <code>DELETE</code> 路由用在 HTML 表單時，你將需要一個隱藏的加 <code>_method</code> 欄位在表單中。該 <code>_method</code> 欄位的值將會與 HTTP 請求一起傳送。</p>
+<div class="highlight"><pre><span></span><code>&lt;form action=&quot;/example&quot; method=&quot;POST&quot;&gt;
+    &lt;input type=&quot;hidden&quot; name=&quot;_method&quot; value=&quot;PUT&quot;&gt;
+    &lt;input type=&quot;hidden&quot; name=&quot;_token&quot; value=&quot;{{ csrf_token() }}&quot;&gt;
+&lt;/form&gt;
+</code></pre></div>
+<p>為方便起見，你可以使用 <code>@method</code> <a href="/docs/laravel/10.x/blade">Blade 指令</a> 生成 <code>_method</code> 輸入欄位：</p>
+<div class="highlight"><pre><span></span><code>&lt;form action=&quot;/example&quot; method=&quot;POST&quot;&gt;
+    @method(&#39;PUT&#39;)
+    @csrf
+&lt;/form&gt;
+</code></pre></div>
+<h2 id="_37">訪問當前路由<a class="headerlink" href="#_37" title="Permanent link">&para;</a></h2>
+<p>你可以使用 <code>Route Facade</code> 的 <code>current</code>、<code>currentRouteName</code> 和 <code>currentRouteAction</code> 方法來訪問有關處理傳入請求的路由的資訊：</p>
+<div class="highlight"><pre><span></span><code>use Illuminate\Support\Facades\Route;
+
+$route = Route::current(); // Illuminate\Routing\Route
+$name = Route::currentRouteName(); // string
+$action = Route::currentRouteAction(); // string
+</code></pre></div>
+<p>你可以參考 <a href="https://laravel.com/api/laravel/10.x/Illuminate/Routing/Router.html">Route facade 的底層類</a> 和 <a href="https://laravel.com/api/laravel/10.x/Illuminate/Routing/Route.html">Route 實例</a> 的 API 文件查看路由器和路由類上可用的所有方法。</p>
+<h2 id="cors">跨域資源共享 (CORS)<a class="headerlink" href="#cors" title="Permanent link">&para;</a></h2>
+<p>Laravel 可以使用你組態的值自動響應 CORS <code>OPTIONS</code> HTTP 請求。所有 CORS 設定都可以在應用程式的 <code>config/cors.php</code> 組態檔案中進行組態。OPTIONS 請求將由默認包含在全域中介軟體堆疊中的 HandleCors <a href="/docs/laravel/10.x/middleware">middleware</a> 自動處理。你的全域中介軟體堆疊位於應用程式的 HTTP 核心 (<code>App\Http\Kernel</code>) 中。</p>
+<blockquote>
+<p>技巧：有關 CORS 和 CORS 標頭的更多資訊，請參閱 <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#The_HTTP_response_headers">MDN 關於 CORS 的 Web 文件</a>。</p>
+</blockquote>
+<h2 id="_38">路由快取<a class="headerlink" href="#_38" title="Permanent link">&para;</a></h2>
+<p>在將應用程式部署到生產環境時，你應該利用 Laravel 的路由快取。使用路由快取將大大減少註冊所有應用程式路由所需的時間。要生成路由快取，請執行 <code>route:cache</code> Artisan 命令：</p>
+<div class="highlight"><pre><span></span><code>php<span class="w"> </span>artisan<span class="w"> </span>route:cache
+</code></pre></div>
+<p>運行此命令後，你的快取路由檔案將在每個請求上載入。請記住，如果你新增任何新路線，你將需要生成新的路線快取。因此，你應該只在項目部署期間運行 <code>route:cache</code> 命令。</p>
+<p>你可以使用 <code>route:clear</code> 命令清除路由快取：</p>
+<div class="highlight"><pre><span></span><code>php<span class="w"> </span>artisan<span class="w"> </span>route:clear
+</code></pre></div>
+
+
+
+
+
+                
+
+  <!-- Giscus -->
+  <h2 id="__comments">留言</h2>
+  <script src="https://giscus.app/client.js"
+          data-repo="tomleesm/notes"
+          data-repo-id="R_kgDOGuSz4g"
+          data-category="Announcements"
+          data-category-id="DIC_kwDOGuSz4s4CBI6T"
+          data-mapping="title"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="bottom"
+          data-theme="dark"
+          data-lang="zh-TW"
+          crossorigin="anonymous"
+          async>
+  </script>
+
+  <!-- Reload on palette change -->
+  <script>
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object")
+      if (palette.color.scheme === "slate") {
+        var giscus = document.querySelector("script[src*=giscus]")
+        giscus.setAttribute("data-theme", "dark")
+      }
+
+    /* Register event handlers after documented loaded */
+    document.addEventListener("DOMContentLoaded", function() {
+      var ref = document.querySelector("[data-md-component=palette]")
+      ref.addEventListener("change", function() {
+        var palette = __md_get("__palette")
+        if (palette && typeof palette.color === "object") {
+          var theme = palette.color.scheme === "slate" ? "dark" : "light"
+
+          /* Instruct Giscus to change theme */
+          var frame = document.querySelector(".giscus-frame")
+          frame.contentWindow.postMessage(
+            { giscus: { setConfig: { theme } } },
+            "https://giscus.app"
+          )
+        }
+      })
+    })
+  </script>
+
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            回到頂端
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tabs", "navigation.sections", "navigation.indexes", "navigation.top", "header.autohide", "search.highlight", "search.share"], "search": "../../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "\u5df2\u8907\u88fd", "clipboard.copy": "\u8907\u88fd", "search.result.more.one": "\u6b64\u9801\u5c1a\u6709 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.more.other": "\u6b64\u9801\u5c1a\u6709 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.none": "\u6c92\u6709\u7b26\u5408\u7684\u9805\u76ee", "search.result.one": "\u627e\u5230 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.other": "\u627e\u5230 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.placeholder": "\u6253\u5b57\u9032\u884c\u641c\u5c0b", "search.result.term.missing": "\u7f3a\u5c11\u5b57\u8a5e", "select.version": "\u9078\u64c7\u7248\u672c"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.dff1b7c8.min.js"></script>
+      
+    
+  </body>
+</html>

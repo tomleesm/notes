@@ -1,0 +1,5845 @@
+
+<!doctype html>
+<html lang="zh-TW" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../../05%E8%B3%87%E6%96%99%E5%BA%AB/06Redis/">
+      
+      
+        <link rel="next" href="../02%E9%97%9C%E8%81%AF/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-9.2.7">
+    
+    
+      
+        <title>快速入門 - Tom 株式會社</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.046329b4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.85d0ee34.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+Traditional+Chinese:300,300i,400,400i,700,700i%7CSource+Code+Pro:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans Traditional Chinese";--md-code-font:"Source Code Pro"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="red" data-md-color-accent="red">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳轉到
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="頁首">
+    <a href="../.." title="Tom 株式會社" class="md-header__button md-logo" aria-label="Tom 株式會社" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Tom 株式會社
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              快速入門
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="red" data-md-color-accent="red"  aria-hidden="true"  type="radio" name="__palette" id="__palette_1">
+    
+  
+</form>
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜尋" placeholder="搜尋" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="搜尋">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清除" aria-label="清除" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜尋引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/tomleesm/notes" title="前往倉庫" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    tomleesm/notes
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="標籤" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../01%E6%A0%B8%E5%BF%83%E6%9E%B6%E6%A7%8B/01%E8%AB%8B%E6%B1%82%E7%9A%84%E7%94%9F%E5%91%BD%E9%80%B1%E6%9C%9F/" class="md-tabs__link">
+          
+  
+    
+  
+  核心架構
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/01%E8%B7%AF%E7%94%B1/" class="md-tabs__link">
+          
+  
+    
+  
+  基礎功能
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/01Artisan%E5%91%BD%E4%BB%A4%E5%88%97/" class="md-tabs__link">
+          
+  
+    
+  
+  繼續深入
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../04%E5%AE%89%E5%85%A8%E7%9B%B8%E9%97%9C/01%E4%BD%BF%E7%94%A8%E8%80%85%E8%AA%8D%E8%AD%89/" class="md-tabs__link">
+          
+  
+    
+  
+  安全相關
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../05%E8%B3%87%E6%96%99%E5%BA%AB/01%E5%BF%AB%E9%80%9F%E5%85%A5%E9%96%80/" class="md-tabs__link">
+          
+  
+    
+  
+  資料庫
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+    
+  
+  Eloquent ORM
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../07%E6%B8%AC%E8%A9%A6%E7%9B%B8%E9%97%9C/01%E5%85%A5%E9%96%80/" class="md-tabs__link">
+          
+  
+    
+  
+  測試相關
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/01Cashier%E4%BA%A4%E6%98%93%E5%B7%A5%E5%85%B7%E5%8C%85Stripe/" class="md-tabs__link">
+          
+  
+    
+  
+  官方擴展包
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../cheatsheets/artisan/" class="md-tabs__link">
+          
+  
+    
+  
+  語法速查表
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="導覽列" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Tom 株式會社" class="md-nav__button md-logo" aria-label="Tom 株式會社" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Tom 株式會社
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/tomleesm/notes" title="前往倉庫" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    tomleesm/notes
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    核心架構
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            核心架構
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01%E6%A0%B8%E5%BF%83%E6%9E%B6%E6%A7%8B/01%E8%AB%8B%E6%B1%82%E7%9A%84%E7%94%9F%E5%91%BD%E9%80%B1%E6%9C%9F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    請求的生命週期
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01%E6%A0%B8%E5%BF%83%E6%9E%B6%E6%A7%8B/02%E6%9C%8D%E5%8B%99%E5%AE%B9%E5%99%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    服務容器
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01%E6%A0%B8%E5%BF%83%E6%9E%B6%E6%A7%8B/03%E6%9C%8D%E5%8B%99%E6%8F%90%E4%BE%9B%E8%80%85/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    服務提供者
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01%E6%A0%B8%E5%BF%83%E6%9E%B6%E6%A7%8B/04Facades/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Facades
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    基礎功能
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            基礎功能
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/01%E8%B7%AF%E7%94%B1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    路由
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/02%E4%B8%AD%E4%BB%8B%E8%BB%9F%E9%AB%94/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    中介軟體
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/03CSRF%E4%BF%9D%E8%AD%B7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CSRF 保護
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/04Controller/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Controller
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/05HTTP%E8%AB%8B%E6%B1%82/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTTP 請求
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/06HTTP%E9%9F%BF%E6%87%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTTP 響應
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/07%E6%AA%A2%E8%A6%96/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    檢視
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/08Blade%E7%AF%84%E6%9C%AC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Blade 範本
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/09Vite%E7%B7%A8%E8%AD%AFAssets/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vite 編譯 Assets
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/10%E7%94%9F%E6%88%90URL/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    生成 URL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/11Session/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Session
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/12%E8%A1%A8%E5%96%AE%E9%A9%97%E8%AD%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    表單驗證
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/13%E9%8C%AF%E8%AA%A4%E8%99%95%E7%90%86/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    錯誤處理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/14%E6%97%A5%E8%AA%8C/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    日誌
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    繼續深入
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            繼續深入
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/01Artisan%E5%91%BD%E4%BB%A4%E5%88%97/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Artisan 命令列
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/02%E5%BB%A3%E6%92%AD/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    廣播
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/03%E5%BF%AB%E5%8F%96%E7%B3%BB%E7%B5%B1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    快取系統
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/04%E9%9B%86%E5%90%88/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    集合
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/05%E5%A5%91%E7%B4%84Contract/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    契約 Contract
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/06%E4%BA%8B%E4%BB%B6%E7%B3%BB%E7%B5%B1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    事件系統
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/07%E6%AA%94%E6%A1%88%E5%84%B2%E5%AD%98/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    檔案儲存
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/09HTTPClient/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTTP Client
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/10%E6%9C%AC%E5%9C%B0%E5%8C%96/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    本地化
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/11%E9%83%B5%E4%BB%B6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    郵件
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/12%E6%B6%88%E6%81%AF%E9%80%9A%E7%9F%A5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    消息通知
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/13Package%E9%96%8B%E7%99%BC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Package 開發
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/14%E8%99%95%E7%90%86%E7%A8%8B%E5%BA%8F%E7%AE%A1%E7%90%86/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    處理程序管理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/15%E4%BD%87%E5%88%97/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    佇列
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/16%E9%99%90%E6%B5%81/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    限流
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/17%E4%BB%BB%E5%8B%99%E8%AA%BF%E5%BA%A6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    任務調度
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    安全相關
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            安全相關
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04%E5%AE%89%E5%85%A8%E7%9B%B8%E9%97%9C/01%E4%BD%BF%E7%94%A8%E8%80%85%E8%AA%8D%E8%AD%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    使用者認證
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04%E5%AE%89%E5%85%A8%E7%9B%B8%E9%97%9C/02%E4%BD%BF%E7%94%A8%E8%80%85%E6%8E%88%E6%AC%8A/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    使用者授權
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04%E5%AE%89%E5%85%A8%E7%9B%B8%E9%97%9C/03Email%E8%AA%8D%E8%AD%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Email 認證
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04%E5%AE%89%E5%85%A8%E7%9B%B8%E9%97%9C/04%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    加密解密
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04%E5%AE%89%E5%85%A8%E7%9B%B8%E9%97%9C/05%E9%9B%9C%E6%B9%8A/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    雜湊
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04%E5%AE%89%E5%85%A8%E7%9B%B8%E9%97%9C/06%E9%87%8D%E8%A8%AD%E5%AF%86%E7%A2%BC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    重設密碼
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    資料庫
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            資料庫
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05%E8%B3%87%E6%96%99%E5%BA%AB/01%E5%BF%AB%E9%80%9F%E5%85%A5%E9%96%80/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    快速入門
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05%E8%B3%87%E6%96%99%E5%BA%AB/02%E6%9F%A5%E8%A9%A2%E7%94%9F%E6%88%90%E5%99%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    查詢生成器
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05%E8%B3%87%E6%96%99%E5%BA%AB/03%E5%88%86%E9%A0%81/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    分頁
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05%E8%B3%87%E6%96%99%E5%BA%AB/04%E9%81%B7%E7%A7%BB/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    遷移
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05%E8%B3%87%E6%96%99%E5%BA%AB/05%E8%B3%87%E6%96%99%E5%A1%AB%E5%85%85/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    資料填充
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05%E8%B3%87%E6%96%99%E5%BA%AB/06Redis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Redis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Eloquent ORM
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Eloquent ORM
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    快速入門
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    快速入門
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目錄">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目錄
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    簡介
+  </a>
+  
+    <nav class="md-nav" aria-label="簡介">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#laravel" class="md-nav__link">
+    Laravel 訓練營
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    生成模型類
+  </a>
+  
+    <nav class="md-nav" aria-label="生成模型類">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    檢查模型
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eloquent" class="md-nav__link">
+    Eloquent 模型約定
+  </a>
+  
+    <nav class="md-nav" aria-label="Eloquent 模型約定">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    資料表名稱
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    主鍵
+  </a>
+  
+    <nav class="md-nav" aria-label="主鍵">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    復合主鍵
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uuid-ulid" class="md-nav__link">
+    UUID 與 ULID 鍵
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    時間戳
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    資料庫連接
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    默認屬性值
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eloquent_1" class="md-nav__link">
+    組態嚴格 Eloquent
+  </a>
+  
+    <nav class="md-nav" aria-label="組態嚴格 Eloquent">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#eloquent_2" class="md-nav__link">
+    啟用 Eloquent 的嚴格模式
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    檢索模型
+  </a>
+  
+    <nav class="md-nav" aria-label="檢索模型">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    建構查詢
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    刷新模型
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    集合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    結果分塊
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    使用惰性集合進行分塊
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    游標
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    高級子查詢
+  </a>
+  
+    <nav class="md-nav" aria-label="高級子查詢">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#selects" class="md-nav__link">
+    selects 子查詢
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    子查詢排序
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    檢索單個模型 / 聚合
+  </a>
+  
+    <nav class="md-nav" aria-label="檢索單個模型 / 聚合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    未找到時拋出異常
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    檢索或建立模型
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    檢索聚合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    新增 &amp; 更新模型
+  </a>
+  
+    <nav class="md-nav" aria-label="新增 & 更新模型">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    新增
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    更新
+  </a>
+  
+    <nav class="md-nav" aria-label="更新">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    批次更新
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    檢查屬性變更
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    批次賦值
+  </a>
+  
+    <nav class="md-nav" aria-label="批次賦值">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#json" class="md-nav__link">
+    批次賦值 &amp; JSON 列
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    允許批次分配
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    批次作業異常拋出
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    新增或更新
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    刪除模型
+  </a>
+  
+    <nav class="md-nav" aria-label="刪除模型">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    通過其主鍵刪除現有模型
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_35" class="md-nav__link">
+    使用查詢刪除模型
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_36" class="md-nav__link">
+    軟刪除
+  </a>
+  
+    <nav class="md-nav" aria-label="軟刪除">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_37" class="md-nav__link">
+    恢復軟刪除的模型
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_38" class="md-nav__link">
+    永久刪除模型
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_39" class="md-nav__link">
+    查詢軟刪除模型
+  </a>
+  
+    <nav class="md-nav" aria-label="查詢軟刪除模型">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_40" class="md-nav__link">
+    包括已軟刪除的模型
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_41" class="md-nav__link">
+    僅檢索軟刪除的模型
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_42" class="md-nav__link">
+    修剪模型
+  </a>
+  
+    <nav class="md-nav" aria-label="修剪模型">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_43" class="md-nav__link">
+    批次修剪模型
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_44" class="md-nav__link">
+    複製模型
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_45" class="md-nav__link">
+    查詢範疇
+  </a>
+  
+    <nav class="md-nav" aria-label="查詢範疇">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_46" class="md-nav__link">
+    全域範疇
+  </a>
+  
+    <nav class="md-nav" aria-label="全域範疇">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_47" class="md-nav__link">
+    編寫全域範疇
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_48" class="md-nav__link">
+    應用全域範疇
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_49" class="md-nav__link">
+    匿名全域範疇
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_50" class="md-nav__link">
+    取消全域範疇
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_51" class="md-nav__link">
+    局部範疇
+  </a>
+  
+    <nav class="md-nav" aria-label="局部範疇">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_52" class="md-nav__link">
+    使用局部範疇
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_53" class="md-nav__link">
+    動態範疇
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_54" class="md-nav__link">
+    模型比較
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#events" class="md-nav__link">
+    Events
+  </a>
+  
+    <nav class="md-nav" aria-label="Events">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_55" class="md-nav__link">
+    使用閉包
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_56" class="md-nav__link">
+    觀察者
+  </a>
+  
+    <nav class="md-nav" aria-label="觀察者">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_57" class="md-nav__link">
+    定義觀察者
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_58" class="md-nav__link">
+    觀察者與資料庫事務
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_59" class="md-nav__link">
+    靜默事件
+  </a>
+  
+    <nav class="md-nav" aria-label="靜默事件">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_60" class="md-nav__link">
+    靜默的保存單個模型
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02%E9%97%9C%E8%81%AF/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    關聯
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03%E9%9B%86%E5%90%88/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    集合
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04%E5%B1%AC%E6%80%A7%E4%BF%AE%E6%94%B9%E5%99%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    屬性修改器
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05API%E8%B3%87%E6%BA%90/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    API 資源
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06%E5%BA%8F%E5%88%97%E5%8C%96/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    序列化
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07%E8%B3%87%E6%96%99%E5%B7%A5%E5%BB%A0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    資料工廠
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    測試相關
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            測試相關
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07%E6%B8%AC%E8%A9%A6%E7%9B%B8%E9%97%9C/01%E5%85%A5%E9%96%80/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    入門
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07%E6%B8%AC%E8%A9%A6%E7%9B%B8%E9%97%9C/02HTTP%E6%B8%AC%E8%A9%A6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTTP 測試
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07%E6%B8%AC%E8%A9%A6%E7%9B%B8%E9%97%9C/03%E5%91%BD%E4%BB%A4%E5%88%97%E6%B8%AC%E8%A9%A6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    命令列測試
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07%E6%B8%AC%E8%A9%A6%E7%9B%B8%E9%97%9C/04LaravelDusk/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Laravel Dusk
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07%E6%B8%AC%E8%A9%A6%E7%9B%B8%E9%97%9C/05%E8%B3%87%E6%96%99%E5%BA%AB%E6%B8%AC%E8%A9%A6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    資料庫測試
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07%E6%B8%AC%E8%A9%A6%E7%9B%B8%E9%97%9C/06Mocking/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mocking
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    官方擴展包
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            官方擴展包
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/01Cashier%E4%BA%A4%E6%98%93%E5%B7%A5%E5%85%B7%E5%8C%85Stripe/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cashier 交易工具包 Stripe
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/02Cashier%E4%BA%A4%E6%98%93%E5%B7%A5%E5%85%B7%E5%8C%85Paddle/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cashier 交易工具包 Paddle
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/03Envoy%E9%83%A8%E7%BD%B2%E5%B7%A5%E5%85%B7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Envoy 部署工具
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/04Fortify%E8%88%87%E5%89%8D%E7%AB%AF%E7%84%A1%E9%97%9C%E7%9A%84%E8%BA%AB%E4%BB%BD%E8%AA%8D%E8%AD%89%E5%BE%8C%E7%AB%AF%E5%AF%A6%E7%8F%BE/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fortify 與前端無關的身份認證後端實現
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/05Homestead%E8%99%9B%E6%93%AC%E6%A9%9F%E5%99%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Homestead 虛擬機器
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/06Horizon%E4%BD%87%E5%88%97%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Horizon 佇列管理工具
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/09Octane%E5%8A%A0%E9%80%9F%E5%BC%95%E6%93%8E/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Octane 加速引擎
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/10PassportOAuth%E8%AA%8D%E8%AD%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Passport OAuth 認證
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/11Pennant%E6%B8%AC%E8%A9%A6%E6%96%B0%E5%8A%9F%E8%83%BD/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pennant 測試新功能
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/12Pint%E7%A8%8B%E5%BC%8F%E7%A2%BC%E9%A2%A8%E6%A0%BC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pint 程式碼風格
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/13SailDocker%E9%96%8B%E7%99%BC%E7%92%B0%E5%A2%83/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sail Docker 開發環境
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/14SanctumAPI%E6%8E%88%E6%AC%8A/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sanctum API 授權
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/15Scout%E5%85%A8%E6%96%87%E6%90%9C%E5%B0%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Scout 全文搜尋
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/16Socialite%E7%AC%AC%E4%B8%89%E6%96%B9%E7%99%BB%E5%85%A5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Socialite 第三方登入
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/17Telescope%E5%81%B5%E9%8C%AF%E5%B7%A5%E5%85%B7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Telescope 偵錯工具
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    語法速查表
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            語法速查表
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/artisan/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Artisan
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/auth/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Auth 使用者認證
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/blade/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Blade 範本
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/cache/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cache
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/collection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Collection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/composer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Composer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/config/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Config
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/container/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Container
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/cookie/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cookie
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/db/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Database
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/environment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Environment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/event/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Event
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/file/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    File
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/helper/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Helper
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/input/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Input
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/lang/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lang
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/Log/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Log
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/mail/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mail
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/model/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Model (Eloquent ORM)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/pagination/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pagination
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/queue/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Queue
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/redirect/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Redirect
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/request/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Request
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/response/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Response
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/route/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Route
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/schema/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Schema 資料庫結構
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/security/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Security (Hash 和加解密)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/session/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Session
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/storage/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Storage
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/string/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    String
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/unittest/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Unit Test 單元測試
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/url/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    URL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/validation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Validation 表單驗證
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/view/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    View
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目錄">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目錄
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    簡介
+  </a>
+  
+    <nav class="md-nav" aria-label="簡介">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#laravel" class="md-nav__link">
+    Laravel 訓練營
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    生成模型類
+  </a>
+  
+    <nav class="md-nav" aria-label="生成模型類">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    檢查模型
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eloquent" class="md-nav__link">
+    Eloquent 模型約定
+  </a>
+  
+    <nav class="md-nav" aria-label="Eloquent 模型約定">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    資料表名稱
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    主鍵
+  </a>
+  
+    <nav class="md-nav" aria-label="主鍵">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    復合主鍵
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uuid-ulid" class="md-nav__link">
+    UUID 與 ULID 鍵
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    時間戳
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    資料庫連接
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    默認屬性值
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eloquent_1" class="md-nav__link">
+    組態嚴格 Eloquent
+  </a>
+  
+    <nav class="md-nav" aria-label="組態嚴格 Eloquent">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#eloquent_2" class="md-nav__link">
+    啟用 Eloquent 的嚴格模式
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    檢索模型
+  </a>
+  
+    <nav class="md-nav" aria-label="檢索模型">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    建構查詢
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    刷新模型
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    集合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    結果分塊
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    使用惰性集合進行分塊
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    游標
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    高級子查詢
+  </a>
+  
+    <nav class="md-nav" aria-label="高級子查詢">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#selects" class="md-nav__link">
+    selects 子查詢
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    子查詢排序
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    檢索單個模型 / 聚合
+  </a>
+  
+    <nav class="md-nav" aria-label="檢索單個模型 / 聚合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    未找到時拋出異常
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    檢索或建立模型
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    檢索聚合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    新增 &amp; 更新模型
+  </a>
+  
+    <nav class="md-nav" aria-label="新增 & 更新模型">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    新增
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    更新
+  </a>
+  
+    <nav class="md-nav" aria-label="更新">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    批次更新
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    檢查屬性變更
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    批次賦值
+  </a>
+  
+    <nav class="md-nav" aria-label="批次賦值">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#json" class="md-nav__link">
+    批次賦值 &amp; JSON 列
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    允許批次分配
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    批次作業異常拋出
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    新增或更新
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    刪除模型
+  </a>
+  
+    <nav class="md-nav" aria-label="刪除模型">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    通過其主鍵刪除現有模型
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_35" class="md-nav__link">
+    使用查詢刪除模型
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_36" class="md-nav__link">
+    軟刪除
+  </a>
+  
+    <nav class="md-nav" aria-label="軟刪除">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_37" class="md-nav__link">
+    恢復軟刪除的模型
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_38" class="md-nav__link">
+    永久刪除模型
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_39" class="md-nav__link">
+    查詢軟刪除模型
+  </a>
+  
+    <nav class="md-nav" aria-label="查詢軟刪除模型">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_40" class="md-nav__link">
+    包括已軟刪除的模型
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_41" class="md-nav__link">
+    僅檢索軟刪除的模型
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_42" class="md-nav__link">
+    修剪模型
+  </a>
+  
+    <nav class="md-nav" aria-label="修剪模型">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_43" class="md-nav__link">
+    批次修剪模型
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_44" class="md-nav__link">
+    複製模型
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_45" class="md-nav__link">
+    查詢範疇
+  </a>
+  
+    <nav class="md-nav" aria-label="查詢範疇">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_46" class="md-nav__link">
+    全域範疇
+  </a>
+  
+    <nav class="md-nav" aria-label="全域範疇">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_47" class="md-nav__link">
+    編寫全域範疇
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_48" class="md-nav__link">
+    應用全域範疇
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_49" class="md-nav__link">
+    匿名全域範疇
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_50" class="md-nav__link">
+    取消全域範疇
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_51" class="md-nav__link">
+    局部範疇
+  </a>
+  
+    <nav class="md-nav" aria-label="局部範疇">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_52" class="md-nav__link">
+    使用局部範疇
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_53" class="md-nav__link">
+    動態範疇
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_54" class="md-nav__link">
+    模型比較
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#events" class="md-nav__link">
+    Events
+  </a>
+  
+    <nav class="md-nav" aria-label="Events">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_55" class="md-nav__link">
+    使用閉包
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_56" class="md-nav__link">
+    觀察者
+  </a>
+  
+    <nav class="md-nav" aria-label="觀察者">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_57" class="md-nav__link">
+    定義觀察者
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_58" class="md-nav__link">
+    觀察者與資料庫事務
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_59" class="md-nav__link">
+    靜默事件
+  </a>
+  
+    <nav class="md-nav" aria-label="靜默事件">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_60" class="md-nav__link">
+    靜默的保存單個模型
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+  
+                  
+
+  
+  
+
+
+<h1 id="_1">快速入門<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h2 id="_2">簡介<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>Laravel包含的Eloquent模組，是一個對象關係對應(ORM)，能使你更愉快地互動資料庫。當你使用Eloquent時，資料庫中每張表都有一個相對應的"模型"用於操作這張表。除了能從資料表中檢索資料記錄之外，Eloquent模型同時也允許你新增，更新和刪除這對應表中的資料</p>
+<blockquote>
+<p><strong>注意</strong><br />
+開始使用之前, 請確認在你的項目裡的<code>config/database.php</code>組態檔案中已經組態好一個可用的資料庫連接. 關於組態資料庫的更多資訊, 請查閱<a href="/docs/laravel/10.x/database#configuration">資料庫組態文件</a>.</p>
+</blockquote>
+<h4 id="laravel">Laravel 訓練營<a class="headerlink" href="#laravel" title="Permanent link">&para;</a></h4>
+<p>如果你是 Laravel 的新手，可以隨時前往 <a href="https://bootcamp.laravel.com">Laravel 訓練營</a>。Laravel 訓練營將指導你使用 Eloquent 建立你的第一個 Laravel 應用。這是一個很好的方式來瞭解 Laravel 和 Eloquent 所提供的一切。</p>
+<h2 id="_3">生成模型類<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>首先，讓我們建立一個 Eloquent 模型。模型通常位於 <code>app\Models</code> 目錄中，並繼承 <code>Illuminate\Database\Eloquent\Model</code> 類。 你可以使用 <code>make:model</code> <a href="/docs/laravel/10.x/artisan">Artisan 命令</a> 來生成新模型類：</p>
+<div class="highlight"><pre><span></span><code>php<span class="w"> </span>artisan<span class="w"> </span>make:model<span class="w"> </span>Flight
+</code></pre></div>
+<p>如果你想要在生成模型類的同時生成 <a href="/docs/laravel/10.x/migrations">資料庫遷移</a>， 可以使用 <code>--migration</code> 或 <code>-m</code> 選項：</p>
+<div class="highlight"><pre><span></span><code>php<span class="w"> </span>artisan<span class="w"> </span>make:model<span class="w"> </span>Flight<span class="w"> </span>--migration
+</code></pre></div>
+<p>在生成模型的同時，你可能還想要各種其他類型的類，例如模型工廠、資料填充和 controller 。這些選項可以組合在一起從而一次建立多個類：</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 生成模型和 Flight 工廠類...</span>
+php<span class="w"> </span>artisan<span class="w"> </span>make:model<span class="w"> </span>Flight<span class="w"> </span>--factory
+php<span class="w"> </span>artisan<span class="w"> </span>make:model<span class="w"> </span>Flight<span class="w"> </span>-f
+
+<span class="c1"># 生成模型和 Flight 資料填充類...</span>
+php<span class="w"> </span>artisan<span class="w"> </span>make:model<span class="w"> </span>Flight<span class="w"> </span>--seed
+php<span class="w"> </span>artisan<span class="w"> </span>make:model<span class="w"> </span>Flight<span class="w"> </span>-s
+
+<span class="c1"># 生成模型和 Flight  controller 類...</span>
+php<span class="w"> </span>artisan<span class="w"> </span>make:model<span class="w"> </span>Flight<span class="w"> </span>--controller
+php<span class="w"> </span>artisan<span class="w"> </span>make:model<span class="w"> </span>Flight<span class="w"> </span>-c
+
+<span class="c1"># 生成模型，Flight  controller 類，資源類和表單驗證類...</span>
+php<span class="w"> </span>artisan<span class="w"> </span>make:model<span class="w"> </span>Flight<span class="w"> </span>--controller<span class="w"> </span>--resource<span class="w"> </span>--requests
+php<span class="w"> </span>artisan<span class="w"> </span>make:model<span class="w"> </span>Flight<span class="w"> </span>-crR
+
+<span class="c1"># 生成模型和 Flight 授權策略類...</span>
+php<span class="w"> </span>artisan<span class="w"> </span>make:model<span class="w"> </span>Flight<span class="w"> </span>--policy
+
+<span class="c1"># 生成模型和資料庫遷移，Filght 工廠類，資料庫填充類和 Flight  controller ...</span>
+php<span class="w"> </span>artisan<span class="w"> </span>make:model<span class="w"> </span>Flight<span class="w"> </span>-mfsc
+
+<span class="c1"># 快捷生成模型，資料庫遷移，Flight 工廠類，資料庫填充類，授權策略類，Flight  controller 和表單驗證類...</span>
+php<span class="w"> </span>artisan<span class="w"> </span>make:model<span class="w"> </span>Flight<span class="w"> </span>--all
+
+<span class="c1"># 生成中間表模型...</span>
+php<span class="w"> </span>artisan<span class="w"> </span>make:model<span class="w"> </span>Member<span class="w"> </span>--pivot
+</code></pre></div>
+<h4 id="_4">檢查模型<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<p>有時，僅僅通過略讀程式碼來確定一個模型的所有可用屬性和關係是很困難的。作為替代，試試 <code>model:show</code> Artisan 命令，它提供了一個對於模型的所有屬性和關係的方便概述。</p>
+<div class="highlight"><pre><span></span><code>php<span class="w"> </span>artisan<span class="w"> </span>model:show<span class="w"> </span>Flight
+</code></pre></div>
+<h2 id="eloquent">Eloquent 模型約定<a class="headerlink" href="#eloquent" title="Permanent link">&para;</a></h2>
+<p>由 <code>make:model</code> 命令生成的模型會被放置在 <code>app/Models</code> 目錄下。讓我們檢查一個基本的模型類並討論 Eloquent 的一些關鍵約定：</p>
+<div class="highlight"><pre><span></span><code>&lt;?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Flight extends Model
+{
+    // ...
+}
+</code></pre></div>
+<h3 id="_5">資料表名稱<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>看了上面的例子，你可能已經注意到我們沒有告訴 Eloquent 哪個資料庫表對應我們的 <code>Flight</code> 模型。按照約定，除非明確指定另一個名稱，類名稱的下劃線格式的複數形態將被用作表名。因此，在這個例子中，Eloquent 將假定 <code>Flight</code> 模型將記錄儲存在 <code>flights</code> 表中，而 <code>AirTrafficController</code>  模型將記錄儲存在 <code>air_traffic_controllers</code> 表中。</p>
+<p>如果你的模型對應的資料表不符合這個約定，你可以通過在模型上定義一個 <code>table</code> 屬性來手動指定模型的表名：</p>
+<div class="highlight"><pre><span></span><code>&lt;?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Flight extends Model
+{
+    /**
+     * 與模型關聯的資料表。
+     *
+     * @var string
+     */
+    protected $table = &#39;my_flights&#39;;
+}
+</code></pre></div>
+<h3 id="_6">主鍵<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p>Eloquent 還會假設每個模型對應的資料表都有一個名為 <code>id</code> 的列作為主鍵。如有必要，你可以在模型上定義一個受保護的 <code>$primaryKey</code> 屬性，來指定一個不同的列名稱用作模型的主鍵：</p>
+<div class="highlight"><pre><span></span><code>&lt;?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Flight extends Model
+{
+    /**
+     * 與資料表關聯的主鍵。
+     *
+     * @var string
+     */
+    protected $primaryKey = &#39;flight_id&#39;;
+}
+</code></pre></div>
+<p>此外，Eloquent 默認有一個 integer 值的主鍵，Eloquent 會自動轉換這個主鍵為一個 integer 類型，如果你的主鍵不是自增或者不是數字類型，你可以在你的模型上定義一個 public 屬性的 <code>$incrementing</code> ，並將其設定為 <code>false</code>：</p>
+<div class="highlight"><pre><span></span><code>&lt;?php
+
+class Flight extends Model
+{
+    /**
+     * 指明模型的ID是否自動遞增。
+     *
+     * @var bool
+     */
+    public $incrementing = false;
+}
+</code></pre></div>
+<p>如果你的模型主鍵不是 <code>integer</code>，應該定義一個 <code>protected $keyType</code> 屬性在模型上，其值應為 <code>string</code>：</p>
+<div class="highlight"><pre><span></span><code>&lt;?php
+
+class Flight extends Model
+{
+    /**
+     * 自動遞增ID的資料類型。
+     *
+     * @var string
+     */
+    protected $keyType = &#39;string&#39;;
+}
+</code></pre></div>
+<h4 id="_7">復合主鍵<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<p>Eloquent 要求每個模型至少有一個可以作為其主鍵的唯一標識 ID。它不支援「復合」主鍵。但是，除了表的唯一標識主鍵之外，還可以向資料庫表新增額外的多列唯一索引。</p>
+<h3 id="uuid-ulid">UUID 與 ULID 鍵<a class="headerlink" href="#uuid-ulid" title="Permanent link">&para;</a></h3>
+<p>你可以選擇使用UUID，而不是使用自動遞增的整數作為Elquent模型的主鍵。UUID是36個字元長的通用唯一字母數字識別碼。</p>
+<p>如果你希望模型使用UUID鍵而不是自動遞增的整數鍵，可以在模型上使用 <code>Illuminate\Database\Eloquent\Concerns\HasUuids</code>  trait，在此情況下應該確保模型具有 <a href="/docs/laravel/10.x/migrations#column-method-uuid">UUID相等的主鍵列</a>:</p>
+<div class="highlight"><pre><span></span><code>use Illuminate\Database\Eloquent\Concerns\HasUuids;
+use Illuminate\Database\Eloquent\Model;
+
+class Article extends Model
+{
+    use HasUuids;
+
+    // ...
+}
+
+$article = Article::create([&#39;title&#39; =&gt; &#39;Traveling to Europe&#39;]);
+
+$article-&gt;id; // &quot;8f8e8478-9035-4d23-b9a7-62f4d2612ce5&quot;
+</code></pre></div>
+<p>默認情況下，<code>HasUuids</code> trait 將會為模型生成 <a href="/docs/laravel/10.x/helpers#method-str-ordered-uuid">「ordered」 UUIDs</a> 。 這些 UUIDs 對於索引資料庫儲存更有效，因為它們可以按字典順序進行排序。</p>
+<p>通過在模型中定義一個 <code>newUniqueId</code> 方法，你可以推翻給定模型的 UUID 生成方法。此外，你可以通過模型中的 <code>uniqueIds</code> 方法，來指定哪個欄位是需要接收 UUIDs:</p>
+<div class="highlight"><pre><span></span><code>use Ramsey\Uuid\Uuid;
+
+/**
+ * 為模型生成一個新的 UUID。
+ */
+public function newUniqueId(): string
+{
+    return (string) Uuid::uuid4();
+}
+
+/**
+ * 獲取應該接收唯一識別碼的列。
+ *
+ * @return array&lt;int, string&gt;
+ */
+public function uniqueIds(): array
+{
+    return [&#39;id&#39;, &#39;discount_code&#39;];
+}
+</code></pre></div>
+<p>如果你願意，你可以選擇利用 「ULIDs」 來替代 UUIDs。 ULIDs 類似於 UUIDs； 然而，它們的長度僅為 26 字元。類似於訂單 UUIDs， ULIDs 是字典順序排序，以實現高效的資料索引。為了利用 ULIDs， 你需要在你的模型中引用 <code>Illuminate\Database\Eloquent\Concerns\HasUlids</code> trait。 同樣還需要確保模型中有一個 <a href="/docs/laravel/10.x/migrations#column-method-ulid">ULID 匹配的主鍵欄位</a>:</p>
+<div class="highlight"><pre><span></span><code>use Illuminate\Database\Eloquent\Concerns\HasUlids;
+use Illuminate\Database\Eloquent\Model;
+
+class Article extends Model
+{
+    use HasUlids;
+
+    // ...
+}
+
+$article = Article::create([&#39;title&#39; =&gt; &#39;Traveling to Asia&#39;]);
+
+$article-&gt;id; // &quot;01gd4d3tgrrfqeda94gdbtdk5c&quot;
+</code></pre></div>
+<h3 id="_8">時間戳<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<p>默認情況下，Eloquent 需要 <code>created_at</code> 和 <code>updated_at</code> 欄位存在你的模型資料表中。當模型被建立或更新時，Eloquent 將自動地設定這些欄位的值。如果你不想讓這些欄位被 Eloquent 自動管理，你需要在你的模型中定義一個 <code>$timestamps</code> 屬性並賦值為 <code>false</code>:</p>
+<div class="highlight"><pre><span></span><code>&lt;?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Flight extends Model
+{
+    /**
+     * 指示模型是否主動維護時間戳。
+     *
+     * @var bool
+     */
+    public $timestamps = false;
+}
+</code></pre></div>
+<p>如果你需要自訂模型時間戳的格式，請在模型上設定 <code>$dateFormat</code> 屬性。以此來定義時間戳在資料庫中的儲存方式以及模型序列化為陣列或 JSON 時的格式：</p>
+<div class="highlight"><pre><span></span><code>&lt;?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Flight extends Model
+{
+    /**
+     * 模型日期欄位的儲存格式。
+     *
+     * @var string
+     */
+    protected $dateFormat = &#39;U&#39;;
+}
+</code></pre></div>
+<p>如果需要自訂用於儲存時間戳的欄位的名稱，可以在模型上定義 <code>CREATED_AT</code> 和 <code>UPDATED_AT</code> 常數：</p>
+<div class="highlight"><pre><span></span><code>&lt;?php
+
+class Flight extends Model
+{
+    const CREATED_AT = &#39;creation_date&#39;;
+    const UPDATED_AT = &#39;updated_date&#39;;
+}
+</code></pre></div>
+<p>如果你想在不修改模型的 <code>updated_at</code> 時間戳的情況下執行模型操作，你可以在給 <code>withoutTimestamps</code> 方法的閉包中對模型進行操作：</p>
+<div class="highlight"><pre><span></span><code>Model::withoutTimestamps(fn () =&gt; $post-&gt;increment([&#39;reads&#39;]));
+</code></pre></div>
+<h3 id="_9">資料庫連接<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<p>默認情況下，所有 Eloquent 模型使用的是應用程式組態的默認資料庫連接。如果想指定在與特定模型互動時應該使用的不同連接，可以在模型上定義 <code>$connection</code> 屬性：</p>
+<div class="highlight"><pre><span></span><code>&lt;?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Flight extends Model
+{
+    /**
+     * 設定當前模型使用的資料庫連接名。
+     *
+     * @var string
+     */
+    protected $connection = &#39;sqlite&#39;;
+}
+</code></pre></div>
+<h3 id="_10">默認屬性值<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<p>默認情況下，被實例化的模型不會包含任何屬性值。如果你想為模型的某些屬性定義預設值，可以在模型上定義一個 <code>$attributes</code> 屬性。放在 <code>$attributes</code> 陣列中的屬性值應該是原始的，“可儲存的”格式，就像它們剛剛從資料庫中讀取一樣：</p>
+<div class="highlight"><pre><span></span><code>&lt;?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Flight extends Model
+{
+    /**
+     * 模型的屬性預設值。
+     *
+     * @var array
+     */
+    protected $attributes = [
+        &#39;options&#39; =&gt; &#39;[]&#39;,
+        &#39;delayed&#39; =&gt; false,
+    ];
+}
+</code></pre></div>
+<h3 id="eloquent_1">組態嚴格 Eloquent<a class="headerlink" href="#eloquent_1" title="Permanent link">&para;</a></h3>
+<p>Laravel 提供了幾種方法允許你在各種情況下組態 Eloquent 的行為和其「嚴格性」。</p>
+<p>首先，<code>preventLazyLoading</code> 方法接受一個可選的布林值參數，它代表是否需要停用延遲載入。例如，你可能希望僅在非生產環境下停用延遲載入，以便即使在生產環境中的程式碼意外出現延遲載入關係，你的生產環境也可以繼續正常運行。一般來說，該方法應該在應用程式的 <code>AppServiceProvider</code> 的 <code>boot</code> 方法中呼叫：</p>
+<div class="highlight"><pre><span></span><code><span class="x">use Illuminate\Database\Eloquent\Model;</span>
+
+<span class="x">/**</span>
+<span class="x"> * 啟動任意應用程式服務。</span>
+<span class="x"> */</span>
+<span class="x">public function boot(): void</span>
+<span class="x">{</span>
+<span class="x">    Model::preventLazyLoading(! $this-&gt;app-&gt;isProduction());</span>
+<span class="x">}</span>
+</code></pre></div>
+<p>此外，你可以通過呼叫 <code>preventSilentlyDiscardingAttributes</code> 方法來讓 Laravel 在使用嘗試填充一個不能填充的屬性的時候拋出一個異常。這有助於防止在本地開發過程中嘗試設定尚未到模型的 <code>fillable</code> 陣列中的屬性時出現意外情況：</p>
+<div class="highlight"><pre><span></span><code><span class="x">Model::preventSilentlyDiscardingAttributes(! $this-&gt;app-&gt;isProduction());</span>
+</code></pre></div>
+<p>最後，在你嘗試訪問模型上的一個無法從資料庫中檢索到或是該屬性不存在的時候，你可能想要讓 Eloquent 拋出一個異常。例如，當你忘記將屬性新增到 Eloquent 查詢的 <code>select</code> 子句時候，便可能發生這樣的情況。</p>
+<div class="highlight"><pre><span></span><code><span class="x">Model::preventAccessingMissingAttributes(! $this-&gt;app-&gt;isProduction());</span>
+</code></pre></div>
+<h4 id="eloquent_2">啟用 Eloquent 的嚴格模式<a class="headerlink" href="#eloquent_2" title="Permanent link">&para;</a></h4>
+<p>為了方便，你可以通過呼叫 <code>shouldBeStrict</code> 方法來啟用上述的三種方法：</p>
+<div class="highlight"><pre><span></span><code><span class="x">Model::shouldBeStrict(! $this-&gt;app-&gt;isProduction());</span>
+</code></pre></div>
+<h2 id="_11">檢索模型<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
+<p>一旦你建立了一個模型和 <a href="/docs/laravel/10.x/migrations#writing-migrations">其關聯的資料庫表</a>，就可以開始從資料庫中檢索資料了。可以將每個 Eloquent 模型視為一個強大的<a href="/docs/laravel/10.x/queries">查詢建構器</a> ，讓你能流暢地查詢與該模型關聯的資料庫表。模型中的 <code>all</code> 方法將從模型的關聯資料庫表中檢索所有記錄：</p>
+<div class="highlight"><pre><span></span><code>use App\Models\Flight;
+
+foreach (Flight::all() as $flight) {
+    echo $flight-&gt;name;
+}
+</code></pre></div>
+<h4 id="_12">建構查詢<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
+<p>Eloquent 的 <code>all</code> 方法會返回模型中所有的結果。由於每個 Eloquent 模型都可以被視為<a href="/docs/laravel/10.x/queries">查詢建構器</a>，可以新增額外的查詢條件，然後使用 <code>get</code> 方法獲取查詢結果：</p>
+<div class="highlight"><pre><span></span><code>$flights = Flight::where(&#39;active&#39;, 1)
+               -&gt;orderBy(&#39;name&#39;)
+               -&gt;take(10)
+               -&gt;get();
+</code></pre></div>
+<blockquote>
+<p><strong>技巧</strong><br />
+由於 Eloquent 模型是查詢建構器，因此你應該查看 Laravel 的<a href="/docs/laravel/10.x/queries">查詢建構器</a>提供的所有方法。在編寫 Eloquent 查詢時，這些是通用的。</p>
+</blockquote>
+<h4 id="_13">刷新模型<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
+<p>如果已經有一個從資料庫中檢索到的 Eloquent 模型的實例，你可以使用  <code>fresh</code> 和 <code>refresh</code>方法「刷新」模型。 <code>fresh</code> 方法將從資料庫中重新檢索模型。現有模型實例不會受到影響：</p>
+<div class="highlight"><pre><span></span><code>$flight = Flight::where(&#39;number&#39;, &#39;FR 900&#39;)-&gt;first();
+
+$freshFlight = $flight-&gt;fresh();
+</code></pre></div>
+<p><code>refresh</code> 方法會使用資料庫中的新資料重新賦值現有的模型。此外，已經載入的關係也會被重新載入：</p>
+<div class="highlight"><pre><span></span><code>$flight = Flight::where(&#39;number&#39;, &#39;FR 900&#39;)-&gt;first();
+
+$flight-&gt;number = &#39;FR 456&#39;;
+
+$flight-&gt;refresh();
+
+$flight-&gt;number; // &quot;FR 900&quot;
+</code></pre></div>
+<h3 id="_14">集合<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<p>正如我們所見，像 <code>all</code> 和 <code>get</code> 這樣的 Eloquent 方法從資料庫中檢索出多條記錄。但是，這些方法不會返回一個普通的 PHP 陣列。相反，會返回一個 <code>Illuminate\Database\Eloquent\Collection</code> 的實例。</p>
+<p>Eloquent <code>Collection</code> 類擴展了 Laravel 的 <code>Illuminate\Support\Collection</code> 基類，它提供了<a href="/docs/laravel/10.x/collections#available-methods">大量的輔助方法</a>來與資料集合互動。例如，<code>reject</code> 方法可用於根據呼叫閉包的結果從集合中刪除模型：</p>
+<div class="highlight"><pre><span></span><code><span class="x">$flights = Flight::where(&#39;destination&#39;, &#39;Paris&#39;)-&gt;get();</span>
+
+<span class="x">$flights = $flights-&gt;reject(function (Flight $flight) {</span>
+<span class="x">    return $flight-&gt;cancelled;</span>
+<span class="x">});</span>
+</code></pre></div>
+<p>除了 Laravel 的基礎集合類提供的方法之外，Eloquent 集合類還提供了<a href="/docs/laravel/10.x/eloquent-collections#available-methods">一些額外的方法</a>，專門用於與 Eloquent 的模型。</p>
+<p>由於 Laravel 的所有集合都實現了 PHP 的可迭代介面，因此你可以像陣列一樣循環遍歷集合：</p>
+<div class="highlight"><pre><span></span><code><span class="x">foreach ($flights as $flight) {</span>
+<span class="x">    echo $flight-&gt;name;</span>
+<span class="x">}</span>
+</code></pre></div>
+<h3 id="_15">結果分塊<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
+<p>如果你嘗試通過<code>all</code> 或 <code>get</code> 方法載入數萬條 Eloquent 記錄，你的應用程式可能會耗盡記憶體。為了避免出現這種情況， <code>chunk</code> 方法可以用來更有效地處理這些大量資料。</p>
+<p><code>chunk</code> 方法將傳遞 Eloquent 模型的子集，將它們交給閉包進行處理。由於一次只檢索當前的 Eloquent 模型塊的資料，所以當處理大量模型資料時， <code>chunk</code> 方法將顯著減少記憶體使用：</p>
+<div class="highlight"><pre><span></span><code><span class="x">use App\Models\Flight;</span>
+<span class="x">use Illuminate\Database\Eloquent\Collection;</span>
+
+<span class="x">Flight::chunk(200, function (Collection $flights) {</span>
+<span class="x">    foreach ($flights as $flight) {</span>
+<span class="x">        // ...</span>
+<span class="x">    }</span>
+<span class="x">});</span>
+</code></pre></div>
+<p>傳遞給<code>chunk</code>方法的第一個參數是每個分塊檢索的資料數量。第二個參數傳遞的閉包將方法將應用到每個分塊，以資料庫中查詢到的分塊結果來作為參數。</p>
+<p>如果要根據一個欄位來過濾<code>chunk</code>方法拿到的資料，同時，這個欄位的資料在遍歷的時候還需要更新的話，那麼可以使用「chunkById」方法。在這種場景下如果使用<code>chunk</code>方法的話，得到的結果可能和預想中的不一樣。在<code>chunkById</code> 方法的內部，默認會查詢 id 欄位大於前一個分塊中最後一個模型的 id。</p>
+<div class="highlight"><pre><span></span><code><span class="x">Flight::where(&#39;departed&#39;, true)</span>
+<span class="x">    -&gt;chunkById(200, function (Collection $flights) {</span>
+<span class="x">        $flights-&gt;each-&gt;update([&#39;departed&#39; =&gt; false]);</span>
+<span class="x">    }, $column = &#39;id&#39;);</span>
+</code></pre></div>
+<h3 id="_16">使用惰性集合進行分塊<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
+<p><code>lazy</code> 方法的工作方式類似於 <a href="#chunking-results"><code>chunk</code> 方法</a>，因為它在後台以塊的形式執行查詢。 然而，<code>lazy</code> 方法不是將每個塊直接傳遞到回呼中，而是返回 Eloquent 模型的扁平化 <a href="/docs/laravel/10.x/collections#lazy-collections"><code>LazyCollection</code></a>，它可以讓你將結果作為單個流進行互動：</p>
+<div class="highlight"><pre><span></span><code><span class="x">use App\Models\Flight;</span>
+
+<span class="x">foreach (Flight::lazy() as $flight) {</span>
+<span class="x">    // ...</span>
+<span class="x">}</span>
+</code></pre></div>
+<p>如果要根據一個欄位來過濾<code>lazy</code>方法拿到的資料，同時，這個欄位的資料在遍歷的時候還需要更新的話，那麼可以使用<code>lazyById</code>方法。在<code>lazyById</code> 方法的內部，默認會查詢 id 欄位大於前一個<code>chunk</code>中最後一個模型的 id 。</p>
+<div class="highlight"><pre><span></span><code><span class="x">Flight::where(&#39;departed&#39;, true)</span>
+<span class="x">    -&gt;lazyById(200, $column = &#39;id&#39;)</span>
+<span class="x">    -&gt;each-&gt;update([&#39;departed&#39; =&gt; false]);</span>
+</code></pre></div>
+<p>你可以使用 <code>lazyByIdDesc</code> 方法根據 <code>id</code> 的降序過濾結果。</p>
+<h3 id="_17">游標<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
+<p>與 <code>lazy</code> 方法類似，<code>cursor</code> 方法可用於在查詢數萬條 Eloquent 模型記錄時減少記憶體的使用。</p>
+<p><code>cursor</code> 方法只會執行一次資料庫查詢；但是，各個 Eloquent 模型在實際迭代之前不會被資料填充。因此，在遍歷游標時，在任何給定時間，只有一個 Eloquent 模型保留在記憶體中。</p>
+<blockquote>
+<p><strong>注意</strong><br />
+由於 <code>cursor</code> 方法一次只能在記憶體中保存一個 Eloquent 模型，因此它不能預載入關係。如果需要預載入關係，請考慮使用<a href="#chunking-using-lazy-collections"><code>lazy</code> 方法</a>。</p>
+</blockquote>
+<p>在內部，<code>cursor</code> 方法使用 PHP <a href="https://www.php.net/manual/en/language.generators.overview.php">generators</a> 來實現此功能：</p>
+<div class="highlight"><pre><span></span><code><span class="x">use App\Models\Flight;</span>
+
+<span class="x">foreach (Flight::where(&#39;destination&#39;, &#39;Zurich&#39;)-&gt;cursor() as $flight) {</span>
+<span class="x">    // ...</span>
+<span class="x">}</span>
+</code></pre></div>
+<p><code>cursor</code> 返回一個 <code>Illuminate\Support\LazyCollection</code> 實例。<a href="/docs/laravel/10.x/collections#lazy-collections">惰性集合</a> 可以使用 Laravel 集合中的可用方法，同時一次僅將單個模型載入到記憶體中：</p>
+<div class="highlight"><pre><span></span><code><span class="x">use App\Models\User;</span>
+
+<span class="x">$users = User::cursor()-&gt;filter(function (User $user) {</span>
+<span class="x">    return $user-&gt;id &gt; 500;</span>
+<span class="x">});</span>
+
+<span class="x">foreach ($users as $user) {</span>
+<span class="x">    echo $user-&gt;id;</span>
+<span class="x">}</span>
+</code></pre></div>
+<p>儘管 <code>cursor</code> 方法使用的記憶體比常規查詢要少得多（一次只在記憶體中保存一個 Eloquent 模型），但它最終仍會耗盡記憶體。這是<a href="https://www.php.net/manual/en/mysqlinfo.concepts.buffering.php">由於 PHP 的 PDO 驅動程式內部將所有原始查詢結果快取在其緩衝區中</a>。 如果要處理大量 Eloquent 記錄，請考慮使用 <a href="#chunking-using-lazy-collections"><code>lazy</code> 方法</a>。</p>
+<h3 id="_18">高級子查詢<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
+<h4 id="selects">selects 子查詢<a class="headerlink" href="#selects" title="Permanent link">&para;</a></h4>
+<p>Eloquent 還提供高級子查詢支援，你可以在單條語句中從相關表中提取資訊。 例如，假設我們有一個航班目的地表<code>destinations</code>和一個到達這些目的地的航班表<code>flights</code>。 <code>flights</code> 表包含一個 <code>arrived_at</code> 欄位，指示航班何時到達目的地。</p>
+<p>使用查詢生成器可用的子查詢功能 <code>select</code> 和 <code>addSelect</code> 方法，我們可以用單條語句查詢全部目的地 <code>destinations</code> 和 抵達各目的地最後一班航班的名稱：</p>
+<div class="highlight"><pre><span></span><code>use App\Models\Destination;
+use App\Models\Flight;
+
+return Destination::addSelect([&#39;last_flight&#39; =&gt; Flight::select(&#39;name&#39;)
+    -&gt;whereColumn(&#39;destination_id&#39;, &#39;destinations.id&#39;)
+    -&gt;orderByDesc(&#39;arrived_at&#39;)
+    -&gt;limit(1)
+])-&gt;get();
+</code></pre></div>
+<h4 id="_19">子查詢排序<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
+<p>此外，查詢建構器的 <code>orderBy</code> 也同樣支援子查詢。繼續使用我們的航班為例，根據最後一次航班到達該目的地的時間對所有目的地進行排序。這同樣可以在執行單個資料庫查詢時完成：</p>
+<div class="highlight"><pre><span></span><code>return Destination::orderByDesc(
+    Flight::select(&#39;arrived_at&#39;)
+        -&gt;whereColumn(&#39;destination_id&#39;, &#39;destinations.id&#39;)
+        -&gt;orderByDesc(&#39;arrived_at&#39;)
+        -&gt;limit(1)
+)-&gt;get();
+</code></pre></div>
+<h2 id="_20">檢索單個模型 / 聚合<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h2>
+<p>除了檢索與給定查詢匹配的所有記錄之外，還可以使用 <code>find</code>、<code>first</code> 或 <code>firstWhere</code> 方法檢索單個記錄。 這些方法不是返回模型集合，而是返回單個模型實例：</p>
+<div class="highlight"><pre><span></span><code>use App\Models\Flight;
+
+// 通過主鍵檢索模型...
+$flight = Flight::find(1);
+
+// 檢索與查詢約束匹配的第一個模型...
+$flight = Flight::where(&#39;active&#39;, 1)-&gt;first();
+
+// 替代檢索與查詢約束匹配的第一個模型...
+$flight = Flight::firstWhere(&#39;active&#39;, 1);
+</code></pre></div>
+<p>有時你可能希望檢索查詢的第一個結果或在未找到結果時執行一些其他操作。<code>firstOr</code> 方法將返回匹配查詢的第一個結果，或者，如果沒有找到結果，則執行給定的閉包。閉包返回的值將被視為 <code>firstOr</code> 方法的結果：</p>
+<div class="highlight"><pre><span></span><code>$flight = Flight::findOr(1, function () {
+    // ...
+});
+
+$flight = Flight::where(&#39;legs&#39;, &#39;&gt;&#39;, 3)-&gt;firstOr(function () {
+    // ...
+});
+</code></pre></div>
+<h4 id="_21">未找到時拋出異常<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h4>
+<p>如果找不到模型，你可能希望拋出異常。這在路由或 controller 中特別有用。 <code>findOrFail</code> 和 <code>firstOrFail</code> 方法將檢索查詢的第一個結果；但是，如果沒有找到結果，則會拋出 <code>Illuminate\Database\Eloquent\ModelNotFoundException</code>：</p>
+<div class="highlight"><pre><span></span><code>$flight = Flight::findOrFail(1);
+
+$flight = Flight::where(&#39;legs&#39;, &#39;&gt;&#39;, 3)-&gt;firstOrFail();
+</code></pre></div>
+<p>如果沒有捕獲到 <code>ModelNotFoundException</code>，則會自動將 404 HTTP 響應傳送回客戶端：</p>
+<div class="highlight"><pre><span></span><code>use App\Models\Flight;
+
+Route::get(&#39;/api/flights/{id}&#39;, function (string $id) {
+    return Flight::findOrFail($id);
+});
+</code></pre></div>
+<h3 id="_22">檢索或建立模型<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h3>
+<p><code>firstOrCreate</code> 方法將嘗試使用給定的列 / 值對來尋找資料庫記錄。如果在資料庫中找不到該模型，則將插入一條記錄，其中包含將第一個陣列參數與可選的第二個陣列參數合併後產生的屬性：</p>
+<p><code>firstOrNew</code> 方法，類似 <code>firstOrCreate</code>，會嘗試在資料庫中找到與給定屬性匹配的記錄。如果沒有找到，則會返回一個新的模型實例。請注意，由 <code>firstOrNew</code> 返回的模型尚未持久化到資料庫中。需要手動呼叫 <code>save</code> 方法來保存它：</p>
+<div class="highlight"><pre><span></span><code>use App\Models\Flight;
+
+// 按名稱檢索航班，如果不存在則建立它...
+$flight = Flight::firstOrCreate([
+    &#39;name&#39; =&gt; &#39;London to Paris&#39;
+]);
+
+// 按名稱檢索航班或使用名稱、延遲和到達時間屬性建立它...
+$flight = Flight::firstOrCreate(
+    [&#39;name&#39; =&gt; &#39;London to Paris&#39;],
+    [&#39;delayed&#39; =&gt; 1, &#39;arrival_time&#39; =&gt; &#39;11:30&#39;]
+);
+
+// 按名稱檢索航班或實例化一個新的航班實例...
+$flight = Flight::firstOrNew([
+    &#39;name&#39; =&gt; &#39;London to Paris&#39;
+]);
+
+// 按名稱檢索航班或使用名稱、延遲和到達時間屬性實例化...
+$flight = Flight::firstOrNew(
+    [&#39;name&#39; =&gt; &#39;Tokyo to Sydney&#39;],
+    [&#39;delayed&#39; =&gt; 1, &#39;arrival_time&#39; =&gt; &#39;11:30&#39;]
+);
+</code></pre></div>
+<h3 id="_23">檢索聚合<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h3>
+<p>當使用 Eloquent 模型互動的時候，你可以使用 <code>count</code>、<code>sum</code>、<code>max</code>，以及一些 laravel <a href="/docs/laravel/10.x/queries">查詢生成器</a>提供的其他<a href="/docs/laravel/10.x/queries#aggregates">聚合方法</a>。如你所需要的，這些方法會返回一個數字值而不是 Eloquent 模型實例：</p>
+<div class="highlight"><pre><span></span><code>$count = Flight::where(&#39;active&#39;, 1)-&gt;count();
+
+$max = Flight::where(&#39;active&#39;, 1)-&gt;max(&#39;price&#39;);
+</code></pre></div>
+<h2 id="_24">新增 &amp; 更新模型<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h2>
+<h3 id="_25">新增<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h3>
+<p>顯然，使用 Eloquent 的時候，我們不僅需要從資料庫中檢索模型，同時也需要新增新的資料記錄。值得高興的是，對於這種需求 Eloquent 可以從容應對。為了向資料庫新增新的資料記錄，你需要實例化一個新的模型實例並且為它的屬性賦值，然後呼叫這個實例的 <code>save</code> 方法：</p>
+<div class="highlight"><pre><span></span><code>&lt;?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Controllers\Controller;
+use App\Models\Flight;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+
+class FlightController extends Controller
+{
+    /**
+     * 向資料庫中儲存條新的航班資訊.
+     */
+    public function store(Request $request): RedirectResponse
+    {
+        // 驗證request...
+
+        $flight = new Flight;
+
+        $flight-&gt;name = $request-&gt;name;
+
+        $flight-&gt;save();
+
+        return redirect(&#39;/flights&#39;);
+    }
+}
+</code></pre></div>
+<p>在這個例子中，我們使用來自 HTTP request 請求中的 <code>name</code> 參數值來對 <code>App\Models\Flight</code> 模型實例的<code>name</code>屬性賦值，當我們呼叫 <code>save</code> 方法時，資料庫便會增加一條資料記錄，模型的 <code>created_at</code> 和 <code>updated_at</code> 欄位將會在呼叫 <code>save</code> 方法時自動設定為相應的時間, 所以不需要手動去設定這兩個屬性。</p>
+<p>或者，可以使用 <code>create</code> 方法使用單個 PHP 語句「保存」一個新模型。插入的模型實例將通過 <code>create</code> 方法返回：</p>
+<div class="highlight"><pre><span></span><code>use App\Models\Flight;
+
+$flight = Flight::create([
+    &#39;name&#39; =&gt; &#39;London to Paris&#39;,
+]);
+</code></pre></div>
+<p>但是，在使用 <code>create</code> 方法之前，你需要在模型類上指定 <code>fillable</code> 或 <code>guarded</code> 屬性。這些屬性是必需的，因為默認情況下，所有 Eloquent 模型都受到保護，免受批次賦值漏洞的影響。 要瞭解有關批次賦值的更多資訊，請參閱<a href="#mass-assignment">批次賦值文件</a>。</p>
+<h3 id="_26">更新<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h3>
+<p><code>save</code> 方法也可以用來更新資料庫中已經存在的模型。要更新模型，應該檢索它並設定你想更新的任何屬性。然後呼叫模型的 <code>save</code> 方法。 同樣，<code>updated_at</code> 時間戳將自動更新，因此無需手動設定其值：</p>
+<div class="highlight"><pre><span></span><code>use App\Models\Flight;
+
+$flight = Flight::find(1);
+
+$flight-&gt;name = &#39;Paris to London&#39;;
+
+$flight-&gt;save();
+</code></pre></div>
+<h4 id="_27">批次更新<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h4>
+<p>還可以批次更新與給定條件匹配的所有模型。在此示例中，所有 <code>active</code> 且 <code>destination</code> 為 <code>San Diego</code> 的航班都將被標記為延遲：</p>
+<div class="highlight"><pre><span></span><code>Flight::where(&#39;active&#39;, 1)
+      -&gt;where(&#39;destination&#39;, &#39;San Diego&#39;)
+      -&gt;update([&#39;delayed&#39; =&gt; 1]);
+</code></pre></div>
+<p><code>update</code> 方法需要一個表示應該更新的列的列和值對陣列。<code>update</code> 方法返回受影響的行數。</p>
+<blockquote>
+<p><strong>注意</strong><br />
+通過 Eloquent 批次更新時，不會觸發模型的 <code>saving</code>、<code>saved</code>、<code>updating</code> 和 <code>updated</code> 模型事件。 這是因為在批次更新時從未真正檢索到模型。</p>
+</blockquote>
+<h4 id="_28">檢查屬性變更<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h4>
+<p>Eloquent 提供了 <code>isDirty</code>、<code>isClean</code> 和 <code>wasChanged</code> 方法來檢查模型的內部狀態，並確定它的屬性與最初檢索模型時的變化情況。</p>
+<p><code>isDirty</code> 方法確定模型的任何屬性在檢索模型後是否已更改。你可以傳遞特定的屬性名稱來確定它是否「變髒」。<code>isClean</code> 方法將確定自檢索模型以來屬性是否保持不變。 它也接受可選的屬性參數：</p>
+<div class="highlight"><pre><span></span><code>use App\Models\User;
+
+$user = User::create([
+    &#39;first_name&#39; =&gt; &#39;Taylor&#39;,
+    &#39;last_name&#39; =&gt; &#39;Otwell&#39;,
+    &#39;title&#39; =&gt; &#39;Developer&#39;,
+]);
+
+$user-&gt;title = &#39;Painter&#39;;
+
+$user-&gt;isDirty(); // true
+$user-&gt;isDirty(&#39;title&#39;); // true
+$user-&gt;isDirty(&#39;first_name&#39;); // false
+$user-&gt;isDirty([&#39;first_name&#39;, &#39;title&#39;]); // true
+
+$user-&gt;isClean(); // false
+$user-&gt;isClean(&#39;title&#39;); // false
+$user-&gt;isClean(&#39;first_name&#39;); // true
+$user-&gt;isClean([&#39;first_name&#39;, &#39;title&#39;]); // false
+
+$user-&gt;save();
+
+$user-&gt;isDirty(); // false
+$user-&gt;isClean(); // true
+</code></pre></div>
+<p><code>wasChanged</code> 方法確定在當前請求週期內最後一次保存模型時是否更改了任何屬性。你還可以傳遞屬性名稱以查看特定屬性是否已更改：</p>
+<div class="highlight"><pre><span></span><code>$user = User::create([
+    &#39;first_name&#39; =&gt; &#39;Taylor&#39;,
+    &#39;last_name&#39; =&gt; &#39;Otwell&#39;,
+    &#39;title&#39; =&gt; &#39;Developer&#39;,
+]);
+
+$user-&gt;title = &#39;Painter&#39;;
+
+$user-&gt;save();
+
+$user-&gt;wasChanged(); // true
+$user-&gt;wasChanged(&#39;title&#39;); // true
+$user-&gt;wasChanged([&#39;title&#39;, &#39;slug&#39;]); // true
+$user-&gt;wasChanged(&#39;first_name&#39;); // false
+$user-&gt;wasChanged([&#39;first_name&#39;, &#39;title&#39;]); // true
+</code></pre></div>
+<p><code>getOriginal</code> 方法返回一個包含模型原始屬性的陣列，忽略載入模型之後進行的任何更改。你也可以傳遞特定的屬性名稱來獲取特定屬性的原始值：</p>
+<div class="highlight"><pre><span></span><code>$user = User::find(1);
+
+$user-&gt;name; // John
+$user-&gt;email; // john@example.com
+
+$user-&gt;name = &quot;Jack&quot;;
+$user-&gt;name; // Jack
+
+$user-&gt;getOriginal(&#39;name&#39;); // John
+$user-&gt;getOriginal(); // 原始屬性陣列
+</code></pre></div>
+<h3 id="_29">批次賦值<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h3>
+<p>你可以使用<code>create</code>方法使用單個 PHP 語句「保存」一個新模型。插入的模型實例將通過該方法返回：</p>
+<div class="highlight"><pre><span></span><code>use App\Models\Flight;
+
+$flight = Flight::create([
+    &#39;name&#39; =&gt; &#39;London to Paris&#39;,
+]);
+</code></pre></div>
+<p>但是，在使用 <code>create</code> 方法之前，需要在模型類上指定 <code>fillable</code> 或 <code>guarded</code> 屬性。 這些屬性是必需的，因為默認情況下，所有 Eloquent 模型都受到保護，免受批次分配漏洞的影響。</p>
+<p>當使用者傳遞一個意外的 HTTP 請求欄位並且該欄位更改了你的資料庫中的一個欄位，而你沒有預料到時，就會出現批次分配漏洞。 例如，惡意使用者可能通過 HTTP 請求傳送 <code>is_admin</code> 參數，然後將其傳遞給模型的 <code>create</code> 方法，從而允許使用者將自己升級為管理員。</p>
+<p>因此，你應該定義要使哪些模型屬性可批次分配。可以使用模型上的 <code>$fillable</code> 屬性來執行此操作。 例如，讓 <code>Flight</code> 模型的 <code>name</code> 屬性可以批次賦值：</p>
+<div class="highlight"><pre><span></span><code>&lt;?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Flight extends Model
+{
+    /**
+     * 可批次賦值的屬性。
+     *
+     * @var array
+     */
+    protected $fillable = [&#39;name&#39;];
+}
+</code></pre></div>
+<p>一旦你指定了哪些屬性是可批次分配的，可以使用 <code>create</code> 方法在資料庫中插入一條新記錄。<code>create</code> 方法返回新建立的模型實例</p>
+<div class="highlight"><pre><span></span><code>$flight = Flight::create([&#39;name&#39; =&gt; &#39;London to Paris&#39;]);
+</code></pre></div>
+<p>如果你已經有一個模型實例，你可以使用 <code>fill</code> 方法來填充它的屬性陣列：</p>
+<div class="highlight"><pre><span></span><code>$flight-&gt;fill([&#39;name&#39; =&gt; &#39;Amsterdam to Frankfurt&#39;]);
+</code></pre></div>
+<h4 id="json">批次賦值 &amp; JSON 列<a class="headerlink" href="#json" title="Permanent link">&para;</a></h4>
+<p>分配 JSON 列時，必須在模型的 <code>$fillable</code> 陣列中指定每個列的批次分配鍵。為了安全起見，Laravel 不支援在使用 <code>guarded</code> 屬性時更新巢狀的 JSON 屬性：</p>
+<div class="highlight"><pre><span></span><code>/**
+ * 可以批次賦值的屬性。
+ *
+ * @var array
+ */
+protected $fillable = [
+    &#39;options-&gt;enabled&#39;,
+];
+</code></pre></div>
+<h4 id="_30">允許批次分配<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h4>
+<p>如果你想讓所有屬性都可以批次賦值，你可以將 <code>$guarded</code> 定義成一個空陣列。如果你選擇解除你的模型的保護，你應該時刻特別注意傳遞給 Eloquent 的 <code>fill</code>、<code>create</code> 和 <code>update</code> 方法的陣列：</p>
+<div class="highlight"><pre><span></span><code>/**
+ * 不可以批次賦值的屬性。
+ *
+ * @var array
+ */
+protected $guarded = [];
+</code></pre></div>
+<h4 id="_31">批次作業異常拋出<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h4>
+<p>默認情況下，在執行批次分配操作時，未包含在<code>$fillable</code>陣列中的屬性將被靜默丟棄。 在生產環境中，這是預期行為; 然而，在局部開發過程中，它可能導致為什麼模型更改沒有生效的困惑。</p>
+<p>如果你願意，你可以指示Laravel在試圖通過呼叫<code>preventSilentlyDiscardingAttributes</code>方法填充一個不可填充的屬性時拋出一個異常。 通常，這個方法在應用程式服務提供者的<code>boot</code>方法中呼叫:</p>
+<div class="highlight"><pre><span></span><code>use Illuminate\Database\Eloquent\Model;
+
+/**
+ * 載入任意應用服務。
+ */
+public function boot(): void
+{
+    Model::preventSilentlyDiscardingAttributes($this-&gt;app-&gt;isLocal());
+}
+</code></pre></div>
+<h3 id="_32">新增或更新<a class="headerlink" href="#_32" title="Permanent link">&para;</a></h3>
+<p>有時，如果不存在匹配的模型，你可能需要更新現有模型或建立新模型。與 <code>firstOrCreate</code> 方法一樣，<code>updateOrCreate</code> 方法會持久化模型，因此無需手動呼叫 <code>save</code> 方法。</p>
+<p>在下面的示例中，如果存在<code>departure</code>位置為<code>Oakland</code>且<code>destination</code>位置為<code>San Diego</code>的航班，則其<code>price</code>和<code>discounted</code>列將被更新。 如果不存在這樣的航班，將建立一個新航班，該航班具有將第一個參數陣列與第二個參數陣列合併後的屬性：</p>
+<div class="highlight"><pre><span></span><code>$flight = Flight::updateOrCreate(
+    [&#39;departure&#39; =&gt; &#39;Oakland&#39;, &#39;destination&#39; =&gt; &#39;San Diego&#39;],
+    [&#39;price&#39; =&gt; 99, &#39;discounted&#39; =&gt; 1]
+);
+</code></pre></div>
+<p>如果你想在單個查詢中執行多個「新增或更新」，那麼應該使用 <code>upsert</code> 方法。該方法的第一個參數包含要插入或更新的值，而第二個參數列出了在關聯表中唯一標識記錄的列。該方法的第三個也是最後一個參數是一個列陣列，如果資料庫中已經存在匹配的記錄，則應該更新這些列。如果在模型上啟用了時間戳，<code>upsert</code> 方法將自動設定 <code>created_at</code> 和 <code>updated_at</code> 時間戳：</p>
+<div class="highlight"><pre><span></span><code>Flight::upsert([
+    [&#39;departure&#39; =&gt; &#39;Oakland&#39;, &#39;destination&#39; =&gt; &#39;San Diego&#39;, &#39;price&#39; =&gt; 99],
+    [&#39;departure&#39; =&gt; &#39;Chicago&#39;, &#39;destination&#39; =&gt; &#39;New York&#39;, &#39;price&#39; =&gt; 150]
+], [&#39;departure&#39;, &#39;destination&#39;], [&#39;price&#39;]);
+</code></pre></div>
+<blockquote>
+<p><strong>注意</strong><br />
+除SQL Server外，其他所有資料庫都要求<code>upsert</code>方法的第二個參數中的列具有主鍵索引或唯一索引。 此外，MySQL資料庫驅動程式忽略了<code>upsert</code> 方法的第二個參數，總是使用表的主鍵索引和唯一索引來檢測現有的記錄</p>
+</blockquote>
+<h2 id="_33">刪除模型<a class="headerlink" href="#_33" title="Permanent link">&para;</a></h2>
+<p>想刪除模型，你可以呼叫模型實例的 <code>delete</code> 方法:</p>
+<div class="highlight"><pre><span></span><code>use App\Models\Flight;
+
+$flight = Flight::find(1);
+
+$flight-&gt;delete();
+</code></pre></div>
+<p>你可以呼叫 <code>truncate</code> 方法來刪除所有模型關聯的資料庫記錄。 <code>truncate</code> 操作還將重設模型關聯表上的所有自動遞增 ID：</p>
+<div class="highlight"><pre><span></span><code>Flight::truncate();
+</code></pre></div>
+<h4 id="_34">通過其主鍵刪除現有模型<a class="headerlink" href="#_34" title="Permanent link">&para;</a></h4>
+<p>在上面的示例中，我們在呼叫<code>delete</code>方法之前從資料庫中檢索模型。但是，如果你知道模型的主鍵，則可以通過呼叫 <code>destroy</code> 方法刪除模型而無需顯式檢索它。除了接受單個主鍵之外，<code>destroy</code> 方法還將接受多個主鍵、主鍵陣列或主鍵 <a href="/docs/laravel/10.x/collections">集合</a>：</p>
+<div class="highlight"><pre><span></span><code>Flight::destroy(1);
+
+Flight::destroy(1, 2, 3);
+
+Flight::destroy([1, 2, 3]);
+
+Flight::destroy(collect([1, 2, 3]));
+</code></pre></div>
+<blockquote>
+<p><strong>注意</strong><br />
+<code>destroy</code> 方法單獨載入每個模型並呼叫 <code>delete</code> 方法，以便為每個模型正確調度 <code>deleting</code> 和 <code>deleted</code> 事件。</p>
+</blockquote>
+<h4 id="_35">使用查詢刪除模型<a class="headerlink" href="#_35" title="Permanent link">&para;</a></h4>
+<p>當然，你可以建構一個 Eloquent 查詢來刪除所有符合你查詢條件的模型。在此示例中，我們將刪除所有標記為非活動的航班。與批次更新一樣，批次刪除不會為已刪除的模型調度模型事件：</p>
+<div class="highlight"><pre><span></span><code>$deleted = Flight::where(&#39;active&#39;, 0)-&gt;delete();
+</code></pre></div>
+<blockquote>
+<p><strong>注意</strong><br />
+通過 Eloquent 執行批次刪除語句時，不會為已刪除的模型調度 <code>deleting</code> 和 <code>deleted</code> 模型事件。這是因為在執行 delete 語句時從未真正檢索到模型。</p>
+</blockquote>
+<h3 id="_36">軟刪除<a class="headerlink" href="#_36" title="Permanent link">&para;</a></h3>
+<p>除了實際從資料庫中刪除記錄之外，Eloquent 還可以「軟刪除」。軟刪除不會真的從資料庫中刪除記錄。相反，它在模型上設定了一個 <code>deleted_at</code> 屬性，記錄模型被「刪除」的日期和時間。要為模型啟用軟刪除，請將 <code>Illuminate\Database\Eloquent\SoftDeletes</code> trait 新增到模型中：</p>
+<div class="highlight"><pre><span></span><code>&lt;?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
+class Flight extends Model
+{
+    use SoftDeletes;
+}
+</code></pre></div>
+<blockquote>
+<p><strong>注意</strong><br />
+<code>SoftDeletes</code> trait 會自動將 <code>deleted_at</code> 屬性轉換為 <code>DateTime</code> / <code>Carbon</code> 實例</p>
+</blockquote>
+<p>當然，你需要把 <code>deleted_at</code> 欄位新增到資料表中。<code>Laravel</code> 的<a href="/docs/laravel/10.x/migrations">資料遷移</a>有建立這個欄位的方法：</p>
+<div class="highlight"><pre><span></span><code>use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+Schema::table(&#39;flights&#39;, function (Blueprint $table) {
+    $table-&gt;softDeletes();
+});
+
+Schema::table(&#39;flights&#39;, function (Blueprint $table) {
+    $table-&gt;dropSoftDeletes();
+});
+</code></pre></div>
+<p>那現在，當你在模型實例上使用 <code>delete</code> 方法，當前日期時間會寫入 <code>deleted_at</code> 欄位。同時，查詢出來的結果也會自動排除已被軟刪除的記錄。</p>
+<p>判斷模型實例是否已被軟刪除，可以使用 <code>trashed</code> 方法：</p>
+<div class="highlight"><pre><span></span><code>if ($flight-&gt;trashed()) {
+    // ...
+}
+</code></pre></div>
+<h4 id="_37">恢復軟刪除的模型<a class="headerlink" href="#_37" title="Permanent link">&para;</a></h4>
+<p>有時你可能希望「撤銷」軟刪除的模型。要恢復軟刪除的模型，可以在模型實例上呼叫<code>restore</code>方法。 <code>restore</code> 方法會將模型的 <code>deleted_at</code> 列設定為 <code>null</code>：</p>
+<div class="highlight"><pre><span></span><code>$flight-&gt;restore();
+</code></pre></div>
+<p>你也可以在查詢中使用 <code>restore</code> 方法，從而快速恢復多個模型。和其他「批次」操作一樣，這個操作不會觸發模型的任何事件：</p>
+<div class="highlight"><pre><span></span><code>Flight::withTrashed()
+        -&gt;where(&#39;airline_id&#39;, 1)
+        -&gt;restore();
+</code></pre></div>
+<p><code>restore</code> 方法可以在<a href="/docs/laravel/10.x/eloquent-relationships">關聯查詢</a>中使用：</p>
+<div class="highlight"><pre><span></span><code>$flight-&gt;history()-&gt;restore();
+</code></pre></div>
+<h4 id="_38">永久刪除模型<a class="headerlink" href="#_38" title="Permanent link">&para;</a></h4>
+<p>有時你可能需要從資料庫中真正刪除模型。要從資料庫中永久刪除軟刪除的模型，請使用 <code>forceDelete</code> 方法：</p>
+<div class="highlight"><pre><span></span><code>$flight-&gt;forceDelete();
+</code></pre></div>
+<p><code>forceDelete</code> 同樣可以用在關聯查詢上:</p>
+<div class="highlight"><pre><span></span><code>$flight-&gt;history()-&gt;forceDelete();
+</code></pre></div>
+<h3 id="_39">查詢軟刪除模型<a class="headerlink" href="#_39" title="Permanent link">&para;</a></h3>
+<h4 id="_40">包括已軟刪除的模型<a class="headerlink" href="#_40" title="Permanent link">&para;</a></h4>
+<p>如上所述，軟刪除模型將自動從查詢結果中排除。但是，你也可以通過在查詢上呼叫 <code>withTrashed</code> 方法來強制將軟刪除模型包含在查詢結果中：</p>
+<div class="highlight"><pre><span></span><code>use App\Models\Flight;
+
+$flights = Flight::withTrashed()
+                -&gt;where(&#39;account_id&#39;, 1)
+                -&gt;get();
+</code></pre></div>
+<p><code>withTrashed</code> 方法可以在 <a href="/docs/laravel/10.x/eloquent-relationships">關聯查詢</a> 中使用</p>
+<div class="highlight"><pre><span></span><code>$flight-&gt;history()-&gt;withTrashed()-&gt;get();
+</code></pre></div>
+<h4 id="_41">僅檢索軟刪除的模型<a class="headerlink" href="#_41" title="Permanent link">&para;</a></h4>
+<p><code>onlyTrashed</code> 方法將檢索 <strong>只被</strong> 軟刪除模型：</p>
+<div class="highlight"><pre><span></span><code>$flights = Flight::onlyTrashed()
+                -&gt;where(&#39;airline_id&#39;, 1)
+                -&gt;get();
+</code></pre></div>
+<h2 id="_42">修剪模型<a class="headerlink" href="#_42" title="Permanent link">&para;</a></h2>
+<p>有時你可能希望定期刪除不再需要的模型。為此，你可以將 <code>Illuminate\Database\Eloquent\Prunable</code> 或 <code>Illuminate\Database\Eloquent\MassPrunable</code> trait 新增到要定期修剪的模型中。將其中一個 trait 新增到模型後，實現 <code>prunable</code> 方法，該方法返回一個 Eloquent 查詢建構器，用於檢索不再需要的模型資料：</p>
+<div class="highlight"><pre><span></span><code>&lt;?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Prunable;
+
+class Flight extends Model
+{
+    use Prunable;
+
+    /**
+     * 獲取可修剪模型查詢構造器。
+     */
+    public function prunable(): Builder
+    {
+        return static::where(&#39;created_at&#39;, &#39;&lt;=&#39;, now()-&gt;subMonth());
+    }
+}
+</code></pre></div>
+<p>當將模型標記為 <code>Prunable</code> 時，你還可以在模型上定義 <code>pruning</code> 方法。該方法將在模型被刪除之前被呼叫。在從資料庫中永久刪除模型之前，此方法可用於刪除與模型關聯的任何其他資源，例如儲存的檔案：</p>
+<div class="highlight"><pre><span></span><code>/**
+ * 準備模型進行修剪。
+ */
+protected function pruning(): void
+{
+    // ...
+}
+</code></pre></div>
+<p>組態可修剪模型後，你還應該在應用程式的 <code>App\Console\Kernel</code> 類中調度 <code>model:prune</code> Artisan 命令。你可以自由選擇運行此命令的時間間隔：</p>
+<div class="highlight"><pre><span></span><code>/**
+ * 定義應用程式的命令計畫。
+ */
+protected function schedule(Schedule $schedule): void
+{
+    $schedule-&gt;command(&#39;model:prune&#39;)-&gt;daily();
+}
+</code></pre></div>
+<p>在後台，<code>model:prune</code> 命令會自動檢測應用程式的 <code>app/Models</code> 目錄中的「Prunable」模型。 如果模型位於不同的位置，可以使用 <code>--model</code> 選項來指定模型類名稱：</p>
+<div class="highlight"><pre><span></span><code>$schedule-&gt;command(&#39;model:prune&#39;, [
+    &#39;--model&#39; =&gt; [Address::class, Flight::class],
+])-&gt;daily();
+</code></pre></div>
+<p>如果你想在修剪所有其他檢測到的模型時排除某些模型被修剪，你可以使用 <code>--except</code> 選項：</p>
+<div class="highlight"><pre><span></span><code>$schedule-&gt;command(&#39;model:prune&#39;, [
+    &#39;--except&#39; =&gt; [Address::class, Flight::class],
+])-&gt;daily();
+</code></pre></div>
+<p>你可以通過執行帶有 <code>--pretend</code> 選項的 <code>model:prune</code> 命令來預測你的 <code>prunable</code> 查詢。預測時，<code>model:prune</code> 命令將報告該命令實際運行將修剪多少記錄：</p>
+<div class="highlight"><pre><span></span><code>php<span class="w"> </span>artisan<span class="w"> </span>model:prune<span class="w"> </span>--pretend
+</code></pre></div>
+<blockquote>
+<p><strong>注意</strong><br />
+如果軟刪除模型與可修剪查詢匹配，則它們將被永久刪除（<code>forceDelete</code>）。</p>
+</blockquote>
+<h4 id="_43">批次修剪模型<a class="headerlink" href="#_43" title="Permanent link">&para;</a></h4>
+<p>當模型被標記為 <code>Illuminate\Database\Eloquent\MassPrunable</code> 特徵時，模型會使用批次刪除查詢從資料庫中刪除。因此，不會呼叫 <code>pruning</code> 方法，也不會觸發 <code>deleting</code> 和 <code>deleted</code> 模型事件。這是因為模型在刪除之前從未真正檢索過，因此更高效：</p>
+<div class="highlight"><pre><span></span><code>&lt;?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\MassPrunable;
+
+class Flight extends Model
+{
+    use MassPrunable;
+
+    /**
+     * 獲取可修剪模型查詢。
+     */
+    public function prunable(): Builder
+    {
+        return static::where(&#39;created_at&#39;, &#39;&lt;=&#39;, now()-&gt;subMonth());
+    }
+}
+</code></pre></div>
+<h2 id="_44">複製模型<a class="headerlink" href="#_44" title="Permanent link">&para;</a></h2>
+<p>可以使用 <code>replicate</code> 方法建立現有模型實例的未保存副本。在擁有共享許多相同屬性的模型實例時，此方法特別有用：</p>
+<div class="highlight"><pre><span></span><code>use App\Models\Address;
+
+$shipping = Address::create([
+    &#39;type&#39; =&gt; &#39;shipping&#39;,
+    &#39;line_1&#39; =&gt; &#39;123 Example Street&#39;,
+    &#39;city&#39; =&gt; &#39;Victorville&#39;,
+    &#39;state&#39; =&gt; &#39;CA&#39;,
+    &#39;postcode&#39; =&gt; &#39;90001&#39;,
+]);
+
+$billing = $shipping-&gt;replicate()-&gt;fill([
+    &#39;type&#39; =&gt; &#39;billing&#39;
+]);
+
+$billing-&gt;save();
+</code></pre></div>
+<p>要排除一個或多個屬性被覆制到新模型，可以將陣列傳遞給 <code>replicate</code> 方法：</p>
+<div class="highlight"><pre><span></span><code>$flight = Flight::create([
+    &#39;destination&#39; =&gt; &#39;LAX&#39;,
+    &#39;origin&#39; =&gt; &#39;LHR&#39;,
+    &#39;last_flown&#39; =&gt; &#39;2020-03-04 11:00:00&#39;,
+    &#39;last_pilot_id&#39; =&gt; 747,
+]);
+
+$flight = $flight-&gt;replicate([
+    &#39;last_flown&#39;,
+    &#39;last_pilot_id&#39;
+]);
+</code></pre></div>
+<h2 id="_45">查詢範疇<a class="headerlink" href="#_45" title="Permanent link">&para;</a></h2>
+<h3 id="_46">全域範疇<a class="headerlink" href="#_46" title="Permanent link">&para;</a></h3>
+<p>全域範疇可以為模型的所有查詢新增約束。 Laravel 的<a href="#soft-deleting">軟刪除</a> 功能就是利用全域範圍僅從資料庫中檢索「未刪除」模型。編寫全域範圍查詢可以為模型的每個查詢都新增約束條件。</p>
+<h4 id="_47">編寫全域範疇<a class="headerlink" href="#_47" title="Permanent link">&para;</a></h4>
+<p>編寫全域範圍很簡單。首先，定義一個實現 <code>Illuminate\Database\Eloquent\Scope</code> 介面的類。 Laravel 沒有放置範疇類的常規位置，因此你可以自由地將此類放置在你希望的任何目錄中。</p>
+<p><code>Scope</code> 介面要求實現 <code>apply</code> 方法。 <code>apply</code> 方法可以根據需要向查詢中新增 <code>where</code> 約束或其他類型的子句：</p>
+<div class="highlight"><pre><span></span><code>&lt;?php
+
+namespace App\Models\Scopes;
+
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Scope;
+
+class AncientScope implements Scope
+{
+    /**
+     * 將範疇應用於給定的 Eloquent 查詢建構器
+     */
+    public function apply(Builder $builder, Model $model): void
+    {
+        $builder-&gt;where(&#39;created_at&#39;, &#39;&lt;&#39;, now()-&gt;subYears(2000));
+    }
+}
+</code></pre></div>
+<blockquote>
+<p><strong>注意</strong><br />
+如果需要在 <code>select</code> 語句裡新增欄位，應使用 <code>addSelect</code> 方法，而不是 <code>select</code> 方法。這將有效防止無意中替換現有 <code>select</code> 語句的情況。</p>
+</blockquote>
+<h4 id="_48">應用全域範疇<a class="headerlink" href="#_48" title="Permanent link">&para;</a></h4>
+<p>要將全域範疇分配給模型，需要重寫模型的 <code>booted</code> 方法並使用 <code>addGlobalScope</code> 方法，<code>addGlobalScope</code> 方法接受範疇的一個實例作為它的唯一參數：</p>
+<div class="highlight"><pre><span></span><code>&lt;?php
+
+namespace App\Models;
+
+use App\Models\Scopes\AncientScope;
+use Illuminate\Database\Eloquent\Model;
+
+class User extends Model
+{
+    /**
+     * 模型的「引導」方法。
+     */
+    protected static function booted(): void
+    {
+        static::addGlobalScope(new AncientScope);
+    }
+}
+</code></pre></div>
+<p>將上例中的範疇新增到 <code>App\Models\User</code> 模型後，用 <code>User::all()</code> 方法將執行以下 SQL 查詢：</p>
+<div class="highlight"><pre><span></span><code><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="o">`</span><span class="n">users</span><span class="o">`</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="o">`</span><span class="n">created_at</span><span class="o">`</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0021</span><span class="o">-</span><span class="mi">02</span><span class="o">-</span><span class="mi">18</span><span class="w"> </span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+</code></pre></div>
+<h4 id="_49">匿名全域範疇<a class="headerlink" href="#_49" title="Permanent link">&para;</a></h4>
+<p>Eloquent 同樣允許使用閉包定義全域範疇，這樣就不需要為一個簡單的範疇而編寫一個單獨的類。使用閉包定義全域範疇時，你應該指定一個範疇名稱作為 <code>addGlobalScope</code> 方法的第一個參數：</p>
+<div class="highlight"><pre><span></span><code>&lt;?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
+
+class User extends Model
+{
+    /**
+     * 模型的「引導」方法。
+     */
+    protected static function booted(): void
+    {
+        static::addGlobalScope(&#39;ancient&#39;, function (Builder $builder) {
+            $builder-&gt;where(&#39;created_at&#39;, &#39;&lt;&#39;, now()-&gt;subYears(2000));
+        });
+    }
+}
+</code></pre></div>
+<h4 id="_50">取消全域範疇<a class="headerlink" href="#_50" title="Permanent link">&para;</a></h4>
+<p>如果需要對當前查詢取消全域範疇，需要使用 <code>withoutGlobalScope</code> 方法。該方法僅接受全域範疇類名作為它唯一的參數：</p>
+<div class="highlight"><pre><span></span><code>User::withoutGlobalScope(AncientScope::class)-&gt;get();
+</code></pre></div>
+<p>或者，如果你使用閉包定義了全域範疇，則應傳遞分配給全域範疇的字串名稱：</p>
+<div class="highlight"><pre><span></span><code>User::withoutGlobalScope(&#39;ancient&#39;)-&gt;get();
+</code></pre></div>
+<p>如果需要取消部分或者全部的全域範疇的話，需要使用 <code>withoutGlobalScopes</code> 方法：</p>
+<div class="highlight"><pre><span></span><code>// 取消全部全域範疇...
+User::withoutGlobalScopes()-&gt;get();
+
+// 取消部分範疇...
+User::withoutGlobalScopes([
+    FirstScope::class, SecondScope::class
+])-&gt;get();
+</code></pre></div>
+<h3 id="_51">局部範疇<a class="headerlink" href="#_51" title="Permanent link">&para;</a></h3>
+<p>局部範疇允許定義通用的約束集合以便在應用程式中重複使用。例如，你可能經常需要獲取所有「流行」的使用者。要定義這樣一個範圍，只需要在對應的 Eloquent 模型方法前新增 <code>scope</code> 前綴。</p>
+<p>範疇總是返回一個查詢構造器實例或者<code>void</code>：</p>
+<div class="highlight"><pre><span></span><code>&lt;?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
+
+class User extends Model
+{
+    /**
+     * 只查詢受歡迎的使用者的範疇。
+     */
+    public function scopePopular(Builder $query): void
+    {
+        $query-&gt;where(&#39;votes&#39;, &#39;&gt;&#39;, 100);
+    }
+
+    /**
+     * 只查詢 active 使用者的範疇。
+     */
+    public function scopeActive(Builder $query): void
+    {
+        $query-&gt;where(&#39;active&#39;, 1);
+    }
+}
+</code></pre></div>
+<h4 id="_52">使用局部範疇<a class="headerlink" href="#_52" title="Permanent link">&para;</a></h4>
+<p>一旦定義了範疇，就可以在查詢該模型時呼叫範疇方法。不過，在呼叫這些方法時不必包含 <code>scope</code> 前綴。甚至可以鏈式呼叫多個範疇，例如：</p>
+<div class="highlight"><pre><span></span><code>use App\Models\User;
+
+$users = User::popular()-&gt;active()-&gt;orderBy(&#39;created_at&#39;)-&gt;get();
+</code></pre></div>
+<p>通過 <code>or</code> 查詢運算子組合多個 Eloquent 模型範疇可能需要使用閉包來實現正確的<a href="/docs/laravel/10.x/queries#logical-grouping">邏輯分組</a>：</p>
+<div class="highlight"><pre><span></span><code>$users = User::popular()-&gt;orWhere(function (Builder $query) {
+    $query-&gt;active();
+})-&gt;get();
+</code></pre></div>
+<p>然而這可能有點麻煩，所以 Laravel 提供了一個更高階的 <code>orWhere</code> 方法，允許你流暢地將範疇連結在一起，而無需使用閉包：</p>
+<div class="highlight"><pre><span></span><code>$users = App\Models\User::popular()-&gt;orWhere-&gt;active()-&gt;get();
+</code></pre></div>
+<h4 id="_53">動態範疇<a class="headerlink" href="#_53" title="Permanent link">&para;</a></h4>
+<p>有時可能地希望定義一個可以接受參數的範疇。把額外參數傳遞給範疇就可以達到此目的。範疇參數要放在 <code>$query</code> 參數之後：</p>
+<div class="highlight"><pre><span></span><code>&lt;?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class User extends Model
+{
+    /**
+     * 將查詢範疇限製為僅包含給定類型的使用者。
+     */
+    public function scopeOfType(Builder $query, string $type): void
+    {
+        $query-&gt;where(&#39;type&#39;, $type);
+    }
+}
+</code></pre></div>
+<p>一旦將預期的參數新增到範疇方法的簽名中，你就可以在呼叫範疇時傳遞參數：</p>
+<div class="highlight"><pre><span></span><code>$users = User::ofType(&#39;admin&#39;)-&gt;get();
+</code></pre></div>
+<h2 id="_54">模型比較<a class="headerlink" href="#_54" title="Permanent link">&para;</a></h2>
+<p>有時可能需要判斷兩個模型是否「相同」。<code>is</code> 和 <code>isNot</code> 方法可以用來快速校驗兩個模型是否擁有相同的主鍵、表和資料庫連接：</p>
+<div class="highlight"><pre><span></span><code>if ($post-&gt;is($anotherPost)) {
+    // ...
+}
+
+if ($post-&gt;isNot($anotherPost)) {
+    // ...
+}
+</code></pre></div>
+<p>當使用 <code>belongsTo</code>、<code>hasOne</code>、<code>morphTo</code> 和 <code>morphOne</code> <a href="/docs/laravel/10.x/eloquent-relationships">relationships</a> 時，<code>is</code> 和 <code>isNot</code> 方法也可用。當你想比較相關模型而不發出查詢來檢索該模型時，此方法特別有用：</p>
+<div class="highlight"><pre><span></span><code>if ($post-&gt;author()-&gt;is($user)) {
+    // ...
+}
+</code></pre></div>
+<h2 id="events">Events<a class="headerlink" href="#events" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p><strong>注意</strong><br />
+想要將 Eloquent 事件直接廣播到客戶端應用程式？查看 Laravel 的<a href="/docs/laravel/10.x/broadcasting#model-broadcasting">模型事件廣播</a>。</p>
+</blockquote>
+<p>Eloquent 模型觸發幾個事件，允許你掛接到模型生命週期的如下節點： <code>retrieved</code>、<code>creating</code>、<code>created</code>、<code>updating</code>、<code>updated</code>、<code>saving</code>、<code>saved</code>、<code>deleting</code>、<code>deleted</code>、<code>restoring</code>、<code>restored</code>、<code>replicating</code>。事件允許你每當特定模型保存或更新資料庫時執行程式碼。每個事件通過其構造器接受模型實例。</p>
+<p>當從資料庫中檢索到現有模型時，將調度 <code>retrieved</code> 事件。 當一個新模型第一次被保存時，<code>creating</code> 和 <code>created</code> 事件將被觸發。 <code>updating</code> / <code>updated</code> 事件將在修改現有模型並呼叫 <code>save</code> 方法時觸發。<code>saving</code> / <code>saved</code> 事件將在建立或更新模型時觸發 - 即使模型的屬性沒有更改。以<code>-ing</code>結尾的事件名稱在模型的任何更改被持久化之前被調度，而以<code>-ed</code>結尾的事件在對模型的更改被持久化之後被調度。</p>
+<p>要開始監聽模型事件，請在 Eloquent 模型上定義一個 $dispatchesEvents 屬性。此屬性將 Eloquent 模型生命週期的各個點對應到你定義的<a href="/docs/laravel/10.x/events">事件類</a>。每個模型事件類都應該通過其建構函式接收受影響的模型的實例：</p>
+<div class="highlight"><pre><span></span><code>&lt;?php
+
+namespace App\Models;
+
+use App\Events\UserDeleted;
+use App\Events\UserSaved;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+
+class User extends Authenticatable
+{
+    use Notifiable;
+
+    /**
+     * 模型的事件對應。
+     *
+     * @var array
+     */
+    protected $dispatchesEvents = [
+        &#39;saved&#39; =&gt; UserSaved::class,
+        &#39;deleted&#39; =&gt; UserDeleted::class,
+    ];
+}
+</code></pre></div>
+<p>在定義和對應了 Eloquent 事件之後，可以使用 <a href="/docs/laravel/10.x/events#defining-listeners">event listeners</a> 來處理事件。</p>
+<blockquote>
+<p><strong>注意</strong><br />
+在使用 Eloquent 進行批次更新或刪除查詢時，受影響的模型不會觸發<code>saved</code>、<code>updated</code>、<code>deleting</code>和<code>deleted</code>等事件。這是因為在執行批次更新或刪除操作時，實際上沒有檢索到這些模型，所以也就不會觸發這些事件。</p>
+</blockquote>
+<h3 id="_55">使用閉包<a class="headerlink" href="#_55" title="Permanent link">&para;</a></h3>
+<p>你可以註冊一些閉包涵數來處理模型事件，而不使用自訂事件類。通常，你應該在模型的 <code>booted</code> 方法中註冊這些閉包</p>
+<div class="highlight"><pre><span></span><code>&lt;?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class User extends Model
+{
+    /**
+     * 模型的「booted」方法。
+     */
+    protected static function booted(): void
+    {
+        static::created(function (User $user) {
+            // ...
+        });
+    }
+}
+</code></pre></div>
+<p>如果需要，你可以在註冊模型事件時使用<a href="/docs/laravel/10.x/events#queuable-anonymous-event-listeners">佇列匿名事件偵聽器</a> 。這將指示 Laravel 使用應用程式的 <a href="/docs/laravel/10.x/queues">queue</a> 在後台執行模型事件監聽器：</p>
+<div class="highlight"><pre><span></span><code>use function Illuminate\Events\queueable;
+
+static::created(queueable(function (User $user) {
+    // ...
+}));
+</code></pre></div>
+<h3 id="_56">觀察者<a class="headerlink" href="#_56" title="Permanent link">&para;</a></h3>
+<h4 id="_57">定義觀察者<a class="headerlink" href="#_57" title="Permanent link">&para;</a></h4>
+<p>如果在一個模型上監聽了多個事件，可以使用觀察者來將這些監聽器組織到一個單獨的類中。觀察者類的方法名對應到你希望監聽的 Eloquent 事件。這些方法都以模型作為其唯一參數。<code>make:observer</code> Artisan 命令可以快速建立新的觀察者類：</p>
+<div class="highlight"><pre><span></span><code>php<span class="w"> </span>artisan<span class="w"> </span>make:observer<span class="w"> </span>UserObserver<span class="w"> </span>--model<span class="o">=</span>User
+</code></pre></div>
+<p>此命令將在 <code>App/Observers</code> 資料夾放置新的觀察者類。如果這個目錄不存在，Artisan 將替你建立。使用如下方式開啟觀察者：</p>
+<div class="highlight"><pre><span></span><code>&lt;?php
+
+namespace App\Observers;
+
+use App\Models\User;
+
+class UserObserver
+{
+    /**
+     * 處理使用者「建立」事件。
+     */
+    public function created(User $user): void
+    {
+        // ...
+    }
+
+    /**
+     * 處理使用者「更新」事件。
+     */
+    public function updated(User $user): void
+    {
+        // ...
+    }
+
+    /**
+     * 處理使用者「刪除」事件。
+     */
+    public function deleted(User $user): void
+    {
+        // ...
+    }
+
+    /**
+     * 處理使用者「還原」事件。
+     */
+    public function restored(User $user): void
+    {
+        // ...
+    }
+
+    /**
+     * 處理使用者「強制刪除」事件。
+     */
+    public function forceDeleted(User $user): void
+    {
+        // ...
+    }
+}
+</code></pre></div>
+<p>要註冊觀察者，需要在要觀察的模型上呼叫<code>Observer</code> 方法。你可以在應用程式的 <code>boot</code> 方法中註冊觀察者</p>
+<p><code>App\Providers\EventServiceProvider</code> 服務提供者:</p>
+<div class="highlight"><pre><span></span><code>use App\Models\User;
+use App\Observers\UserObserver;
+
+/**
+ * 為你的應用程式註冊任何事件。
+ */
+public function boot(): void
+{
+    User::observe(UserObserver::class);
+}
+</code></pre></div>
+<p>或者，可以在應用程式的 <code>$observers</code> 屬性中列出你的觀察者</p>
+<p><code>App\Providers\EventServiceProvider</code> class:</p>
+<div class="highlight"><pre><span></span><code>use App\Models\User;
+use App\Observers\UserObserver;
+
+/**
+ * 應用程式的模型觀察者。
+ *
+ * @var array
+ */
+protected $observers = [
+    User::class =&gt; [UserObserver::class],
+];
+</code></pre></div>
+<blockquote>
+<p><strong>技巧</strong><br />
+觀察者可以監聽其他事件，例如「saving」和「retrieved」。這些事件在 <a href="#events">events</a> 文件中進行了描述。</p>
+</blockquote>
+<h4 id="_58">觀察者與資料庫事務<a class="headerlink" href="#_58" title="Permanent link">&para;</a></h4>
+<p>在資料庫事務中建立模型時，你可能希望指示觀察者僅在提交資料庫事務後執行其事件處理程序。可以通過在觀察者上定義一個 <code>$afterCommit</code> 屬性來完成此操作。如果資料庫事務不在進行中，事件處理程序將立即執行：</p>
+<div class="highlight"><pre><span></span><code>&lt;?php
+
+namespace App\Observers;
+
+use App\Models\User;
+
+class UserObserver
+{
+    /**
+     * 在提交所有事務後處理事件
+     *
+     * @var bool
+     */
+    public $afterCommit = true;
+
+    /**
+     *  處理使用者「建立」事件。
+     */
+    public function created(User $user): void
+    {
+        // ...
+    }
+}
+</code></pre></div>
+<h3 id="_59">靜默事件<a class="headerlink" href="#_59" title="Permanent link">&para;</a></h3>
+<p>也許有時候你會需要暫時將所有由模型觸發的事件「靜默」處理。使用 <code>withoutEvents</code> 達到目的。<code>withoutEvents</code> 方法接受一個閉包作為唯一參數。任何在閉包中執行的程式碼都不會被分配模型事件，並且閉包涵數返回的任何值都將被 <code>withoutEvents</code> 方法所返回：</p>
+<div class="highlight"><pre><span></span><code>use App\Models\User;
+
+$user = User::withoutEvents(function () {
+    User::findOrFail(1)-&gt;delete();
+
+    return User::find(2);
+});
+</code></pre></div>
+<h4 id="_60">靜默的保存單個模型<a class="headerlink" href="#_60" title="Permanent link">&para;</a></h4>
+<p>有時候，你也許會想要「保存」一個已有的模型，且不觸發任何事件。那麼你可用 <code>saveQuietly</code> 方法達到目的：</p>
+<div class="highlight"><pre><span></span><code>$user = User::findOrFail(1);
+
+$user-&gt;name = &#39;Victoria Faith&#39;;
+
+$user-&gt;saveQuietly();
+</code></pre></div>
+<p>你也可以「更新」「刪除」「軟刪除」「還原」「複製」給定模型且不觸發任何事件：</p>
+<div class="highlight"><pre><span></span><code>$user-&gt;deleteQuietly();
+$user-&gt;forceDeleteQuietly();
+$user-&gt;restoreQuietly();
+</code></pre></div>
+
+
+
+
+
+                
+
+  <!-- Giscus -->
+  <h2 id="__comments">留言</h2>
+  <script src="https://giscus.app/client.js"
+          data-repo="tomleesm/notes"
+          data-repo-id="R_kgDOGuSz4g"
+          data-category="Announcements"
+          data-category-id="DIC_kwDOGuSz4s4CBI6T"
+          data-mapping="title"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="bottom"
+          data-theme="dark"
+          data-lang="zh-TW"
+          crossorigin="anonymous"
+          async>
+  </script>
+
+  <!-- Reload on palette change -->
+  <script>
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object")
+      if (palette.color.scheme === "slate") {
+        var giscus = document.querySelector("script[src*=giscus]")
+        giscus.setAttribute("data-theme", "dark")
+      }
+
+    /* Register event handlers after documented loaded */
+    document.addEventListener("DOMContentLoaded", function() {
+      var ref = document.querySelector("[data-md-component=palette]")
+      ref.addEventListener("change", function() {
+        var palette = __md_get("__palette")
+        if (palette && typeof palette.color === "object") {
+          var theme = palette.color.scheme === "slate" ? "dark" : "light"
+
+          /* Instruct Giscus to change theme */
+          var frame = document.querySelector(".giscus-frame")
+          frame.contentWindow.postMessage(
+            { giscus: { setConfig: { theme } } },
+            "https://giscus.app"
+          )
+        }
+      })
+    })
+  </script>
+
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            回到頂端
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tabs", "navigation.sections", "navigation.indexes", "navigation.top", "header.autohide", "search.highlight", "search.share"], "search": "../../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "\u5df2\u8907\u88fd", "clipboard.copy": "\u8907\u88fd", "search.result.more.one": "\u6b64\u9801\u5c1a\u6709 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.more.other": "\u6b64\u9801\u5c1a\u6709 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.none": "\u6c92\u6709\u7b26\u5408\u7684\u9805\u76ee", "search.result.one": "\u627e\u5230 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.other": "\u627e\u5230 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.placeholder": "\u6253\u5b57\u9032\u884c\u641c\u5c0b", "search.result.term.missing": "\u7f3a\u5c11\u5b57\u8a5e", "select.version": "\u9078\u64c7\u7248\u672c"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.dff1b7c8.min.js"></script>
+      
+    
+  </body>
+</html>

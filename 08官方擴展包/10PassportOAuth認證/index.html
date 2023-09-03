@@ -1,0 +1,5536 @@
+
+<!doctype html>
+<html lang="zh-TW" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../09Octane%E5%8A%A0%E9%80%9F%E5%BC%95%E6%93%8E/">
+      
+      
+        <link rel="next" href="../11Pennant%E6%B8%AC%E8%A9%A6%E6%96%B0%E5%8A%9F%E8%83%BD/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-9.2.7">
+    
+    
+      
+        <title>Passport OAuth 認證 - Tom 株式會社</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.046329b4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.85d0ee34.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+Traditional+Chinese:300,300i,400,400i,700,700i%7CSource+Code+Pro:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans Traditional Chinese";--md-code-font:"Source Code Pro"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="red" data-md-color-accent="red">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#passport-oauth" class="md-skip">
+          跳轉到
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="頁首">
+    <a href="../.." title="Tom 株式會社" class="md-header__button md-logo" aria-label="Tom 株式會社" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Tom 株式會社
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Passport OAuth 認證
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="red" data-md-color-accent="red"  aria-hidden="true"  type="radio" name="__palette" id="__palette_1">
+    
+  
+</form>
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜尋" placeholder="搜尋" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="搜尋">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清除" aria-label="清除" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜尋引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/tomleesm/notes" title="前往倉庫" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    tomleesm/notes
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="標籤" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../01%E6%A0%B8%E5%BF%83%E6%9E%B6%E6%A7%8B/01%E8%AB%8B%E6%B1%82%E7%9A%84%E7%94%9F%E5%91%BD%E9%80%B1%E6%9C%9F/" class="md-tabs__link">
+          
+  
+    
+  
+  核心架構
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/01%E8%B7%AF%E7%94%B1/" class="md-tabs__link">
+          
+  
+    
+  
+  基礎功能
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/01Artisan%E5%91%BD%E4%BB%A4%E5%88%97/" class="md-tabs__link">
+          
+  
+    
+  
+  繼續深入
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../04%E5%AE%89%E5%85%A8%E7%9B%B8%E9%97%9C/01%E4%BD%BF%E7%94%A8%E8%80%85%E8%AA%8D%E8%AD%89/" class="md-tabs__link">
+          
+  
+    
+  
+  安全相關
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../05%E8%B3%87%E6%96%99%E5%BA%AB/01%E5%BF%AB%E9%80%9F%E5%85%A5%E9%96%80/" class="md-tabs__link">
+          
+  
+    
+  
+  資料庫
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../06EloquentORM/01%E5%BF%AB%E9%80%9F%E5%85%A5%E9%96%80/" class="md-tabs__link">
+          
+  
+    
+  
+  Eloquent ORM
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../07%E6%B8%AC%E8%A9%A6%E7%9B%B8%E9%97%9C/01%E5%85%A5%E9%96%80/" class="md-tabs__link">
+          
+  
+    
+  
+  測試相關
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../01Cashier%E4%BA%A4%E6%98%93%E5%B7%A5%E5%85%B7%E5%8C%85Stripe/" class="md-tabs__link">
+          
+  
+    
+  
+  官方擴展包
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../cheatsheets/artisan/" class="md-tabs__link">
+          
+  
+    
+  
+  語法速查表
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="導覽列" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Tom 株式會社" class="md-nav__button md-logo" aria-label="Tom 株式會社" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Tom 株式會社
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/tomleesm/notes" title="前往倉庫" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    tomleesm/notes
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    核心架構
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            核心架構
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01%E6%A0%B8%E5%BF%83%E6%9E%B6%E6%A7%8B/01%E8%AB%8B%E6%B1%82%E7%9A%84%E7%94%9F%E5%91%BD%E9%80%B1%E6%9C%9F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    請求的生命週期
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01%E6%A0%B8%E5%BF%83%E6%9E%B6%E6%A7%8B/02%E6%9C%8D%E5%8B%99%E5%AE%B9%E5%99%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    服務容器
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01%E6%A0%B8%E5%BF%83%E6%9E%B6%E6%A7%8B/03%E6%9C%8D%E5%8B%99%E6%8F%90%E4%BE%9B%E8%80%85/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    服務提供者
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01%E6%A0%B8%E5%BF%83%E6%9E%B6%E6%A7%8B/04Facades/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Facades
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    基礎功能
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            基礎功能
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/01%E8%B7%AF%E7%94%B1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    路由
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/02%E4%B8%AD%E4%BB%8B%E8%BB%9F%E9%AB%94/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    中介軟體
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/03CSRF%E4%BF%9D%E8%AD%B7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CSRF 保護
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/04Controller/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Controller
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/05HTTP%E8%AB%8B%E6%B1%82/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTTP 請求
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/06HTTP%E9%9F%BF%E6%87%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTTP 響應
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/07%E6%AA%A2%E8%A6%96/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    檢視
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/08Blade%E7%AF%84%E6%9C%AC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Blade 範本
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/09Vite%E7%B7%A8%E8%AD%AFAssets/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vite 編譯 Assets
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/10%E7%94%9F%E6%88%90URL/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    生成 URL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/11Session/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Session
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/12%E8%A1%A8%E5%96%AE%E9%A9%97%E8%AD%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    表單驗證
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/13%E9%8C%AF%E8%AA%A4%E8%99%95%E7%90%86/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    錯誤處理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/14%E6%97%A5%E8%AA%8C/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    日誌
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    繼續深入
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            繼續深入
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/01Artisan%E5%91%BD%E4%BB%A4%E5%88%97/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Artisan 命令列
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/02%E5%BB%A3%E6%92%AD/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    廣播
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/03%E5%BF%AB%E5%8F%96%E7%B3%BB%E7%B5%B1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    快取系統
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/04%E9%9B%86%E5%90%88/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    集合
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/05%E5%A5%91%E7%B4%84Contract/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    契約 Contract
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/06%E4%BA%8B%E4%BB%B6%E7%B3%BB%E7%B5%B1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    事件系統
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/07%E6%AA%94%E6%A1%88%E5%84%B2%E5%AD%98/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    檔案儲存
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/09HTTPClient/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTTP Client
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/10%E6%9C%AC%E5%9C%B0%E5%8C%96/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    本地化
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/11%E9%83%B5%E4%BB%B6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    郵件
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/12%E6%B6%88%E6%81%AF%E9%80%9A%E7%9F%A5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    消息通知
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/13Package%E9%96%8B%E7%99%BC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Package 開發
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/14%E8%99%95%E7%90%86%E7%A8%8B%E5%BA%8F%E7%AE%A1%E7%90%86/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    處理程序管理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/15%E4%BD%87%E5%88%97/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    佇列
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/16%E9%99%90%E6%B5%81/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    限流
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/17%E4%BB%BB%E5%8B%99%E8%AA%BF%E5%BA%A6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    任務調度
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    安全相關
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            安全相關
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04%E5%AE%89%E5%85%A8%E7%9B%B8%E9%97%9C/01%E4%BD%BF%E7%94%A8%E8%80%85%E8%AA%8D%E8%AD%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    使用者認證
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04%E5%AE%89%E5%85%A8%E7%9B%B8%E9%97%9C/02%E4%BD%BF%E7%94%A8%E8%80%85%E6%8E%88%E6%AC%8A/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    使用者授權
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04%E5%AE%89%E5%85%A8%E7%9B%B8%E9%97%9C/03Email%E8%AA%8D%E8%AD%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Email 認證
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04%E5%AE%89%E5%85%A8%E7%9B%B8%E9%97%9C/04%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    加密解密
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04%E5%AE%89%E5%85%A8%E7%9B%B8%E9%97%9C/05%E9%9B%9C%E6%B9%8A/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    雜湊
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04%E5%AE%89%E5%85%A8%E7%9B%B8%E9%97%9C/06%E9%87%8D%E8%A8%AD%E5%AF%86%E7%A2%BC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    重設密碼
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    資料庫
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            資料庫
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05%E8%B3%87%E6%96%99%E5%BA%AB/01%E5%BF%AB%E9%80%9F%E5%85%A5%E9%96%80/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    快速入門
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05%E8%B3%87%E6%96%99%E5%BA%AB/02%E6%9F%A5%E8%A9%A2%E7%94%9F%E6%88%90%E5%99%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    查詢生成器
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05%E8%B3%87%E6%96%99%E5%BA%AB/03%E5%88%86%E9%A0%81/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    分頁
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05%E8%B3%87%E6%96%99%E5%BA%AB/04%E9%81%B7%E7%A7%BB/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    遷移
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05%E8%B3%87%E6%96%99%E5%BA%AB/05%E8%B3%87%E6%96%99%E5%A1%AB%E5%85%85/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    資料填充
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05%E8%B3%87%E6%96%99%E5%BA%AB/06Redis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Redis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Eloquent ORM
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Eloquent ORM
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06EloquentORM/01%E5%BF%AB%E9%80%9F%E5%85%A5%E9%96%80/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    快速入門
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06EloquentORM/02%E9%97%9C%E8%81%AF/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    關聯
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06EloquentORM/03%E9%9B%86%E5%90%88/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    集合
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06EloquentORM/04%E5%B1%AC%E6%80%A7%E4%BF%AE%E6%94%B9%E5%99%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    屬性修改器
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06EloquentORM/05API%E8%B3%87%E6%BA%90/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    API 資源
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06EloquentORM/06%E5%BA%8F%E5%88%97%E5%8C%96/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    序列化
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06EloquentORM/07%E8%B3%87%E6%96%99%E5%B7%A5%E5%BB%A0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    資料工廠
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    測試相關
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            測試相關
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07%E6%B8%AC%E8%A9%A6%E7%9B%B8%E9%97%9C/01%E5%85%A5%E9%96%80/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    入門
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07%E6%B8%AC%E8%A9%A6%E7%9B%B8%E9%97%9C/02HTTP%E6%B8%AC%E8%A9%A6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTTP 測試
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07%E6%B8%AC%E8%A9%A6%E7%9B%B8%E9%97%9C/03%E5%91%BD%E4%BB%A4%E5%88%97%E6%B8%AC%E8%A9%A6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    命令列測試
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07%E6%B8%AC%E8%A9%A6%E7%9B%B8%E9%97%9C/04LaravelDusk/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Laravel Dusk
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07%E6%B8%AC%E8%A9%A6%E7%9B%B8%E9%97%9C/05%E8%B3%87%E6%96%99%E5%BA%AB%E6%B8%AC%E8%A9%A6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    資料庫測試
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07%E6%B8%AC%E8%A9%A6%E7%9B%B8%E9%97%9C/06Mocking/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mocking
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    官方擴展包
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            官方擴展包
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01Cashier%E4%BA%A4%E6%98%93%E5%B7%A5%E5%85%B7%E5%8C%85Stripe/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cashier 交易工具包 Stripe
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02Cashier%E4%BA%A4%E6%98%93%E5%B7%A5%E5%85%B7%E5%8C%85Paddle/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cashier 交易工具包 Paddle
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03Envoy%E9%83%A8%E7%BD%B2%E5%B7%A5%E5%85%B7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Envoy 部署工具
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04Fortify%E8%88%87%E5%89%8D%E7%AB%AF%E7%84%A1%E9%97%9C%E7%9A%84%E8%BA%AB%E4%BB%BD%E8%AA%8D%E8%AD%89%E5%BE%8C%E7%AB%AF%E5%AF%A6%E7%8F%BE/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fortify 與前端無關的身份認證後端實現
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05Homestead%E8%99%9B%E6%93%AC%E6%A9%9F%E5%99%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Homestead 虛擬機器
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06Horizon%E4%BD%87%E5%88%97%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Horizon 佇列管理工具
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09Octane%E5%8A%A0%E9%80%9F%E5%BC%95%E6%93%8E/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Octane 加速引擎
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Passport OAuth 認證
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Passport OAuth 認證
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目錄">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目錄
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    簡介
+  </a>
+  
+    <nav class="md-nav" aria-label="簡介">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#passport-sanctum" class="md-nav__link">
+    Passport 還是 Sanctum?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    安裝
+  </a>
+  
+    <nav class="md-nav" aria-label="安裝">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#uuid" class="md-nav__link">
+    客戶端 UUID
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passport" class="md-nav__link">
+    部署 Passport
+  </a>
+  
+    <nav class="md-nav" aria-label="部署 Passport">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    從環境中載入金鑰
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    自訂遷移
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passport_1" class="md-nav__link">
+    Passport 的升級
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    組態
+  </a>
+  
+    <nav class="md-nav" aria-label="組態">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hash" class="md-nav__link">
+    客戶端金鑰的 Hash 加密
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#token" class="md-nav__link">
+    Token 生命週期
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passport_2" class="md-nav__link">
+    重寫 Passport 的默認模型
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    重寫路由
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    發佈訪問令牌
+  </a>
+  
+    <nav class="md-nav" aria-label="發佈訪問令牌">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    客戶端管理
+  </a>
+  
+    <nav class="md-nav" aria-label="客戶端管理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#passportclient" class="md-nav__link">
+    passport:client 命令
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#json-api" class="md-nav__link">
+    JSON API
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-oauthclients" class="md-nav__link">
+    GET /oauth/clients
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post-oauthclients" class="md-nav__link">
+    POST /oauth/clients
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#put-oauthclientsclient-id" class="md-nav__link">
+    PUT /oauth/clients/{client-id}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete-oauthclientsclient-id" class="md-nav__link">
+    DELETE /oauth/clients/{client-id}
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    請求令牌
+  </a>
+  
+    <nav class="md-nav" aria-label="請求令牌">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    授權重新導向
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    請求認證
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    授權碼到授權令牌的轉化
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#json-api_1" class="md-nav__link">
+    JSON API
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-oauthtokens" class="md-nav__link">
+    GET /oauth/tokens
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete-oauthtokenstoken-id" class="md-nav__link">
+    DELETE /oauth/tokens/{token-id}
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    刷新令牌
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    撤銷令牌
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    清除令牌
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pkce" class="md-nav__link">
+    通過 PKCE 發佈授權碼
+  </a>
+  
+    <nav class="md-nav" aria-label="通過 PKCE 發佈授權碼">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    建立客戶端
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    請求令牌
+  </a>
+  
+    <nav class="md-nav" aria-label="請求令牌">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#code-verifier-code-challenge" class="md-nav__link">
+    驗證碼（Code Verifier ）和質疑碼（Code Challenge）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    授權重新導向
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    驗證碼到訪問令牌的轉換
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    密碼授權方式的令牌
+  </a>
+  
+    <nav class="md-nav" aria-label="密碼授權方式的令牌">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    建立密碼授權方式客戶端
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    請求令牌
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    請求所有的範疇
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    自訂使用者提供者
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    自訂使用者名稱欄位
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    自訂密碼驗證
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    隱式授權令牌
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    客戶憑證授予令牌
+  </a>
+  
+    <nav class="md-nav" aria-label="客戶憑證授予令牌">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    檢索令牌
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    個人訪問令牌
+  </a>
+  
+    <nav class="md-nav" aria-label="個人訪問令牌">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    建立個人訪問客戶端
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    管理個人令牌
+  </a>
+  
+    <nav class="md-nav" aria-label="管理個人令牌">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#json-api_2" class="md-nav__link">
+    JSON API
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-oauthscopes" class="md-nav__link">
+    GET /oauth/scopes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-oauthpersonal-access-tokens" class="md-nav__link">
+    GET /oauth/personal-access-tokens
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post-oauthpersonal-access-tokens" class="md-nav__link">
+    POST /oauth/personal-access-tokens
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete-oauthpersonal-access-tokenstoken-id" class="md-nav__link">
+    DELETE /oauth/personal-access-tokens/{token-id}
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    路由保護
+  </a>
+  
+    <nav class="md-nav" aria-label="路由保護">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    通過中介軟體
+  </a>
+  
+    <nav class="md-nav" aria-label="通過中介軟體">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_35" class="md-nav__link">
+    多個身份驗證看守器
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_36" class="md-nav__link">
+    傳遞訪問令牌
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_37" class="md-nav__link">
+    令牌範疇
+  </a>
+  
+    <nav class="md-nav" aria-label="令牌範疇">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_38" class="md-nav__link">
+    定義範疇
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_39" class="md-nav__link">
+    默認範疇
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_40" class="md-nav__link">
+    給令牌分配範疇
+  </a>
+  
+    <nav class="md-nav" aria-label="給令牌分配範疇">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_41" class="md-nav__link">
+    請求授權碼
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_42" class="md-nav__link">
+    分發個人訪問令牌
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_43" class="md-nav__link">
+    檢查範疇
+  </a>
+  
+    <nav class="md-nav" aria-label="檢查範疇">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_44" class="md-nav__link">
+    檢查所有範疇
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_45" class="md-nav__link">
+    檢查任意範疇
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_46" class="md-nav__link">
+    檢查令牌實例上的範疇
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_47" class="md-nav__link">
+    附加範疇方法
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#javascript-api" class="md-nav__link">
+    使用 JavaScript 接入 API
+  </a>
+  
+    <nav class="md-nav" aria-label="使用 JavaScript 接入 API">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cookie" class="md-nav__link">
+    自訂 Cookie 名稱
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#csrf" class="md-nav__link">
+    CSRF 保護
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_48" class="md-nav__link">
+    事件
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_49" class="md-nav__link">
+    測試
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11Pennant%E6%B8%AC%E8%A9%A6%E6%96%B0%E5%8A%9F%E8%83%BD/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pennant 測試新功能
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12Pint%E7%A8%8B%E5%BC%8F%E7%A2%BC%E9%A2%A8%E6%A0%BC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pint 程式碼風格
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13SailDocker%E9%96%8B%E7%99%BC%E7%92%B0%E5%A2%83/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sail Docker 開發環境
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14SanctumAPI%E6%8E%88%E6%AC%8A/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sanctum API 授權
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15Scout%E5%85%A8%E6%96%87%E6%90%9C%E5%B0%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Scout 全文搜尋
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16Socialite%E7%AC%AC%E4%B8%89%E6%96%B9%E7%99%BB%E5%85%A5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Socialite 第三方登入
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17Telescope%E5%81%B5%E9%8C%AF%E5%B7%A5%E5%85%B7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Telescope 偵錯工具
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    語法速查表
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            語法速查表
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/artisan/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Artisan
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/auth/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Auth 使用者認證
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/blade/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Blade 範本
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/cache/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cache
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/collection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Collection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/composer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Composer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/config/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Config
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/container/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Container
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/cookie/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cookie
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/db/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Database
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/environment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Environment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/event/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Event
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/file/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    File
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/helper/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Helper
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/input/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Input
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/lang/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lang
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/Log/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Log
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/mail/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mail
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/model/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Model (Eloquent ORM)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/pagination/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pagination
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/queue/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Queue
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/redirect/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Redirect
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/request/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Request
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/response/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Response
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/route/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Route
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/schema/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Schema 資料庫結構
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/security/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Security (Hash 和加解密)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/session/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Session
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/storage/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Storage
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/string/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    String
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/unittest/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Unit Test 單元測試
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/url/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    URL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/validation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Validation 表單驗證
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/view/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    View
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目錄">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目錄
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    簡介
+  </a>
+  
+    <nav class="md-nav" aria-label="簡介">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#passport-sanctum" class="md-nav__link">
+    Passport 還是 Sanctum?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    安裝
+  </a>
+  
+    <nav class="md-nav" aria-label="安裝">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#uuid" class="md-nav__link">
+    客戶端 UUID
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passport" class="md-nav__link">
+    部署 Passport
+  </a>
+  
+    <nav class="md-nav" aria-label="部署 Passport">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    從環境中載入金鑰
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    自訂遷移
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passport_1" class="md-nav__link">
+    Passport 的升級
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    組態
+  </a>
+  
+    <nav class="md-nav" aria-label="組態">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hash" class="md-nav__link">
+    客戶端金鑰的 Hash 加密
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#token" class="md-nav__link">
+    Token 生命週期
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passport_2" class="md-nav__link">
+    重寫 Passport 的默認模型
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    重寫路由
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    發佈訪問令牌
+  </a>
+  
+    <nav class="md-nav" aria-label="發佈訪問令牌">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    客戶端管理
+  </a>
+  
+    <nav class="md-nav" aria-label="客戶端管理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#passportclient" class="md-nav__link">
+    passport:client 命令
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#json-api" class="md-nav__link">
+    JSON API
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-oauthclients" class="md-nav__link">
+    GET /oauth/clients
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post-oauthclients" class="md-nav__link">
+    POST /oauth/clients
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#put-oauthclientsclient-id" class="md-nav__link">
+    PUT /oauth/clients/{client-id}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete-oauthclientsclient-id" class="md-nav__link">
+    DELETE /oauth/clients/{client-id}
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    請求令牌
+  </a>
+  
+    <nav class="md-nav" aria-label="請求令牌">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    授權重新導向
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    請求認證
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    授權碼到授權令牌的轉化
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#json-api_1" class="md-nav__link">
+    JSON API
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-oauthtokens" class="md-nav__link">
+    GET /oauth/tokens
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete-oauthtokenstoken-id" class="md-nav__link">
+    DELETE /oauth/tokens/{token-id}
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    刷新令牌
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    撤銷令牌
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    清除令牌
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pkce" class="md-nav__link">
+    通過 PKCE 發佈授權碼
+  </a>
+  
+    <nav class="md-nav" aria-label="通過 PKCE 發佈授權碼">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    建立客戶端
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    請求令牌
+  </a>
+  
+    <nav class="md-nav" aria-label="請求令牌">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#code-verifier-code-challenge" class="md-nav__link">
+    驗證碼（Code Verifier ）和質疑碼（Code Challenge）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    授權重新導向
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    驗證碼到訪問令牌的轉換
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    密碼授權方式的令牌
+  </a>
+  
+    <nav class="md-nav" aria-label="密碼授權方式的令牌">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    建立密碼授權方式客戶端
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    請求令牌
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    請求所有的範疇
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    自訂使用者提供者
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    自訂使用者名稱欄位
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    自訂密碼驗證
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    隱式授權令牌
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    客戶憑證授予令牌
+  </a>
+  
+    <nav class="md-nav" aria-label="客戶憑證授予令牌">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    檢索令牌
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    個人訪問令牌
+  </a>
+  
+    <nav class="md-nav" aria-label="個人訪問令牌">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    建立個人訪問客戶端
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    管理個人令牌
+  </a>
+  
+    <nav class="md-nav" aria-label="管理個人令牌">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#json-api_2" class="md-nav__link">
+    JSON API
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-oauthscopes" class="md-nav__link">
+    GET /oauth/scopes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-oauthpersonal-access-tokens" class="md-nav__link">
+    GET /oauth/personal-access-tokens
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post-oauthpersonal-access-tokens" class="md-nav__link">
+    POST /oauth/personal-access-tokens
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete-oauthpersonal-access-tokenstoken-id" class="md-nav__link">
+    DELETE /oauth/personal-access-tokens/{token-id}
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    路由保護
+  </a>
+  
+    <nav class="md-nav" aria-label="路由保護">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    通過中介軟體
+  </a>
+  
+    <nav class="md-nav" aria-label="通過中介軟體">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_35" class="md-nav__link">
+    多個身份驗證看守器
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_36" class="md-nav__link">
+    傳遞訪問令牌
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_37" class="md-nav__link">
+    令牌範疇
+  </a>
+  
+    <nav class="md-nav" aria-label="令牌範疇">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_38" class="md-nav__link">
+    定義範疇
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_39" class="md-nav__link">
+    默認範疇
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_40" class="md-nav__link">
+    給令牌分配範疇
+  </a>
+  
+    <nav class="md-nav" aria-label="給令牌分配範疇">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_41" class="md-nav__link">
+    請求授權碼
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_42" class="md-nav__link">
+    分發個人訪問令牌
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_43" class="md-nav__link">
+    檢查範疇
+  </a>
+  
+    <nav class="md-nav" aria-label="檢查範疇">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_44" class="md-nav__link">
+    檢查所有範疇
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_45" class="md-nav__link">
+    檢查任意範疇
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_46" class="md-nav__link">
+    檢查令牌實例上的範疇
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_47" class="md-nav__link">
+    附加範疇方法
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#javascript-api" class="md-nav__link">
+    使用 JavaScript 接入 API
+  </a>
+  
+    <nav class="md-nav" aria-label="使用 JavaScript 接入 API">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cookie" class="md-nav__link">
+    自訂 Cookie 名稱
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#csrf" class="md-nav__link">
+    CSRF 保護
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_48" class="md-nav__link">
+    事件
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_49" class="md-nav__link">
+    測試
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+  
+                  
+
+  
+  
+
+
+<h1 id="passport-oauth">Passport OAuth 認證<a class="headerlink" href="#passport-oauth" title="Permanent link">&para;</a></h1>
+<h2 id="_1">簡介<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p><a href="https://github.com/laravel/passport">Laravel Passport</a> 可以在幾分鐘之內為你的應用程式提供完整的 OAuth2 伺服器端實現。Passport 是基於由 Andy Millington 和 Simon Hamp 維護的 <a href="https://github.com/thephpleague/oauth2-server">League OAuth2 server</a> 建立的。</p>
+<blockquote>
+<p><strong>注意</strong><br />
+本文件假定你已熟悉 OAuth2 。如果你並不瞭解 OAuth2 ，閱讀之前請先熟悉下 OAuth2 的 <a href="https://oauth2.thephpleague.com/terminology/">常用術語</a> 和特性。</p>
+</blockquote>
+<h3 id="passport-sanctum">Passport 還是 Sanctum?<a class="headerlink" href="#passport-sanctum" title="Permanent link">&para;</a></h3>
+<p>在開始之前，我們希望你先確認下是 Laravel Passport 還是 <a href="/docs/laravel/10.x/sanctum">Laravel Sanctum</a> 能為你的應用提供更好的服務。如果你的應用確確實實需要支援 OAuth2，那沒疑問，你需要選用 Laravel Passport。</p>
+<p>然而，如果你只是試圖要去認證一個單頁應用，或者手機應用，或者發佈 API 令牌，你應該選用 <a href="/docs/laravel/10.x/sanctum">Laravel Sanctum</a>。 Laravel Sanctum 不支援 OAuth2，它提供了更為簡單的 API 授權開發體驗。</p>
+<h2 id="_2">安裝<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>在開始使用之前，使用 Composer 包管理器安裝 Passport：</p>
+<div class="highlight"><pre><span></span><code>composer<span class="w"> </span>require<span class="w"> </span>laravel/passport
+</code></pre></div>
+<p>Passport 的 <a href="/docs/laravel/10.x/providers">服務提供器</a> 註冊了自己的資料庫遷移指令碼目錄， 所以你應該在安裝軟體包完成後遷移你自己的資料庫。 Passport 的遷移指令碼將為你的應用建立用於儲存 OAuth2 客戶端和訪問令牌的資料表：</p>
+<div class="highlight"><pre><span></span><code>php<span class="w"> </span>artisan<span class="w"> </span>migrate
+</code></pre></div>
+<p>接下來，你需要執行 Artisan 命令 <code>passport:install</code>。這個命令將會建立一個用於生成安全訪問令牌的加密秘鑰。另外，這個命令也將建立用於生成訪問令牌的 「個人訪問」 客戶端和 「密碼授權」 客戶端 ：</p>
+<div class="highlight"><pre><span></span><code>php<span class="w"> </span>artisan<span class="w"> </span>passport:install
+</code></pre></div>
+<blockquote>
+<p><strong>技巧</strong><br />
+如果你想用使用 UUID 作為 Passport <code>Client</code> 模型的主鍵，代替默認的自動增長整形欄位，請在安裝 Passport 時使用 <a href="#client-uuids">uuids 參數</a> 。</p>
+</blockquote>
+<p>在執行 <code>passport:install</code> 命令後， 新增 <code>Laravel\Passport\HasApiTokens</code> trait 到你的 <code>App\Models\User</code> 模型中。 這個 trait 會提供一些幫助方法用於檢查已認證使用者的令牌和權限範圍。如果你的模型已經在使用 <code>Laravel\Sanctum\HasApiTokens</code> trait，你可以刪除該 trait：</p>
+<div class="highlight"><pre><span></span><code>&lt;?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Passport\HasApiTokens;
+
+class User extends Authenticatable
+{
+    use HasApiTokens, HasFactory, Notifiable;
+}
+</code></pre></div>
+<p>最後，在您的應用的 <code>config/auth.php</code> 組態檔案中，您應當定義一個 <code>api</code> 的授權看守器，並且將其 <code>driver</code> 選項設定為 <code>passport</code> 。這個調整將會讓您的應用程式使用 Passport 的 <code>TokenGuard</code> 來鑑權 API 介面請求：</p>
+<div class="highlight"><pre><span></span><code>&#39;guards&#39; =&gt; [
+    &#39;web&#39; =&gt; [
+        &#39;driver&#39; =&gt; &#39;session&#39;,
+        &#39;provider&#39; =&gt; &#39;users&#39;,
+    ],
+
+    &#39;api&#39; =&gt; [
+        &#39;driver&#39; =&gt; &#39;passport&#39;,
+        &#39;provider&#39; =&gt; &#39;users&#39;,
+    ],
+],
+</code></pre></div>
+<h4 id="uuid">客戶端 UUID<a class="headerlink" href="#uuid" title="Permanent link">&para;</a></h4>
+<p>您也可以在運行 <code>passport:install</code> 命令的時候使用 <code>--uuids</code> 選項。這個參數將會讓 Passport 使用 UUID 來替代默認的自增長形式的 Passport <code>Client</code> 模型主鍵。在您運行帶有 <code>--uuids</code> 參數的 <code>passport:install</code> 命令後，您將得到關於停用 Passport 默認遷移的相關指令說明：</p>
+<div class="highlight"><pre><span></span><code>php<span class="w"> </span>artisan<span class="w"> </span>passport:install<span class="w"> </span>--uuids
+</code></pre></div>
+<h3 id="passport">部署 Passport<a class="headerlink" href="#passport" title="Permanent link">&para;</a></h3>
+<p>在您第一次部署 Passport 到您的應用伺服器時，您需要執行 <code>passport:keys</code> 命令。該命令用於生成 Passport 用於生成 access token 的一個加密金鑰。生成的加密金鑰不應到新增到原始碼控制系統中：</p>
+<div class="highlight"><pre><span></span><code>php<span class="w"> </span>artisan<span class="w"> </span>passport:keys
+</code></pre></div>
+<p>如有必要，您可以定義 Passport 的金鑰應當載入的位置。您可以使用 <code>Passport:loadKeysFrom</code> 方法來實現。通常，這個方法應當在您的 <code>App\Providers\AuthServiceProvider</code> 類的 <code>boot</code> 方法中呼叫：</p>
+<div class="highlight"><pre><span></span><code>/**
+ * Register any authentication / authorization services.
+ */
+public function boot(): void
+{
+    Passport::loadKeysFrom(__DIR__.&#39;/../secrets/oauth&#39;);
+}
+</code></pre></div>
+<h4 id="_3">從環境中載入金鑰<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<p>此外，您可以使用 <code>vendor:publish</code> Artisan 命令來發佈您的 Passport 組態檔案：</p>
+<div class="highlight"><pre><span></span><code>php<span class="w"> </span>artisan<span class="w"> </span>vendor:publish<span class="w"> </span>--tag<span class="o">=</span>passport-config
+</code></pre></div>
+<p>在發佈組態檔案之後，您可以將加密金鑰組態為環境變數，再載入它們：</p>
+<div class="highlight"><pre><span></span><code><span class="na">PASSPORT_PRIVATE_KEY</span><span class="o">=</span><span class="s">&quot;-----BEGIN RSA PRIVATE KEY-----</span>
+<span class="na">&lt;private key here&gt;</span>
+<span class="na">-----END RSA PRIVATE KEY-----&quot;</span>
+
+<span class="na">PASSPORT_PUBLIC_KEY</span><span class="o">=</span><span class="s">&quot;-----BEGIN PUBLIC KEY-----</span>
+<span class="na">&lt;public key here&gt;</span>
+<span class="na">-----END PUBLIC KEY-----&quot;</span>
+</code></pre></div>
+<h3 id="_4">自訂遷移<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>如果您不打算使用 Passport 的默認遷移，您應當在 <code>App\Providers\AppServiceProvider</code> 類的 <code>register</code> 方法中呼叫 <code>Passport::ignoreMigrations</code> 方法。您可以 使用 <code>vendor:publish</code> Artisan 命令來匯出默認的遷移檔案：</p>
+<div class="highlight"><pre><span></span><code>php<span class="w"> </span>artisan<span class="w"> </span>vendor:publish<span class="w"> </span>--tag<span class="o">=</span>passport-migrations
+</code></pre></div>
+<h3 id="passport_1">Passport 的升級<a class="headerlink" href="#passport_1" title="Permanent link">&para;</a></h3>
+<p>當升級到 Passport 的主要版本時，請務必查閱 <a href="https://github.com/laravel/passport/blob/master/UPGRADE.">升級指南</a>.</p>
+<h2 id="_5">組態<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<h3 id="hash">客戶端金鑰的 Hash 加密<a class="headerlink" href="#hash" title="Permanent link">&para;</a></h3>
+<p>如果您希望客戶端金鑰在儲存到資料庫時使用 Hash 對其進行加密，您應當在 <code>App\Provider\AuthServiceProvider</code> 類的 <code>boot</code> 方法中呼叫 <code>Passport:hashClientSecrets</code> ：</p>
+<div class="highlight"><pre><span></span><code>use Laravel\Passport\Passport;
+
+Passport::hashClientSecrets();
+</code></pre></div>
+<p>一旦啟用後，所有的客戶端金鑰都將只在建立的時候顯示。由於明文的客戶端金鑰沒有儲存到資料庫中，因此一旦其丟失後便無法恢復。</p>
+<h3 id="token">Token 生命週期<a class="headerlink" href="#token" title="Permanent link">&para;</a></h3>
+<p>默認情況下，Passport 會頒髮長達一年的長期 token 。如果您想要組態一個更長或更短的 token 生命週期，您可以在 <code>App\Provider\AuthServiceProvider</code> 類的 <code>boot</code> 方法中呼叫 <code>tokensExpiresIn</code> 、<code>refresgTokensExpireIn</code> 和 <code>personalAccessTokensExpireIn</code> 方法：</p>
+<div class="highlight"><pre><span></span><code>/**
+ * 註冊身份驗證/授權服務。
+ */
+public function boot(): void
+{
+    Passport::tokensExpireIn(now()-&gt;addDays(15));
+    Passport::refreshTokensExpireIn(now()-&gt;addDays(30));
+    Passport::personalAccessTokensExpireIn(now()-&gt;addMonths(6));
+}
+</code></pre></div>
+<blockquote>
+<p><strong>注意</strong><br />
+ Passport 資料庫表中的 <code>expires_at</code> 列是唯讀的，僅僅用於顯示。在頒發 token 的時候，Passport 將過期資訊儲存在已簽名和加密的 token 中。如果你想讓 token 失效，你應當 <a href="#revoking-tokens">撤銷它</a> 。</p>
+</blockquote>
+<h3 id="passport_2">重寫 Passport 的默認模型<a class="headerlink" href="#passport_2" title="Permanent link">&para;</a></h3>
+<p>您可以通過定義自己的模型並繼承相應的 Passport 模型來實現自由自由擴展 Passport 內部使用的模型：</p>
+<div class="highlight"><pre><span></span><code>use Laravel\Passport\Client as PassportClient;
+
+class Client extends PassportClient
+{
+    // ...
+}
+</code></pre></div>
+<p>在定義您的模型之後，您可以在 <code>Laravel\Passport\Passport</code> 類中指定 Passport 使用您自訂的模型。一樣的，您應該在應用程式的 <code>App\Providers\AuthServiceProvider</code> 類中的 <code>boot</code> 方法中指定 Passport 使用您自訂的模型：</p>
+<div class="highlight"><pre><span></span><code>use App\Models\Passport\AuthCode;
+use App\Models\Passport\Client;
+use App\Models\Passport\PersonalAccessClient;
+use App\Models\Passport\RefreshToken;
+use App\Models\Passport\Token;
+
+/**
+ * 註冊任意認證/授權服務。
+ */
+public function boot(): void
+{
+    Passport::useTokenModel(Token::class);
+    Passport::useRefreshTokenModel(RefreshToken::class);
+    Passport::useAuthCodeModel(AuthCode::class);
+    Passport::useClientModel(Client::class);
+    Passport::usePersonalAccessClientModel(PersonalAccessClient::class);
+}
+</code></pre></div>
+<h3 id="_6">重寫路由<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p>您可能希望自訂 Passport 定義的路由。要實現這個功能，第一步，您需要在應用程式的 <code>AppServiceProvider</code> 中的 <code>register</code> 方法中新增 <code>Passport:ignoreRoutes</code> 語句，以忽略由 Passport 註冊的路由：</p>
+<div class="highlight"><pre><span></span><code>use Laravel\Passport\Passport;
+
+/**
+ * 註冊任意的應用程式服務。
+ */
+public function register(): void
+{
+    Passport::ignoreRoutes();
+}
+</code></pre></div>
+<p>然後，您可以複製 Passport <a href="https://github.com/laravel/passport/blob/11.x/routes/web.php">在自己的檔案中</a> 定義的路由到應用程式的 <code>routes/web.php</code> 檔案中，並且將其修改為您喜歡的任何形式：</p>
+<div class="highlight"><pre><span></span><code>Route::group([
+    &#39;as&#39; =&gt; &#39;passport.&#39;,
+    &#39;prefix&#39; =&gt; config(&#39;passport.path&#39;, &#39;oauth&#39;),
+    &#39;namespace&#39; =&gt; &#39;Laravel\Passport\Http\Controllers&#39;,
+], function () {
+    // Passport 路由……
+});
+</code></pre></div>
+<h2 id="_7">發佈訪問令牌<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<p>通過授權碼使用 OAuth2 是大多數開發人員熟悉的方式。使用授權碼方式時，客戶端應用程式會將使用者重新導向到你的伺服器，在那裡他們會批准或拒絕向客戶端發出訪問令牌的請求。</p>
+<h3 id="_8">客戶端管理<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<p>首先，開發者如果想要搭建一個與你的伺服器端介面互動的應用端，需要在伺服器端這邊註冊一個「客戶端」。通常，這需要開發者提供應用程式的名稱和一個 URL，在應用軟體的使用者授權請求後，應用程式會被重新導向到該 URL。</p>
+<h4 id="passportclient"><code>passport:client</code> 命令<a class="headerlink" href="#passportclient" title="Permanent link">&para;</a></h4>
+<p>使用 Artisan 命令 <code>passport:client</code> 是一種最簡單的建立客戶端的方式。 這個命令可以建立你自己私有的客戶端，用於 Oauth2 功能測試。 當你執行 <code>client</code> 命令後， Passport 將會給你更多關於客戶端的提示，以及生成的客戶端 ID</p>
+<div class="highlight"><pre><span></span><code>php<span class="w"> </span>artisan<span class="w"> </span>passport:client
+</code></pre></div>
+<p><strong>多重新導向 URL 地址的設定</strong></p>
+<p>如果你想為你的客戶端提供多個重新導向 URL ，你可以在執行 <code>Passport:client</code> 命令出現提示輸入 URL 地址的時候，輸入用逗號分割的多個 URL 。任何包含逗號的 URL 都需要先執行 URL 轉碼：</p>
+<div class="highlight"><pre><span></span><code>http://example.com/callback,http://examplefoo.com/callback
+</code></pre></div>
+<h4 id="json-api">JSON API<a class="headerlink" href="#json-api" title="Permanent link">&para;</a></h4>
+<p>因為應用程式的開發者是無法使用 <code>client</code> 命令的，所以 Passport 提供了 JSON 格式的 API ，用於建立客戶端。 這解決了你還要去手動建立 controller 程式碼（程式碼用於新增，更新，刪除客戶端）的麻煩。</p>
+<p>但是，你需要結合 Passport 的 JSON API 介面和你的前端面板管理頁面， 為你的使用者提供客戶端管理功能。接下里，我們會回顧所有用於管理客戶端的的 API 介面。方便起見，我們使用 <a href="https://github.com/axios/axios">Axios</a> 模擬對端點的 HTTP 請求。</p>
+<p>這些 JSON API 介面被 <code>web</code> 和 <code>auth</code> 兩個中介軟體保護著，因此，你只能從你的應用中呼叫。 外部來源的呼叫是被禁止的。</p>
+<h4 id="get-oauthclients"><code>GET /oauth/clients</code><a class="headerlink" href="#get-oauthclients" title="Permanent link">&para;</a></h4>
+<p>下面的路由將為授權使用者返回所有的客戶端。最主要的作用是列出所有的使用者客戶端，接下來就可以編輯或刪除它們了：</p>
+<div class="highlight"><pre><span></span><code><span class="nx">axios</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/oauth/clients&#39;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+<span class="w">    </span><span class="p">});</span>
+</code></pre></div>
+<h4 id="post-oauthclients"><code>POST /oauth/clients</code><a class="headerlink" href="#post-oauthclients" title="Permanent link">&para;</a></h4>
+<p>下面的路由用於建立新的客戶端。 它需要兩個參數： <code>客戶端名稱</code>和<code>重新導向URL</code> 地址。 <code>重新導向URL</code> 地址是使用者在授權或者拒絕授權後被重新導向到的地方。</p>
+<p>客戶端被建立後，將會生成客戶端 ID 和客戶端秘鑰。 這對值用於從你的應用獲取訪問令牌。 呼叫下面的客戶端建立路由將建立新的客戶端實例：</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Client Name&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">redirect</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;http://example.com/callback&#39;</span>
+<span class="p">};</span>
+
+<span class="nx">axios</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">&#39;/oauth/clients&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="w">    </span><span class="p">.</span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">response</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// 列出響應的錯誤...</span>
+<span class="w">    </span><span class="p">});</span>
+</code></pre></div>
+<h4 id="put-oauthclientsclient-id"><code>PUT /oauth/clients/{client-id}</code><a class="headerlink" href="#put-oauthclientsclient-id" title="Permanent link">&para;</a></h4>
+<p>下面的路由用來更新客戶端。它需要兩個參數： 客戶端名稱和重新導向 URL 地址。 重新導向 URL 地址是使用者在授權或者拒絕授權後被重新導向到的地方。路由將返回更新後的客戶端實例：</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;New Client Name&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">redirect</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;http://example.com/callback&#39;</span>
+<span class="p">};</span>
+
+<span class="nx">axios</span><span class="p">.</span><span class="nx">put</span><span class="p">(</span><span class="s1">&#39;/oauth/clients/&#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">clientId</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="w">    </span><span class="p">.</span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">response</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// 列出響應的錯誤...</span>
+<span class="w">    </span><span class="p">});</span>
+</code></pre></div>
+<h4 id="delete-oauthclientsclient-id"><code>DELETE /oauth/clients/{client-id}</code><a class="headerlink" href="#delete-oauthclientsclient-id" title="Permanent link">&para;</a></h4>
+<p>下面的路由用於刪除客戶端：</p>
+<div class="highlight"><pre><span></span><code><span class="nx">axios</span><span class="p">.</span><span class="ow">delete</span><span class="p">(</span><span class="s1">&#39;/oauth/clients/&#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">clientId</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// ...</span>
+<span class="w">    </span><span class="p">});</span>
+</code></pre></div>
+<h3 id="_9">請求令牌<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<h4 id="_10">授權重新導向<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<p>客戶端建立好後，開發者使用 client ID 和秘鑰向你的應用伺服器傳送請求，以便獲取授權碼和訪問令牌。 首先，接收到請求的業務端伺服器會重新導向到你應用的 <code>/oauth/authorize</code> 路由上，如下所示：</p>
+<div class="highlight"><pre><span></span><code>use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+
+Route::get(&#39;/redirect&#39;, function (Request $request) {
+    $request-&gt;session()-&gt;put(&#39;state&#39;, $state = Str::random(40));
+
+    $query = http_build_query([
+        &#39;client_id&#39; =&gt; &#39;client-id&#39;,
+        &#39;redirect_uri&#39; =&gt; &#39;http://third-party-app.com/callback&#39;,
+        &#39;response_type&#39; =&gt; &#39;code&#39;,
+        &#39;scope&#39; =&gt; &#39;&#39;,
+        &#39;state&#39; =&gt; $state,
+        // &#39;prompt&#39; =&gt; &#39;&#39;, // &quot;none&quot;, &quot;consent&quot;, or &quot;login&quot;
+    ]);
+
+    return redirect(&#39;http://passport-app.test/oauth/authorize?&#39;.$query);
+});
+</code></pre></div>
+<p><code>prompt</code> 參數可用於指定 Passport 應用程式的認證行為。</p>
+<p>如果 <code>prompt</code> 值為 <code>none</code>，如果使用者還沒有通過 Passport 應用程式的認證，Passport 將總是拋出一個認證錯誤。如果值是 <code>同意</code>，Passport 將總是顯示授權批准螢幕，即使所有的範疇以前都被授予消費應用程式。如果值是 <code>login</code>，Passport 應用程式將總是提示使用者重新登錄到應用程式，即使他們已經有一個現有的 session 。</p>
+<p>如果沒有提供 <code>prompt</code> 值，只有當使用者以前沒有授權訪問所請求範圍的消費應用程式時，才會提示使用者進行授權。</p>
+<blockquote>
+<p>**技巧：**請記住，<code>/oauth/authorize</code> 路由默認已經在 <code>Passport::route</code> 方法中定義，你無需手動定義它。</p>
+</blockquote>
+<h4 id="_11">請求認證<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
+<p>當接收到一個請求後， Passport 會自動展示一個範本頁面給使用者，使用者可以選擇授權或者拒絕授權。如果請求被認證，使用者將被重新導向到之前業務伺服器設定的 <code>redirect_uri</code> 上去。 這個 <code>redirect_uri</code> 就是客戶端在建立時提供的重新導向地址參數。</p>
+<p>如果你想自訂授權頁面，你可以先使用 Artisan 命令 <code>vendor:publish</code> 發佈 Passport 的檢視頁面。 被發佈的檢視頁面位於 <code>resources/views/vendor/passport</code> 路徑下：</p>
+<div class="highlight"><pre><span></span><code>php<span class="w"> </span>artisan<span class="w"> </span>vendor:publish<span class="w"> </span>--tag<span class="o">=</span>passport-views
+</code></pre></div>
+<p>有時，你可能希望跳過授權提示，比如在授權第一梯隊客戶端的時候。你可以通過 <a href="#overriding-default-models">繼承 <code>Client</code> 模型</a>並實現 <code>skipsAuthorization</code> 方法。如果 <code>skipsAuthorization</code> 方法返回 <code>true</code>， 客戶端就會直接被認證並立即重新導向到設定的重新導向地址：</p>
+<div class="highlight"><pre><span></span><code>&lt;?php
+
+namespace App\Models\Passport;
+
+use Laravel\Passport\Client as BaseClient;
+
+class Client extends BaseClient
+{
+    /**
+     * 確定客戶端是否應跳過授權提示。
+     */
+    public function skipsAuthorization(): bool
+    {
+        return $this-&gt;firstParty();
+    }
+}
+</code></pre></div>
+<h4 id="_12">授權碼到授權令牌的轉化<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
+<p>如果使用者授權了訪問，他們會被重新導向到業務伺服器端。首先，業務端服務需要檢查 <code>state</code> 參數是否和重新導向之前儲存的值一致。 如果 state 參數的值正確，業務端伺服器需要對你的應用發起獲取 access token 的 <code>POST</code> 請求。 請求需要攜帶有授權碼，授權碼就是之前使用者授權後由你的應用伺服器生成的碼：</p>
+<div class="highlight"><pre><span></span><code>use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
+
+Route::get(&#39;/callback&#39;, function (Request $request) {
+    $state = $request-&gt;session()-&gt;pull(&#39;state&#39;);
+
+    throw_unless(
+        strlen($state) &gt; 0 &amp;&amp; $state === $request-&gt;state,
+        InvalidArgumentException::class
+    );
+
+    $response = Http::asForm()-&gt;post(&#39;http://passport-app.test/oauth/token&#39;, [
+        &#39;grant_type&#39; =&gt; &#39;authorization_code&#39;,
+        &#39;client_id&#39; =&gt; &#39;client-id&#39;,
+        &#39;client_secret&#39; =&gt; &#39;client-secret&#39;,
+        &#39;redirect_uri&#39; =&gt; &#39;http://third-party-app.com/callback&#39;,
+        &#39;code&#39; =&gt; $request-&gt;code,
+    ]);
+
+    return $response-&gt;json();
+});
+</code></pre></div>
+<p>呼叫路由 <code>/oauth/token</code> 將返回一串 json 字串，包含了 <code>access_token</code>, <code>refresh_token</code> 和 <code>expires_in</code> 屬性。<code>expires_in</code> 屬性的值是 access_token 剩餘的有效時間。</p>
+<blockquote>
+<p>**技巧：**就和 <code>/oauth/authorize</code> 路由一樣， <code>/oauth/token</code> 路由已經在 <code>Passport::routes</code> 方法中定義，你無需再自訂這個路由。</p>
+</blockquote>
+<h4 id="json-api_1">JSON API<a class="headerlink" href="#json-api_1" title="Permanent link">&para;</a></h4>
+<p>Passport 同樣包含了一個 JSON API 介面用來管理授權訪問令牌。你可以使用該介面為使用者搭建一個管理訪問令牌的控制面板。方便來著，我們將使用 <a href="https://github.com/mzabriskie/axios">Axios</a> 模擬 HTTP 對端點發起請求。由於 JSON API 被中介軟體 <code>web</code> 和 <code>auth</code> 保護著，我們只能在應用內部呼叫。</p>
+<h4 id="get-oauthtokens"><code>GET /oauth/tokens</code><a class="headerlink" href="#get-oauthtokens" title="Permanent link">&para;</a></h4>
+<p>下面的路由包含了授權使用者建立的所有授權訪問令牌。介面的主要作用是列出使用者所有可撤銷的令牌：</p>
+<div class="highlight"><pre><span></span><code><span class="nx">axios</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/oauth/tokens&#39;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+<span class="w">    </span><span class="p">});</span>
+</code></pre></div>
+<h4 id="delete-oauthtokenstoken-id"><code>DELETE /oauth/tokens/{token-id}</code><a class="headerlink" href="#delete-oauthtokenstoken-id" title="Permanent link">&para;</a></h4>
+<p>下面的路由用於撤銷授權訪問令牌以及相關的刷新令牌：</p>
+<div class="highlight"><pre><span></span><code><span class="nx">axios</span><span class="p">.</span><span class="ow">delete</span><span class="p">(</span><span class="s1">&#39;/oauth/tokens/&#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">tokenId</span><span class="p">);</span>
+</code></pre></div>
+<h3 id="_13">刷新令牌<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<p>如果你的應用發佈的是短生命週期訪問令牌，使用者需要使用刷新令牌來延長訪問令牌的生命週期，刷新令牌是在生成訪問令牌時同時生成的：</p>
+<div class="highlight"><pre><span></span><code>use Illuminate\Support\Facades\Http;
+
+$response = Http::asForm()-&gt;post(&#39;http://passport-app.test/oauth/token&#39;, [
+    &#39;grant_type&#39; =&gt; &#39;refresh_token&#39;,
+    &#39;refresh_token&#39; =&gt; &#39;the-refresh-token&#39;,
+    &#39;client_id&#39; =&gt; &#39;client-id&#39;,
+    &#39;client_secret&#39; =&gt; &#39;client-secret&#39;,
+    &#39;scope&#39; =&gt; &#39;&#39;,
+]);
+
+return $response-&gt;json();
+</code></pre></div>
+<p>呼叫路由 <code>/oauth/token</code> 將返回一串 json 字串，包含了 <code>access_token</code>, <code>refresh_token</code> 和 <code>expires_in</code> 屬性。<code>expires_in</code> 屬性的值是 access_token 剩餘的有效時間。</p>
+<h3 id="_14">撤銷令牌<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<p>你可以使用 <code>Laravel\Passport\TokenRepository</code> 類的 <code>revokeAccessToken</code> 方法撤銷令牌。你可以使用 <code>Laravel\Passport\RefreshTokenRepository</code> 類的 <code>revokeRefreshTokensByAccessTokenId</code> 方法撤銷刷新令牌。這兩個類可以通過 Laravel 的<a href="/docs/laravel/10.x/container">服務容器</a>得到：</p>
+<div class="highlight"><pre><span></span><code>use Laravel\Passport\TokenRepository;
+use Laravel\Passport\RefreshTokenRepository;
+
+$tokenRepository = app(TokenRepository::class);
+$refreshTokenRepository = app(RefreshTokenRepository::class);
+
+// 撤銷一個訪問令牌...
+$tokenRepository-&gt;revokeAccessToken($tokenId);
+
+// 撤銷該令牌的所有刷新令牌...
+$refreshTokenRepository-&gt;revokeRefreshTokensByAccessTokenId($tokenId);
+</code></pre></div>
+<h3 id="_15">清除令牌<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
+<p>如果令牌已經被撤銷或者已經過期了，你可能希望把它們從資料庫中清理掉。Passport 提供了 Artisan 命令 <code>passport:purge</code> 幫助你實現這個操作:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 清除已經撤銷或者過期的令牌以及授權碼...</span>
+php<span class="w"> </span>artisan<span class="w"> </span>passport:purge
+
+<span class="c1"># 只清理過期6小時的令牌以及授權碼...</span>
+php<span class="w"> </span>artisan<span class="w"> </span>passport:purge<span class="w"> </span>--hours<span class="o">=</span><span class="m">6</span>
+
+<span class="c1"># 只清理撤銷的令牌以及授權碼...</span>
+php<span class="w"> </span>artisan<span class="w"> </span>passport:purge<span class="w"> </span>--revoked
+
+<span class="c1"># 只清理過期的令牌以及授權碼...</span>
+php<span class="w"> </span>artisan<span class="w"> </span>passport:purge<span class="w"> </span>--expired
+</code></pre></div>
+<p>你可以在應用的 <code>App\Console\Kernel</code> 類中組態一個<a href="/docs/laravel/10.x/scheduling">定時任務</a>，每天自動的清理令牌：</p>
+<div class="highlight"><pre><span></span><code>/**
+ * Define the application&#39;s command schedule.
+ */
+protected function schedule(Schedule $schedule): void
+{
+    $schedule-&gt;command(&#39;passport:purge&#39;)-&gt;hourly();
+}
+</code></pre></div>
+<h2 id="pkce">通過 PKCE 發佈授權碼<a class="headerlink" href="#pkce" title="Permanent link">&para;</a></h2>
+<p>通過 PKCE 「 Proof Key for Code Exchange, 中文譯為 程式碼交換的證明金鑰」 發放授權碼是對單頁面應用或原生應用進行認證以便訪問 API 介面的安全方式。這種發放授權碼是用於不能保證客戶端密碼被安全儲存，或為降低攻擊者攔截授權碼的威脅。在這種模式下，當授權碼獲取令牌時，用 「驗證碼」( code verifier ) 和 「質疑碼」（ code challenge, challenge, 名詞可譯為：挑戰；異議；質疑等）的組合來交換客戶端訪問金鑰。</p>
+<h3 id="_16">建立客戶端<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
+<p>在使用 PKCE 方式發佈令牌之前，你需要先建立一個啟用了 PKCE 的客戶端。你可以使用 Artisan 命令 <code>passport:client</code> 並帶上 <code>--public</code> 參數來完成該操作：</p>
+<div class="highlight"><pre><span></span><code>php<span class="w"> </span>artisan<span class="w"> </span>passport:client<span class="w"> </span>--public
+</code></pre></div>
+<h3 id="_17">請求令牌<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
+<h4 id="code-verifier-code-challenge">驗證碼（Code Verifier ）和質疑碼（Code Challenge）<a class="headerlink" href="#code-verifier-code-challenge" title="Permanent link">&para;</a></h4>
+<p>這種授權方式不提供授權秘鑰，開發者需要建立一個驗證碼和質疑碼的組合來請求得到一個令牌。</p>
+<p>驗證碼是一串包含 43 位到 128 位字元的隨機字串。可用字元包括字母，數字以及下面這些字元：<code>"-"</code>, <code>"."</code>, <code>"_"</code>, <code>"~"</code>，可參考 <a href="https://tools.ietf.org/html/rfc7636">RFC 7636 specification</a> 定義。</p>
+<p>質疑碼是一串 Base64 編碼包含 URL 和檔案名稱安全字元的字串，字串結尾的 <code>'='</code> 號需要刪除，並且不能包含分行符號，空白符或其他附加字元。</p>
+<div class="highlight"><pre><span></span><code>$encoded = base64_encode(hash(&#39;sha256&#39;, $code_verifier, true));
+
+$codeChallenge = strtr(rtrim($encoded, &#39;=&#39;), &#39;+/&#39;, &#39;-_&#39;);
+</code></pre></div>
+<h4 id="_18">授權重新導向<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
+<p>客戶端建立完後，你可以使用客戶端 ID 以及生成的驗證碼，質疑碼從你的應用請求獲取授權碼和訪問令牌。首先，業務端應用需要向伺服器端路由 <code>/oauth/authorize</code> 發起重新導向請求：</p>
+<div class="highlight"><pre><span></span><code>use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+
+Route::get(&#39;/redirect&#39;, function (Request $request) {
+    $request-&gt;session()-&gt;put(&#39;state&#39;, $state = Str::random(40));
+
+    $request-&gt;session()-&gt;put(
+        &#39;code_verifier&#39;, $code_verifier = Str::random(128)
+    );
+
+    $codeChallenge = strtr(rtrim(
+        base64_encode(hash(&#39;sha256&#39;, $code_verifier, true))
+    , &#39;=&#39;), &#39;+/&#39;, &#39;-_&#39;);
+
+    $query = http_build_query([
+        &#39;client_id&#39; =&gt; &#39;client-id&#39;,
+        &#39;redirect_uri&#39; =&gt; &#39;http://third-party-app.com/callback&#39;,
+        &#39;response_type&#39; =&gt; &#39;code&#39;,
+        &#39;scope&#39; =&gt; &#39;&#39;,
+        &#39;state&#39; =&gt; $state,
+        &#39;code_challenge&#39; =&gt; $codeChallenge,
+        &#39;code_challenge_method&#39; =&gt; &#39;S256&#39;,
+        // &#39;prompt&#39; =&gt; &#39;&#39;, // &quot;none&quot;, &quot;consent&quot;, or &quot;login&quot;
+    ]);
+
+    return redirect(&#39;http://passport-app.test/oauth/authorize?&#39;.$query);
+});
+</code></pre></div>
+<h4 id="_19">驗證碼到訪問令牌的轉換<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
+<p>使用者授權訪問後，將重新導向到業務端服務。正如標準授權定義那樣，業務端需要驗證回傳的 <code>state</code> 參數的值和在重新導向之前設定的值是否一致。</p>
+<p>如果 state 的值驗證通過，業務接入端需要嚮應用端發起一個獲取訪問令牌的 <code>POST</code> 請求。請求的參數需要包括之前使用者授權通過後你的應用生成的授權碼，以及之前生成的驗證碼：</p>
+<div class="highlight"><pre><span></span><code>use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
+
+Route::get(&#39;/callback&#39;, function (Request $request) {
+    $state = $request-&gt;session()-&gt;pull(&#39;state&#39;);
+
+    $codeVerifier = $request-&gt;session()-&gt;pull(&#39;code_verifier&#39;);
+
+    throw_unless(
+        strlen($state) &gt; 0 &amp;&amp; $state === $request-&gt;state,
+        InvalidArgumentException::class
+    );
+
+    $response = Http::asForm()-&gt;post(&#39;http://passport-app.test/oauth/token&#39;, [
+        &#39;grant_type&#39; =&gt; &#39;authorization_code&#39;,
+        &#39;client_id&#39; =&gt; &#39;client-id&#39;,
+        &#39;redirect_uri&#39; =&gt; &#39;http://third-party-app.com/callback&#39;,
+        &#39;code_verifier&#39; =&gt; $codeVerifier,
+        &#39;code&#39; =&gt; $request-&gt;code,
+    ]);
+
+    return $response-&gt;json();
+});
+</code></pre></div>
+<h2 id="_20">密碼授權方式的令牌<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p><strong>注意</strong><br />
+我們不再建議使用密碼授予令牌。相反，你應該選擇 <a href="https://oauth2.thephpleague.com/authorization-server/which-grant/">OAuth2 伺服器當前推薦的授權類型</a> 。</p>
+</blockquote>
+<p>OAuth2 的密碼授權方式允許你自己的客戶端（比如手機端應用），通過使用信箱 / 使用者名稱和密碼獲取訪問秘鑰。這樣你就可以安全的為自己發放令牌，而不需要完整地走 OAuth2 的重新導向授權訪問流程。</p>
+<h3 id="_21">建立密碼授權方式客戶端<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h3>
+<p>在你使用密碼授權方式發佈令牌前，你需要先建立密碼授權方式的客戶端。你可以通過 Artisan 命令 <code>passport:client</code> ， 並加上 <code>--password</code> 參數來建立這樣的客戶端。 <strong>如果你已經運行過 <code>passport:install</code> 命令，則不需要再運行下面的命令:</strong></p>
+<div class="highlight"><pre><span></span><code>php<span class="w"> </span>artisan<span class="w"> </span>passport:client<span class="w"> </span>--password
+</code></pre></div>
+<h3 id="_22">請求令牌<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h3>
+<p>密碼授權方式的客戶端建立好後，你就可以使用使用者信箱和密碼向 <code>/oauth/token</code> 路由發起 <code>POST</code> 請求，以獲取訪問令牌。請記住，該路由已經在 <code>Passport::routes</code> 方法中定義，你無需再手動實現它。如果請求成功，你將在返回 JSON 串中獲取到 <code>access_token</code> 和 <code>refresh_token</code> :</p>
+<div class="highlight"><pre><span></span><code>use Illuminate\Support\Facades\Http;
+
+$response = Http::asForm()-&gt;post(&#39;http://passport-app.test/oauth/token&#39;, [
+    &#39;grant_type&#39; =&gt; &#39;password&#39;,
+    &#39;client_id&#39; =&gt; &#39;client-id&#39;,
+    &#39;client_secret&#39; =&gt; &#39;client-secret&#39;,
+    &#39;username&#39; =&gt; &#39;taylor@laravel.com&#39;,
+    &#39;password&#39; =&gt; &#39;my-password&#39;,
+    &#39;scope&#39; =&gt; &#39;&#39;,
+]);
+
+return $response-&gt;json();
+</code></pre></div>
+<blockquote>
+<p><strong>技巧</strong><br />
+請記住，默認情況下 access token 都是長生命週期的，但是如果有需要的話，你可以主動去 <a href="#configuration">設定 access token 的過期時間</a> 。</p>
+</blockquote>
+<h3 id="_23">請求所有的範疇<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h3>
+<p>當使用密碼授權（password grant）或者客戶端認證授權（client credentials grant）方式時，你可能希望將應用所有的範疇範圍都授權給令牌。你可以通過設定 scope 參數為 <code>*</code> 來實現。 一旦你這樣設定了，所有的 <code>can</code> 方法都將返回 <code>true</code> 值。 此範圍只能在密碼授權 <code>password</code> 或客戶端認證授權 <code>client_credentials</code> 下使用：</p>
+<div class="highlight"><pre><span></span><code>use Illuminate\Support\Facades\Http;
+
+$response = Http::asForm()-&gt;post(&#39;http://passport-app.test/oauth/token&#39;, [
+    &#39;grant_type&#39; =&gt; &#39;password&#39;,
+    &#39;client_id&#39; =&gt; &#39;client-id&#39;,
+    &#39;client_secret&#39; =&gt; &#39;client-secret&#39;,
+    &#39;username&#39; =&gt; &#39;taylor@laravel.com&#39;,
+    &#39;password&#39; =&gt; &#39;my-password&#39;,
+    &#39;scope&#39; =&gt; &#39;*&#39;,
+]);
+</code></pre></div>
+<h3 id="_24">自訂使用者提供者<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h3>
+<p>如果你的應用程式使用多個 <a href="/docs/laravel/10.x/authentication#introduction">使用者認證提供器</a>，你可以在建立客戶端通過 <code>artisan passport:client --password</code> 命令時使用 <code>--provider</code> 選項來指定提供器。 給定的提供器名稱應與應用程式的 <code>config/auth.php</code> 組態檔案中定義的有效提供器匹配。 然後，你可以 <a href="#via-middleware">使用中介軟體保護你的路由</a> 以確保只有來自守衛指定提供器的使用者才被授權。</p>
+<h3 id="_25">自訂使用者名稱欄位<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h3>
+<p>當使用密碼授權進行身份驗證時，Passport 將使用可驗證模型的 <code>email</code> 屬性作為 「使用者名稱」 。 但是，你可以通過在模型上定義 <code>findForPassport</code> 方法來自訂此行為：</p>
+<div class="highlight"><pre><span></span><code>&lt;?php
+
+namespace App\Models;
+
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Passport\HasApiTokens;
+
+class User extends Authenticatable
+{
+    use HasApiTokens, Notifiable;
+
+    /**
+     * 尋找給定使用者名稱的使用者實例。
+     */
+    public function findForPassport(string $username): User
+    {
+        return $this-&gt;where(&#39;username&#39;, $username)-&gt;first();
+    }
+}
+</code></pre></div>
+<h3 id="_26">自訂密碼驗證<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h3>
+<p>當使用密碼授權進行身份驗證時，Passport 將使用模型的 <code>password</code> 屬性來驗證給定的密碼。 如果你的模型沒有 <code>password</code> 屬性或者你希望自訂密碼驗證邏輯，你可以在模型上定義 <code>validateForPassportPasswordGrant</code> 方法：</p>
+<div class="highlight"><pre><span></span><code>&lt;?php
+
+namespace App\Models;
+
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Hash;
+use Laravel\Passport\HasApiTokens;
+
+class User extends Authenticatable
+{
+    use HasApiTokens, Notifiable;
+
+    /**
+     * 驗證使用者的密碼以獲得 Passport 密碼授權。
+     */
+    public function validateForPassportPasswordGrant(string $password): bool
+    {
+        return Hash::check($password, $this-&gt;password);
+    }
+}
+</code></pre></div>
+<h2 id="_27">隱式授權令牌<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p><strong>注意</strong><br />
+我們不再推薦使用隱式授權令牌。 相反，你應該選擇 <a href="https://oauth2.thephpleague.com/authorization-server/which-grant/"> OAuth2 伺服器當前推薦的授權類型</a> 。</p>
+</blockquote>
+<p>隱式授權類似於授權碼授權； 但是，令牌會在不交換授權碼的情況下返回給客戶端。 此授權最常用於無法安全儲存客戶端憑據的 JavaScript 或移動應用程式。 要啟用授權，請在應用程式的 <code>App\Providers\AuthServiceProvider</code> 類的 <code>boot</code> 方法中呼叫 <code>enableImplicitGrant</code> 方法：</p>
+<div class="highlight"><pre><span></span><code>/**
+ * 註冊任何身份驗證/授權服務。
+ */
+public function boot(): void
+{
+    Passport::enableImplicitGrant();
+}
+</code></pre></div>
+<p>啟用授權後，開發人員可以使用他們的客戶端 ID 從你的應用程式請求訪問令牌。 消費應用程式應該嚮應用程序的 <code>/oauth/authorize</code> 路由發出重新導向請求，如下所示：</p>
+<div class="highlight"><pre><span></span><code>use Illuminate\Http\Request;
+
+Route::get(&#39;/redirect&#39;, function (Request $request) {
+    $request-&gt;session()-&gt;put(&#39;state&#39;, $state = Str::random(40));
+
+    $query = http_build_query([
+        &#39;client_id&#39; =&gt; &#39;client-id&#39;,
+        &#39;redirect_uri&#39; =&gt; &#39;http://third-party-app.com/callback&#39;,
+        &#39;response_type&#39; =&gt; &#39;token&#39;,
+        &#39;scope&#39; =&gt; &#39;&#39;,
+        &#39;state&#39; =&gt; $state,
+        // &#39;prompt&#39; =&gt; &#39;&#39;, // &quot;none&quot;, &quot;consent&quot;, or &quot;login&quot;
+    ]);
+
+    return redirect(&#39;http://passport-app.test/oauth/authorize?&#39;.$query);
+});
+</code></pre></div>
+<blockquote>
+<p><strong>技巧</strong><br />
+請記住， <code>/oauth/authorize</code> 路由已經由 <code>Passport::routes</code> 方法定義。 你無需手動定義此路由。</p>
+</blockquote>
+<h2 id="_28">客戶憑證授予令牌<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h2>
+<p>客戶端憑據授予適用於機器對機器身份驗證。 例如，你可以在通過 API 執行維護任務的計畫作業中使用此授權。</p>
+<p>要想讓應用程式可以通過客戶端憑據授權發佈令牌，首先，你需要建立一個客戶端憑據授權客戶端。你可以使用 <code>passport:client</code> Artisan 命令的 <code>--client</code> 選項來執行此操作：</p>
+<div class="highlight"><pre><span></span><code>php<span class="w"> </span>artisan<span class="w"> </span>passport:client<span class="w"> </span>--client
+</code></pre></div>
+<p>接下來，要使用這種授權，你首先需要在 <code>app/Http/Kernel.php</code> 的 <code>$routeMiddleware</code> 屬性中新增 <code>CheckClientCredentials</code> 中介軟體：</p>
+<div class="highlight"><pre><span></span><code>use Laravel\Passport\Http\Middleware\CheckClientCredentials;
+
+protected $middlewareAliases = [
+    &#39;client&#39; =&gt; CheckClientCredentials::class,
+];
+</code></pre></div>
+<p>之後，在路由上附加中介軟體：</p>
+<div class="highlight"><pre><span></span><code>Route::get(&#39;/orders&#39;, function (Request $request) {
+    ...
+})-&gt;middleware(&#39;client&#39;);
+</code></pre></div>
+<p>要將對路由的訪問限製為特定範圍，你可以在將 <code>client</code> 中介軟體附加到路由時提供所需範圍的逗號分隔列表：</p>
+<div class="highlight"><pre><span></span><code>Route::get(&#39;/orders&#39;, function (Request $request) {
+    ...
+})-&gt;middleware(&#39;client:check-status,your-scope&#39;);
+</code></pre></div>
+<h3 id="_29">檢索令牌<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h3>
+<p>要使用此授權類型檢索令牌，請向 <code>oauth/token</code> 端點發出請求：</p>
+<div class="highlight"><pre><span></span><code>use Illuminate\Support\Facades\Http;
+
+$response = Http::asForm()-&gt;post(&#39;http://passport-app.test/oauth/token&#39;, [
+    &#39;grant_type&#39; =&gt; &#39;client_credentials&#39;,
+    &#39;client_id&#39; =&gt; &#39;client-id&#39;,
+    &#39;client_secret&#39; =&gt; &#39;client-secret&#39;,
+    &#39;scope&#39; =&gt; &#39;your-scope&#39;,
+]);
+
+return $response-&gt;json()[&#39;access_token&#39;];
+</code></pre></div>
+<h2 id="_30">個人訪問令牌<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h2>
+<p>有時，你的使用者要在不經過傳統的授權碼重新導向流程的情況下向自己頒發訪問令牌。允許使用者通過應用程式使用者介面對自己發佈令牌，有助於使用者體驗你的 API，或者也可以將其作為一種更簡單的發佈訪問令牌的方式。</p>
+<blockquote>
+<p><strong>技巧</strong><br />
+如果你的應用程式主要使用 Passport 來發佈個人訪問令牌，請考慮使用 Laravel 的輕量級第一方庫 <a href="/docs/laravel/10.x/sanctum">Laravel Sanctum</a> 來發佈 API 訪問令牌。</p>
+</blockquote>
+<h3 id="_31">建立個人訪問客戶端<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h3>
+<p>在應用程式發出個人訪問令牌前，你需要在 <code>passport:client</code> 命令後帶上 <code>--personal</code> 參數來建立對應的客戶端。如果你已經運行了 <code>passport:install</code> 命令，則無需再運行此命令:</p>
+<div class="highlight"><pre><span></span><code>php<span class="w"> </span>artisan<span class="w"> </span>passport:client<span class="w"> </span>--personal
+</code></pre></div>
+<p>建立個人訪問客戶端後，將客戶端的 ID 和純文字金鑰放在應用程式的 <code>.env</code> 檔案中:</p>
+<div class="highlight"><pre><span></span><code><span class="na">PASSPORT_PERSONAL_ACCESS_CLIENT_ID</span><span class="o">=</span><span class="s">&quot;client-id-value&quot;</span>
+<span class="na">PASSPORT_PERSONAL_ACCESS_CLIENT_SECRET</span><span class="o">=</span><span class="s">&quot;unhashed-client-secret-value&quot;</span>
+</code></pre></div>
+<h3 id="_32">管理個人令牌<a class="headerlink" href="#_32" title="Permanent link">&para;</a></h3>
+<p>建立個人訪問客戶端後，你可以使用 <code>App\Models\User</code> 模型實例的 <code>createToken</code> 方法來為給定使用者發佈令牌。 <code>createToken</code> 方法接受令牌的名稱作為其第一個參數和可選的 <a href="#token-scopes">範疇</a> 陣列作為其第二個參數:</p>
+<div class="highlight"><pre><span></span><code>use App\Models\User;
+
+$user = User::find(1);
+
+// 建立沒有範疇的令牌...
+$token = $user-&gt;createToken(&#39;Token Name&#39;)-&gt;accessToken;
+
+// 建立具有範疇的令牌...
+$token = $user-&gt;createToken(&#39;My Token&#39;, [&#39;place-orders&#39;])-&gt;accessToken;
+</code></pre></div>
+<h4 id="json-api_2">JSON API<a class="headerlink" href="#json-api_2" title="Permanent link">&para;</a></h4>
+<p>Passport 中還有一個用於管理個人訪問令牌的 JSON API。你可以將其與你自己的前端配對，為你的使用者提供一個用於管理個人訪問令牌的儀表板。下面，我們將回顧所有用於管理個人訪問令牌的 API 。為了方便起見，我們將使用 <a href="https://github.com/mzabriskie/axios">Axios</a> 來演示向 API 發出 HTTP 請求。</p>
+<p>JSON API 由 <code>web</code> 和 <code>auth</code> 這兩個中介軟體保護；因此，只能從你自己的應用程式中呼叫它。無法從外部源呼叫它。</p>
+<h4 id="get-oauthscopes"><code>GET /oauth/scopes</code><a class="headerlink" href="#get-oauthscopes" title="Permanent link">&para;</a></h4>
+<p>此路由會返回應用中定義的所有 <a href="#token-scopes">範疇</a> 。你可以使用此路由列出使用者可以分配給個人訪問令牌的範圍:</p>
+<div class="highlight"><pre><span></span><code><span class="nx">axios</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/oauth/scopes&#39;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+<span class="w">    </span><span class="p">});</span>
+</code></pre></div>
+<h4 id="get-oauthpersonal-access-tokens"><code>GET /oauth/personal-access-tokens</code><a class="headerlink" href="#get-oauthpersonal-access-tokens" title="Permanent link">&para;</a></h4>
+<p>此路由返回認證使用者建立的所有個人訪問令牌。這主要用於列出使用者的所有令牌，以便他們可以編輯和撤銷它們:</p>
+<div class="highlight"><pre><span></span><code><span class="nx">axios</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/oauth/personal-access-tokens&#39;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+<span class="w">    </span><span class="p">});</span>
+</code></pre></div>
+<h4 id="post-oauthpersonal-access-tokens"><code>POST /oauth/personal-access-tokens</code><a class="headerlink" href="#post-oauthpersonal-access-tokens" title="Permanent link">&para;</a></h4>
+<p>此路由建立新的個人訪問令牌。它需要兩個資料：令牌的 <code>name</code> 和 <code>scopes</code> 。</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Token Name&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">scopes</span><span class="o">:</span><span class="w"> </span><span class="p">[]</span>
+<span class="p">};</span>
+
+<span class="nx">axios</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">&#39;/oauth/personal-access-tokens&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">accessToken</span><span class="p">);</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="w">    </span><span class="p">.</span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">response</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// 列出響應的錯誤...</span>
+<span class="w">    </span><span class="p">});</span>
+</code></pre></div>
+<h4 id="delete-oauthpersonal-access-tokenstoken-id"><code>DELETE /oauth/personal-access-tokens/{token-id}</code><a class="headerlink" href="#delete-oauthpersonal-access-tokenstoken-id" title="Permanent link">&para;</a></h4>
+<p>此路由可用於撤銷個人訪問令牌：</p>
+<div class="highlight"><pre><span></span><code><span class="nx">axios</span><span class="p">.</span><span class="ow">delete</span><span class="p">(</span><span class="s1">&#39;/oauth/personal-access-tokens/&#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">tokenId</span><span class="p">);</span>
+</code></pre></div>
+<h2 id="_33">路由保護<a class="headerlink" href="#_33" title="Permanent link">&para;</a></h2>
+<h3 id="_34">通過中介軟體<a class="headerlink" href="#_34" title="Permanent link">&para;</a></h3>
+<p>Passport 包含一個 <a href="/docs/laravel/10.x/authentication#adding-custom-guards">驗證保護機制</a> 驗證請求中傳入的訪問令牌。 若組態 <code>api</code> 的看守器使用 <code>passport</code> 驅動，你只要在需要有效訪問令牌的路由上指定 <code>auth:api</code> 中介軟體即可：</p>
+<div class="highlight"><pre><span></span><code>Route::get(&#39;/user&#39;, function () {
+    // ...
+})-&gt;middleware(&#39;auth:api&#39;);
+</code></pre></div>
+<blockquote>
+<p><strong>注意</strong><br />
+如果你正在使用 <a href="#client-credentials-grant-tokens">客戶端授權令牌</a> ，你應該使用 <a href="#client-credentials-grant-tokens"> <code>client</code> 中介軟體</a> 來保護你的路由，而不是使用 <code>auth:api</code> 中介軟體。</p>
+</blockquote>
+<h4 id="_35">多個身份驗證看守器<a class="headerlink" href="#_35" title="Permanent link">&para;</a></h4>
+<p>如果你的應用程式可能使用完全不同的 <code>Eloquent</code> 模型、不同類型的使用者進行身份驗證，則可能需要為應用程式中的每種使用者設定看守器。這使你可以保護特定看守器的請求。例如，在組態檔案 <code>config/auth.php</code> 中設定以下看守器：</p>
+<div class="highlight"><pre><span></span><code>&#39;api&#39; =&gt; [
+    &#39;driver&#39; =&gt; &#39;passport&#39;,
+    &#39;provider&#39; =&gt; &#39;users&#39;,
+],
+
+&#39;api-customers&#39; =&gt; [
+    &#39;driver&#39; =&gt; &#39;passport&#39;,
+    &#39;provider&#39; =&gt; &#39;customers&#39;,
+],
+</code></pre></div>
+<p>以下路由將使用 <code>customers</code> 使用者提供者的 <code>api-customers</code> 看守器來驗證傳入的請求：</p>
+<div class="highlight"><pre><span></span><code>Route::get(&#39;/customer&#39;, function () {
+    // ...
+})-&gt;middleware(&#39;auth:api-customers&#39;);
+</code></pre></div>
+<blockquote>
+<p><strong>技巧</strong><br />
+關於使用 Passport 的多個使用者提供器的更多資訊，請參考 <a href="#customizing-the-user-provider">密碼認證文件</a> 。</p>
+</blockquote>
+<h3 id="_36">傳遞訪問令牌<a class="headerlink" href="#_36" title="Permanent link">&para;</a></h3>
+<p>當呼叫 Passport 保護下的路由時，接入的 API 應用需要將訪問令牌作為 <code>Bearer</code> 令牌放在要求標頭 <code>Authorization</code> 中。例如，使用 Guzzle HTTP 庫時：</p>
+<div class="highlight"><pre><span></span><code>use Illuminate\Support\Facades\Http;
+
+$response = Http::withHeaders([
+    &#39;Accept&#39; =&gt; &#39;application/json&#39;,
+    &#39;Authorization&#39; =&gt; &#39;Bearer &#39;.$accessToken,
+])-&gt;get(&#39;https://passport-app.test/api/user&#39;);
+
+return $response-&gt;json();
+</code></pre></div>
+<h2 id="_37">令牌範疇<a class="headerlink" href="#_37" title="Permanent link">&para;</a></h2>
+<p>範疇可以讓 API 客戶端在請求帳戶授權時請求特定的權限。例如，如果你正在建構電子商務應用程式，並不是所有接入的 API 應用都需要下訂單的功能。你可以讓接入的 API 應用只被允許授權訪問訂單發貨狀態。換句話說，範疇允許應用程式的使用者限制第三方應用程式執行的操作。</p>
+<h3 id="_38">定義範疇<a class="headerlink" href="#_38" title="Permanent link">&para;</a></h3>
+<p>你可以在 <code>App\Providers\AuthServiceProvider</code> 的 <code>boot</code> 方法中使用 <code>Passport::tokensCan</code> 方法來定義 API 的範疇。<code>tokensCan</code> 方法接受一個包含範疇名稱和描述的陣列作為參數。範疇描述將會在授權確認頁中直接展示給使用者，你可以將其定義為任何你需要的內容：</p>
+<div class="highlight"><pre><span></span><code>/**
+ * 註冊身份驗證/授權服務。
+ */
+public function boot(): void
+{
+    Passport::tokensCan([
+        &#39;place-orders&#39; =&gt; &#39;Place orders&#39;,
+        &#39;check-status&#39; =&gt; &#39;Check order status&#39;,
+    ]);
+}
+</code></pre></div>
+<h3 id="_39">默認範疇<a class="headerlink" href="#_39" title="Permanent link">&para;</a></h3>
+<p>如果客戶端沒有請求任何特定的範圍，你可以在 <code>App\Providers\AuthServiceProvider</code> 類的 <code>boot</code>   方法中使用 <code>setDefaultScope</code> 方法來定義默認的範疇。</p>
+<div class="highlight"><pre><span></span><code>use Laravel\Passport\Passport;
+
+Passport::tokensCan([
+    &#39;place-orders&#39; =&gt; &#39;Place orders&#39;,
+    &#39;check-status&#39; =&gt; &#39;Check order status&#39;,
+]);
+
+Passport::setDefaultScope([
+    &#39;check-status&#39;,
+    &#39;place-orders&#39;,
+]);
+</code></pre></div>
+<blockquote>
+<p><strong>技巧</strong>
+Passport 的默認範疇不適用於由使用者生成的個人訪問令牌。</p>
+</blockquote>
+<h3 id="_40">給令牌分配範疇<a class="headerlink" href="#_40" title="Permanent link">&para;</a></h3>
+<h4 id="_41">請求授權碼<a class="headerlink" href="#_41" title="Permanent link">&para;</a></h4>
+<p>使用授權碼請求訪問令牌時，接入的應用需為 <code>scope</code> 參數指定所需範疇。 <code>scope</code> 參數包含多個範疇時，名稱之間使用空格分割：</p>
+<div class="highlight"><pre><span></span><code>Route::get(&#39;/redirect&#39;, function () {
+    $query = http_build_query([
+        &#39;client_id&#39; =&gt; &#39;client-id&#39;,
+        &#39;redirect_uri&#39; =&gt; &#39;http://example.com/callback&#39;,
+        &#39;response_type&#39; =&gt; &#39;code&#39;,
+        &#39;scope&#39; =&gt; &#39;place-orders check-status&#39;,
+    ]);
+
+    return redirect(&#39;http://passport-app.test/oauth/authorize?&#39;.$query);
+});
+</code></pre></div>
+<h4 id="_42">分發個人訪問令牌<a class="headerlink" href="#_42" title="Permanent link">&para;</a></h4>
+<p>使用 <code>App\Models\User</code> 模型的 <code>createToken</code> 方法發放個人訪問令牌時，可以將所需範疇的陣列作為第二個參數傳給此方法：</p>
+<div class="highlight"><pre><span></span><code>$token = $user-&gt;createToken(&#39;My Token&#39;, [&#39;place-orders&#39;])-&gt;accessToken;
+</code></pre></div>
+<h3 id="_43">檢查範疇<a class="headerlink" href="#_43" title="Permanent link">&para;</a></h3>
+<p>Passport 包含兩個中介軟體，可用於驗證傳入的請求是否包含訪問指定範疇的令牌。使用之前，需要將下面的中介軟體新增到 <code>app/Http/Kernel.php</code> 檔案的 <code>$middlewareAliases</code> 屬性中：</p>
+<div class="highlight"><pre><span></span><code>&#39;scopes&#39; =&gt; \Laravel\Passport\Http\Middleware\CheckScopes::class,
+&#39;scope&#39; =&gt; \Laravel\Passport\Http\Middleware\CheckForAnyScope::class,
+</code></pre></div>
+<h4 id="_44">檢查所有範疇<a class="headerlink" href="#_44" title="Permanent link">&para;</a></h4>
+<p>路由可以使用 <code>scopes</code> 中介軟體來檢查當前請求是否擁有指定的所有範疇：</p>
+<div class="highlight"><pre><span></span><code>Route::get(&#39;/orders&#39;, function () {
+    // 訪問令牌具有 &quot;check-status&quot; 和 &quot;place-orders&quot; 範疇...
+})-&gt;middleware([&#39;auth:api&#39;, &#39;scopes:check-status,place-orders&#39;]);
+</code></pre></div>
+<h4 id="_45">檢查任意範疇<a class="headerlink" href="#_45" title="Permanent link">&para;</a></h4>
+<p>路由可以使用 <code>scope</code> 中介軟體來檢查當前請求是否擁有指定的 <em>任意</em> 範疇：</p>
+<div class="highlight"><pre><span></span><code>Route::get(&#39;/orders&#39;, function () {
+    // 訪問令牌具有 &quot;check-status&quot; 或 &quot;place-orders&quot; 範疇...
+})-&gt;middleware([&#39;auth:api&#39;, &#39;scope:check-status,place-orders&#39;]);
+</code></pre></div>
+<h4 id="_46">檢查令牌實例上的範疇<a class="headerlink" href="#_46" title="Permanent link">&para;</a></h4>
+<p>即使含有訪問令牌驗證的請求已經通過應用程式的驗證，你仍然可以使用當前授權 <code>App\Models\User</code> 實例上的 <code>tokenCan</code> 方法來驗證令牌是否擁有指定的範疇：</p>
+<div class="highlight"><pre><span></span><code>use Illuminate\Http\Request;
+
+Route::get(&#39;/orders&#39;, function (Request $request) {
+    if ($request-&gt;user()-&gt;tokenCan(&#39;place-orders&#39;)) {
+        // ...
+    }
+});
+</code></pre></div>
+<h4 id="_47">附加範疇方法<a class="headerlink" href="#_47" title="Permanent link">&para;</a></h4>
+<p><code>scopeIds</code> 方法將返回所有已定義 ID / 名稱的陣列：</p>
+<div class="highlight"><pre><span></span><code>use Laravel\Passport\Passport;
+
+Passport::scopeIds();
+</code></pre></div>
+<p><code>scopes</code> 方法將返回一個包含所有已定義範疇陣列的 <code>Laravel\Passport\Scope</code> 實例：</p>
+<div class="highlight"><pre><span></span><code>Passport::scopes();
+</code></pre></div>
+<p><code>scopesFor</code> 方法將返回與給定 ID / 名稱匹配的 <code>Laravel\Passport\Scope</code> 實例陣列：</p>
+<div class="highlight"><pre><span></span><code>Passport::scopesFor([&#39;place-orders&#39;, &#39;check-status&#39;]);
+</code></pre></div>
+<p>你可以使用 <code>hasScope</code> 方法確定是否已定義給定範疇：</p>
+<div class="highlight"><pre><span></span><code>Passport::hasScope(&#39;place-orders&#39;);
+</code></pre></div>
+<h2 id="javascript-api">使用 JavaScript 接入 API<a class="headerlink" href="#javascript-api" title="Permanent link">&para;</a></h2>
+<p>在建構 API 時， 如果能通過 JavaScript 應用接入自己的 API 將會給開發過程帶來極大的便利。這種 API 開發方法允許你使用自己的應用程式的 API 和別人共享的 API 。你的 Web 應用程式、移動應用程式、第三方應用程式以及可能在各種軟體包管理器上發佈的任何 SDK 都可能會使用相同的 API 。</p>
+<p>通常，如果要在 JavaScript 應用程式中使用 API ，需要手動嚮應用程序傳送訪問令牌，並將其傳遞給應用程式。但是， Passport 有一個可以處理這個問題的中介軟體。將 <code>CreateFreshApiToken</code> 中介軟體新增到 <code>app/Http/Kernel.php</code> 檔案中的 <code>web</code> 中介軟體組就可以了：</p>
+<div class="highlight"><pre><span></span><code>&#39;web&#39; =&gt; [
+    // 其他中介軟體...
+    \Laravel\Passport\Http\Middleware\CreateFreshApiToken::class,
+],
+</code></pre></div>
+<blockquote>
+<p><strong>注意</strong><br />
+你需要確保 <code>CreateFreshApiToken</code> 中介軟體是你的中介軟體堆疊中的最後一個中介軟體。</p>
+</blockquote>
+<p>該中介軟體會將 <code>laravel_token</code> cookie 附加到你的響應中。該 cookie 將包含一個加密後的 JWT ， Passport 將用來驗證來自 JavaScript 應用程式的 API 請求。JWT 的生命週期等於你的 <code>session.lifetime</code> 組態值。至此，你可以在不明確傳遞訪問令牌的情況下嚮應用程序的 API 發出請求：</p>
+<div class="highlight"><pre><span></span><code>axios.get(&#39;/api/user&#39;)
+    .then(response =&gt; {
+        console.log(response.data);
+    });
+</code></pre></div>
+<h4 id="cookie">自訂 Cookie 名稱<a class="headerlink" href="#cookie" title="Permanent link">&para;</a></h4>
+<p>如果需要，你可以在 <code>App\Providers\AuthServiceProvider</code> 類的 <code>boot</code> 方法中使用 <code>Passport::cookie</code> 方法來自訂 <code>laravel_token</code> cookie 的名稱：</p>
+<div class="highlight"><pre><span></span><code>/**
+ * 註冊認證 / 授權服務.
+ */
+public function boot(): void
+{
+    Passport::cookie(&#39;custom_name&#39;);
+}
+</code></pre></div>
+<h4 id="csrf">CSRF 保護<a class="headerlink" href="#csrf" title="Permanent link">&para;</a></h4>
+<p>當使用這種授權方法時，你需要確認請求中包含有效的 CSRF 令牌。默認的 Laravel JavaScript 腳手架會包含一個 Axios 實例，該實例是自動使用加密的 <code>XSRF-TOKEN</code> cookie 值在同源請求上傳送 <code>X-XSRF-TOKEN</code> 要求標頭。</p>
+<blockquote>
+<p><strong>技巧</strong><br />
+如果你選擇傳送 <code>X-CSRF-TOKEN</code> 要求標頭而不是 <code>X-XSRF-TOKEN</code> ，則需要使用 <code>csrf_token()</code> 提供的未加密令牌。</p>
+</blockquote>
+<h2 id="_48">事件<a class="headerlink" href="#_48" title="Permanent link">&para;</a></h2>
+<p>Passport 在發出訪問令牌和刷新令牌時引發事件。 你可以使用這些事件來修改或撤消資料庫中的其他訪問令牌。如果你願意，可以在應用程式的 <code>App\Providers\EventServiceProvider</code> 類中將監聽器註冊到這些事件：</p>
+<div class="highlight"><pre><span></span><code>/**
+ * 應用程式的事件監聽器對應
+ *
+ * @var array
+ */
+protected $listen = [
+    &#39;Laravel\Passport\Events\AccessTokenCreated&#39; =&gt; [
+        &#39;App\Listeners\RevokeOldTokens&#39;,
+    ],
+
+    &#39;Laravel\Passport\Events\RefreshTokenCreated&#39; =&gt; [
+        &#39;App\Listeners\PruneOldTokens&#39;,
+    ],
+];
+</code></pre></div>
+<h2 id="_49">測試<a class="headerlink" href="#_49" title="Permanent link">&para;</a></h2>
+<p>Passport 的 <code>actingAs</code> 方法可以指定當前已認證使用者及其範疇。<code>actingAs</code> 方法的第一個參數是使用者實例，第二個參數是使用者令牌範疇陣列：</p>
+<div class="highlight"><pre><span></span><code>use App\Models\User;
+use Laravel\Passport\Passport;
+
+public function test_servers_can_be_created(): void
+{
+    Passport::actingAs(
+        User::factory()-&gt;create(),
+        [&#39;create-servers&#39;]
+    );
+
+    $response = $this-&gt;post(&#39;/api/create-server&#39;);
+
+    $response-&gt;assertStatus(201);
+}
+</code></pre></div>
+<p>Passport 的 <code>actingAsClient</code> 方法可以指定當前已認證使用者及其範疇。 <code>actingAsClient</code> 方法的第一個參數是使用者實例，第二個參數是使用者令牌範疇陣列：</p>
+<div class="highlight"><pre><span></span><code>use Laravel\Passport\Client;
+use Laravel\Passport\Passport;
+
+public function test_orders_can_be_retrieved(): void
+{
+    Passport::actingAsClient(
+        Client::factory()-&gt;create(),
+        [&#39;check-status&#39;]
+    );
+
+    $response = $this-&gt;get(&#39;/api/orders&#39;);
+
+    $response-&gt;assertStatus(200);
+}
+</code></pre></div>
+
+
+
+
+
+                
+
+  <!-- Giscus -->
+  <h2 id="__comments">留言</h2>
+  <script src="https://giscus.app/client.js"
+          data-repo="tomleesm/notes"
+          data-repo-id="R_kgDOGuSz4g"
+          data-category="Announcements"
+          data-category-id="DIC_kwDOGuSz4s4CBI6T"
+          data-mapping="title"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="bottom"
+          data-theme="dark"
+          data-lang="zh-TW"
+          crossorigin="anonymous"
+          async>
+  </script>
+
+  <!-- Reload on palette change -->
+  <script>
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object")
+      if (palette.color.scheme === "slate") {
+        var giscus = document.querySelector("script[src*=giscus]")
+        giscus.setAttribute("data-theme", "dark")
+      }
+
+    /* Register event handlers after documented loaded */
+    document.addEventListener("DOMContentLoaded", function() {
+      var ref = document.querySelector("[data-md-component=palette]")
+      ref.addEventListener("change", function() {
+        var palette = __md_get("__palette")
+        if (palette && typeof palette.color === "object") {
+          var theme = palette.color.scheme === "slate" ? "dark" : "light"
+
+          /* Instruct Giscus to change theme */
+          var frame = document.querySelector(".giscus-frame")
+          frame.contentWindow.postMessage(
+            { giscus: { setConfig: { theme } } },
+            "https://giscus.app"
+          )
+        }
+      })
+    })
+  </script>
+
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            回到頂端
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tabs", "navigation.sections", "navigation.indexes", "navigation.top", "header.autohide", "search.highlight", "search.share"], "search": "../../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "\u5df2\u8907\u88fd", "clipboard.copy": "\u8907\u88fd", "search.result.more.one": "\u6b64\u9801\u5c1a\u6709 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.more.other": "\u6b64\u9801\u5c1a\u6709 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.none": "\u6c92\u6709\u7b26\u5408\u7684\u9805\u76ee", "search.result.one": "\u627e\u5230 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.other": "\u627e\u5230 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.placeholder": "\u6253\u5b57\u9032\u884c\u641c\u5c0b", "search.result.term.missing": "\u7f3a\u5c11\u5b57\u8a5e", "select.version": "\u9078\u64c7\u7248\u672c"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.dff1b7c8.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,5128 @@
+
+<!doctype html>
+<html lang="zh-TW" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../01%E5%BF%AB%E9%80%9F%E5%85%A5%E9%96%80/">
+      
+      
+        <link rel="next" href="../03%E5%88%86%E9%A0%81/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-9.2.7">
+    
+    
+      
+        <title>查詢生成器 - Tom 株式會社</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.046329b4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.85d0ee34.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+Traditional+Chinese:300,300i,400,400i,700,700i%7CSource+Code+Pro:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans Traditional Chinese";--md-code-font:"Source Code Pro"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="red" data-md-color-accent="red">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳轉到
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="頁首">
+    <a href="../.." title="Tom 株式會社" class="md-header__button md-logo" aria-label="Tom 株式會社" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Tom 株式會社
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              查詢生成器
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="red" data-md-color-accent="red"  aria-hidden="true"  type="radio" name="__palette" id="__palette_1">
+    
+  
+</form>
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜尋" placeholder="搜尋" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="搜尋">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清除" aria-label="清除" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜尋引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/tomleesm/notes" title="前往倉庫" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    tomleesm/notes
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="標籤" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../01%E6%A0%B8%E5%BF%83%E6%9E%B6%E6%A7%8B/01%E8%AB%8B%E6%B1%82%E7%9A%84%E7%94%9F%E5%91%BD%E9%80%B1%E6%9C%9F/" class="md-tabs__link">
+          
+  
+    
+  
+  核心架構
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/01%E8%B7%AF%E7%94%B1/" class="md-tabs__link">
+          
+  
+    
+  
+  基礎功能
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/01Artisan%E5%91%BD%E4%BB%A4%E5%88%97/" class="md-tabs__link">
+          
+  
+    
+  
+  繼續深入
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../04%E5%AE%89%E5%85%A8%E7%9B%B8%E9%97%9C/01%E4%BD%BF%E7%94%A8%E8%80%85%E8%AA%8D%E8%AD%89/" class="md-tabs__link">
+          
+  
+    
+  
+  安全相關
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../01%E5%BF%AB%E9%80%9F%E5%85%A5%E9%96%80/" class="md-tabs__link">
+          
+  
+    
+  
+  資料庫
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../06EloquentORM/01%E5%BF%AB%E9%80%9F%E5%85%A5%E9%96%80/" class="md-tabs__link">
+          
+  
+    
+  
+  Eloquent ORM
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../07%E6%B8%AC%E8%A9%A6%E7%9B%B8%E9%97%9C/01%E5%85%A5%E9%96%80/" class="md-tabs__link">
+          
+  
+    
+  
+  測試相關
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/01Cashier%E4%BA%A4%E6%98%93%E5%B7%A5%E5%85%B7%E5%8C%85Stripe/" class="md-tabs__link">
+          
+  
+    
+  
+  官方擴展包
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../cheatsheets/artisan/" class="md-tabs__link">
+          
+  
+    
+  
+  語法速查表
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="導覽列" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Tom 株式會社" class="md-nav__button md-logo" aria-label="Tom 株式會社" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Tom 株式會社
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/tomleesm/notes" title="前往倉庫" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    tomleesm/notes
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    核心架構
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            核心架構
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01%E6%A0%B8%E5%BF%83%E6%9E%B6%E6%A7%8B/01%E8%AB%8B%E6%B1%82%E7%9A%84%E7%94%9F%E5%91%BD%E9%80%B1%E6%9C%9F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    請求的生命週期
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01%E6%A0%B8%E5%BF%83%E6%9E%B6%E6%A7%8B/02%E6%9C%8D%E5%8B%99%E5%AE%B9%E5%99%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    服務容器
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01%E6%A0%B8%E5%BF%83%E6%9E%B6%E6%A7%8B/03%E6%9C%8D%E5%8B%99%E6%8F%90%E4%BE%9B%E8%80%85/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    服務提供者
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01%E6%A0%B8%E5%BF%83%E6%9E%B6%E6%A7%8B/04Facades/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Facades
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    基礎功能
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            基礎功能
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/01%E8%B7%AF%E7%94%B1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    路由
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/02%E4%B8%AD%E4%BB%8B%E8%BB%9F%E9%AB%94/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    中介軟體
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/03CSRF%E4%BF%9D%E8%AD%B7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CSRF 保護
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/04Controller/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Controller
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/05HTTP%E8%AB%8B%E6%B1%82/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTTP 請求
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/06HTTP%E9%9F%BF%E6%87%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTTP 響應
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/07%E6%AA%A2%E8%A6%96/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    檢視
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/08Blade%E7%AF%84%E6%9C%AC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Blade 範本
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/09Vite%E7%B7%A8%E8%AD%AFAssets/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vite 編譯 Assets
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/10%E7%94%9F%E6%88%90URL/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    生成 URL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/11Session/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Session
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/12%E8%A1%A8%E5%96%AE%E9%A9%97%E8%AD%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    表單驗證
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/13%E9%8C%AF%E8%AA%A4%E8%99%95%E7%90%86/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    錯誤處理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/14%E6%97%A5%E8%AA%8C/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    日誌
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    繼續深入
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            繼續深入
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/01Artisan%E5%91%BD%E4%BB%A4%E5%88%97/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Artisan 命令列
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/02%E5%BB%A3%E6%92%AD/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    廣播
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/03%E5%BF%AB%E5%8F%96%E7%B3%BB%E7%B5%B1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    快取系統
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/04%E9%9B%86%E5%90%88/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    集合
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/05%E5%A5%91%E7%B4%84Contract/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    契約 Contract
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/06%E4%BA%8B%E4%BB%B6%E7%B3%BB%E7%B5%B1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    事件系統
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/07%E6%AA%94%E6%A1%88%E5%84%B2%E5%AD%98/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    檔案儲存
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/09HTTPClient/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTTP Client
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/10%E6%9C%AC%E5%9C%B0%E5%8C%96/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    本地化
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/11%E9%83%B5%E4%BB%B6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    郵件
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/12%E6%B6%88%E6%81%AF%E9%80%9A%E7%9F%A5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    消息通知
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/13Package%E9%96%8B%E7%99%BC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Package 開發
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/14%E8%99%95%E7%90%86%E7%A8%8B%E5%BA%8F%E7%AE%A1%E7%90%86/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    處理程序管理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/15%E4%BD%87%E5%88%97/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    佇列
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/16%E9%99%90%E6%B5%81/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    限流
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/17%E4%BB%BB%E5%8B%99%E8%AA%BF%E5%BA%A6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    任務調度
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    安全相關
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            安全相關
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04%E5%AE%89%E5%85%A8%E7%9B%B8%E9%97%9C/01%E4%BD%BF%E7%94%A8%E8%80%85%E8%AA%8D%E8%AD%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    使用者認證
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04%E5%AE%89%E5%85%A8%E7%9B%B8%E9%97%9C/02%E4%BD%BF%E7%94%A8%E8%80%85%E6%8E%88%E6%AC%8A/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    使用者授權
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04%E5%AE%89%E5%85%A8%E7%9B%B8%E9%97%9C/03Email%E8%AA%8D%E8%AD%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Email 認證
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04%E5%AE%89%E5%85%A8%E7%9B%B8%E9%97%9C/04%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    加密解密
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04%E5%AE%89%E5%85%A8%E7%9B%B8%E9%97%9C/05%E9%9B%9C%E6%B9%8A/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    雜湊
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04%E5%AE%89%E5%85%A8%E7%9B%B8%E9%97%9C/06%E9%87%8D%E8%A8%AD%E5%AF%86%E7%A2%BC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    重設密碼
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    資料庫
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            資料庫
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01%E5%BF%AB%E9%80%9F%E5%85%A5%E9%96%80/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    快速入門
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    查詢生成器
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    查詢生成器
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目錄">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目錄
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    介紹
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    運行資料庫查詢
+  </a>
+  
+    <nav class="md-nav" aria-label="運行資料庫查詢">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    從表中檢索所有行
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    從表中檢索單行或單列
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    獲取某一列的值
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    分塊結果
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lazily" class="md-nav__link">
+    Lazily 流式傳輸結果
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    聚合函數
+  </a>
+  
+    <nav class="md-nav" aria-label="聚合函數">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    判斷記錄是否存在
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#select" class="md-nav__link">
+    Select 語句
+  </a>
+  
+    <nav class="md-nav" aria-label="Select 語句">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#select_1" class="md-nav__link">
+    指定一個 Select 語句
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    原生表示式
+  </a>
+  
+    <nav class="md-nav" aria-label="原生表示式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    原生方法。
+  </a>
+  
+    <nav class="md-nav" aria-label="原生方法。">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#selectraw" class="md-nav__link">
+    selectRaw
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#whereraw-orwhereraw" class="md-nav__link">
+    whereRaw / orWhereRaw
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#havingraw-orhavingraw" class="md-nav__link">
+    havingRaw / orHavingRaw
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#orderbyraw" class="md-nav__link">
+    orderByRaw
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#groupbyraw" class="md-nav__link">
+    groupByRaw
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#joins" class="md-nav__link">
+    Joins
+  </a>
+  
+    <nav class="md-nav" aria-label="Joins">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inner-join" class="md-nav__link">
+    Inner Join 語句
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#left-join-right-join" class="md-nav__link">
+    Left Join / Right Join 語句
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cross-join" class="md-nav__link">
+    Cross Join 語句
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#join" class="md-nav__link">
+    高級 Join 語句
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    子連接查詢
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    聯合
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#where" class="md-nav__link">
+    基礎的 Where 語句
+  </a>
+  
+    <nav class="md-nav" aria-label="基礎的 Where 語句">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#where_1" class="md-nav__link">
+    Where 語句
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#or-where" class="md-nav__link">
+    Or Where 語句
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#where-not" class="md-nav__link">
+    Where Not 語句
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#json-where" class="md-nav__link">
+    JSON Where 語句
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#where_2" class="md-nav__link">
+    其他 Where 語句
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    邏輯分組
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#where_3" class="md-nav__link">
+    高級 Where 語句
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#where-exists" class="md-nav__link">
+    Where Exists 語句
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#where_4" class="md-nav__link">
+    子查詢 Where 語句
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#where_5" class="md-nav__link">
+    全文 Where 子句
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ordering-grouping-limit-offset" class="md-nav__link">
+    Ordering, Grouping, Limit &amp; Offset
+  </a>
+  
+    <nav class="md-nav" aria-label="Ordering, Grouping, Limit & Offset">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    排序
+  </a>
+  
+    <nav class="md-nav" aria-label="排序">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#orderby" class="md-nav__link">
+    orderBy 方法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#latest-oldest" class="md-nav__link">
+    latest 和 oldest 方法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    隨機排序
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    移除已存在的排序
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    分組
+  </a>
+  
+    <nav class="md-nav" aria-label="分組">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#groupby-having" class="md-nav__link">
+    groupBy 和 having 方法
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    限制和偏移量
+  </a>
+  
+    <nav class="md-nav" aria-label="限制和偏移量">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#skip-take" class="md-nav__link">
+    skip 和 take 方法
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    條件語句
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    插入語句
+  </a>
+  
+    <nav class="md-nav" aria-label="插入語句">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ids" class="md-nav__link">
+    自增 IDs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    更新插入
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    更新語句
+  </a>
+  
+    <nav class="md-nav" aria-label="更新語句">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    更新或插入
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#json" class="md-nav__link">
+    更新 JSON 欄位
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    自增與自減
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    刪除語句
+  </a>
+  
+    <nav class="md-nav" aria-label="刪除語句">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#postgresql" class="md-nav__link">
+    截斷表 &amp; PostgreSQL
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    悲觀鎖
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    偵錯
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03%E5%88%86%E9%A0%81/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    分頁
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04%E9%81%B7%E7%A7%BB/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    遷移
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05%E8%B3%87%E6%96%99%E5%A1%AB%E5%85%85/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    資料填充
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06Redis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Redis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Eloquent ORM
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Eloquent ORM
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06EloquentORM/01%E5%BF%AB%E9%80%9F%E5%85%A5%E9%96%80/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    快速入門
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06EloquentORM/02%E9%97%9C%E8%81%AF/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    關聯
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06EloquentORM/03%E9%9B%86%E5%90%88/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    集合
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06EloquentORM/04%E5%B1%AC%E6%80%A7%E4%BF%AE%E6%94%B9%E5%99%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    屬性修改器
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06EloquentORM/05API%E8%B3%87%E6%BA%90/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    API 資源
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06EloquentORM/06%E5%BA%8F%E5%88%97%E5%8C%96/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    序列化
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06EloquentORM/07%E8%B3%87%E6%96%99%E5%B7%A5%E5%BB%A0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    資料工廠
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    測試相關
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            測試相關
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07%E6%B8%AC%E8%A9%A6%E7%9B%B8%E9%97%9C/01%E5%85%A5%E9%96%80/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    入門
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07%E6%B8%AC%E8%A9%A6%E7%9B%B8%E9%97%9C/02HTTP%E6%B8%AC%E8%A9%A6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTTP 測試
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07%E6%B8%AC%E8%A9%A6%E7%9B%B8%E9%97%9C/03%E5%91%BD%E4%BB%A4%E5%88%97%E6%B8%AC%E8%A9%A6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    命令列測試
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07%E6%B8%AC%E8%A9%A6%E7%9B%B8%E9%97%9C/04LaravelDusk/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Laravel Dusk
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07%E6%B8%AC%E8%A9%A6%E7%9B%B8%E9%97%9C/05%E8%B3%87%E6%96%99%E5%BA%AB%E6%B8%AC%E8%A9%A6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    資料庫測試
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07%E6%B8%AC%E8%A9%A6%E7%9B%B8%E9%97%9C/06Mocking/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mocking
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    官方擴展包
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            官方擴展包
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/01Cashier%E4%BA%A4%E6%98%93%E5%B7%A5%E5%85%B7%E5%8C%85Stripe/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cashier 交易工具包 Stripe
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/02Cashier%E4%BA%A4%E6%98%93%E5%B7%A5%E5%85%B7%E5%8C%85Paddle/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cashier 交易工具包 Paddle
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/03Envoy%E9%83%A8%E7%BD%B2%E5%B7%A5%E5%85%B7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Envoy 部署工具
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/04Fortify%E8%88%87%E5%89%8D%E7%AB%AF%E7%84%A1%E9%97%9C%E7%9A%84%E8%BA%AB%E4%BB%BD%E8%AA%8D%E8%AD%89%E5%BE%8C%E7%AB%AF%E5%AF%A6%E7%8F%BE/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fortify 與前端無關的身份認證後端實現
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/05Homestead%E8%99%9B%E6%93%AC%E6%A9%9F%E5%99%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Homestead 虛擬機器
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/06Horizon%E4%BD%87%E5%88%97%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Horizon 佇列管理工具
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/09Octane%E5%8A%A0%E9%80%9F%E5%BC%95%E6%93%8E/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Octane 加速引擎
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/10PassportOAuth%E8%AA%8D%E8%AD%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Passport OAuth 認證
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/11Pennant%E6%B8%AC%E8%A9%A6%E6%96%B0%E5%8A%9F%E8%83%BD/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pennant 測試新功能
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/12Pint%E7%A8%8B%E5%BC%8F%E7%A2%BC%E9%A2%A8%E6%A0%BC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pint 程式碼風格
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/13SailDocker%E9%96%8B%E7%99%BC%E7%92%B0%E5%A2%83/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sail Docker 開發環境
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/14SanctumAPI%E6%8E%88%E6%AC%8A/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sanctum API 授權
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/15Scout%E5%85%A8%E6%96%87%E6%90%9C%E5%B0%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Scout 全文搜尋
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/16Socialite%E7%AC%AC%E4%B8%89%E6%96%B9%E7%99%BB%E5%85%A5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Socialite 第三方登入
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/17Telescope%E5%81%B5%E9%8C%AF%E5%B7%A5%E5%85%B7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Telescope 偵錯工具
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    語法速查表
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            語法速查表
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/artisan/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Artisan
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/auth/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Auth 使用者認證
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/blade/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Blade 範本
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/cache/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cache
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/collection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Collection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/composer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Composer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/config/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Config
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/container/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Container
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/cookie/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cookie
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/db/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Database
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/environment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Environment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/event/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Event
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/file/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    File
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/helper/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Helper
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/input/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Input
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/lang/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lang
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/Log/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Log
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/mail/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mail
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/model/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Model (Eloquent ORM)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/pagination/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pagination
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/queue/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Queue
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/redirect/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Redirect
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/request/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Request
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/response/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Response
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/route/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Route
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/schema/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Schema 資料庫結構
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/security/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Security (Hash 和加解密)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/session/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Session
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/storage/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Storage
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/string/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    String
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/unittest/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Unit Test 單元測試
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/url/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    URL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/validation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Validation 表單驗證
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/view/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    View
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目錄">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目錄
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    介紹
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    運行資料庫查詢
+  </a>
+  
+    <nav class="md-nav" aria-label="運行資料庫查詢">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    從表中檢索所有行
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    從表中檢索單行或單列
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    獲取某一列的值
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    分塊結果
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lazily" class="md-nav__link">
+    Lazily 流式傳輸結果
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    聚合函數
+  </a>
+  
+    <nav class="md-nav" aria-label="聚合函數">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    判斷記錄是否存在
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#select" class="md-nav__link">
+    Select 語句
+  </a>
+  
+    <nav class="md-nav" aria-label="Select 語句">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#select_1" class="md-nav__link">
+    指定一個 Select 語句
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    原生表示式
+  </a>
+  
+    <nav class="md-nav" aria-label="原生表示式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    原生方法。
+  </a>
+  
+    <nav class="md-nav" aria-label="原生方法。">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#selectraw" class="md-nav__link">
+    selectRaw
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#whereraw-orwhereraw" class="md-nav__link">
+    whereRaw / orWhereRaw
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#havingraw-orhavingraw" class="md-nav__link">
+    havingRaw / orHavingRaw
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#orderbyraw" class="md-nav__link">
+    orderByRaw
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#groupbyraw" class="md-nav__link">
+    groupByRaw
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#joins" class="md-nav__link">
+    Joins
+  </a>
+  
+    <nav class="md-nav" aria-label="Joins">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inner-join" class="md-nav__link">
+    Inner Join 語句
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#left-join-right-join" class="md-nav__link">
+    Left Join / Right Join 語句
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cross-join" class="md-nav__link">
+    Cross Join 語句
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#join" class="md-nav__link">
+    高級 Join 語句
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    子連接查詢
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    聯合
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#where" class="md-nav__link">
+    基礎的 Where 語句
+  </a>
+  
+    <nav class="md-nav" aria-label="基礎的 Where 語句">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#where_1" class="md-nav__link">
+    Where 語句
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#or-where" class="md-nav__link">
+    Or Where 語句
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#where-not" class="md-nav__link">
+    Where Not 語句
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#json-where" class="md-nav__link">
+    JSON Where 語句
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#where_2" class="md-nav__link">
+    其他 Where 語句
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    邏輯分組
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#where_3" class="md-nav__link">
+    高級 Where 語句
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#where-exists" class="md-nav__link">
+    Where Exists 語句
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#where_4" class="md-nav__link">
+    子查詢 Where 語句
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#where_5" class="md-nav__link">
+    全文 Where 子句
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ordering-grouping-limit-offset" class="md-nav__link">
+    Ordering, Grouping, Limit &amp; Offset
+  </a>
+  
+    <nav class="md-nav" aria-label="Ordering, Grouping, Limit & Offset">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    排序
+  </a>
+  
+    <nav class="md-nav" aria-label="排序">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#orderby" class="md-nav__link">
+    orderBy 方法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#latest-oldest" class="md-nav__link">
+    latest 和 oldest 方法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    隨機排序
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    移除已存在的排序
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    分組
+  </a>
+  
+    <nav class="md-nav" aria-label="分組">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#groupby-having" class="md-nav__link">
+    groupBy 和 having 方法
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    限制和偏移量
+  </a>
+  
+    <nav class="md-nav" aria-label="限制和偏移量">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#skip-take" class="md-nav__link">
+    skip 和 take 方法
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    條件語句
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    插入語句
+  </a>
+  
+    <nav class="md-nav" aria-label="插入語句">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ids" class="md-nav__link">
+    自增 IDs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    更新插入
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    更新語句
+  </a>
+  
+    <nav class="md-nav" aria-label="更新語句">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    更新或插入
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#json" class="md-nav__link">
+    更新 JSON 欄位
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    自增與自減
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    刪除語句
+  </a>
+  
+    <nav class="md-nav" aria-label="刪除語句">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#postgresql" class="md-nav__link">
+    截斷表 &amp; PostgreSQL
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    悲觀鎖
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    偵錯
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+  
+                  
+
+  
+  
+
+
+<h1 id="_1">查詢生成器<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h2 id="_2">介紹<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>Laravel 的資料庫查詢生成器提供了一種便捷、流暢的介面來建立和運行資料庫查詢。它可用於執行應用程式中的大多數資料庫操作，並與 Laravel 支援的所有資料庫系統完美配合使用。</p>
+<p>Laravel 查詢生成器使用 PDO 參數繫結來保護你的應用程式免受 SQL 隱碼攻擊。無需清理或淨化傳遞給查詢生成器的字串作為查詢繫結。</p>
+<blockquote>
+<p><strong>警告</strong>
+PDO 不支援繫結列名。因此，你不應該允許使用者輸入來決定查詢引用的列名，包括 「order by」 列名。</p>
+</blockquote>
+<h2 id="_3">運行資料庫查詢<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h4 id="_4">從表中檢索所有行<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<p>你可以使用 <code>DB</code> facade 提供的 <code>table</code> 方法開始查詢。table 方法為指定的表返回一個鏈式查詢構造器實例，允許在查詢上連結更多約束，最後使用 <code>get</code> 方法檢索查詢結果：</p>
+<div class="highlight"><pre><span></span><code>&lt;?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
+use Illuminate\View\View;
+
+class UserController extends Controller
+{
+    /**
+     * 展示應用程式所有使用者的列表
+     */
+    public function index(): View
+    {
+        $users = DB::table(&#39;users&#39;)-&gt;get();
+
+        return view(&#39;user.index&#39;, [&#39;users&#39; =&gt; $users]);
+    }
+}
+</code></pre></div>
+<p><code>get</code> 方法返回包含查詢結果的 <code>Illuminate\Support\Collection</code> 實例，每個結果都是 PHP <code>stdClass</code> 實例。可以將列作為對象的屬性來訪問每列的值：</p>
+<div class="highlight"><pre><span></span><code>use Illuminate\Support\Facades\DB;
+
+$users = DB::table(&#39;users&#39;)-&gt;get();
+
+foreach ($users as $user) {
+    echo $user-&gt;name;
+}
+</code></pre></div>
+<blockquote>
+<p><strong>技巧:</strong><br />
+Laravel 集合提供了各種及其強大的方法來對應和裁剪資料。有關 Laravel 集合的更多資訊，請查看 <a href="/docs/laravel/10.x/collections">集合文件</a>.</p>
+</blockquote>
+<h4 id="_5">從表中檢索單行或單列<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<p>如果只需要從資料表中檢索單行，可以使用 <code>DB</code> facade 中的 <code>first</code> 方法。 此方法將返回單個 <code>stdClass</code> 對象</p>
+<div class="highlight"><pre><span></span><code>$user = DB::table(&#39;users&#39;)-&gt;where(&#39;name&#39;, &#39;John&#39;)-&gt;first();
+
+return $user-&gt;email;
+</code></pre></div>
+<p>如果不想要整行，可以使用 <code>value</code> 方法從紀錄中提取單個值。此方法將直接返回列的值：</p>
+<div class="highlight"><pre><span></span><code>$email = DB::table(&#39;users&#39;)-&gt;where(&#39;name&#39;, &#39;John&#39;)-&gt;value(&#39;email&#39;);
+</code></pre></div>
+<p>如果要通過 <code>id</code> 欄位值獲取單行資料，可以使用 <code>find</code> 方法：</p>
+<div class="highlight"><pre><span></span><code>$user = DB::table(&#39;users&#39;)-&gt;find(3);
+</code></pre></div>
+<h4 id="_6">獲取某一列的值<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<p>如果要獲取包含單列值的 <code>Illuminate\Support\Collection</code> 實例，則可以使用 <code>pluck</code> 方法。在下面的例子中，我們將獲取角色表中標題的集合：</p>
+<div class="highlight"><pre><span></span><code>use Illuminate\Support\Facades\DB;
+
+$titles = DB::table(&#39;users&#39;)-&gt;pluck(&#39;title&#39;);
+
+foreach ($titles as $title) {
+    echo $title;
+}
+</code></pre></div>
+<p>你可以通過向 <code>pluck</code> 方法提供第二個參數來指定結果集中要作為鍵的列：</p>
+<div class="highlight"><pre><span></span><code>$titles = DB::table(&#39;users&#39;)-&gt;pluck(&#39;title&#39;, &#39;name&#39;);
+
+foreach ($titles as $name =&gt; $title) {
+    echo $title;
+}
+</code></pre></div>
+<h3 id="_7">分塊結果<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p>如果需要處理成千上萬的資料庫記錄，請考慮使用 <code>DB</code> 提供的 <code>chunk</code> 方法。這個方法一次檢索一小塊結果，並將每個塊反饋到閉包涵數中進行處理。例如，讓我們以一次 100 條記錄的塊為單位檢索整個 <code>users</code> 表：</p>
+<div class="highlight"><pre><span></span><code>use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
+
+DB::table(&#39;users&#39;)-&gt;orderBy(&#39;id&#39;)-&gt;chunk(100, function (Collection $users) {
+    foreach ($users as $user) {
+        // ...
+    }
+});
+</code></pre></div>
+<p>你可以通過從閉包中返回 <code>false</code> 來停止處理其餘的塊:</p>
+<div class="highlight"><pre><span></span><code>DB::table(&#39;users&#39;)-&gt;orderBy(&#39;id&#39;)-&gt;chunk(100, function (Collection $users) {
+    // 處理分塊...
+
+    return false;
+});
+</code></pre></div>
+<p>如果在對結果進行分塊時更新資料庫記錄，那分塊結果可能會以意想不到的方式更改。如果你打算在分塊時更新檢索到的記錄，最好使用 <code>chunkById</code> 方法。此方法將根據記錄的主鍵自動對結果進行分頁:</p>
+<div class="highlight"><pre><span></span><code>DB::table(&#39;users&#39;)-&gt;where(&#39;active&#39;, false)
+    -&gt;chunkById(100, function (Collection $users) {
+        foreach ($users as $user) {
+            DB::table(&#39;users&#39;)
+                -&gt;where(&#39;id&#39;, $user-&gt;id)
+                -&gt;update([&#39;active&#39; =&gt; true]);
+        }
+    });
+</code></pre></div>
+<blockquote>
+<p><strong>注意</strong><br />
+當在更新或刪除塊回呼中的記錄時，對主鍵或外部索引鍵的任何更改都可能影響塊查詢。這可能會導致記錄未包含在分塊結果中。</p>
+</blockquote>
+<h3 id="lazily">Lazily 流式傳輸結果<a class="headerlink" href="#lazily" title="Permanent link">&para;</a></h3>
+<p><code>lazy</code> 方法的工作方式類似於 <a href="#chunking-results"><code>chunk</code> 方法</a>，因為它以塊的形式執行查詢。但是，<code>lazy()</code> 方法不是將每個塊傳遞給回呼，而是返回一個 <a href="/docs/laravel/10.x/collections#lazy-collections"><code>LazyCollection</code></a>，它可以讓你與結果進行互動單個流：</p>
+<p><div class="highlight"><pre><span></span><code><span class="x">use Illuminate\Support\Facades\DB;</span>
+
+<span class="x">DB::table(&#39;users&#39;)-&gt;orderBy(&#39;id&#39;)-&gt;lazy()-&gt;each(function (object $user) {</span>
+<span class="x">    // ...</span>
+<span class="x">});</span>
+</code></pre></div>
+再一次，如果你打算在迭代它們時更新檢索到的記錄，最好使用 <code>lazyById</code> 或 <code>lazyByIdDesc</code> 方法。 這些方法將根據記錄的主鍵自動對結果進行分頁：</p>
+<div class="highlight"><pre><span></span><code><span class="x">DB::table(&#39;users&#39;)-&gt;where(&#39;active&#39;, false)</span>
+<span class="x">    -&gt;lazyById()-&gt;each(function (object $user) {</span>
+<span class="x">        DB::table(&#39;users&#39;)</span>
+<span class="x">            -&gt;where(&#39;id&#39;, $user-&gt;id)</span>
+<span class="x">            -&gt;update([&#39;active&#39; =&gt; true]);</span>
+<span class="x">    });</span>
+</code></pre></div>
+<blockquote>
+<p><strong>注意</strong><br />
+在迭代記錄時更新或刪除記錄時，對主鍵或外部索引鍵的任何更改都可能影響塊查詢。這可能會導致記錄不包含在結果中。</p>
+</blockquote>
+<h3 id="_8">聚合函數<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<p>查詢建構器還提供了多種檢索聚合值的方法，例如 <code>count</code>， <code>max</code>， <code>min</code>，<code>avg</code>和 <code>sum</code>。你可以在建構查詢後呼叫這些方法中的任何一個：</p>
+<div class="highlight"><pre><span></span><code>use Illuminate\Support\Facades\DB;
+
+$users = DB::table(&#39;users&#39;)-&gt;count();
+
+$price = DB::table(&#39;orders&#39;)-&gt;max(&#39;price&#39;);
+</code></pre></div>
+<p>當然，你可以將這些方法與其他子句結合起來，以最佳化計算聚合值的方式：</p>
+<div class="highlight"><pre><span></span><code>$price = DB::table(&#39;orders&#39;)
+                -&gt;where(&#39;finalized&#39;, 1)
+                -&gt;avg(&#39;price&#39;);
+</code></pre></div>
+<h4 id="_9">判斷記錄是否存在<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<p>除了通過 <code>count</code> 方法可以確定查詢條件的結果是否存在之外，還可以使用  <code>exists</code> 和 <code>doesntExist</code> 方法：</p>
+<div class="highlight"><pre><span></span><code>if (DB::table(&#39;orders&#39;)-&gt;where(&#39;finalized&#39;, 1)-&gt;exists()) {
+    // ...
+}
+
+if (DB::table(&#39;orders&#39;)-&gt;where(&#39;finalized&#39;, 1)-&gt;doesntExist()) {
+    // ...
+}
+</code></pre></div>
+<h2 id="select">Select 語句<a class="headerlink" href="#select" title="Permanent link">&para;</a></h2>
+<h4 id="select_1">指定一個 Select 語句<a class="headerlink" href="#select_1" title="Permanent link">&para;</a></h4>
+<p>可能你並不總是希望從資料庫表中獲取所有列。 使用 <code>select</code> 方法，可以自訂一個 「select」 查詢語句來查詢指定的欄位：</p>
+<div class="highlight"><pre><span></span><code>use Illuminate\Support\Facades\DB;
+
+$users = DB::table(&#39;users&#39;)
+            -&gt;select(&#39;name&#39;, &#39;email as user_email&#39;)
+            -&gt;get();
+</code></pre></div>
+<p><code>distinct</code> 方法會強制讓查詢返回的結果不重複：</p>
+<div class="highlight"><pre><span></span><code>$users = DB::table(&#39;users&#39;)-&gt;distinct()-&gt;get();
+</code></pre></div>
+<p>如果你已經有了一個查詢構造器實例，並且希望在現有的查詢語句中加入一個欄位，那麼你可以使用 <code>addSelect</code> 方法：</p>
+<div class="highlight"><pre><span></span><code>$query = DB::table(&#39;users&#39;)-&gt;select(&#39;name&#39;);
+
+$users = $query-&gt;addSelect(&#39;age&#39;)-&gt;get();
+</code></pre></div>
+<h2 id="_10">原生表示式<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
+<p>當你需要在查詢中插入任意的字串時，你可以使用 <code>DB</code> 門面提供的 <code>raw</code> 方法以建立原生表示式。</p>
+<div class="highlight"><pre><span></span><code>$users = DB::table(&#39;users&#39;)
+             -&gt;select(DB::raw(&#39;count(*) as user_count, status&#39;))
+             -&gt;where(&#39;status&#39;, &#39;&lt;&gt;&#39;, 1)
+             -&gt;groupBy(&#39;status&#39;)
+             -&gt;get();
+</code></pre></div>
+<blockquote>
+<p><strong>警告</strong><br />
+原生語句作為字串注入到查詢中，因此必須格外小心避免產生 SQL 隱碼攻擊漏洞。</p>
+</blockquote>
+<h3 id="_11">原生方法。<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<p>可以使用以下方法代替 <code>DB::raw</code>，將原生表示式插入查詢的各個部分。<strong>請記住，Laravel 無法保證所有使用原生表示式的查詢都不受到 SQL 隱碼攻擊漏洞的影響。</strong></p>
+<h4 id="selectraw"><code>selectRaw</code><a class="headerlink" href="#selectraw" title="Permanent link">&para;</a></h4>
+<p><code>selectRaw</code> 方法可以用來代替 <code>addSelect(DB::raw(/* ... */))</code>。此方法接受一個可選的繫結陣列作為其第二個參數：</p>
+<div class="highlight"><pre><span></span><code>$orders = DB::table(&#39;orders&#39;)
+                -&gt;selectRaw(&#39;price * ? as price_with_tax&#39;, [1.0825])
+                -&gt;get();
+</code></pre></div>
+<h4 id="whereraw-orwhereraw"><code>whereRaw / orWhereRaw</code><a class="headerlink" href="#whereraw-orwhereraw" title="Permanent link">&para;</a></h4>
+<p><code>whereRaw</code> 和 <code>orWhereRaw</code> 方法可用於將原始 「where」子句注入你的查詢。這些方法接受一個可選的繫結陣列作為它們的第二個參數：</p>
+<div class="highlight"><pre><span></span><code>$orders = DB::table(&#39;orders&#39;)
+                -&gt;whereRaw(&#39;price &gt; IF(state = &quot;TX&quot;, ?, 100)&#39;, [200])
+                -&gt;get();
+</code></pre></div>
+<h4 id="havingraw-orhavingraw"><code>havingRaw / orHavingRaw</code><a class="headerlink" href="#havingraw-orhavingraw" title="Permanent link">&para;</a></h4>
+<p><code>havingRaw</code> 和 <code>orHavingRaw</code> 方法可用於提供原始字串作為 「having」子句的值。這些方法接受一個可選的繫結陣列作為它們的第二個參數：</p>
+<div class="highlight"><pre><span></span><code>$orders = DB::table(&#39;orders&#39;)
+                -&gt;select(&#39;department&#39;, DB::raw(&#39;SUM(price) as total_sales&#39;))
+                -&gt;groupBy(&#39;department&#39;)
+                -&gt;havingRaw(&#39;SUM(price) &gt; ?&#39;, [2500])
+                -&gt;get();
+</code></pre></div>
+<h4 id="orderbyraw"><code>orderByRaw</code><a class="headerlink" href="#orderbyraw" title="Permanent link">&para;</a></h4>
+<p>orderByRaw 方法可用於將原生字串設定為「order by」子句的值：</p>
+<div class="highlight"><pre><span></span><code>$orders = DB::table(&#39;orders&#39;)
+                -&gt;orderByRaw(&#39;updated_at - created_at DESC&#39;)
+                -&gt;get();
+</code></pre></div>
+<h3 id="groupbyraw"><code>groupByRaw</code><a class="headerlink" href="#groupbyraw" title="Permanent link">&para;</a></h3>
+<p>groupByRaw 方法可以用於將原生字串設定為 <code>group by</code> 子句的值：</p>
+<div class="highlight"><pre><span></span><code>$orders = DB::table(&#39;orders&#39;)
+                -&gt;select(&#39;city&#39;, &#39;state&#39;)
+                -&gt;groupByRaw(&#39;city, state&#39;)
+                -&gt;get();
+</code></pre></div>
+<h2 id="joins">Joins<a class="headerlink" href="#joins" title="Permanent link">&para;</a></h2>
+<h4 id="inner-join">Inner Join 語句<a class="headerlink" href="#inner-join" title="Permanent link">&para;</a></h4>
+<p>查詢構造器也還可用於向查詢中新增連接子句。若要執行基本的「inner join」，你可以對查詢構造器實例使用 <code>join</code> 方法。傳遞給 <code>join</code> 方法的第一個參數是需要你連接到的表的名稱，而其餘參數指定連接的列約束。你甚至還可以在一個查詢中連接多個表：</p>
+<div class="highlight"><pre><span></span><code>use Illuminate\Support\Facades\DB;
+
+$users = DB::table(&#39;users&#39;)
+            -&gt;join(&#39;contacts&#39;, &#39;users.id&#39;, &#39;=&#39;, &#39;contacts.user_id&#39;)
+            -&gt;join(&#39;orders&#39;, &#39;users.id&#39;, &#39;=&#39;, &#39;orders.user_id&#39;)
+            -&gt;select(&#39;users.*&#39;, &#39;contacts.phone&#39;, &#39;orders.price&#39;)
+            -&gt;get();
+</code></pre></div>
+<h4 id="left-join-right-join">Left Join / Right Join 語句<a class="headerlink" href="#left-join-right-join" title="Permanent link">&para;</a></h4>
+<p>如果你想使用「left join」或者「right join」代替「inner join」，可以使用 <code>leftJoin</code> 或者 <code>rightJoin</code> 方法。這兩個方法與 <code>join</code> 方法用法相同：</p>
+<div class="highlight"><pre><span></span><code>$users = DB::table(&#39;users&#39;)
+            -&gt;leftJoin(&#39;posts&#39;, &#39;users.id&#39;, &#39;=&#39;, &#39;posts.user_id&#39;)
+            -&gt;get();
+
+$users = DB::table(&#39;users&#39;)
+            -&gt;rightJoin(&#39;posts&#39;, &#39;users.id&#39;, &#39;=&#39;, &#39;posts.user_id&#39;)
+            -&gt;get();
+</code></pre></div>
+<h4 id="cross-join">Cross Join 語句<a class="headerlink" href="#cross-join" title="Permanent link">&para;</a></h4>
+<p>你可以使用 <code>crossJoin</code> 方法執行「交叉連接」。交叉連接在第一個表和被連接的表之間會生成笛卡爾積：</p>
+<div class="highlight"><pre><span></span><code>$sizes = DB::table(&#39;sizes&#39;)
+            -&gt;crossJoin(&#39;colors&#39;)
+            -&gt;get();
+</code></pre></div>
+<h4 id="join">高級 Join 語句<a class="headerlink" href="#join" title="Permanent link">&para;</a></h4>
+<p>你還可以指定更高級的聯接子句。首先，將閉包作為第二個參數傳遞給 <code>join</code> 方法。閉包將收到一個 <code>Illuminate\Database\Query\JoinClause</code> 實例，該實例允許你指定對 <code>join</code> 子句的約束：</p>
+<div class="highlight"><pre><span></span><code>DB::table(&#39;users&#39;)
+        -&gt;join(&#39;contacts&#39;, function (JoinClause $join) {
+            $join-&gt;on(&#39;users.id&#39;, &#39;=&#39;, &#39;contacts.user_id&#39;)-&gt;orOn(/* ... */);
+        })
+        -&gt;get();
+</code></pre></div>
+<p>如果你想要在連接上使用「where」風格的語句，你可以在連接上使用 <code>JoinClause</code> 實例中的 <code>where</code> 和 <code>orWhere</code> 方法。這些方法會將列和值進行比較，而不是列和列進行比較：</p>
+<div class="highlight"><pre><span></span><code>DB::table(&#39;users&#39;)
+        -&gt;join(&#39;contacts&#39;, function (JoinClause $join) {
+            $join-&gt;on(&#39;users.id&#39;, &#39;=&#39;, &#39;contacts.user_id&#39;)
+                 -&gt;where(&#39;contacts.user_id&#39;, &#39;&gt;&#39;, 5);
+        })
+        -&gt;get();
+</code></pre></div>
+<h4 id="_12">子連接查詢<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
+<p>你可以使用 <code>joinSub</code>，<code>leftJoinSub</code> 和 <code>rightJoinSub</code> 方法關聯一個查詢作為子查詢。他們每一種方法都會接收三個參數：子查詢、表別名和定義關聯欄位的閉包。如下面這個例子，獲取含有使用者最近一次發佈部落格時的 <code>created_at</code> 時間戳的使用者集合：</p>
+<div class="highlight"><pre><span></span><code>$latestPosts = DB::table(&#39;posts&#39;)
+                   -&gt;select(&#39;user_id&#39;, DB::raw(&#39;MAX(created_at) as last_post_created_at&#39;))
+                   -&gt;where(&#39;is_published&#39;, true)
+                   -&gt;groupBy(&#39;user_id&#39;);
+
+$users = DB::table(&#39;users&#39;)
+        -&gt;joinSub($latestPosts, &#39;latest_posts&#39;, function (JoinClause $join) {
+            $join-&gt;on(&#39;users.id&#39;, &#39;=&#39;, &#39;latest_posts.user_id&#39;);
+        })-&gt;get();
+</code></pre></div>
+<h2 id="_13">聯合<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h2>
+<p>查詢構造器還提供了一種簡潔的方式將兩個或者多個查詢「聯合」在一起。例如，你可以先建立一個查詢，然後使用 <code>union</code> 方法來連接更多的查詢：</p>
+<div class="highlight"><pre><span></span><code>use Illuminate\Support\Facades\DB;
+
+$first = DB::table(&#39;users&#39;)
+            -&gt;whereNull(&#39;first_name&#39;);
+
+$users = DB::table(&#39;users&#39;)
+            -&gt;whereNull(&#39;last_name&#39;)
+            -&gt;union($first)
+            -&gt;get();
+</code></pre></div>
+<p>查詢構造器不僅提供了 <code>union</code> 方法，還提供了一個 <code>unionAll</code> 方法。當查詢結合 <code>unionAll</code> 方法使用時，將不會刪除重複的結果。<code>unionAll</code> 方法的用法和 <code>union</code> 方法一樣。</p>
+<h2 id="where">基礎的 Where 語句<a class="headerlink" href="#where" title="Permanent link">&para;</a></h2>
+<h3 id="where_1">Where 語句<a class="headerlink" href="#where_1" title="Permanent link">&para;</a></h3>
+<p>你可以在 <code>where</code> 語句中使用查詢構造器的 <code>where</code> 方法。呼叫 <code>where</code> 方法需要三個基本參數。第一個參數是欄位的名稱。第二個參數是一個運算子，它可以是資料庫中支援的任意運算子。第三個參數是與欄位比較的值。</p>
+<p>例如。在 <code>users</code> 表中查詢 <code>votes</code> 欄位等於 <code>100</code> 並且 <code>age</code> 欄位大於 <code>35</code> 的資料：</p>
+<div class="highlight"><pre><span></span><code>$users = DB::table(&#39;users&#39;)
+                -&gt;where(&#39;votes&#39;, &#39;=&#39;, 100)
+                -&gt;where(&#39;age&#39;, &#39;&gt;&#39;, 35)
+                -&gt;get();
+</code></pre></div>
+<p>為了方便起見。如果你想要比較一個欄位的值是否 <code>等於</code> 給定的值。你可以將這個給定的值作為第二個參數傳遞給 <code>where</code> 方法。那麼，Laravel 會默認使用 <code>=</code> 運算子：</p>
+<div class="highlight"><pre><span></span><code>$users = DB::table(&#39;users&#39;)-&gt;where(&#39;votes&#39;, 100)-&gt;get();
+</code></pre></div>
+<p>如上所述，你可以使用資料庫支援的任意運算子：</p>
+<div class="highlight"><pre><span></span><code>$users = DB::table(&#39;users&#39;)
+                -&gt;where(&#39;votes&#39;, &#39;&gt;=&#39;, 100)
+                -&gt;get();
+
+$users = DB::table(&#39;users&#39;)
+                -&gt;where(&#39;votes&#39;, &#39;&lt;&gt;&#39;, 100)
+                -&gt;get();
+
+$users = DB::table(&#39;users&#39;)
+                -&gt;where(&#39;name&#39;, &#39;like&#39;, &#39;T%&#39;)
+                -&gt;get();
+</code></pre></div>
+<p>你也可以將一個條件陣列傳遞給 <code>where</code> 方法。陣列的每個元素都應該是一個陣列，其中包是傳遞給 <code>where</code> 方法的三個參數：</p>
+<div class="highlight"><pre><span></span><code>$users = DB::table(&#39;users&#39;)-&gt;where([
+    [&#39;status&#39;, &#39;=&#39;, &#39;1&#39;],
+    [&#39;subscribed&#39;, &#39;&lt;&gt;&#39;, &#39;1&#39;],
+])-&gt;get();
+</code></pre></div>
+<blockquote>
+<p><strong>注意</strong>
+PDO 不支援繫結欄位名。因此，你不應該允許讓使用者輸入欄位名進行查詢引用，包括結果集「order by」語句。</p>
+</blockquote>
+<h3 id="or-where">Or Where 語句<a class="headerlink" href="#or-where" title="Permanent link">&para;</a></h3>
+<p>當鏈式呼叫多個 <code>where</code> 方法的時候，這些「where」語句將會被看成是 <code>and</code> 關係。另外，你也可以在查詢語句中使用 <code>orWhere</code> 方法來表示 <code>or</code> 關係。orWhere 方法接收的參數和 where 方法接收的參數一樣：</p>
+<div class="highlight"><pre><span></span><code>$users = DB::table(&#39;users&#39;)
+                    -&gt;where(&#39;votes&#39;, &#39;&gt;&#39;, 100)
+                    -&gt;orWhere(&#39;name&#39;, &#39;John&#39;)
+                    -&gt;get();
+</code></pre></div>
+<p>如果你需要在括號內對 「or」 條件進行分組，那麼可以傳遞一個閉包作為 <code>orWhere</code> 方法的第一個參數：</p>
+<div class="highlight"><pre><span></span><code>$users = DB::table(&#39;users&#39;)
+            -&gt;where(&#39;votes&#39;, &#39;&gt;&#39;, 100)
+            -&gt;orWhere(function(Builder $query) {
+                $query-&gt;where(&#39;name&#39;, &#39;Abigail&#39;)
+                      -&gt;where(&#39;votes&#39;, &#39;&gt;&#39;, 50);
+            })
+            -&gt;get();
+</code></pre></div>
+<p>上面的示例將生成以下 SQL：</p>
+<div class="highlight"><pre><span></span><code><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">users</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">votes</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="p">(</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Abigail&#39;</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">votes</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">50</span><span class="p">)</span>
+</code></pre></div>
+<blockquote>
+<p><strong>注意</strong>
+為避免全域範疇應用時出現意外，你應始終對 <code>orWhere</code> 呼叫進行分組。</p>
+</blockquote>
+<h3 id="where-not">Where Not 語句<a class="headerlink" href="#where-not" title="Permanent link">&para;</a></h3>
+<p><code>whereNot</code> 和 <code>orWhereNot</code> 方法可用於否定一組給定的查詢條件。例如, 下面的查詢排除了正在清倉甩賣或價格低於 10 的產品：</p>
+<div class="highlight"><pre><span></span><code>$products = DB::table(&#39;products&#39;)
+                -&gt;whereNot(function (Builder $query) {
+                    $query-&gt;where(&#39;clearance&#39;, true)
+                          -&gt;orWhere(&#39;price&#39;, &#39;&lt;&#39;, 10);
+                })
+                -&gt;get();
+</code></pre></div>
+<h3 id="json-where">JSON Where 語句<a class="headerlink" href="#json-where" title="Permanent link">&para;</a></h3>
+<p>Laravel 也支援 JSON 類型的欄位查詢，前提是資料庫也支援 JSON 類型。目前，有 MySQL 5.7+、PostgreSQL、SQL Server 2016 和 SQLite 3.39.0 支援 JSON 類型 (with the <a href="https://www.sqlite.org/json1.html">JSON1 extension</a>)。可以使用 <code>-&gt;</code> 運算子來查詢 JSON 欄位：</p>
+<div class="highlight"><pre><span></span><code>$users = DB::table(&#39;users&#39;)
+                -&gt;where(&#39;preferences-&gt;dining-&gt;meal&#39;, &#39;salad&#39;)
+                -&gt;get();
+</code></pre></div>
+<p>你可以使用 <code>whereJsonContains</code> 方法來查詢 JSON 陣列。但是 SQLite 資料庫版本低於3.38.0時不支援該功能：</p>
+<div class="highlight"><pre><span></span><code>$users = DB::table(&#39;users&#39;)
+                -&gt;whereJsonContains(&#39;options-&gt;languages&#39;, &#39;en&#39;)
+                -&gt;get();
+</code></pre></div>
+<p>如果你的應用使用的是 MySQL 或者 PostgreSQL 資料庫，那麼你可以向 <code>whereJsonContains</code> 方法中傳遞一個陣列類型的值：</p>
+<div class="highlight"><pre><span></span><code>$users = DB::table(&#39;users&#39;)
+                -&gt;whereJsonContains(&#39;options-&gt;languages&#39;, [&#39;en&#39;, &#39;de&#39;])
+                -&gt;get();
+</code></pre></div>
+<p>你可以使用 <code>whereJsonLength</code> 方法來查詢 JSON 陣列的長度：</p>
+<div class="highlight"><pre><span></span><code>$users = DB::table(&#39;users&#39;)
+                -&gt;whereJsonLength(&#39;options-&gt;languages&#39;, 0)
+                -&gt;get();
+
+$users = DB::table(&#39;users&#39;)
+                -&gt;whereJsonLength(&#39;options-&gt;languages&#39;, &#39;&gt;&#39;, 1)
+                -&gt;get();
+</code></pre></div>
+<h3 id="where_2">其他 Where 語句<a class="headerlink" href="#where_2" title="Permanent link">&para;</a></h3>
+<p><strong>whereBetween / orWhereBetween</strong></p>
+<p><code>whereBetween</code> 方法是用來驗證欄位的值是否在給定的兩個值之間：</p>
+<div class="highlight"><pre><span></span><code>$users = DB::table(&#39;users&#39;)
+           -&gt;whereBetween(&#39;votes&#39;, [1, 100])
+           -&gt;get();
+</code></pre></div>
+<p><strong>whereNotBetween / orWhereNotBetween</strong></p>
+<p><code>whereNotBetween</code>方法用於驗證欄位的值是否不在給定的兩個值範圍之中：</p>
+<div class="highlight"><pre><span></span><code>$users = DB::table(&#39;users&#39;)
+                    -&gt;whereNotBetween(&#39;votes&#39;, [1, 100])
+                    -&gt;get();
+</code></pre></div>
+<p><strong>whereBetweenColumns / whereNotBetweenColumns / orWhereBetweenColumns / orWhereNotBetweenColumns</strong></p>
+<p><code>whereBetweenColumns</code> 方法用於驗證欄位是否在給定的兩個欄位的值的範圍中：</p>
+<div class="highlight"><pre><span></span><code>$patients = DB::table(&#39;patients&#39;)
+                       -&gt;whereBetweenColumns(&#39;weight&#39;, [&#39;minimum_allowed_weight&#39;, &#39;maximum_allowed_weight&#39;])
+                       -&gt;get();
+</code></pre></div>
+<p><code>whereNotBetweenColumns</code> 方法用於驗證欄位是否不在給定的兩個欄位的值的範圍中：</p>
+<div class="highlight"><pre><span></span><code>$patients = DB::table(&#39;patients&#39;)
+                       -&gt;whereNotBetweenColumns(&#39;weight&#39;, [&#39;minimum_allowed_weight&#39;, &#39;maximum_allowed_weight&#39;])
+                       -&gt;get();
+</code></pre></div>
+<p><strong>whereIn / whereNotIn / orWhereIn / orWhereNotIn</strong></p>
+<p><code>whereIn</code> 方法用於驗證欄位是否在給定的值陣列中：</p>
+<div class="highlight"><pre><span></span><code>$users = DB::table(&#39;users&#39;)
+                    -&gt;whereIn(&#39;id&#39;, [1, 2, 3])
+                    -&gt;get();
+</code></pre></div>
+<p><code>whereIn</code> 方法用於驗證欄位是否不在給定的值陣列中：</p>
+<div class="highlight"><pre><span></span><code>$users = DB::table(&#39;users&#39;)
+                    -&gt;whereNotIn(&#39;id&#39;, [1, 2, 3])
+                    -&gt;get();
+</code></pre></div>
+<p>你也可以為<code>whereIn</code> 方法的第二個參數提供一個子查詢：</p>
+<div class="highlight"><pre><span></span><code>$activeUsers = DB::table(&#39;users&#39;)-&gt;select(&#39;id&#39;)-&gt;where(&#39;is_active&#39;, 1);
+
+$users = DB::table(&#39;comments&#39;)
+                    -&gt;whereIn(&#39;user_id&#39;, $activeUsers)
+                    -&gt;get();
+</code></pre></div>
+<p>上面的例子將會轉換為下面的 SQL 查詢語句：</p>
+<div class="highlight"><pre><span></span><code><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">comments</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">user_id</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="k">select</span><span class="w"> </span><span class="n">id</span>
+<span class="w">    </span><span class="k">from</span><span class="w"> </span><span class="n">users</span>
+<span class="w">    </span><span class="k">where</span><span class="w"> </span><span class="n">is_active</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
+<span class="p">)</span>
+</code></pre></div>
+<blockquote>
+<p><strong>注意</strong><br />
+如果你需要判斷一個整數的大陣列 <code>whereIntegerInRaw</code> 或 <code>whereIntegerNotInRaw</code>方法可能會更適合，這種用法的記憶體佔用更小。</p>
+</blockquote>
+<p><strong>whereNull / whereNotNull / orWhereNull / orWhereNotNull</strong></p>
+<p><code>whereNull</code> 方法用於判斷指定的欄位的值是否是<code>NULL</code>：</p>
+<div class="highlight"><pre><span></span><code>$users = DB::table(&#39;users&#39;)
+                -&gt;whereNull(&#39;updated_at&#39;)
+                -&gt;get();
+</code></pre></div>
+<p><code>whereNotNull</code> 方法是用來驗證給定欄位的值是否不為 <code>NULL</code>:</p>
+<div class="highlight"><pre><span></span><code>$users = DB::table(&#39;users&#39;)
+                -&gt;whereNotNull(&#39;updated_at&#39;)
+                -&gt;get();
+</code></pre></div>
+<p><strong>whereDate / whereMonth / whereDay / whereYear / whereTime</strong></p>
+<p><code>whereDate</code>  方法是用來比較欄位的值與給定的日期值是否相等:</p>
+<div class="highlight"><pre><span></span><code>$users = DB::table(&#39;users&#39;)
+                -&gt;whereDate(&#39;created_at&#39;, &#39;2016-12-31&#39;)
+                -&gt;get();
+</code></pre></div>
+<p><code>whereMonth</code> 方法是用來比較欄位的值與給定的月是否相等:</p>
+<div class="highlight"><pre><span></span><code>$users = DB::table(&#39;users&#39;)
+                -&gt;whereMonth(&#39;created_at&#39;, &#39;12&#39;)
+                -&gt;get();
+</code></pre></div>
+<p><code>whereDay</code> 方法是用來比較欄位的值與給定的日是否相等:</p>
+<div class="highlight"><pre><span></span><code>$users = DB::table(&#39;users&#39;)
+                -&gt;whereDay(&#39;created_at&#39;, &#39;31&#39;)
+                -&gt;get();
+</code></pre></div>
+<p><code>whereYear</code>  方法是用來比較欄位的值與給定的年是否相等:</p>
+<div class="highlight"><pre><span></span><code>$users = DB::table(&#39;users&#39;)
+                -&gt;whereYear(&#39;created_at&#39;, &#39;2016&#39;)
+                -&gt;get();
+</code></pre></div>
+<p><code>whereTime</code> 方法是用來比較欄位的值與給定的時間是否相等:</p>
+<div class="highlight"><pre><span></span><code>$users = DB::table(&#39;users&#39;)
+                -&gt;whereTime(&#39;created_at&#39;, &#39;=&#39;, &#39;11:20:45&#39;)
+                -&gt;get();
+</code></pre></div>
+<p><strong>whereColumn / orWhereColumn</strong></p>
+<p><code>whereColumn</code> 方法是用來比較兩個給定欄位的值是否相等:</p>
+<div class="highlight"><pre><span></span><code>$users = DB::table(&#39;users&#39;)
+                -&gt;whereColumn(&#39;first_name&#39;, &#39;last_name&#39;)
+                -&gt;get();
+</code></pre></div>
+<p>你也可以將比較運算子傳遞給 <code>whereColumn</code> 方法:</p>
+<div class="highlight"><pre><span></span><code>$users = DB::table(&#39;users&#39;)
+                -&gt;whereColumn(&#39;updated_at&#39;, &#39;&gt;&#39;, &#39;created_at&#39;)
+                -&gt;get();
+</code></pre></div>
+<p>你還可以向 <code>whereColumn</code> 方法中傳遞一個陣列。這些條件將使用 <code>and</code> 運算子聯接:</p>
+<div class="highlight"><pre><span></span><code>$users = DB::table(&#39;users&#39;)
+                -&gt;whereColumn([
+                    [&#39;first_name&#39;, &#39;=&#39;, &#39;last_name&#39;],
+                    [&#39;updated_at&#39;, &#39;&gt;&#39;, &#39;created_at&#39;],
+                ])-&gt;get();
+</code></pre></div>
+<h3 id="_14">邏輯分組<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<p>有時你可能需要將括號內的幾個「where」子句分組，以實現查詢所需的邏輯分組。實際上應該將 <code>orWhere</code> 方法的呼叫分組到括號中，以避免不可預料的查詢邏輯誤差。因此可以傳遞閉包給 <code>where</code> 方法：</p>
+<div class="highlight"><pre><span></span><code>$users = DB::table(&#39;users&#39;)
+           -&gt;where(&#39;name&#39;, &#39;=&#39;, &#39;John&#39;)
+           -&gt;where(function (Builder $query) {
+               $query-&gt;where(&#39;votes&#39;, &#39;&gt;&#39;, 100)
+                     -&gt;orWhere(&#39;title&#39;, &#39;=&#39;, &#39;Admin&#39;);
+           })
+           -&gt;get();
+</code></pre></div>
+<p>你可以看到， 通過一個閉包寫入 <code>where</code> 方法 建構一個查詢構造器來約束一個分組。這個閉包接收一個查詢實例，你可以使用這個實例來設定應該包含的約束。上面的例子將生成以下 SQL：</p>
+<div class="highlight"><pre><span></span><code><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">users</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;John&#39;</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="p">(</span><span class="n">votes</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Admin&#39;</span><span class="p">)</span>
+</code></pre></div>
+<blockquote>
+<p><strong>注意</strong><br />
+你應該用 <code>orWhere</code> 呼叫這個分組，以避免應用全域作用時出現意外。</p>
+</blockquote>
+<h3 id="where_3">高級 Where 語句<a class="headerlink" href="#where_3" title="Permanent link">&para;</a></h3>
+<h3 id="where-exists">Where Exists 語句<a class="headerlink" href="#where-exists" title="Permanent link">&para;</a></h3>
+<p><code>whereExists</code> 方法允許你使用 <code>where exists</code> SQL 語句。 <code>whereExists</code> 方法接收一個閉包參數，該閉包獲取一個查詢建構器實例，從而允許你定義放置在 <code>exists</code> 子句中查詢:</p>
+<div class="highlight"><pre><span></span><code>$users = DB::table(&#39;users&#39;)
+           -&gt;whereExists(function (Builder $query) {
+               $query-&gt;select(DB::raw(1))
+                     -&gt;from(&#39;orders&#39;)
+                     -&gt;whereColumn(&#39;orders.user_id&#39;, &#39;users.id&#39;);
+           })
+           -&gt;get();
+</code></pre></div>
+<p>或者，可以向 <code>whereExists</code> 方法提供一個查詢對象，替換上面的閉包：</p>
+<div class="highlight"><pre><span></span><code>$orders = DB::table(&#39;orders&#39;)
+                -&gt;select(DB::raw(1))
+                -&gt;whereColumn(&#39;orders.user_id&#39;, &#39;users.id&#39;);
+
+$users = DB::table(&#39;users&#39;)
+                    -&gt;whereExists($orders)
+                    -&gt;get();
+</code></pre></div>
+<p>上面的兩個示例都會生成如下的 <code>SQL</code> 語句</p>
+<div class="highlight"><pre><span></span><code><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">users</span>
+<span class="k">where</span><span class="w"> </span><span class="k">exists</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="k">select</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">    </span><span class="k">from</span><span class="w"> </span><span class="n">orders</span>
+<span class="w">    </span><span class="k">where</span><span class="w"> </span><span class="n">orders</span><span class="p">.</span><span class="n">user_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">users</span><span class="p">.</span><span class="n">id</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="where_4">子查詢 Where 語句<a class="headerlink" href="#where_4" title="Permanent link">&para;</a></h3>
+<p>有時候，你可能需要構造一個 <code>where</code> 子查詢，將子查詢的結果與給定的值進行比較。你可以通過向 <code>where</code> 方法傳遞閉包和值來實現此操作。例如，下面的查詢將檢索最後一次「會員」購買記錄是「Pro」類型的所有使用者；</p>
+<div class="highlight"><pre><span></span><code>use App\Models\User;
+use Illuminate\Database\Query\Builder;
+
+$users = User::where(function (Builder $query) {
+    $query-&gt;select(&#39;type&#39;)
+        -&gt;from(&#39;membership&#39;)
+        -&gt;whereColumn(&#39;membership.user_id&#39;, &#39;users.id&#39;)
+        -&gt;orderByDesc(&#39;membership.start_date&#39;)
+        -&gt;limit(1);
+}, &#39;Pro&#39;)-&gt;get();
+</code></pre></div>
+<p>或者，你可能需要建構一個 <code>where</code> 子句，將列與子查詢的結果進行比較。你可以通過將列、運算子和閉包傳遞給 <code>where</code> 方法來完成此操作。例如，以下查詢將檢索金額小於平均值的所有收入記錄；</p>
+<div class="highlight"><pre><span></span><code>use App\Models\Income;
+use Illuminate\Database\Query\Builder;
+
+$incomes = Income::where(&#39;amount&#39;, &#39;&lt;&#39;, function (Builder $query) {
+    $query-&gt;selectRaw(&#39;avg(i.amount)&#39;)-&gt;from(&#39;incomes as i&#39;);
+})-&gt;get();
+</code></pre></div>
+<h3 id="where_5">全文 Where 子句<a class="headerlink" href="#where_5" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p><strong>注意</strong><br />
+MySQL 和 PostgreSQL 目前支援全文 where 子句。</p>
+</blockquote>
+<p>可以使用 <code>where FullText</code> 和 <code>orWhere FullText</code> 方法將全文「where」 子句新增到具有 <a href="/docs/laravel/10.x/migrations#available-index-types">full text indexes</a> 的列的查詢中。這些方法將由Laravel轉換為適用於底層資料庫系統的SQL。例如，使用MySQL的應用會生成 <code>MATCH AGAINST</code> 子句</p>
+<div class="highlight"><pre><span></span><code>$users = DB::table(&#39;users&#39;)
+           -&gt;whereFullText(&#39;bio&#39;, &#39;web developer&#39;)
+           -&gt;get();
+</code></pre></div>
+<h2 id="ordering-grouping-limit-offset">Ordering, Grouping, Limit &amp; Offset<a class="headerlink" href="#ordering-grouping-limit-offset" title="Permanent link">&para;</a></h2>
+<h3 id="_15">排序<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
+<h4 id="orderby"><code>orderBy</code> 方法<a class="headerlink" href="#orderby" title="Permanent link">&para;</a></h4>
+<p><code>orderBy</code> 方法允許你按給定列對查詢結果進行排序。<code>orderBy</code> 方法接受的第一個參數應該是你希望排序的列，而第二個參數確定排序的方向，可以是 <code>asc</code> 或 <code>desc</code>：</p>
+<div class="highlight"><pre><span></span><code>$users = DB::table(&#39;users&#39;)
+                -&gt;orderBy(&#39;name&#39;, &#39;desc&#39;)
+                -&gt;get();
+</code></pre></div>
+<p>要按多列排序，你以根據需要多次呼叫 <code>orderBy</code>：</p>
+<div class="highlight"><pre><span></span><code>$users = DB::table(&#39;users&#39;)
+                -&gt;orderBy(&#39;name&#39;, &#39;desc&#39;)
+                -&gt;orderBy(&#39;email&#39;, &#39;asc&#39;)
+                -&gt;get();
+</code></pre></div>
+<h4 id="latest-oldest"><code>latest</code> 和 <code>oldest</code> 方法<a class="headerlink" href="#latest-oldest" title="Permanent link">&para;</a></h4>
+<p><code>latest</code> 和 <code>oldest</code> 方法可以方便讓你把結果根據日期排序。查詢結果默認根據資料表的 <code>created_at</code> 欄位進行排序 。或者，你可以傳一個你想要排序的列名，通過:</p>
+<div class="highlight"><pre><span></span><code>$user = DB::table(&#39;users&#39;)
+                -&gt;latest()
+                -&gt;first();
+</code></pre></div>
+<h4 id="_16">隨機排序<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
+<p><code>inRandomOrder</code> 方法被用來將查詢結果隨機排序。例如，你可以使用這個方法去獲得一個隨機使用者:</p>
+<div class="highlight"><pre><span></span><code>$randomUser = DB::table(&#39;users&#39;)
+                -&gt;inRandomOrder()
+                -&gt;first();
+</code></pre></div>
+<h4 id="_17">移除已存在的排序<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
+<p><code>reorder</code> 方法會移除之前已經被應用到查詢裡的排序:</p>
+<div class="highlight"><pre><span></span><code>$query = DB::table(&#39;users&#39;)-&gt;orderBy(&#39;name&#39;);
+
+$unorderedUsers = $query-&gt;reorder()-&gt;get();
+</code></pre></div>
+<p>當你呼叫 <code>reorder</code> 方法去移除所有已經存在的排序的時候，你可以傳遞一個列名和排序方式去重新排序整個查詢:</p>
+<div class="highlight"><pre><span></span><code>$query = DB::table(&#39;users&#39;)-&gt;orderBy(&#39;name&#39;);
+
+$usersOrderedByEmail = $query-&gt;reorder(&#39;email&#39;, &#39;desc&#39;)-&gt;get();
+</code></pre></div>
+<h3 id="_18">分組<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
+<h4 id="groupby-having"><code>groupBy</code> 和 <code>having</code> 方法<a class="headerlink" href="#groupby-having" title="Permanent link">&para;</a></h4>
+<p>如你所願，<code>groupBy</code> 和 <code>having</code> 方法可以將查詢結果分組。<code>having</code> 方法的使用方法類似於 <code>where</code> 方法:</p>
+<div class="highlight"><pre><span></span><code>$users = DB::table(&#39;users&#39;)
+                -&gt;groupBy(&#39;account_id&#39;)
+                -&gt;having(&#39;account_id&#39;, &#39;&gt;&#39;, 100)
+                -&gt;get();
+</code></pre></div>
+<p>你可以使用 <code>havingBetween</code> 方法在一個給定的範圍內去過濾結果:</p>
+<div class="highlight"><pre><span></span><code>$report = DB::table(&#39;orders&#39;)
+                -&gt;selectRaw(&#39;count(id) as number_of_orders, customer_id&#39;)
+                -&gt;groupBy(&#39;customer_id&#39;)
+                -&gt;havingBetween(&#39;number_of_orders&#39;, [5, 15])
+                -&gt;get();
+</code></pre></div>
+<p>你可以傳多個參數給 <code>groupBy</code> 方法將多列分組:</p>
+<div class="highlight"><pre><span></span><code>$users = DB::table(&#39;users&#39;)
+                -&gt;groupBy(&#39;first_name&#39;, &#39;status&#39;)
+                -&gt;having(&#39;account_id&#39;, &#39;&gt;&#39;, 100)
+                -&gt;get();
+</code></pre></div>
+<p>想要構造更高級的 <code>having</code> 語句, 看 <a href="#raw-methods"><code>havingRaw</code></a> 方法。</p>
+<h3 id="_19">限制和偏移量<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
+<h4 id="skip-take"><code>skip</code> 和 <code>take</code> 方法<a class="headerlink" href="#skip-take" title="Permanent link">&para;</a></h4>
+<p>你可以使用 <code>skip</code> 和 <code>take</code> 方法去限制查詢結果的返回數量或者在查詢結果中跳過給定數量:</p>
+<div class="highlight"><pre><span></span><code>$users = DB::table(&#39;users&#39;)-&gt;skip(10)-&gt;take(5)-&gt;get();
+</code></pre></div>
+<p>或者，你可以使用 <code>limit</code> 和 <code>offset</code> 方法。這些方法在功能上等同於 <code>take</code> 和 <code>skip</code> 方法, 如下</p>
+<div class="highlight"><pre><span></span><code>$users = DB::table(&#39;users&#39;)
+                -&gt;offset(10)
+                -&gt;limit(5)
+                -&gt;get();
+</code></pre></div>
+<h2 id="_20">條件語句<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h2>
+<p>有時，可能希望根據另一個條件將某些查詢子句應用於查詢。例如，當傳入 HTTP 請求有一個給定的值的時候你才需要使用一個<code>where</code> 語句。你可以使用 <code>when</code> 方法去實現:</p>
+<div class="highlight"><pre><span></span><code>$role = $request-&gt;string(&#39;role&#39;);
+
+$users = DB::table(&#39;users&#39;)
+                -&gt;when($role, function (Builder $query, string $role) {
+                    $query-&gt;where(&#39;role_id&#39;, $role);
+                })
+                -&gt;get();
+</code></pre></div>
+<p><code>when</code> 方法只有當第一個參數為 <code>true</code> 時才執行給定的閉包。如果第一個參數是 <code>false</code> ，閉包將不會被執行。因此，在上面的例子中，只有在傳入的請求包含 <code>role</code> 欄位且結果為 <code>true</code> 時，<code>when</code> 方法裡的閉包才會被呼叫。</p>
+<p>你可以將另一個閉包作為第三個參數傳遞給 <code>when</code> 方法。這個閉包則旨在第一個參數結果為 <code>false</code> 時才會執行。為了說明如何使用該功能，我們將使用它來組態查詢的默認排序：</p>
+<div class="highlight"><pre><span></span><code>$sortByVotes = $request-&gt;boolean(&#39;sort_by_votes&#39;);
+
+$users = DB::table(&#39;users&#39;)
+                -&gt;when($sortByVotes, function (Builder $query, bool $sortByVotes) {
+                    $query-&gt;orderBy(&#39;votes&#39;);
+                }, function (Builder $query) {
+                    $query-&gt;orderBy(&#39;name&#39;);
+                })
+                -&gt;get();
+</code></pre></div>
+<h2 id="_21">插入語句<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h2>
+<p>查詢構造器也提供了一個 <code>insert</code> 方法來用於插入記錄到資料庫表中。<code>insert</code> 方法接受一個列名和值的陣列：</p>
+<div class="highlight"><pre><span></span><code>DB::table(&#39;users&#39;)-&gt;insert([
+    &#39;email&#39; =&gt; &#39;kayla@example.com&#39;,
+    &#39;votes&#39; =&gt; 0
+]);
+</code></pre></div>
+<p>你可以通過傳遞一個二維陣列來實現一次插入多條記錄。每一個陣列都代表了一個應當插入到資料表中的記錄：</p>
+<div class="highlight"><pre><span></span><code>DB::table(&#39;users&#39;)-&gt;insert([
+    [&#39;email&#39; =&gt; &#39;picard@example.com&#39;, &#39;votes&#39; =&gt; 0],
+    [&#39;email&#39; =&gt; &#39;janeway@example.com&#39;, &#39;votes&#39; =&gt; 0],
+]);
+</code></pre></div>
+<p><code>insertOrIgnore</code> 方法將會在插入資料庫的時候忽略發生的錯誤。當使用該方法時，你應當注意，重複記錄插入的錯誤和其他類型的錯誤都將被忽略，這取決於資料庫引擎。例如， <code>insertOrIgnore</code> 將會 <a href="https://dev.mysql.com/doc/refman/en/sql-mode.html#ignore-effect-on-execution">繞過 MySQL 的嚴格模式</a> ：</p>
+<div class="highlight"><pre><span></span><code>DB::table(&#39;users&#39;)-&gt;insertOrIgnore([
+    [&#39;id&#39; =&gt; 1, &#39;email&#39; =&gt; &#39;sisko@example.com&#39;],
+    [&#39;id&#39; =&gt; 2, &#39;email&#39; =&gt; &#39;archer@example.com&#39;],
+]);
+</code></pre></div>
+<p><code>insertUsing</code> 方法將在表中插入新記錄，同時用子查詢來確定應插入的資料：</p>
+<div class="highlight"><pre><span></span><code>DB::table(&#39;pruned_users&#39;)-&gt;insertUsing([
+    &#39;id&#39;, &#39;name&#39;, &#39;email&#39;, &#39;email_verified_at&#39;
+], DB::table(&#39;users&#39;)-&gt;select(
+    &#39;id&#39;, &#39;name&#39;, &#39;email&#39;, &#39;email_verified_at&#39;
+)-&gt;where(&#39;updated_at&#39;, &#39;&lt;=&#39;, now()-&gt;subMonth()));
+</code></pre></div>
+<h4 id="ids">自增 IDs<a class="headerlink" href="#ids" title="Permanent link">&para;</a></h4>
+<p>如果資料表有自增 ID ，使用 <code>insertGetId</code> 方法來插入記錄可以返回 ID 值：</p>
+<div class="highlight"><pre><span></span><code>$id = DB::table(&#39;users&#39;)-&gt;insertGetId(
+    [&#39;email&#39; =&gt; &#39;john@example.com&#39;, &#39;votes&#39; =&gt; 0]
+);
+</code></pre></div>
+<blockquote>
+<p><strong>注意</strong><br />
+當使用 PostgreSQL 時，<code>insertGetId</code> 方法將默認把 <code>id</code> 作為自動遞增欄位的名稱。如果你要從其他「欄位」來獲取 ID ，則需要將欄位名稱作為第二個參數傳遞給 <code>insertGetId</code> 方法。</p>
+</blockquote>
+<h3 id="_22">更新插入<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h3>
+<p><code>upsert</code> 方法是是插入不存在的記錄和為已經存在記錄更新值。該方法的第一個參數包含要插入或更新的值，而第二個參數列出了在關聯表中唯一標識記錄的列。 該方法的第三個也是最後一個參數是一個列陣列，如果資料庫中已經存在匹配的記錄，則應該更新這些列：</p>
+<div class="highlight"><pre><span></span><code>DB::table(&#39;flights&#39;)-&gt;upsert(
+    [
+        [&#39;departure&#39; =&gt; &#39;Oakland&#39;, &#39;destination&#39; =&gt; &#39;San Diego&#39;, &#39;price&#39; =&gt; 99],
+        [&#39;departure&#39; =&gt; &#39;Chicago&#39;, &#39;destination&#39; =&gt; &#39;New York&#39;, &#39;price&#39; =&gt; 150]
+    ],
+    [&#39;departure&#39;, &#39;destination&#39;],
+    [&#39;price&#39;]
+);
+</code></pre></div>
+<p>在上面的例子中，Laravel 會嘗試插入兩條記錄。如果已經存在具有相同 <code>departure</code> 和 <code>destination</code> 列值的記錄，Laravel 將更新該記錄的 <code>price</code> 列。</p>
+<blockquote>
+<p><strong>注意</strong><br />
+除 SQL Server 之外的所有資料庫都要求 <code>upsert</code> 方法的第二個參數中的列具有「主」或「唯一」索引。 此外，MySQL 資料庫驅動程式忽略 <code>upsert</code> 方法的第二個參數，並始終使用表的「主」和「唯一」索引來檢測現有記錄。</p>
+</blockquote>
+<h2 id="_23">更新語句<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h2>
+<p>除了插入記錄到資料庫之外，查詢構造器也可以使用 <code>update</code> 方法來更新已經存在的記錄。<code>update</code> 方法像 <code>insert</code> 方法一樣，接受一個列名和值的陣列作為參數，它表示要更新的列和資料。<code>update</code> 方法返回受影響的行數。你可以使用 <code>where</code> 子句來限制 <code>update</code> 查詢：</p>
+<div class="highlight"><pre><span></span><code>$affected = DB::table(&#39;users&#39;)
+              -&gt;where(&#39;id&#39;, 1)
+              -&gt;update([&#39;votes&#39; =&gt; 1]);
+</code></pre></div>
+<h4 id="_24">更新或插入<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h4>
+<p>有時你可能希望更新資料庫中的記錄，但如果指定記錄不存在的時候則建立它。在這種情況下，可以使用 <code>updateOrInsert</code> 方法。<code>updateOrInsert</code> 方法接受兩個參數：一個用於尋找記錄的條件陣列，以及一個包含要更改記錄的鍵值對陣列。</p>
+<p><code>updateOrInsert</code> 方法將嘗試使用第一個參數的列名和值來定位匹配的資料庫記錄。如果記錄存在，則使用第二個參數更新其值。如果找不到指定記錄，則會合併兩個參數的屬性來建立一條記錄並將其插入：</p>
+<div class="highlight"><pre><span></span><code>DB::table(&#39;users&#39;)
+    -&gt;updateOrInsert(
+        [&#39;email&#39; =&gt; &#39;john@example.com&#39;, &#39;name&#39; =&gt; &#39;John&#39;],
+        [&#39;votes&#39; =&gt; &#39;2&#39;]
+    );
+</code></pre></div>
+<h3 id="json">更新 JSON 欄位<a class="headerlink" href="#json" title="Permanent link">&para;</a></h3>
+<p>當更新一個 JSON 列的收，你可以使用 <code>-&gt;</code> 語法來更新 JSON 對象中恰當的鍵。此操作需要 MySQL 5.7+ 和 PostgreSQL 9.5+ 的資料庫：</p>
+<div class="highlight"><pre><span></span><code>$affected = DB::table(&#39;users&#39;)
+              -&gt;where(&#39;id&#39;, 1)
+              -&gt;update([&#39;options-&gt;enabled&#39; =&gt; true]);
+</code></pre></div>
+<h3 id="_25">自增與自減<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h3>
+<p>查詢構造器還提供了方便的方法來增加或減少給定列的值。這兩種方法都至少接受一個參數：要修改的列。可以提供第二個參數來指定列應該增加或減少的數量：</p>
+<div class="highlight"><pre><span></span><code>DB::table(&#39;users&#39;)-&gt;increment(&#39;votes&#39;);
+
+DB::table(&#39;users&#39;)-&gt;increment(&#39;votes&#39;, 5);
+
+DB::table(&#39;users&#39;)-&gt;decrement(&#39;votes&#39;);
+
+DB::table(&#39;users&#39;)-&gt;decrement(&#39;votes&#39;, 5);
+</code></pre></div>
+<p>你還可以在操作期間指定要更新的其他列：</p>
+<div class="highlight"><pre><span></span><code>DB::table(&#39;users&#39;)-&gt;increment(&#39;votes&#39;, 1, [&#39;name&#39; =&gt; &#39;John&#39;]);
+</code></pre></div>
+<p>此外，你可以使用 <code>incrementEach</code> 和 <code>decrementEach</code> 方法同時增加或減少多個列:</p>
+<div class="highlight"><pre><span></span><code>DB::table(&#39;users&#39;)-&gt;incrementEach([
+    &#39;votes&#39; =&gt; 5,
+    &#39;balance&#39; =&gt; 100,
+]);
+</code></pre></div>
+<h2 id="_26">刪除語句<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h2>
+<p>查詢建構器的 <code>delete</code> 方法可用於從表中刪除記錄。 <code>delete</code> 方法返回受影響的行數。你可以通過在呼叫 <code>delete</code> 方法之前新增 <code>where</code> 子句來限制 <code>delete</code> 語句：</p>
+<div class="highlight"><pre><span></span><code>$deleted = DB::table(&#39;users&#39;)-&gt;delete();
+
+$deleted = DB::table(&#39;users&#39;)-&gt;where(&#39;votes&#39;, &#39;&gt;&#39;, 100)-&gt;delete();
+</code></pre></div>
+<p>如果你希望截斷整個表，這將從表中刪除所有記錄並將自動遞增 ID 重設為零，你可以使用 <code>truncate</code> 方法：</p>
+<div class="highlight"><pre><span></span><code>DB::table(&#39;users&#39;)-&gt;truncate();
+</code></pre></div>
+<h4 id="postgresql">截斷表 &amp; PostgreSQL<a class="headerlink" href="#postgresql" title="Permanent link">&para;</a></h4>
+<p>截斷 PostgreSQL 資料庫時，將應用 <code>CASCADE</code> 行為。這意味著其他表中所有與外部索引鍵相關的記錄也將被刪除。</p>
+<h2 id="_27">悲觀鎖<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h2>
+<p>查詢建構器還包括一些函數，可幫助你在執行 <code>select</code> 語句時實現「悲觀鎖」。 要使用「共享鎖」執行語句，你可以呼叫 <code>sharedLock</code> 方法。共享鎖可防止選定的行被修改，直到你的事務被提交：</p>
+<div class="highlight"><pre><span></span><code>DB::table(&#39;users&#39;)
+        -&gt;where(&#39;votes&#39;, &#39;&gt;&#39;, 100)
+        -&gt;sharedLock()
+        -&gt;get();
+</code></pre></div>
+<p>或者，你可以使用 <code>lockForUpdate</code> 方法。「update」鎖可防止所選記錄被修改或被另一個共享鎖選中：</p>
+<div class="highlight"><pre><span></span><code>DB::table(&#39;users&#39;)
+        -&gt;where(&#39;votes&#39;, &#39;&gt;&#39;, 100)
+        -&gt;lockForUpdate()
+        -&gt;get();
+</code></pre></div>
+<h2 id="_28">偵錯<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h2>
+<p>你可以在建構查詢時使用 <code>dd</code> 和 <code>dump</code> 方法來轉儲當前查詢繫結和 SQL。 <code>dd</code> 方法將顯示偵錯資訊，然後停止執行請求。 <code>dump</code> 方法將顯示偵錯資訊，但允許請求繼續執行：</p>
+<div class="highlight"><pre><span></span><code>DB::table(&#39;users&#39;)-&gt;where(&#39;votes&#39;, &#39;&gt;&#39;, 100)-&gt;dd();
+
+DB::table(&#39;users&#39;)-&gt;where(&#39;votes&#39;, &#39;&gt;&#39;, 100)-&gt;dump();
+</code></pre></div>
+
+
+
+
+
+                
+
+  <!-- Giscus -->
+  <h2 id="__comments">留言</h2>
+  <script src="https://giscus.app/client.js"
+          data-repo="tomleesm/notes"
+          data-repo-id="R_kgDOGuSz4g"
+          data-category="Announcements"
+          data-category-id="DIC_kwDOGuSz4s4CBI6T"
+          data-mapping="title"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="bottom"
+          data-theme="dark"
+          data-lang="zh-TW"
+          crossorigin="anonymous"
+          async>
+  </script>
+
+  <!-- Reload on palette change -->
+  <script>
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object")
+      if (palette.color.scheme === "slate") {
+        var giscus = document.querySelector("script[src*=giscus]")
+        giscus.setAttribute("data-theme", "dark")
+      }
+
+    /* Register event handlers after documented loaded */
+    document.addEventListener("DOMContentLoaded", function() {
+      var ref = document.querySelector("[data-md-component=palette]")
+      ref.addEventListener("change", function() {
+        var palette = __md_get("__palette")
+        if (palette && typeof palette.color === "object") {
+          var theme = palette.color.scheme === "slate" ? "dark" : "light"
+
+          /* Instruct Giscus to change theme */
+          var frame = document.querySelector(".giscus-frame")
+          frame.contentWindow.postMessage(
+            { giscus: { setConfig: { theme } } },
+            "https://giscus.app"
+          )
+        }
+      })
+    })
+  </script>
+
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            回到頂端
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tabs", "navigation.sections", "navigation.indexes", "navigation.top", "header.autohide", "search.highlight", "search.share"], "search": "../../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "\u5df2\u8907\u88fd", "clipboard.copy": "\u8907\u88fd", "search.result.more.one": "\u6b64\u9801\u5c1a\u6709 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.more.other": "\u6b64\u9801\u5c1a\u6709 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.none": "\u6c92\u6709\u7b26\u5408\u7684\u9805\u76ee", "search.result.one": "\u627e\u5230 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.other": "\u627e\u5230 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.placeholder": "\u6253\u5b57\u9032\u884c\u641c\u5c0b", "search.result.term.missing": "\u7f3a\u5c11\u5b57\u8a5e", "select.version": "\u9078\u64c7\u7248\u672c"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.dff1b7c8.min.js"></script>
+      
+    
+  </body>
+</html>

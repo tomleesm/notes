@@ -1,0 +1,5342 @@
+
+<!doctype html>
+<html lang="zh-TW" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../01Cashier%E4%BA%A4%E6%98%93%E5%B7%A5%E5%85%B7%E5%8C%85Stripe/">
+      
+      
+        <link rel="next" href="../03Envoy%E9%83%A8%E7%BD%B2%E5%B7%A5%E5%85%B7/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-9.2.7">
+    
+    
+      
+        <title>Cashier 交易工具包 Paddle - Tom 株式會社</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.046329b4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.85d0ee34.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+Traditional+Chinese:300,300i,400,400i,700,700i%7CSource+Code+Pro:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans Traditional Chinese";--md-code-font:"Source Code Pro"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="red" data-md-color-accent="red">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#cashier-paddle" class="md-skip">
+          跳轉到
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="頁首">
+    <a href="../.." title="Tom 株式會社" class="md-header__button md-logo" aria-label="Tom 株式會社" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Tom 株式會社
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Cashier 交易工具包 Paddle
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="red" data-md-color-accent="red"  aria-hidden="true"  type="radio" name="__palette" id="__palette_1">
+    
+  
+</form>
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜尋" placeholder="搜尋" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="搜尋">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清除" aria-label="清除" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜尋引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/tomleesm/notes" title="前往倉庫" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    tomleesm/notes
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="標籤" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../01%E6%A0%B8%E5%BF%83%E6%9E%B6%E6%A7%8B/01%E8%AB%8B%E6%B1%82%E7%9A%84%E7%94%9F%E5%91%BD%E9%80%B1%E6%9C%9F/" class="md-tabs__link">
+          
+  
+    
+  
+  核心架構
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/01%E8%B7%AF%E7%94%B1/" class="md-tabs__link">
+          
+  
+    
+  
+  基礎功能
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/01Artisan%E5%91%BD%E4%BB%A4%E5%88%97/" class="md-tabs__link">
+          
+  
+    
+  
+  繼續深入
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../04%E5%AE%89%E5%85%A8%E7%9B%B8%E9%97%9C/01%E4%BD%BF%E7%94%A8%E8%80%85%E8%AA%8D%E8%AD%89/" class="md-tabs__link">
+          
+  
+    
+  
+  安全相關
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../05%E8%B3%87%E6%96%99%E5%BA%AB/01%E5%BF%AB%E9%80%9F%E5%85%A5%E9%96%80/" class="md-tabs__link">
+          
+  
+    
+  
+  資料庫
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../06EloquentORM/01%E5%BF%AB%E9%80%9F%E5%85%A5%E9%96%80/" class="md-tabs__link">
+          
+  
+    
+  
+  Eloquent ORM
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../07%E6%B8%AC%E8%A9%A6%E7%9B%B8%E9%97%9C/01%E5%85%A5%E9%96%80/" class="md-tabs__link">
+          
+  
+    
+  
+  測試相關
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../01Cashier%E4%BA%A4%E6%98%93%E5%B7%A5%E5%85%B7%E5%8C%85Stripe/" class="md-tabs__link">
+          
+  
+    
+  
+  官方擴展包
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../cheatsheets/artisan/" class="md-tabs__link">
+          
+  
+    
+  
+  語法速查表
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="導覽列" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Tom 株式會社" class="md-nav__button md-logo" aria-label="Tom 株式會社" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Tom 株式會社
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/tomleesm/notes" title="前往倉庫" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    tomleesm/notes
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    核心架構
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            核心架構
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01%E6%A0%B8%E5%BF%83%E6%9E%B6%E6%A7%8B/01%E8%AB%8B%E6%B1%82%E7%9A%84%E7%94%9F%E5%91%BD%E9%80%B1%E6%9C%9F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    請求的生命週期
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01%E6%A0%B8%E5%BF%83%E6%9E%B6%E6%A7%8B/02%E6%9C%8D%E5%8B%99%E5%AE%B9%E5%99%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    服務容器
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01%E6%A0%B8%E5%BF%83%E6%9E%B6%E6%A7%8B/03%E6%9C%8D%E5%8B%99%E6%8F%90%E4%BE%9B%E8%80%85/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    服務提供者
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01%E6%A0%B8%E5%BF%83%E6%9E%B6%E6%A7%8B/04Facades/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Facades
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    基礎功能
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            基礎功能
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/01%E8%B7%AF%E7%94%B1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    路由
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/02%E4%B8%AD%E4%BB%8B%E8%BB%9F%E9%AB%94/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    中介軟體
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/03CSRF%E4%BF%9D%E8%AD%B7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CSRF 保護
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/04Controller/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Controller
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/05HTTP%E8%AB%8B%E6%B1%82/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTTP 請求
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/06HTTP%E9%9F%BF%E6%87%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTTP 響應
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/07%E6%AA%A2%E8%A6%96/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    檢視
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/08Blade%E7%AF%84%E6%9C%AC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Blade 範本
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/09Vite%E7%B7%A8%E8%AD%AFAssets/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vite 編譯 Assets
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/10%E7%94%9F%E6%88%90URL/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    生成 URL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/11Session/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Session
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/12%E8%A1%A8%E5%96%AE%E9%A9%97%E8%AD%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    表單驗證
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/13%E9%8C%AF%E8%AA%A4%E8%99%95%E7%90%86/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    錯誤處理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/14%E6%97%A5%E8%AA%8C/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    日誌
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    繼續深入
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            繼續深入
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/01Artisan%E5%91%BD%E4%BB%A4%E5%88%97/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Artisan 命令列
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/02%E5%BB%A3%E6%92%AD/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    廣播
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/03%E5%BF%AB%E5%8F%96%E7%B3%BB%E7%B5%B1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    快取系統
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/04%E9%9B%86%E5%90%88/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    集合
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/05%E5%A5%91%E7%B4%84Contract/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    契約 Contract
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/06%E4%BA%8B%E4%BB%B6%E7%B3%BB%E7%B5%B1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    事件系統
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/07%E6%AA%94%E6%A1%88%E5%84%B2%E5%AD%98/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    檔案儲存
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/09HTTPClient/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTTP Client
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/10%E6%9C%AC%E5%9C%B0%E5%8C%96/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    本地化
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/11%E9%83%B5%E4%BB%B6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    郵件
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/12%E6%B6%88%E6%81%AF%E9%80%9A%E7%9F%A5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    消息通知
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/13Package%E9%96%8B%E7%99%BC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Package 開發
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/14%E8%99%95%E7%90%86%E7%A8%8B%E5%BA%8F%E7%AE%A1%E7%90%86/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    處理程序管理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/15%E4%BD%87%E5%88%97/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    佇列
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/16%E9%99%90%E6%B5%81/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    限流
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/17%E4%BB%BB%E5%8B%99%E8%AA%BF%E5%BA%A6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    任務調度
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    安全相關
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            安全相關
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04%E5%AE%89%E5%85%A8%E7%9B%B8%E9%97%9C/01%E4%BD%BF%E7%94%A8%E8%80%85%E8%AA%8D%E8%AD%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    使用者認證
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04%E5%AE%89%E5%85%A8%E7%9B%B8%E9%97%9C/02%E4%BD%BF%E7%94%A8%E8%80%85%E6%8E%88%E6%AC%8A/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    使用者授權
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04%E5%AE%89%E5%85%A8%E7%9B%B8%E9%97%9C/03Email%E8%AA%8D%E8%AD%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Email 認證
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04%E5%AE%89%E5%85%A8%E7%9B%B8%E9%97%9C/04%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    加密解密
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04%E5%AE%89%E5%85%A8%E7%9B%B8%E9%97%9C/05%E9%9B%9C%E6%B9%8A/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    雜湊
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04%E5%AE%89%E5%85%A8%E7%9B%B8%E9%97%9C/06%E9%87%8D%E8%A8%AD%E5%AF%86%E7%A2%BC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    重設密碼
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    資料庫
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            資料庫
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05%E8%B3%87%E6%96%99%E5%BA%AB/01%E5%BF%AB%E9%80%9F%E5%85%A5%E9%96%80/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    快速入門
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05%E8%B3%87%E6%96%99%E5%BA%AB/02%E6%9F%A5%E8%A9%A2%E7%94%9F%E6%88%90%E5%99%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    查詢生成器
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05%E8%B3%87%E6%96%99%E5%BA%AB/03%E5%88%86%E9%A0%81/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    分頁
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05%E8%B3%87%E6%96%99%E5%BA%AB/04%E9%81%B7%E7%A7%BB/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    遷移
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05%E8%B3%87%E6%96%99%E5%BA%AB/05%E8%B3%87%E6%96%99%E5%A1%AB%E5%85%85/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    資料填充
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05%E8%B3%87%E6%96%99%E5%BA%AB/06Redis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Redis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Eloquent ORM
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Eloquent ORM
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06EloquentORM/01%E5%BF%AB%E9%80%9F%E5%85%A5%E9%96%80/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    快速入門
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06EloquentORM/02%E9%97%9C%E8%81%AF/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    關聯
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06EloquentORM/03%E9%9B%86%E5%90%88/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    集合
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06EloquentORM/04%E5%B1%AC%E6%80%A7%E4%BF%AE%E6%94%B9%E5%99%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    屬性修改器
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06EloquentORM/05API%E8%B3%87%E6%BA%90/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    API 資源
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06EloquentORM/06%E5%BA%8F%E5%88%97%E5%8C%96/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    序列化
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06EloquentORM/07%E8%B3%87%E6%96%99%E5%B7%A5%E5%BB%A0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    資料工廠
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    測試相關
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            測試相關
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07%E6%B8%AC%E8%A9%A6%E7%9B%B8%E9%97%9C/01%E5%85%A5%E9%96%80/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    入門
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07%E6%B8%AC%E8%A9%A6%E7%9B%B8%E9%97%9C/02HTTP%E6%B8%AC%E8%A9%A6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTTP 測試
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07%E6%B8%AC%E8%A9%A6%E7%9B%B8%E9%97%9C/03%E5%91%BD%E4%BB%A4%E5%88%97%E6%B8%AC%E8%A9%A6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    命令列測試
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07%E6%B8%AC%E8%A9%A6%E7%9B%B8%E9%97%9C/04LaravelDusk/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Laravel Dusk
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07%E6%B8%AC%E8%A9%A6%E7%9B%B8%E9%97%9C/05%E8%B3%87%E6%96%99%E5%BA%AB%E6%B8%AC%E8%A9%A6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    資料庫測試
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07%E6%B8%AC%E8%A9%A6%E7%9B%B8%E9%97%9C/06Mocking/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mocking
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    官方擴展包
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            官方擴展包
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01Cashier%E4%BA%A4%E6%98%93%E5%B7%A5%E5%85%B7%E5%8C%85Stripe/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cashier 交易工具包 Stripe
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Cashier 交易工具包 Paddle
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Cashier 交易工具包 Paddle
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目錄">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目錄
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    介紹
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cashier" class="md-nav__link">
+    升級 Cashier
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    安裝
+  </a>
+  
+    <nav class="md-nav" aria-label="安裝">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#paddle" class="md-nav__link">
+    Paddle 沙盒
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    資料遷移
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    組態
+  </a>
+  
+    <nav class="md-nav" aria-label="組態">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#billable" class="md-nav__link">
+    Billable 模型
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api-keys" class="md-nav__link">
+    API Keys
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paddle-js" class="md-nav__link">
+    Paddle JS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    貨幣組態
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    覆蓋默認模型
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    核心概念
+  </a>
+  
+    <nav class="md-nav" aria-label="核心概念">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    支付連結
+  </a>
+  
+    <nav class="md-nav" aria-label="支付連結">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    手動呈現支付連結
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    需要額外確認的付款
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    內聯結賬
+  </a>
+  
+    <nav class="md-nav" aria-label="內聯結賬">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    沒有支付連結的內聯結賬
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    手動呈現內聯結賬
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    使用者識別
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    定價
+  </a>
+  
+    <nav class="md-nav" aria-label="定價">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    客戶
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    優惠券
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    客戶
+  </a>
+  
+    <nav class="md-nav" aria-label="客戶">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    客戶預設值
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    訂閱
+  </a>
+  
+    <nav class="md-nav" aria-label="訂閱">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    建立訂閱
+  </a>
+  
+    <nav class="md-nav" aria-label="建立訂閱">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    額外細節
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    優惠券
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    中繼資料
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    檢查訂閱狀態
+  </a>
+  
+    <nav class="md-nav" aria-label="檢查訂閱狀態">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    已取消訂閱狀態
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    逾期狀態
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    訂閱範圍
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    訂閱單次收費
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    更新付款資訊
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    改變計畫
+  </a>
+  
+    <nav class="md-nav" aria-label="改變計畫">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    按比例分配
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    訂閱數量
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    訂閱修改器
+  </a>
+  
+    <nav class="md-nav" aria-label="訂閱修改器">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_35" class="md-nav__link">
+    檢索修改器
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_36" class="md-nav__link">
+    刪除修改器
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_37" class="md-nav__link">
+    多個訂閱
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_38" class="md-nav__link">
+    暫停訂閱
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_39" class="md-nav__link">
+    取消訂閱
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_40" class="md-nav__link">
+    訂閱試用
+  </a>
+  
+    <nav class="md-nav" aria-label="訂閱試用">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_41" class="md-nav__link">
+    預先收集付費方式
+  </a>
+  
+    <nav class="md-nav" aria-label="預先收集付費方式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#paddle-cashier" class="md-nav__link">
+    在 Paddle / Cashier 中定義試用天數
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_42" class="md-nav__link">
+    未預先收集付款方式
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paddle-webhooks" class="md-nav__link">
+    處理 Paddle Webhooks
+  </a>
+  
+    <nav class="md-nav" aria-label="處理 Paddle Webhooks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#webhook-csrf" class="md-nav__link">
+    Webhook 和 CSRF 保護
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#webhook" class="md-nav__link">
+    Webhook 和本地開發
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#webhook_1" class="md-nav__link">
+    定義 webhook 事件處理程序
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#webhook_2" class="md-nav__link">
+    驗證 Webhook 簽名
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_43" class="md-nav__link">
+    一次性收費
+  </a>
+  
+    <nav class="md-nav" aria-label="一次性收費">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_44" class="md-nav__link">
+    簡單收費
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_45" class="md-nav__link">
+    收費產品
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_46" class="md-nav__link">
+    退款訂單
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_47" class="md-nav__link">
+    收據
+  </a>
+  
+    <nav class="md-nav" aria-label="收據">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_48" class="md-nav__link">
+    過去和未來的付款
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_49" class="md-nav__link">
+    處理失敗的付款
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_50" class="md-nav__link">
+    測試
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03Envoy%E9%83%A8%E7%BD%B2%E5%B7%A5%E5%85%B7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Envoy 部署工具
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04Fortify%E8%88%87%E5%89%8D%E7%AB%AF%E7%84%A1%E9%97%9C%E7%9A%84%E8%BA%AB%E4%BB%BD%E8%AA%8D%E8%AD%89%E5%BE%8C%E7%AB%AF%E5%AF%A6%E7%8F%BE/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fortify 與前端無關的身份認證後端實現
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05Homestead%E8%99%9B%E6%93%AC%E6%A9%9F%E5%99%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Homestead 虛擬機器
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06Horizon%E4%BD%87%E5%88%97%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Horizon 佇列管理工具
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09Octane%E5%8A%A0%E9%80%9F%E5%BC%95%E6%93%8E/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Octane 加速引擎
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10PassportOAuth%E8%AA%8D%E8%AD%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Passport OAuth 認證
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11Pennant%E6%B8%AC%E8%A9%A6%E6%96%B0%E5%8A%9F%E8%83%BD/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pennant 測試新功能
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12Pint%E7%A8%8B%E5%BC%8F%E7%A2%BC%E9%A2%A8%E6%A0%BC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pint 程式碼風格
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13SailDocker%E9%96%8B%E7%99%BC%E7%92%B0%E5%A2%83/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sail Docker 開發環境
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14SanctumAPI%E6%8E%88%E6%AC%8A/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sanctum API 授權
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15Scout%E5%85%A8%E6%96%87%E6%90%9C%E5%B0%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Scout 全文搜尋
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16Socialite%E7%AC%AC%E4%B8%89%E6%96%B9%E7%99%BB%E5%85%A5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Socialite 第三方登入
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17Telescope%E5%81%B5%E9%8C%AF%E5%B7%A5%E5%85%B7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Telescope 偵錯工具
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    語法速查表
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            語法速查表
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/artisan/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Artisan
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/auth/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Auth 使用者認證
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/blade/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Blade 範本
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/cache/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cache
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/collection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Collection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/composer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Composer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/config/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Config
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/container/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Container
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/cookie/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cookie
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/db/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Database
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/environment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Environment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/event/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Event
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/file/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    File
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/helper/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Helper
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/input/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Input
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/lang/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lang
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/Log/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Log
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/mail/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mail
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/model/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Model (Eloquent ORM)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/pagination/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pagination
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/queue/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Queue
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/redirect/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Redirect
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/request/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Request
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/response/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Response
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/route/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Route
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/schema/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Schema 資料庫結構
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/security/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Security (Hash 和加解密)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/session/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Session
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/storage/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Storage
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/string/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    String
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/unittest/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Unit Test 單元測試
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/url/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    URL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/validation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Validation 表單驗證
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/view/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    View
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目錄">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目錄
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    介紹
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cashier" class="md-nav__link">
+    升級 Cashier
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    安裝
+  </a>
+  
+    <nav class="md-nav" aria-label="安裝">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#paddle" class="md-nav__link">
+    Paddle 沙盒
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    資料遷移
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    組態
+  </a>
+  
+    <nav class="md-nav" aria-label="組態">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#billable" class="md-nav__link">
+    Billable 模型
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api-keys" class="md-nav__link">
+    API Keys
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paddle-js" class="md-nav__link">
+    Paddle JS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    貨幣組態
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    覆蓋默認模型
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    核心概念
+  </a>
+  
+    <nav class="md-nav" aria-label="核心概念">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    支付連結
+  </a>
+  
+    <nav class="md-nav" aria-label="支付連結">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    手動呈現支付連結
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    需要額外確認的付款
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    內聯結賬
+  </a>
+  
+    <nav class="md-nav" aria-label="內聯結賬">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    沒有支付連結的內聯結賬
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    手動呈現內聯結賬
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    使用者識別
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    定價
+  </a>
+  
+    <nav class="md-nav" aria-label="定價">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    客戶
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    優惠券
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    客戶
+  </a>
+  
+    <nav class="md-nav" aria-label="客戶">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    客戶預設值
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    訂閱
+  </a>
+  
+    <nav class="md-nav" aria-label="訂閱">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    建立訂閱
+  </a>
+  
+    <nav class="md-nav" aria-label="建立訂閱">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    額外細節
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    優惠券
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    中繼資料
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    檢查訂閱狀態
+  </a>
+  
+    <nav class="md-nav" aria-label="檢查訂閱狀態">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    已取消訂閱狀態
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    逾期狀態
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    訂閱範圍
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    訂閱單次收費
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    更新付款資訊
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    改變計畫
+  </a>
+  
+    <nav class="md-nav" aria-label="改變計畫">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    按比例分配
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    訂閱數量
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    訂閱修改器
+  </a>
+  
+    <nav class="md-nav" aria-label="訂閱修改器">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_35" class="md-nav__link">
+    檢索修改器
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_36" class="md-nav__link">
+    刪除修改器
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_37" class="md-nav__link">
+    多個訂閱
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_38" class="md-nav__link">
+    暫停訂閱
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_39" class="md-nav__link">
+    取消訂閱
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_40" class="md-nav__link">
+    訂閱試用
+  </a>
+  
+    <nav class="md-nav" aria-label="訂閱試用">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_41" class="md-nav__link">
+    預先收集付費方式
+  </a>
+  
+    <nav class="md-nav" aria-label="預先收集付費方式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#paddle-cashier" class="md-nav__link">
+    在 Paddle / Cashier 中定義試用天數
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_42" class="md-nav__link">
+    未預先收集付款方式
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paddle-webhooks" class="md-nav__link">
+    處理 Paddle Webhooks
+  </a>
+  
+    <nav class="md-nav" aria-label="處理 Paddle Webhooks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#webhook-csrf" class="md-nav__link">
+    Webhook 和 CSRF 保護
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#webhook" class="md-nav__link">
+    Webhook 和本地開發
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#webhook_1" class="md-nav__link">
+    定義 webhook 事件處理程序
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#webhook_2" class="md-nav__link">
+    驗證 Webhook 簽名
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_43" class="md-nav__link">
+    一次性收費
+  </a>
+  
+    <nav class="md-nav" aria-label="一次性收費">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_44" class="md-nav__link">
+    簡單收費
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_45" class="md-nav__link">
+    收費產品
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_46" class="md-nav__link">
+    退款訂單
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_47" class="md-nav__link">
+    收據
+  </a>
+  
+    <nav class="md-nav" aria-label="收據">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_48" class="md-nav__link">
+    過去和未來的付款
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_49" class="md-nav__link">
+    處理失敗的付款
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_50" class="md-nav__link">
+    測試
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+  
+                  
+
+  
+  
+
+
+<h1 id="cashier-paddle">Cashier 交易工具包 (Paddle)<a class="headerlink" href="#cashier-paddle" title="Permanent link">&para;</a></h1>
+<h2 id="_1">介紹<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p><a href="https://github.com/laravel/cashier-paddle">Laravel Cashier Paddle</a> 為 <a href="https://paddle.com">Paddle's</a> 訂閱計費服務提供了一個富有表現力、流暢的介面。它幾乎能夠處理所有你所恐懼的各種訂閱計費邏輯和程式碼。除了基本的訂閱管理，Cashier 還可以處理：優惠券、交換訂閱、訂閱「數量」、取消寬限期等。</p>
+<p>在使用 Cashier 時，推薦你回顧一下 Paddle 的<a href="https://developer.paddle.com/guides">使用者手冊</a> and <a href="https://developer.paddle.com/api-reference/intro">API 文件</a>。</p>
+<h2 id="cashier">升級 Cashier<a class="headerlink" href="#cashier" title="Permanent link">&para;</a></h2>
+<p>當升級到一個新版本的 Cashier 時，推薦仔細回顧下 <a href="https://github.com/laravel/cashier-paddle/blob/master/UPGRADE.">升級指南</a> 這非常重要。</p>
+<h2 id="_2">安裝<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>首先，使用 Composer 包管理器安裝 Paddle 的 Cashier 包：</p>
+<div class="highlight"><pre><span></span><code>composer<span class="w"> </span>require<span class="w"> </span>laravel/cashier-paddle
+</code></pre></div>
+<blockquote>
+<p>注意：為了確保 Cashier 正確處理所有 Paddle 事件，請記得 <a href="#handling-paddle-webhooks">組態 Cashier 的 webhook 處理</a>。</p>
+</blockquote>
+<h3 id="paddle">Paddle 沙盒<a class="headerlink" href="#paddle" title="Permanent link">&para;</a></h3>
+<p>在本地和預發佈開發環境中，應該 <a href="https://developer.paddle.com/getting-started/sandbox">註冊一個 Paddle 沙盒帳號</a>。這個帳號將為你提供一個沙盒環境來測試和開發你的應用，而不會產生真實的交易。你也許會使用 Paddle 的 <a href="https://developer.paddle.com/getting-started/sandbox#test-cards">測試卡號</a> 來模擬各種交易場景。</p>
+<p>在使用 Pable 沙盒環境時，你應在應用程式的 <code>.env</code> 環境檔案中將 <code>PADDLE_SANDBOX</code> 環境變數設定為 <code>true</code> ：</p>
+<div class="highlight"><pre><span></span><code><span class="na">PADDLE_SANDBOX</span><span class="o">=</span><span class="s">true</span>
+</code></pre></div>
+<p>在你已經完成你的應用開發之後，你也許會 <a href="https://paddle.com/">申請一個 Paddle 正式帳號</a> 。 在你的應用程式投入生產環境之前，Paddle 需要批准你的應用程式的域。</p>
+<h3 id="_3">資料遷移<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>Cashier 服務提供者註冊它自己的資料遷移目錄，所以你記得在安裝擴展包之後執行資料遷移。Cashier 資料遷移將生成新的 <code>customers</code> 表。另外，新的 <code>subscriptions</code> 表將被建立，來儲存所有你的使用者的訂閱。最後，新的 <code>receipts</code> 表也將被建立，來儲存所有你的收據資訊:</p>
+<div class="highlight"><pre><span></span><code>php<span class="w"> </span>artisan<span class="w"> </span>migrate
+</code></pre></div>
+<p>如果你需要重寫 Cashier 中的資料遷移，你可以使用 <code>vendor:publish</code> Artisan 命令來發佈它們：</p>
+<div class="highlight"><pre><span></span><code>php<span class="w"> </span>artisan<span class="w"> </span>vendor:publish<span class="w"> </span>--tag<span class="o">=</span><span class="s2">&quot;cashier-migrations&quot;</span>
+</code></pre></div>
+<p>如果你想阻止 Cashier 的資料遷移全部執行，你可以使用 Cashier 提供的 <code>ignoreMigrations</code>。通常，這個方法會在 <code>AppServiceProvider</code> 的 <code>register</code> 方法中被呼叫：</p>
+<div class="highlight"><pre><span></span><code>use Laravel\Paddle\Cashier;
+
+/**
+ * 註冊服務。
+ */
+public function register(): void
+{
+    Cashier::ignoreMigrations();
+}
+</code></pre></div>
+<h2 id="_4">組態<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<h3 id="billable">Billable 模型<a class="headerlink" href="#billable" title="Permanent link">&para;</a></h3>
+<p>在使用 Cashier 之前，你必須將 <code>Billable</code> trait 新增到你的使用者模型定義中。 這裡的 trait 提供了多種方法來允許你執行常見的計費任務，例如建立訂閱、應用優惠券和更新付款方式資訊：</p>
+<div class="highlight"><pre><span></span><code>use Laravel\Paddle\Billable;
+
+class User extends Authenticatable
+{
+    use Billable;
+}
+</code></pre></div>
+<p>如果你有非使用者的計費實體，你還可以將特徵新增到這些類中：</p>
+<div class="highlight"><pre><span></span><code>use Illuminate\Database\Eloquent\Model;
+use Laravel\Paddle\Billable;
+
+class Team extends Model
+{
+    use Billable;
+}
+</code></pre></div>
+<h3 id="api-keys">API Keys<a class="headerlink" href="#api-keys" title="Permanent link">&para;</a></h3>
+<p>接下來，你應該在應用程式的 <code>.env</code> 檔案中組態你的 Paddle 。 你可以從 Paddle 控制面板檢索你的 Paddle API 金鑰：</p>
+<div class="highlight"><pre><span></span><code><span class="na">PADDLE_VENDOR_ID</span><span class="o">=</span><span class="s">your-paddle-vendor-id</span>
+<span class="na">PADDLE_VENDOR_AUTH_CODE</span><span class="o">=</span><span class="s">your-paddle-vendor-auth-code</span>
+<span class="na">PADDLE_PUBLIC_KEY</span><span class="o">=</span><span class="s">&quot;your-paddle-public-key&quot;</span>
+<span class="na">PADDLE_SANDBOX</span><span class="o">=</span><span class="s">true</span>
+</code></pre></div>
+<p>當你使用 <a href="#paddle-sandbox">Paddle 的沙箱環境</a> 時，<code>PADDLE_SANDBOX</code> 環境變數應該設定為 <code>true</code>。如果你將應用程式部署到生產環境並使用 Paddle 的即時供應商環境，則 <code>PADDLE_SANDBOX</code> 變數應該設定為 <code>false</code>。</p>
+<h3 id="paddle-js">Paddle JS<a class="headerlink" href="#paddle-js" title="Permanent link">&para;</a></h3>
+<p>Paddle 依賴其自己的 JavaScript 庫來啟動 Paddle 結賬小部件。你可以通過在應用程式佈局中的 <code>&lt;/head&gt;</code> 標籤關閉之前放置 <code>@paddleJS</code> Blade 指令來載入 JavaScript 庫：</p>
+<div class="highlight"><pre><span></span><code>&lt;head&gt;
+    ...
+
+    @paddleJS
+&lt;/head&gt;
+</code></pre></div>
+<h3 id="_5">貨幣組態<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>默認 Cashier 貨幣是美元（USD）。你可以在 <code>.env</code> 檔案中定義 <code>CASHIER_CURRENCY</code> 環境變數來更改默認貨幣：</p>
+<div class="highlight"><pre><span></span><code><span class="na">CASHIER_CURRENCY</span><span class="o">=</span><span class="s">EUR</span>
+</code></pre></div>
+<p>除了組態 Cashier 的貨幣之外，你還可以指定在格式化貨幣值以顯示在發票上時要使用的區域。Cashier 內部利用 <a href="https://www.php.net/manual/en/class.numberformatter.php">PHP 的 NumberFormatter 類</a>來設定貨幣區域：</p>
+<div class="highlight"><pre><span></span><code><span class="na">CASHIER_CURRENCY_LOCALE</span><span class="o">=</span><span class="s">nl_BE</span>
+</code></pre></div>
+<blockquote>
+<p>注意：為了使用 <code>en</code> 以外的語言環境，請確保你的伺服器上安裝並組態了 <code>ext-intl</code> PHP 擴展。</p>
+</blockquote>
+<h3 id="_6">覆蓋默認模型<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p>你可以通過定義自己的模型並繼承相應的 Cashier 模型來自由擴展 Cashier 模型：</p>
+<div class="highlight"><pre><span></span><code>use Laravel\Paddle\Subscription as CashierSubscription;
+
+class Subscription extends CashierSubscription
+{
+    // ...
+}
+</code></pre></div>
+<p>定義模型後，你可以通過 <code>Laravel\Paddle\Cashier</code> 類指示 Cashier 使用你的自訂模型。通常，你應該在應用的 <code>App\Providers\AppServiceProvider</code> 類的 <code>boot</code> 方法中通知 Cashier 關於你的自訂模型：</p>
+<div class="highlight"><pre><span></span><code>use App\Models\Cashier\Receipt;
+use App\Models\Cashier\Subscription;
+
+/**
+ * 啟動應用服務。
+ */
+public function boot(): void
+{
+    Cashier::useReceiptModel(Receipt::class);
+    Cashier::useSubscriptionModel(Subscription::class);
+}
+</code></pre></div>
+<h2 id="_7">核心概念<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<h3 id="_8">支付連結<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<p>Paddle 缺乏廣泛的 CRUD API 來執行訂閱狀態更改。因此，與 Paddle 的大多數互動都是通過其 <a href="https://developer.paddle.com/guides/how-tos/checkout/paddle-checkout">結帳小部件</a> 完成的。在使用結賬小部件之前，我們必須使用 Cashier 生成一個 「支付連結」。 「支付連結」將通知結賬小部件我們希望執行的計費操作：</p>
+<div class="highlight"><pre><span></span><code>use App\Models\User;
+use Illuminate\Http\Request;
+
+Route::get(&#39;/user/subscribe&#39;, function (Request $request) {
+    $payLink = $request-&gt;user()-&gt;newSubscription(&#39;default&#39;, $premium = 34567)
+        -&gt;returnTo(route(&#39;home&#39;))
+        -&gt;create();
+
+    return view(&#39;billing&#39;, [&#39;payLink&#39; =&gt; $payLink]);
+});
+</code></pre></div>
+<p>Cashier 包括一個 <code>paddle-button</code> <a href="/docs/laravel/10.x/blade#components">Blade 元件</a>。 我們可以將支付連結 URL 作為 「prop」傳遞給該元件。 點選此按鈕時，將顯示 Paddle 的結帳小部件：</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">x-paddle-button</span> <span class="na">:url</span><span class="o">=</span><span class="s">&quot;$payLink&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;px-8 py-4&quot;</span><span class="p">&gt;</span>
+    訂閱
+<span class="p">&lt;/</span><span class="nt">x-paddle-button</span><span class="p">&gt;</span>
+</code></pre></div>
+<p>默認情況下，這將顯示一個具有標準 Paddle 樣式的按鈕。 你可以通過向元件新增 <code>data-theme="none"</code> 屬性來刪除所有 Paddle 樣式：</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">x-paddle-button</span> <span class="na">:url</span><span class="o">=</span><span class="s">&quot;$payLink&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;px-8 py-4&quot;</span> <span class="na">data-theme</span><span class="o">=</span><span class="s">&quot;none&quot;</span><span class="p">&gt;</span>
+    訂閱
+<span class="p">&lt;/</span><span class="nt">x-paddle-button</span><span class="p">&gt;</span>
+</code></pre></div>
+<p>Paddle 結賬小部件是非同步的。 一旦使用者在小部件中建立或更新訂閱，Paddle 將傳送你的應用程式 webhook，以便你可以在我們自己的資料庫中正確更新訂閱狀態。 因此，正確 <a href="#handling-paddle-webhook">設定 webhooks</a> 以同步 Paddle 的狀態變化非常重要。</p>
+<p>有關支付連結的更多資訊，你可以查看 <a href="https://developer.paddle.com/api-reference/product-api/pay-links/createpaylink">有關支付連結生成的 Paddle API 文件</a>。</p>
+<blockquote>
+<p>注意：訂閱狀態更改後，接收相應 webhook 的延遲通常很小，但你應該在應用程式中考慮到這一點，因為你的使用者訂閱在完成結帳後可能不會立即生效。</p>
+</blockquote>
+<h4 id="_9">手動呈現支付連結<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<p>你也可以在不使用 Laravel 內建的 Blade 元件的情況下手動渲染支付連結。 首先，生成支付連結 URL，如先前所示：</p>
+<div class="highlight"><pre><span></span><code>$payLink = $request-&gt;user()-&gt;newSubscription(&#39;default&#39;, $premium = 34567)
+    -&gt;returnTo(route(&#39;home&#39;))
+    -&gt;create();
+</code></pre></div>
+<p>接下來，只需將支付連結 URL 附加到 HTML 中的 <code>a</code> 元素：</p>
+<div class="highlight"><pre><span></span><code>&lt;a href=&quot;#!&quot; class=&quot;ml-4 paddle_button&quot; data-override=&quot;{{ $payLink }}&quot;&gt;
+    Paddle 支付
+&lt;/a&gt;
+</code></pre></div>
+<h4 id="_10">需要額外確認的付款<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<p>有時需要額外的驗證才能確認和處理付款。發生這種情況時，Paddle 將顯示付款確認螢幕。Paddle 或 Cashier 顯示的付款確認螢幕可能會針對特定銀行或發卡機構的付款流程進行定製，並且可能包括額外的卡確認、臨時小額費用、單獨的裝置身份驗證或其他形式的驗證。</p>
+<h3 id="_11">內聯結賬<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<p>如果你不想使用 Paddle 的 「疊加」樣式結帳小部件，Paddle 還提供了內嵌顯示小部件的選項。 雖然這種方法不允許你調整任何結帳的 HTML 欄位，但它允許你將小部件嵌入到你的應用中。</p>
+<p>為了讓你輕鬆開始內聯結賬，Cashier 包含一個 <code>paddle-checkout</code> Blade 元件。 首先，你應該 <a href="#pay-links">生成支付連結</a>並將支付連結傳遞給元件的 <code>override</code> 屬性：</p>
+<div class="highlight"><pre><span></span><code>&lt;x-paddle-checkout :override=&quot;$payLink&quot; class=&quot;w-full&quot; /&gt;
+</code></pre></div>
+<p>要調整內聯結帳元件的高度，你可以將 <code>height</code> 屬性傳遞給 Blade 元件：</p>
+<div class="highlight"><pre><span></span><code>&lt;x-paddle-checkout :override=&quot;$payLink&quot; class=&quot;w-full&quot; height=&quot;500&quot; /&gt;
+</code></pre></div>
+<h4 id="_12">沒有支付連結的內聯結賬<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
+<p>或者，你可以使用自訂選項而不是使用支付連結來自訂小部件：</p>
+<div class="highlight"><pre><span></span><code>@php
+$options = [
+    &#39;product&#39; =&gt; $productId,
+    &#39;title&#39; =&gt; &#39;Product Title&#39;,
+];
+@endphp
+
+&lt;x-paddle-checkout :options=&quot;$options&quot; class=&quot;w-full&quot; /&gt;
+</code></pre></div>
+<p>請參閱 Paddle 的 <a href="https://developer.paddle.com/guides/how-tos/checkout/inline-checkout">Inline Checkout 指南</a> 以及他們的 <a href="https://developer.paddle.com/reference/paddle-js/parameters">參數參考</a> 以獲取有關內聯結帳可用選項的更多詳細資訊。</p>
+<blockquote>
+<p>注意：如果你想在指定自訂選項時也使用 passthrough 選項，你應該提供一個鍵 / 值陣列作為其值。Cashier 將自動處理將陣列轉換為 JSON 字串。 此外，<code>customer_id</code> passthrough 選項保留供內部 Cashier 使用。</p>
+</blockquote>
+<h4 id="_13">手動呈現內聯結賬<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
+<p>你也可以在不使用 Laravel 的內建 Blade 元件的情況下手動渲染內聯結賬。 首先，生成支付連結 URL <a href="#pay-links">如前面示例中所示</a>。</p>
+<p>接下來，你可以使用 Paddle.js 來初始化結帳。 為了讓這個例子簡單，我們將使用 <a href="https://github.com/alpinejs/alpine">Alpine.js</a> 來演示； 但是，你可以自由地將此示例轉換為你自己的前端技術堆疊：</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;paddle-checkout&quot;</span> <span class="na">x-data</span><span class="o">=</span><span class="s">&quot;{}&quot;</span> <span class="na">x-init</span><span class="o">=</span><span class="s">&quot;</span>
+<span class="s">    Paddle.Checkout.open({</span>
+<span class="s">        override: {{ $payLink }},</span>
+<span class="s">        method: &#39;inline&#39;,</span>
+<span class="s">        frameTarget: &#39;paddle-checkout&#39;,</span>
+<span class="s">        frameInitialHeight: 366,</span>
+<span class="s">        frameStyle: &#39;width: 100%; background-color: transparent; border: none;&#39;</span>
+<span class="s">    });</span>
+<span class="s">&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</code></pre></div>
+<h3 id="_14">使用者識別<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<p>與 Stripe 相比，Paddle 使用者在所有 Paddle 中都是獨一無二的，而不是每個 Paddle 帳戶都是獨一無二的。因此，Paddle 的 API 目前不提供更新使用者詳細資訊（例如電子郵件地址）的方法。在生成支付連結時，Paddle 使用 <code>customer_email</code> 參數識別使用者。建立訂閱時，Paddle 將嘗試將使用者提供的電子郵件與現有 Paddle 使用者進行匹配。</p>
+<p>鑑於這種行為，在使用 Cashier 和 Paddle 時需要記住一些重要的事情。首先，你應該知道，即使 Cashier 中的訂閱繫結到同一個應用程式使用者，<strong>它們也可能繫結到 Paddle 內部系統中的不同使用者</strong>。其次，每個訂閱都有自己的連接支付方式資訊，並且在 Paddle 的內部系統中也可能有不同的電子郵件地址（取決於建立訂閱時分配給使用者的電子郵件）。</p>
+<p>因此，在顯示訂閱時，你應該始終告知使用者哪些電子郵件地址或付款方式資訊與訂閱相關聯。可以使用 <code>Laravel\Paddle\Subscription</code> 模型提供的以下方法檢索這些資訊：</p>
+<div class="highlight"><pre><span></span><code>$subscription = $user-&gt;subscription(&#39;default&#39;);
+
+$subscription-&gt;paddleEmail();
+$subscription-&gt;paymentMethod();
+$subscription-&gt;cardBrand();
+$subscription-&gt;cardLastFour();
+$subscription-&gt;cardExpirationDate();
+</code></pre></div>
+<p>當前，沒有辦法通過 Paddle API 修改使用者的電子郵件地址。當使用者想在 Paddle 內更新他們的電子郵件地址時，他們唯一的方法是聯絡 Paddle 客戶支援。在與 Paddle 溝通時，他們需要提供訂閱的 <code>paddleEmail</code>，這樣 Paddle 就可以更新正確的使用者。</p>
+<h2 id="_15">定價<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h2>
+<p>Paddle 允許你自訂每種貨幣對應的價格，也就是說 Paddle 允許你為不同國家和地區組態不同的價格。Cashier Paddle 允許你使用 <code>productPrices</code> 方法檢索一個特定產品的所有價格。這個方法接受你希望檢索價格的產品的產品 ID：</p>
+<div class="highlight"><pre><span></span><code>use Laravel\Paddle\Cashier;
+
+$prices = Cashier::productPrices([123, 456]);
+</code></pre></div>
+<p>貨幣將根據請求的 IP 地址來確定，當然你也可以傳入一個可選的國家和地區參數來檢索特定國家和地區的價格：</p>
+<div class="highlight"><pre><span></span><code>use Laravel\Paddle\Cashier;
+
+$prices = Cashier::productPrices([123, 456], [&#39;customer_country&#39; =&gt; &#39;BE&#39;]);
+</code></pre></div>
+<p>檢索出價格後，你可以根據需要顯示它們：</p>
+<div class="highlight"><pre><span></span><code>&lt;ul&gt;
+    @foreach ($prices as $price)
+        &lt;li&gt;{{ $price-&gt;product_title }} - {{ $price-&gt;price()-&gt;gross() }}&lt;/li&gt;
+    @endforeach
+&lt;/ul&gt;
+</code></pre></div>
+<p>你也可以顯示淨價（不含稅）並將稅額顯示分離：</p>
+<div class="highlight"><pre><span></span><code>&lt;ul&gt;
+    @foreach ($prices as $price)
+        &lt;li&gt;{{ $price-&gt;product_title }} - {{ $price-&gt;price()-&gt;net() }} (+ {{ $price-&gt;price()-&gt;tax() }} tax)&lt;/li&gt;
+    @endforeach
+&lt;/ul&gt;
+</code></pre></div>
+<p>如果你檢索了訂閱的價格，你可以分別顯示其原始價格和連續訂閱價格：</p>
+<div class="highlight"><pre><span></span><code>&lt;ul&gt;
+    @foreach ($prices as $price)
+        &lt;li&gt;{{ $price-&gt;product_title }} - Initial: {{ $price-&gt;initialPrice()-&gt;gross() }} - Recurring: {{ $price-&gt;recurringPrice()-&gt;gross() }}&lt;/li&gt;
+    @endforeach
+&lt;/ul&gt;
+</code></pre></div>
+<p>更多相關資訊，請 <a href="https://developer.paddle.com/api-reference/checkout-api/prices/getprices">查看 Paddle 的價格 API 文件</a>。</p>
+<h4 id="_16">客戶<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
+<p>如果使用者已經是客戶並且你希望顯示適用於該客戶的價格，你可以通過直接從客戶實例檢索價格來實現：</p>
+<div class="highlight"><pre><span></span><code>use App\Models\User;
+
+$prices = User::find(1)-&gt;productPrices([123, 456]);
+</code></pre></div>
+<p>在內部，Cashier 將使用使用者的 <a href="#customer-defaults"><code>paddleCountry</code> 方法</a> 來檢索以他們的貨幣表示的價格。例如，居住在美國的使用者將看到以美元為單位的價格，而位於比利時的使用者將看到以歐元為單位的價格。如果找不到匹配的貨幣，則將使用產品的默認貨幣。你可以在 Paddle 控制面板中自訂產品或訂閱計畫的所有價格。</p>
+<h4 id="_17">優惠券<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
+<p>你也可以展示選擇優惠券後的折扣價。 在呼叫 <code>productPrices</code> 方法時，優惠券可以作為逗號分隔的字串傳遞：</p>
+<div class="highlight"><pre><span></span><code>use Laravel\Paddle\Cashier;
+
+$prices = Cashier::productPrices([123, 456], [
+    &#39;coupons&#39; =&gt; &#39;SUMMERSALE,20PERCENTOFF&#39;
+]);
+</code></pre></div>
+<p>然後，使用 <code>price</code> 方法顯示計算出的價格：</p>
+<div class="highlight"><pre><span></span><code>&lt;ul&gt;
+    @foreach ($prices as $price)
+        &lt;li&gt;{{ $price-&gt;product_title }} - {{ $price-&gt;price()-&gt;gross() }}&lt;/li&gt;
+    @endforeach
+&lt;/ul&gt;
+</code></pre></div>
+<p>你可以使用 <code>listPrice</code> 方法顯示原價（沒有優惠券折扣）：</p>
+<div class="highlight"><pre><span></span><code>&lt;ul&gt;
+    @foreach ($prices as $price)
+        &lt;li&gt;{{ $price-&gt;product_title }} - {{ $price-&gt;listPrice()-&gt;gross() }}&lt;/li&gt;
+    @endforeach
+&lt;/ul&gt;
+</code></pre></div>
+<blockquote>
+<p>注意：使用價格 API 時，Paddle 僅允許將優惠券應用於一次性購買的產品，而不允許應用於訂閱計畫。</p>
+</blockquote>
+<h2 id="_18">客戶<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h2>
+<h3 id="_19">客戶預設值<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
+<p>Cashier 允許你在建立支付連結時為你的客戶定義一些預設值。 設定這些預設值允許你預先填寫客戶的電子郵件地址、國家 / 地區和郵政編碼，以便他們可以立即轉到結帳小部件的付款部分。 你可以通過覆蓋計費模型上的以下方法來設定這些預設值：</p>
+<div class="highlight"><pre><span></span><code>/**
+ * 獲取客戶的電子郵件地址以與 Paddle 關聯。
+ */
+public function paddleEmail(): string|null
+{
+    return $this-&gt;email;
+}
+
+/**
+ * 獲取客戶的國家與 Paddle 關聯。
+ *
+ * 這需要一個 2 個字母的程式碼。 有關支援的國家 / 地區，請參閱以下連結。
+ *
+ * @link https://developer.paddle.com/reference/platform-parameters/supported-countries
+ */
+public function paddleCountry(): string|null
+{
+    // ...
+}
+
+/**
+ * 獲取客戶的郵政編碼以與 Paddle 關聯。
+ *
+ * 有關需要此功能的國家 / 地區，請參閱以下連結。
+ *
+ * @link https://developer.paddle.com/reference/platform-parameters/supported-countries#countries-requiring-postcode
+ */
+public function paddlePostcode(): string|null
+{
+    // ...
+}
+</code></pre></div>
+<p>這些預設值將用於 Cashier 中生成 <a href="#pay-links">支付連結</a> 的每個操作。</p>
+<h2 id="_20">訂閱<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h2>
+<h3 id="_21">建立訂閱<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h3>
+<p>要建立訂閱，請首先檢索計費模型的實例，該實例通常是 <code>App\Models\User</code> 的實例。檢索模型實例後，你可以使用 <code>newSubscription</code> 方法來建立模型的訂閱支付連結：</p>
+<div class="highlight"><pre><span></span><code>use Illuminate\Http\Request;
+
+Route::get(&#39;/user/subscribe&#39;, function (Request $request) {
+    $payLink = $request-&gt;user()-&gt;newSubscription(&#39;default&#39;, $premium = 12345)
+        -&gt;returnTo(route(&#39;home&#39;))
+        -&gt;create();
+
+    return view(&#39;billing&#39;, [&#39;payLink&#39; =&gt; $payLink]);
+});
+</code></pre></div>
+<p>傳遞給 <code>newSubscription</code> 方法的第一個參數應該是訂閱的名稱。 如果你的應用只提供一個訂閱，你可以將其稱為 <code>default</code> 或 <code>primary</code>。第二個參數是使用者訂閱的特定計畫。 該值應對應於 Paddle 中的計畫識別碼。<code>returnTo</code> 方法接受一個 URL，你的使用者在成功完成結帳後將被重新導向到該 URL。</p>
+<p><code>create</code> 方法將建立一個支付連結，你可以使用它來生成一個支付按鈕。可以使用 Cashier Paddle 附帶的 <code>paddle-button</code> <a href="/docs/laravel/10.x/blade#components">Blade 元件</a> 生成支付按鈕：</p>
+<div class="highlight"><pre><span></span><code>&lt;x-paddle-button :url=&quot;$payLink&quot; class=&quot;px-8 py-4&quot;&gt;
+    訂閱
+&lt;/x-paddle-button&gt;
+</code></pre></div>
+<p>使用者完成結帳後，將從 Paddle 傳送一個 <code>subscription_created</code> webhook。 Cashier 將收到此 webhook 並為你的客戶設定訂閱。為了確保你的應用程式正確接收和處理所有 webhook，請確保你正確地 <a href="#handling-paddle-webhooks">設定 webhook 處理</a>。</p>
+<h4 id="_22">額外細節<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h4>
+<p>如果你想指定額外的客戶或訂閱詳細資訊，你可以通過將它們作為鍵 / 值對陣列傳遞給 <code>create</code> 方法來實現。要瞭解有關 Paddle 支援的其他欄位的更多資訊，請查看 Paddle 關於 <a href="https://developer.paddle.com/api-reference/product-api/pay-links/createpaylink">生成支付連結</a> 的文件：</p>
+<div class="highlight"><pre><span></span><code>$payLink = $user-&gt;newSubscription(&#39;default&#39;, $monthly = 12345)
+    -&gt;returnTo(route(&#39;home&#39;))
+    -&gt;create([
+        &#39;vat_number&#39; =&gt; $vatNumber,
+    ]);
+</code></pre></div>
+<h4 id="_23">優惠券<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h4>
+<p>如果你想在建立訂閱時申請優惠券，你可以使用 <code>withCoupon</code> 方法：</p>
+<div class="highlight"><pre><span></span><code>$payLink = $user-&gt;newSubscription(&#39;default&#39;, $monthly = 12345)
+    -&gt;returnTo(route(&#39;home&#39;))
+    -&gt;withCoupon(&#39;code&#39;)
+    -&gt;create();
+</code></pre></div>
+<h4 id="_24">中繼資料<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h4>
+<p>你還可以使用 <code>withMetadata</code> 方法傳遞中繼資料陣列：</p>
+<div class="highlight"><pre><span></span><code>$payLink = $user-&gt;newSubscription(&#39;default&#39;, $monthly = 12345)
+    -&gt;returnTo(route(&#39;home&#39;))
+    -&gt;withMetadata([&#39;key&#39; =&gt; &#39;value&#39;])
+    -&gt;create();
+</code></pre></div>
+<blockquote>
+<p>注意：提供中繼資料時，請避免使用 <code>subscription_name</code> 作為中繼資料鍵。 此金鑰保留供 Cashier 內部使用。</p>
+</blockquote>
+<h3 id="_25">檢查訂閱狀態<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h3>
+<p>一旦使用者訂閱了你的應用程式，你就可以使用各種便利的方法檢查他們的訂閱狀態。 首先，如果使用者有活動訂閱，<code>subscribed</code> 方法返回 <code>true</code>，即使訂閱當前處於試用期：</p>
+<div class="highlight"><pre><span></span><code>if ($user-&gt;subscribed(&#39;default&#39;)) {
+    // ...
+}
+</code></pre></div>
+<p>該 <code>subscribed</code> 方法也非常適合 <a href="/docs/laravel/10.x/middleware">路由中介軟體</a>，允許你根據使用者的訂閱狀態來過濾對路由和 controller 的訪問：</p>
+<div class="highlight"><pre><span></span><code>&lt;?php
+
+namespace App\Http\Middleware;
+
+use Closure;
+use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
+
+class EnsureUserIsSubscribed
+{
+    /**
+     * 處理請求。
+     *
+     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
+     */
+    public function handle(Request $request, Closure $next): Response
+    {
+        if ($request-&gt;user() &amp;&amp; ! $request-&gt;user()-&gt;subscribed(&#39;default&#39;)) {
+            // 該使用者不是付費使用者。。。
+            return redirect(&#39;billing&#39;);
+        }
+
+        return $next($request);
+    }
+}
+</code></pre></div>
+<p>如果你想確定使用者是否仍在試用期內，你可以使用 <code>onTrial</code> 方法。這個方法用於確定是否應向使用者顯示他們仍在試用期的警告：</p>
+<div class="highlight"><pre><span></span><code>if ($user-&gt;subscription(&#39;default&#39;)-&gt;onTrial()) {
+    // ...
+}
+</code></pre></div>
+<p>該 <code>subscribedToPlan</code> 方法可用於根據給定的 Paddle 計畫 ID 來確定使用者是否訂閱了給定的計畫。 在這個例子中，我們將確定使用者的 <code>default</code> 訂閱是否訂閱了包月計畫：</p>
+<div class="highlight"><pre><span></span><code>if ($user-&gt;subscribedToPlan($monthly = 12345, &#39;default&#39;)) {
+    // ...
+}
+</code></pre></div>
+<p>通過將陣列傳遞給 <code>subscribedToPlan</code> 方法，你可以確定使用者的 <code>default</code> 訂閱是訂閱月度計畫或是年度計畫：</p>
+<div class="highlight"><pre><span></span><code>if ($user-&gt;subscribedToPlan([$monthly = 12345, $yearly = 54321], &#39;default&#39;)) {
+    // ...
+}
+</code></pre></div>
+<p>該 <code>recurring</code> 方法可用於確定使用者當前是否已訂閱並且不是處於試用期：</p>
+<div class="highlight"><pre><span></span><code>if ($user-&gt;subscription(&#39;default&#39;)-&gt;recurring()) {
+    // ...
+}
+</code></pre></div>
+<h4 id="_26">已取消訂閱狀態<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h4>
+<p>要確定使用者是否曾經是訂閱者但現在已取消訂閱，你可以使用 <code>cancelled</code> 方法：</p>
+<div class="highlight"><pre><span></span><code>if ($user-&gt;subscription(&#39;default&#39;)-&gt;cancelled()) {
+    // ...
+}
+</code></pre></div>
+<p>你還可以確定使用者是否已取消訂閱，但在訂閱完全到期之前會處於 「寬限期」。 例如，如果使用者在 3 月 5 日取消原定於 3 月 10 日到期的訂閱，則使用者將處於「寬限期」，直到 3 月 10 日。 請注意，在此期間 <code>subscribed</code> 方法仍然返回 <code>true</code>：</p>
+<div class="highlight"><pre><span></span><code>if ($user-&gt;subscription(&#39;default&#39;)-&gt;onGracePeriod()) {
+    // ...
+}
+</code></pre></div>
+<p>確定使用者是否已取消訂閱並且不處於「寬限期」內，你可以使用 <code>ended</code> 方法：</p>
+<div class="highlight"><pre><span></span><code>if ($user-&gt;subscription(&#39;default&#39;)-&gt;ended()) {
+    // ...
+}
+</code></pre></div>
+<h4 id="_27">逾期狀態<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h4>
+<p>如果訂閱的付款失敗，它將被標記為 <code>past_due</code>。當你的訂閱處於此狀態時，在客戶更新其付款資訊之前，它不會處於活動狀態。你可以使用訂閱實例上的 <code>pastDue</code> 方法來確定訂閱是否過期：</p>
+<div class="highlight"><pre><span></span><code>if ($user-&gt;subscription(&#39;default&#39;)-&gt;pastDue()) {
+    // ...
+}
+</code></pre></div>
+<p>當訂閱過期時，你應該指示使用者 <a href="#updating-payment-information">更新他們的付款資訊</a>。 你可以在 <a href="https://vendors.paddle.com/subscription-settings">Paddle 訂閱設定</a> 中組態逾期訂閱的處理方式。</p>
+<p>如果你希望訂閱在 <code>past_due</code> 時仍被視為活動，你可以使用 Cashier 提供的 <code>keepPastDueSubscriptionsActive</code> 方法。通常，此方法應在你的 <code>AppServiceProvider</code> 的 <code>register</code> 方法中呼叫：</p>
+<div class="highlight"><pre><span></span><code>use Laravel\Paddle\Cashier;
+
+/**
+ * 註冊應用服務。
+ */
+public function register(): void
+{
+    Cashier::keepPastDueSubscriptionsActive();
+}
+</code></pre></div>
+<blockquote>
+<p>注意：當訂閱處於 <code>past_due</code> 狀態時，在付款資訊更新之前無法更改。 因此，當訂閱處於 <code>past_due</code> 狀態時，<code>swap</code> 和 <code>updateQuantity</code> 方法將拋出異常。</p>
+</blockquote>
+<h4 id="_28">訂閱範圍<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h4>
+<p>大多數訂閱狀態也可用作查詢範圍，以便你可以輕鬆查詢資料庫中處於給定狀態的訂閱：</p>
+<div class="highlight"><pre><span></span><code>// 獲取所有有效訂閱。。。
+$subscriptions = Subscription::query()-&gt;active()-&gt;get();
+
+// 獲取給定使用者的所有已取消訂閱。。。
+$subscriptions = $user-&gt;subscriptions()-&gt;cancelled()-&gt;get();
+</code></pre></div>
+<p>可用範圍的完整列表如下：</p>
+<div class="highlight"><pre><span></span><code>Subscription::query()-&gt;active();
+Subscription::query()-&gt;onTrial();
+Subscription::query()-&gt;notOnTrial();
+Subscription::query()-&gt;pastDue();
+Subscription::query()-&gt;recurring();
+Subscription::query()-&gt;ended();
+Subscription::query()-&gt;paused();
+Subscription::query()-&gt;notPaused();
+Subscription::query()-&gt;onPausedGracePeriod();
+Subscription::query()-&gt;notOnPausedGracePeriod();
+Subscription::query()-&gt;cancelled();
+Subscription::query()-&gt;notCancelled();
+Subscription::query()-&gt;onGracePeriod();
+Subscription::query()-&gt;notOnGracePeriod();
+</code></pre></div>
+<h3 id="_29">訂閱單次收費<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h3>
+<p>訂閱單次收費允許你在訂閱的基礎上向訂閱者收取一次性費用：</p>
+<div class="highlight"><pre><span></span><code>$response = $user-&gt;subscription(&#39;default&#39;)-&gt;charge(12.99, &#39;Support Add-on&#39;);
+</code></pre></div>
+<p>與 <a href="#single-charges">單一費用</a> 相比，此方法將立即向客戶儲存的訂閱付款方式收費。 收費金額應始終以訂閱的貨幣定義。</p>
+<h3 id="_30">更新付款資訊<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h3>
+<p>Paddle 始終為每個訂閱保存一種付款方式。 如果要更新訂閱的默認付款方式，則應首先使用訂閱模型上的 <code>updateUrl</code> 方法生成訂閱 「更新 URL」：</p>
+<div class="highlight"><pre><span></span><code>use App\Models\User;
+
+$user = User::find(1);
+
+$updateUrl = $user-&gt;subscription(&#39;default&#39;)-&gt;updateUrl();
+</code></pre></div>
+<p>然後，你可以將生成的 URL 與 Cashier 提供的 <code>paddle-button</code> Blade 元件結合使用，以允許使用者啟動 Paddle 小部件並更新他們的付款資訊：</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">x-paddle-button</span> <span class="na">:url</span><span class="o">=</span><span class="s">&quot;$updateUrl&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;px-8 py-4&quot;</span><span class="p">&gt;</span>
+    更新付款資訊
+<span class="p">&lt;/</span><span class="nt">x-paddle-button</span><span class="p">&gt;</span>
+</code></pre></div>
+<p>當使用者更新完他們的資訊後，Paddle 將傳送一個 <code>subscription_updated</code> webhook，訂閱詳細資訊將在你的應用資料庫中更新。</p>
+<h3 id="_31">改變計畫<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h3>
+<p>使用者訂閱你的應用程式後，他們可能偶爾想要更改為新的訂閱計畫。 要為使用者更新訂閱計畫時，你應該將 Paddle 計畫的識別碼傳遞給訂閱的 <code>swap</code> 方法：</p>
+<div class="highlight"><pre><span></span><code>use App\Models\User;
+
+$user = User::find(1);
+
+$user-&gt;subscription(&#39;default&#39;)-&gt;swap($premium = 34567);
+</code></pre></div>
+<p>如果你想變更計畫並立即為使用者開具發票，而不是等待他們的下一個計費週期，你可以使用 <code>swapAndInvoice</code> 方法：</p>
+<div class="highlight"><pre><span></span><code>$user = User::find(1);
+
+$user-&gt;subscription(&#39;default&#39;)-&gt;swapAndInvoice($premium = 34567);
+</code></pre></div>
+<blockquote>
+<p>注意：試用活動期間不能變更計畫。有關此限制的更多資訊，請參閱 <a href="https://developer.paddle.com/api-reference/subscription-api/users/updateuser#usage-notes">Paddle 文件</a>。</p>
+</blockquote>
+<h4 id="_32">按比例分配<a class="headerlink" href="#_32" title="Permanent link">&para;</a></h4>
+<p>默認情況下，Paddle 在計畫變更時按比例分配費用。 <code>noProrate</code> 方法可用於在不按比例分配費用的情況下更新訂閱：</p>
+<div class="highlight"><pre><span></span><code>$user-&gt;subscription(&#39;default&#39;)-&gt;noProrate()-&gt;swap($premium = 34567);
+</code></pre></div>
+<h3 id="_33">訂閱數量<a class="headerlink" href="#_33" title="Permanent link">&para;</a></h3>
+<p>有時訂閱會受到 「數量」的影響。例如，項目管理應用可能對每個項目每月收費 10 美元。 要增加或減少訂閱數量，請使用 <code>incrementQuantity</code> 和 <code>decrementQuantity</code> 方法：</p>
+<div class="highlight"><pre><span></span><code>$user = User::find(1);
+
+$user-&gt;subscription(&#39;default&#39;)-&gt;incrementQuantity();
+
+// 訂閱增加 5 個。。。
+$user-&gt;subscription(&#39;default&#39;)-&gt;incrementQuantity(5);
+
+$user-&gt;subscription(&#39;default&#39;)-&gt;decrementQuantity();
+
+// 訂閱減少 5 個。。。
+$user-&gt;subscription(&#39;default&#39;)-&gt;decrementQuantity(5);
+</code></pre></div>
+<p>或者，你以使用 <code>updateQuantity</code> 方法設定特定數量：</p>
+<div class="highlight"><pre><span></span><code>$user-&gt;subscription(&#39;default&#39;)-&gt;updateQuantity(10);
+</code></pre></div>
+<p>該 <code>noProrate</code> 方法可用於更新訂閱數量而不按比例分配費用：</p>
+<div class="highlight"><pre><span></span><code>$user-&gt;subscription(&#39;default&#39;)-&gt;noProrate()-&gt;updateQuantity(10);
+</code></pre></div>
+<h3 id="_34">訂閱修改器<a class="headerlink" href="#_34" title="Permanent link">&para;</a></h3>
+<p>訂閱修改器允許你實施 <a href="https://developer.paddle.com/guides/how-tos/subscriptions/metered-billing#using-subscription-price-modifiers">按量計費</a> 或使用附加元件擴展訂閱。</p>
+<p>例如，你可能想為標準訂閱提供 「高級支援」附加元件。 你可以像這樣建立這個修改器：</p>
+<div class="highlight"><pre><span></span><code>$modifier = $user-&gt;subscription(&#39;default&#39;)-&gt;newModifier(12.99)-&gt;create();
+</code></pre></div>
+<p>The example above will add a $12.99 add-on to the subscription. By default, this charge will recur on every interval you have configured for the subscription. If you would like, you can add a readable description to the modifier using the modifier's <code>description</code> method:
+上例將向訂閱新增 $12.99 的附加元件。默認情況下，此費用將在你為訂閱組態的每個時間週期內重複收取。 如果你願意，可以使用修改器的 <code>description</code> 方法向修改器新增可讀的描述：</p>
+<div class="highlight"><pre><span></span><code>$modifier = $user-&gt;subscription(&#39;default&#39;)-&gt;newModifier(12.99)
+    -&gt;description(&#39;Premium Support&#39;)
+    -&gt;create();
+</code></pre></div>
+<p>為了說明如何使用修改器實現計量計費，假設你的應用程式要對使用者傳送的每條 SMS 消息收費。首先，你應該在 Paddle 儀表板中建立一個 $0 的計畫。 使用者訂閱此計畫後，你可以向訂閱新增代表每個單獨費用的修改器：</p>
+<div class="highlight"><pre><span></span><code>$modifier = $user-&gt;subscription(&#39;default&#39;)-&gt;newModifier(0.99)
+    -&gt;description(&#39;New text message&#39;)
+    -&gt;oneTime()
+    -&gt;create();
+</code></pre></div>
+<p>如你所見，我們在建立此調節器時呼叫了 <code>oneTime</code> 方法。此方法將確保修改器只收費一次，並且不會在每個計費週期重複。</p>
+<h4 id="_35">檢索修改器<a class="headerlink" href="#_35" title="Permanent link">&para;</a></h4>
+<p>你可以通過 <code>modifiers</code> 方法檢索訂閱的所有修改器列表：</p>
+<div class="highlight"><pre><span></span><code>$modifiers = $user-&gt;subscription(&#39;default&#39;)-&gt;modifiers();
+
+foreach ($modifiers as $modifier) {
+    $modifier-&gt;amount(); // $0.99
+    $modifier-&gt;description; // 新的簡訊。
+}
+</code></pre></div>
+<h4 id="_36">刪除修改器<a class="headerlink" href="#_36" title="Permanent link">&para;</a></h4>
+<p>修改器可以通過呼叫 <code>Laravel\Paddle\Modifier</code> 實例上的 <code>delete</code> 方法來刪除：</p>
+<div class="highlight"><pre><span></span><code>$modifier-&gt;delete();
+</code></pre></div>
+<h3 id="_37">多個訂閱<a class="headerlink" href="#_37" title="Permanent link">&para;</a></h3>
+<p>Paddle 允許你的客戶同時擁有多個訂閱。例如，你可能經營一家健身房，提供游泳訂閱和舉重訂閱，每個訂閱可能有不同的定價。當然，客戶應該能夠訂閱其中一項或兩項計畫。</p>
+<p>當你的應用程式建立訂閱時，你可以向 <code>newSubscription</code> 方法提供訂閱的名稱。該名稱可以是表示使用者正在發起的訂閱類型的任何字串：</p>
+<div class="highlight"><pre><span></span><code>use Illuminate\Http\Request;
+
+Route::post(&#39;/swimming/subscribe&#39;, function (Request $request) {
+    $request-&gt;user()
+        -&gt;newSubscription(&#39;swimming&#39;, $swimmingMonthly = 12345)
+        -&gt;create($request-&gt;paymentMethodId);
+
+    // ...
+});
+</code></pre></div>
+<p>在本例中，我們為客戶發起了每月一次的游泳訂閱。然而，他們可能想在以後換成每年訂閱一次。當調整客戶的訂閱時，我們可以簡單地交換<code>游泳</code>訂閱的價格：</p>
+<div class="highlight"><pre><span></span><code>$user-&gt;subscription(&#39;swimming&#39;)-&gt;swap($swimmingYearly = 34567);
+</code></pre></div>
+<p>當然，你也可以完全取消訂閱：</p>
+<div class="highlight"><pre><span></span><code>$user-&gt;subscription(&#39;swimming&#39;)-&gt;cancel();
+</code></pre></div>
+<h3 id="_38">暫停訂閱<a class="headerlink" href="#_38" title="Permanent link">&para;</a></h3>
+<p>要暫停訂閱，請呼叫使用者訂閱的 <code>pause</code> 方法：</p>
+<div class="highlight"><pre><span></span><code>$user-&gt;subscription(&#39;default&#39;)-&gt;pause();
+</code></pre></div>
+<p>當訂閱暫停時，Cashier 將自動在你的資料庫中設定 <code>paused_from</code> 列。此列用於確定 <code>paused</code> 方法何時應該開始返回 <code>true</code>。例如，如果客戶在 3 月 1 日暫停訂閱，但該訂閱直到 3 月 5 日才計畫重複發生，則 <code>paused</code> 方法將繼續返回 <code>false</code> ，直到 3 月 5 日。這樣做是因為使用者可以繼續使用應用程式，直到他們的計費週期結束。</p>
+<p>你可以使用 <code>onPausedGracePeriod</code> 方法確定使用者是否已暫停訂閱但仍處於 「寬限期」：</p>
+<div class="highlight"><pre><span></span><code>if ($user-&gt;subscription(&#39;default&#39;)-&gt;onPausedGracePeriod()) {
+    // ...
+}
+</code></pre></div>
+<p>要恢復暫停的訂閱，你可以呼叫使用者訂閱的 <code>unpause</code> 方法：</p>
+<div class="highlight"><pre><span></span><code>$user-&gt;subscription(&#39;default&#39;)-&gt;unpause();
+</code></pre></div>
+<blockquote>
+<p>注意：訂閱暫停時無法修改。 如果你想切換到不同的計畫或更新數量，你必須先恢復訂閱。</p>
+</blockquote>
+<h3 id="_39">取消訂閱<a class="headerlink" href="#_39" title="Permanent link">&para;</a></h3>
+<p>要取消訂閱，請呼叫使用者訂閱的 <code>cancel</code> 方法：</p>
+<div class="highlight"><pre><span></span><code>$user-&gt;subscription(&#39;default&#39;)-&gt;cancel();
+</code></pre></div>
+<p>當訂閱被取消時，Cashier 將自動在你的資料庫中設定 <code>ends_at</code> 列。 此列用於確定 <code>subscribed</code> 方法應該何時開始返回 <code>false</code>。例如，如果客戶在 3 月 1 日取消訂閱，但訂閱計畫在 3 月 5 日之前結束，則 <code>subscribed</code> 方法將在 3 月 5 日之前繼續返回 <code>true</code>。這樣做是因為通常允許使用者繼續使用應用程式，直到他們的計費週期結束。</p>
+<p>你可以使用 <code>onGracePeriod</code> 方法確定使用者是否已取消訂閱但仍處於「寬限期」：</p>
+<div class="highlight"><pre><span></span><code>if ($user-&gt;subscription(&#39;default&#39;)-&gt;onGracePeriod()) {
+    // ...
+}
+</code></pre></div>
+<p>如果你想立即取消訂閱，你可以呼叫使用者訂閱的 <code>cancelNow</code> 方法：</p>
+<div class="highlight"><pre><span></span><code>$user-&gt;subscription(&#39;default&#39;)-&gt;cancelNow();
+</code></pre></div>
+<blockquote>
+<p>注意：取消後無法恢復 Paddle 的訂閱。 如果你的客戶希望恢復訂閱，則他們必須重新訂閱。</p>
+</blockquote>
+<h2 id="_40">訂閱試用<a class="headerlink" href="#_40" title="Permanent link">&para;</a></h2>
+<h3 id="_41">預先收集付費方式<a class="headerlink" href="#_41" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>注意：在預先試用和收集付款方式詳細資訊時，Paddle 會阻止任何訂閱更改，例如更換計畫或更新數量。 如果你想允許客戶在試用期間更換計畫，則必須取消並重新建立訂閱。</p>
+</blockquote>
+<p>如果你想為你的客戶提供試用期，同時仍然預先收集付款方式資訊，你應該在建立訂閱付款連結時使用 <code>trialDays</code> 方法：</p>
+<div class="highlight"><pre><span></span><code>use Illuminate\Http\Request;
+
+Route::get(&#39;/user/subscribe&#39;, function (Request $request) {
+    $payLink = $request-&gt;user()-&gt;newSubscription(&#39;default&#39;, $monthly = 12345)
+                -&gt;returnTo(route(&#39;home&#39;))
+                -&gt;trialDays(10)
+                -&gt;create();
+
+    return view(&#39;billing&#39;, [&#39;payLink&#39; =&gt; $payLink]);
+});
+</code></pre></div>
+<p>此方法將在你的應用資料庫中的訂閱記錄上設定試用期結束日期，並指示 Paddle 在此日期之後才開始向客戶收費。</p>
+<blockquote>
+<p>注意：如果客戶的訂閱未在試用結束日期之前取消，他們將在試用到期後立即收費，因此你務必將試用結束日期通知你的使用者。</p>
+</blockquote>
+<p>你可以使用使用者實例的 <code>onTrial</code> 方法或訂閱實例的 <code>onTrial</code> 方法來確定使用者是否在試用期內。 下面的兩個例子是一樣的：</p>
+<div class="highlight"><pre><span></span><code>if ($user-&gt;onTrial(&#39;default&#39;)) {
+    // ...
+}
+
+if ($user-&gt;subscription(&#39;default&#39;)-&gt;onTrial()) {
+    // ...
+}
+</code></pre></div>
+<p>要確定試用期是否已過期，你可以使用 <code>hasExpiredTrial</code> 方法：</p>
+<div class="highlight"><pre><span></span><code>if ($user-&gt;hasExpiredTrial(&#39;default&#39;)) {
+    // ...
+}
+
+if ($user-&gt;subscription(&#39;default&#39;)-&gt;hasExpiredTrial()) {
+    // ...
+}
+</code></pre></div>
+<h4 id="paddle-cashier">在 Paddle / Cashier 中定義試用天數<a class="headerlink" href="#paddle-cashier" title="Permanent link">&para;</a></h4>
+<p>你可以選擇在 Paddle 儀表板中定義你的計畫接收的試用天數，或者始終使用 Cashier 明確傳遞它們。如果你選擇在 Paddle 中定義計畫的試用天數，你應該知道新訂閱，包括過去訂閱過的客戶的新訂閱，將始終獲得試用期，除非你明確呼叫 <code>trialDays(0)</code> 方法。</p>
+<h3 id="_42">未預先收集付款方式<a class="headerlink" href="#_42" title="Permanent link">&para;</a></h3>
+<p>如果你想提供試用期而不預先收集使用者的付款方式資訊，你可以將附加到你的使用者的客戶記錄上的 <code>trial_ends_at</code> 列設定為你想要的試用結束日期。這通常在使用者註冊期間完成：</p>
+<div class="highlight"><pre><span></span><code>use App\Models\User;
+
+$user = User::create([
+    // ...
+]);
+
+$user-&gt;createAsCustomer([
+    &#39;trial_ends_at&#39; =&gt; now()-&gt;addDays(10)
+]);
+</code></pre></div>
+<p>Cashier 將這種類型的試用稱為「通用試用」，因為它不附屬於任何現有訂閱。如果當前日期未超過 <code>trial_ends_at</code> 的值，則 <code>User</code> 實例上的 <code>onTrial</code> 方法將返回 <code>true</code>：</p>
+<div class="highlight"><pre><span></span><code>if ($user-&gt;onTrial()) {
+    // 使用者在試用期內。。。
+}
+</code></pre></div>
+<p>一旦你準備好為使用者建立一個實際的訂閱，你可以像往常一樣使用 <code>newSubscription</code> 方法：</p>
+<div class="highlight"><pre><span></span><code>use Illuminate\Http\Request;
+
+Route::get(&#39;/user/subscribe&#39;, function (Request $request) {
+    $payLink = $user-&gt;newSubscription(&#39;default&#39;, $monthly = 12345)
+        -&gt;returnTo(route(&#39;home&#39;))
+        -&gt;create();
+
+    return view(&#39;billing&#39;, [&#39;payLink&#39; =&gt; $payLink]);
+});
+</code></pre></div>
+<p>要檢索使用者的試用結束日期，你可以使用 <code>trialEndsAt</code> 方法。如果使用者正在試用，則此方法將返回一個 Carbon 日期實例，否則將返回 <code>null</code> 。如果你想獲取特定訂閱而不是默認訂閱的試用結束日期，你還可以傳遞一個可選的訂閱名稱參數：</p>
+<div class="highlight"><pre><span></span><code>if ($user-&gt;onTrial()) {
+    $trialEndsAt = $user-&gt;trialEndsAt(&#39;main&#39;);
+}
+</code></pre></div>
+<p>如果你希望明確知道使用者處於 「通用」試用期內並且尚未建立實際訂閱，則可以使用 <code>onGenericTrial</code> 方法：</p>
+<div class="highlight"><pre><span></span><code>if ($user-&gt;onGenericTrial()) {
+    // 使用者在通用試用期內。。。
+}
+</code></pre></div>
+<blockquote>
+<p>注意：建立 Paddle 訂閱後，無法延長或修改其試用期。</p>
+</blockquote>
+<h2 id="paddle-webhooks">處理 Paddle Webhooks<a class="headerlink" href="#paddle-webhooks" title="Permanent link">&para;</a></h2>
+<p>Paddle 可以通過 webhook 通知你的應用各種事件。默認情況下，指向 Cashier 的 webhook  controller 的路由由 Cashier 服務提供商註冊。
+該 controller 將處理所有傳入的 webhook 請求。</p>
+<p>默認情況下，此 controller 將自動處理付費失敗過多的取消訂閱（<a href="https://vendors.paddle.com/subscription-settings">由你的 Paddle 訂閱設定定義</a>）、訂閱更新和付款方式更改；但是，我們很快就會發現，你可以擴展這個 controller 來處理你喜歡的任何 Paddle webhook 事件。</p>
+<p>為確保你的應用可以處理 Paddle webhooks，請務必 <a href="https://vendors.paddle.com/alerts-webhooks">在 Paddle 控制面板中組態 webhook URL</a>。默認情況下，Cashier 的 webhook  controller 響應 <code>/paddle/webhook</code> URL 路徑。你應該在 Paddle 控制面板中啟用的所有 webhook 的完整列表是：</p>
+<ul>
+<li>訂閱建立</li>
+<li>訂閱更新</li>
+<li>訂閱取消</li>
+<li>付款成功</li>
+<li>訂閱付款成功</li>
+</ul>
+<blockquote>
+<p>注意：確保使用 Cashier 包含的 <a href="/docs/laravel/10.x/cashier-paddle#verifying-webhook-signatures">webhook 簽名驗證</a> 中介軟體保護傳入請求。</p>
+</blockquote>
+<h4 id="webhook-csrf">Webhook 和 CSRF 保護<a class="headerlink" href="#webhook-csrf" title="Permanent link">&para;</a></h4>
+<p>由於 Paddle webhooks 需要繞過 Laravel 的 <a href="/docs/laravel/10.x/csrf">CSRF 保護</a>，請務必在你的 <code>App\Http\Middleware\VerifyCsrfToken</code> 中介軟體中將 URI 作為例外列出或列出外面的路由 <code>web</code> 中介軟體組的：</p>
+<div class="highlight"><pre><span></span><code>protected $except = [
+    &#39;paddle/*&#39;,
+];
+</code></pre></div>
+<h4 id="webhook">Webhook 和本地開發<a class="headerlink" href="#webhook" title="Permanent link">&para;</a></h4>
+<p>為了讓 Paddle 能夠在本地開發期間傳送你的應用程式 webhook，你需要通過站點共享服務公開你的應用程式，例如 <a href="https://ngrok.com/">Ngrok</a> 或 <a href="https://expose.dev/docs/introduction">Expose</a>。如果你使用 <a href="/docs/laravel/10.x/sail">Laravel Sail</a> 在本地開發應用程式，你可以使用 Sail 的 <a href="/docs/laravel/10.x/sail#sharing-your-site">站點共享命令</a>。</p>
+<h3 id="webhook_1">定義 webhook 事件處理程序<a class="headerlink" href="#webhook_1" title="Permanent link">&para;</a></h3>
+<p>Cashier 會自動處理因收費失敗和其他常見的 paddle webhook 取消訂閱。 但是，如果你有其他想要處理的 webhook 事件，你可以通過監聽 Cashier 調度的以下事件來實現：</p>
+<ul>
+<li><code>Laravel\Paddle\Events\WebhookReceived</code></li>
+<li><code>Laravel\Paddle\Events\WebhookHandled</code></li>
+</ul>
+<p>這兩個事件都包含 Paddle webhook 的完整負載。例如，如果你想處理 <code>invoice.payment_succeeded</code> webhook，你可以註冊一個 <a href="/docs/laravel/10.x/events#defining-listeners">listener</a> 來處理事件：</p>
+<div class="highlight"><pre><span></span><code>&lt;?php
+
+namespace App\Listeners;
+
+use Laravel\Paddle\Events\WebhookReceived;
+
+class PaddleEventListener
+{
+    /**
+     * 處理收到的 Paddle webhook。
+     */
+    public function handle(WebhookReceived $event): void
+    {
+        if ($event-&gt;payload[&#39;alert_name&#39;] === &#39;payment_succeeded&#39;) {
+            // 處理傳入事件。。。
+        }
+    }
+}
+</code></pre></div>
+<p>一旦你的監聽器被定義，你可以在你的應用程式的 <code>EventServiceProvider</code> 中註冊它：</p>
+<div class="highlight"><pre><span></span><code>&lt;?php
+
+namespace App\Providers;
+
+use App\Listeners\PaddleEventListener;
+use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
+use Laravel\Paddle\Events\WebhookReceived;
+
+class EventServiceProvider extends ServiceProvider
+{
+    protected $listen = [
+        WebhookReceived::class =&gt; [
+            PaddleEventListener::class,
+        ],
+    ];
+}
+</code></pre></div>
+<p>Cashier 還會發出專用於接收到的 webhook 類型的事件。除了來自 Paddle 的完整有效負載之外，它們還包含用於處理 webhook 的相關模型，例如計費模型、訂閱或收據：</p>
+<ul>
+<li><code>Laravel\Paddle\Events\PaymentSucceeded</code></li>
+<li><code>Laravel\Paddle\Events\SubscriptionPaymentSucceeded</code></li>
+<li><code>Laravel\Paddle\Events\SubscriptionCreated</code></li>
+<li><code>Laravel\Paddle\Events\SubscriptionUpdated</code></li>
+<li><code>Laravel\Paddle\Events\SubscriptionCancelled</code></li>
+</ul>
+<p>你還可以通過在應用程式的 <code>.env</code> 檔案中定義 <code>CASHIER_WEBHOOK</code> 環境變數來覆蓋默認的內建 webhook 路由。此值應該是你的 webhook 路由中的完整 URL，並且需要和你在 Paddle 控制面板中設定的 URL 相匹配：</p>
+<div class="highlight"><pre><span></span><code><span class="na">CASHIER_WEBHOOK</span><span class="o">=</span><span class="s">https://example.com/my-paddle-webhook-url</span>
+</code></pre></div>
+<h3 id="webhook_2">驗證 Webhook 簽名<a class="headerlink" href="#webhook_2" title="Permanent link">&para;</a></h3>
+<p>為了保護你的 webhook，你可以使用 <a href="https://developer.paddle.com/webhook-reference/verifying-webhooks">Paddle 的 webhook 簽名</a>。 為方便起見，Cashier 自動包含一個中介軟體，用於驗證傳入的 Paddle webhook 請求是否有效。</p>
+<p>要啟用 webhook 驗證，請確保在應用程式的 .env 檔案中定義了<code>PADDLE_PUBLIC_KEY</code> 環境變數。 可以從你的 Paddle 帳戶儀表板中檢索公鑰。</p>
+<h2 id="_43">一次性收費<a class="headerlink" href="#_43" title="Permanent link">&para;</a></h2>
+<h3 id="_44">簡單收費<a class="headerlink" href="#_44" title="Permanent link">&para;</a></h3>
+<p>如果你想對客戶進行一次性收費，你可以在可計費模型實例上使用 <code>charge</code> 方法來生成收費的支付連結。<code>charge</code> 方法接受費用金額（浮點數）作為它的第一個參數和一個費用描述作為它的第二個參數：</p>
+<div class="highlight"><pre><span></span><code>use Illuminate\Http\Request;
+
+Route::get(&#39;/store&#39;, function (Request $request) {
+    return view(&#39;store&#39;, [
+        &#39;payLink&#39; =&gt; $user-&gt;charge(12.99, &#39;Action Figure&#39;)
+    ]);
+});
+</code></pre></div>
+<p>生成支付連結後，你可以使用 Cashier 提供的 <code>paddle-button</code> Blade 元件讓使用者啟動 Paddle 小部件並完成收費：</p>
+<div class="highlight"><pre><span></span><code>&lt;x-paddle-button :url=&quot;$payLink&quot; class=&quot;px-8 py-4&quot;&gt;
+    Buy
+&lt;/x-paddle-button&gt;
+</code></pre></div>
+<p><code>charge</code> 方法接受一個陣列作為其第三個參數，允許你將任何你希望的選項傳遞給底層 Paddle 支付連結建立。請查閱 <a href="https://developer.paddle.com/api-reference/product-api/pay-links/createpaylink">Paddle 文件</a> 瞭解更多關於建立費用時可用的選項：</p>
+<div class="highlight"><pre><span></span><code>$payLink = $user-&gt;charge(12.99, &#39;Action Figure&#39;, [
+    &#39;custom_option&#39; =&gt; $value,
+]);
+</code></pre></div>
+<p>費用以 <code>cashier.currency</code> 組態選項中指定的貨幣進行。 默認設定是美元。 你可以通過在應用程式的 <code>.env</code> 檔案中定義 <code>CASHIER_CURRENCY</code> 環境變數來覆蓋默認貨幣：</p>
+<div class="highlight"><pre><span></span><code><span class="na">CASHIER_CURRENCY</span><span class="o">=</span><span class="s">EUR</span>
+</code></pre></div>
+<p>你還可以使用 Paddle 的動態定價匹配系統 <a href="https://developer.paddle.com/api-reference/product-api/pay-links/createpaylink#price-overrides">覆蓋每種貨幣的價格</a>。為此，請通過價格陣列而不是固定金額：</p>
+<div class="highlight"><pre><span></span><code>$payLink = $user-&gt;charge([
+    &#39;USD:19.99&#39;,
+    &#39;EUR:15.99&#39;,
+], &#39;Action Figure&#39;);
+</code></pre></div>
+<h3 id="_45">收費產品<a class="headerlink" href="#_45" title="Permanent link">&para;</a></h3>
+<p>如果你想對 Paddle 中組態的特定產品進行一次性收費，你可以在計費模型實例上使用 <code>chargeProduct</code> 方法來生成付款連結：</p>
+<div class="highlight"><pre><span></span><code>use Illuminate\Http\Request;
+
+Route::get(&#39;/store&#39;, function (Request $request) {
+    return view(&#39;store&#39;, [
+        &#39;payLink&#39; =&gt; $request-&gt;user()-&gt;chargeProduct($productId = 123)
+    ]);
+});
+</code></pre></div>
+<p>然後，你可以提供 <code>paddle-button</code> 元件的支付連結，以允許使用者初始化 Paddle 小部件：</p>
+<div class="highlight"><pre><span></span><code>&lt;x-paddle-button :url=&quot;$payLink&quot; class=&quot;px-8 py-4&quot;&gt;
+    購買
+&lt;/x-paddle-button&gt;
+</code></pre></div>
+<p><code>chargeProduct</code> 方法接受一個陣列作為其第二個參數，允許你將任何你希望的選項傳遞給底層 Paddle 支付連結建立。 請查閱 <a href="https://developer.paddle.com/api-reference/product-api/pay-links/createpaylink">Paddle 文件</a> 關於建立費用時可用的選項：</p>
+<div class="highlight"><pre><span></span><code>$payLink = $user-&gt;chargeProduct($productId, [
+    &#39;custom_option&#39; =&gt; $value,
+]);
+</code></pre></div>
+<h3 id="_46">退款訂單<a class="headerlink" href="#_46" title="Permanent link">&para;</a></h3>
+<p>如果你需要對槳訂單進行退款，你可以使用 <code>refund</code> 方法。 此方法接受 Paddle 訂單 ID 作為其第一個參數。 你可以使用 <code>receipts</code> 方法檢索給定計費模型的收據：</p>
+<div class="highlight"><pre><span></span><code>use App\Models\User;
+
+$user = User::find(1);
+
+$receipt = $user-&gt;receipts()-&gt;first();
+
+$refundRequestId = $user-&gt;refund($receipt-&gt;order_id);
+</code></pre></div>
+<p>你可以選擇指定具體的退款金額以及退款原因：</p>
+<div class="highlight"><pre><span></span><code>$receipt = $user-&gt;receipts()-&gt;first();
+
+$refundRequestId = $user-&gt;refund(
+    $receipt-&gt;order_id, 5.00, &#39;Unused product time&#39;
+);
+</code></pre></div>
+<blockquote>
+<p>技巧：聯絡 Paddle 支援時，你可以使用 <code>$refundRequestId</code> 作為退款參考。</p>
+</blockquote>
+<h2 id="_47">收據<a class="headerlink" href="#_47" title="Permanent link">&para;</a></h2>
+<p>你可以通過 <code>receipts</code> 屬性輕鬆檢索可計費模型的收據陣列：</p>
+<p>use App\Models\User;</p>
+<div class="highlight"><pre><span></span><code>use App\Models\User;
+
+$user = User::find(1);
+
+$receipts = $user-&gt;receipts;
+</code></pre></div>
+<p>在為客戶列出收據時，你可以使用收據實例的方法來顯示相關的收據資訊。 例如，你可能希望在表格中列出每張收據，以便使用者輕鬆下載任何收據：</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">table</span><span class="p">&gt;</span>
+    @foreach ($receipts as $receipt)
+        <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>{{ $receipt-&gt;paid_at-&gt;toFormattedDateString() }}<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>{{ $receipt-&gt;amount() }}<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;{{ $receipt-&gt;receipt_url }}&quot;</span> <span class="na">target</span><span class="o">=</span><span class="s">&quot;_blank&quot;</span><span class="p">&gt;</span>Download<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+    @endforeach
+<span class="p">&lt;/</span><span class="nt">table</span><span class="p">&gt;</span>
+</code></pre></div>
+<h3 id="_48">過去和未來的付款<a class="headerlink" href="#_48" title="Permanent link">&para;</a></h3>
+<p>你可以使用 <code>lastPayment</code> 和 <code>nextPayment</code> 方法來檢索和顯示客戶過去或即將進行的定期訂閱付款：</p>
+<div class="highlight"><pre><span></span><code>use App\Models\User;
+
+$user = User::find(1);
+
+$subscription = $user-&gt;subscription(&#39;default&#39;);
+
+$lastPayment = $subscription-&gt;lastPayment();
+$nextPayment = $subscription-&gt;nextPayment();
+</code></pre></div>
+<p>這兩種方法都會返回一個 <code>Laravel\Paddle\Payment</code> 的實例； 但是，當計費週期結束時（例如取消訂閱時），<code>nextPayment</code> 將返回 <code>null</code>：</p>
+<div class="highlight"><pre><span></span><code>Next payment: {{ $nextPayment-&gt;amount() }} due on {{ $nextPayment-&gt;date()-&gt;format(&#39;d/m/Y&#39;) }}
+</code></pre></div>
+<h2 id="_49">處理失敗的付款<a class="headerlink" href="#_49" title="Permanent link">&para;</a></h2>
+<p>訂閱支付失敗的原因有多種，例如卡過期或卡資金不足。 發生這種情況時，我們建議你讓 Paddle 為你處理付款失敗。具體來說，你可以在你的 Paddle 儀表板中 <a href="https://vendors.paddle.com/subscription-settings">設定 Paddle 的自動計費電子郵件</a></p>
+<p>或者，你可以通過捕獲 <a href="https://developer.paddle.com/webhook-reference/subscription-alerts/subscription-payment-failed"><code>subscription_payment_failed</code></a> webhook 並啟用 “訂閱付款失敗” 來執行更精確的自訂 Paddle 儀表板的 Webhook 設定中的選項：</p>
+<div class="highlight"><pre><span></span><code>&lt;?php
+
+namespace App\Listeners;
+
+use Laravel\Paddle\Events\WebhookReceived;
+
+class PaddleEventListener
+{
+    /**
+     * 處理訂閱付款失敗。
+     */
+    public function handle(WebhookReceived $event): void
+    {
+        if ($event-&gt;payload[&#39;alert_name&#39;] === &#39;subscription_payment_failed&#39;) {
+            // 處理訂閱付款失敗。。。
+        }
+    }
+}
+</code></pre></div>
+<p>一旦定義了監聽器，就得在應用程式的 <code>EventServiceProvider</code> 中註冊它：</p>
+<div class="highlight"><pre><span></span><code>&lt;?php
+
+namespace App\Providers;
+
+use App\Listeners\PaddleEventListener;
+use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
+use Laravel\Paddle\Events\WebhookReceived;
+
+class EventServiceProvider extends ServiceProvider
+{
+    protected $listen = [
+        WebhookReceived::class =&gt; [
+            PaddleEventListener::class,
+        ],
+    ];
+}
+</code></pre></div>
+<h2 id="_50">測試<a class="headerlink" href="#_50" title="Permanent link">&para;</a></h2>
+<p>在測試時，你應該手動測試你的計費流程，以確保你的整合按預期工作。</p>
+<p>對於自動化測試，包括在 CI 環境中執行的測試，你可以使用 <a href="/docs/laravel/10.x/http-client#testing">Laravel 的 HTTP 客戶端</a> 來偽造對 Paddle 的 HTTP 呼叫。 儘管這不會測試來自 Paddle 的實際響應，但它確實提供了一種無需實際呼叫 Paddle API 即可測試你應用程式的方法。</p>
+
+
+
+
+
+                
+
+  <!-- Giscus -->
+  <h2 id="__comments">留言</h2>
+  <script src="https://giscus.app/client.js"
+          data-repo="tomleesm/notes"
+          data-repo-id="R_kgDOGuSz4g"
+          data-category="Announcements"
+          data-category-id="DIC_kwDOGuSz4s4CBI6T"
+          data-mapping="title"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="bottom"
+          data-theme="dark"
+          data-lang="zh-TW"
+          crossorigin="anonymous"
+          async>
+  </script>
+
+  <!-- Reload on palette change -->
+  <script>
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object")
+      if (palette.color.scheme === "slate") {
+        var giscus = document.querySelector("script[src*=giscus]")
+        giscus.setAttribute("data-theme", "dark")
+      }
+
+    /* Register event handlers after documented loaded */
+    document.addEventListener("DOMContentLoaded", function() {
+      var ref = document.querySelector("[data-md-component=palette]")
+      ref.addEventListener("change", function() {
+        var palette = __md_get("__palette")
+        if (palette && typeof palette.color === "object") {
+          var theme = palette.color.scheme === "slate" ? "dark" : "light"
+
+          /* Instruct Giscus to change theme */
+          var frame = document.querySelector(".giscus-frame")
+          frame.contentWindow.postMessage(
+            { giscus: { setConfig: { theme } } },
+            "https://giscus.app"
+          )
+        }
+      })
+    })
+  </script>
+
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            回到頂端
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tabs", "navigation.sections", "navigation.indexes", "navigation.top", "header.autohide", "search.highlight", "search.share"], "search": "../../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "\u5df2\u8907\u88fd", "clipboard.copy": "\u8907\u88fd", "search.result.more.one": "\u6b64\u9801\u5c1a\u6709 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.more.other": "\u6b64\u9801\u5c1a\u6709 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.none": "\u6c92\u6709\u7b26\u5408\u7684\u9805\u76ee", "search.result.one": "\u627e\u5230 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.other": "\u627e\u5230 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.placeholder": "\u6253\u5b57\u9032\u884c\u641c\u5c0b", "search.result.term.missing": "\u7f3a\u5c11\u5b57\u8a5e", "select.version": "\u9078\u64c7\u7248\u672c"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.dff1b7c8.min.js"></script>
+      
+    
+  </body>
+</html>

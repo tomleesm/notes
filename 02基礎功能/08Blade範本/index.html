@@ -1,0 +1,5864 @@
+
+<!doctype html>
+<html lang="zh-TW" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../07%E6%AA%A2%E8%A6%96/">
+      
+      
+        <link rel="next" href="../09Vite%E7%B7%A8%E8%AD%AFAssets/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-9.2.7">
+    
+    
+      
+        <title>Blade 範本 - Tom 株式會社</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.046329b4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.85d0ee34.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+Traditional+Chinese:300,300i,400,400i,700,700i%7CSource+Code+Pro:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans Traditional Chinese";--md-code-font:"Source Code Pro"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="red" data-md-color-accent="red">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#blade" class="md-skip">
+          跳轉到
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="頁首">
+    <a href="../.." title="Tom 株式會社" class="md-header__button md-logo" aria-label="Tom 株式會社" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Tom 株式會社
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Blade 範本
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="red" data-md-color-accent="red"  aria-hidden="true"  type="radio" name="__palette" id="__palette_1">
+    
+  
+</form>
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜尋" placeholder="搜尋" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="搜尋">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清除" aria-label="清除" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜尋引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/tomleesm/notes" title="前往倉庫" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    tomleesm/notes
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="標籤" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../01%E6%A0%B8%E5%BF%83%E6%9E%B6%E6%A7%8B/01%E8%AB%8B%E6%B1%82%E7%9A%84%E7%94%9F%E5%91%BD%E9%80%B1%E6%9C%9F/" class="md-tabs__link">
+          
+  
+    
+  
+  核心架構
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../01%E8%B7%AF%E7%94%B1/" class="md-tabs__link">
+          
+  
+    
+  
+  基礎功能
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/01Artisan%E5%91%BD%E4%BB%A4%E5%88%97/" class="md-tabs__link">
+          
+  
+    
+  
+  繼續深入
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../04%E5%AE%89%E5%85%A8%E7%9B%B8%E9%97%9C/01%E4%BD%BF%E7%94%A8%E8%80%85%E8%AA%8D%E8%AD%89/" class="md-tabs__link">
+          
+  
+    
+  
+  安全相關
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../05%E8%B3%87%E6%96%99%E5%BA%AB/01%E5%BF%AB%E9%80%9F%E5%85%A5%E9%96%80/" class="md-tabs__link">
+          
+  
+    
+  
+  資料庫
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../06EloquentORM/01%E5%BF%AB%E9%80%9F%E5%85%A5%E9%96%80/" class="md-tabs__link">
+          
+  
+    
+  
+  Eloquent ORM
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../07%E6%B8%AC%E8%A9%A6%E7%9B%B8%E9%97%9C/01%E5%85%A5%E9%96%80/" class="md-tabs__link">
+          
+  
+    
+  
+  測試相關
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/01Cashier%E4%BA%A4%E6%98%93%E5%B7%A5%E5%85%B7%E5%8C%85Stripe/" class="md-tabs__link">
+          
+  
+    
+  
+  官方擴展包
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../cheatsheets/artisan/" class="md-tabs__link">
+          
+  
+    
+  
+  語法速查表
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="導覽列" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Tom 株式會社" class="md-nav__button md-logo" aria-label="Tom 株式會社" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Tom 株式會社
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/tomleesm/notes" title="前往倉庫" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    tomleesm/notes
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    核心架構
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            核心架構
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01%E6%A0%B8%E5%BF%83%E6%9E%B6%E6%A7%8B/01%E8%AB%8B%E6%B1%82%E7%9A%84%E7%94%9F%E5%91%BD%E9%80%B1%E6%9C%9F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    請求的生命週期
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01%E6%A0%B8%E5%BF%83%E6%9E%B6%E6%A7%8B/02%E6%9C%8D%E5%8B%99%E5%AE%B9%E5%99%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    服務容器
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01%E6%A0%B8%E5%BF%83%E6%9E%B6%E6%A7%8B/03%E6%9C%8D%E5%8B%99%E6%8F%90%E4%BE%9B%E8%80%85/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    服務提供者
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01%E6%A0%B8%E5%BF%83%E6%9E%B6%E6%A7%8B/04Facades/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Facades
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    基礎功能
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            基礎功能
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01%E8%B7%AF%E7%94%B1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    路由
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02%E4%B8%AD%E4%BB%8B%E8%BB%9F%E9%AB%94/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    中介軟體
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03CSRF%E4%BF%9D%E8%AD%B7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CSRF 保護
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04Controller/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Controller
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05HTTP%E8%AB%8B%E6%B1%82/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTTP 請求
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06HTTP%E9%9F%BF%E6%87%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTTP 響應
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07%E6%AA%A2%E8%A6%96/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    檢視
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Blade 範本
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Blade 範本
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目錄">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目錄
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    簡介
+  </a>
+  
+    <nav class="md-nav" aria-label="簡介">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#livewire-blade" class="md-nav__link">
+    用 Livewire 為 Blade 賦能
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    顯示資料
+  </a>
+  
+    <nav class="md-nav" aria-label="顯示資料">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#html" class="md-nav__link">
+    HTML 實體編碼
+  </a>
+  
+    <nav class="md-nav" aria-label="HTML 實體編碼">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    展示非轉義資料
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#blade-javascript" class="md-nav__link">
+    Blade &amp; JavaScript 框架
+  </a>
+  
+    <nav class="md-nav" aria-label="Blade & JavaScript 框架">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#json" class="md-nav__link">
+    渲染 JSON
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verbatim" class="md-nav__link">
+    @verbatim 指令
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#blade_1" class="md-nav__link">
+    Blade 指令
+  </a>
+  
+    <nav class="md-nav" aria-label="Blade 指令">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#if" class="md-nav__link">
+    If 語句
+  </a>
+  
+    <nav class="md-nav" aria-label="If 語句">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    授權指令
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    環境指令
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    區塊指令
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#switch" class="md-nav__link">
+    Switch 語句
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    循環
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#loop" class="md-nav__link">
+    Loop 變數
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#class" class="md-nav__link">
+    有條件地編譯 class 樣式
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    附加屬性
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    包含子檢視
+  </a>
+  
+    <nav class="md-nav" aria-label="包含子檢視">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    為集合渲染檢視
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#once" class="md-nav__link">
+    @once 指令
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#php" class="md-nav__link">
+    原始 PHP 語法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    註釋
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    元件
+  </a>
+  
+    <nav class="md-nav" aria-label="元件">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    手動註冊包元件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    顯示元件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    傳遞資料到元件中
+  </a>
+  
+    <nav class="md-nav" aria-label="傳遞資料到元件中">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#casing" class="md-nav__link">
+    命名方式（Casing）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    短屬性語法/省略屬性語法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    轉義屬性渲染
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    #### 元件方法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    訪問元件類中的屬性和插槽
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    附加依賴項
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    隱藏屬性/方法
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    元件屬性
+  </a>
+  
+    <nav class="md-nav" aria-label="元件屬性">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    默認 / 合併屬性
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    有條件地合併類
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#class_1" class="md-nav__link">
+    非 class 屬性的合併
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    保留屬性 / 過濾屬性
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    保留關鍵字
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    插槽
+  </a>
+  
+    <nav class="md-nav" aria-label="插槽">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    範疇插槽
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    插槽屬性
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    內聯元件檢視
+  </a>
+  
+    <nav class="md-nav" aria-label="內聯元件檢視">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    生成內聯檢視元件
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    動態元件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    手動註冊元件
+  </a>
+  
+    <nav class="md-nav" aria-label="手動註冊元件">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    自動載入包元件
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_35" class="md-nav__link">
+    匿名元件
+  </a>
+  
+    <nav class="md-nav" aria-label="匿名元件">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_36" class="md-nav__link">
+    匿名索引元件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_37" class="md-nav__link">
+    資料 / 屬性
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_38" class="md-nav__link">
+    訪問父元件資料
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_39" class="md-nav__link">
+    匿名元件路徑
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_40" class="md-nav__link">
+    建構佈局
+  </a>
+  
+    <nav class="md-nav" aria-label="建構佈局">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_41" class="md-nav__link">
+    使用元件佈局
+  </a>
+  
+    <nav class="md-nav" aria-label="使用元件佈局">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_42" class="md-nav__link">
+    定義佈局元件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_43" class="md-nav__link">
+    應用佈局元件
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_44" class="md-nav__link">
+    使用範本繼承進行佈局
+  </a>
+  
+    <nav class="md-nav" aria-label="使用範本繼承進行佈局">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_45" class="md-nav__link">
+    定義一個佈局
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_46" class="md-nav__link">
+    繼承佈局
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_47" class="md-nav__link">
+    表單
+  </a>
+  
+    <nav class="md-nav" aria-label="表單">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#csrf" class="md-nav__link">
+    CSRF 欄位
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#method" class="md-nav__link">
+    Method 欄位
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_48" class="md-nav__link">
+    表單校驗錯誤
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_49" class="md-nav__link">
+    堆疊
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_50" class="md-nav__link">
+    服務注入
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#blade_2" class="md-nav__link">
+    渲染內聯 Blade 範本
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#blade_3" class="md-nav__link">
+    渲染 Blade 片段
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#blade_4" class="md-nav__link">
+    擴展 Blade
+  </a>
+  
+    <nav class="md-nav" aria-label="擴展 Blade">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_51" class="md-nav__link">
+    自訂回顯處理程序
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#if_1" class="md-nav__link">
+    自訂 if 聲明
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09Vite%E7%B7%A8%E8%AD%AFAssets/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vite 編譯 Assets
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10%E7%94%9F%E6%88%90URL/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    生成 URL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11Session/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Session
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12%E8%A1%A8%E5%96%AE%E9%A9%97%E8%AD%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    表單驗證
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13%E9%8C%AF%E8%AA%A4%E8%99%95%E7%90%86/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    錯誤處理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14%E6%97%A5%E8%AA%8C/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    日誌
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    繼續深入
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            繼續深入
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/01Artisan%E5%91%BD%E4%BB%A4%E5%88%97/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Artisan 命令列
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/02%E5%BB%A3%E6%92%AD/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    廣播
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/03%E5%BF%AB%E5%8F%96%E7%B3%BB%E7%B5%B1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    快取系統
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/04%E9%9B%86%E5%90%88/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    集合
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/05%E5%A5%91%E7%B4%84Contract/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    契約 Contract
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/06%E4%BA%8B%E4%BB%B6%E7%B3%BB%E7%B5%B1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    事件系統
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/07%E6%AA%94%E6%A1%88%E5%84%B2%E5%AD%98/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    檔案儲存
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/09HTTPClient/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTTP Client
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/10%E6%9C%AC%E5%9C%B0%E5%8C%96/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    本地化
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/11%E9%83%B5%E4%BB%B6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    郵件
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/12%E6%B6%88%E6%81%AF%E9%80%9A%E7%9F%A5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    消息通知
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/13Package%E9%96%8B%E7%99%BC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Package 開發
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/14%E8%99%95%E7%90%86%E7%A8%8B%E5%BA%8F%E7%AE%A1%E7%90%86/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    處理程序管理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/15%E4%BD%87%E5%88%97/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    佇列
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/16%E9%99%90%E6%B5%81/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    限流
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/17%E4%BB%BB%E5%8B%99%E8%AA%BF%E5%BA%A6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    任務調度
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    安全相關
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            安全相關
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04%E5%AE%89%E5%85%A8%E7%9B%B8%E9%97%9C/01%E4%BD%BF%E7%94%A8%E8%80%85%E8%AA%8D%E8%AD%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    使用者認證
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04%E5%AE%89%E5%85%A8%E7%9B%B8%E9%97%9C/02%E4%BD%BF%E7%94%A8%E8%80%85%E6%8E%88%E6%AC%8A/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    使用者授權
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04%E5%AE%89%E5%85%A8%E7%9B%B8%E9%97%9C/03Email%E8%AA%8D%E8%AD%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Email 認證
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04%E5%AE%89%E5%85%A8%E7%9B%B8%E9%97%9C/04%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    加密解密
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04%E5%AE%89%E5%85%A8%E7%9B%B8%E9%97%9C/05%E9%9B%9C%E6%B9%8A/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    雜湊
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04%E5%AE%89%E5%85%A8%E7%9B%B8%E9%97%9C/06%E9%87%8D%E8%A8%AD%E5%AF%86%E7%A2%BC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    重設密碼
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    資料庫
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            資料庫
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05%E8%B3%87%E6%96%99%E5%BA%AB/01%E5%BF%AB%E9%80%9F%E5%85%A5%E9%96%80/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    快速入門
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05%E8%B3%87%E6%96%99%E5%BA%AB/02%E6%9F%A5%E8%A9%A2%E7%94%9F%E6%88%90%E5%99%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    查詢生成器
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05%E8%B3%87%E6%96%99%E5%BA%AB/03%E5%88%86%E9%A0%81/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    分頁
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05%E8%B3%87%E6%96%99%E5%BA%AB/04%E9%81%B7%E7%A7%BB/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    遷移
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05%E8%B3%87%E6%96%99%E5%BA%AB/05%E8%B3%87%E6%96%99%E5%A1%AB%E5%85%85/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    資料填充
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05%E8%B3%87%E6%96%99%E5%BA%AB/06Redis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Redis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Eloquent ORM
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Eloquent ORM
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06EloquentORM/01%E5%BF%AB%E9%80%9F%E5%85%A5%E9%96%80/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    快速入門
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06EloquentORM/02%E9%97%9C%E8%81%AF/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    關聯
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06EloquentORM/03%E9%9B%86%E5%90%88/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    集合
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06EloquentORM/04%E5%B1%AC%E6%80%A7%E4%BF%AE%E6%94%B9%E5%99%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    屬性修改器
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06EloquentORM/05API%E8%B3%87%E6%BA%90/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    API 資源
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06EloquentORM/06%E5%BA%8F%E5%88%97%E5%8C%96/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    序列化
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06EloquentORM/07%E8%B3%87%E6%96%99%E5%B7%A5%E5%BB%A0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    資料工廠
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    測試相關
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            測試相關
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07%E6%B8%AC%E8%A9%A6%E7%9B%B8%E9%97%9C/01%E5%85%A5%E9%96%80/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    入門
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07%E6%B8%AC%E8%A9%A6%E7%9B%B8%E9%97%9C/02HTTP%E6%B8%AC%E8%A9%A6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTTP 測試
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07%E6%B8%AC%E8%A9%A6%E7%9B%B8%E9%97%9C/03%E5%91%BD%E4%BB%A4%E5%88%97%E6%B8%AC%E8%A9%A6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    命令列測試
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07%E6%B8%AC%E8%A9%A6%E7%9B%B8%E9%97%9C/04LaravelDusk/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Laravel Dusk
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07%E6%B8%AC%E8%A9%A6%E7%9B%B8%E9%97%9C/05%E8%B3%87%E6%96%99%E5%BA%AB%E6%B8%AC%E8%A9%A6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    資料庫測試
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07%E6%B8%AC%E8%A9%A6%E7%9B%B8%E9%97%9C/06Mocking/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mocking
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    官方擴展包
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            官方擴展包
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/01Cashier%E4%BA%A4%E6%98%93%E5%B7%A5%E5%85%B7%E5%8C%85Stripe/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cashier 交易工具包 Stripe
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/02Cashier%E4%BA%A4%E6%98%93%E5%B7%A5%E5%85%B7%E5%8C%85Paddle/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cashier 交易工具包 Paddle
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/03Envoy%E9%83%A8%E7%BD%B2%E5%B7%A5%E5%85%B7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Envoy 部署工具
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/04Fortify%E8%88%87%E5%89%8D%E7%AB%AF%E7%84%A1%E9%97%9C%E7%9A%84%E8%BA%AB%E4%BB%BD%E8%AA%8D%E8%AD%89%E5%BE%8C%E7%AB%AF%E5%AF%A6%E7%8F%BE/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fortify 與前端無關的身份認證後端實現
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/05Homestead%E8%99%9B%E6%93%AC%E6%A9%9F%E5%99%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Homestead 虛擬機器
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/06Horizon%E4%BD%87%E5%88%97%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Horizon 佇列管理工具
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/09Octane%E5%8A%A0%E9%80%9F%E5%BC%95%E6%93%8E/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Octane 加速引擎
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/10PassportOAuth%E8%AA%8D%E8%AD%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Passport OAuth 認證
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/11Pennant%E6%B8%AC%E8%A9%A6%E6%96%B0%E5%8A%9F%E8%83%BD/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pennant 測試新功能
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/12Pint%E7%A8%8B%E5%BC%8F%E7%A2%BC%E9%A2%A8%E6%A0%BC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pint 程式碼風格
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/13SailDocker%E9%96%8B%E7%99%BC%E7%92%B0%E5%A2%83/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sail Docker 開發環境
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/14SanctumAPI%E6%8E%88%E6%AC%8A/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sanctum API 授權
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/15Scout%E5%85%A8%E6%96%87%E6%90%9C%E5%B0%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Scout 全文搜尋
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/16Socialite%E7%AC%AC%E4%B8%89%E6%96%B9%E7%99%BB%E5%85%A5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Socialite 第三方登入
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/17Telescope%E5%81%B5%E9%8C%AF%E5%B7%A5%E5%85%B7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Telescope 偵錯工具
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    語法速查表
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            語法速查表
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/artisan/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Artisan
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/auth/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Auth 使用者認證
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/blade/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Blade 範本
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/cache/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cache
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/collection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Collection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/composer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Composer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/config/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Config
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/container/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Container
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/cookie/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cookie
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/db/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Database
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/environment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Environment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/event/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Event
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/file/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    File
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/helper/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Helper
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/input/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Input
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/lang/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lang
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/Log/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Log
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/mail/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mail
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/model/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Model (Eloquent ORM)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/pagination/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pagination
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/queue/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Queue
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/redirect/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Redirect
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/request/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Request
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/response/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Response
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/route/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Route
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/schema/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Schema 資料庫結構
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/security/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Security (Hash 和加解密)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/session/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Session
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/storage/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Storage
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/string/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    String
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/unittest/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Unit Test 單元測試
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/url/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    URL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/validation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Validation 表單驗證
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/view/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    View
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目錄">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目錄
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    簡介
+  </a>
+  
+    <nav class="md-nav" aria-label="簡介">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#livewire-blade" class="md-nav__link">
+    用 Livewire 為 Blade 賦能
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    顯示資料
+  </a>
+  
+    <nav class="md-nav" aria-label="顯示資料">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#html" class="md-nav__link">
+    HTML 實體編碼
+  </a>
+  
+    <nav class="md-nav" aria-label="HTML 實體編碼">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    展示非轉義資料
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#blade-javascript" class="md-nav__link">
+    Blade &amp; JavaScript 框架
+  </a>
+  
+    <nav class="md-nav" aria-label="Blade & JavaScript 框架">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#json" class="md-nav__link">
+    渲染 JSON
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verbatim" class="md-nav__link">
+    @verbatim 指令
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#blade_1" class="md-nav__link">
+    Blade 指令
+  </a>
+  
+    <nav class="md-nav" aria-label="Blade 指令">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#if" class="md-nav__link">
+    If 語句
+  </a>
+  
+    <nav class="md-nav" aria-label="If 語句">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    授權指令
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    環境指令
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    區塊指令
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#switch" class="md-nav__link">
+    Switch 語句
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    循環
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#loop" class="md-nav__link">
+    Loop 變數
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#class" class="md-nav__link">
+    有條件地編譯 class 樣式
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    附加屬性
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    包含子檢視
+  </a>
+  
+    <nav class="md-nav" aria-label="包含子檢視">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    為集合渲染檢視
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#once" class="md-nav__link">
+    @once 指令
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#php" class="md-nav__link">
+    原始 PHP 語法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    註釋
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    元件
+  </a>
+  
+    <nav class="md-nav" aria-label="元件">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    手動註冊包元件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    顯示元件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    傳遞資料到元件中
+  </a>
+  
+    <nav class="md-nav" aria-label="傳遞資料到元件中">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#casing" class="md-nav__link">
+    命名方式（Casing）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    短屬性語法/省略屬性語法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    轉義屬性渲染
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    #### 元件方法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    訪問元件類中的屬性和插槽
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    附加依賴項
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    隱藏屬性/方法
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    元件屬性
+  </a>
+  
+    <nav class="md-nav" aria-label="元件屬性">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    默認 / 合併屬性
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    有條件地合併類
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#class_1" class="md-nav__link">
+    非 class 屬性的合併
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    保留屬性 / 過濾屬性
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    保留關鍵字
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    插槽
+  </a>
+  
+    <nav class="md-nav" aria-label="插槽">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    範疇插槽
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    插槽屬性
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    內聯元件檢視
+  </a>
+  
+    <nav class="md-nav" aria-label="內聯元件檢視">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    生成內聯檢視元件
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    動態元件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    手動註冊元件
+  </a>
+  
+    <nav class="md-nav" aria-label="手動註冊元件">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    自動載入包元件
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_35" class="md-nav__link">
+    匿名元件
+  </a>
+  
+    <nav class="md-nav" aria-label="匿名元件">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_36" class="md-nav__link">
+    匿名索引元件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_37" class="md-nav__link">
+    資料 / 屬性
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_38" class="md-nav__link">
+    訪問父元件資料
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_39" class="md-nav__link">
+    匿名元件路徑
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_40" class="md-nav__link">
+    建構佈局
+  </a>
+  
+    <nav class="md-nav" aria-label="建構佈局">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_41" class="md-nav__link">
+    使用元件佈局
+  </a>
+  
+    <nav class="md-nav" aria-label="使用元件佈局">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_42" class="md-nav__link">
+    定義佈局元件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_43" class="md-nav__link">
+    應用佈局元件
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_44" class="md-nav__link">
+    使用範本繼承進行佈局
+  </a>
+  
+    <nav class="md-nav" aria-label="使用範本繼承進行佈局">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_45" class="md-nav__link">
+    定義一個佈局
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_46" class="md-nav__link">
+    繼承佈局
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_47" class="md-nav__link">
+    表單
+  </a>
+  
+    <nav class="md-nav" aria-label="表單">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#csrf" class="md-nav__link">
+    CSRF 欄位
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#method" class="md-nav__link">
+    Method 欄位
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_48" class="md-nav__link">
+    表單校驗錯誤
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_49" class="md-nav__link">
+    堆疊
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_50" class="md-nav__link">
+    服務注入
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#blade_2" class="md-nav__link">
+    渲染內聯 Blade 範本
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#blade_3" class="md-nav__link">
+    渲染 Blade 片段
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#blade_4" class="md-nav__link">
+    擴展 Blade
+  </a>
+  
+    <nav class="md-nav" aria-label="擴展 Blade">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_51" class="md-nav__link">
+    自訂回顯處理程序
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#if_1" class="md-nav__link">
+    自訂 if 聲明
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+  
+                  
+
+  
+  
+
+
+<h1 id="blade">Blade 範本<a class="headerlink" href="#blade" title="Permanent link">&para;</a></h1>
+<h2 id="_1">簡介<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>Blade 是 Laravel 提供的一個簡單而又強大的範本引擎。 和其他流行的 PHP 範本引擎不同，Blade 並不限制你在檢視中使用原生 PHP 程式碼。實際上，所有 Blade 檢視檔案都將被編譯成原生的 PHP 程式碼並快取起來，除非它被修改，否則不會重新編譯，這就意味著 Blade 基本上不會給你的應用增加任何負擔。Blade 範本檔案使用 <code>.blade.php</code> 作為副檔名，被存放在 <code>resources/views</code> 目錄。</p>
+<p>Blade 檢視可以使用全域 <code>view</code> 函數從 Route 或 controller 返回。當然，正如有關 <a href="/docs/laravel/10.x/views">views</a> 的文件中所描述的，可以使用 <code>view</code> 函數的第二個參數將資料傳遞到 Blade 檢視：</p>
+<div class="highlight"><pre><span></span><code>Route::get(&#39;/&#39;, function () {
+    return view(&#39;greeting&#39;, [&#39;name&#39; =&gt; &#39;Finn&#39;]);
+});
+</code></pre></div>
+<h3 id="livewire-blade">用 Livewire 為 Blade 賦能<a class="headerlink" href="#livewire-blade" title="Permanent link">&para;</a></h3>
+<p>想讓你的 Blade 範本更上一層樓，輕鬆建構動態介面嗎？看看<a href="https://laravel-livewire.com">Laravel Livewire</a>。Livewire 允許你編寫 Blade 元件，這些元件具有動態功能，通常只能通過 React 或 Vue 等前端框架來實現，這提供了一個很好的方法來建構現代，沒有複雜前端對應，基於客戶端渲染，無須很多的建構步驟的  JavaScript 框架。</p>
+<h2 id="_2">顯示資料<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>你可以把變數置於花括號中以在檢視中顯示資料。例如，給定下方的路由：</p>
+<div class="highlight"><pre><span></span><code>Route::get(&#39;/&#39;, function () {
+    return view(&#39;welcome&#39;, [&#39;name&#39; =&gt; &#39;Samantha&#39;]);
+});
+</code></pre></div>
+<p>你可以像如下這樣顯示 <code>name</code> 變數的內容：</p>
+<div class="highlight"><pre><span></span><code>Hello, {{ $name }}.
+</code></pre></div>
+<blockquote>
+<p><strong>技巧</strong>：Blade 的 <code>{{ }}</code> 語句將被 PHP 的 <code>htmlspecialchars</code> 函數自動轉義以防範 XSS 攻擊。</p>
+</blockquote>
+<p>你不僅限於顯示傳遞給檢視的變數的內容。你也可以回顯任何 PHP 函數的結果。實際上，你可以將所需的任何 PHP 程式碼放入 Blade echo 語句中：</p>
+<div class="highlight"><pre><span></span><code>The current UNIX timestamp is {{ time() }}.
+</code></pre></div>
+<h3 id="html">HTML 實體編碼<a class="headerlink" href="#html" title="Permanent link">&para;</a></h3>
+<p>默認情況下，Blade（和 Laravel <code>e</code> 助手）將對 HTML 實體進行雙重編碼。如果你想停用雙重編碼，請從 <code>AppServiceProvider</code> 的 <code>boot</code> 方法呼叫 <code>Blade::withoutDoubleEncoding</code> 方法：</p>
+<div class="highlight"><pre><span></span><code>&lt;?php
+
+namespace App\Providers;
+
+use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\ServiceProvider;
+
+class AppServiceProvider extends ServiceProvider
+{
+    /**
+     * Bootstrap any application services.
+     */
+    public function boot(): void
+    {
+        Blade::withoutDoubleEncoding();
+    }
+}
+</code></pre></div>
+<h4 id="_3">展示非轉義資料<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<p>默認情況下， Blade <code>{{ }}</code> 語句將被 PHP 的 <code>htmlspecialchars</code> 函數自動轉義以防範 XSS 攻擊。如果不想你的資料被轉義，那麼你可使用如下的語法：</p>
+<div class="highlight"><pre><span></span><code>Hello, {!! $name !!}.
+</code></pre></div>
+<blockquote>
+<p>**注意：**在應用中顯示使用者提供的資料時請格外小心，請儘可能的使用轉義和雙引號語法來防範 XSS 攻擊。</p>
+</blockquote>
+<h3 id="blade-javascript">Blade &amp; JavaScript 框架<a class="headerlink" href="#blade-javascript" title="Permanent link">&para;</a></h3>
+<p>由於許多 JavaScript 框架也使用「花括號」來標識將顯示在瀏覽器中的表示式，因此，你可以使用 <code>@</code> 符號來表示 Blade 渲染引擎應當保持不變。例如：</p>
+<div class="highlight"><pre><span></span><code>&lt;h1&gt;Laravel&lt;/h1&gt;
+
+Hello, @{{ name }}.
+</code></pre></div>
+<p>在這個例子中， <code>@</code> 符號將被 Blade 移除；當然，Blade 將不會修改 <code>{{ name }}</code> 表示式，取而代之的是 JavaScript 範本來對其進行渲染。</p>
+<p><code>@</code> 符號也用於轉義 Blade 指令：</p>
+<div class="highlight"><pre><span></span><code>{{-- Blade template --}}
+@@if()
+
+&lt;!-- HTML output --&gt;
+@if()
+</code></pre></div>
+<h4 id="json">渲染 JSON<a class="headerlink" href="#json" title="Permanent link">&para;</a></h4>
+<p>有時，你可能會將陣列傳遞給檢視，以將其呈現為 JSON，以便初始化 JavaScript 變數。 例如：</p>
+<div class="highlight"><pre><span></span><code>&lt;script&gt;
+    var app = &lt;?php echo json_encode($array); ?&gt;;
+&lt;/script&gt;
+</code></pre></div>
+<p>或者，你可以使用 <code>Illuminate\Support\Js::from</code> 方法指令，而不是手動呼叫 <code>json_encode</code>。 <code>from</code> 方法接受與 PHP 的 <code>json_encode</code> 函數相同的參數；但是，它將確保正確轉義生成的 JSON 以包含在 HTML 引號中。 <code>from</code> 方法將返回一個字串 <code>JSON.parse</code> JavaScript 語句，它將給定對象或陣列轉換為有效的 JavaScript 對象：</p>
+<div class="highlight"><pre><span></span><code>&lt;script&gt;
+    var app = {{ Illuminate\Support\Js::from($array) }};
+&lt;/script&gt;
+</code></pre></div>
+<p>Laravel 框架的最新版本包括一個 <code>Js</code> 門面，它提供了在 Blade 範本中方便地訪問此功能：</p>
+<div class="highlight"><pre><span></span><code>&lt;script&gt;
+    var app = {{ Js::from($array) }};
+&lt;/script&gt;
+</code></pre></div>
+<blockquote>
+<p>**注意：**你應該只使用 <code>Js::from</code> 渲染已經存在的變數為 JSON。 Blade 範本基於正規表示式，如果嘗試將複雜表示式傳遞給 <code>Js::from</code> 可能會導致無法預測的錯誤。</p>
+</blockquote>
+<h4 id="verbatim"><code>@verbatim</code> 指令<a class="headerlink" href="#verbatim" title="Permanent link">&para;</a></h4>
+<p>如果你在範本中顯示很大一部分 JavaScript 變數，你可以將 HTML 嵌入到 <code>@verbatim</code> 指令中，這樣，你就不需要在每一個 Blade 回顯語句前新增 <code>@</code> 符號：</p>
+<div class="highlight"><pre><span></span><code>@verbatim
+    &lt;div class=&quot;container&quot;&gt;
+        Hello, {{ name }}.
+    &lt;/div&gt;
+@endverbatim
+</code></pre></div>
+<h2 id="blade_1">Blade 指令<a class="headerlink" href="#blade_1" title="Permanent link">&para;</a></h2>
+<p>除了範本繼承和顯示資料以外， Blade 還為常見的 PHP 控制結構提供了便捷的快捷方式，例如條件語句和循環。這些快捷方式為 PHP 控制結構提供了一個非常清晰、簡潔的書寫方式，同時，還與 PHP 中的控制結構保持了相似的語法特性。</p>
+<h3 id="if">If 語句<a class="headerlink" href="#if" title="Permanent link">&para;</a></h3>
+<p>你可以使用 <code>@if</code> ， <code>@elseif</code> ， <code>@else</code> 和 <code>@endif</code> 指令構造 <code>if</code> 語句。這些指令功能與它們所對應的 PHP 語句完全一致：</p>
+<div class="highlight"><pre><span></span><code>@if (count($records) === 1)
+    有一條記錄
+@elseif (count($records) &gt; 1)
+    有多條記錄
+@else
+    沒有記錄
+@endif
+</code></pre></div>
+<p>為了方便， Blade 還提供了一個 <code>@unless</code> 指令：</p>
+<div class="highlight"><pre><span></span><code>@unless (Auth::check())
+    你還沒有登錄
+@endunless
+</code></pre></div>
+<blockquote>
+<p>譯註：相當於 <code>@if (! Auth::check()) @endif</code></p>
+</blockquote>
+<p>除了上面所說條件指令外， <code>@isset</code> 和 <code>@empty</code> 指令亦可作為它們所對應的 PHP 函數的快捷方式：</p>
+<div class="highlight"><pre><span></span><code>@isset($records)
+    // $records 已經被定義且不為 null ……
+@endisset
+
+@empty($records)
+    // $records 為「空」……
+@endempty
+</code></pre></div>
+<h4 id="_4">授權指令<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<p><code>@auth</code> 和 <code>@guest</code> 指令可用於快速判斷當前使用者是否已經獲得 <a href="/docs/laravel/10.x/authentication">授權</a> 或是遊客：</p>
+<div class="highlight"><pre><span></span><code>@auth
+    // 使用者已經通過認證……
+@endauth
+
+@guest
+    // 使用者沒有通過認證……
+@endguest
+</code></pre></div>
+<p>如有需要，你亦可在使用 <code>@auth</code> 和 <code>@guest</code> 指令時指定 <a href="https://learnku.com/docs/laravel/10.x/authentication" title="認證守衛">認證守衛</a>：</p>
+<div class="highlight"><pre><span></span><code>@auth(&#39;admin&#39;)
+    // 使用者已經通過認證...
+@endauth
+
+@guest(&#39;admin&#39;)
+    // 使用者沒有通過認證...
+@endguest
+</code></pre></div>
+<h4 id="_5">環境指令<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<p>你可以使用 <code>@production</code> 指令來判斷應用是否處於生產環境：</p>
+<div class="highlight"><pre><span></span><code>@production
+    // 生產環境特定內容...
+@endproduction
+</code></pre></div>
+<p>或者，你可以使用 <code>@env</code> 指令來判斷應用是否運行於指定的環境：</p>
+<div class="highlight"><pre><span></span><code>@env(&#39;staging&#39;)
+    //  應用運行於「staging」環境...
+@endenv
+
+@env([&#39;staging&#39;, &#39;production&#39;])
+    // 應用運行於 「staging」或 [生產] 環境...
+@endenv
+</code></pre></div>
+<h4 id="_6">區塊指令<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<p>你可以使用 <code>@hasSection</code> 指令來判斷區塊是否有內容：</p>
+<div class="highlight"><pre><span></span><code>@hasSection(&#39;navigation&#39;)
+    &lt;div class=&quot;pull-right&quot;&gt;
+        @yield(&#39;navigation&#39;)
+    &lt;/div&gt;
+
+    &lt;div class=&quot;clearfix&quot;&gt;&lt;/div&gt;
+@endif
+</code></pre></div>
+<p>你可以使用 <code>sectionMissing</code> 指令來判斷區塊是否沒有內容：</p>
+<div class="highlight"><pre><span></span><code>@sectionMissing(&#39;navigation&#39;)
+    &lt;div class=&quot;pull-right&quot;&gt;
+        @include(&#39;default-navigation&#39;)
+    &lt;/div&gt;
+@endif
+</code></pre></div>
+<h3 id="switch">Switch 語句<a class="headerlink" href="#switch" title="Permanent link">&para;</a></h3>
+<p>你可使用 <code>@switch</code> ， <code>@case</code> ， <code>@break</code> ， <code>@default</code> 和 <code>@endswitch</code> 語句來構造 Switch 語句：</p>
+<div class="highlight"><pre><span></span><code>@switch($i)
+    @case(1)
+        First case...
+        @break
+
+    @case(2)
+        Second case...
+        @break
+
+    @default
+        Default case...
+@endswitch
+</code></pre></div>
+<h3 id="_7">循環<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p>除了條件語句， Blade 還提供了與 PHP 循環結構功能相同的指令。同樣，這些語句的功能和它們所對應的 PHP 語法一致：</p>
+<div class="highlight"><pre><span></span><code>@for ($i = 0; $i &lt; 10; $i++)
+    The current value is {{ $i }}
+@endfor
+
+@foreach ($users as $user)
+    &lt;p&gt;This is user {{ $user-&gt;id }}&lt;/p&gt;
+@endforeach
+
+@forelse ($users as $user)
+    &lt;li&gt;{{ $user-&gt;name }}&lt;/li&gt;
+@empty
+    &lt;p&gt;No users&lt;/p&gt;
+@endforelse
+
+@while (true)
+    &lt;p&gt;I&#39;m looping forever.&lt;/p&gt;
+@endwhile
+</code></pre></div>
+<blockquote>
+<p>**技巧：**在遍歷 <code>foreach</code> 循環時，你可以使用 <a href="#the-loop-variable">循環變數</a> 去獲取有關循環的有價值的資訊，例如，你處於循環的第一個迭代亦或是處於最後一個迭代。</p>
+</blockquote>
+<p>使用循環時，還可以使用 <code>@continue</code> 和 <code>@break</code> 循環或跳過當前迭代：</p>
+<div class="highlight"><pre><span></span><code>@foreach ($users as $user)
+    @if ($user-&gt;type == 1)
+        @continue
+    @endif
+
+    &lt;li&gt;{{ $user-&gt;name }}&lt;/li&gt;
+
+    @if ($user-&gt;number == 5)
+        @break
+    @endif
+@endforeach
+</code></pre></div>
+<p>你還可以在指令聲明中包含繼續或中斷條件：</p>
+<div class="highlight"><pre><span></span><code>@foreach ($users as $user)
+    @continue($user-&gt;type == 1)
+
+    &lt;li&gt;{{ $user-&gt;name }}&lt;/li&gt;
+
+    @break($user-&gt;number == 5)
+@endforeach
+</code></pre></div>
+<h3 id="loop">Loop 變數<a class="headerlink" href="#loop" title="Permanent link">&para;</a></h3>
+<p>在遍歷 <code>foreach</code> 循環時，循環內部可以使用 <code>$loop</code> 變數。該變數提供了訪問一些諸如當前的循環索引和此次迭代是首次或是末次這樣的資訊的方式：</p>
+<div class="highlight"><pre><span></span><code>@foreach ($users as $user)
+    @if ($loop-&gt;first)
+        This is the first iteration.
+    @endif
+
+    @if ($loop-&gt;last)
+        This is the last iteration.
+    @endif
+
+    &lt;p&gt;This is user {{ $user-&gt;id }}&lt;/p&gt;
+@endforeach
+</code></pre></div>
+<p>如果你處於巢狀循環中，你可以使用循環的 <code>$loop</code> 變數的 <code>parent</code> 屬性訪問父級循環：</p>
+<div class="highlight"><pre><span></span><code>@foreach ($users as $user)
+    @foreach ($user-&gt;posts as $post)
+        @if ($loop-&gt;parent-&gt;first)
+            This is the first iteration of the parent loop.
+        @endif
+    @endforeach
+@endforeach
+</code></pre></div>
+<p>該 <code>$loop</code> 變數還包含各種各樣有用的屬性：</p>
+<table>
+<thead>
+<tr>
+<th>屬性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>$loop-&gt;index</code></td>
+<td>當前迭代的索引（從 0 開始）。</td>
+</tr>
+<tr>
+<td><code>$loop-&gt;iteration</code></td>
+<td>當前循環的迭代次數（從 1 開始）。</td>
+</tr>
+<tr>
+<td><code>$loop-&gt;remaining</code></td>
+<td>循環剩餘的迭代次數。</td>
+</tr>
+<tr>
+<td><code>$loop-&gt;count</code></td>
+<td>被迭代的陣列的元素個數。</td>
+</tr>
+<tr>
+<td><code>$loop-&gt;first</code></td>
+<td>當前迭代是否是循環的首次迭代。</td>
+</tr>
+<tr>
+<td><code>$loop-&gt;last</code></td>
+<td>當前迭代是否是循環的末次迭代。</td>
+</tr>
+<tr>
+<td><code>$loop-&gt;even</code></td>
+<td>當前循環的迭代次數是否是偶數。</td>
+</tr>
+<tr>
+<td><code>$loop-&gt;odd</code></td>
+<td>當前循環的迭代次數是否是奇數。</td>
+</tr>
+<tr>
+<td><code>$loop-&gt;depth</code></td>
+<td>當前循環的巢狀深度。</td>
+</tr>
+<tr>
+<td><code>$loop-&gt;parent</code></td>
+<td>巢狀循環中的父級循環。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="class">有條件地編譯 class 樣式<a class="headerlink" href="#class" title="Permanent link">&para;</a></h3>
+<p>該 <code>@class</code> 指令有條件地編譯 CSS class 樣式。該指令接收一個陣列，其中陣列的鍵包含你希望新增的一個或多個樣式的類名，而值是一個布林值表示式。如果陣列元素有一個數值的鍵，它將始終包含在呈現的 class 列表中：</p>
+<div class="highlight"><pre><span></span><code>@php
+    $isActive = false;
+    $hasError = true;
+@endphp
+
+&lt;span @class([
+    &#39;p-4&#39;,
+    &#39;font-bold&#39; =&gt; $isActive,
+    &#39;text-gray-500&#39; =&gt; ! $isActive,
+    &#39;bg-red&#39; =&gt; $hasError,
+])&gt;&lt;/span&gt;
+
+&lt;span class=&quot;p-4 text-gray-500 bg-red&quot;&gt;&lt;/span&gt;
+</code></pre></div>
+<p>同樣，<code>@style</code> 指令可用於有條件地將內聯 CSS 樣式新增到一個 HTML 元素中。</p>
+<div class="highlight"><pre><span></span><code>@php
+    $isActive = true;
+@endphp
+
+&lt;span @style([
+    &#39;background-color: red&#39;,
+    &#39;font-weight: bold&#39; =&gt; $isActive,
+])&gt;&lt;/span&gt;
+
+&lt;span style=&quot;background-color: red; font-weight: bold;&quot;&gt;&lt;/span&gt;
+</code></pre></div>
+<h3 id="_8">附加屬性<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<p>為方便起見，你可以使用該 <code>@checked</code> 指令輕鬆判斷給定的 HTML 複選框輸入是否被「選中（checked）」。如果提供的條件判斷為 <code>true</code> ，則此指令將回顯 <code>checked</code>：</p>
+<div class="highlight"><pre><span></span><code>&lt;input type=&quot;checkbox&quot;
+        name=&quot;active&quot;
+        value=&quot;active&quot;
+        @checked(old(&#39;active&#39;, $user-&gt;active)) /&gt;
+</code></pre></div>
+<p>同樣，該 <code>@selected</code> 指令可用於判斷給定的選項是否被「選中（selected）」：</p>
+<div class="highlight"><pre><span></span><code>&lt;select name=&quot;version&quot;&gt;
+    @foreach ($product-&gt;versions as $version)
+        &lt;option value=&quot;{{ $version }}&quot; @selected(old(&#39;version&#39;) == $version)&gt;
+            {{ $version }}
+        &lt;/option&gt;
+    @endforeach
+&lt;/select&gt;
+</code></pre></div>
+<p>此外，該 <code>@disabled</code> 指令可用於判斷給定元素是否為「停用（disabled）」:</p>
+<div class="highlight"><pre><span></span><code>&lt;button type=&quot;submit&quot; @disabled($errors-&gt;isNotEmpty())&gt;Submit&lt;/button&gt;
+</code></pre></div>
+<p>此外，<code>@readonly</code> 指令可以用來指示某個元素是否應該是「唯讀 （readonly）」的。</p>
+<div class="highlight"><pre><span></span><code>&lt;input type=&quot;email&quot;
+        name=&quot;email&quot;
+        value=&quot;email@laravel.com&quot;
+        @readonly($user-&gt;isNotAdmin()) /&gt;
+</code></pre></div>
+<p>此外，<code>@required</code> 指令可以用來指示一個給定的元素是否應該是「必需的（required）」。</p>
+<div class="highlight"><pre><span></span><code>&lt;input type=&quot;text&quot;
+        name=&quot;title&quot;
+        value=&quot;title&quot;
+        @required($user-&gt;isAdmin()) /&gt;
+</code></pre></div>
+<h3 id="_9">包含子檢視<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>**技巧：**雖然你可以自由使用該 <code>@include</code> 指令，但是 Blade <a href="#components">元件</a> 提供了類似的功能，並提供了優於該 <code>@include</code> 指令的功能，如資料和屬性繫結。</p>
+</blockquote>
+<p>Blade 的 <code>@include</code> 指令允許你從一個檢視中包含另外一個 Blade 檢視。父檢視中的所有變數在子檢視中都可以使用：</p>
+<div class="highlight"><pre><span></span><code>&lt;div&gt;
+    @include(&#39;shared.errors&#39;)
+
+    &lt;form&gt;
+        &lt;!-- Form Contents --&gt;
+    &lt;/form&gt;
+&lt;/div&gt;
+</code></pre></div>
+<p>儘管子檢視可以繼承父檢視中所有可以使用的資料，但是你也可以傳遞一個額外的陣列，這個陣列在子檢視中也可以使用:</p>
+<div class="highlight"><pre><span></span><code>@include(&#39;view.name&#39;, [&#39;status&#39; =&gt; &#39;complete&#39;])
+</code></pre></div>
+<p>如果你想要使用 <code>@include</code> 包含一個不存在的檢視，Laravel 將會拋出一個錯誤。如果你想要包含一個可能存在也可能不存在的檢視，那麼你應該使用 <code>@includeIf</code> 指令:</p>
+<div class="highlight"><pre><span></span><code>@includeIf(&#39;view.name&#39;, [&#39;status&#39; =&gt; &#39;complete&#39;])
+</code></pre></div>
+<p>如果想要使用 <code>@include</code>  包含一個給定值為 <code>true</code> 或 <code>false</code>的布林值表示式的檢視，那麼你可以使用 <code>@includeWhen</code> 和 <code>@includeUnless</code> 指令:</p>
+<div class="highlight"><pre><span></span><code>@includeWhen($boolean, &#39;view.name&#39;, [&#39;status&#39; =&gt; &#39;complete&#39;])
+
+@includeUnless($boolean, &#39;view.name&#39;, [&#39;status&#39; =&gt; &#39;complete&#39;])
+</code></pre></div>
+<p>如果想要包含一個檢視陣列中第一個存在的檢視，你可以使用 <code>includeFirst</code> 指令:</p>
+<div class="highlight"><pre><span></span><code>@includeFirst([&#39;custom.admin&#39;, &#39;admin&#39;], [&#39;status&#39; =&gt; &#39;complete&#39;])
+</code></pre></div>
+<blockquote>
+<p>**注意：**在檢視中，你應該避免使用 <code>__DIR__</code> 和 <code>__FILE__</code> 這些常數，因為他們將引用已快取的和已編譯的檢視。</p>
+</blockquote>
+<h4 id="_10">為集合渲染檢視<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<p>你可以使用 Blade 的 <code>@each</code> 指令將循環合併在一行內：</p>
+<div class="highlight"><pre><span></span><code>@each(&#39;view.name&#39;, $jobs, &#39;job&#39;)
+</code></pre></div>
+<p>該 <code>@each</code> 指令的第一個參數是陣列或集合中的元素的要渲染的檢視片段。第二個參數是你想要迭代的陣列或集合，當第三個參數是一個表示當前迭代的檢視的變數名。因此，如果你遍歷一個名為 <code>jobs</code> 的陣列，通常會在檢視片段中使用 <code>job</code> 變數來訪問每一個 job （jobs 陣列的元素）。在你的檢視片段中，可以使用 <code>key</code> 變數來訪問當前迭代的鍵。</p>
+<p>你亦可傳遞第四個參數給 <code>@each</code> 指令。當給定的陣列為空時，將會渲染該參數所對應的檢視。</p>
+<div class="highlight"><pre><span></span><code>@each(&#39;view.name&#39;, $jobs, &#39;job&#39;, &#39;view.empty&#39;)
+</code></pre></div>
+<blockquote>
+<p>**注意：**通過 <code>@each</code> 指令渲染的檢視不會繼承父檢視的變數。如果子檢視需要使用這些變數，你可以使用 <code>@foreach</code> 和 <code>@include</code> 來代替它。</p>
+</blockquote>
+<h3 id="once"><code>@once</code> 指令<a class="headerlink" href="#once" title="Permanent link">&para;</a></h3>
+<p>該 <code>@once</code> 指令允許你定義範本的一部分內容，這部分內容在每一個渲染週期中只會被計算一次。該指令在使用 <a href="#stacks">堆疊</a> 推送一段特定的 JavaScript 程式碼到頁面的頭部環境下是很有用的。例如，如果你想要在循環中渲染一個特定的 <a href="#components">元件</a> ，你可能希望僅在元件渲染的首次推送 JavaScript 程式碼到頭部：</p>
+<div class="highlight"><pre><span></span><code>@once
+    @push(&#39;scripts&#39;)
+        &lt;script&gt;
+            // 你自訂的 JavaScript 程式碼...
+        &lt;/script&gt;
+    @endpush
+@endonce
+</code></pre></div>
+<p>由於該 <code>@once</code> 指令經常與 <code>@push</code> 或 <code>@prepend</code> 指令一起使用，為了使用方便，我們提供了 <code>@pushOnce</code> 和 <code>@prependOnce</code> 指令：</p>
+<div class="highlight"><pre><span></span><code>@pushOnce(&#39;scripts&#39;)
+    &lt;script&gt;
+        // 你自訂的 JavaScript 程式碼...
+    &lt;/script&gt;
+@endPushOnce
+</code></pre></div>
+<h3 id="php">原始 PHP 語法<a class="headerlink" href="#php" title="Permanent link">&para;</a></h3>
+<p>在許多情況下，嵌入 PHP 程式碼到你的檢視中是很有用的。你可以在範本中使用 Blade 的 <code>@php</code> 指令執行原生的 PHP 程式碼塊：</p>
+<div class="highlight"><pre><span></span><code>@php
+    $counter = 1;
+@endphp
+</code></pre></div>
+<p>如果只需要寫一條 PHP 語句，可以在 <code>@php</code> 指令中包含該語句。</p>
+<div class="highlight"><pre><span></span><code>@php($counter = 1)
+</code></pre></div>
+<h3 id="_11">註釋<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<p>Blade 也允許你在檢視中定義註釋。但是，和 HTML 註釋不同， Blade 註釋不會被包含在應用返回的 HTML 中：</p>
+<div class="highlight"><pre><span></span><code>{{-- 這個註釋將不會出現在渲染的HTML中。 --}}
+</code></pre></div>
+<h2 id="_12">元件<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
+<p>元件和插槽的作用與區塊和佈局的作用一致；不過，有些人可能覺著元件和插槽更易於理解。有兩種書寫元件的方法：基於類的元件和匿名元件。</p>
+<p>你可以使用 <code>make:component</code> Artisan 命令來建立一個基於類的元件。我們將會建立一個簡單的  <code>Alert</code> 元件用於說明如何使用元件。該 <code>make:component</code> 命令將會把元件置於 <code>App\View\Components</code> 目錄中：</p>
+<div class="highlight"><pre><span></span><code>php<span class="w"> </span>artisan<span class="w"> </span>make:component<span class="w"> </span>Alert
+</code></pre></div>
+<p>該 <code>make:component</code> 命令將會為元件建立一個檢視範本。建立的檢視被置於 <code>resources/views/components</code> 目錄中。在為自己的應用程式編寫元件時，會在 <code>app/View/Components</code> 目錄和 <code>resources/views/components</code> 目錄中自動發現元件，因此通常不需要進一步的元件註冊。</p>
+<p>你還可以在子目錄中建立元件：</p>
+<div class="highlight"><pre><span></span><code>php<span class="w"> </span>artisan<span class="w"> </span>make:component<span class="w"> </span>Forms/Input
+</code></pre></div>
+<p>上面的命令將在目錄中建立一個 <code>Input</code> 元件， <code>App\View\Components\Forms</code> 檢視將放置在 <code>resources/views/components/forms</code> 目錄中。</p>
+<p>如果你想建立一個匿名元件（一個只有 Blade 範本並且沒有類的元件），你可以在呼叫命令  <code>make:component</code> 使用該 <code>--view</code> 標誌：</p>
+<div class="highlight"><pre><span></span><code>php<span class="w"> </span>artisan<span class="w"> </span>make:component<span class="w"> </span>forms.input<span class="w"> </span>--view
+</code></pre></div>
+<p>上面的命令將在 <code>resources/views/components/forms/input.blade.php</code>建立一個 Blade 檔案，該檔案中可以通過 <code>&lt;x-forms.input /&gt;</code>作為元件呈現。</p>
+<h4 id="_13">手動註冊包元件<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
+<p>當為你自己的應用編寫元件的時候，Laravel 將會自動發現位於 <code>app/View/Components</code> 目錄和 <code>resources/views/components</code> 目錄中的元件。</p>
+<p>當然，如果你使用 Blade 元件編譯一個包，你可能需要手動註冊元件類及其 HTML 標籤別名。你應該在包的服務提供者的 <code>boot</code> 方法中註冊你的元件：</p>
+<div class="highlight"><pre><span></span><code>use Illuminate\Support\Facades\Blade;
+
+/**
+ * 註冊你的包的服務
+ */
+public function boot(): void
+{
+    Blade::component(&#39;package-alert&#39;, Alert::class);
+}
+</code></pre></div>
+<p>當元件註冊完成後，便可使用標籤別名來對其進行渲染。</p>
+<div class="highlight"><pre><span></span><code>&lt;x-package-alert/&gt;
+</code></pre></div>
+<p>或者，你可以使用該 <code>componentNamespace</code> 方法按照約定自動載入元件類。例如，一個 <code>Nightshade</code> 包可能有 <code>Calendar</code> 和 <code>ColorPicker</code> 元件駐留在 <code>Package\Views\Components</code> 命名空間中：</p>
+<div class="highlight"><pre><span></span><code>use Illuminate\Support\Facades\Blade;
+
+/**
+ * 註冊你的包的服務
+ */
+public function boot(): void
+{
+    Blade::componentNamespace(&#39;Nightshade\\Views\\Components&#39;, &#39;nightshade&#39;);
+}
+</code></pre></div>
+<p>這將允許他們的供應商命名空間使用包元件，使用以下 <code>package-name::</code> 語法：</p>
+<div class="highlight"><pre><span></span><code>&lt;x-nightshade::calendar /&gt;
+&lt;x-nightshade::color-picker /&gt;
+</code></pre></div>
+<p>Blade 將自動檢測連結到該元件的類，通過對元件名稱進行帕斯卡大小寫。使用「點」表示法也支援子目錄。</p>
+<h3 id="_14">顯示元件<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<p>要顯示一個元件，你可以在 Blade 範本中使用 Blade 元件標籤。 Blade 元件以  <code>x-</code> 字串開始，其後緊接元件類 kebab case 形式的名稱（即單詞與單詞之間使用短橫線 <code>-</code> 進行連接）：</p>
+<div class="highlight"><pre><span></span><code>&lt;x-alert/&gt;
+
+&lt;x-user-profile/&gt;
+</code></pre></div>
+<p>如果元件位於 <code>App\View\Components</code> 目錄的子目錄中，你可以使用 <code>.</code> 字元來指定目錄層級。例如，假設我們有一個元件位於 <code>App\View\Components\Inputs\Button.php</code>，那麼我們可以像這樣渲染它：</p>
+<div class="highlight"><pre><span></span><code>&lt;x-inputs.button/&gt;
+</code></pre></div>
+<p>如果你想有條件地渲染你的元件，你可以在你的元件類上定義一個 <code>shouldRender</code> 方法。如果 <code>shouldRender</code> 方法返回 <code>false</code>，該元件將不會被渲染。</p>
+<div class="highlight"><pre><span></span><code>use Illuminate\Support\Str;
+
+/**
+ * 該元件是否應該被渲染
+ */
+public function shouldRender(): bool
+{
+    return Str::length($this-&gt;message) &gt; 0;
+}
+</code></pre></div>
+<h3 id="_15">傳遞資料到元件中<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
+<p>你可以使用 HTML 屬性傳遞資料到 Blade 元件中。普通的值可以通過簡單的 HTML 屬性來傳遞給元件。PHP 表示式和變數應該通過以 <code>:</code> 字元作為前綴的變數來進行傳遞：</p>
+<div class="highlight"><pre><span></span><code>&lt;x-alert type=&quot;error&quot; :message=&quot;$message&quot;/&gt;
+</code></pre></div>
+<p>你應該在類的構造器中定義元件的必要資料。在元件的檢視中，元件的所有 public 類型的屬性都是可用的。不必通過元件類的 <code>render</code> 方法傳遞：</p>
+<div class="highlight"><pre><span></span><code>&lt;?php
+
+namespace App\View\Components;
+
+use Illuminate\View\Component;
+use Illuminate\View\View;
+
+class Alert extends Component
+{
+    /**
+     * 建立元件實例。
+     */
+    public function __construct(
+        public string $type,
+        public string $message,
+    ) {}
+
+    /**
+     * 獲取代表該元件的檢視/內容
+     */
+    public function render(): View
+    {
+        return view(&#39;components.alert&#39;);
+    }
+}
+</code></pre></div>
+<p>渲染元件時，你可以回顯變數名來顯示元件的 public 變數的內容：</p>
+<div class="highlight"><pre><span></span><code>&lt;div class=&quot;alert alert-{{ $type }}&quot;&gt;
+    {{ $message }}
+&lt;/div&gt;
+</code></pre></div>
+<h4 id="casing">命名方式（Casing）<a class="headerlink" href="#casing" title="Permanent link">&para;</a></h4>
+<p>元件的構造器的參數應該使用 <code>駝峰式</code> 類型，在 HTML 屬性中引用參數名時應該使用 <code>短橫線隔開式 kebab-case ：單詞與單詞之間使用短橫線 - 進行連接）</code> 。例如，給定如下的元件構造器：</p>
+<div class="highlight"><pre><span></span><code>/**
+ * 建立一個元件實例
+ */
+public function __construct(
+    public string $alertType,
+) {}
+</code></pre></div>
+<p><code>$alertType</code>  參數可以像這樣使用：</p>
+<div class="highlight"><pre><span></span><code>&lt;x-alert alert-type=&quot;danger&quot; /&gt;
+</code></pre></div>
+<h4 id="_16">短屬性語法/省略屬性語法<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
+<p>當向元件傳遞屬性時，你也可以使用「短屬性語法/省略屬性語法」（省略屬性書寫）。這通常很方便，因為屬性名稱經常與它們對應的變數名稱相匹配。</p>
+<div class="highlight"><pre><span></span><code>{{-- 短屬性語法/省略屬性語法... --}}
+&lt;x-profile :$userId :$name /&gt;
+
+{{-- 等價於... --}}
+&lt;x-profile :user-id=&quot;$userId&quot; :name=&quot;$name&quot; /&gt;
+</code></pre></div>
+<h4 id="_17">轉義屬性渲染<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
+<p>因為一些 JavaScript 框架，例如 Alpine.js 還可以使用冒號前綴屬性，你可以使用雙冒號 (<code>::</code>) 前綴通知 Blade 屬性不是 PHP 表示式。例如，給定以下元件：</p>
+<div class="highlight"><pre><span></span><code>&lt;x-button ::class=&quot;{ danger: isDeleting }&quot;&gt;
+    Submit
+&lt;/x-button&gt;
+</code></pre></div>
+<p>Blade 將渲染出以下 HTML 內容：</p>
+<div class="highlight"><pre><span></span><code>&lt;button :class=&quot;{ danger: isDeleting }&quot;&gt;
+    Submit
+&lt;/button&gt;
+</code></pre></div>
+<h4 id="_18">#### 元件方法<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
+<p>除了元件範本可用的公共變數外，還可以呼叫元件上的任何公共方法。例如，假設一個元件有一個 <code>isSelected</code> 方法：</p>
+<div class="highlight"><pre><span></span><code>/**
+ * 確定給定選項是否為當前選定的選項。
+ */
+public function isSelected(string $option): bool
+{
+    return $option === $this-&gt;selected;
+}
+</code></pre></div>
+<p>你可以通過呼叫與方法名稱匹配的變數，從元件範本執行此方法：</p>
+<div class="highlight"><pre><span></span><code>&lt;option {{ $isSelected($value) ? &#39;selected&#39; : &#39;&#39; }} value=&quot;{{ $value }}&quot;&gt;
+    {{ $label }}
+&lt;/option&gt;
+</code></pre></div>
+<h4 id="_19">訪問元件類中的屬性和插槽<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
+<p>Blade 元件還允許你訪問類的 render 方法中的元件名稱、屬性和插槽。但是，為了訪問這些資料，應該從元件的 <code>render</code> 方法返回閉包。閉包將接收一個  <code>$data</code> 陣列作為它的唯一參數。此陣列將包含幾個元素，這些元素提供有關元件的資訊：</p>
+<div class="highlight"><pre><span></span><code>use Closure;
+
+/**
+ * 獲取表示元件的檢視 / 內容
+ */
+public function render(): Closure
+{
+    return function (array $data) {
+        // $data[&#39;componentName&#39;];
+        // $data[&#39;attributes&#39;];
+        // $data[&#39;slot&#39;];
+
+        return &#39;&lt;div&gt;Components content&lt;/div&gt;&#39;;
+    };
+}
+</code></pre></div>
+<p><code>componentName</code> 等於 <code>x-</code> 前綴後面的 HTML 標記中使用的名稱。所以 <code>&lt;x-alert /&gt;</code> 的 <code>componentName</code> 將是 <code>alert</code> 。 <code>attributes</code> 元素將包含 HTML 標記上的所有屬性。 <code>slot</code> 元素是一個 <code>Illuminate\Support\HtmlString</code>實例，包含元件的插槽內容。</p>
+<p>閉包應該返回一個字串。如果返回的字串與現有檢視相對應，則將呈現該檢視；否則，返回的字串將作為內聯 Blade 檢視進行計算。</p>
+<h4 id="_20">附加依賴項<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
+<p>如果你的元件需要引入來自 Laravel 的 <a href="/docs/laravel/10.x/container">服務容器</a>的依賴項，你可以在元件的任何資料屬性之前列出這些依賴項，這些依賴項將由容器自動注入：</p>
+<div class="highlight"><pre><span></span><code><span class="x">use App\Services\AlertCreator;</span>
+
+<span class="x">/**</span>
+<span class="x"> * 建立元件實例</span>
+<span class="x"> */</span>
+<span class="x">public function __construct(</span>
+<span class="x">    public AlertCreator $creator,</span>
+<span class="x">    public string $type,</span>
+<span class="x">    public string $message,</span>
+<span class="x">) {}</span>
+</code></pre></div>
+<h4 id="_21">隱藏屬性/方法<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h4>
+<p>如果要防止某些公共方法或屬性作為變數公開給元件範本，可以將它們新增到元件的 <code>$except</code> 陣列屬性中：</p>
+<div class="highlight"><pre><span></span><code>&lt;?php
+
+namespace App\View\Components;
+
+use Illuminate\View\Component;
+
+class Alert extends Component
+{
+    /**
+     * 不應向元件範本公開的屬性/方法。
+     *
+     * @var array
+     */
+    protected $except = [&#39;type&#39;];
+
+    /**
+     * Create the component instance.
+     */
+    public function __construct(
+        public string $type,
+    ) {}
+}
+</code></pre></div>
+<h3 id="_22">元件屬性<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h3>
+<p>我們已經研究了如何將資料屬性傳遞給元件；但是，有時你可能需要指定額外的 HTML 屬性，例如  <code>class</code>，這些屬性不是元件運行所需的資料的一部分。通常，你希望將這些附加屬性向下傳遞到元件範本的根元素。例如，假設我們要呈現一個 <code>alert</code> 元件，如下所示：</p>
+<div class="highlight"><pre><span></span><code>&lt;x-alert type=&quot;error&quot; :message=&quot;$message&quot; class=&quot;mt-4&quot;/&gt;
+</code></pre></div>
+<p>所有不屬於元件的構造器的屬性都將被自動新增到元件的「屬性包」中。該屬性包將通過 <code>$attributes</code> 變數自動傳遞給元件。你可以通過回顯這個變數來渲染所有的屬性：</p>
+<div class="highlight"><pre><span></span><code>&lt;div {{ $attributes }}&gt;
+    &lt;!-- 元件內容 --&gt;
+&lt;/div&gt;
+</code></pre></div>
+<blockquote>
+<p>**注意：**此時不支援在元件中使用諸如 <code>@env</code> 這樣的指令。例如， <code>&lt;x-alert :live="@env('production')"/&gt;</code> 不會被編譯。</p>
+</blockquote>
+<h4 id="_23">默認 / 合併屬性<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h4>
+<p>某些時候，你可能需要指定屬性的預設值，或將其他值合併到元件的某些屬性中。為此，你可以使用屬性包的 <code>merge</code>方法。 此方法對於定義一組應始終應用於元件的默認 CSS 類特別有用：</p>
+<div class="highlight"><pre><span></span><code>&lt;div {{ $attributes-&gt;merge([&#39;class&#39; =&gt; &#39;alert alert-&#39;.$type]) }}&gt;
+    {{ $message }}
+&lt;/div&gt;
+</code></pre></div>
+<p>假設我們如下方所示使用該元件：</p>
+<div class="highlight"><pre><span></span><code>&lt;x-alert type=&quot;error&quot; :message=&quot;$message&quot; class=&quot;mb-4&quot;/&gt;
+</code></pre></div>
+<p>最終呈現的元件 HTML 將如下所示：</p>
+<div class="highlight"><pre><span></span><code>&lt;div class=&quot;alert alert-error mb-4&quot;&gt;
+    &lt;!-- Contents of the $message variable --&gt;
+&lt;/div&gt;
+</code></pre></div>
+<h4 id="_24">有條件地合併類<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h4>
+<p>有時你可能希望在給定條件為 <code>true</code> 時合併類。 你可以通過該 <code>class</code> 方法完成此操作，該方法接受一個類陣列，其中陣列鍵包含你希望新增的一個或多個類，而值是一個布林值表示式。如果陣列元素有一個數字鍵，它將始終包含在呈現的類列表中：</p>
+<div class="highlight"><pre><span></span><code>&lt;div {{ $attributes-&gt;class([&#39;p-4&#39;, &#39;bg-red&#39; =&gt; $hasError]) }}&gt;
+    {{ $message }}
+&lt;/div&gt;
+</code></pre></div>
+<p>如果需要將其他屬性合併到元件中，可以將 <code>merge</code> 方法連結到 <code>class</code> 方法中：</p>
+<div class="highlight"><pre><span></span><code>&lt;button {{ $attributes-&gt;class([&#39;p-4&#39;])-&gt;merge([&#39;type&#39; =&gt; &#39;button&#39;]) }}&gt;
+    {{ $slot }}
+&lt;/button&gt;
+</code></pre></div>
+<blockquote>
+<p>**技巧：**如果你需要有條件地編譯不應接收合併屬性的其他 HTML 元素上的類，你可以使用 <a href="#conditional-classes"><code>@class</code> 指令</a>。</p>
+</blockquote>
+<h4 id="class_1">非 class 屬性的合併<a class="headerlink" href="#class_1" title="Permanent link">&para;</a></h4>
+<p>當合並非 <code>class</code> 屬性的屬性時，提供給 <code>merge</code> 方法的值將被視為該屬性的「default」值。但是，與 <code>class</code> 屬性不同，這些屬性不會與注入的屬性值合併。相反，它們將被覆蓋。例如， <code>button</code> 元件的實現可能如下所示：</p>
+<div class="highlight"><pre><span></span><code>&lt;button {{ $attributes-&gt;merge([&#39;type&#39; =&gt; &#39;button&#39;]) }}&gt;
+    {{ $slot }}
+&lt;/button&gt;
+</code></pre></div>
+<p>若要使用自訂 <code>type</code> 呈現按鈕元件，可以在使用該元件時指定它。如果未指定 <code>type</code>，則將使用 <code>button</code> 作為 type 值：</p>
+<div class="highlight"><pre><span></span><code>&lt;x-button type=&quot;submit&quot;&gt;
+    Submit
+&lt;/x-button&gt;
+</code></pre></div>
+<p>本例中 <code>button</code> 元件渲染的 HTML 為：</p>
+<div class="highlight"><pre><span></span><code>&lt;button type=&quot;submit&quot;&gt;
+    Submit
+&lt;/button&gt;
+</code></pre></div>
+<p>如果希望 <code>class</code> 以外的屬性將其預設值和注入值連接在一起，可以使用 <code>prepends</code> 方法。在本例中， <code>data-controller</code> 屬性始終以 <code>profile-controller</code> 開頭，並且任何其他注入 <code>data-controller</code> 的值都將放在該預設值之後：</p>
+<div class="highlight"><pre><span></span><code>&lt;div {{ $attributes-&gt;merge([&#39;data-controller&#39; =&gt; $attributes-&gt;prepends(&#39;profile-controller&#39;)]) }}&gt;
+    {{ $slot }}
+&lt;/div&gt;
+</code></pre></div>
+<h4 id="_25">保留屬性 / 過濾屬性<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h4>
+<p>可以使用 <code>filter</code> 方法篩選屬性。如果希望在屬性包中保留屬性，此方法接受應返回 <code>true</code> 的閉包：</p>
+<div class="highlight"><pre><span></span><code>{{ $attributes-&gt;filter(fn (string $value, string $key) =&gt; $key == &#39;foo&#39;) }}
+</code></pre></div>
+<p>為了方便起見，你可以使用 <code>whereStartsWith</code> 方法檢索其鍵以給定字串開頭的所有屬性：</p>
+<div class="highlight"><pre><span></span><code>{{ $attributes-&gt;whereStartsWith(&#39;wire:model&#39;) }}
+</code></pre></div>
+<p>相反，該 <code>whereDoesntStartWith</code> 方法可用於排除鍵以給定字串開頭的所有屬性：</p>
+<div class="highlight"><pre><span></span><code>{{ $attributes-&gt;whereDoesntStartWith(&#39;wire:model&#39;) }}
+</code></pre></div>
+<p>使用 <code>first</code> 方法，可以呈現給定屬性包中的第一個屬性：</p>
+<div class="highlight"><pre><span></span><code>{{ $attributes-&gt;whereStartsWith(&#39;wire:model&#39;)-&gt;first() }}
+</code></pre></div>
+<p>如果要檢查元件上是否存在屬性，可以使用 <code>has</code> 方法。此方法接受屬性名稱作為其唯一參數，並返回一個布林值，指示該屬性是否存在：</p>
+<div class="highlight"><pre><span></span><code>@if ($attributes-&gt;has(&#39;class&#39;))
+    &lt;div&gt;Class attribute is present&lt;/div&gt;
+@endif
+</code></pre></div>
+<p>你可以使用 <code>get</code> 方法檢索特定屬性的值：</p>
+<div class="highlight"><pre><span></span><code>{{ $attributes-&gt;get(&#39;class&#39;) }}
+</code></pre></div>
+<h3 id="_26">保留關鍵字<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h3>
+<p>默認情況下，為了渲染元件，會保留一些關鍵字供 Blade 內部使用。以下關鍵字不能定義為元件中的公共屬性或方法名稱：</p>
+<div class="content-list">
+<ul>
+<li><code>data</code></li>
+<li><code>render</code></li>
+<li><code>resolveView</code></li>
+<li><code>shouldRender</code></li>
+<li><code>view</code></li>
+<li><code>withAttributes</code></li>
+<li><code>withName</code></li>
+</ul>
+</div>
+<h3 id="_27">插槽<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h3>
+<p>你通常需要通過「插槽」將其他內容傳遞給元件。通過回顯 <code>$slot</code> 變數來呈現元件插槽。為了探索這個概念，我們假設 <code>alert</code> 元件具有以下內容：</p>
+<div class="highlight"><pre><span></span><code>&lt;!-- /resources/views/components/alert.blade.php --&gt;
+
+&lt;div class=&quot;alert alert-danger&quot;&gt;
+    {{ $slot }}
+&lt;/div&gt;
+</code></pre></div>
+<p>我們可以通過向元件中注入內容將內容傳遞到 <code>slot</code> ：</p>
+<div class="highlight"><pre><span></span><code>&lt;x-alert&gt;
+    &lt;strong&gt;Whoops!&lt;/strong&gt; Something went wrong!
+&lt;/x-alert&gt;
+</code></pre></div>
+<p>有時候一個元件可能需要在它內部的不同位置放置多個不同的插槽。我們來修改一下 alert 元件，使其允許注入 「title」:</p>
+<div class="highlight"><pre><span></span><code>&lt;!-- /resources/views/components/alert.blade.php --&gt;
+
+&lt;span class=&quot;alert-title&quot;&gt;{{ $title }}&lt;/span&gt;
+
+&lt;div class=&quot;alert alert-danger&quot;&gt;
+    {{ $slot }}
+&lt;/div&gt;
+</code></pre></div>
+<p>你可以使用 <code>x-slot</code> 標籤來定義命名插槽的內容。任何沒有在 <code>x-slot</code> 標籤中的內容都將傳遞給  <code>$slot</code> 變數中的元件：</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;x-alert&gt;</span>
+<span class="w">    </span><span class="nt">&lt;x-slot:title&gt;</span>
+<span class="w">        </span>Server<span class="w"> </span>Error
+<span class="w">    </span><span class="nt">&lt;/x-slot&gt;</span>
+
+<span class="w">    </span><span class="nt">&lt;strong&gt;</span>Whoops!<span class="nt">&lt;/strong&gt;</span><span class="w"> </span>Something<span class="w"> </span>went<span class="w"> </span>wrong!
+<span class="nt">&lt;/x-alert&gt;</span>
+</code></pre></div>
+<h4 id="_28">範疇插槽<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h4>
+<p>如果你使用諸如 Vue 這樣的 JavaScript 框架，那麼你應該很熟悉「範疇插槽」，它允許你從插槽中的元件訪問資料或者方法。 Laravel 中也有類似的用法，只需在你的元件中定義 public 方法或屬性，並且使用 <code>$component</code> 變數來訪問插槽中的元件。在此示例中，我們將假設元件在其元件類上定義了 <code>x-alert</code> 一個公共方法： <code>formatAlert</code></p>
+<div class="highlight"><pre><span></span><code>&lt;x-alert&gt;
+    &lt;x-slot:title&gt;
+        {{ $component-&gt;formatAlert(&#39;Server Error&#39;) }}
+    &lt;/x-slot&gt;
+
+    &lt;strong&gt;Whoops!&lt;/strong&gt; Something went wrong!
+&lt;/x-alert&gt;
+</code></pre></div>
+<h4 id="_29">插槽屬性<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h4>
+<p>像 Blade 元件一樣，你可以為插槽分配額外的 <a href="#component-attributes">屬性</a> ，例如 CSS 類名：</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;x-card</span><span class="w"> </span><span class="na">class=</span><span class="s">&quot;shadow-sm&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;x-slot:heading</span><span class="w"> </span><span class="na">class=</span><span class="s">&quot;font-bold&quot;</span><span class="nt">&gt;</span>
+<span class="w">        </span>Heading
+<span class="w">    </span><span class="nt">&lt;/x-slot&gt;</span>
+
+<span class="w">    </span>Content
+
+<span class="w">    </span><span class="nt">&lt;x-slot:footer</span><span class="w"> </span><span class="na">class=</span><span class="s">&quot;text-sm&quot;</span><span class="nt">&gt;</span>
+<span class="w">        </span>Footer
+<span class="w">    </span><span class="nt">&lt;/x-slot&gt;</span>
+<span class="nt">&lt;/x-card&gt;</span>
+</code></pre></div>
+<p>要與插槽屬性互動，你可以訪問 <code>attributes</code> 插槽變數的屬性。有關如何與屬性互動的更多資訊，請參閱有關 <a href="#component-attributes">元件屬性</a> 的文件：</p>
+<div class="highlight"><pre><span></span><code>@props([
+    &#39;heading&#39;,
+    &#39;footer&#39;,
+])
+
+&lt;div {{ $attributes-&gt;class([&#39;border&#39;]) }}&gt;
+    &lt;h1 {{ $heading-&gt;attributes-&gt;class([&#39;text-lg&#39;]) }}&gt;
+        {{ $heading }}
+    &lt;/h1&gt;
+
+    {{ $slot }}
+
+    &lt;footer {{ $footer-&gt;attributes-&gt;class([&#39;text-gray-700&#39;]) }}&gt;
+        {{ $footer }}
+    &lt;/footer&gt;
+&lt;/div&gt;
+</code></pre></div>
+<h3 id="_30">內聯元件檢視<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h3>
+<p>對於小型元件而言，管理元件類和元件檢視範本可能會很麻煩。因此，你可以從 <code>render</code> 方法中返回元件的內容：</p>
+<div class="highlight"><pre><span></span><code>/**
+ * 獲取元件的檢視 / 內容。
+ */
+public function render(): string
+{
+    return &lt;&lt;&lt;&#39;blade&#39;
+        &lt;div class=&quot;alert alert-danger&quot;&gt;
+            {{ $slot }}
+        &lt;/div&gt;
+    blade;
+}
+</code></pre></div>
+<h4 id="_31">生成內聯檢視元件<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h4>
+<p>要建立一個渲染內聯檢視的元件，你可以在運行 <code>make:component</code> 命令時使用  <code>inline</code> ：</p>
+<div class="highlight"><pre><span></span><code>php<span class="w"> </span>artisan<span class="w"> </span>make:component<span class="w"> </span>Alert<span class="w"> </span>--inline
+</code></pre></div>
+<h3 id="_32">動態元件<a class="headerlink" href="#_32" title="Permanent link">&para;</a></h3>
+<p>有時你可能需要渲染一個元件，但直到執行階段才知道應該渲染哪個元件。在這種情況下, 你可以使用 Laravel 內建的 <code>dynamic-component</code> 元件, 根據執行階段的值或變數來渲染元件:</p>
+<div class="highlight"><pre><span></span><code>&lt;x-dynamic-component :component=&quot;$componentName&quot; class=&quot;mt-4&quot; /&gt;
+</code></pre></div>
+<h3 id="_33">手動註冊元件<a class="headerlink" href="#_33" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>**注意：**以下關於手動註冊元件的文件主要適用於那些正在編寫包含檢視元件的 Laravel 包的使用者。如果你不是在寫包，這一部分的元件文件可能與你無關。</p>
+</blockquote>
+<p>當為自己的應用程式編寫元件時，元件會在<code>app/View/Components</code>目錄和<code>resources/views/components</code>目錄下被自動發現。</p>
+<p>但是，如果你正在建立一個利用 Blade 元件的包，或者將元件放在非傳統的目錄中，你將需要手動註冊你的元件類和它的 HTML 標籤別名，以便 Laravel 知道在哪裡可以找到這個元件。你通常應該在你的包的服務提供者的<code>boot</code>方法中註冊你的元件：</p>
+<div class="highlight"><pre><span></span><code>use Illuminate\Support\Facades\Blade;
+use VendorPackage\View\Components\AlertComponent;
+
+/**
+ * 註冊你的包的服務。
+ */
+public function boot(): void
+{
+    Blade::component(&#39;package-alert&#39;, AlertComponent::class);
+}
+</code></pre></div>
+<p>一旦你的元件被註冊，它就可以使用它的標籤別名進行渲染。</p>
+<div class="highlight"><pre><span></span><code>&lt;x-package-alert/&gt;
+</code></pre></div>
+<h4 id="_34">自動載入包元件<a class="headerlink" href="#_34" title="Permanent link">&para;</a></h4>
+<p>另外，你可以使用<code>componentNamespace</code>方法來自動載入元件類。例如，一個<code>Nightshade</code>包可能有<code>Calendar</code>和<code>ColorPicker</code>元件，它們位於<code>PackageViews\Components</code>命名空間中。</p>
+<div class="highlight"><pre><span></span><code>use Illuminate\Support\Facades\Blade;
+
+/**
+ * 註冊你的包的服務。
+ */
+public function boot(): void
+{
+    Blade::componentNamespace(&#39;Nightshade\\Views\\Components&#39;, &#39;nightshade&#39;);
+}
+</code></pre></div>
+<p>這將允許使用<code>package-name::</code>語法的供應商名稱空間來使用包的元件。</p>
+<div class="highlight"><pre><span></span><code>&lt;x-nightshade::calendar /&gt;
+&lt;x-nightshade::color-picker /&gt;
+</code></pre></div>
+<p>Blade 將通過元件名稱的駝峰式大小寫 (pascal-casing) 自動檢測與該元件連結的類。也支援使用 "點 "符號的子目錄。</p>
+<h3 id="_35">匿名元件<a class="headerlink" href="#_35" title="Permanent link">&para;</a></h3>
+<p>與行內元件相同，匿名元件提供了一個通過單個檔案管理元件的機制。然而，匿名元件使用的是一個沒有關聯類的單一檢視檔案。要定義一個匿名元件，你只需將 Blade 範本置於 <code>resources/views/components</code> 目錄下。例如，假設你在 <code>resources/views/components/alert.blade.php</code>中定義了一個元件：</p>
+<div class="highlight"><pre><span></span><code>&lt;x-alert/&gt;
+</code></pre></div>
+<p>如果元件在 <code>components</code> 目錄的子目錄中，你可以使用 <code>.</code> 字元來指定其路徑。例如，假設元件被定義在 <code>resources/views/components/inputs/button.blade.php</code> 中，你可以像這樣渲染它：</p>
+<div class="highlight"><pre><span></span><code>&lt;x-inputs.button/&gt;
+</code></pre></div>
+<h4 id="_36">匿名索引元件<a class="headerlink" href="#_36" title="Permanent link">&para;</a></h4>
+<p>有時，當一個元件由許多 Blade 範本組成時，你可能希望將給定元件的範本分組到一個目錄中。例如，想像一個具有以下目錄結構的「可摺疊」元件：</p>
+<div class="highlight"><pre><span></span><code>/resources/views/components/accordion.blade.php
+/resources/views/components/accordion/item.blade.php
+</code></pre></div>
+<p>此目錄結構允許你像這樣呈現元件及其項目：</p>
+<div class="highlight"><pre><span></span><code>&lt;x-accordion&gt;
+    &lt;x-accordion.item&gt;
+        ...
+    &lt;/x-accordion.item&gt;
+&lt;/x-accordion&gt;
+</code></pre></div>
+<p>然而，為了通過 <code>x-accordion</code> 渲染元件， 我們被迫將「索引」元件範本放置在 <code>resources/views/components</code> 目錄中，而不是與其他相關的範本巢狀在 <code>accordion</code> 目錄中。</p>
+<p>幸運的是，Blade 允許你 <code>index.blade.php</code> 在元件的範本目錄中放置檔案。當 <code>index.blade.php</code> 元件存在範本時，它將被呈現為元件的「根」節點。因此，我們可以繼續使用上面示例中給出的相同 Blade 語法；但是，我們將像這樣調整目錄結構：</p>
+<div class="highlight"><pre><span></span><code>/resources/views/components/accordion/index.blade.php
+/resources/views/components/accordion/item.blade.php
+</code></pre></div>
+<h4 id="_37">資料 / 屬性<a class="headerlink" href="#_37" title="Permanent link">&para;</a></h4>
+<p>由於匿名元件沒有任何關聯類，你可能想要區分哪些資料應該被作為變數傳遞給元件，而哪些屬性應該被存放於 <a href="#component-attributes">屬性包</a>中。</p>
+<p>你可以在元件的 Blade 範本的頂層使用 <code>@props</code> 指令來指定哪些屬性應該作為資料變數。元件中的其他屬性都將通過屬性包的形式提供。如果你想要為某個資料變數指定一個預設值，你可以將屬性名作為陣列鍵，預設值作為陣列值來實現：</p>
+<div class="highlight"><pre><span></span><code>&lt;!-- /resources/views/components/alert.blade.php --&gt;
+
+@props([&#39;type&#39; =&gt; &#39;info&#39;, &#39;message&#39;])
+
+&lt;div {{ $attributes-&gt;merge([&#39;class&#39; =&gt; &#39;alert alert-&#39;.$type]) }}&gt;
+    {{ $message }}
+&lt;/div&gt;
+</code></pre></div>
+<p>給定上面的元件定義，我們可以像這樣渲染元件：</p>
+<div class="highlight"><pre><span></span><code>&lt;x-alert type=&quot;error&quot; :message=&quot;$message&quot; class=&quot;mb-4&quot;/&gt;
+</code></pre></div>
+<h4 id="_38">訪問父元件資料<a class="headerlink" href="#_38" title="Permanent link">&para;</a></h4>
+<p>有時你可能希望從子元件中的父元件訪問資料。在這些情況下，你可以使用該 <code>@aware</code> 指令。例如，假設我們正在建構一個由父 <code>&lt;x-menu&gt;</code> 和 子組成的複雜菜單元件 <code>&lt;x-menu.item&gt;</code>：</p>
+<div class="highlight"><pre><span></span><code>&lt;x-menu color=&quot;purple&quot;&gt;
+    &lt;x-menu.item&gt;...&lt;/x-menu.item&gt;
+    &lt;x-menu.item&gt;...&lt;/x-menu.item&gt;
+&lt;/x-menu&gt;
+</code></pre></div>
+<p>該 <code>&lt;x-menu&gt;</code> 元件可能具有如下實現：</p>
+<div class="highlight"><pre><span></span><code>&lt;!-- /resources/views/components/menu/index.blade.php --&gt;
+
+@props([&#39;color&#39; =&gt; &#39;gray&#39;])
+
+&lt;ul {{ $attributes-&gt;merge([&#39;class&#39; =&gt; &#39;bg-&#39;.$color.&#39;-200&#39;]) }}&gt;
+    {{ $slot }}
+&lt;/ul&gt;
+</code></pre></div>
+<p>因為 <code>color</code> 只被傳遞到父級 (<code>&lt;x-menu&gt;</code>)中，所以 <code>&lt;x-menu.item&gt;</code> 在內部是不可用的。但是，如果我們使用該 <code>@aware</code> 指令，我們也可以使其在內部可用 <code>&lt;x-menu.item&gt;</code> ：</p>
+<div class="highlight"><pre><span></span><code>&lt;!-- /resources/views/components/menu/item.blade.php --&gt;
+
+@aware([&#39;color&#39; =&gt; &#39;gray&#39;])
+
+&lt;li {{ $attributes-&gt;merge([&#39;class&#39; =&gt; &#39;text-&#39;.$color.&#39;-800&#39;]) }}&gt;
+    {{ $slot }}
+&lt;/li&gt;
+</code></pre></div>
+<blockquote>
+<p>**注意：**該 <code>@aware</code> 指令無法訪問未通過 HTML 屬性顯式傳遞給父元件的父資料。<code>@aware</code> 指令 不能訪問未顯式傳遞給父元件的預設值 <code>@props</code> 。</p>
+</blockquote>
+<h3 id="_39">匿名元件路徑<a class="headerlink" href="#_39" title="Permanent link">&para;</a></h3>
+<p>如前所述，匿名元件通常是通過在你的<code>resources/views/components</code>目錄下放置一個 Blade 範本來定義的。然而，你可能偶爾想在 Laravel 註冊其他匿名元件的路徑，除了默認路徑。</p>
+<p><code>anonymousComponentPath</code>方法接受匿名元件位置的「路徑」作為它的第一個參數，並接受一個可選的「命名空間」作為它的第二個參數，元件應該被放在這個命名空間下。通常，這個方法應該從你的應用程式的一個<a href="/docs/laravel/10.x/providers">服務提供者</a> 的<code>boot</code>方法中呼叫。</p>
+<div class="highlight"><pre><span></span><code>/**
+ * 引導任何應用服務。
+ */
+public function boot(): void
+{
+    Blade::anonymousComponentPath(__DIR__.&#39;/../components&#39;);
+}
+</code></pre></div>
+<p>當元件路徑被註冊而沒有指定前綴時，就像上面的例子一樣，它們在你的 Blade 元件中可能也沒有相應的前綴。例如，如果一個<code>panel.blade.php</code>元件存在於上面註冊的路徑中，它可能會被呈現為這樣。</p>
+<div class="highlight"><pre><span></span><code>&lt;x-panel /&gt;
+</code></pre></div>
+<p>前綴「命名空間」可以作為第二個參數提供給<code>anonymousComponentPath</code>方法。</p>
+<div class="highlight"><pre><span></span><code>Blade::anonymousComponentPath(__DIR__.&#39;/../components&#39;, &#39;dashboard&#39;);
+</code></pre></div>
+<p>當提供一個前綴時，在該「命名空間」內的元件可以在渲染時將該元件的命名空間前綴到該元件的名稱。</p>
+<div class="highlight"><pre><span></span><code>&lt;x-dashboard::panel /&gt;
+</code></pre></div>
+<h2 id="_40">建構佈局<a class="headerlink" href="#_40" title="Permanent link">&para;</a></h2>
+<h3 id="_41">使用元件佈局<a class="headerlink" href="#_41" title="Permanent link">&para;</a></h3>
+<p>大多數 web 應用程式在不同的頁面上有相同的總體佈局。如果我們必須在建立的每個檢視中重複整個佈局 HTML，那麼維護我們的應用程式將變得非常麻煩和困難。謝天謝地，將此佈局定義為單個 <a href="#components">Blade 元件</a> 並在整個應用程式中非常方便地使用它。</p>
+<h4 id="_42">定義佈局元件<a class="headerlink" href="#_42" title="Permanent link">&para;</a></h4>
+<p>例如，假設我們正在建構一個「todo list」應用程式。我們可以定義如下所示的 <code>layout</code> 元件：</p>
+<div class="highlight"><pre><span></span><code>&lt;!-- resources/views/components/layout.blade.php --&gt;
+
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;{{ $title ?? &#39;Todo Manager&#39; }}&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;h1&gt;Todos&lt;/h1&gt;
+        &lt;hr/&gt;
+        {{ $slot }}
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre></div>
+<h4 id="_43">應用佈局元件<a class="headerlink" href="#_43" title="Permanent link">&para;</a></h4>
+<p>一旦定義了 <code>layout</code> 元件，我們就可以建立一個使用該元件的 Blade 檢視。在本例中，我們將定義一個顯示任務列表的簡單檢視：</p>
+<div class="highlight"><pre><span></span><code>&lt;!-- resources/views/tasks.blade.php --&gt;
+
+&lt;x-layout&gt;
+    @foreach ($tasks as $task)
+        {{ $task }}
+    @endforeach
+&lt;/x-layout&gt;
+</code></pre></div>
+<p>請記住，注入到元件中的內容將提供給 <code>layout</code> 元件中的默認 <code>$slot</code> 變數。正如你可能已經注意到的，如果提供了 <code>$title</code> 插槽，那麼我們的 <code>layout</code> 也會尊從該插槽；否則，將顯示默認的標題。我們可以使用元件文件中討論的標準槽語法從任務列表檢視中插入自訂標題。 我們可以使用<a href="#components">元件文件</a>中討論的標準插槽語法從任務列表檢視中注入自訂標題：</p>
+<div class="highlight"><pre><span></span><code>&lt;!-- resources/views/tasks.blade.php --&gt;
+
+&lt;x-layout&gt;
+    &lt;x-slot:title&gt;
+        Custom Title
+    &lt;/x-slot&gt;
+
+    @foreach ($tasks as $task)
+        {{ $task }}
+    @endforeach
+&lt;/x-layout&gt;
+</code></pre></div>
+<p>現在我們已經定義了佈局和任務列表檢視，我們只需要從路由中返回 <code>task</code> 檢視即可：</p>
+<div class="highlight"><pre><span></span><code>use App\Models\Task;
+
+Route::get(&#39;/tasks&#39;, function () {
+    return view(&#39;tasks&#39;, [&#39;tasks&#39; =&gt; Task::all()]);
+});
+</code></pre></div>
+<h3 id="_44">使用範本繼承進行佈局<a class="headerlink" href="#_44" title="Permanent link">&para;</a></h3>
+<h4 id="_45">定義一個佈局<a class="headerlink" href="#_45" title="Permanent link">&para;</a></h4>
+<p>佈局也可以通過 「範本繼承」 建立。在引入 <a href="#components">元件</a> 之前，這是建構應用程式的主要方法。</p>
+<p>讓我們看一個簡單的例子做開頭。首先，我們將檢查頁面佈局。由於大多數 web 應用程式在不同的頁面上保持相同的總體佈局，因此將此佈局定義為單一檢視非常方便：</p>
+<div class="highlight"><pre><span></span><code>&lt;!-- resources/views/layouts/app.blade.php --&gt;
+
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;App Name - @yield(&#39;title&#39;)&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        @section(&#39;sidebar&#39;)
+            這是一個主要的側邊欄
+        @show
+
+        &lt;div class=&quot;container&quot;&gt;
+            @yield(&#39;content&#39;)
+        &lt;/div&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre></div>
+<p>如你所見，此檔案包含經典的 HTML 標記。但是，請注意 <code>@section</code> 和 <code>@yield</code> 指令。顧名思義， <code>@section</code> 指令定義內容的一部分，而 <code>@yield</code> 指令用於顯示給定部分的內容。</p>
+<p>現在我們已經為應用程式定義了一個佈局，讓我們定義一個繼承該佈局的子頁面。</p>
+<h4 id="_46">繼承佈局<a class="headerlink" href="#_46" title="Permanent link">&para;</a></h4>
+<p>定義子檢視時，請使用 <code>@extends</code> Blade 指令指定子檢視應「繼承」的佈局。擴展 Blade 佈局的檢視可以使用 <code>@section</code> 指令將內容注入佈局的節點中。請記住，如上面的示例所示，這些部分的內容將使用 <code>@yield</code> 顯示在佈局中：</p>
+<div class="highlight"><pre><span></span><code>&lt;!-- resources/views/child.blade.php --&gt;
+
+@extends(&#39;layouts.app&#39;)
+
+@section(&#39;title&#39;, &#39;Page Title&#39;)
+
+@section(&#39;sidebar&#39;)
+    @parent
+
+    &lt;p&gt;This is appended to the master sidebar.&lt;/p&gt;
+@endsection
+
+@section(&#39;content&#39;)
+    &lt;p&gt;This is my body content.&lt;/p&gt;
+@endsection
+</code></pre></div>
+<p>在本例中，<code>sidebar</code> 部分使用 <code>@parent</code>  指令將內容追加（而不是覆蓋）到局部的側欄位置。在呈現檢視時， <code>@parent</code> 指令將被佈局的內容替換。</p>
+<blockquote>
+<p><strong>技巧：**與前面的示例相反，本 <code>sidebar</code> 節以 <code>@endsection</code> 結束，而不是以 <code>@show</code> 結束。 <code>@endsection</code> 指令將只定義一個節，<code>@show</code> 將定義並 **立即 yield</strong> 該節。</p>
+</blockquote>
+<p>該 <code>@yield</code> 指令還接受預設值作為其第二個參數。如果要生成的節點未定義，則將呈現此內容：</p>
+<div class="highlight"><pre><span></span><code>@yield(&#39;content&#39;, &#39;Default content&#39;)
+</code></pre></div>
+<h2 id="_47">表單<a class="headerlink" href="#_47" title="Permanent link">&para;</a></h2>
+<h3 id="csrf">CSRF 欄位<a class="headerlink" href="#csrf" title="Permanent link">&para;</a></h3>
+<p>無論何時在應用程式中定義 HTML 表單，都應該在表單中包含一個隱藏的 CSRF 令牌欄位，以便 <a href="/docs/laravel/10.x/csrf">CSRF 保護中介軟體</a> 可以驗證請求。你可以使用 <code>@csrf</code> Blade 指令生成令牌欄位：</p>
+<div class="highlight"><pre><span></span><code>&lt;form method=&quot;POST&quot; action=&quot;/profile&quot;&gt;
+    @csrf
+
+    ...
+&lt;/form&gt;
+</code></pre></div>
+<h3 id="method">Method 欄位<a class="headerlink" href="#method" title="Permanent link">&para;</a></h3>
+<p>由於 HTML 表單不能發出 <code>PUT</code>、<code>PATCH</code>或 <code>DELETE</code> 請求，因此需要新增一個隱藏的 <code>_method</code> 欄位來欺騙這些 HTTP 動詞。 <code>@method</code> Blade 指令可以為你建立此欄位：</p>
+<div class="highlight"><pre><span></span><code>&lt;form action=&quot;/foo/bar&quot; method=&quot;POST&quot;&gt;
+    @method(&#39;PUT&#39;)
+
+    ...
+&lt;/form&gt;
+</code></pre></div>
+<h3 id="_48">表單校驗錯誤<a class="headerlink" href="#_48" title="Permanent link">&para;</a></h3>
+<p>該 <code>@error</code> 指令可用於快速檢查給定屬性是否存在 <a href="/docs/laravel/10.x/validation#quick-displaying-the-validation-errors">驗證錯誤消息</a> 。在 <code>@error</code> 指令中，可以回顯 <code>$message</code> 變數以顯示錯誤消息：</p>
+<div class="highlight"><pre><span></span><code>&lt;!-- /resources/views/post/create.blade.php --&gt;
+
+&lt;label for=&quot;title&quot;&gt;Post Title&lt;/label&gt;
+
+&lt;input id=&quot;title&quot;
+    type=&quot;text&quot;
+    class=&quot;@error(&#39;title&#39;) is-invalid @enderror&quot;&gt;
+
+@error(&#39;title&#39;)
+    &lt;div class=&quot;alert alert-danger&quot;&gt;{{ $message }}&lt;/div&gt;
+@enderror
+</code></pre></div>
+<p>由於該 <code>@error</code> 指令編譯為「if」語句，因此你可以在 <code>@else</code> 屬性沒有錯誤時使用該指令來呈現內容：</p>
+<div class="highlight"><pre><span></span><code>&lt;!-- /resources/views/auth.blade.php --&gt;
+
+&lt;label for=&quot;email&quot;&gt;Email address&lt;/label&gt;
+
+&lt;input id=&quot;email&quot;
+    type=&quot;email&quot;
+    class=&quot;@error(&#39;email&#39;) is-invalid @else is-valid @enderror&quot;&gt;
+</code></pre></div>
+<p>你可以將 <a href="/docs/laravel/10.x/validation#named-error-bags">特定錯誤包的名稱</a> 作為第二個參數傳遞給 <code>@error</code> 指令，以便在包含多個表單的頁面上檢索驗證錯誤消息：</p>
+<div class="highlight"><pre><span></span><code>&lt;!-- /resources/views/auth.blade.php --&gt;
+
+&lt;label for=&quot;email&quot;&gt;Email address&lt;/label&gt;
+
+&lt;input id=&quot;email&quot;
+    type=&quot;email&quot;
+    class=&quot;@error(&#39;email&#39;, &#39;login&#39;) is-invalid @enderror&quot;&gt;
+
+@error(&#39;email&#39;, &#39;login&#39;)
+    &lt;div class=&quot;alert alert-danger&quot;&gt;{{ $message }}&lt;/div&gt;
+@enderror
+</code></pre></div>
+<h2 id="_49">堆疊<a class="headerlink" href="#_49" title="Permanent link">&para;</a></h2>
+<p>Blade 允許你推送到可以在其他檢視或佈局中的其他地方渲染的命名堆疊。這對於指定子檢視所需的任何 JavaScript 庫特別有用：</p>
+<div class="highlight"><pre><span></span><code>@push(&#39;scripts&#39;)
+    &lt;script src=&quot;/example.js&quot;&gt;&lt;/script&gt;
+@endpush
+</code></pre></div>
+<p>如果你想在給定的布林值表示式評估為 <code>true</code> 時 <code>@push</code> 內容，你可以使用 <code>@pushIf</code> 指令。</p>
+<div class="highlight"><pre><span></span><code>@pushIf($shouldPush, &#39;scripts&#39;)
+    &lt;script src=&quot;/example.js&quot;&gt;&lt;/script&gt;
+@endPushIf
+</code></pre></div>
+<p>你可以根據需要多次推入堆疊。要呈現完整的堆疊內容，請將堆疊的名稱傳遞給 <code>@stack</code> 指令：</p>
+<div class="highlight"><pre><span></span><code>&lt;head&gt;
+    &lt;!-- Head Contents --&gt;
+
+    @stack(&#39;scripts&#39;)
+&lt;/head&gt;
+</code></pre></div>
+<p>如果要將內容前置到堆疊的開頭，應使用 <code>@prepend</code> 指令：</p>
+<div class="highlight"><pre><span></span><code>@push(&#39;scripts&#39;)
+    This will be second...
+@endpush
+
+// Later...
+
+@prepend(&#39;scripts&#39;)
+    This will be first...
+@endprepend
+</code></pre></div>
+<h2 id="_50">服務注入<a class="headerlink" href="#_50" title="Permanent link">&para;</a></h2>
+<p>該 <code>@inject</code> 指令可用於從 Laravel <a href="/docs/laravel/10.x/container">服務容器</a>中檢索服務。傳遞給 <code>@inject</code> 的第一個參數是要將服務放入的變數的名稱，而第二個參數是要解析的服務的類或介面名稱：</p>
+<div class="highlight"><pre><span></span><code>@inject(&#39;metrics&#39;, &#39;App\Services\MetricsService&#39;)
+
+&lt;div&gt;
+    Monthly Revenue: {{ $metrics-&gt;monthlyRevenue() }}.
+&lt;/div&gt;
+</code></pre></div>
+<h2 id="blade_2">渲染內聯 Blade 範本<a class="headerlink" href="#blade_2" title="Permanent link">&para;</a></h2>
+<p>有時你可能需要將原始 Blade 範本字串轉換為有效的 HTML。你可以使用 <code>Blade</code> 門面提供的 <code>render</code> 方法來完成此操作。該 <code>render</code> 方法接受 Blade 範本字串和提供給範本的可選資料陣列：</p>
+<div class="highlight"><pre><span></span><code><span class="x">use Illuminate\Support\Facades\Blade;</span>
+
+<span class="x">return Blade::render(&#39;Hello, {{ $name }}&#39;, [&#39;name&#39; =&gt; &#39;Julian Bashir&#39;]);</span>
+</code></pre></div>
+<p>Laravel 通過將內聯 Blade 範本寫入 <code>storage/framework/views</code> 目錄來呈現它們。如果你希望 Laravel 在渲染 Blade 範本後刪除這些臨時檔案，你可以為 <code>deleteCachedView</code> 方法提供參數：</p>
+<div class="highlight"><pre><span></span><code><span class="x">return Blade::render(</span>
+<span class="x">    &#39;Hello, {{ $name }}&#39;,</span>
+<span class="x">    [&#39;name&#39; =&gt; &#39;Julian Bashir&#39;],</span>
+<span class="x">    deleteCachedView: true</span>
+<span class="x">);</span>
+</code></pre></div>
+<h2 id="blade_3">渲染 Blade 片段<a class="headerlink" href="#blade_3" title="Permanent link">&para;</a></h2>
+<p>當使用 <a href="https://turbo.hotwired.dev/">Turbo</a> 和 <a href="https://htmx.org/">htmx</a> 等前端框架時，你可能偶爾需要在你的HTTP響應中只返回Blade範本的一個部分。Blade「片段（fragment）」允許你這樣做。要開始，將你的Blade範本的一部分放在<code>@fragment</code>和<code>@endfragment</code>指令中。</p>
+<div class="highlight"><pre><span></span><code>@fragment(&#39;user-list&#39;)
+    &lt;ul&gt;
+        @foreach ($users as $user)
+            &lt;li&gt;{{ $user-&gt;name }}&lt;/li&gt;
+        @endforeach
+    &lt;/ul&gt;
+@endfragment
+</code></pre></div>
+<p>然後，在渲染使用該範本的檢視時，你可以呼叫 <code>fragment</code> 方法來指定只有指定的片段應該被包含在傳出的 HTTP 響應中。</p>
+<div class="highlight"><pre><span></span><code><span class="x">return view(&#39;dashboard&#39;, [&#39;users&#39; =&gt; $users])-&gt;fragment(&#39;user-list&#39;);</span>
+</code></pre></div>
+<p><code>fragmentIf</code> 方法允許你根據一個給定的條件有條件地返回一個檢視的片段。否則，整個檢視將被返回。</p>
+<div class="highlight"><pre><span></span><code><span class="x">return view(&#39;dashboard&#39;, [&#39;users&#39; =&gt; $users])</span>
+<span class="x">    -&gt;fragmentIf($request-&gt;hasHeader(&#39;HX-Request&#39;), &#39;user-list&#39;);</span>
+</code></pre></div>
+<p><code>fragments</code> 和 <code>fragmentsIf</code> 方法允許你在響應中返回多個檢視片段。這些片段將被串聯起來。</p>
+<div class="highlight"><pre><span></span><code><span class="x">view(&#39;dashboard&#39;, [&#39;users&#39; =&gt; $users])</span>
+<span class="x">    -&gt;fragments([&#39;user-list&#39;, &#39;comment-list&#39;]);</span>
+
+<span class="x">view(&#39;dashboard&#39;, [&#39;users&#39; =&gt; $users])</span>
+<span class="x">    -&gt;fragmentsIf(</span>
+<span class="x">        $request-&gt;hasHeader(&#39;HX-Request&#39;),</span>
+<span class="x">        [&#39;user-list&#39;, &#39;comment-list&#39;]</span>
+<span class="x">    );</span>
+</code></pre></div>
+<h2 id="blade_4">擴展 Blade<a class="headerlink" href="#blade_4" title="Permanent link">&para;</a></h2>
+<p>Blade 允許你使用 <code>directive</code> 方法定義自己的自訂指令。當 Blade 編譯器遇到自訂指令時，它將使用該指令包含的表示式呼叫提供的回呼。</p>
+<p>下面的示例建立了一個 <code>@datetime($var)</code> 指令，該指令格式化給定的 <code>$var</code>，它應該是 <code>DateTime</code> 的一個實例：</p>
+<div class="highlight"><pre><span></span><code>&lt;?php
+
+namespace App\Providers;
+
+use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\ServiceProvider;
+
+class AppServiceProvider extends ServiceProvider
+{
+    /**
+     * 註冊應用的服務
+     */
+    public function register(): void
+    {
+        // ...
+    }
+
+    /**
+     * Bootstrap any application services.
+     */
+    public function boot(): void
+    {
+        Blade::directive(&#39;datetime&#39;, function (string $expression) {
+            return &quot;&lt;?php echo ($expression)-&gt;format(&#39;m/d/Y H:i&#39;); ?&gt;&quot;;
+        });
+    }
+}
+</code></pre></div>
+<p>正如你所見，我們將 <code>format</code> 方法應用到傳遞給指令中的任何表示式上。因此，在本例中，此指令生成的最終 PHP 將是：</p>
+<div class="highlight"><pre><span></span><code>&lt;?php echo ($var)-&gt;format(&#39;m/d/Y H:i&#39;); ?&gt;
+</code></pre></div>
+<blockquote>
+<p>**注意：**更新 Blade 指令的邏輯後，需要刪除所有快取的 Blade 檢視。可以使用 <code>view:clear</code> Artisan 命令。</p>
+</blockquote>
+<h3 id="_51">自訂回顯處理程序<a class="headerlink" href="#_51" title="Permanent link">&para;</a></h3>
+<p>如果你試圖使用 Blade 來「回顯」一個對象， 該對象的 <code>__toString</code> 方法將被呼叫。該<a href="https://www.php.net/manual/en/language.oop5.magic.php#object.tostring"><code>__toString</code></a> 方法是 PHP 內建的「魔術方法」之一。但是，有時你可能無法控制 <code>__toString</code> 給定類的方法，例如當你與之互動的類屬於第三方庫時。</p>
+<p>在這些情況下，Blade 允許您為該特定類型的對象註冊自訂回顯處理程序。為此，您應該呼叫 Blade 的 <code>stringable</code> 方法。該 <code>stringable</code> 方法接受一個閉包。這個閉包類型應該提示它負責呈現的對象的類型。通常，應該在應用程式的 <code>AppServiceProvider</code> 類的 <code>boot</code> 方法中呼叫該 <code>stringable</code> 方法：</p>
+<div class="highlight"><pre><span></span><code>use Illuminate\Support\Facades\Blade;
+use Money\Money;
+
+/**
+ * Bootstrap any application services.
+ */
+public function boot(): void
+{
+    Blade::stringable(function (Money $money) {
+        return $money-&gt;formatTo(&#39;en_GB&#39;);
+    });
+}
+</code></pre></div>
+<p>定義自訂回顯處理程序後，您可以簡單地回顯 Blade 範本中的對象：</p>
+<div class="highlight"><pre><span></span><code>Cost: {{ $money }}
+</code></pre></div>
+<h3 id="if_1">自訂 if 聲明<a class="headerlink" href="#if_1" title="Permanent link">&para;</a></h3>
+<p>在定義簡單的自訂條件語句時，編寫自訂指令通常比較複雜。因此，Blade 提供了一個 Blade::if 方法，允許你使用閉包快速定義自訂條件指令。例如，讓我們定義一個自訂條件來檢查為應用程式組態的默認 「儲存」。我們可以在 AppServiceProvider 的 boot 方法中執行此操作：</p>
+<div class="highlight"><pre><span></span><code>use Illuminate\Support\Facades\Blade;
+
+/**
+ * Bootstrap any application services.
+ */
+public function boot(): void
+{
+    Blade::if(&#39;disk&#39;, function (string $value) {
+        return config(&#39;filesystems.default&#39;) === $value;
+    });
+}
+</code></pre></div>
+<p>一旦定義了自訂條件，就可以在範本中使用它:</p>
+<div class="highlight"><pre><span></span><code>@disk(&#39;local&#39;)
+    &lt;!-- The application is using the local disk... --&gt;
+@elsedisk(&#39;s3&#39;)
+    &lt;!-- The application is using the s3 disk... --&gt;
+@else
+    &lt;!-- The application is using some other disk... --&gt;
+@enddisk
+
+@unlessdisk(&#39;local&#39;)
+    &lt;!-- The application is not using the local disk... --&gt;
+@enddisk
+</code></pre></div>
+
+
+
+
+
+                
+
+  <!-- Giscus -->
+  <h2 id="__comments">留言</h2>
+  <script src="https://giscus.app/client.js"
+          data-repo="tomleesm/notes"
+          data-repo-id="R_kgDOGuSz4g"
+          data-category="Announcements"
+          data-category-id="DIC_kwDOGuSz4s4CBI6T"
+          data-mapping="title"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="bottom"
+          data-theme="dark"
+          data-lang="zh-TW"
+          crossorigin="anonymous"
+          async>
+  </script>
+
+  <!-- Reload on palette change -->
+  <script>
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object")
+      if (palette.color.scheme === "slate") {
+        var giscus = document.querySelector("script[src*=giscus]")
+        giscus.setAttribute("data-theme", "dark")
+      }
+
+    /* Register event handlers after documented loaded */
+    document.addEventListener("DOMContentLoaded", function() {
+      var ref = document.querySelector("[data-md-component=palette]")
+      ref.addEventListener("change", function() {
+        var palette = __md_get("__palette")
+        if (palette && typeof palette.color === "object") {
+          var theme = palette.color.scheme === "slate" ? "dark" : "light"
+
+          /* Instruct Giscus to change theme */
+          var frame = document.querySelector(".giscus-frame")
+          frame.contentWindow.postMessage(
+            { giscus: { setConfig: { theme } } },
+            "https://giscus.app"
+          )
+        }
+      })
+    })
+  </script>
+
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            回到頂端
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tabs", "navigation.sections", "navigation.indexes", "navigation.top", "header.autohide", "search.highlight", "search.share"], "search": "../../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "\u5df2\u8907\u88fd", "clipboard.copy": "\u8907\u88fd", "search.result.more.one": "\u6b64\u9801\u5c1a\u6709 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.more.other": "\u6b64\u9801\u5c1a\u6709 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.none": "\u6c92\u6709\u7b26\u5408\u7684\u9805\u76ee", "search.result.one": "\u627e\u5230 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.other": "\u627e\u5230 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.placeholder": "\u6253\u5b57\u9032\u884c\u641c\u5c0b", "search.result.term.missing": "\u7f3a\u5c11\u5b57\u8a5e", "select.version": "\u9078\u64c7\u7248\u672c"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.dff1b7c8.min.js"></script>
+      
+    
+  </body>
+</html>

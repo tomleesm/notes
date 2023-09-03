@@ -1,0 +1,5690 @@
+
+<!doctype html>
+<html lang="zh-TW" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../01%E5%85%A5%E9%96%80/">
+      
+      
+        <link rel="next" href="../03%E5%91%BD%E4%BB%A4%E5%88%97%E6%B8%AC%E8%A9%A6/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-9.2.7">
+    
+    
+      
+        <title>HTTP 測試 - Tom 株式會社</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.046329b4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.85d0ee34.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+Traditional+Chinese:300,300i,400,400i,700,700i%7CSource+Code+Pro:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans Traditional Chinese";--md-code-font:"Source Code Pro"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="red" data-md-color-accent="red">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#http" class="md-skip">
+          跳轉到
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="頁首">
+    <a href="../.." title="Tom 株式會社" class="md-header__button md-logo" aria-label="Tom 株式會社" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Tom 株式會社
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              HTTP 測試
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="red" data-md-color-accent="red"  aria-hidden="true"  type="radio" name="__palette" id="__palette_1">
+    
+  
+</form>
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜尋" placeholder="搜尋" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="搜尋">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清除" aria-label="清除" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜尋引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/tomleesm/notes" title="前往倉庫" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    tomleesm/notes
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="標籤" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../01%E6%A0%B8%E5%BF%83%E6%9E%B6%E6%A7%8B/01%E8%AB%8B%E6%B1%82%E7%9A%84%E7%94%9F%E5%91%BD%E9%80%B1%E6%9C%9F/" class="md-tabs__link">
+          
+  
+    
+  
+  核心架構
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/01%E8%B7%AF%E7%94%B1/" class="md-tabs__link">
+          
+  
+    
+  
+  基礎功能
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/01Artisan%E5%91%BD%E4%BB%A4%E5%88%97/" class="md-tabs__link">
+          
+  
+    
+  
+  繼續深入
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../04%E5%AE%89%E5%85%A8%E7%9B%B8%E9%97%9C/01%E4%BD%BF%E7%94%A8%E8%80%85%E8%AA%8D%E8%AD%89/" class="md-tabs__link">
+          
+  
+    
+  
+  安全相關
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../05%E8%B3%87%E6%96%99%E5%BA%AB/01%E5%BF%AB%E9%80%9F%E5%85%A5%E9%96%80/" class="md-tabs__link">
+          
+  
+    
+  
+  資料庫
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../06EloquentORM/01%E5%BF%AB%E9%80%9F%E5%85%A5%E9%96%80/" class="md-tabs__link">
+          
+  
+    
+  
+  Eloquent ORM
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../01%E5%85%A5%E9%96%80/" class="md-tabs__link">
+          
+  
+    
+  
+  測試相關
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/01Cashier%E4%BA%A4%E6%98%93%E5%B7%A5%E5%85%B7%E5%8C%85Stripe/" class="md-tabs__link">
+          
+  
+    
+  
+  官方擴展包
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../cheatsheets/artisan/" class="md-tabs__link">
+          
+  
+    
+  
+  語法速查表
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="導覽列" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Tom 株式會社" class="md-nav__button md-logo" aria-label="Tom 株式會社" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Tom 株式會社
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/tomleesm/notes" title="前往倉庫" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    tomleesm/notes
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    核心架構
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            核心架構
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01%E6%A0%B8%E5%BF%83%E6%9E%B6%E6%A7%8B/01%E8%AB%8B%E6%B1%82%E7%9A%84%E7%94%9F%E5%91%BD%E9%80%B1%E6%9C%9F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    請求的生命週期
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01%E6%A0%B8%E5%BF%83%E6%9E%B6%E6%A7%8B/02%E6%9C%8D%E5%8B%99%E5%AE%B9%E5%99%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    服務容器
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01%E6%A0%B8%E5%BF%83%E6%9E%B6%E6%A7%8B/03%E6%9C%8D%E5%8B%99%E6%8F%90%E4%BE%9B%E8%80%85/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    服務提供者
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01%E6%A0%B8%E5%BF%83%E6%9E%B6%E6%A7%8B/04Facades/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Facades
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    基礎功能
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            基礎功能
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/01%E8%B7%AF%E7%94%B1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    路由
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/02%E4%B8%AD%E4%BB%8B%E8%BB%9F%E9%AB%94/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    中介軟體
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/03CSRF%E4%BF%9D%E8%AD%B7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CSRF 保護
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/04Controller/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Controller
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/05HTTP%E8%AB%8B%E6%B1%82/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTTP 請求
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/06HTTP%E9%9F%BF%E6%87%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTTP 響應
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/07%E6%AA%A2%E8%A6%96/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    檢視
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/08Blade%E7%AF%84%E6%9C%AC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Blade 範本
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/09Vite%E7%B7%A8%E8%AD%AFAssets/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vite 編譯 Assets
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/10%E7%94%9F%E6%88%90URL/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    生成 URL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/11Session/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Session
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/12%E8%A1%A8%E5%96%AE%E9%A9%97%E8%AD%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    表單驗證
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/13%E9%8C%AF%E8%AA%A4%E8%99%95%E7%90%86/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    錯誤處理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/14%E6%97%A5%E8%AA%8C/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    日誌
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    繼續深入
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            繼續深入
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/01Artisan%E5%91%BD%E4%BB%A4%E5%88%97/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Artisan 命令列
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/02%E5%BB%A3%E6%92%AD/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    廣播
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/03%E5%BF%AB%E5%8F%96%E7%B3%BB%E7%B5%B1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    快取系統
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/04%E9%9B%86%E5%90%88/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    集合
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/05%E5%A5%91%E7%B4%84Contract/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    契約 Contract
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/06%E4%BA%8B%E4%BB%B6%E7%B3%BB%E7%B5%B1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    事件系統
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/07%E6%AA%94%E6%A1%88%E5%84%B2%E5%AD%98/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    檔案儲存
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/09HTTPClient/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTTP Client
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/10%E6%9C%AC%E5%9C%B0%E5%8C%96/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    本地化
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/11%E9%83%B5%E4%BB%B6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    郵件
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/12%E6%B6%88%E6%81%AF%E9%80%9A%E7%9F%A5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    消息通知
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/13Package%E9%96%8B%E7%99%BC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Package 開發
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/14%E8%99%95%E7%90%86%E7%A8%8B%E5%BA%8F%E7%AE%A1%E7%90%86/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    處理程序管理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/15%E4%BD%87%E5%88%97/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    佇列
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/16%E9%99%90%E6%B5%81/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    限流
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/17%E4%BB%BB%E5%8B%99%E8%AA%BF%E5%BA%A6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    任務調度
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    安全相關
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            安全相關
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04%E5%AE%89%E5%85%A8%E7%9B%B8%E9%97%9C/01%E4%BD%BF%E7%94%A8%E8%80%85%E8%AA%8D%E8%AD%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    使用者認證
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04%E5%AE%89%E5%85%A8%E7%9B%B8%E9%97%9C/02%E4%BD%BF%E7%94%A8%E8%80%85%E6%8E%88%E6%AC%8A/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    使用者授權
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04%E5%AE%89%E5%85%A8%E7%9B%B8%E9%97%9C/03Email%E8%AA%8D%E8%AD%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Email 認證
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04%E5%AE%89%E5%85%A8%E7%9B%B8%E9%97%9C/04%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    加密解密
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04%E5%AE%89%E5%85%A8%E7%9B%B8%E9%97%9C/05%E9%9B%9C%E6%B9%8A/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    雜湊
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04%E5%AE%89%E5%85%A8%E7%9B%B8%E9%97%9C/06%E9%87%8D%E8%A8%AD%E5%AF%86%E7%A2%BC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    重設密碼
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    資料庫
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            資料庫
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05%E8%B3%87%E6%96%99%E5%BA%AB/01%E5%BF%AB%E9%80%9F%E5%85%A5%E9%96%80/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    快速入門
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05%E8%B3%87%E6%96%99%E5%BA%AB/02%E6%9F%A5%E8%A9%A2%E7%94%9F%E6%88%90%E5%99%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    查詢生成器
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05%E8%B3%87%E6%96%99%E5%BA%AB/03%E5%88%86%E9%A0%81/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    分頁
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05%E8%B3%87%E6%96%99%E5%BA%AB/04%E9%81%B7%E7%A7%BB/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    遷移
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05%E8%B3%87%E6%96%99%E5%BA%AB/05%E8%B3%87%E6%96%99%E5%A1%AB%E5%85%85/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    資料填充
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05%E8%B3%87%E6%96%99%E5%BA%AB/06Redis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Redis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Eloquent ORM
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Eloquent ORM
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06EloquentORM/01%E5%BF%AB%E9%80%9F%E5%85%A5%E9%96%80/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    快速入門
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06EloquentORM/02%E9%97%9C%E8%81%AF/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    關聯
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06EloquentORM/03%E9%9B%86%E5%90%88/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    集合
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06EloquentORM/04%E5%B1%AC%E6%80%A7%E4%BF%AE%E6%94%B9%E5%99%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    屬性修改器
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06EloquentORM/05API%E8%B3%87%E6%BA%90/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    API 資源
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06EloquentORM/06%E5%BA%8F%E5%88%97%E5%8C%96/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    序列化
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06EloquentORM/07%E8%B3%87%E6%96%99%E5%B7%A5%E5%BB%A0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    資料工廠
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    測試相關
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            測試相關
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01%E5%85%A5%E9%96%80/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    入門
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    HTTP 測試
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    HTTP 測試
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目錄">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目錄
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    簡介
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    建立請求
+  </a>
+  
+    <nav class="md-nav" aria-label="建立請求">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    自訂要求標頭
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cookies" class="md-nav__link">
+    Cookies
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#session-session-authentication" class="md-nav__link">
+    session  (Session) / 認證 (Authentication)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    偵錯響應
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    異常處理
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#json-apis" class="md-nav__link">
+    測試 JSON APIs
+  </a>
+  
+    <nav class="md-nav" aria-label="測試 JSON APIs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#json" class="md-nav__link">
+    驗證 JSON 完全匹配
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#json_1" class="md-nav__link">
+    驗證 JSON 路徑
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#json_2" class="md-nav__link">
+    JSON 流式測試
+  </a>
+  
+    <nav class="md-nav" aria-label="JSON 流式測試">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#etc" class="md-nav__link">
+    瞭解 etc 方法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    斷言屬性存在/不存在
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#json_3" class="md-nav__link">
+    斷言反對 JSON 集合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#json_4" class="md-nav__link">
+    JSON 集合範圍斷言
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#json_5" class="md-nav__link">
+    斷言 JSON 類型
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    測試檔案上傳
+  </a>
+  
+    <nav class="md-nav" aria-label="測試檔案上傳">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    虛擬檔案定製
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    測試檢視
+  </a>
+  
+    <nav class="md-nav" aria-label="測試檢視">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    共享錯誤
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    渲染範本 &amp; 元件
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    可用斷言
+  </a>
+  
+    <nav class="md-nav" aria-label="可用斷言">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    響應斷言
+  </a>
+  
+    <nav class="md-nav" aria-label="響應斷言">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#assertcookie" class="md-nav__link">
+    assertCookie
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertcookieexpired" class="md-nav__link">
+    assertCookieExpired
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertcookienotexpired" class="md-nav__link">
+    assertCookieNotExpired
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertcookiemissing" class="md-nav__link">
+    assertCookieMissing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertcreated" class="md-nav__link">
+    assertCreated
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertdontsee" class="md-nav__link">
+    assertDontSee
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertdontseetext" class="md-nav__link">
+    assertDontSeeText
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertdownload" class="md-nav__link">
+    assertDownload
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertexactjson" class="md-nav__link">
+    assertExactJson
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertforbidden" class="md-nav__link">
+    assertForbidden
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertheader" class="md-nav__link">
+    assertHeader
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertheadermissing" class="md-nav__link">
+    assertHeaderMissing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertjson" class="md-nav__link">
+    assertJson
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertjsoncount" class="md-nav__link">
+    assertJsonCount
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertjsonfragment" class="md-nav__link">
+    assertJsonFragment
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertjsonisarray" class="md-nav__link">
+    assertJsonIsArray
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertjsonisobject" class="md-nav__link">
+    assertJsonIsObject
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertjsonmissing" class="md-nav__link">
+    assertJsonMissing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertjsonmissingexact" class="md-nav__link">
+    assertJsonMissingExact
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertjsonmissingvalidationerrors" class="md-nav__link">
+    assertJsonMissingValidationErrors
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertjsonpath" class="md-nav__link">
+    assertJsonPath
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertjsonmissingpath" class="md-nav__link">
+    assertJsonMissingPath
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertjsonstructure" class="md-nav__link">
+    assertJsonStructure
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertjsonvalidationerrors" class="md-nav__link">
+    assertJsonValidationErrors
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertjsonvalidationerrorfor" class="md-nav__link">
+    assertJsonValidationErrorFor
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertlocation" class="md-nav__link">
+    assertLocation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertcontent" class="md-nav__link">
+    assertContent
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertnocontent" class="md-nav__link">
+    assertNoContent
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertstreamedcontent" class="md-nav__link">
+    assertStreamedContent
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertnotfound" class="md-nav__link">
+    assertNotFound
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertok" class="md-nav__link">
+    assertOk
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertplaincookie" class="md-nav__link">
+    assertPlainCookie
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertredirect" class="md-nav__link">
+    assertRedirect
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertredirectcontains" class="md-nav__link">
+    assertRedirectContains
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertredirecttoroute" class="md-nav__link">
+    assertRedirectToRoute
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertredirecttosignedroute" class="md-nav__link">
+    assertRedirectToSignedRoute
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertsee" class="md-nav__link">
+    assertSee
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertseeinorder" class="md-nav__link">
+    assertSeeInOrder
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertseetext" class="md-nav__link">
+    assertSeeText
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertseetextinorder" class="md-nav__link">
+    assertSeeTextInOrder
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertsessionhas" class="md-nav__link">
+    assertSessionHas
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertsessionhasinput" class="md-nav__link">
+    assertSessionHasInput
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertsessionhasall" class="md-nav__link">
+    assertSessionHasAll
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertsessionhaserrors" class="md-nav__link">
+    assertSessionHasErrors
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertsessionhaserrorsin" class="md-nav__link">
+    assertSessionHasErrorsIn
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertsessionhasnoerrors" class="md-nav__link">
+    assertSessionHasNoErrors
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertsessiondoesnthaveerrors" class="md-nav__link">
+    assertSessionDoesntHaveErrors
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertsessionmissing" class="md-nav__link">
+    assertSessionMissing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertstatus" class="md-nav__link">
+    assertStatus
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertsuccessful" class="md-nav__link">
+    assertSuccessful
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertunauthorized" class="md-nav__link">
+    assertUnauthorized
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertunprocessable" class="md-nav__link">
+    assertUnprocessable
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertvalid" class="md-nav__link">
+    assertValid
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertinvalid" class="md-nav__link">
+    assertInvalid
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertviewhas" class="md-nav__link">
+    assertViewHas
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertviewhasall" class="md-nav__link">
+    assertViewHasAll
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertviewis" class="md-nav__link">
+    assertViewIs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertviewmissing" class="md-nav__link">
+    assertViewMissing
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    身份驗證斷言
+  </a>
+  
+    <nav class="md-nav" aria-label="身份驗證斷言">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#assertauthenticated" class="md-nav__link">
+    assertAuthenticated
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertguest" class="md-nav__link">
+    assertGuest
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertauthenticatedas" class="md-nav__link">
+    assertAuthenticatedAs
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    驗證斷言
+  </a>
+  
+    <nav class="md-nav" aria-label="驗證斷言">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#assertvalid_1" class="md-nav__link">
+    assertValid
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertinvalid_1" class="md-nav__link">
+    assertInvalid
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03%E5%91%BD%E4%BB%A4%E5%88%97%E6%B8%AC%E8%A9%A6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    命令列測試
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04LaravelDusk/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Laravel Dusk
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05%E8%B3%87%E6%96%99%E5%BA%AB%E6%B8%AC%E8%A9%A6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    資料庫測試
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06Mocking/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mocking
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    官方擴展包
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            官方擴展包
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/01Cashier%E4%BA%A4%E6%98%93%E5%B7%A5%E5%85%B7%E5%8C%85Stripe/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cashier 交易工具包 Stripe
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/02Cashier%E4%BA%A4%E6%98%93%E5%B7%A5%E5%85%B7%E5%8C%85Paddle/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cashier 交易工具包 Paddle
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/03Envoy%E9%83%A8%E7%BD%B2%E5%B7%A5%E5%85%B7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Envoy 部署工具
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/04Fortify%E8%88%87%E5%89%8D%E7%AB%AF%E7%84%A1%E9%97%9C%E7%9A%84%E8%BA%AB%E4%BB%BD%E8%AA%8D%E8%AD%89%E5%BE%8C%E7%AB%AF%E5%AF%A6%E7%8F%BE/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fortify 與前端無關的身份認證後端實現
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/05Homestead%E8%99%9B%E6%93%AC%E6%A9%9F%E5%99%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Homestead 虛擬機器
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/06Horizon%E4%BD%87%E5%88%97%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Horizon 佇列管理工具
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/09Octane%E5%8A%A0%E9%80%9F%E5%BC%95%E6%93%8E/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Octane 加速引擎
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/10PassportOAuth%E8%AA%8D%E8%AD%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Passport OAuth 認證
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/11Pennant%E6%B8%AC%E8%A9%A6%E6%96%B0%E5%8A%9F%E8%83%BD/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pennant 測試新功能
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/12Pint%E7%A8%8B%E5%BC%8F%E7%A2%BC%E9%A2%A8%E6%A0%BC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pint 程式碼風格
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/13SailDocker%E9%96%8B%E7%99%BC%E7%92%B0%E5%A2%83/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sail Docker 開發環境
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/14SanctumAPI%E6%8E%88%E6%AC%8A/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sanctum API 授權
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/15Scout%E5%85%A8%E6%96%87%E6%90%9C%E5%B0%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Scout 全文搜尋
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/16Socialite%E7%AC%AC%E4%B8%89%E6%96%B9%E7%99%BB%E5%85%A5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Socialite 第三方登入
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/17Telescope%E5%81%B5%E9%8C%AF%E5%B7%A5%E5%85%B7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Telescope 偵錯工具
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    語法速查表
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            語法速查表
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/artisan/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Artisan
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/auth/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Auth 使用者認證
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/blade/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Blade 範本
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/cache/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cache
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/collection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Collection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/composer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Composer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/config/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Config
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/container/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Container
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/cookie/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cookie
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/db/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Database
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/environment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Environment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/event/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Event
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/file/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    File
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/helper/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Helper
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/input/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Input
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/lang/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lang
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/Log/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Log
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/mail/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mail
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/model/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Model (Eloquent ORM)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/pagination/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pagination
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/queue/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Queue
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/redirect/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Redirect
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/request/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Request
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/response/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Response
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/route/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Route
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/schema/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Schema 資料庫結構
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/security/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Security (Hash 和加解密)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/session/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Session
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/storage/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Storage
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/string/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    String
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/unittest/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Unit Test 單元測試
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/url/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    URL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/validation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Validation 表單驗證
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/view/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    View
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目錄">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目錄
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    簡介
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    建立請求
+  </a>
+  
+    <nav class="md-nav" aria-label="建立請求">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    自訂要求標頭
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cookies" class="md-nav__link">
+    Cookies
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#session-session-authentication" class="md-nav__link">
+    session  (Session) / 認證 (Authentication)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    偵錯響應
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    異常處理
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#json-apis" class="md-nav__link">
+    測試 JSON APIs
+  </a>
+  
+    <nav class="md-nav" aria-label="測試 JSON APIs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#json" class="md-nav__link">
+    驗證 JSON 完全匹配
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#json_1" class="md-nav__link">
+    驗證 JSON 路徑
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#json_2" class="md-nav__link">
+    JSON 流式測試
+  </a>
+  
+    <nav class="md-nav" aria-label="JSON 流式測試">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#etc" class="md-nav__link">
+    瞭解 etc 方法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    斷言屬性存在/不存在
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#json_3" class="md-nav__link">
+    斷言反對 JSON 集合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#json_4" class="md-nav__link">
+    JSON 集合範圍斷言
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#json_5" class="md-nav__link">
+    斷言 JSON 類型
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    測試檔案上傳
+  </a>
+  
+    <nav class="md-nav" aria-label="測試檔案上傳">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    虛擬檔案定製
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    測試檢視
+  </a>
+  
+    <nav class="md-nav" aria-label="測試檢視">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    共享錯誤
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    渲染範本 &amp; 元件
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    可用斷言
+  </a>
+  
+    <nav class="md-nav" aria-label="可用斷言">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    響應斷言
+  </a>
+  
+    <nav class="md-nav" aria-label="響應斷言">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#assertcookie" class="md-nav__link">
+    assertCookie
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertcookieexpired" class="md-nav__link">
+    assertCookieExpired
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertcookienotexpired" class="md-nav__link">
+    assertCookieNotExpired
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertcookiemissing" class="md-nav__link">
+    assertCookieMissing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertcreated" class="md-nav__link">
+    assertCreated
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertdontsee" class="md-nav__link">
+    assertDontSee
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertdontseetext" class="md-nav__link">
+    assertDontSeeText
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertdownload" class="md-nav__link">
+    assertDownload
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertexactjson" class="md-nav__link">
+    assertExactJson
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertforbidden" class="md-nav__link">
+    assertForbidden
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertheader" class="md-nav__link">
+    assertHeader
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertheadermissing" class="md-nav__link">
+    assertHeaderMissing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertjson" class="md-nav__link">
+    assertJson
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertjsoncount" class="md-nav__link">
+    assertJsonCount
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertjsonfragment" class="md-nav__link">
+    assertJsonFragment
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertjsonisarray" class="md-nav__link">
+    assertJsonIsArray
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertjsonisobject" class="md-nav__link">
+    assertJsonIsObject
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertjsonmissing" class="md-nav__link">
+    assertJsonMissing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertjsonmissingexact" class="md-nav__link">
+    assertJsonMissingExact
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertjsonmissingvalidationerrors" class="md-nav__link">
+    assertJsonMissingValidationErrors
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertjsonpath" class="md-nav__link">
+    assertJsonPath
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertjsonmissingpath" class="md-nav__link">
+    assertJsonMissingPath
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertjsonstructure" class="md-nav__link">
+    assertJsonStructure
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertjsonvalidationerrors" class="md-nav__link">
+    assertJsonValidationErrors
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertjsonvalidationerrorfor" class="md-nav__link">
+    assertJsonValidationErrorFor
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertlocation" class="md-nav__link">
+    assertLocation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertcontent" class="md-nav__link">
+    assertContent
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertnocontent" class="md-nav__link">
+    assertNoContent
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertstreamedcontent" class="md-nav__link">
+    assertStreamedContent
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertnotfound" class="md-nav__link">
+    assertNotFound
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertok" class="md-nav__link">
+    assertOk
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertplaincookie" class="md-nav__link">
+    assertPlainCookie
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertredirect" class="md-nav__link">
+    assertRedirect
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertredirectcontains" class="md-nav__link">
+    assertRedirectContains
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertredirecttoroute" class="md-nav__link">
+    assertRedirectToRoute
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertredirecttosignedroute" class="md-nav__link">
+    assertRedirectToSignedRoute
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertsee" class="md-nav__link">
+    assertSee
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertseeinorder" class="md-nav__link">
+    assertSeeInOrder
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertseetext" class="md-nav__link">
+    assertSeeText
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertseetextinorder" class="md-nav__link">
+    assertSeeTextInOrder
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertsessionhas" class="md-nav__link">
+    assertSessionHas
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertsessionhasinput" class="md-nav__link">
+    assertSessionHasInput
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertsessionhasall" class="md-nav__link">
+    assertSessionHasAll
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertsessionhaserrors" class="md-nav__link">
+    assertSessionHasErrors
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertsessionhaserrorsin" class="md-nav__link">
+    assertSessionHasErrorsIn
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertsessionhasnoerrors" class="md-nav__link">
+    assertSessionHasNoErrors
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertsessiondoesnthaveerrors" class="md-nav__link">
+    assertSessionDoesntHaveErrors
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertsessionmissing" class="md-nav__link">
+    assertSessionMissing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertstatus" class="md-nav__link">
+    assertStatus
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertsuccessful" class="md-nav__link">
+    assertSuccessful
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertunauthorized" class="md-nav__link">
+    assertUnauthorized
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertunprocessable" class="md-nav__link">
+    assertUnprocessable
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertvalid" class="md-nav__link">
+    assertValid
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertinvalid" class="md-nav__link">
+    assertInvalid
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertviewhas" class="md-nav__link">
+    assertViewHas
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertviewhasall" class="md-nav__link">
+    assertViewHasAll
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertviewis" class="md-nav__link">
+    assertViewIs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertviewmissing" class="md-nav__link">
+    assertViewMissing
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    身份驗證斷言
+  </a>
+  
+    <nav class="md-nav" aria-label="身份驗證斷言">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#assertauthenticated" class="md-nav__link">
+    assertAuthenticated
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertguest" class="md-nav__link">
+    assertGuest
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertauthenticatedas" class="md-nav__link">
+    assertAuthenticatedAs
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    驗證斷言
+  </a>
+  
+    <nav class="md-nav" aria-label="驗證斷言">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#assertvalid_1" class="md-nav__link">
+    assertValid
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertinvalid_1" class="md-nav__link">
+    assertInvalid
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+  
+                  
+
+  
+  
+
+
+<h1 id="http">HTTP 測試<a class="headerlink" href="#http" title="Permanent link">&para;</a></h1>
+<h2 id="_1">簡介<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>Laravel 提供了一個非常流暢的 API，用於嚮應用程序發出 HTTP 請求並檢查響應。例如，看看下面定義的特性測試：</p>
+<div class="highlight"><pre><span></span><code>&lt;?php
+
+namespace Tests\Feature;
+
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithoutMiddleware;
+use Tests\TestCase;
+
+class ExampleTest extends TestCase
+{
+    /**
+     * 基本功能測試示例。
+     */
+    public function test_a_basic_request(): void
+    {
+        $response = $this-&gt;get(&#39;/&#39;);
+
+        $response-&gt;assertStatus(200);
+    }
+}
+</code></pre></div>
+<p><code>get</code> 方法嚮應用程序發出 <code>Get</code> 請求，而 <code>assertStatus</code> 方法則斷言返回的響應應該具有給定的 HTTP 狀態程式碼。除了這個簡單的斷言之外，Laravel 還包含各種用於檢查響應頭、內容、JSON 結構等的斷言。</p>
+<h2 id="_2">建立請求<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>要嚮應用程序發出請求，可以在測試中呼叫<code>get</code>、<code>post</code>、<code>put</code>、<code>patch</code>或<code>delete</code>方法。這些方法實際上不會嚮應用程序發出「真正的」HTTP 請求。相反，整個網路請求是在內部模擬的。</p>
+<p>測試請求方法不返回<code>Illuminate\Http\Response</code>實例，而是返回<code>Illuminate\Testing\TestResponse</code>實例，該實例提供<a href="##available-assertions">各種有用的斷言</a>,允許你檢查應用程式的響應：</p>
+<div class="highlight"><pre><span></span><code>&lt;?php
+
+namespace Tests\Feature;
+
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithoutMiddleware;
+use Tests\TestCase;
+
+class ExampleTest extends TestCase
+{
+    /**
+     * 基本功能測試示例。
+     */
+    public function test_a_basic_request(): void
+    {
+        $response = $this-&gt;get(&#39;/&#39;);
+
+        $response-&gt;assertStatus(200);
+    }
+}
+</code></pre></div>
+<p>通常，你的每個測試應該只向你的應用發出一個請求。如果在單個測試方法中執行多個請求，則可能會出現意外行為。</p>
+<blockquote>
+<p><strong>技巧</strong>
+為了方便起見，運行測試時會自動停用 CSRF 中介軟體。</p>
+</blockquote>
+<h3 id="_3">自訂要求標頭<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>你可以使用此 <code>withHeaders</code> 方法自訂請求的標頭，然後再將其傳送到應用程式。這使你可以將任何想要的自訂標頭新增到請求中：</p>
+<div class="highlight"><pre><span></span><code>&lt;?php
+
+namespace Tests\Feature;
+
+use Tests\TestCase;
+
+class ExampleTest extends TestCase
+{
+    /**
+     * 基本功能測試示例。
+     */
+    public function test_interacting_with_headers(): void
+    {
+        $response = $this-&gt;withHeaders([
+            &#39;X-Header&#39; =&gt; &#39;Value&#39;,
+        ])-&gt;post(&#39;/user&#39;, [&#39;name&#39; =&gt; &#39;Sally&#39;]);
+
+        $response-&gt;assertStatus(201);
+    }
+}
+</code></pre></div>
+<h3 id="cookies">Cookies<a class="headerlink" href="#cookies" title="Permanent link">&para;</a></h3>
+<p>在傳送請求前你可以使用 <code>withCookie</code> 或 <code>withCookies</code> 方法設定 cookie。<code>withCookie</code> 接受 cookie 的名稱和值這兩個參數，而 <code>withCookies</code> 方法接受一個名稱 / 值對陣列：</p>
+<div class="highlight"><pre><span></span><code>&lt;?php
+
+namespace Tests\Feature;
+
+use Tests\TestCase;
+
+class ExampleTest extends TestCase
+{
+    public function test_interacting_with_cookies(): void
+    {
+        $response = $this-&gt;withCookie(&#39;color&#39;, &#39;blue&#39;)-&gt;get(&#39;/&#39;);
+
+        $response = $this-&gt;withCookies([
+            &#39;color&#39; =&gt; &#39;blue&#39;,
+            &#39;name&#39; =&gt; &#39;Taylor&#39;,
+        ])-&gt;get(&#39;/&#39;);
+    }
+}
+</code></pre></div>
+<h3 id="session-session-authentication">session  (Session) / 認證 (Authentication)<a class="headerlink" href="#session-session-authentication" title="Permanent link">&para;</a></h3>
+<p>Laravel 提供了幾個可在 HTTP 測試時使用 Session 的輔助函數。首先，你需要傳遞一個陣列給 <code>withSession</code> 方法來設定 session 資料。這樣在應用程式的測試請求傳送之前，就會先去給資料載入 session：</p>
+<div class="highlight"><pre><span></span><code>&lt;?php
+
+namespace Tests\Feature;
+
+use Tests\TestCase;
+
+class ExampleTest extends TestCase
+{
+    public function test_interacting_with_the_session(): void
+    {
+        $response = $this-&gt;withSession([&#39;banned&#39; =&gt; false])-&gt;get(&#39;/&#39;);
+    }
+}
+</code></pre></div>
+<p>Laravel 的 session 通常用於維護當前已驗證使用者的狀態。因此，<code>actingAs</code> 方法提供了一種將給定使用者作為當前使用者進行身份驗證的便捷方法。例如，我們可以使用一個<a href="/docs/laravel/10.x/eloquent-factories">工廠模式</a>來生成和認證一個使用者：</p>
+<div class="highlight"><pre><span></span><code>&lt;?php
+
+namespace Tests\Feature;
+
+use App\Models\User;
+use Tests\TestCase;
+
+class ExampleTest extends TestCase
+{
+    public function test_an_action_that_requires_authentication(): void
+    {
+        $user = User::factory()-&gt;create();
+
+        $response = $this-&gt;actingAs($user)
+                         -&gt;withSession([&#39;banned&#39; =&gt; false])
+                         -&gt;get(&#39;/&#39;);
+    }
+}
+</code></pre></div>
+<p>你也可以通過傳遞看守器名稱作為 <code>actingAs</code> 方法的第二參數以指定使用者通過哪種看守器來認證。提供給 <code>actingAs</code> 方法的防護也將成為測試期間的默認防護。</p>
+<div class="highlight"><pre><span></span><code>$this-&gt;actingAs($user, &#39;web&#39;)
+</code></pre></div>
+<h3 id="_4">偵錯響應<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>在向你的應用程式發出測試請求之後，可以使用 <code>dump</code>、<code>dumpHeaders</code> 和 <code>dumpSession</code> 方法來檢查和偵錯響應內容：</p>
+<div class="highlight"><pre><span></span><code>&lt;?php
+
+namespace Tests\Feature;
+
+use Tests\TestCase;
+
+class ExampleTest extends TestCase
+{
+    /**
+     * 基本功能測試示例。
+     */
+    public function test_basic_test(): void
+    {
+        $response = $this-&gt;get(&#39;/&#39;);
+
+        $response-&gt;dumpHeaders();
+
+        $response-&gt;dumpSession();
+
+        $response-&gt;dump();
+    }
+}
+</code></pre></div>
+<p>或者，你可以使用 <code>dd</code>、<code>ddHeaders</code> 和 <code>ddSession</code> 方法轉儲有關響應的資訊，然後停止執行：</p>
+<div class="highlight"><pre><span></span><code>&lt;?php
+
+namespace Tests\Feature;
+
+use Tests\TestCase;
+
+class ExampleTest extends TestCase
+{
+    /**
+     * 基本功能測試示例。
+     */
+    public function test_basic_test(): void
+    {
+        $response = $this-&gt;get(&#39;/&#39;);
+
+        $response-&gt;ddHeaders();
+
+        $response-&gt;ddSession();
+
+        $response-&gt;dd();
+    }
+}
+</code></pre></div>
+<h3 id="_5">異常處理<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>有時你可能想要測試你的應用程式是否引發了特定異常。為了確保異常不會被 Laravel 的異常處理程序捕獲並作為 HTTP 響應返回，可以在發出請求之前呼叫 <code>withoutExceptionHandling</code> 方法：</p>
+<div class="highlight"><pre><span></span><code>$response = $this-&gt;withoutExceptionHandling()-&gt;get(&#39;/&#39;);
+</code></pre></div>
+<p>此外，如果想確保你的應用程式沒有使用 PHP 語言或你的應用程式正在使用的庫已棄用的功能，你可以在發出請求之前呼叫 <code>withoutDeprecationHandling</code> 方法。停用棄用處理時，棄用警告將轉換為異常，從而導致你的測試失敗：</p>
+<div class="highlight"><pre><span></span><code>$response = $this-&gt;withoutDeprecationHandling()-&gt;get(&#39;/&#39;);
+</code></pre></div>
+<h2 id="json-apis">測試 JSON APIs<a class="headerlink" href="#json-apis" title="Permanent link">&para;</a></h2>
+<p>Laravel 也提供了幾個輔助函數來測試 JSON APIs 和其響應。例如，<code>json</code>、<code>getJson</code>、<code>postJson</code>、<code>putJson</code>、<code>patchJson</code>、<code>deleteJson</code> 以及 <code>optionsJson</code> 可以被用於傳送各種 HTTP 動作。你也可以輕鬆地將資料和要求標頭傳遞到這些方法中。首先，讓我們實現一個測試示例，傳送 <code>POST</code> 請求到 <code>/api/user</code>，並斷言返回的期望資料：</p>
+<div class="highlight"><pre><span></span><code>&lt;?php
+
+namespace Tests\Feature;
+
+use Tests\TestCase;
+
+class ExampleTest extends TestCase
+{
+    /**
+     * 基本功能測試示例。
+     */
+    public function test_making_an_api_request(): void
+    {
+        $response = $this-&gt;postJson(&#39;/api/user&#39;, [&#39;name&#39; =&gt; &#39;Sally&#39;]);
+
+        $response
+            -&gt;assertStatus(201)
+            -&gt;assertJson([
+                &#39;created&#39; =&gt; true,
+            ]);
+    }
+}
+</code></pre></div>
+<p>此外，JSON 響應資料可以作為響應上的陣列變數進行訪問，從而使你可以方便地檢查 JSON 響應中返回的各個值：</p>
+<div class="highlight"><pre><span></span><code>$this-&gt;assertTrue($response[&#39;created&#39;]);
+</code></pre></div>
+<blockquote>
+<p><strong>技巧</strong>
+<code>assertJson</code> 方法將響應轉換為陣列，並利用 <code>PHPUnit::assertArraySubset</code> 驗證給定陣列是否存在於應用程式返回的 JSON 響應中。因此，如果 JSON 響應中還有其他屬性，則只要存在給定的片段，此測試仍將通過。</p>
+</blockquote>
+<h4 id="json">驗證 JSON 完全匹配<a class="headerlink" href="#json" title="Permanent link">&para;</a></h4>
+<p>如前所述，<code>assertJson</code> 方法可用於斷言 JSON 響應中存在 JSON 片段。如果你想驗證給定陣列是否與應用程式返回的 JSON <strong>完全匹配</strong>，則應使用 <code>assertExactJson</code> 方法：</p>
+<div class="highlight"><pre><span></span><code>&lt;?php
+
+namespace Tests\Feature;
+
+use Tests\TestCase;
+
+class ExampleTest extends TestCase
+{
+    /**
+     * 基本功能測試示例。
+     */
+    public function test_asserting_an_exact_json_match(): void
+    {
+        $response = $this-&gt;postJson(&#39;/user&#39;, [&#39;name&#39; =&gt; &#39;Sally&#39;]);
+
+        $response
+            -&gt;assertStatus(201)
+            -&gt;assertExactJson([
+                &#39;created&#39; =&gt; true,
+            ]);
+    }
+}
+</code></pre></div>
+<h4 id="json_1">驗證 JSON 路徑<a class="headerlink" href="#json_1" title="Permanent link">&para;</a></h4>
+<p>如果你想驗證 JSON 響應是否包含指定路徑上的某些給定資料，可以使用 <code>assertJsonPath</code> 方法：</p>
+<div class="highlight"><pre><span></span><code>&lt;?php
+
+namespace Tests\Feature;
+
+use Tests\TestCase;
+
+class ExampleTest extends TestCase
+{
+    /**
+     * 基本功能測試示例。
+     */
+    public function test_asserting_a_json_paths_value(): void
+    {
+        $response = $this-&gt;postJson(&#39;/user&#39;, [&#39;name&#39; =&gt; &#39;Sally&#39;]);
+
+        $response
+            -&gt;assertStatus(201)
+            -&gt;assertJsonPath(&#39;team.owner.name&#39;, &#39;Darian&#39;);
+    }
+}
+</code></pre></div>
+<p><code>assertJsonPath</code> 方法也接受一個閉包，可以用來動態地確定斷言是否應該通過。</p>
+<div class="highlight"><pre><span></span><code>$response-&gt;assertJsonPath(&#39;team.owner.name&#39;, fn (string $name) =&gt; strlen($name) &gt;= 3);
+</code></pre></div>
+<h3 id="json_2">JSON 流式測試<a class="headerlink" href="#json_2" title="Permanent link">&para;</a></h3>
+<p>Laravel 還提供了一種漂亮的方式來流暢地測試應用程式的 JSON 響應。首先，將閉包傳遞給 <code>assertJson</code> 方法。這個閉包將使用 <code>Illuminate\Testing\Fluent\AssertableJson</code> 的實例呼叫，該實例可用於對應用程式返回的 JSON 進行斷言。 <code>where</code> 方法可用於對 JSON 的特定屬性進行斷言，而 <code>missing</code> 方法可用於斷言 JSON 中缺少特定屬性：</p>
+<div class="highlight"><pre><span></span><code>use Illuminate\Testing\Fluent\AssertableJson;
+
+/**
+ * 基本功能測試示例。
+ */
+public function test_fluent_json(): void
+{
+    $response = $this-&gt;getJson(&#39;/users/1&#39;);
+
+    $response
+        -&gt;assertJson(fn (AssertableJson $json) =&gt;
+            $json-&gt;where(&#39;id&#39;, 1)
+                 -&gt;where(&#39;name&#39;, &#39;Victoria Faith&#39;)
+                 -&gt;where(&#39;email&#39;, fn (string $email) =&gt; str($email)-&gt;is(&#39;victoria@gmail.com&#39;))
+                 -&gt;whereNot(&#39;status&#39;, &#39;pending&#39;)
+                 -&gt;missing(&#39;password&#39;)
+                 -&gt;etc()
+        );
+}
+</code></pre></div>
+<h4 id="etc">瞭解 <code>etc</code> 方法<a class="headerlink" href="#etc" title="Permanent link">&para;</a></h4>
+<p>在上面的例子中, 你可能已經注意到我們在斷言鏈的末端呼叫了 <code>etc</code> 方法. 這個方法通知Laravel，在JSON對象上可能還有其他的屬性存在。如果沒有使用 <code>etc</code> 方法, 如果你沒有對JSON對象的其他屬性進行斷言, 測試將失敗.</p>
+<p>這種行為背後的意圖是保護你不會在你的 JSON 響應中無意地暴露敏感資訊，因為它迫使你明確地對該屬性進行斷言或通過 <code>etc</code> 方法明確地允許額外的屬性。</p>
+<p>然而，你應該知道，在你的斷言鏈中不包括 <code>etc</code> 方法並不能確保額外的屬性不會被新增到巢狀在 JSON 對象中的陣列。<code>etc</code> 方法只能確保在呼叫 <code>etc</code> 方法的巢狀層中不存在額外的屬性。</p>
+<h4 id="_6">斷言屬性存在/不存在<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<p>要斷言屬性存在或不存在，可以使用 <code>has</code> 和 <code>missing</code> 方法：</p>
+<div class="highlight"><pre><span></span><code>$response-&gt;assertJson(fn (AssertableJson $json) =&gt;
+    $json-&gt;has(&#39;data&#39;)
+         -&gt;missing(&#39;message&#39;)
+);
+</code></pre></div>
+<p>此外，<code>hasAll</code> 和 <code>missingAll</code> 方法允許同時斷言多個屬性的存在或不存在：</p>
+<div class="highlight"><pre><span></span><code>$response-&gt;assertJson(fn (AssertableJson $json) =&gt;
+    $json-&gt;hasAll([&#39;status&#39;, &#39;data&#39;])
+         -&gt;missingAll([&#39;message&#39;, &#39;code&#39;])
+);
+</code></pre></div>
+<p>你可以使用 <code>hasAny</code> 方法來確定是否存在給定屬性列表中的至少一個：</p>
+<div class="highlight"><pre><span></span><code>$response-&gt;assertJson(fn (AssertableJson $json) =&gt;
+    $json-&gt;has(&#39;status&#39;)
+         -&gt;hasAny(&#39;data&#39;, &#39;message&#39;, &#39;code&#39;)
+);
+</code></pre></div>
+<h4 id="json_3">斷言反對 JSON 集合<a class="headerlink" href="#json_3" title="Permanent link">&para;</a></h4>
+<p>通常，你的路由將返回一個 JSON 響應，其中包含多個項目，例如多個使用者：</p>
+<div class="highlight"><pre><span></span><code>Route::get(&#39;/users&#39;, function () {
+    return User::all();
+});
+</code></pre></div>
+<p>在這些情況下，我們可以使用 fluent JSON 對象的 <code>has</code> 方法對響應中包含的使用者進行斷言。例如，讓我們斷言 JSON 響應包含三個使用者。接下來，我們將使用 <code>first</code> 方法對集合中的第一個使用者進行一些斷言。 <code>first</code> 方法接受一個閉包，該閉包接收另一個可斷言的 JSON 字串，我們可以使用它來對 JSON 集合中的第一個對象進行斷言：</p>
+<div class="highlight"><pre><span></span><code>$response
+    -&gt;assertJson(fn (AssertableJson $json) =&gt;
+        $json-&gt;has(3)
+             -&gt;first(fn (AssertableJson $json) =&gt;
+                $json-&gt;where(&#39;id&#39;, 1)
+                     -&gt;where(&#39;name&#39;, &#39;Victoria Faith&#39;)
+                     -&gt;where(&#39;email&#39;, fn (string $email) =&gt; str($email)-&gt;is(&#39;victoria@gmail.com&#39;))
+                     -&gt;missing(&#39;password&#39;)
+                     -&gt;etc()
+             )
+    );
+</code></pre></div>
+<h4 id="json_4">JSON 集合範圍斷言<a class="headerlink" href="#json_4" title="Permanent link">&para;</a></h4>
+<p>有時，你的應用程式的路由將返回分配有命名鍵的 JSON 集合：</p>
+<div class="highlight"><pre><span></span><code>Route::get(&#39;/users&#39;, function () {
+    return [
+        &#39;meta&#39; =&gt; [...],
+        &#39;users&#39; =&gt; User::all(),
+    ];
+})
+</code></pre></div>
+<p>在測試這些路由時，你可以使用 <code>has</code> 方法來斷言集合中的項目數。此外，你可以使用 <code>has</code> 方法來確定斷言鏈的範圍：</p>
+<div class="highlight"><pre><span></span><code>$response
+    -&gt;assertJson(fn (AssertableJson $json) =&gt;
+        $json-&gt;has(&#39;meta&#39;)
+             -&gt;has(&#39;users&#39;, 3)
+             -&gt;has(&#39;users.0&#39;, fn (AssertableJson $json) =&gt;
+                $json-&gt;where(&#39;id&#39;, 1)
+                     -&gt;where(&#39;name&#39;, &#39;Victoria Faith&#39;)
+                     -&gt;where(&#39;email&#39;, fn (string $email) =&gt; str($email)-&gt;is(&#39;victoria@gmail.com&#39;))
+                     -&gt;missing(&#39;password&#39;)
+                     -&gt;etc()
+             )
+    );
+</code></pre></div>
+<p>但是，你可以進行一次呼叫，提供一個閉包作為其第三個參數，而不是對 <code>has</code> 方法進行兩次單獨呼叫來斷言 <code>users</code> 集合。這樣做時，將自動呼叫閉包並將其範圍限定為集合中的第一項：</p>
+<div class="highlight"><pre><span></span><code>$response
+    -&gt;assertJson(fn (AssertableJson $json) =&gt;
+        $json-&gt;has(&#39;meta&#39;)
+             -&gt;has(&#39;users&#39;, 3, fn (AssertableJson $json) =&gt;
+                $json-&gt;where(&#39;id&#39;, 1)
+                     -&gt;where(&#39;name&#39;, &#39;Victoria Faith&#39;)
+                     -&gt;where(&#39;email&#39;, fn (string $email) =&gt; str($email)-&gt;is(&#39;victoria@gmail.com&#39;))
+                     -&gt;missing(&#39;password&#39;)
+                     -&gt;etc()
+             )
+    );
+</code></pre></div>
+<h4 id="json_5">斷言 JSON 類型<a class="headerlink" href="#json_5" title="Permanent link">&para;</a></h4>
+<p>你可能只想斷言 JSON 響應中的屬性屬於某種類型。 <code>Illuminate\Testing\Fluent\AssertableJson</code> 類提供了 <code>whereType</code> 和 <code>whereAllType</code> 方法來做到這一點：</p>
+<div class="highlight"><pre><span></span><code>$response-&gt;assertJson(fn (AssertableJson $json) =&gt;
+    $json-&gt;whereType(&#39;id&#39;, &#39;integer&#39;)
+         -&gt;whereAllType([
+            &#39;users.0.name&#39; =&gt; &#39;string&#39;,
+            &#39;meta&#39; =&gt; &#39;array&#39;
+        ])
+);
+</code></pre></div>
+<p>你可以使用 <code>|</code> 字元指定多種類型，或者將類型陣列作為第二個參數傳遞給 <code>whereType</code> 方法。如果響應值為任何列出的類型，則斷言將成功：</p>
+<div class="highlight"><pre><span></span><code>$response-&gt;assertJson(fn (AssertableJson $json) =&gt;
+    $json-&gt;whereType(&#39;name&#39;, &#39;string|null&#39;)
+         -&gt;whereType(&#39;id&#39;, [&#39;string&#39;, &#39;integer&#39;])
+);
+</code></pre></div>
+<p><code>whereType</code> 和 <code>whereAllType</code> 方法識別以下類型：<code>string</code>、<code>integer</code>、<code>double</code>、<code>boolean</code>、<code>array</code> 和 <code>null</code>。</p>
+<h2 id="_7">測試檔案上傳<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<p><code>Illuminate\Http\UploadedFile</code> 提供了一個 <code>fake</code> 方法用於生成虛擬的檔案或者圖像以供測試之用。它可以和 <code>Storage</code> facade 的 <code>fake</code> 方法相結合，大幅度簡化了檔案上傳測試。舉個例子，你可以結合這兩者的功能非常方便地進行頭像上傳表單測試：</p>
+<div class="highlight"><pre><span></span><code>&lt;?php
+
+namespace Tests\Feature;
+
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithoutMiddleware;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
+use Tests\TestCase;
+
+class ExampleTest extends TestCase
+{
+    public function test_avatars_can_be_uploaded(): void
+    {
+        Storage::fake(&#39;avatars&#39;);
+
+        $file = UploadedFile::fake()-&gt;image(&#39;avatar.jpg&#39;);
+
+        $response = $this-&gt;post(&#39;/avatar&#39;, [
+            &#39;avatar&#39; =&gt; $file,
+        ]);
+
+        Storage::disk(&#39;avatars&#39;)-&gt;assertExists($file-&gt;hashName());
+    }
+}
+</code></pre></div>
+<p>如果你想斷言一個給定的檔案不存在，則可以使用由 <code>Storage</code> facade 提供的 <code>AssertMissing</code> 方法：</p>
+<div class="highlight"><pre><span></span><code>Storage::fake(&#39;avatars&#39;);
+
+// ...
+
+Storage::disk(&#39;avatars&#39;)-&gt;assertMissing(&#39;missing.jpg&#39;);
+</code></pre></div>
+<h4 id="_8">虛擬檔案定製<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<p>當使用 <code>UploadedFile</code> 類提供的 <code>fake</code> 方法建立檔案時，你可以指定圖片的寬度、高度和大小（以千位元組為單位），以便更好地測試你的應用程式的驗證規則。</p>
+<div class="highlight"><pre><span></span><code>UploadedFile::fake()-&gt;image(&#39;avatar.jpg&#39;, $width, $height)-&gt;size(100);
+</code></pre></div>
+<p>除建立圖像外，你也可以用 <code>create</code> 方法建立其他類型的檔案：</p>
+<div class="highlight"><pre><span></span><code>UploadedFile::fake()-&gt;create(&#39;document.pdf&#39;, $sizeInKilobytes);
+</code></pre></div>
+<p>如果需要，可以向該方法傳遞一個 <code>$mimeType</code> 參數，以顯式定義檔案應返回的 MIME 類型：</p>
+<div class="highlight"><pre><span></span><code>UploadedFile::fake()-&gt;create(
+    &#39;document.pdf&#39;, $sizeInKilobytes, &#39;application/pdf&#39;
+);
+</code></pre></div>
+<h2 id="_9">測試檢視<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<p>Laravel 允許在不嚮應用程序發出模擬 HTTP 請求的情況下獨立呈現檢視。為此，可以在測試中使用 <code>view</code> 方法。<code>view</code> 方法接受檢視名稱和一個可選的資料陣列。這個方法返回一個 <code>Illuminate\Testing\TestView</code> 的實例，它提供了幾個方法來方便地斷言檢視的內容：</p>
+<div class="highlight"><pre><span></span><code>&lt;?php
+
+namespace Tests\Feature;
+
+use Tests\TestCase;
+
+class ExampleTest extends TestCase
+{
+    public function test_a_welcome_view_can_be_rendered(): void
+    {
+        $view = $this-&gt;view(&#39;welcome&#39;, [&#39;name&#39; =&gt; &#39;Taylor&#39;]);
+
+        $view-&gt;assertSee(&#39;Taylor&#39;);
+    }
+}
+</code></pre></div>
+<p><code>TestView</code> 對象提供了以下斷言方法：<code>assertSee</code>、<code>assertSeeInOrder</code>、<code>assertSeeText</code>、<code>assertSeeTextInOrder</code>、<code>assertDontSee</code> 和 <code>assertDontSeeText</code>。</p>
+<p>如果需要，你可以通過將 <code>TestView</code> 實例轉換為一個字串獲得原始的檢視內容：</p>
+<div class="highlight"><pre><span></span><code>$contents = (string) $this-&gt;view(&#39;welcome&#39;);
+</code></pre></div>
+<h4 id="_10">共享錯誤<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<p>一些檢視可能依賴於 Laravel 提供的 <a href="/docs/laravel/10.x/validation#quick-displaying-the-validation-errors">全域錯誤包</a> 中共享的錯誤。要在錯誤包中生成錯誤消息，可以使用 <code>withViewErrors</code> 方法：</p>
+<div class="highlight"><pre><span></span><code>$view = $this-&gt;withViewErrors([
+    &#39;name&#39; =&gt; [&#39;Please provide a valid name.&#39;]
+])-&gt;view(&#39;form&#39;);
+
+$view-&gt;assertSee(&#39;Please provide a valid name.&#39;);
+</code></pre></div>
+<h3 id="_11">渲染範本 &amp; 元件<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<p>必要的話，你可以使用 <code>blade</code> 方法來計算和呈現原始的 <a href="/docs/laravel/10.x/blade">Blade</a> 字串。與 <code>view</code> 方法一樣，<code>blade</code> 方法返回的是 <code>Illuminate\Testing\TestView</code> 的實例：</p>
+<div class="highlight"><pre><span></span><code>$view = $this-&gt;blade(
+    &#39;&lt;x-component :name=&quot;$name&quot; /&gt;&#39;,
+    [&#39;name&#39; =&gt; &#39;Taylor&#39;]
+);
+
+$view-&gt;assertSee(&#39;Taylor&#39;);
+</code></pre></div>
+<p>你可以使用 <code>component</code> 方法來評估和渲染 <a href="/docs/laravel/10.x/blade#components">Blade 元件</a>。類似於 <code>view</code> 方法，<code>component</code> 方法返回一個 <code>Illuminate\Testing\TestView</code> 的實例：</p>
+<div class="highlight"><pre><span></span><code>$view = $this-&gt;component(Profile::class, [&#39;name&#39; =&gt; &#39;Taylor&#39;]);
+
+$view-&gt;assertSee(&#39;Taylor&#39;);
+</code></pre></div>
+<h2 id="_12">可用斷言<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
+<h3 id="_13">響應斷言<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<p>Laravel 的 <code>Illuminate\Testing\TestResponse</code> 類提供了各種自訂斷言方法，你可以在測試應用程式時使用它們。可以在由 <code>json</code>、<code>get</code>、<code>post</code>、<code>put</code> 和 <code>delete</code> 方法返回的響應上訪問這些斷言：</p>
+<style>
+    .collection-method-list > p {
+        columns: 14.4em 2; -moz-columns: 14.4em 2; -webkit-columns: 14.4em 2;
+    }
+
+    .collection-method-list a {
+        display: block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+</style>
+
+<div class="collection-method-list">
+<p><a href="#assert-cookie">assertCookie</a>
+<a href="#assert-cookie-expired">assertCookieExpired</a>
+<a href="#assert-cookie-not-expired">assertCookieNotExpired</a>
+<a href="#assert-cookie-missing">assertCookieMissing</a>
+<a href="#assert-created">assertCreated</a>
+<a href="#assert-dont-see">assertDontSee</a>
+<a href="#assert-dont-see-text">assertDontSeeText</a>
+<a href="#assert-download">assertDownload</a>
+<a href="#assert-exact-json">assertExactJson</a>
+<a href="#assert-forbidden">assertForbidden</a>
+<a href="#assert-header">assertHeader</a>
+<a href="#assert-header-missing">assertHeaderMissing</a>
+<a href="#assert-json">assertJson</a>
+<a href="#assert-json-count">assertJsonCount</a>
+<a href="#assert-json-fragment">assertJsonFragment</a>
+<a href="#assert-json-is-array">assertJsonIsArray</a>
+<a href="#assert-json-is-object">assertJsonIsObject</a>
+<a href="#assert-json-missing">assertJsonMissing</a>
+<a href="#assert-json-missing-exact">assertJsonMissingExact</a>
+<a href="#assert-json-missing-validation-errors">assertJsonMissingValidationErrors</a>
+<a href="#assert-json-path">assertJsonPath</a>
+<a href="#assert-json-missing-path">assertJsonMissingPath</a>
+<a href="#assert-json-structure">assertJsonStructure</a>
+<a href="#assert-json-validation-errors">assertJsonValidationErrors</a>
+<a href="#assert-json-validation-error-for">assertJsonValidationErrorFor</a>
+<a href="#assert-location">assertLocation</a>
+<a href="#assert-content">assertContent</a>
+<a href="#assert-no-content">assertNoContent</a>
+<a href="#assert-streamed-content">assertStreamedContent</a>
+<a href="#assert-not-found">assertNotFound</a>
+<a href="#assert-ok">assertOk</a>
+<a href="#assert-plain-cookie">assertPlainCookie</a>
+<a href="#assert-redirect">assertRedirect</a>
+<a href="#assert-redirect-contains">assertRedirectContains</a>
+<a href="#assert-redirect-to-route">assertRedirectToRoute</a>
+<a href="#assert-redirect-to-signed-route">assertRedirectToSignedRoute</a>
+<a href="#assert-see">assertSee</a>
+<a href="#assert-see-in-order">assertSeeInOrder</a>
+<a href="#assert-see-text">assertSeeText</a>
+<a href="#assert-see-text-in-order">assertSeeTextInOrder</a>
+<a href="#assert-session-has">assertSessionHas</a>
+<a href="#assert-session-has-input">assertSessionHasInput</a>
+<a href="#assert-session-has-all">assertSessionHasAll</a>
+<a href="#assert-session-has-errors">assertSessionHasErrors</a>
+<a href="#assert-session-has-errors-in">assertSessionHasErrorsIn</a>
+<a href="#assert-session-has-no-errors">assertSessionHasNoErrors</a>
+<a href="#assert-session-doesnt-have-errors">assertSessionDoesntHaveErrors</a>
+<a href="#assert-session-missing">assertSessionMissing</a>
+<a href="#assert-status">assertStatus</a>
+<a href="#assert-successful">assertSuccessful</a>
+<a href="#assert-unauthorized">assertUnauthorized</a>
+<a href="#assert-unprocessable">assertUnprocessable</a>
+<a href="#assert-valid">assertValid</a>
+<a href="#assert-invalid">assertInvalid</a>
+<a href="#assert-view-has">assertViewHas</a>
+<a href="#assert-view-has-all">assertViewHasAll</a>
+<a href="#assert-view-is">assertViewIs</a>
+<a href="#assert-view-missing">assertViewMissing</a></p>
+</div>
+<h4 id="assertcookie">assertCookie<a class="headerlink" href="#assertcookie" title="Permanent link">&para;</a></h4>
+<p>斷言響應中包含給定的 cookie：</p>
+<div class="highlight"><pre><span></span><code>$response-&gt;assertCookie($cookieName, $value = null);
+</code></pre></div>
+<h4 id="assertcookieexpired">assertCookieExpired<a class="headerlink" href="#assertcookieexpired" title="Permanent link">&para;</a></h4>
+<p>斷言響應包含給定的過期的 cookie：</p>
+<div class="highlight"><pre><span></span><code>$response-&gt;assertCookieExpired($cookieName);
+</code></pre></div>
+<h4 id="assertcookienotexpired">assertCookieNotExpired<a class="headerlink" href="#assertcookienotexpired" title="Permanent link">&para;</a></h4>
+<p>斷言響應包含給定的未過期的 cookie：</p>
+<div class="highlight"><pre><span></span><code>$response-&gt;assertCookieNotExpired($cookieName);
+</code></pre></div>
+<h4 id="assertcookiemissing">assertCookieMissing<a class="headerlink" href="#assertcookiemissing" title="Permanent link">&para;</a></h4>
+<p>斷言響應不包含給定的 cookie:</p>
+<div class="highlight"><pre><span></span><code>$response-&gt;assertCookieMissing($cookieName);
+</code></pre></div>
+<h4 id="assertcreated">assertCreated<a class="headerlink" href="#assertcreated" title="Permanent link">&para;</a></h4>
+<p>斷言做狀態程式碼為 201 的響應：</p>
+<div class="highlight"><pre><span></span><code>$response-&gt;assertCreated();
+</code></pre></div>
+<h4 id="assertdontsee">assertDontSee<a class="headerlink" href="#assertdontsee" title="Permanent link">&para;</a></h4>
+<p>斷言給定的字串不包含在響應中。除非傳遞第二個參數 <code>false</code>，否則此斷言將給定字串進行轉義後匹配：</p>
+<div class="highlight"><pre><span></span><code>$response-&gt;assertDontSee($value, $escaped = true);
+</code></pre></div>
+<h4 id="assertdontseetext">assertDontSeeText<a class="headerlink" href="#assertdontseetext" title="Permanent link">&para;</a></h4>
+<p>斷言給定的字串不包含在響應文字中。除非你傳遞第二個參數 <code>false</code>，否則該斷言將自動轉義給定的字串。該方法將在做出斷言之前將響應內容傳遞給 PHP 的 <code>strip_tags</code> 函數：</p>
+<div class="highlight"><pre><span></span><code>$response-&gt;assertDontSeeText($value, $escaped = true);
+</code></pre></div>
+<h4 id="assertdownload">assertDownload<a class="headerlink" href="#assertdownload" title="Permanent link">&para;</a></h4>
+<p>斷言響應是「下載」。通常，這意味著返迴響應的呼叫路由返回了 <code>Response::download</code> 響應、<code>BinaryFileResponse</code> 或 <code>Storage::download</code> 響應：</p>
+<div class="highlight"><pre><span></span><code>$response-&gt;assertDownload();
+</code></pre></div>
+<p>如果你願意，你可以斷言可下載的檔案被分配了一個給定的檔案名稱：</p>
+<div class="highlight"><pre><span></span><code>$response-&gt;assertDownload(&#39;image.jpg&#39;);
+</code></pre></div>
+<h4 id="assertexactjson">assertExactJson<a class="headerlink" href="#assertexactjson" title="Permanent link">&para;</a></h4>
+<p>斷言響應包含與給定 JSON 資料的完全匹配：</p>
+<div class="highlight"><pre><span></span><code>$response-&gt;assertExactJson(array $data);
+</code></pre></div>
+<h4 id="assertforbidden">assertForbidden<a class="headerlink" href="#assertforbidden" title="Permanent link">&para;</a></h4>
+<p>斷言響應中有禁止訪問 (403) 狀態碼：</p>
+<div class="highlight"><pre><span></span><code>$response-&gt;assertForbidden();
+</code></pre></div>
+<h4 id="assertheader">assertHeader<a class="headerlink" href="#assertheader" title="Permanent link">&para;</a></h4>
+<p>斷言給定的 header 在響應中存在：</p>
+<div class="highlight"><pre><span></span><code>$response-&gt;assertHeader($headerName, $value = null);
+</code></pre></div>
+<h4 id="assertheadermissing">assertHeaderMissing<a class="headerlink" href="#assertheadermissing" title="Permanent link">&para;</a></h4>
+<p>斷言給定的 header 在響應中不存在：</p>
+<div class="highlight"><pre><span></span><code>$response-&gt;assertHeaderMissing($headerName);
+</code></pre></div>
+<h4 id="assertjson">assertJson<a class="headerlink" href="#assertjson" title="Permanent link">&para;</a></h4>
+<p>斷言響應包含給定的 JSON 資料：</p>
+<div class="highlight"><pre><span></span><code>$response-&gt;assertJson(array $data, $strict = false);
+</code></pre></div>
+<p><code>AssertJson</code> 方法將響應轉換為陣列，並利用 <code>PHPUnit::assertArraySubset</code> 驗證給定陣列是否存在於應用程式返回的 JSON 響應中。因此，如果 JSON 響應中還有其他屬性，則只要存在給定的片段，此測試仍將通過。</p>
+<h4 id="assertjsoncount">assertJsonCount<a class="headerlink" href="#assertjsoncount" title="Permanent link">&para;</a></h4>
+<p>斷言響應 JSON 中有一個陣列，其中包含給定鍵的預期元素數量：</p>
+<div class="highlight"><pre><span></span><code>$response-&gt;assertJsonCount($count, $key = null);
+</code></pre></div>
+<h4 id="assertjsonfragment">assertJsonFragment<a class="headerlink" href="#assertjsonfragment" title="Permanent link">&para;</a></h4>
+<p>斷言響應包含給定 JSON 片段：</p>
+<div class="highlight"><pre><span></span><code>Route::get(&#39;/users&#39;, function () {
+    return [
+        &#39;users&#39; =&gt; [
+            [
+                &#39;name&#39; =&gt; &#39;Taylor Otwell&#39;,
+            ],
+        ],
+    ];
+});
+
+$response-&gt;assertJsonFragment([&#39;name&#39; =&gt; &#39;Taylor Otwell&#39;]);
+</code></pre></div>
+<h4 id="assertjsonisarray">assertJsonIsArray<a class="headerlink" href="#assertjsonisarray" title="Permanent link">&para;</a></h4>
+<p>斷言響應的 JSON 是一個陣列。</p>
+<div class="highlight"><pre><span></span><code>$response-&gt;assertJsonIsArray();
+</code></pre></div>
+<h4 id="assertjsonisobject">assertJsonIsObject<a class="headerlink" href="#assertjsonisobject" title="Permanent link">&para;</a></h4>
+<p>斷言響應的 JSON 是一個對象。</p>
+<div class="highlight"><pre><span></span><code>$response-&gt;assertJsonIsObject();
+</code></pre></div>
+<h4 id="assertjsonmissing">assertJsonMissing<a class="headerlink" href="#assertjsonmissing" title="Permanent link">&para;</a></h4>
+<p>斷言響應未包含給定的 JSON 片段：</p>
+<div class="highlight"><pre><span></span><code>$response-&gt;assertJsonMissing(array $data);
+</code></pre></div>
+<h4 id="assertjsonmissingexact">assertJsonMissingExact<a class="headerlink" href="#assertjsonmissingexact" title="Permanent link">&para;</a></h4>
+<p>斷言響應不包含確切的 JSON 片段：</p>
+<div class="highlight"><pre><span></span><code>$response-&gt;assertJsonMissingExact(array $data);
+</code></pre></div>
+<h4 id="assertjsonmissingvalidationerrors">assertJsonMissingValidationErrors<a class="headerlink" href="#assertjsonmissingvalidationerrors" title="Permanent link">&para;</a></h4>
+<p>斷言響應響應對於給定的鍵沒有 JSON 驗證錯誤：</p>
+<div class="highlight"><pre><span></span><code>$response-&gt;assertJsonMissingValidationErrors($keys);
+</code></pre></div>
+<blockquote>
+<p><strong>提示</strong>
+更通用的 <a href="#assert-valid">assertValid</a> 方法可用於斷言響應沒有以 JSON 形式返回的驗證錯誤**並且**沒有錯誤被閃現到 session 儲存中。</p>
+</blockquote>
+<h4 id="assertjsonpath">assertJsonPath<a class="headerlink" href="#assertjsonpath" title="Permanent link">&para;</a></h4>
+<p>斷言響應包含指定路徑上的給定資料：</p>
+<div class="highlight"><pre><span></span><code>$response-&gt;assertJsonPath($path, $expectedValue);
+</code></pre></div>
+<p>例如，如果你的應用程式返回的 JSON 響應包含以下資料：</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;user&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Steve Schoger&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>你可以斷言 <code>user</code> 對象的 <code>name</code> 屬性匹配給定值，如下所示：</p>
+<div class="highlight"><pre><span></span><code>$response-&gt;assertJsonPath(&#39;user.name&#39;, &#39;Steve Schoger&#39;);
+</code></pre></div>
+<h4 id="assertjsonmissingpath">assertJsonMissingPath<a class="headerlink" href="#assertjsonmissingpath" title="Permanent link">&para;</a></h4>
+<p>斷言響應具有給定的 JSON 結構：</p>
+<div class="highlight"><pre><span></span><code>$response-&gt;assertJsonMissingPath($path);
+</code></pre></div>
+<p>例如，如果你的應用程式返回的 JSON 響應包含以下資料：</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;user&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Steve Schoger&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>你可以斷言它不包含 <code>user</code> 對象的 <code>email</code> 屬性。</p>
+<div class="highlight"><pre><span></span><code>$response-&gt;assertJsonMissingPath(&#39;user.email&#39;);
+</code></pre></div>
+<h4 id="assertjsonstructure">assertJsonStructure<a class="headerlink" href="#assertjsonstructure" title="Permanent link">&para;</a></h4>
+<p>斷言響應具有給定的 JSON 結構：</p>
+<div class="highlight"><pre><span></span><code>$response-&gt;assertJsonStructure(array $structure);
+</code></pre></div>
+<p>例如，如果你的應用程式返回的 JSON 響應包含以下資料：</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;user&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Steve Schoger&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>你可以斷言 JSON 結構符合你的期望，如下所示：</p>
+<div class="highlight"><pre><span></span><code>$response-&gt;assertJsonStructure([
+    &#39;user&#39; =&gt; [
+        &#39;name&#39;,
+    ]
+]);
+</code></pre></div>
+<p>有時，你的應用程式返回的 JSON 響應可能包含對象陣列：</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;user&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Steve Schoger&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;age&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">55</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;location&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Earth&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Mary Schoger&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;age&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;location&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Earth&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>在這種情況下，你可以使用 <code>*</code> 字元來斷言陣列中所有對象的結構：</p>
+<div class="highlight"><pre><span></span><code>$response-&gt;assertJsonStructure([
+    &#39;user&#39; =&gt; [
+        &#39;*&#39; =&gt; [
+             &#39;name&#39;,
+             &#39;age&#39;,
+             &#39;location&#39;
+        ]
+    ]
+]);
+</code></pre></div>
+<h4 id="assertjsonvalidationerrors">assertJsonValidationErrors<a class="headerlink" href="#assertjsonvalidationerrors" title="Permanent link">&para;</a></h4>
+<p>斷言響應具有給定鍵的給定 JSON 驗證錯誤。在斷言驗證錯誤作為 JSON 結構返回而不是閃現到 session 的響應時，應使用此方法：</p>
+<div class="highlight"><pre><span></span><code>$response-&gt;assertJsonValidationErrors(array $data, $responseKey = &#39;errors&#39;);
+</code></pre></div>
+<blockquote>
+<p><strong>技巧</strong>
+更通用的 <a href="#assert-invalid">assertInvalid</a> 方法可用於斷言響應具有以 JSON 形式返回的驗證錯誤**或**錯誤已快閃記憶體到 session 儲存。</p>
+</blockquote>
+<h4 id="assertjsonvalidationerrorfor">assertJsonValidationErrorFor<a class="headerlink" href="#assertjsonvalidationerrorfor" title="Permanent link">&para;</a></h4>
+<p>斷言響應對給定鍵有任何 JSON 驗證錯誤：</p>
+<div class="highlight"><pre><span></span><code>$response-&gt;assertJsonValidationErrorFor(string $key, $responseKey = &#39;errors&#39;);
+</code></pre></div>
+<h4 id="assertlocation">assertLocation<a class="headerlink" href="#assertlocation" title="Permanent link">&para;</a></h4>
+<p>斷言響應在 <code>Location</code> 頭部中具有給定的 URI 值：</p>
+<div class="highlight"><pre><span></span><code>$response-&gt;assertLocation($uri);
+</code></pre></div>
+<h4 id="assertcontent">assertContent<a class="headerlink" href="#assertcontent" title="Permanent link">&para;</a></h4>
+<p>斷言給定的字串與響應內容匹配。</p>
+<div class="highlight"><pre><span></span><code>$response-&gt;assertContent($value);
+</code></pre></div>
+<h4 id="assertnocontent">assertNoContent<a class="headerlink" href="#assertnocontent" title="Permanent link">&para;</a></h4>
+<p>斷言響應具有給定的 HTTP 狀態碼且沒有內容：</p>
+<div class="highlight"><pre><span></span><code>$response-&gt;assertNoContent($status = 204);
+</code></pre></div>
+<h4 id="assertstreamedcontent">assertStreamedContent<a class="headerlink" href="#assertstreamedcontent" title="Permanent link">&para;</a></h4>
+<p>斷言給定的字串與流式響應的內容相匹配。</p>
+<div class="highlight"><pre><span></span><code>$response-&gt;assertStreamedContent($value);
+</code></pre></div>
+<h4 id="assertnotfound">assertNotFound<a class="headerlink" href="#assertnotfound" title="Permanent link">&para;</a></h4>
+<p>斷言響應具有未找到（404）HTTP 狀態碼：</p>
+<div class="highlight"><pre><span></span><code>$response-&gt;assertNotFound();
+</code></pre></div>
+<h4 id="assertok">assertOk<a class="headerlink" href="#assertok" title="Permanent link">&para;</a></h4>
+<p>斷言響應有 200 狀態碼：</p>
+<div class="highlight"><pre><span></span><code>$response-&gt;assertOk();
+</code></pre></div>
+<h4 id="assertplaincookie">assertPlainCookie<a class="headerlink" href="#assertplaincookie" title="Permanent link">&para;</a></h4>
+<p>斷言響應包含給定的 cookie（未加密）:</p>
+<div class="highlight"><pre><span></span><code>$response-&gt;assertPlainCookie($cookieName, $value = null);
+</code></pre></div>
+<h4 id="assertredirect">assertRedirect<a class="headerlink" href="#assertredirect" title="Permanent link">&para;</a></h4>
+<p>斷言響應會重新導向到給定的 URI：</p>
+<div class="highlight"><pre><span></span><code>$response-&gt;assertRedirect($uri);
+</code></pre></div>
+<h4 id="assertredirectcontains">assertRedirectContains<a class="headerlink" href="#assertredirectcontains" title="Permanent link">&para;</a></h4>
+<p>斷言響應是否重新導向到包含給定字串的 URI：</p>
+<div class="highlight"><pre><span></span><code>$response-&gt;assertRedirectContains($string);
+</code></pre></div>
+<h4 id="assertredirecttoroute">assertRedirectToRoute<a class="headerlink" href="#assertredirecttoroute" title="Permanent link">&para;</a></h4>
+<p>斷言響應是對給定的<a href="/docs/laravel/10.x/routing#named-routes">命名路由</a>的重新導向。</p>
+<div class="highlight"><pre><span></span><code>$response-&gt;assertRedirectToRoute($name = null, $parameters = []);
+</code></pre></div>
+<h4 id="assertredirecttosignedroute">assertRedirectToSignedRoute<a class="headerlink" href="#assertredirecttosignedroute" title="Permanent link">&para;</a></h4>
+<p>斷言響應是對給定<a href="/docs/laravel/10.x/urls#signed-urls">簽名路由</a>的重新導向：</p>
+<div class="highlight"><pre><span></span><code>$response-&gt;assertRedirectToSignedRoute($name = null, $parameters = []);
+</code></pre></div>
+<h4 id="assertsee">assertSee<a class="headerlink" href="#assertsee" title="Permanent link">&para;</a></h4>
+<p>斷言給定的字串包含在響應中。除非傳遞第二個參數 <code>false</code>，否則此斷言將給定字串進行轉義後匹配：</p>
+<div class="highlight"><pre><span></span><code>$response-&gt;assertSee($value, $escaped = true);
+</code></pre></div>
+<h4 id="assertseeinorder">assertSeeInOrder<a class="headerlink" href="#assertseeinorder" title="Permanent link">&para;</a></h4>
+<p>斷言給定的字串按順序包含在響應中。除非傳遞第二個參數 <code>false</code>，否則此斷言將給定字串進行轉義後匹配：</p>
+<div class="highlight"><pre><span></span><code>$response-&gt;assertSeeInOrder(array $values, $escaped = true);
+</code></pre></div>
+<h4 id="assertseetext">assertSeeText<a class="headerlink" href="#assertseetext" title="Permanent link">&para;</a></h4>
+<p>斷言給定字串包含在響應文字中。除非傳遞第二個參數 <code>false</code>，否則此斷言將給定字串進行轉義後匹配。在做出斷言之前，響應內容將被傳遞到 PHP 的 <code>strip_tags</code> 函數：</p>
+<div class="highlight"><pre><span></span><code>$response-&gt;assertSeeText($value, $escaped = true);
+</code></pre></div>
+<h4 id="assertseetextinorder">assertSeeTextInOrder<a class="headerlink" href="#assertseetextinorder" title="Permanent link">&para;</a></h4>
+<p>斷言給定的字串按順序包含在響應的文字中。除非傳遞第二個參數 <code>false</code>，否則此斷言將給定字串進行轉義後匹配。在做出斷言之前，響應內容將被傳遞到 PHP 的 <code>strip_tags</code> 函數：</p>
+<div class="highlight"><pre><span></span><code>$response-&gt;assertSeeTextInOrder(array $values, $escaped = true);
+</code></pre></div>
+<h4 id="assertsessionhas">assertSessionHas<a class="headerlink" href="#assertsessionhas" title="Permanent link">&para;</a></h4>
+<p>斷言 Session 包含給定的資料段：</p>
+<div class="highlight"><pre><span></span><code>$response-&gt;assertSessionHas($key, $value = null);
+</code></pre></div>
+<p>如果需要，可以提供一個閉包作為 <code>assertSessionHas</code> 方法的第二個參數。如果閉包返回 <code>true</code>，則斷言將通過：</p>
+<div class="highlight"><pre><span></span><code>$response-&gt;assertSessionHas($key, function (User $value) {
+    return $value-&gt;name === &#39;Taylor Otwell&#39;;
+});
+</code></pre></div>
+<h4 id="assertsessionhasinput">assertSessionHasInput<a class="headerlink" href="#assertsessionhasinput" title="Permanent link">&para;</a></h4>
+<p>session 在 <a href="/docs/laravel/9.x/responses#redirecting-with-flashed-session-data">快閃記憶體輸入陣列</a> 中斷言具有給定值：</p>
+<div class="highlight"><pre><span></span><code>$response-&gt;assertSessionHasInput($key, $value = null);
+</code></pre></div>
+<p>如果需要，可以提供一個閉包作為 <code>assertSessionHasInput</code> 方法的第二個參數。如果閉包返回 <code>true</code>，則斷言將通過：</p>
+<div class="highlight"><pre><span></span><code>$response-&gt;assertSessionHasInput($key, function (string $value) {
+    return Crypt::decryptString($value) === &#39;secret&#39;;
+});
+</code></pre></div>
+<h4 id="assertsessionhasall">assertSessionHasAll<a class="headerlink" href="#assertsessionhasall" title="Permanent link">&para;</a></h4>
+<p>斷言 Session 中具有給定的鍵 / 值對列表：</p>
+<div class="highlight"><pre><span></span><code>$response-&gt;assertSessionHasAll(array $data);
+</code></pre></div>
+<p>例如，如果你的應用程式 session 包含 <code>name</code> 和 <code>status</code> 鍵，則可以斷言它們存在並且具有指定的值，如下所示：</p>
+<div class="highlight"><pre><span></span><code>$response-&gt;assertSessionHasAll([
+    &#39;name&#39; =&gt; &#39;Taylor Otwell&#39;,
+    &#39;status&#39; =&gt; &#39;active&#39;,
+]);
+</code></pre></div>
+<h4 id="assertsessionhaserrors">assertSessionHasErrors<a class="headerlink" href="#assertsessionhaserrors" title="Permanent link">&para;</a></h4>
+<p>斷言 session 包含給定 <code>$keys</code> 的 Laravel 驗證錯誤。如果 <code>$keys</code> 是關聯陣列，則斷言 session 包含每個欄位（key）的特定錯誤消息（value）。測試將快閃記憶體驗證錯誤到 session 的路由時，應使用此方法，而不是將其作為 JSON 結構返回：</p>
+<div class="highlight"><pre><span></span><code>$response-&gt;assertSessionHasErrors(
+    array $keys, $format = null, $errorBag = &#39;default&#39;
+);
+</code></pre></div>
+<p>例如，要斷言 <code>name</code> 和 <code>email</code> 欄位具有已快閃記憶體到 session 的驗證錯誤消息，可以呼叫 <code>assertSessionHasErrors</code> 方法，如下所示：</p>
+<div class="highlight"><pre><span></span><code>$response-&gt;assertSessionHasErrors([&#39;name&#39;, &#39;email&#39;]);
+</code></pre></div>
+<p>或者，你可以斷言給定欄位具有特定的驗證錯誤消息：</p>
+<div class="highlight"><pre><span></span><code>$response-&gt;assertSessionHasErrors([
+    &#39;name&#39; =&gt; &#39;The given name was invalid.&#39;
+]);
+</code></pre></div>
+<blockquote>
+<p><strong>注意</strong>
+更加通用的 <a href="#assert-invalid">assertInvalid</a> 方法可以用來斷言一個響應有驗證錯誤，以JSON形式返回，<strong>或</strong> 將錯誤被快閃記憶體到 session 儲存中。</p>
+</blockquote>
+<h4 id="assertsessionhaserrorsin">assertSessionHasErrorsIn<a class="headerlink" href="#assertsessionhaserrorsin" title="Permanent link">&para;</a></h4>
+<p>斷言 session 在特定的<a href="/docs/laravel/10.x/validation#named-error-bags">錯誤包</a>中包含給定 <code>$keys</code> 的錯誤。如果 <code>$keys</code> 是一個關聯陣列，則斷言該 session 在錯誤包內包含每個欄位（鍵）的特定錯誤消息（值）：</p>
+<div class="highlight"><pre><span></span><code>$response-&gt;assertSessionHasErrorsIn($errorBag, $keys = [], $format = null);
+</code></pre></div>
+<h4 id="assertsessionhasnoerrors">assertSessionHasNoErrors<a class="headerlink" href="#assertsessionhasnoerrors" title="Permanent link">&para;</a></h4>
+<p>斷言 session 沒有驗證錯誤：</p>
+<div class="highlight"><pre><span></span><code>$response-&gt;assertSessionHasNoErrors();
+</code></pre></div>
+<h4 id="assertsessiondoesnthaveerrors">assertSessionDoesntHaveErrors<a class="headerlink" href="#assertsessiondoesnthaveerrors" title="Permanent link">&para;</a></h4>
+<p>斷言 session 對給定鍵沒有驗證錯誤：</p>
+<div class="highlight"><pre><span></span><code>$response-&gt;assertSessionDoesntHaveErrors($keys = [], $format = null, $errorBag = &#39;default&#39;);
+</code></pre></div>
+<blockquote>
+<p><strong>注意</strong>
+更加通用的 <a href="#assert-valid">assertValid</a> 方法可以用來斷言一個響應沒有以JSON形式返回的驗證錯誤，<strong>同時</strong> 不會將錯誤被快閃記憶體到 session 儲存中。</p>
+</blockquote>
+<h4 id="assertsessionmissing">assertSessionMissing<a class="headerlink" href="#assertsessionmissing" title="Permanent link">&para;</a></h4>
+<p>斷言 session 中缺少指定的 $key：</p>
+<div class="highlight"><pre><span></span><code>$response-&gt;assertSessionMissing($key);
+</code></pre></div>
+<h4 id="assertstatus">assertStatus<a class="headerlink" href="#assertstatus" title="Permanent link">&para;</a></h4>
+<p>斷言響應指定的 http 狀態碼：</p>
+<div class="highlight"><pre><span></span><code>$response-&gt;assertStatus($code);
+</code></pre></div>
+<h4 id="assertsuccessful">assertSuccessful<a class="headerlink" href="#assertsuccessful" title="Permanent link">&para;</a></h4>
+<p>斷言響應一個成功的狀態碼 (&gt;= 200 且 &lt; 300) :</p>
+<div class="highlight"><pre><span></span><code>$response-&gt;assertSuccessful();
+</code></pre></div>
+<h4 id="assertunauthorized">assertUnauthorized<a class="headerlink" href="#assertunauthorized" title="Permanent link">&para;</a></h4>
+<p>斷言一個未認證的狀態碼 (401)：</p>
+<div class="highlight"><pre><span></span><code>$response-&gt;assertUnauthorized();
+</code></pre></div>
+<h4 id="assertunprocessable">assertUnprocessable<a class="headerlink" href="#assertunprocessable" title="Permanent link">&para;</a></h4>
+<p>斷言響應具有不可處理的實體 (422) HTTP 狀態程式碼：</p>
+<div class="highlight"><pre><span></span><code>$response-&gt;assertUnprocessable();
+</code></pre></div>
+<h4 id="assertvalid">assertValid<a class="headerlink" href="#assertvalid" title="Permanent link">&para;</a></h4>
+<p>斷言響應對給定鍵沒有驗證錯誤。此方法可用於斷言驗證錯誤作為 JSON 結構返回或驗證錯誤已閃現到 session 的響應：</p>
+<div class="highlight"><pre><span></span><code>// 斷言不存在驗證錯誤...
+$response-&gt;assertValid();
+
+// 斷言給定的鍵沒有驗證錯誤...
+$response-&gt;assertValid([&#39;name&#39;, &#39;email&#39;]);
+</code></pre></div>
+<h4 id="assertinvalid">assertInvalid<a class="headerlink" href="#assertinvalid" title="Permanent link">&para;</a></h4>
+<p>斷言響應對給定鍵有驗證錯誤。此方法可用於斷言驗證錯誤作為 JSON 結構返回或驗證錯誤已快閃記憶體到 session 的響應：</p>
+<div class="highlight"><pre><span></span><code>$response-&gt;assertInvalid([&#39;name&#39;, &#39;email&#39;]);
+</code></pre></div>
+<p>你還可以斷言給定鍵具有特定的驗證錯誤消息。這樣做時，你可以提供整條消息或僅提供一部分消息：</p>
+<div class="highlight"><pre><span></span><code>$response-&gt;assertInvalid([
+    &#39;name&#39; =&gt; &#39;The name field is required.&#39;,
+    &#39;email&#39; =&gt; &#39;valid email address&#39;,
+]);
+</code></pre></div>
+<h4 id="assertviewhas">assertViewHas<a class="headerlink" href="#assertviewhas" title="Permanent link">&para;</a></h4>
+<p>斷言為響應檢視提供了一個鍵值對資料：</p>
+<div class="highlight"><pre><span></span><code>$response-&gt;assertViewHas($key, $value = null);
+</code></pre></div>
+<p>將閉包作為第二個參數傳遞給 <code>assertViewHas</code> 方法將允許你檢查並針對特定的檢視資料做出斷言：</p>
+<div class="highlight"><pre><span></span><code>$response-&gt;assertViewHas(&#39;user&#39;, function (User $user) {
+    return $user-&gt;name === &#39;Taylor&#39;;
+});
+</code></pre></div>
+<p>此外，檢視資料可以作為陣列變數訪問響應，讓你可以方便地檢查它：</p>
+<div class="highlight"><pre><span></span><code>$this-&gt;assertEquals(&#39;Taylor&#39;, $response[&#39;name&#39;]);
+</code></pre></div>
+<h4 id="assertviewhasall">assertViewHasAll<a class="headerlink" href="#assertviewhasall" title="Permanent link">&para;</a></h4>
+<p>斷言響應檢視具有給定的資料列表：</p>
+<div class="highlight"><pre><span></span><code>$response-&gt;assertViewHasAll(array $data);
+</code></pre></div>
+<p>該方法可用於斷言該檢視僅包含與給定鍵匹配的資料：</p>
+<div class="highlight"><pre><span></span><code>$response-&gt;assertViewHasAll([
+    &#39;name&#39;,
+    &#39;email&#39;,
+]);
+</code></pre></div>
+<p>或者，你可以斷言該檢視資料存在並且具有特定值：</p>
+<div class="highlight"><pre><span></span><code>$response-&gt;assertViewHasAll([
+    &#39;name&#39; =&gt; &#39;Taylor Otwell&#39;,
+    &#39;email&#39; =&gt; &#39;taylor@example.com,&#39;,
+]);
+</code></pre></div>
+<h4 id="assertviewis">assertViewIs<a class="headerlink" href="#assertviewis" title="Permanent link">&para;</a></h4>
+<p>斷言當前路由返回的的檢視是給定的檢視：</p>
+<div class="highlight"><pre><span></span><code>$response-&gt;assertViewIs($value);
+</code></pre></div>
+<h4 id="assertviewmissing">assertViewMissing<a class="headerlink" href="#assertviewmissing" title="Permanent link">&para;</a></h4>
+<p>斷言給定的資料鍵不可用於應用程式響應中返回的檢視：</p>
+<div class="highlight"><pre><span></span><code>$response-&gt;assertViewMissing($key);
+</code></pre></div>
+<h3 id="_14">身份驗證斷言<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<p>Laravel 還提供了各種與身份驗證相關的斷言，你可以在應用程式的功能測試中使用它們。請注意，這些方法是在測試類本身上呼叫的，而不是由諸如 <code>get</code> 和 <code>post</code> 等方法返回的 <code>Illuminate\Testing\TestResponse</code> 實例。</p>
+<h4 id="assertauthenticated">assertAuthenticated<a class="headerlink" href="#assertauthenticated" title="Permanent link">&para;</a></h4>
+<p>斷言使用者已通過身份驗證：</p>
+<div class="highlight"><pre><span></span><code>$this-&gt;assertAuthenticated($guard = null);
+</code></pre></div>
+<h4 id="assertguest">assertGuest<a class="headerlink" href="#assertguest" title="Permanent link">&para;</a></h4>
+<p>斷言使用者未通過身份驗證：</p>
+<div class="highlight"><pre><span></span><code>$this-&gt;assertGuest($guard = null);
+</code></pre></div>
+<h4 id="assertauthenticatedas">assertAuthenticatedAs<a class="headerlink" href="#assertauthenticatedas" title="Permanent link">&para;</a></h4>
+<p>斷言特定使用者已通過身份驗證：</p>
+<div class="highlight"><pre><span></span><code>$this-&gt;assertAuthenticatedAs($user, $guard = null);
+</code></pre></div>
+<h2 id="_15">驗證斷言<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h2>
+<p>Laravel 提供了兩個主要的驗證相關的斷言，你可以用它來確保在你的請求中提供的資料是有效或無效的。</p>
+<h4 id="assertvalid_1">assertValid<a class="headerlink" href="#assertvalid_1" title="Permanent link">&para;</a></h4>
+<p>斷言響應對於給定的鍵沒有驗證錯誤。該方法可用於斷言響應中的驗證錯誤是以 JSON 結構返回的，或者驗證錯誤已經閃現到 session 中。</p>
+<div class="highlight"><pre><span></span><code>// 斷言沒有驗證錯誤存在...
+$response-&gt;assertValid();
+
+//斷言給定的鍵沒有驗證錯誤...
+$response-&gt;assertValid([&#39;name&#39;, &#39;email&#39;]);
+</code></pre></div>
+<h4 id="assertinvalid_1">assertInvalid<a class="headerlink" href="#assertinvalid_1" title="Permanent link">&para;</a></h4>
+<p>斷言響應對給定的鍵有驗證錯誤。這個方法可用於斷言響應中的驗證錯誤是以 JSON 結構返回的，或者驗證錯誤已經被閃現到 session 中。</p>
+<div class="highlight"><pre><span></span><code>$response-&gt;assertInvalid([&#39;name&#39;, &#39;email&#39;]);
+</code></pre></div>
+<p>你也可以斷言一個給定的鍵有一個特定的驗證錯誤資訊。當這樣做時，你可以提供整個消息或只提供消息的一小部分。</p>
+<div class="highlight"><pre><span></span><code>$response-&gt;assertInvalid([
+    &#39;name&#39; =&gt; &#39;The name field is required.&#39;,
+    &#39;email&#39; =&gt; &#39;valid email address&#39;,
+]);
+</code></pre></div>
+
+
+
+
+
+                
+
+  <!-- Giscus -->
+  <h2 id="__comments">留言</h2>
+  <script src="https://giscus.app/client.js"
+          data-repo="tomleesm/notes"
+          data-repo-id="R_kgDOGuSz4g"
+          data-category="Announcements"
+          data-category-id="DIC_kwDOGuSz4s4CBI6T"
+          data-mapping="title"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="bottom"
+          data-theme="dark"
+          data-lang="zh-TW"
+          crossorigin="anonymous"
+          async>
+  </script>
+
+  <!-- Reload on palette change -->
+  <script>
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object")
+      if (palette.color.scheme === "slate") {
+        var giscus = document.querySelector("script[src*=giscus]")
+        giscus.setAttribute("data-theme", "dark")
+      }
+
+    /* Register event handlers after documented loaded */
+    document.addEventListener("DOMContentLoaded", function() {
+      var ref = document.querySelector("[data-md-component=palette]")
+      ref.addEventListener("change", function() {
+        var palette = __md_get("__palette")
+        if (palette && typeof palette.color === "object") {
+          var theme = palette.color.scheme === "slate" ? "dark" : "light"
+
+          /* Instruct Giscus to change theme */
+          var frame = document.querySelector(".giscus-frame")
+          frame.contentWindow.postMessage(
+            { giscus: { setConfig: { theme } } },
+            "https://giscus.app"
+          )
+        }
+      })
+    })
+  </script>
+
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            回到頂端
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tabs", "navigation.sections", "navigation.indexes", "navigation.top", "header.autohide", "search.highlight", "search.share"], "search": "../../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "\u5df2\u8907\u88fd", "clipboard.copy": "\u8907\u88fd", "search.result.more.one": "\u6b64\u9801\u5c1a\u6709 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.more.other": "\u6b64\u9801\u5c1a\u6709 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.none": "\u6c92\u6709\u7b26\u5408\u7684\u9805\u76ee", "search.result.one": "\u627e\u5230 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.other": "\u627e\u5230 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.placeholder": "\u6253\u5b57\u9032\u884c\u641c\u5c0b", "search.result.term.missing": "\u7f3a\u5c11\u5b57\u8a5e", "select.version": "\u9078\u64c7\u7248\u672c"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.dff1b7c8.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,4311 @@
+
+<!doctype html>
+<html lang="zh-TW" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../03Envoy%E9%83%A8%E7%BD%B2%E5%B7%A5%E5%85%B7/">
+      
+      
+        <link rel="next" href="../05Homestead%E8%99%9B%E6%93%AC%E6%A9%9F%E5%99%A8/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-9.2.7">
+    
+    
+      
+        <title>Fortify 與前端無關的身份認證後端實現 - Tom 株式會社</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.046329b4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.85d0ee34.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+Traditional+Chinese:300,300i,400,400i,700,700i%7CSource+Code+Pro:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans Traditional Chinese";--md-code-font:"Source Code Pro"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="red" data-md-color-accent="red">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#fortify" class="md-skip">
+          跳轉到
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="頁首">
+    <a href="../.." title="Tom 株式會社" class="md-header__button md-logo" aria-label="Tom 株式會社" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Tom 株式會社
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Fortify 與前端無關的身份認證後端實現
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="red" data-md-color-accent="red"  aria-hidden="true"  type="radio" name="__palette" id="__palette_1">
+    
+  
+</form>
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜尋" placeholder="搜尋" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="搜尋">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清除" aria-label="清除" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜尋引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/tomleesm/notes" title="前往倉庫" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    tomleesm/notes
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="標籤" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../01%E6%A0%B8%E5%BF%83%E6%9E%B6%E6%A7%8B/01%E8%AB%8B%E6%B1%82%E7%9A%84%E7%94%9F%E5%91%BD%E9%80%B1%E6%9C%9F/" class="md-tabs__link">
+          
+  
+    
+  
+  核心架構
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/01%E8%B7%AF%E7%94%B1/" class="md-tabs__link">
+          
+  
+    
+  
+  基礎功能
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/01Artisan%E5%91%BD%E4%BB%A4%E5%88%97/" class="md-tabs__link">
+          
+  
+    
+  
+  繼續深入
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../04%E5%AE%89%E5%85%A8%E7%9B%B8%E9%97%9C/01%E4%BD%BF%E7%94%A8%E8%80%85%E8%AA%8D%E8%AD%89/" class="md-tabs__link">
+          
+  
+    
+  
+  安全相關
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../05%E8%B3%87%E6%96%99%E5%BA%AB/01%E5%BF%AB%E9%80%9F%E5%85%A5%E9%96%80/" class="md-tabs__link">
+          
+  
+    
+  
+  資料庫
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../06EloquentORM/01%E5%BF%AB%E9%80%9F%E5%85%A5%E9%96%80/" class="md-tabs__link">
+          
+  
+    
+  
+  Eloquent ORM
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../07%E6%B8%AC%E8%A9%A6%E7%9B%B8%E9%97%9C/01%E5%85%A5%E9%96%80/" class="md-tabs__link">
+          
+  
+    
+  
+  測試相關
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../01Cashier%E4%BA%A4%E6%98%93%E5%B7%A5%E5%85%B7%E5%8C%85Stripe/" class="md-tabs__link">
+          
+  
+    
+  
+  官方擴展包
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../cheatsheets/artisan/" class="md-tabs__link">
+          
+  
+    
+  
+  語法速查表
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="導覽列" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Tom 株式會社" class="md-nav__button md-logo" aria-label="Tom 株式會社" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Tom 株式會社
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/tomleesm/notes" title="前往倉庫" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    tomleesm/notes
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    核心架構
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            核心架構
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01%E6%A0%B8%E5%BF%83%E6%9E%B6%E6%A7%8B/01%E8%AB%8B%E6%B1%82%E7%9A%84%E7%94%9F%E5%91%BD%E9%80%B1%E6%9C%9F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    請求的生命週期
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01%E6%A0%B8%E5%BF%83%E6%9E%B6%E6%A7%8B/02%E6%9C%8D%E5%8B%99%E5%AE%B9%E5%99%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    服務容器
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01%E6%A0%B8%E5%BF%83%E6%9E%B6%E6%A7%8B/03%E6%9C%8D%E5%8B%99%E6%8F%90%E4%BE%9B%E8%80%85/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    服務提供者
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01%E6%A0%B8%E5%BF%83%E6%9E%B6%E6%A7%8B/04Facades/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Facades
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    基礎功能
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            基礎功能
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/01%E8%B7%AF%E7%94%B1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    路由
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/02%E4%B8%AD%E4%BB%8B%E8%BB%9F%E9%AB%94/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    中介軟體
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/03CSRF%E4%BF%9D%E8%AD%B7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CSRF 保護
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/04Controller/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Controller
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/05HTTP%E8%AB%8B%E6%B1%82/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTTP 請求
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/06HTTP%E9%9F%BF%E6%87%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTTP 響應
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/07%E6%AA%A2%E8%A6%96/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    檢視
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/08Blade%E7%AF%84%E6%9C%AC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Blade 範本
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/09Vite%E7%B7%A8%E8%AD%AFAssets/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vite 編譯 Assets
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/10%E7%94%9F%E6%88%90URL/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    生成 URL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/11Session/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Session
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/12%E8%A1%A8%E5%96%AE%E9%A9%97%E8%AD%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    表單驗證
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/13%E9%8C%AF%E8%AA%A4%E8%99%95%E7%90%86/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    錯誤處理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/14%E6%97%A5%E8%AA%8C/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    日誌
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    繼續深入
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            繼續深入
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/01Artisan%E5%91%BD%E4%BB%A4%E5%88%97/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Artisan 命令列
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/02%E5%BB%A3%E6%92%AD/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    廣播
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/03%E5%BF%AB%E5%8F%96%E7%B3%BB%E7%B5%B1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    快取系統
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/04%E9%9B%86%E5%90%88/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    集合
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/05%E5%A5%91%E7%B4%84Contract/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    契約 Contract
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/06%E4%BA%8B%E4%BB%B6%E7%B3%BB%E7%B5%B1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    事件系統
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/07%E6%AA%94%E6%A1%88%E5%84%B2%E5%AD%98/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    檔案儲存
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/09HTTPClient/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTTP Client
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/10%E6%9C%AC%E5%9C%B0%E5%8C%96/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    本地化
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/11%E9%83%B5%E4%BB%B6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    郵件
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/12%E6%B6%88%E6%81%AF%E9%80%9A%E7%9F%A5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    消息通知
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/13Package%E9%96%8B%E7%99%BC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Package 開發
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/14%E8%99%95%E7%90%86%E7%A8%8B%E5%BA%8F%E7%AE%A1%E7%90%86/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    處理程序管理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/15%E4%BD%87%E5%88%97/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    佇列
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/16%E9%99%90%E6%B5%81/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    限流
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03%E7%B9%BC%E7%BA%8C%E6%B7%B1%E5%85%A5/17%E4%BB%BB%E5%8B%99%E8%AA%BF%E5%BA%A6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    任務調度
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    安全相關
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            安全相關
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04%E5%AE%89%E5%85%A8%E7%9B%B8%E9%97%9C/01%E4%BD%BF%E7%94%A8%E8%80%85%E8%AA%8D%E8%AD%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    使用者認證
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04%E5%AE%89%E5%85%A8%E7%9B%B8%E9%97%9C/02%E4%BD%BF%E7%94%A8%E8%80%85%E6%8E%88%E6%AC%8A/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    使用者授權
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04%E5%AE%89%E5%85%A8%E7%9B%B8%E9%97%9C/03Email%E8%AA%8D%E8%AD%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Email 認證
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04%E5%AE%89%E5%85%A8%E7%9B%B8%E9%97%9C/04%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    加密解密
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04%E5%AE%89%E5%85%A8%E7%9B%B8%E9%97%9C/05%E9%9B%9C%E6%B9%8A/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    雜湊
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04%E5%AE%89%E5%85%A8%E7%9B%B8%E9%97%9C/06%E9%87%8D%E8%A8%AD%E5%AF%86%E7%A2%BC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    重設密碼
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    資料庫
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            資料庫
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05%E8%B3%87%E6%96%99%E5%BA%AB/01%E5%BF%AB%E9%80%9F%E5%85%A5%E9%96%80/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    快速入門
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05%E8%B3%87%E6%96%99%E5%BA%AB/02%E6%9F%A5%E8%A9%A2%E7%94%9F%E6%88%90%E5%99%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    查詢生成器
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05%E8%B3%87%E6%96%99%E5%BA%AB/03%E5%88%86%E9%A0%81/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    分頁
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05%E8%B3%87%E6%96%99%E5%BA%AB/04%E9%81%B7%E7%A7%BB/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    遷移
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05%E8%B3%87%E6%96%99%E5%BA%AB/05%E8%B3%87%E6%96%99%E5%A1%AB%E5%85%85/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    資料填充
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05%E8%B3%87%E6%96%99%E5%BA%AB/06Redis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Redis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Eloquent ORM
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Eloquent ORM
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06EloquentORM/01%E5%BF%AB%E9%80%9F%E5%85%A5%E9%96%80/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    快速入門
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06EloquentORM/02%E9%97%9C%E8%81%AF/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    關聯
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06EloquentORM/03%E9%9B%86%E5%90%88/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    集合
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06EloquentORM/04%E5%B1%AC%E6%80%A7%E4%BF%AE%E6%94%B9%E5%99%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    屬性修改器
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06EloquentORM/05API%E8%B3%87%E6%BA%90/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    API 資源
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06EloquentORM/06%E5%BA%8F%E5%88%97%E5%8C%96/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    序列化
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06EloquentORM/07%E8%B3%87%E6%96%99%E5%B7%A5%E5%BB%A0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    資料工廠
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    測試相關
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            測試相關
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07%E6%B8%AC%E8%A9%A6%E7%9B%B8%E9%97%9C/01%E5%85%A5%E9%96%80/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    入門
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07%E6%B8%AC%E8%A9%A6%E7%9B%B8%E9%97%9C/02HTTP%E6%B8%AC%E8%A9%A6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTTP 測試
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07%E6%B8%AC%E8%A9%A6%E7%9B%B8%E9%97%9C/03%E5%91%BD%E4%BB%A4%E5%88%97%E6%B8%AC%E8%A9%A6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    命令列測試
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07%E6%B8%AC%E8%A9%A6%E7%9B%B8%E9%97%9C/04LaravelDusk/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Laravel Dusk
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07%E6%B8%AC%E8%A9%A6%E7%9B%B8%E9%97%9C/05%E8%B3%87%E6%96%99%E5%BA%AB%E6%B8%AC%E8%A9%A6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    資料庫測試
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07%E6%B8%AC%E8%A9%A6%E7%9B%B8%E9%97%9C/06Mocking/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mocking
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    官方擴展包
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            官方擴展包
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01Cashier%E4%BA%A4%E6%98%93%E5%B7%A5%E5%85%B7%E5%8C%85Stripe/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cashier 交易工具包 Stripe
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02Cashier%E4%BA%A4%E6%98%93%E5%B7%A5%E5%85%B7%E5%8C%85Paddle/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cashier 交易工具包 Paddle
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03Envoy%E9%83%A8%E7%BD%B2%E5%B7%A5%E5%85%B7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Envoy 部署工具
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Fortify 與前端無關的身份認證後端實現
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Fortify 與前端無關的身份認證後端實現
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目錄">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目錄
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    介紹
+  </a>
+  
+    <nav class="md-nav" aria-label="介紹">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fortify_1" class="md-nav__link">
+    Fortify 是什麼？
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fortify_2" class="md-nav__link">
+    何時使用 Fortify？
+  </a>
+  
+    <nav class="md-nav" aria-label="何時使用 Fortify？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#laravel-fortify-laravel-sanctum" class="md-nav__link">
+    Laravel Fortify &amp; Laravel Sanctum
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    安裝
+  </a>
+  
+    <nav class="md-nav" aria-label="安裝">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fortify_3" class="md-nav__link">
+    Fortify 服務提供商
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fortify_4" class="md-nav__link">
+    Fortify 包含的功能
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    停用檢視
+  </a>
+  
+    <nav class="md-nav" aria-label="停用檢視">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    停用檢視 &amp; 重設密碼
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    身份認證
+  </a>
+  
+    <nav class="md-nav" aria-label="身份認證">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    自訂使用者認證
+  </a>
+  
+    <nav class="md-nav" aria-label="自訂使用者認證">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    身份驗證看守器
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    自訂身份驗證管道
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    自訂跳轉
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    雙因素認證
+  </a>
+  
+    <nav class="md-nav" aria-label="雙因素認證">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    確認雙因素認證
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    顯示恢復程式碼
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    使用雙因素身份驗證進行身份驗證
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    停用兩因素身份驗證
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    註冊
+  </a>
+  
+    <nav class="md-nav" aria-label="註冊">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    定製註冊
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    重設密碼
+  </a>
+  
+    <nav class="md-nav" aria-label="重設密碼">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    請求密碼重設連結
+  </a>
+  
+    <nav class="md-nav" aria-label="請求密碼重設連結">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    處理密碼重設連結請求響應
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    重設密碼
+  </a>
+  
+    <nav class="md-nav" aria-label="重設密碼">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    處理密碼重設響應
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    自訂密碼重設
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    電子郵件驗證
+  </a>
+  
+    <nav class="md-nav" aria-label="電子郵件驗證">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    重新傳送電子郵件驗證連結
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    保護路由
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    確認密碼
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05Homestead%E8%99%9B%E6%93%AC%E6%A9%9F%E5%99%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Homestead 虛擬機器
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06Horizon%E4%BD%87%E5%88%97%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Horizon 佇列管理工具
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09Octane%E5%8A%A0%E9%80%9F%E5%BC%95%E6%93%8E/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Octane 加速引擎
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10PassportOAuth%E8%AA%8D%E8%AD%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Passport OAuth 認證
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11Pennant%E6%B8%AC%E8%A9%A6%E6%96%B0%E5%8A%9F%E8%83%BD/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pennant 測試新功能
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12Pint%E7%A8%8B%E5%BC%8F%E7%A2%BC%E9%A2%A8%E6%A0%BC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pint 程式碼風格
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13SailDocker%E9%96%8B%E7%99%BC%E7%92%B0%E5%A2%83/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sail Docker 開發環境
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14SanctumAPI%E6%8E%88%E6%AC%8A/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sanctum API 授權
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15Scout%E5%85%A8%E6%96%87%E6%90%9C%E5%B0%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Scout 全文搜尋
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16Socialite%E7%AC%AC%E4%B8%89%E6%96%B9%E7%99%BB%E5%85%A5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Socialite 第三方登入
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17Telescope%E5%81%B5%E9%8C%AF%E5%B7%A5%E5%85%B7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Telescope 偵錯工具
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    語法速查表
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            語法速查表
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/artisan/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Artisan
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/auth/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Auth 使用者認證
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/blade/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Blade 範本
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/cache/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cache
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/collection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Collection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/composer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Composer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/config/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Config
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/container/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Container
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/cookie/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cookie
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/db/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Database
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/environment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Environment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/event/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Event
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/file/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    File
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/helper/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Helper
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/input/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Input
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/lang/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lang
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/Log/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Log
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/mail/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mail
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/model/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Model (Eloquent ORM)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/pagination/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pagination
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/queue/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Queue
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/redirect/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Redirect
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/request/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Request
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/response/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Response
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/route/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Route
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/schema/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Schema 資料庫結構
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/security/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Security (Hash 和加解密)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/session/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Session
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/storage/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Storage
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/string/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    String
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/unittest/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Unit Test 單元測試
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/url/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    URL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/validation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Validation 表單驗證
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/view/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    View
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目錄">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目錄
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    介紹
+  </a>
+  
+    <nav class="md-nav" aria-label="介紹">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fortify_1" class="md-nav__link">
+    Fortify 是什麼？
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fortify_2" class="md-nav__link">
+    何時使用 Fortify？
+  </a>
+  
+    <nav class="md-nav" aria-label="何時使用 Fortify？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#laravel-fortify-laravel-sanctum" class="md-nav__link">
+    Laravel Fortify &amp; Laravel Sanctum
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    安裝
+  </a>
+  
+    <nav class="md-nav" aria-label="安裝">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fortify_3" class="md-nav__link">
+    Fortify 服務提供商
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fortify_4" class="md-nav__link">
+    Fortify 包含的功能
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    停用檢視
+  </a>
+  
+    <nav class="md-nav" aria-label="停用檢視">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    停用檢視 &amp; 重設密碼
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    身份認證
+  </a>
+  
+    <nav class="md-nav" aria-label="身份認證">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    自訂使用者認證
+  </a>
+  
+    <nav class="md-nav" aria-label="自訂使用者認證">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    身份驗證看守器
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    自訂身份驗證管道
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    自訂跳轉
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    雙因素認證
+  </a>
+  
+    <nav class="md-nav" aria-label="雙因素認證">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    確認雙因素認證
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    顯示恢復程式碼
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    使用雙因素身份驗證進行身份驗證
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    停用兩因素身份驗證
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    註冊
+  </a>
+  
+    <nav class="md-nav" aria-label="註冊">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    定製註冊
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    重設密碼
+  </a>
+  
+    <nav class="md-nav" aria-label="重設密碼">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    請求密碼重設連結
+  </a>
+  
+    <nav class="md-nav" aria-label="請求密碼重設連結">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    處理密碼重設連結請求響應
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    重設密碼
+  </a>
+  
+    <nav class="md-nav" aria-label="重設密碼">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    處理密碼重設響應
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    自訂密碼重設
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    電子郵件驗證
+  </a>
+  
+    <nav class="md-nav" aria-label="電子郵件驗證">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    重新傳送電子郵件驗證連結
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    保護路由
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    確認密碼
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+  
+                  
+
+  
+  
+
+
+<h1 id="fortify">Fortify 與前端無關的身份認證後端實現<a class="headerlink" href="#fortify" title="Permanent link">&para;</a></h1>
+<h2 id="_1">介紹<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p><a href="https://github.com/laravel/fortify">Laravel Fortify</a> 是一個在Laravel中與前端無關的身份認證後端實現。 Fortify 註冊了所有實現 Laravel 身份驗證功能所需的路由和 controller , 包括登錄、註冊、重設密碼、郵件驗證等。安裝 Fortify 後，你可以運行 Artisan 命令 <code>route:list</code> 來查看 Fortify 已註冊的路由。</p>
+<p>由於 Fortify 不提供其自己的使用者介面，因此它應該與你自己的使用者介面配對，該使用者介面向其註冊的路由發出請求。在本文件的其餘部分中，我們將進一步討論如何向這些路由發出請求。</p>
+<blockquote>
+<p><strong>提示</strong><br />
+請記住， Fortify 是一個軟體包，旨在使你能夠快速開始實現 Laravel 的身份驗證功能。 <strong>你並非一定要使用它。</strong>  你始終可以按照以下說明中提供的文件，自由地與 Laravel 的身份認證服務進行互動， <a href="/docs/laravel/10.x/authentication">使用者認證</a>， <a href="/docs/laravel/10.x/passwords">重設密碼</a> 和  <a href="/docs/laravel/10.x/verification">信箱認證</a> 文件。</p>
+</blockquote>
+<h3 id="fortify_1">Fortify 是什麼？<a class="headerlink" href="#fortify_1" title="Permanent link">&para;</a></h3>
+<p>如上所述，Laravel Fortify 是一個與前端無關的身份認證後端實現，Fortify 註冊了所有實現 Laravel 身份驗證功能所需的路由和 controller ，包括登錄，註冊，重設密碼，郵件認證等。</p>
+<p><strong>你不必使用 Fortify，也可以使用 Laravel 的身份認證功能。</strong> 你始終可以按照 <a href="/docs/laravel/10.x/authentication">使用者認證</a>，<a href="/docs/laravel/10.x/passwords">重設密碼</a> 和 <a href="/docs/laravel/10.x/verification">信箱認證</a> 文件中提供的文件來手動與 Laravel 的身份驗證服務進行互動。</p>
+<p>如果你是一名新手，在使用 Laravel Fortify 之前不妨嘗試使用 <a href="/docs/laravel/10.x/starter-kits">Laravel Breeze</a> 應用入門套件。Laravel Breeze 為你的應用提供身份認證支架，其中包括使用 <a href="https://tailwindcss.com">Tailwind CSS</a>。與 Fortify 不同，Breeze 將其路由和 controller 直接發佈到你的應用程式中。這使你可以學習並熟悉 Laravel 的身份認證功能，然後再允許 Laravel Fortify 為你實現這些功能。</p>
+<p>Laravel Fortify 本質上是採用了 Laravel Breeze 的路由和 controller ，且提供了不包含使用者介面的擴展。這樣，你可以快速搭建應用程式身份認證層的後端實現，而不必依賴於任何特定的前端實現。</p>
+<h3 id="fortify_2">何時使用 Fortify？<a class="headerlink" href="#fortify_2" title="Permanent link">&para;</a></h3>
+<p>你可能想知道何時使用 Laravel Fortify。首先，如果你正在使用 Laravel 的 <a href="/docs/laravel/10.x/starter-kits">應用入門套件</a>，你不需要安裝 Laravel Fortify，因為它已經提供了完整的身份認證實現。</p>
+<p>如果你不使用應用入門套件，並且你的應用需要身份認證功能，則有兩個選擇：手動實現應用的身份認證功能或使用由 Laravel Fortify 提供這些功能的後端實現。</p>
+<p>如果你選擇安裝 Fortify，你的使用者介面將向 Fortify 的身份驗證路由發出請求，本文件中對此進行了詳細介紹，以便對使用者進行身份認證和註冊。</p>
+<p>如果你選擇手動與 Laravel 的身份認證服務進行互動而不是使用 Fortify，可以按照 <a href="/docs/laravel/10.x/authentication">使用者認證</a>，<a href="/docs/laravel/10.x/passwords">重設密碼</a> 和 <a href="/docs/laravel/10.x/verification">信箱認證</a> 文件中提供的說明進行操作。</p>
+<h4 id="laravel-fortify-laravel-sanctum">Laravel Fortify &amp; Laravel Sanctum<a class="headerlink" href="#laravel-fortify-laravel-sanctum" title="Permanent link">&para;</a></h4>
+<p>一些開發人員對 <a href="/docs/laravel/10.x/sanctum">Laravel Sanctum</a> 和 Laravel Fortify 兩者之間的區別感到困惑。由於這兩個軟體包解決了兩個不同但相關的問題，因此 Laravel Fortify 和 Laravel Sanctum 並非互斥或競爭的軟體包。</p>
+<p>Laravel Sanctum 只關心管理 API 令牌和使用 session  cookie 或令牌來認證現有使用者。Sanctum 不提供任何處理使用者註冊，重設密碼等相關的路由。</p>
+<p>如果你嘗試為提供 API 或用作單頁應用的後端的應用手動建構身份認證層，那麼完全有可能同時使用 Laravel Fortify（用於使用者註冊，重設密碼等）和 Laravel Sanctum（API 令牌管理， session 身份認證）。</p>
+<h2 id="_2">安裝<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>首先，使用 Composer 軟體包管理器安裝 Fortify：</p>
+<div class="highlight"><pre><span></span><code>composer<span class="w"> </span>require<span class="w"> </span>laravel/fortify
+</code></pre></div>
+<p>下一步，使用 <code>vendor:publish</code> 命令來發佈 Fortify 的資源：</p>
+<div class="highlight"><pre><span></span><code>php<span class="w"> </span>artisan<span class="w"> </span>vendor:publish<span class="w"> </span>--provider<span class="o">=</span><span class="s2">&quot;Laravel\Fortify\FortifyServiceProvider&quot;</span>
+</code></pre></div>
+<p>該命令會將 Fortify 的行為類發佈到你的 <code>app/Actions</code> 目錄，如果該目錄不存在，則會建立該目錄。此外，還將發佈 Fortify 的組態（<code>FortifyServiceProvider</code>）和遷移檔案。</p>
+<p>下一步，你應該遷移資料庫：</p>
+<div class="highlight"><pre><span></span><code>php<span class="w"> </span>artisan<span class="w"> </span>migrate
+</code></pre></div>
+<h3 id="fortify_3">Fortify 服務提供商<a class="headerlink" href="#fortify_3" title="Permanent link">&para;</a></h3>
+<p>上面討論的 <code>vendor:publish</code> 命令還將發佈 <code>App\Providers\FortifyServiceProvider</code> 類。你應該確保該類已在應用程式的 <code>config/app.php</code> 組態檔案的 <code>providers</code> 陣列中註冊。</p>
+<p>Fortify 服務提供商註冊了 Fortify 所發佈的行為類，並指導 Fortify 在執行各自的任務時使用它們。</p>
+<h3 id="fortify_4">Fortify 包含的功能<a class="headerlink" href="#fortify_4" title="Permanent link">&para;</a></h3>
+<p>該 <code>fortify</code> 組態檔案包含一個 <code>features</code> 組態陣列。該陣列默路定義了 Fortify 的路由和功能。如果你不打算將 Fortify 與 <a href="https://jetstream.laravel.com">Laravel Jetstream</a> 配合使用，我們建議你僅啟用以下功能，這是大多數 Laravel 應用提供的基本身份認證功能：</p>
+<div class="highlight"><pre><span></span><code><span class="x">&#39;features&#39; =&gt; [</span>
+<span class="x">    Features::registration(),</span>
+<span class="x">    Features::resetPasswords(),</span>
+<span class="x">    Features::emailVerification(),</span>
+<span class="x">],</span>
+</code></pre></div>
+<h3 id="_3">停用檢視<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>默認情況下，Fortify 定義用於返回檢視的路由，例如登錄或註冊。但是，如果要建構 JavaScript 驅動的單頁應用，那麼可能不需要這些路由。因此，你可以通過將 <code>config/fortify.php</code> 組態檔案中的  <code>views</code> 組態值設為 <code>false</code> 來停用這些路由：</p>
+<div class="highlight"><pre><span></span><code><span class="x">&#39;views&#39; =&gt; false,</span>
+</code></pre></div>
+<h4 id="_4">停用檢視 &amp; 重設密碼<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<p>如果你選擇停用 Fortify 的檢視，並且將為你的應用實現重設密碼功能，這時你仍然需要定義一個名為 <code>password.reset</code> 的路由，該路由負責顯示應用的「重設密碼」檢視。這是必要的，因為 Laravel 的 <code>Illuminate\Auth\Notifications\ResetPassword</code> 通知將通過名為 <code>password.reset</code> 的路由生成重設密碼 URL。</p>
+<h2 id="_5">身份認證<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p>首先，我們需要指導 Fortify 如何返回「登錄」檢視。記住，Fortify 是一個無頭認證擴展。如果你想要一個已經為你完成的 Laravel 身份認證功能的前端實現，你應該使用 <a href="/docs/laravel/9.x/starter-kits">應用入門套件</a>。</p>
+<p>所有的身份認證檢視邏輯，都可以使用 <code>Laravel\Fortify\Fortify</code> 類提供的方法來自訂。通常，你應該從應用的 <code>App\Providers\FortifyServiceProvider</code> 的 <code>boot</code> 方法中呼叫此方法。Fortify 將負責定義返回此檢視的 <code>/login</code> 路由：</p>
+<div class="highlight"><pre><span></span><code>use Laravel\Fortify\Fortify;
+
+/**
+ * 引導任何應用服務。
+ */
+public function boot(): void
+{
+    Fortify::loginView(function () {
+        return view(&#39;auth.login&#39;);
+    });
+
+    // ...
+}
+</code></pre></div>
+<p>你的登錄範本應包括一個向 <code>/login</code> 發出 POST 請求的表單。 <code>/login</code> 表單需要一個 <code>email</code> / <code>username</code> 和 <code>password</code>。 <code>email</code> / <code>username</code> 欄位與 <code>config/fortify.php</code> 組態檔案中的 <code>username</code> 值相匹配。另外，可以提供布林值 <code>remember</code> 欄位來指導使用者想要使用 Laravel 提供的「記住我」功能。</p>
+<p>如果登錄嘗試成功，Fortify 會將你重新導向到通過應用程式 <code>fortify</code> 組態檔案中的 <code>home</code> 組態選項組態的 URI。如果登錄請求是 XHR 請求，將返回 200 HTTP 響應。</p>
+<p>如果請求不成功，使用者將被重新導向回登錄頁，驗證錯誤將通過共享的 <code>$errors</code> <a href="/docs/laravel/10.x/validation#quick-displaying-the-validation-errors">Blade 範本變數</a> 提供給你。或者，在 XHR 請求的情況下，驗證錯誤將與 422 HTTP 響應一起返回。</p>
+<h3 id="_6">自訂使用者認證<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p>Fortify 將根據提供的憑據和為你的應用程式組態的身份驗證保護自動檢索和驗證使用者。但是，你有時可能希望對登錄憑據的身份驗證和使用者的檢索方式進行完全自訂。幸運的是，Fortify 允許你使用 <code>Fortify::authenticateUsing</code> 方法輕鬆完成此操作。</p>
+<p>此方法接受接收傳入 HTTP 請求的閉包。閉包負責驗證附加到請求的登錄憑據並返回關聯的使用者實例。如果憑據無效或找不到使用者，則閉包應返回 <code>null</code> 或 <code>false</code> 。通常，這個方法應該從你的 <code>FortifyServiceProvider</code> 的 <code>boot</code> 方法中呼叫：</p>
+<div class="highlight"><pre><span></span><code><span class="x">use App\Models\User;</span>
+<span class="x">use Illuminate\Http\Request;</span>
+<span class="x">use Illuminate\Support\Facades\Hash;</span>
+<span class="x">use Laravel\Fortify\Fortify;</span>
+
+<span class="x">/**</span>
+<span class="x"> * 引導應用服務</span>
+<span class="x"> */</span>
+<span class="x">public function boot(): void</span>
+<span class="x">{</span>
+<span class="x">    Fortify::authenticateUsing(function (Request $request) {</span>
+<span class="x">        $user = User::where(&#39;email&#39;, $request-&gt;email)-&gt;first();</span>
+
+<span class="x">        if ($user &amp;&amp;</span>
+<span class="x">            Hash::check($request-&gt;password, $user-&gt;password)) {</span>
+<span class="x">            return $user;</span>
+<span class="x">        }</span>
+<span class="x">    });</span>
+
+<span class="x">    // ...</span>
+<span class="x">}</span>
+</code></pre></div>
+<h4 id="_7">身份驗證看守器<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<p>你可以在應用程式的 <code>fortify</code> 檔案中自訂 Fortify 使用的身份驗證看守器。但是，你應該確保組態的看守器是 <code>Illuminate\Contracts\Auth\StatefulGuard</code> 的實現。如果你嘗試使用 Laravel Fortify 對 SPA 進行身份驗證，你應該將 Laravel 的默認 <code>web</code> 防護與 <a href="https://laravel.com/docs/sanctum">Laravel Sanctum</a> 結合使用。</p>
+<h3 id="_8">自訂身份驗證管道<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<p>Laravel Fortify 通過可呼叫類的管道對登錄請求進行身份驗證。如果你願意，你可以定義一個自訂的類管道，登錄請求應該通過管道傳輸。每個類都應該有一個 <code>__invoke</code> 方法，該方法接收傳入 <code>Illuminate\Http\Request</code> 實例的方法，並且像 <a href="/docs/laravel/10.x/middleware">中介軟體</a> 一樣，呼叫一個 <code>$next</code> 變數，以便將請求傳遞給管道中的下一個類。</p>
+<p>要定義自訂管道，可以使用 <code>Fortify::authenticateThrough</code> 方法。此方法接受一個閉包，該閉包應返回類陣列，以通過管道傳遞登錄請求。通常，應該從 <code>App\Providers\FortifyServiceProvider</code> 的 <code>boot</code> 方法呼叫此方法。</p>
+<p>下面的示例包含默認管道定義，你可以在自己進行修改時將其用作開始：</p>
+<div class="highlight"><pre><span></span><code><span class="x">use Laravel\Fortify\Actions\AttemptToAuthenticate;</span>
+<span class="x">use Laravel\Fortify\Actions\EnsureLoginIsNotThrottled;</span>
+<span class="x">use Laravel\Fortify\Actions\PrepareAuthenticatedSession;</span>
+<span class="x">use Laravel\Fortify\Actions\RedirectIfTwoFactorAuthenticatable;</span>
+<span class="x">use Laravel\Fortify\Fortify;</span>
+<span class="x">use Illuminate\Http\Request;</span>
+
+<span class="x">Fortify::authenticateThrough(function (Request $request) {</span>
+<span class="x">    return array_filter([</span>
+<span class="x">            config(&#39;fortify.limiters.login&#39;) ? null : EnsureLoginIsNotThrottled::class,</span>
+<span class="x">            Features::enabled(Features::twoFactorAuthentication()) ? RedirectIfTwoFactorAuthenticatable::class : null,</span>
+<span class="x">            AttemptToAuthenticate::class,</span>
+<span class="x">            PrepareAuthenticatedSession::class,</span>
+<span class="x">    ]);</span>
+<span class="x">});</span>
+</code></pre></div>
+<h3 id="_9">自訂跳轉<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<p>如果登錄嘗試成功，Fortify 會將你重新導向到你應用程式 <code>Fortify</code> 的組態檔案中的 <code>home</code> 組態選項的 URI 值。如果登錄請求是 XHR 請求，將返回 200 HTTP 響應。使用者註銷應用程式後，該使用者將被重新導向到 <code>/</code> 地址。</p>
+<p>如果需要對這種行為進行高級定製，可以將 <code>LoginResponse</code> 和 <code>LogoutResponse</code> 契約的實現繫結到 Laravel <a href="/docs/laravel/10.x/container">服務容器</a> 。通常，這應該在你應用程式的 <code>App\Providers\FortifyServiceProvider</code> 類的 <code>register</code> 方法中完成：</p>
+<div class="highlight"><pre><span></span><code><span class="x">use Laravel\Fortify\Contracts\LogoutResponse;</span>
+<span class="x">use Illuminate\Http\RedirectResponse;</span>
+<span class="x">use Illuminate\Http\Request;</span>
+
+<span class="x">/**</span>
+<span class="x"> * 註冊任何應用程式服務。</span>
+<span class="x"> */</span>
+<span class="x">public function register(): void</span>
+<span class="x">{</span>
+<span class="x">    $this-&gt;app-&gt;instance(LogoutResponse::class, new class implements LogoutResponse {</span>
+<span class="x">        public function toResponse(Request $request): RedirectResponse</span>
+<span class="x">        {</span>
+<span class="x">            return redirect(&#39;/&#39;);</span>
+<span class="x">        }</span>
+<span class="x">    });</span>
+<span class="x">}</span>
+</code></pre></div>
+<h2 id="_10">雙因素認證<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
+<p>當 Fortify 的雙因素身份驗證功能啟用時，使用者需要在身份驗證過程中輸入一個六位數的數字令牌。該令牌使用基於時間的一次性密碼（TOTP）生成，該密碼可以從任何與 TOTP 相容的移動認證應用程式（如 Google Authenticator）中檢索。</p>
+<p>在開始之前，你應該首先確保應用程式的 <code>App\Models\User</code> 模型使用 <code>Laravel\Fortify\TwoFactorAuthenticatable</code> trait：</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">App\Models</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Illuminate\Foundation\Auth\User</span> <span class="k">as</span> <span class="nx">Authenticatable</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Illuminate\Notifications\Notifiable</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Laravel\Fortify\TwoFactorAuthenticatable</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">User</span> <span class="k">extends</span> <span class="nx">Authenticatable</span>
+<span class="p">{</span>
+    <span class="k">use</span> <span class="nx">Notifiable</span><span class="p">,</span> <span class="nx">TwoFactorAuthenticatable</span><span class="p">;</span>
+<span class="p">}</span>
+ <span class="sb">```</span>
+
+<span class="sb">接下來，你應該在應用程式中建構一個頁面，使用者可以在其中管理他們的雙因素身份驗證設定。該頁面應允許使用者啟用和停用雙因素身份驗證，以及重新生成雙因素身份驗證恢復的程式碼。</span>
+
+<span class="sb">&gt; 默認情況下， `</span><span class="nx">fortify</span><span class="sb">` 組態檔案的 `</span><span class="nx">features</span><span class="sb">` 陣列管理著 Fortify 的雙因素身份驗證設定在修改前需要密碼確認。因此，在使用之前，你的應用程式應該實現 Fortify 的 [密碼確認](#password-confirmation) 功能。</span>
+
+<span class="sb">### 啟用雙因素身份驗證</span>
+
+<span class="sb">要啟用雙重身份驗證，你的應用程式應向 Fortify 定義的 `</span><span class="o">/</span><span class="nx">user</span><span class="o">/</span><span class="nx">two</span><span class="o">-</span><span class="nx">factor</span><span class="o">-</span><span class="nx">authentication</span><span class="sb">` 發出 POST 請求。如果請求成功，使用者將被重新導向回之前的 URL，並且 `</span><span class="nx">status</span><span class="sb">` session 變數將設定為 `</span><span class="nx">two</span><span class="o">-</span><span class="nx">factor</span><span class="o">-</span><span class="nx">authentication</span><span class="o">-</span><span class="nx">enabled</span><span class="sb">`。你可以在範本中檢測這個 `</span><span class="nx">status</span><span class="sb">` session 變數以顯示適當的成功消息。如果請求是 XHR 請求，將返回  `</span><span class="mi">200</span><span class="sb">` HTTP 響應：</span>
+
+<span class="sb">在選擇啟用雙因素認證後，使用者仍然必須通過提供一個有效的雙因素認證程式碼來「確認」他們的雙因素認證組態。因此，你的「成功」消息應該指示使用者，雙因素認證的確認仍然是必需的。</span>
+
+<span class="sb">```</span><span class="nx">html</span>
+<span class="o">@</span><span class="k">if</span> <span class="p">(</span><span class="nx">session</span><span class="p">(</span><span class="s1">&#39;status&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;two-factor-authentication-enabled&#39;</span><span class="p">)</span>
+    <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">class</span><span class="o">=</span><span class="s2">&quot;mb-4 font-medium text-sm&quot;</span><span class="o">&gt;</span>
+        <span class="nx">Please</span> <span class="nx">finish</span> <span class="nx">configuring</span> <span class="nx">two</span> <span class="nx">factor</span> <span class="nx">authentication</span> <span class="nx">below</span><span class="o">.</span>
+    <span class="o">&lt;/</span><span class="nx">div</span><span class="o">&gt;</span>
+<span class="o">@</span><span class="k">endif</span>
+</code></pre></div>
+<p>接下來，你應該顯示雙重身份驗證二維碼，供使用者掃描到他們的身份驗證器應用程式中。如果你使用 Blade 呈現應用程式的前端，則可以使用使用者實例上可用的 <code>twoFactorQrCodeSvg</code> 方法檢索二維碼 SVG：</p>
+<div class="highlight"><pre><span></span><code><span class="x">$request-&gt;user()-&gt;twoFactorQrCodeSvg();</span>
+</code></pre></div>
+<p>如果你正在建構由 JavaScript 驅動的前端，你可以向 <code>/user/two-factor-qr-code</code> 發出 XHR GET 請求以檢索使用者的雙重身份驗證二維碼。將返回一個包含 <code>svg</code> 鍵的 JSON 對象。</p>
+<h4 id="_11">確認雙因素認證<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
+<p>除了顯示使用者的雙因素認證 QR 碼，你應該提供一個文字輸入，使用者可以提供一個有效的認證碼來「確認」他們的雙因素認證組態。這個程式碼應該通過 POST 請求提供到 <code>/user/confirmed-two-factor-authentication</code>，由 Fortify 來進行確認。</p>
+<p>If the request is successful, the user will be redirected back to the previous URL and the <code>status</code> session variable will be set to <code>two-factor-authentication-confirmed</code>:</p>
+<p>如果請求成功，使用者將被重新導向到之前的URL，<code>status</code>  session 變數將被設定為 `two-factor-authentication-confirmed'。</p>
+<div class="highlight"><pre><span></span><code>@if (session(&#39;status&#39;) == &#39;two-factor-authentication-confirmed&#39;)
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;mb-4 font-medium text-sm&quot;</span><span class="p">&gt;</span>
+        Two factor authentication confirmed and enabled successfully.
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+@endif
+</code></pre></div>
+<p>如果對雙因素認證確認端點的請求是通過 XHR 請求進行的，將返回一個 <code>200</code> HTTP響應。</p>
+<h4 id="_12">顯示恢復程式碼<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
+<p>你還應該顯示使用者的兩個因素恢復程式碼。這些恢復程式碼允許使用者在無法訪問其移動裝置時進行身份驗證。如果你使用 Blade 來渲染應用程式的前端，你可以通過經過身份驗證的使用者實例訪問恢復程式碼：</p>
+<div class="highlight"><pre><span></span><code><span class="x">(array) $request-&gt;user()-&gt;recoveryCodes()</span>
+</code></pre></div>
+<p>如果你正在建構一個 JavaScript 驅動的前端，你可以向 <code>/user/two-factor-recovery-codes</code> 端點發出 XHR GET 請求。此端點將返回一個包含使用者恢復程式碼的 JSON 陣列。</p>
+<p>要重新生成使用者的恢復程式碼，你的應用程式應向 <code>/user/two-factor-recovery-codes</code> 端點發出 POST 請求。</p>
+<h3 id="_13">使用雙因素身份驗證進行身份驗證<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<p>在身份驗證過程中，Fortify 將自動將使用者重新導向到你的應用程式的雙因素身份驗證檢查頁面。但是，如果你的應用程式正在發出 XHR 登錄請求，則在成功進行身份驗證嘗試後返回的 JSON 響應將包含一個具有 <code>two_factor</code> 布林值屬性的 JSON 對象。你應該檢查此值以瞭解是否應該重新導向到應用程式的雙因素身份驗證檢查頁面。</p>
+<p>要開始實現兩因素身份驗證功能，我們需要指示 Fortify 如何返回我們的雙因素身份驗證檢查頁面。Fortify 的所有身份驗證檢視渲染邏輯都可以使用通過 <code>Laravel\Fortify\Fortify</code> 類提供的適當方法進行自訂。通常，你應該從應用程式的 <code>App\Providers\FortifyServiceProvider</code> 類的 <code>boot</code> 方法呼叫此方法：</p>
+<div class="highlight"><pre><span></span><code><span class="x">use Laravel\Fortify\Fortify;</span>
+
+<span class="x">/**</span>
+<span class="x"> * 引導任何應用程式服務。</span>
+<span class="x"> */</span>
+<span class="x">public function boot(): void</span>
+<span class="x">{</span>
+<span class="x">    Fortify::twoFactorChallengeView(function () {</span>
+<span class="x">        return view(&#39;auth.two-factor-challenge&#39;);</span>
+<span class="x">    });</span>
+
+<span class="x">    // ...</span>
+<span class="x">}</span>
+</code></pre></div>
+<p>Fortify 將負責定義返回此檢視的 <code>/two-factor-challenge</code> 路由。你的 <code>two-factor-challenge</code> 範本應包含一個向 <code>/two-factor-challenge</code> 端點發出 POST 請求的表單。 <code>/two-factor-challenge</code> 操作需要包含有效 TOTP 令牌的 <code>code</code> 欄位或包含使用者恢復程式碼之一的 <code>recovery_code</code> 欄位。</p>
+<p>如果登錄嘗試成功，Fortify 會將使用者重新導向到通過應用程式的 <code>fortify</code> 組態檔案中的 <code>home</code> 組態選項組態的 URI。如果登錄請求是 XHR 請求，將返回 204 HTTP 響應。</p>
+<p>如果請求不成功，使用者將被重新導向回兩因素挑戰螢幕，驗證錯誤將通過共享的 <code>$errors</code> <a href="/docs/laravel/10.x/驗證#快速顯示驗證錯誤">Blade 範本變數</a>。或者，在 XHR 請求的情況下，驗證錯誤將返回 422 HTTP 響應。</p>
+<h3 id="_14">停用兩因素身份驗證<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<p>要停用雙因素身份驗證，你的應用程式應向 <code>/user/two-factor-authentication</code> 端點發出 DELETE 請求。請記住，Fortify 的兩個因素身份驗證端點在被呼叫之前需要 <a href="#password-confirmation">密碼確認</a>。</p>
+<h2 id="_15">註冊<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h2>
+<p>要開始實現我們應用程式的註冊功能，我們需要指示 Fortify 如何返回我們的“註冊”檢視。請記住，Fortify 是一個無頭身份驗證庫。如果你想要一個已經為你完成的 Laravel 身份驗證功能的前端實現，你應該使用 <a href="/docs/laravel/10.x/starter-kits">application starter kit</a>。</p>
+<p>Fortify 的所有檢視渲染邏輯都可以使用通過 <code>Laravel\Fortify\Fortify</code> 類提供的適當方法進行自訂。通常，你應該從 <code>App\Providers\FortifyServiceProvider</code> 類的 <code>boot</code> 方法呼叫此方法：</p>
+<div class="highlight"><pre><span></span><code><span class="x">use Laravel\Fortify\Fortify;</span>
+
+<span class="x">/**</span>
+<span class="x"> * 引導任何應用程式服務。</span>
+<span class="x"> */</span>
+<span class="x">public function boot(): void</span>
+<span class="x">{</span>
+<span class="x">    Fortify::registerView(function () {</span>
+<span class="x">        return view(&#39;auth.register&#39;);</span>
+<span class="x">    });</span>
+
+<span class="x">    // ...</span>
+<span class="x">}</span>
+</code></pre></div>
+<p>Fortify 將負責定義返回此檢視的 <code>/register</code> 路由。你的 <code>register</code> 範本應包含一個向 Fortify 定義的 <code>/register</code> 端點發出 POST 請求的表單。</p>
+<p><code>/register</code> 端點需要一個字串 <code>name</code>、字串電子郵件地址/使用者名稱、<code>password</code> 和 <code>password_confirmation</code> 欄位。電子郵件/使用者名稱欄位的名稱應與應用程式的 <code>fortify</code> 組態檔案中定義的 <code>username</code> 組態值匹配。</p>
+<p>如果註冊嘗試成功，Fortify 會將使用者重新導向到通過應用程式的 <code>fortify</code> 組態檔案中的 <code>home</code> 組態選項組態的 URI。如果登錄請求是 XHR 請求，將返回 201 HTTP 響應。</p>
+<p>如果請求不成功，使用者將被重新導向回註冊螢幕，驗證錯誤將通過共享的 <code>$errors</code> <a href="/docs/laravel/10.x/validation#快速顯示驗證錯誤">Blade 範本變數</a>。或者，在 XHR 請求的情況下，驗證錯誤將返回 422 HTTP 響應。</p>
+<h3 id="_16">定製註冊<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
+<p>可以通過修改安裝 Laravel Fortify 時生成的 <code>App\Actions\Fortify\CreateNewUser</code> 操作來自訂使用者驗證和建立過程。</p>
+<h2 id="_17">重設密碼<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h2>
+<h3 id="_18">請求密碼重設連結<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
+<p>要開始實現我們應用程式的密碼重設功能，我們需要指示 Fortify 如何返回我們的“忘記密碼”檢視。請記住，Fortify 是一個無頭身份驗證庫。如果你想要一個已經為你完成的 Laravel 身份驗證功能的前端實現，你應該使用 <a href="/docs/laravel/10.x/starter-kits">application starter kit</a>。</p>
+<p>Fortify 的所有檢視渲染邏輯都可以使用通過 <code>Laravel\Fortify\Fortify</code> 類提供的適當方法進行自訂。通常，你應該從應用程式的 <code>App\Providers\FortifyServiceProvider</code> 類的 <code>boot</code> 方法呼叫此方法：</p>
+<div class="highlight"><pre><span></span><code><span class="x">use Laravel\Fortify\Fortify;</span>
+
+<span class="x">/**</span>
+<span class="x"> * 引導任何應用程式服務。</span>
+<span class="x"> */</span>
+<span class="x">public function boot(): void</span>
+<span class="x">{</span>
+<span class="x">    Fortify::requestPasswordResetLinkView(function () {</span>
+<span class="x">        return view(&#39;auth.forgot-password&#39;);</span>
+<span class="x">    });</span>
+
+<span class="x">    // ...</span>
+<span class="x">}</span>
+</code></pre></div>
+<p>Fortify 將負責定義返回此檢視的 <code>/forgot-password</code> 端點。你的 <code>forgot-password</code> 範本應該包含一個向 <code>/forgot-password</code> 端點發出 POST 請求的表單。</p>
+<p><code>/forgot-password</code> 端點需要一個字串 <code>email</code> 欄位。此欄位/資料庫列的名稱應與應用程式的 <code>fortify</code> 組態檔案中的 <code>email</code> 組態值匹配。</p>
+<h4 id="_19">處理密碼重設連結請求響應<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
+<p>如果密碼重設連結請求成功，Fortify 會將使用者重新導向回 <code>/forgot-password</code> 端點，並向使用者傳送一封電子郵件，其中包含可用於重設密碼的安全連結。如果請求是 XHR 請求，將返回 200 HTTP 響應。</p>
+<p>在請求成功後被重新導向到 <code>/forgot-password</code> 端點，<code>status</code>  session 變數可用於顯示密碼重設連結請求的狀態。</p>
+<p>在成功請求後被重新導向回 <code>/forgot-password</code> 端點後，<code>status</code>  session 變數可用於顯示密碼重設連結請求嘗試的狀態。此 session 變數的值將匹配應用程式的 <code>password</code> <a href="/docs/laravel/10.x/localization">語言檔案</a> 中定義的翻譯字串之一：</p>
+<div class="highlight"><pre><span></span><code>@if (session(&#39;status&#39;))
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;mb-4 font-medium text-sm text-green-600&quot;</span><span class="p">&gt;</span>
+        {{ session(&#39;status&#39;) }}
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+@endif
+</code></pre></div>
+<p>如果請求不成功，使用者將被重新導向回請求密碼重設連結螢幕，驗證錯誤將通過共享的 <code>$errors</code>  <a href="/docs/laravel/10.x/validation#quick-displaying-the-validation-errors">Blade 範本變數</a> 提供給你。或者，在 XHR 請求的情況下，驗證錯誤將返回 422 HTTP 響應。</p>
+<h3 id="_20">重設密碼<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h3>
+<p>為了完成應用程式的密碼重設功能，我們需要指示 Fortify 如何返回我們的「重設密碼」檢視。</p>
+<p>Fortify 的所有檢視渲染邏輯都可以使用通過 <code>Laravel\Fortify\Fortify</code> 類提供的適當方法進行自訂。通常，你應該從應用程式的 <code>App\Providers\FortifyServiceProvider</code> 類的 <code>boot</code> 方法呼叫此方法：</p>
+<div class="highlight"><pre><span></span><code><span class="x">use Laravel\Fortify\Fortify;</span>
+<span class="x">use Illuminate\Http\Request;</span>
+
+<span class="x">/**</span>
+<span class="x"> * 引導任何應用程式服務。</span>
+<span class="x"> */</span>
+<span class="x">public function boot(): void</span>
+<span class="x">{</span>
+<span class="x">    Fortify::resetPasswordView(function (Request $request) {</span>
+<span class="x">        return view(&#39;auth.reset-password&#39;, [&#39;request&#39; =&gt; $request]);</span>
+<span class="x">    });</span>
+
+<span class="x">    // ...</span>
+<span class="x">}</span>
+</code></pre></div>
+<p>Fortify 將負責定義顯示此檢視的路線。你的 <code>reset-password</code> 範本應該包含一個向 <code>/reset-password</code> 發出 POST 請求的表單。</p>
+<p><code>/reset-password</code> 端點需要一個字串 <code>email</code> 欄位、一個 <code>password</code> 欄位、一個 <code>password_confirmation</code> 欄位和一個名為 <code>token</code> 的隱藏欄位，其中包含<code>request()-&gt;route('token')</code>。 <code>email</code> 欄位/資料庫列的名稱應與應用程式的 <code>fortify</code> 組態檔案中定義的 <code>email</code> 組態值匹配。</p>
+<h4 id="_21">處理密碼重設響應<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h4>
+<p>如果密碼重設請求成功，Fortify 將重新導向回 <code>/login</code> 路由，以便使用者可以使用新密碼登錄。此外，還將設定一個 <code>status</code>  session 變數，以便你可以在登錄螢幕上顯示重設的成功狀態：</p>
+<div class="highlight"><pre><span></span><code>@if (session(&#39;status&#39;))
+    &lt;div class=&quot;mb-4 font-medium text-sm text-green-600&quot;&gt;
+        {{ session(&#39;status&#39;) }}
+    &lt;/div&gt;
+@endif
+</code></pre></div>
+<p>如果請求是 XHR 請求，將返回 200 HTTP 響應。</p>
+<p>如果請求不成功，使用者將被重新導向回重設密碼螢幕，驗證錯誤將通過共享的 <code>$errors</code> <a href="/docs/laravel/10.x/validation#快速顯示驗證錯誤">Blade 範本變數</a>。或者，在 XHR 請求的情況下，驗證錯誤將返回 422 HTTP 響應。</p>
+<h3 id="_22">自訂密碼重設<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h3>
+<p>可以通過修改安裝 Laravel Fortify 時生成的 <code>App\Actions\ResetUserPassword</code> 操作來自訂密碼重設過程。</p>
+<h2 id="_23">電子郵件驗證<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h2>
+<p>註冊後，你可能希望使用者在繼續訪問你的應用程式之前驗證他們的電子郵件地址。要開始使用，請確保在 <code>fortify</code> 組態檔案的 <code>features</code> 陣列中啟用了 <code>emailVerification</code> 功能。接下來，你應該確保你的 <code>App\Models\User</code> 類實現了 <code>Illuminate\Contracts\Auth\MustVerifyEmail</code> 介面。</p>
+<p>完成這兩個設定步驟後，新註冊的使用者將收到一封電子郵件，提示他們驗證其電子郵件地址的所有權。但是，我們需要通知 Fortify 如何顯示電子郵件驗證螢幕，通知使用者他們需要點選電子郵件中的驗證連結。</p>
+<p>Fortify 的所有檢視的渲染邏輯都可以使用通過 <code>Laravel\Fortify\Fortify</code> 類提供的適當方法進行自訂。通常，你應該從應用程式的 <code>App\Providers\FortifyServiceProvider</code> 類的 <code>boot</code> 方法呼叫此方法：</p>
+<div class="highlight"><pre><span></span><code><span class="x">use Laravel\Fortify\Fortify;</span>
+
+<span class="x">/**</span>
+<span class="x"> * 引導所有應用程式服務。</span>
+<span class="x"> */</span>
+<span class="x">public function boot(): void</span>
+<span class="x">{</span>
+<span class="x">    Fortify::verifyEmailView(function () {</span>
+<span class="x">        return view(&#39;auth.verify-email&#39;);</span>
+<span class="x">    });</span>
+
+<span class="x">    // ...</span>
+<span class="x">}</span>
+</code></pre></div>
+<p>當使用者被 Laravel 內建的 <code>verified</code> 中介軟體重新導向到 <code>/email/verify</code> 端點時，Fortify 將負責定義顯示此檢視的路由。</p>
+<p>你的 <code>verify-email</code> 範本應包含一條資訊性消息，指示使用者點選傳送到其電子郵件地址的電子郵件驗證連結。</p>
+<h4 id="_24">重新傳送電子郵件驗證連結<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h4>
+<p>如果你願意，你可以在應用程式的 <code>verify-email</code> 範本中新增一個按鈕，該按鈕會觸發對 <code>/email/verification-notification</code> 端點的 POST 請求。當此端點收到請求時，將通過電子郵件將新的驗證電子郵件連結傳送給使用者，如果先前的驗證連結被意外刪除或丟失，則允許使用者獲取新的驗證連結。</p>
+<p>如果重新傳送驗證連結電子郵件的請求成功，Fortify 將使用 <code>status</code>  session 變數將使用者重新導向回 <code>/email/verify</code> 端點，允許你向使用者顯示資訊性消息，通知他們操作已完成成功的。如果請求是 XHR 請求，將返回 202 HTTP 響應：</p>
+<div class="highlight"><pre><span></span><code>@if (session(&#39;status&#39;) == &#39;verification-link-sent&#39;)
+    &lt;div class=&quot;mb-4 font-medium text-sm text-green-600&quot;&gt;
+        A new email verification link has been emailed to you!
+    &lt;/div&gt;
+@endif
+</code></pre></div>
+<h3 id="_25">保護路由<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h3>
+<p>要指定一個路由或一組路由要求使用者驗證他們的電子郵件地址，你應該將 Laravel 的內建 <code>verified</code> 中介軟體附加到該路由。該中介軟體在你的應用程式的 <code>App\Http\Kernel</code> 類中註冊：</p>
+<div class="highlight"><pre><span></span><code><span class="x">Route::get(&#39;/dashboard&#39;, function () {</span>
+<span class="x">    // ...</span>
+<span class="x">})-&gt;middleware([&#39;verified&#39;]);</span>
+</code></pre></div>
+<h2 id="_26">確認密碼<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h2>
+<p>在建構應用程式時，你可能偶爾會有一些操作需要使用者在執行操作之前確認其密碼。通常，這些路由受到 Laravel 內建的 <code>password.confirm</code> 中介軟體的保護。</p>
+<p>要開始實現密碼確認功能，我們需要指示 Fortify 如何返回應用程式的「密碼確認」檢視。請記住，Fortify 是一個無頭身份驗證庫。如果你想要一個已經為你完成的 Laravel 身份驗證功能的前端實現，你應該使用 <a href="/docs/laravel/10.x/starter-kits">application starter kit</a>。</p>
+<p>Fortify 的所有檢視渲染邏輯都可以使用通過 <code>Laravel\Fortify\Fortify</code> 類提供的適當方法進行自訂。通常，你應該從應用程式的 <code>App\Providers\FortifyServiceProvider</code> 類的 <code>boot</code> 方法呼叫此方法：</p>
+<div class="highlight"><pre><span></span><code><span class="x">use Laravel\Fortify\Fortify;</span>
+
+<span class="x">/**</span>
+<span class="x"> * 引導所有應用程式服務。</span>
+<span class="x"> */</span>
+<span class="x">public function boot(): void</span>
+<span class="x">{</span>
+<span class="x">    Fortify::confirmPasswordView(function () {</span>
+<span class="x">        return view(&#39;auth.confirm-password&#39;);</span>
+<span class="x">    });</span>
+
+<span class="x">    // ...</span>
+<span class="x">}</span>
+</code></pre></div>
+<p>Fortify 將負責定義返回此檢視的 <code>/user/confirm-password</code> 端點。你的 <code>confirm-password</code> 範本應包含一個表單，該表單向 <code>/user/confirm-password</code> 端點發出 POST 請求。 <code>/user/confirm-password</code> 端點需要一個包含使用者當前密碼的 <code>password</code> 欄位。</p>
+<p>如果密碼與使用者的當前密碼匹配，Fortify 會將使用者重新導向到他們嘗試訪問的路由。如果請求是 XHR 請求，將返回 201 HTTP 響應。</p>
+<p>如果請求不成功，使用者將被重新導向回確認密碼螢幕，驗證錯誤將通過共享的 <code>$errors</code> Blade 範本變數提供給你。或者，在 XHR 請求的情況下，驗證錯誤將返回 422 HTTP 響應。</p>
+
+
+
+
+
+                
+
+  <!-- Giscus -->
+  <h2 id="__comments">留言</h2>
+  <script src="https://giscus.app/client.js"
+          data-repo="tomleesm/notes"
+          data-repo-id="R_kgDOGuSz4g"
+          data-category="Announcements"
+          data-category-id="DIC_kwDOGuSz4s4CBI6T"
+          data-mapping="title"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="bottom"
+          data-theme="dark"
+          data-lang="zh-TW"
+          crossorigin="anonymous"
+          async>
+  </script>
+
+  <!-- Reload on palette change -->
+  <script>
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object")
+      if (palette.color.scheme === "slate") {
+        var giscus = document.querySelector("script[src*=giscus]")
+        giscus.setAttribute("data-theme", "dark")
+      }
+
+    /* Register event handlers after documented loaded */
+    document.addEventListener("DOMContentLoaded", function() {
+      var ref = document.querySelector("[data-md-component=palette]")
+      ref.addEventListener("change", function() {
+        var palette = __md_get("__palette")
+        if (palette && typeof palette.color === "object") {
+          var theme = palette.color.scheme === "slate" ? "dark" : "light"
+
+          /* Instruct Giscus to change theme */
+          var frame = document.querySelector(".giscus-frame")
+          frame.contentWindow.postMessage(
+            { giscus: { setConfig: { theme } } },
+            "https://giscus.app"
+          )
+        }
+      })
+    })
+  </script>
+
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            回到頂端
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tabs", "navigation.sections", "navigation.indexes", "navigation.top", "header.autohide", "search.highlight", "search.share"], "search": "../../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "\u5df2\u8907\u88fd", "clipboard.copy": "\u8907\u88fd", "search.result.more.one": "\u6b64\u9801\u5c1a\u6709 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.more.other": "\u6b64\u9801\u5c1a\u6709 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.none": "\u6c92\u6709\u7b26\u5408\u7684\u9805\u76ee", "search.result.one": "\u627e\u5230 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.other": "\u627e\u5230 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.placeholder": "\u6253\u5b57\u9032\u884c\u641c\u5c0b", "search.result.term.missing": "\u7f3a\u5c11\u5b57\u8a5e", "select.version": "\u9078\u64c7\u7248\u672c"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.dff1b7c8.min.js"></script>
+      
+    
+  </body>
+</html>

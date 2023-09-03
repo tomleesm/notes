@@ -1,0 +1,4757 @@
+
+<!doctype html>
+<html lang="zh-TW" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../06%E4%BA%8B%E4%BB%B6%E7%B3%BB%E7%B5%B1/">
+      
+      
+        <link rel="next" href="../09HTTPClient/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-9.2.7">
+    
+    
+      
+        <title>檔案儲存 - Tom 株式會社</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.046329b4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.85d0ee34.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+Traditional+Chinese:300,300i,400,400i,700,700i%7CSource+Code+Pro:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans Traditional Chinese";--md-code-font:"Source Code Pro"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="red" data-md-color-accent="red">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳轉到
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="頁首">
+    <a href="../.." title="Tom 株式會社" class="md-header__button md-logo" aria-label="Tom 株式會社" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Tom 株式會社
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              檔案儲存
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="red" data-md-color-accent="red"  aria-hidden="true"  type="radio" name="__palette" id="__palette_1">
+    
+  
+</form>
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜尋" placeholder="搜尋" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="搜尋">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清除" aria-label="清除" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜尋引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/tomleesm/notes" title="前往倉庫" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    tomleesm/notes
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="標籤" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../01%E6%A0%B8%E5%BF%83%E6%9E%B6%E6%A7%8B/01%E8%AB%8B%E6%B1%82%E7%9A%84%E7%94%9F%E5%91%BD%E9%80%B1%E6%9C%9F/" class="md-tabs__link">
+          
+  
+    
+  
+  核心架構
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/01%E8%B7%AF%E7%94%B1/" class="md-tabs__link">
+          
+  
+    
+  
+  基礎功能
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../01Artisan%E5%91%BD%E4%BB%A4%E5%88%97/" class="md-tabs__link">
+          
+  
+    
+  
+  繼續深入
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../04%E5%AE%89%E5%85%A8%E7%9B%B8%E9%97%9C/01%E4%BD%BF%E7%94%A8%E8%80%85%E8%AA%8D%E8%AD%89/" class="md-tabs__link">
+          
+  
+    
+  
+  安全相關
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../05%E8%B3%87%E6%96%99%E5%BA%AB/01%E5%BF%AB%E9%80%9F%E5%85%A5%E9%96%80/" class="md-tabs__link">
+          
+  
+    
+  
+  資料庫
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../06EloquentORM/01%E5%BF%AB%E9%80%9F%E5%85%A5%E9%96%80/" class="md-tabs__link">
+          
+  
+    
+  
+  Eloquent ORM
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../07%E6%B8%AC%E8%A9%A6%E7%9B%B8%E9%97%9C/01%E5%85%A5%E9%96%80/" class="md-tabs__link">
+          
+  
+    
+  
+  測試相關
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/01Cashier%E4%BA%A4%E6%98%93%E5%B7%A5%E5%85%B7%E5%8C%85Stripe/" class="md-tabs__link">
+          
+  
+    
+  
+  官方擴展包
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../cheatsheets/artisan/" class="md-tabs__link">
+          
+  
+    
+  
+  語法速查表
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="導覽列" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Tom 株式會社" class="md-nav__button md-logo" aria-label="Tom 株式會社" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Tom 株式會社
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/tomleesm/notes" title="前往倉庫" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    tomleesm/notes
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    核心架構
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            核心架構
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01%E6%A0%B8%E5%BF%83%E6%9E%B6%E6%A7%8B/01%E8%AB%8B%E6%B1%82%E7%9A%84%E7%94%9F%E5%91%BD%E9%80%B1%E6%9C%9F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    請求的生命週期
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01%E6%A0%B8%E5%BF%83%E6%9E%B6%E6%A7%8B/02%E6%9C%8D%E5%8B%99%E5%AE%B9%E5%99%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    服務容器
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01%E6%A0%B8%E5%BF%83%E6%9E%B6%E6%A7%8B/03%E6%9C%8D%E5%8B%99%E6%8F%90%E4%BE%9B%E8%80%85/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    服務提供者
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01%E6%A0%B8%E5%BF%83%E6%9E%B6%E6%A7%8B/04Facades/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Facades
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    基礎功能
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            基礎功能
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/01%E8%B7%AF%E7%94%B1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    路由
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/02%E4%B8%AD%E4%BB%8B%E8%BB%9F%E9%AB%94/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    中介軟體
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/03CSRF%E4%BF%9D%E8%AD%B7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CSRF 保護
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/04Controller/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Controller
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/05HTTP%E8%AB%8B%E6%B1%82/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTTP 請求
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/06HTTP%E9%9F%BF%E6%87%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTTP 響應
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/07%E6%AA%A2%E8%A6%96/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    檢視
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/08Blade%E7%AF%84%E6%9C%AC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Blade 範本
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/09Vite%E7%B7%A8%E8%AD%AFAssets/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vite 編譯 Assets
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/10%E7%94%9F%E6%88%90URL/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    生成 URL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/11Session/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Session
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/12%E8%A1%A8%E5%96%AE%E9%A9%97%E8%AD%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    表單驗證
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/13%E9%8C%AF%E8%AA%A4%E8%99%95%E7%90%86/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    錯誤處理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02%E5%9F%BA%E7%A4%8E%E5%8A%9F%E8%83%BD/14%E6%97%A5%E8%AA%8C/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    日誌
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    繼續深入
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            繼續深入
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01Artisan%E5%91%BD%E4%BB%A4%E5%88%97/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Artisan 命令列
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02%E5%BB%A3%E6%92%AD/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    廣播
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03%E5%BF%AB%E5%8F%96%E7%B3%BB%E7%B5%B1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    快取系統
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04%E9%9B%86%E5%90%88/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    集合
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05%E5%A5%91%E7%B4%84Contract/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    契約 Contract
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06%E4%BA%8B%E4%BB%B6%E7%B3%BB%E7%B5%B1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    事件系統
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    檔案儲存
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    檔案儲存
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目錄">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目錄
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    簡介
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    組態
+  </a>
+  
+    <nav class="md-nav" aria-label="組態">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    本地驅動
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    公共磁碟
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    驅動先決要求
+  </a>
+  
+    <nav class="md-nav" aria-label="驅動先決要求">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#s3" class="md-nav__link">
+    S3 驅動組態
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ftp" class="md-nav__link">
+    FTP 驅動組態
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sftp" class="md-nav__link">
+    SFTP 驅動組態
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    驅動先決條件
+  </a>
+  
+    <nav class="md-nav" aria-label="驅動先決條件">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#s3_1" class="md-nav__link">
+    S3 驅動組態
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ftp_1" class="md-nav__link">
+    FTP 驅動組態
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sftp_1" class="md-nav__link">
+    SFTP 驅動組態
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    分區和唯讀檔案系統
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#amazon-s3" class="md-nav__link">
+    Amazon S3 相容檔案系統
+  </a>
+  
+    <nav class="md-nav" aria-label="Amazon S3 相容檔案系統">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#minio" class="md-nav__link">
+    MinIO
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    獲取磁碟實例
+  </a>
+  
+    <nav class="md-nav" aria-label="獲取磁碟實例">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    按需組態磁碟
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    檢索檔案
+  </a>
+  
+    <nav class="md-nav" aria-label="檢索檔案">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    下載檔案
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#url" class="md-nav__link">
+    檔案 URL
+  </a>
+  
+    <nav class="md-nav" aria-label="檔案 URL">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#url-host" class="md-nav__link">
+    定製 URL 的 Host
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#url_1" class="md-nav__link">
+    臨時 URL
+  </a>
+  
+    <nav class="md-nav" aria-label="臨時 URL">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#url-host_1" class="md-nav__link">
+    URL Host 自訂
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#url_2" class="md-nav__link">
+    臨時上傳 URL
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    檔案中繼資料
+  </a>
+  
+    <nav class="md-nav" aria-label="檔案中繼資料">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    檔案路徑
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    保存檔案
+  </a>
+  
+    <nav class="md-nav" aria-label="保存檔案">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    寫入失敗
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    追加內容到檔案開頭或結尾
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    複製 / 移動檔案
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    自動流式傳輸
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    檔案上傳
+  </a>
+  
+    <nav class="md-nav" aria-label="檔案上傳">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    指定一個檔案名稱
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    指定一個磁碟
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    其他上傳檔案的資訊
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    檔案可見性
+  </a>
+  
+    <nav class="md-nav" aria-label="檔案可見性">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    本地檔案和可見性
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    刪除檔案
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    目錄
+  </a>
+  
+    <nav class="md-nav" aria-label="目錄">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    獲取目錄下所有的檔案
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    獲取特定目錄下的子目錄
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    建立目錄
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    刪除一個目錄
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    測試
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    自訂檔案系統
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09HTTPClient/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTTP Client
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10%E6%9C%AC%E5%9C%B0%E5%8C%96/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    本地化
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11%E9%83%B5%E4%BB%B6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    郵件
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12%E6%B6%88%E6%81%AF%E9%80%9A%E7%9F%A5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    消息通知
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13Package%E9%96%8B%E7%99%BC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Package 開發
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14%E8%99%95%E7%90%86%E7%A8%8B%E5%BA%8F%E7%AE%A1%E7%90%86/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    處理程序管理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15%E4%BD%87%E5%88%97/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    佇列
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16%E9%99%90%E6%B5%81/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    限流
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17%E4%BB%BB%E5%8B%99%E8%AA%BF%E5%BA%A6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    任務調度
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    安全相關
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            安全相關
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04%E5%AE%89%E5%85%A8%E7%9B%B8%E9%97%9C/01%E4%BD%BF%E7%94%A8%E8%80%85%E8%AA%8D%E8%AD%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    使用者認證
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04%E5%AE%89%E5%85%A8%E7%9B%B8%E9%97%9C/02%E4%BD%BF%E7%94%A8%E8%80%85%E6%8E%88%E6%AC%8A/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    使用者授權
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04%E5%AE%89%E5%85%A8%E7%9B%B8%E9%97%9C/03Email%E8%AA%8D%E8%AD%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Email 認證
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04%E5%AE%89%E5%85%A8%E7%9B%B8%E9%97%9C/04%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    加密解密
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04%E5%AE%89%E5%85%A8%E7%9B%B8%E9%97%9C/05%E9%9B%9C%E6%B9%8A/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    雜湊
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04%E5%AE%89%E5%85%A8%E7%9B%B8%E9%97%9C/06%E9%87%8D%E8%A8%AD%E5%AF%86%E7%A2%BC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    重設密碼
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    資料庫
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            資料庫
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05%E8%B3%87%E6%96%99%E5%BA%AB/01%E5%BF%AB%E9%80%9F%E5%85%A5%E9%96%80/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    快速入門
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05%E8%B3%87%E6%96%99%E5%BA%AB/02%E6%9F%A5%E8%A9%A2%E7%94%9F%E6%88%90%E5%99%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    查詢生成器
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05%E8%B3%87%E6%96%99%E5%BA%AB/03%E5%88%86%E9%A0%81/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    分頁
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05%E8%B3%87%E6%96%99%E5%BA%AB/04%E9%81%B7%E7%A7%BB/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    遷移
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05%E8%B3%87%E6%96%99%E5%BA%AB/05%E8%B3%87%E6%96%99%E5%A1%AB%E5%85%85/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    資料填充
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05%E8%B3%87%E6%96%99%E5%BA%AB/06Redis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Redis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Eloquent ORM
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Eloquent ORM
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06EloquentORM/01%E5%BF%AB%E9%80%9F%E5%85%A5%E9%96%80/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    快速入門
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06EloquentORM/02%E9%97%9C%E8%81%AF/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    關聯
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06EloquentORM/03%E9%9B%86%E5%90%88/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    集合
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06EloquentORM/04%E5%B1%AC%E6%80%A7%E4%BF%AE%E6%94%B9%E5%99%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    屬性修改器
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06EloquentORM/05API%E8%B3%87%E6%BA%90/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    API 資源
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06EloquentORM/06%E5%BA%8F%E5%88%97%E5%8C%96/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    序列化
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06EloquentORM/07%E8%B3%87%E6%96%99%E5%B7%A5%E5%BB%A0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    資料工廠
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    測試相關
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            測試相關
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07%E6%B8%AC%E8%A9%A6%E7%9B%B8%E9%97%9C/01%E5%85%A5%E9%96%80/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    入門
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07%E6%B8%AC%E8%A9%A6%E7%9B%B8%E9%97%9C/02HTTP%E6%B8%AC%E8%A9%A6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTTP 測試
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07%E6%B8%AC%E8%A9%A6%E7%9B%B8%E9%97%9C/03%E5%91%BD%E4%BB%A4%E5%88%97%E6%B8%AC%E8%A9%A6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    命令列測試
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07%E6%B8%AC%E8%A9%A6%E7%9B%B8%E9%97%9C/04LaravelDusk/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Laravel Dusk
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07%E6%B8%AC%E8%A9%A6%E7%9B%B8%E9%97%9C/05%E8%B3%87%E6%96%99%E5%BA%AB%E6%B8%AC%E8%A9%A6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    資料庫測試
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07%E6%B8%AC%E8%A9%A6%E7%9B%B8%E9%97%9C/06Mocking/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mocking
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    官方擴展包
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            官方擴展包
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/01Cashier%E4%BA%A4%E6%98%93%E5%B7%A5%E5%85%B7%E5%8C%85Stripe/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cashier 交易工具包 Stripe
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/02Cashier%E4%BA%A4%E6%98%93%E5%B7%A5%E5%85%B7%E5%8C%85Paddle/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cashier 交易工具包 Paddle
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/03Envoy%E9%83%A8%E7%BD%B2%E5%B7%A5%E5%85%B7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Envoy 部署工具
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/04Fortify%E8%88%87%E5%89%8D%E7%AB%AF%E7%84%A1%E9%97%9C%E7%9A%84%E8%BA%AB%E4%BB%BD%E8%AA%8D%E8%AD%89%E5%BE%8C%E7%AB%AF%E5%AF%A6%E7%8F%BE/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fortify 與前端無關的身份認證後端實現
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/05Homestead%E8%99%9B%E6%93%AC%E6%A9%9F%E5%99%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Homestead 虛擬機器
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/06Horizon%E4%BD%87%E5%88%97%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Horizon 佇列管理工具
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/09Octane%E5%8A%A0%E9%80%9F%E5%BC%95%E6%93%8E/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Octane 加速引擎
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/10PassportOAuth%E8%AA%8D%E8%AD%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Passport OAuth 認證
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/11Pennant%E6%B8%AC%E8%A9%A6%E6%96%B0%E5%8A%9F%E8%83%BD/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pennant 測試新功能
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/12Pint%E7%A8%8B%E5%BC%8F%E7%A2%BC%E9%A2%A8%E6%A0%BC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pint 程式碼風格
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/13SailDocker%E9%96%8B%E7%99%BC%E7%92%B0%E5%A2%83/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sail Docker 開發環境
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/14SanctumAPI%E6%8E%88%E6%AC%8A/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sanctum API 授權
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/15Scout%E5%85%A8%E6%96%87%E6%90%9C%E5%B0%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Scout 全文搜尋
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/16Socialite%E7%AC%AC%E4%B8%89%E6%96%B9%E7%99%BB%E5%85%A5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Socialite 第三方登入
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08%E5%AE%98%E6%96%B9%E6%93%B4%E5%B1%95%E5%8C%85/17Telescope%E5%81%B5%E9%8C%AF%E5%B7%A5%E5%85%B7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Telescope 偵錯工具
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    語法速查表
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            語法速查表
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/artisan/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Artisan
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/auth/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Auth 使用者認證
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/blade/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Blade 範本
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/cache/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cache
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/collection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Collection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/composer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Composer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/config/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Config
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/container/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Container
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/cookie/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cookie
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/db/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Database
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/environment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Environment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/event/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Event
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/file/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    File
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/helper/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Helper
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/input/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Input
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/lang/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lang
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/Log/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Log
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/mail/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mail
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/model/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Model (Eloquent ORM)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/pagination/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pagination
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/queue/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Queue
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/redirect/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Redirect
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/request/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Request
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/response/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Response
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/route/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Route
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/schema/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Schema 資料庫結構
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/security/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Security (Hash 和加解密)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/session/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Session
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/storage/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Storage
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/string/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    String
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/unittest/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Unit Test 單元測試
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/url/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    URL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/validation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Validation 表單驗證
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cheatsheets/view/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    View
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目錄">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目錄
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    簡介
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    組態
+  </a>
+  
+    <nav class="md-nav" aria-label="組態">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    本地驅動
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    公共磁碟
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    驅動先決要求
+  </a>
+  
+    <nav class="md-nav" aria-label="驅動先決要求">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#s3" class="md-nav__link">
+    S3 驅動組態
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ftp" class="md-nav__link">
+    FTP 驅動組態
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sftp" class="md-nav__link">
+    SFTP 驅動組態
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    驅動先決條件
+  </a>
+  
+    <nav class="md-nav" aria-label="驅動先決條件">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#s3_1" class="md-nav__link">
+    S3 驅動組態
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ftp_1" class="md-nav__link">
+    FTP 驅動組態
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sftp_1" class="md-nav__link">
+    SFTP 驅動組態
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    分區和唯讀檔案系統
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#amazon-s3" class="md-nav__link">
+    Amazon S3 相容檔案系統
+  </a>
+  
+    <nav class="md-nav" aria-label="Amazon S3 相容檔案系統">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#minio" class="md-nav__link">
+    MinIO
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    獲取磁碟實例
+  </a>
+  
+    <nav class="md-nav" aria-label="獲取磁碟實例">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    按需組態磁碟
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    檢索檔案
+  </a>
+  
+    <nav class="md-nav" aria-label="檢索檔案">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    下載檔案
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#url" class="md-nav__link">
+    檔案 URL
+  </a>
+  
+    <nav class="md-nav" aria-label="檔案 URL">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#url-host" class="md-nav__link">
+    定製 URL 的 Host
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#url_1" class="md-nav__link">
+    臨時 URL
+  </a>
+  
+    <nav class="md-nav" aria-label="臨時 URL">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#url-host_1" class="md-nav__link">
+    URL Host 自訂
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#url_2" class="md-nav__link">
+    臨時上傳 URL
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    檔案中繼資料
+  </a>
+  
+    <nav class="md-nav" aria-label="檔案中繼資料">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    檔案路徑
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    保存檔案
+  </a>
+  
+    <nav class="md-nav" aria-label="保存檔案">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    寫入失敗
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    追加內容到檔案開頭或結尾
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    複製 / 移動檔案
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    自動流式傳輸
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    檔案上傳
+  </a>
+  
+    <nav class="md-nav" aria-label="檔案上傳">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    指定一個檔案名稱
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    指定一個磁碟
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    其他上傳檔案的資訊
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    檔案可見性
+  </a>
+  
+    <nav class="md-nav" aria-label="檔案可見性">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    本地檔案和可見性
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    刪除檔案
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    目錄
+  </a>
+  
+    <nav class="md-nav" aria-label="目錄">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    獲取目錄下所有的檔案
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    獲取特定目錄下的子目錄
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    建立目錄
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    刪除一個目錄
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    測試
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    自訂檔案系統
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+  
+                  
+
+  
+  
+
+
+<h1 id="_1">檔案儲存<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h2 id="_2">簡介<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>Laravel 提供了一個強大的檔案系統抽象，這要感謝 Frank de Jonge 的 <a href="https://github.com/thephpleague/flysystem">Flysystem</a> PHP 包。Laravel 的 Flysystem 整合提供了 簡單的驅動來處理本地檔案系統、SFTP 和 Amazon S3。更棒的是，在你的本地開發機器和生產伺服器之間切換這些儲存選項是非常簡單的，因為每個系統的 API 都是一樣的。</p>
+<h2 id="_3">組態<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>Laravel 的檔案系統組態檔案位於 <code>config/filesystems.php</code>。 在這個檔案中，你可以組態你所有的檔案系統「磁碟」。每個磁碟代表一個特定的儲存驅動器和儲存位置。 每種支援的驅動器的組態示例都包含在組態檔案中, 因此你可以修改組態以反映你的儲存偏好和證書。</p>
+<p><code>local</code> 驅動用於與運行Laravel應用程式的伺服器上儲存的檔案進行互動，而 <code>s3</code> 驅動用於寫入 Amazon 的 S3 雲端儲存服務。</p>
+<blockquote>
+<p><strong>注意</strong>
+你可以組態任意數量的磁碟，甚至可以新增多個使用相同驅動的磁碟。</p>
+</blockquote>
+<h3 id="_4">本地驅動<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>使用  <code>local</code> 驅動時，所有檔案操作都與 <code>filesystems</code> 組態檔案中定義的 <code>root</code> 目錄相關。 默認情況下，此值設定為 <code>storage/app</code> 目錄。因此，以下方法會把檔案儲存在 <code>storage/app/example.txt</code>中：</p>
+<div class="highlight"><pre><span></span><code>use Illuminate\Support\Facades\Storage;
+
+Storage::disk(&#39;local&#39;)-&gt;put(&#39;example.txt&#39;, &#39;Contents&#39;);
+</code></pre></div>
+<h3 id="_5">公共磁碟<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>在 <code>filesystems</code> 組態檔案中定義的 <code>public</code> 磁碟適用於要公開訪問的檔案。默認情況下， <code>public</code> 磁碟使用 <code>local</code> 驅動，並且將這些檔案儲存在 <code>storage/app/public</code>目錄下。</p>
+<p>要使這些檔案可從 web 訪問，應建立從 <code>public/storage</code> 到 <code>storage/app/public</code>的符號連結。這種方式能把可公開訪問檔案都保留在同一個目錄下，以便在使用零停機時間部署系統如 <a href="https://envoyer.io">Envoyer</a> 的時候，就可以輕鬆地在不同的部署之間共享這些檔案。</p>
+<p>你可以使用 Artisan 命令 <code>storage:link</code> 來建立符號連結：</p>
+<div class="highlight"><pre><span></span><code>php<span class="w"> </span>artisan<span class="w"> </span>storage:link
+</code></pre></div>
+<p>一旦一個檔案被儲存並且已經建立了符號連結，你就可以使用輔助函數 <code>asset</code> 來建立檔案的 URL：</p>
+<div class="highlight"><pre><span></span><code>echo asset(&#39;storage/file.txt&#39;);
+</code></pre></div>
+<p>你可以在 <code>filesystems</code> 組態檔案中組態額外的符號連結。這些連結將會在運行 <code>storage:link</code> 命令時自動建立：</p>
+<div class="highlight"><pre><span></span><code>&#39;links&#39; =&gt; [
+    public_path(&#39;storage&#39;) =&gt; storage_path(&#39;app/public&#39;),
+    public_path(&#39;images&#39;) =&gt; storage_path(&#39;app/images&#39;),
+],
+</code></pre></div>
+<h3 id="_6">驅動先決要求<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<h4 id="s3">S3 驅動組態<a class="headerlink" href="#s3" title="Permanent link">&para;</a></h4>
+<p>在使用 S3 驅動之前，你需要通過 Composer 包管理器安裝 Flysystem S3 軟體包：</p>
+<div class="highlight"><pre><span></span><code>composer<span class="w"> </span>require<span class="w"> </span>league/flysystem-aws-s3-v3<span class="w"> </span><span class="s2">&quot;^3.0&quot;</span>
+</code></pre></div>
+<p>S3 驅動組態資訊位於你的 <code>config/filesystems.php</code> 組態檔案中。該檔案包含一個 S3 驅動的示例組態陣列。你可以自由使用自己的 S3 組態和憑證修改此陣列。為方便起見，這些環境變數與 AWS CLI 使用的命名約定相匹配。</p>
+<h4 id="ftp">FTP 驅動組態<a class="headerlink" href="#ftp" title="Permanent link">&para;</a></h4>
+<p>在使用 FTP 驅動之前，你需要通過 Composer 包管理器安裝 Flysystem FTP 包：</p>
+<div class="highlight"><pre><span></span><code>composer<span class="w"> </span>require<span class="w"> </span>league/flysystem-ftp<span class="w"> </span><span class="s2">&quot;^3.0&quot;</span>
+</code></pre></div>
+<p>Laravel 的 Flysystem 能與 FTP 很好的適配；然而，框架的默認 <code>filesystems.php</code> 組態檔案中並未包含示例組態。如果你需要組態 FTP 檔案系統，可以使用下面的組態示例：</p>
+<div class="highlight"><pre><span></span><code>&#39;ftp&#39; =&gt; [
+    &#39;driver&#39; =&gt; &#39;ftp&#39;,
+    &#39;host&#39; =&gt; env(&#39;FTP_HOST&#39;),
+    &#39;username&#39; =&gt; env(&#39;FTP_USERNAME&#39;),
+    &#39;password&#39; =&gt; env(&#39;FTP_PASSWORD&#39;),
+
+    // 可選的 FTP 設定...
+    // &#39;port&#39; =&gt; env(&#39;FTP_PORT&#39;, 21),
+    // &#39;root&#39; =&gt; env(&#39;FTP_ROOT&#39;),
+    // &#39;passive&#39; =&gt; true,
+    // &#39;ssl&#39; =&gt; true,
+    // &#39;timeout&#39; =&gt; 30,
+],
+</code></pre></div>
+<h4 id="sftp">SFTP 驅動組態<a class="headerlink" href="#sftp" title="Permanent link">&para;</a></h4>
+<p>在使用 SFTP 驅動之前，你需要通過 Composer 包管理器安裝 Flysystem SFTP 軟體包。</p>
+<div class="highlight"><pre><span></span><code>composer<span class="w"> </span>require<span class="w"> </span>league/flysystem-sftp-v3<span class="w"> </span><span class="s2">&quot;^3.0&quot;</span>
+</code></pre></div>
+<p>Laravel 的 Flysystem 能與 SFTP 很好的適配；然而，框架默認的 <code>filesystems.php</code> 組態檔案中並未包含示例組態。如果你需要組態 SFTP 檔案系統，可以使用下面的組態示例：</p>
+<div class="highlight"><pre><span></span><code>&#39;sftp&#39; =&gt; [
+    &#39;driver&#39; =&gt; &#39;sftp&#39;,
+    &#39;host&#39; =&gt; env(&#39;SFTP_HOST&#39;),
+
+    // 基本認證的設定...
+    &#39;username&#39; =&gt; env(&#39;SFTP_USERNAME&#39;),
+    &#39;password&#39; =&gt; env(&#39;SFTP_PASSWORD&#39;),
+
+    // 基於SSH金鑰的認證與加密密碼的設定...
+    &#39;privateKey&#39; =&gt; env(&#39;SFTP_PRIVATE_KEY&#39;),
+    &#39;passphrase&#39; =&gt; env(&#39;SFTP_PASSPHRASE&#39;),
+
+    // 可選的SFTP設定...
+    // &#39;hostFingerprint&#39; =&gt; env(&#39;SFTP_HOST_FINGERPRINT&#39;),
+    // &#39;maxTries&#39; =&gt; 4,
+    // &#39;passphrase&#39; =&gt; env(&#39;SFTP_PASSPHRASE&#39;),
+    // &#39;port&#39; =&gt; env(&#39;SFTP_PORT&#39;, 22),
+    // &#39;root&#39; =&gt; env(&#39;SFTP_ROOT&#39;, &#39;&#39;),
+    // &#39;timeout&#39; =&gt; 30,
+    // &#39;useAgent&#39; =&gt; true,
+],
+</code></pre></div>
+<h3 id="_7">驅動先決條件<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<h4 id="s3_1">S3 驅動組態<a class="headerlink" href="#s3_1" title="Permanent link">&para;</a></h4>
+<p>在使用 S3 驅動之前，你需要通過 Composer 安裝 Flysystem S3 包：</p>
+<div class="highlight"><pre><span></span><code>composer<span class="w"> </span>require<span class="w"> </span>league/flysystem-aws-s3-v3<span class="w"> </span><span class="s2">&quot;^3.0&quot;</span>
+</code></pre></div>
+<p>S3 驅動組態資訊位於你的 <code>config/filesystems.php</code> 組態檔案中。 此檔案包含 S3 驅動的示例組態陣列。 你可以使用自己的 S3 組態和憑據自由修改此陣列。 為方便起見，這些環境變數與 AWS CLI 使用的命名約定相匹配。</p>
+<h4 id="ftp_1">FTP 驅動組態<a class="headerlink" href="#ftp_1" title="Permanent link">&para;</a></h4>
+<p>在使用 FTP 驅動之前，你需要通過 Composer 安裝 Flysystem FTP 包：</p>
+<div class="highlight"><pre><span></span><code>composer<span class="w"> </span>require<span class="w"> </span>league/flysystem-ftp<span class="w"> </span><span class="s2">&quot;^3.0&quot;</span>
+</code></pre></div>
+<p>Laravel 的 Flysystem 整合與 FTP 配合得很好； 但是，框架的默認 <code>filesystems.php</code> 組態檔案中不包含示例組態。 如果需要組態 FTP 檔案系統，可以使用下面的組態示例：</p>
+<div class="highlight"><pre><span></span><code>&#39;ftp&#39; =&gt; [
+    &#39;driver&#39; =&gt; &#39;ftp&#39;,
+    &#39;host&#39; =&gt; env(&#39;FTP_HOST&#39;),
+    &#39;username&#39; =&gt; env(&#39;FTP_USERNAME&#39;),
+    &#39;password&#39; =&gt; env(&#39;FTP_PASSWORD&#39;),
+
+    // 可選的 FTP 設定...
+    // &#39;port&#39; =&gt; env(&#39;FTP_PORT&#39;, 21),
+    // &#39;root&#39; =&gt; env(&#39;FTP_ROOT&#39;),
+    // &#39;passive&#39; =&gt; true,
+    // &#39;ssl&#39; =&gt; true,
+    // &#39;timeout&#39; =&gt; 30,
+],
+</code></pre></div>
+<h4 id="sftp_1">SFTP 驅動組態<a class="headerlink" href="#sftp_1" title="Permanent link">&para;</a></h4>
+<p>在使用 SFTP 驅動之前，你需要通過 Composer 安裝 Flysystem SFTP 包：</p>
+<div class="highlight"><pre><span></span><code>composer<span class="w"> </span>require<span class="w"> </span>league/flysystem-sftp-v3<span class="w"> </span><span class="s2">&quot;^3.0&quot;</span>
+</code></pre></div>
+<p>Laravel 的 Flysystem 整合與 SFTP 配合得很好； 但是，框架的默認 <code>filesystems.php</code> 組態檔案中不包含示例組態。 如果你需要組態 SFTP 檔案系統，可以使用下面的組態示例：</p>
+<div class="highlight"><pre><span></span><code>&#39;sftp&#39; =&gt; [
+    &#39;driver&#39; =&gt; &#39;sftp&#39;,
+    &#39;host&#39; =&gt; env(&#39;SFTP_HOST&#39;),
+
+    // 基本身份驗證設定...
+    &#39;username&#39; =&gt; env(&#39;SFTP_USERNAME&#39;),
+    &#39;password&#39; =&gt; env(&#39;SFTP_PASSWORD&#39;),
+
+    // 基於SSH金鑰的加密密碼認證設定…
+    &#39;privateKey&#39; =&gt; env(&#39;SFTP_PRIVATE_KEY&#39;),
+    &#39;passphrase&#39; =&gt; env(&#39;SFTP_PASSPHRASE&#39;),
+
+    // 可選的 SFTP 設定...
+    // &#39;hostFingerprint&#39; =&gt; env(&#39;SFTP_HOST_FINGERPRINT&#39;),
+    // &#39;maxTries&#39; =&gt; 4,
+    // &#39;passphrase&#39; =&gt; env(&#39;SFTP_PASSPHRASE&#39;),
+    // &#39;port&#39; =&gt; env(&#39;SFTP_PORT&#39;, 22),
+    // &#39;root&#39; =&gt; env(&#39;SFTP_ROOT&#39;, &#39;&#39;),
+    // &#39;timeout&#39; =&gt; 30,
+    // &#39;useAgent&#39; =&gt; true,
+],
+</code></pre></div>
+<h3 id="_8">分區和唯讀檔案系統<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<p>分區磁碟允許你定義一個檔案系統，其中所有的路徑都自動帶有給定的路徑前綴。在建立一個分區檔案系統磁碟之前，你需要通過 Composer 包管理器安裝一個額外的 Flysystem 包：</p>
+<div class="highlight"><pre><span></span><code>composer<span class="w"> </span>require<span class="w"> </span>league/flysystem-path-prefixing<span class="w"> </span><span class="s2">&quot;^3.0&quot;</span>
+</code></pre></div>
+<p>你可以通過定義一個使用 <code>scoped</code> 驅動的磁碟來建立任何現有檔案系統磁碟的路徑分區實例。例如，你可以建立一個磁碟，它將你現有的 <code>s3</code> 磁碟限定在特定的路徑前綴上，然後使用你的分區磁碟進行的每個檔案操作都將使用指定的前綴：</p>
+<div class="highlight"><pre><span></span><code><span class="x">&#39;s3-videos&#39; =&gt; [</span>
+<span class="x">    &#39;driver&#39; =&gt; &#39;scoped&#39;,</span>
+<span class="x">    &#39;disk&#39; =&gt; &#39;s3&#39;,</span>
+<span class="x">    &#39;prefix&#39; =&gt; &#39;path/to/videos&#39;,</span>
+<span class="x">],</span>
+</code></pre></div>
+<p>「唯讀」磁碟允許你建立不允許寫入操作的檔案系統磁碟。在使用 <code>read-only</code> 組態選項之前，你需要通過 Composer 包管理器安裝一個額外的 Flysystem 包：</p>
+<div class="highlight"><pre><span></span><code>composer<span class="w"> </span>require<span class="w"> </span>league/flysystem-read-only<span class="w"> </span><span class="s2">&quot;^3.0&quot;</span>
+</code></pre></div>
+<p>接下來，你可以在一個或多個磁碟的組態陣列中包含 <code>read-only</code> 組態選項：</p>
+<div class="highlight"><pre><span></span><code><span class="x">&#39;s3-videos&#39; =&gt; [</span>
+<span class="x">    &#39;driver&#39; =&gt; &#39;s3&#39;,</span>
+<span class="x">    // ...</span>
+<span class="x">    &#39;read-only&#39; =&gt; true,</span>
+<span class="x">],</span>
+</code></pre></div>
+<h3 id="amazon-s3">Amazon S3 相容檔案系統<a class="headerlink" href="#amazon-s3" title="Permanent link">&para;</a></h3>
+<p>默認情況下，你的應用程式的 <code>filesystems</code> 組態檔案包含一個 <code>s3</code> 磁碟的磁碟組態。除了使用此磁碟與 Amazon S3 互動外，你還可以使用它與任何相容 S3 的檔案儲存服務（如 <a href="https://github.com/minio/minio">MinIO</a> 或 <a href="https://www.digitalocean.com/products/spaces/">DigitalOcean Spaces</a>）進行互動。</p>
+<p>通常，在更新磁碟憑據以匹配你計畫使用的服務的憑據後，你只需要更新  <code>endpoint</code> 組態選項的值。此選項的值通常通過 <code>AWS_ENDPOINT</code> 環境變數定義：</p>
+<div class="highlight"><pre><span></span><code>&#39;endpoint&#39; =&gt; env(&#39;AWS_ENDPOINT&#39;, &#39;https://minio:9000&#39;),
+</code></pre></div>
+<h4 id="minio">MinIO<a class="headerlink" href="#minio" title="Permanent link">&para;</a></h4>
+<p>為了讓 Laravel 的 Flysystem 整合在使用 MinIO 時生成正確的 URL，你應該定義 <code>AWS_URL</code> 環境變數，使其與你的應用程式的本地 URL 匹配，並在 URL 路徑中包含儲存桶名稱：</p>
+<div class="highlight"><pre><span></span><code><span class="na">AWS_URL</span><span class="o">=</span><span class="s">http://localhost:9000/local</span>
+</code></pre></div>
+<blockquote>
+<p><strong>警告</strong>
+當使用 MinIO 時，不支援通過 <code>temporaryUrl</code> 方法生成臨時儲存 URL。</p>
+</blockquote>
+<h2 id="_9">獲取磁碟實例<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<p><code>Storage</code> Facade 可用於與所有已組態的磁碟進行互動。例如，你可以使用 Facade 中的 <code>put</code> 方法將頭像儲存到默認磁碟。如果你在未先呼叫 <code>disk</code> 方法的情況下呼叫 <code>Storage</code> Facade 中的方法，則該方法將自動傳遞給默認磁碟：</p>
+<div class="highlight"><pre><span></span><code>use Illuminate\Support\Facades\Storage;
+
+Storage::put(&#39;avatars/1&#39;, $content);
+</code></pre></div>
+<p>如果你的應用與多個磁碟進行互動，可使用 <code>Storage</code> Facade 中的 <code>disk</code> 方法對特定磁碟上的檔案進行操作：</p>
+<div class="highlight"><pre><span></span><code>Storage::disk(&#39;s3&#39;)-&gt;put(&#39;avatars/1&#39;, $content);
+</code></pre></div>
+<h3 id="_10">按需組態磁碟<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<p>有時你可能希望在執行階段使用給定組態建立磁碟，而無需在應用程式的 <code>filesystems</code> 組態檔案中實際存在該組態。為了實現這一點，你可以將組態陣列傳遞給 <code>Storage</code> Facade 的 <code>build</code> 方法：</p>
+<div class="highlight"><pre><span></span><code><span class="x">use Illuminate\Support\Facades\Storage;</span>
+
+<span class="x">$disk = Storage::build([</span>
+<span class="x">    &#39;driver&#39; =&gt; &#39;local&#39;,</span>
+<span class="x">    &#39;root&#39; =&gt; &#39;/path/to/root&#39;,</span>
+<span class="x">]);</span>
+
+<span class="x">$disk-&gt;put(&#39;image.jpg&#39;, $content);</span>
+</code></pre></div>
+<h2 id="_11">檢索檔案<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
+<p><code>get</code> 方法可用於檢索檔案的內容。該方法將返回檔案的原始字串內容。切記，所有檔案路徑的指定都應該相對於該磁碟所組態的「root」目錄：</p>
+<div class="highlight"><pre><span></span><code>$contents = Storage::get(&#39;file.jpg&#39;);
+</code></pre></div>
+<p><code>exists</code> 方法可以用來判斷一個檔案是否存在於磁碟上：</p>
+<div class="highlight"><pre><span></span><code>if (Storage::disk(&#39;s3&#39;)-&gt;exists(&#39;file.jpg&#39;)) {
+    // ...
+}
+</code></pre></div>
+<p><code>missing</code> 方法可以用來判斷一個檔案是否缺失於磁碟上：</p>
+<div class="highlight"><pre><span></span><code>if (Storage::disk(&#39;s3&#39;)-&gt;missing(&#39;file.jpg&#39;)) {
+    // ...
+}
+</code></pre></div>
+<h3 id="_12">下載檔案<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<p><code>download</code> 方法可以用來生成一個響應，強制使用者的瀏覽器下載給定路徑的檔案。<code>download</code> 方法接受一個檔案名稱作為方法的第二個參數，這將決定使用者下載檔案時看到的檔案名稱。最後，你可以傳遞一個 HTTP 頭部的陣列作為方法的第三個參數：</p>
+<div class="highlight"><pre><span></span><code>return Storage::download(&#39;file.jpg&#39;);
+
+return Storage::download(&#39;file.jpg&#39;, $name, $headers);
+</code></pre></div>
+<h3 id="url">檔案 URL<a class="headerlink" href="#url" title="Permanent link">&para;</a></h3>
+<p>你可以使用 <code>url</code> 方法來獲取給定檔案的 URL。如果你使用的是<code>local</code> 驅動，這通常只會在給定路徑前加上 <code>/storage</code>，並返回一個相對 URL 到檔案。如果你使用的是 <code>s3</code> 驅動，將返回完全限定的遠端 URL：</p>
+<div class="highlight"><pre><span></span><code>use Illuminate\Support\Facades\Storage;
+
+$url = Storage::url(&#39;file.jpg&#39;);
+</code></pre></div>
+<p>當使用 <code>local</code> 驅動時，所有應該公開訪問的檔案都應放置在 <code>storage/app/public</code> 目錄中。此外，你應該在 <code>public/storage</code> 處 <a href="#the-public-disk">建立一個符號連接</a> 指向 <code>storage/app/public</code> 目錄。</p>
+<blockquote>
+<p><strong>警告</strong>
+當使用 <code>local</code> 驅動時，url 的返回值不是 URL 編碼的。因此，我們建議始終使用能夠建立有效 URL 的名稱儲存檔案。</p>
+</blockquote>
+<h4 id="url-host">定製 URL 的 Host<a class="headerlink" href="#url-host" title="Permanent link">&para;</a></h4>
+<p>如果你想預定義使用 <code>Storage</code> Facade 生成的 URL 的 Host，則可以在磁碟的組態陣列中新增一個 <code>url</code> 選項：</p>
+<div class="highlight"><pre><span></span><code>&#39;public&#39; =&gt; [
+    &#39;driver&#39; =&gt; &#39;local&#39;,
+    &#39;root&#39; =&gt; storage_path(&#39;app/public&#39;),
+    &#39;url&#39; =&gt; env(&#39;APP_URL&#39;).&#39;/storage&#39;,
+    &#39;visibility&#39; =&gt; &#39;public&#39;,
+],
+</code></pre></div>
+<h3 id="url_1">臨時 URL<a class="headerlink" href="#url_1" title="Permanent link">&para;</a></h3>
+<p>使用 <code>temporaryUrl</code> 方法，你可以為使用 <code>s3</code> 驅動儲存的檔案建立臨時 URL。此方法接受一個路徑和一個 <code>DateTime</code> 實例，指定 URL 的過期時間：</p>
+<div class="highlight"><pre><span></span><code>use Illuminate\Support\Facades\Storage;
+
+$url = Storage::temporaryUrl(
+    &#39;file.jpg&#39;, now()-&gt;addMinutes(5)
+);
+</code></pre></div>
+<p>如果你需要指定額外的 <a href="https://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectGET.html#RESTObjectGET-requests">S3 請求參數</a>，你可以將請求參數陣列作為第三個參數傳遞給<code>temporaryUrl</code> 方法。</p>
+<div class="highlight"><pre><span></span><code>$url = Storage::temporaryUrl(
+    &#39;file.jpg&#39;,
+    now()-&gt;addMinutes(5),
+    [
+        &#39;ResponseContentType&#39; =&gt; &#39;application/octet-stream&#39;,
+        &#39;ResponseContentDisposition&#39; =&gt; &#39;attachment; filename=file2.jpg&#39;,
+    ]
+);
+</code></pre></div>
+<p>如果你需要為一個特定的儲存磁碟定製臨時 URL 的建立方式，可以使用 <code>buildTemporaryUrlsUsing</code> 方法。例如，如果你有一個 controller 允許你通過不支援臨時 URL 的磁碟下載儲存的檔案，這可能很有用。通常，此方法應從服務提供者的 <code>boot</code> 方法中呼叫：</p>
+<div class="highlight"><pre><span></span><code>&lt;?php
+
+namespace App\Providers;
+
+use DateTime;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\URL;
+use Illuminate\Support\ServiceProvider;
+
+class AppServiceProvider extends ServiceProvider
+{
+    /**
+     * 啟動任何應用程式服務。
+     */
+    public function boot(): void
+    {
+        Storage::disk(&#39;local&#39;)-&gt;buildTemporaryUrlsUsing(
+            function (string $path, DateTime $expiration, array $options) {
+                return URL::temporarySignedRoute(
+                    &#39;files.download&#39;,
+                    $expiration,
+                    array_merge($options, [&#39;path&#39; =&gt; $path])
+                );
+            }
+        );
+    }
+}
+</code></pre></div>
+<h4 id="url-host_1">URL Host 自訂<a class="headerlink" href="#url-host_1" title="Permanent link">&para;</a></h4>
+<p>如果你想為使用 <code>Storage</code> Facade 生成的 URL 預定義 Host，可以將 <code>url</code> 選項新增到磁碟的組態陣列：</p>
+<div class="highlight"><pre><span></span><code>&#39;public&#39; =&gt; [
+    &#39;driver&#39; =&gt; &#39;local&#39;,
+    &#39;root&#39; =&gt; storage_path(&#39;app/public&#39;),
+    &#39;url&#39; =&gt; env(&#39;APP_URL&#39;).&#39;/storage&#39;,
+    &#39;visibility&#39; =&gt; &#39;public&#39;,
+],
+</code></pre></div>
+<h4 id="url_2">臨時上傳 URL<a class="headerlink" href="#url_2" title="Permanent link">&para;</a></h4>
+<blockquote>
+<p><strong>警告</strong>
+生成臨時上傳 URL 的能力僅由 <code>s3</code> 驅動支援。</p>
+</blockquote>
+<p>如果你需要生成一個臨時 URL，可以直接從客戶端應用程式上傳檔案，你可以使用 <code>temporaryUploadUrl</code> 方法。此方法接受一個路徑和一個 <code>DateTime</code> 實例，指定 URL 應該在何時過期。<code>temporaryUploadUrl</code> 方法返回一個關聯陣列，可以解構為上傳 URL 和應該包含在上傳請求中的頭部：</p>
+<div class="highlight"><pre><span></span><code>use Illuminate\Support\Facades\Storage;
+
+[&#39;url&#39; =&gt; $url, &#39;headers&#39; =&gt; $headers] = Storage::temporaryUploadUrl(
+    &#39;file.jpg&#39;, now()-&gt;addMinutes(5)
+);
+</code></pre></div>
+<p>此方法主要用於無伺服器環境，需要客戶端應用程式直接將檔案上傳到雲端儲存系統（如 Amazon S3）。</p>
+<h3 id="_13">檔案中繼資料<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<p>除了讀寫檔案，Laravel 還可以提供有關檔案本身的資訊。例如，<code>size</code> 方法可用於獲取檔案大小（以位元組為單位）：</p>
+<div class="highlight"><pre><span></span><code>use Illuminate\Support\Facades\Storage;
+
+$size = Storage::size(&#39;file.jpg&#39;);
+</code></pre></div>
+<p><code>lastModified</code> 方法返回上次修改檔案時的時間戳：</p>
+<div class="highlight"><pre><span></span><code>$time = Storage::lastModified(&#39;file.jpg&#39;);
+</code></pre></div>
+<p>可以通過 <code>mimeType</code> 方法獲取給定檔案的 MIME 類型：</p>
+<div class="highlight"><pre><span></span><code>$mime = Storage::mimeType(&#39;file.jpg&#39;)
+</code></pre></div>
+<h4 id="_14">檔案路徑<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
+<p>你可以使用 <code>path</code> 方法獲取給定檔案的路徑。如果你使用的是 <code>local</code> 驅動，這將返回檔案的絕對路徑。如果你使用的是 <code>s3</code> 驅動，此方法將返回 S3 儲存桶中檔案的相對路徑：</p>
+<div class="highlight"><pre><span></span><code>use Illuminate\Support\Facades\Storage;
+
+$path = Storage::path(&#39;file.jpg&#39;);
+</code></pre></div>
+<h2 id="_15">保存檔案<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h2>
+<p>可以使用 <code>put</code> 方法將檔案內容儲存在磁碟上。你還可以將 PHP <code>resource</code> 傳遞給 <code>put</code> 方法，該方法將使用 Flysystem 的底層流支援。請記住，應相對於為磁碟組態的「根」目錄指定所有檔案路徑：</p>
+<div class="highlight"><pre><span></span><code>use Illuminate\Support\Facades\Storage;
+
+Storage::put(&#39;file.jpg&#39;, $contents);
+
+Storage::put(&#39;file.jpg&#39;, $resource);
+</code></pre></div>
+<h4 id="_16">寫入失敗<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
+<p>如果 <code>put</code> 方法（或其他「寫入」操作）無法將檔案寫入磁碟，將返回 <code>false</code>。</p>
+<div class="highlight"><pre><span></span><code>if (! Storage::put(&#39;file.jpg&#39;, $contents)) {
+    // 該檔案無法寫入磁碟...
+}
+</code></pre></div>
+<p>你可以在你的檔案系統磁碟的組態陣列中定義 <code>throw</code> 選項。當這個選項被定義為 <code>true</code> 時，「寫入」的方法如 <code>put</code> 將在寫入操作失敗時拋出一個 <code>League\Flysystem\UnableToWriteFile</code> 的實例。</p>
+<div class="highlight"><pre><span></span><code>&#39;public&#39; =&gt; [
+    &#39;driver&#39; =&gt; &#39;local&#39;,
+    // ...
+    &#39;throw&#39; =&gt; true,
+],
+</code></pre></div>
+<h3 id="_17">追加內容到檔案開頭或結尾<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
+<p><code>prepend</code> 和 <code>append</code> 方法允許你將內容寫入檔案的開頭或結尾：</p>
+<div class="highlight"><pre><span></span><code>Storage::prepend(&#39;file.log&#39;, &#39;Prepended Text&#39;);
+
+Storage::append(&#39;file.log&#39;, &#39;Appended Text&#39;);
+</code></pre></div>
+<h3 id="_18">複製 / 移動檔案<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
+<p><code>copy</code> 方法可用於將現有檔案複製到磁碟上的新位置，而 <code>move</code> 方法可用於重新命名現有檔案或將其移動到新位置：</p>
+<div class="highlight"><pre><span></span><code>Storage::copy(&#39;old/file.jpg&#39;, &#39;new/file.jpg&#39;);
+
+Storage::move(&#39;old/file.jpg&#39;, &#39;new/file.jpg&#39;);
+</code></pre></div>
+<h3 id="_19">自動流式傳輸<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
+<p>將檔案流式傳輸到儲存位置可顯著減少記憶體使用量。如果你希望 Laravel 自動管理將給定檔案流式傳輸到你的儲存位置，你可以使用 <code>putFile</code> 或 <code>putFileAs</code> 方法。此方法接受一個 <code>Illuminate\Http\File</code> 或 <code>Illuminate\Http\UploadedFile</code> 實例，並自動將檔案流式傳輸到你所需的位置：</p>
+<div class="highlight"><pre><span></span><code>use Illuminate\Http\File;
+use Illuminate\Support\Facades\Storage;
+
+// 為檔案名稱自動生成一個唯一的 ID...
+$path = Storage::putFile(&#39;photos&#39;, new File(&#39;/path/to/photo&#39;));
+
+// 手動指定一個檔案名稱...
+$path = Storage::putFileAs(&#39;photos&#39;, new File(&#39;/path/to/photo&#39;), &#39;photo.jpg&#39;);
+</code></pre></div>
+<p>關於 putFile 方法有幾點重要的注意事項。注意，我們只指定了目錄名稱而不是檔案名稱。默認情況下，<code>putFile</code> 方法將生成一個唯一的 ID 作為檔案名稱。檔案的擴展名將通過檢查檔案的 MIME 類型來確定。檔案的路徑將由 <code>putFile</code> 方法返回，因此你可以將路徑（包括生成的檔案名稱）儲存在資料庫中。</p>
+<p><code>putFile</code> 和 <code>putFileAs</code> 方法還接受一個參數來指定儲存檔案的「可見性」。如果你將檔案儲存在雲盤（如 Amazon S3）上，並希望檔案通過生成的 URL 公開訪問，這一點特別有用：</p>
+<div class="highlight"><pre><span></span><code>Storage::putFile(&#39;photos&#39;, new File(&#39;/path/to/photo&#39;), &#39;public&#39;);
+</code></pre></div>
+<h3 id="_20">檔案上傳<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h3>
+<p>在網路應用程式中，儲存檔案的最常見用例之一是儲存使用者上傳的檔案，如照片和文件。Laravel 使用上傳檔案實例上的 <code>store</code> 方法非常容易地儲存上傳的檔案。使用你希望儲存上傳檔案的路徑呼叫 <code>store</code> 方法：</p>
+<div class="highlight"><pre><span></span><code>&lt;?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+
+class UserAvatarController extends Controller
+{
+    /**
+     * 更新使用者的頭像。
+     */
+    public function update(Request $request): string
+    {
+        $path = $request-&gt;file(&#39;avatar&#39;)-&gt;store(&#39;avatars&#39;);
+
+        return $path;
+    }
+}
+</code></pre></div>
+<p>關於這個例子有幾點重要的注意事項。注意，我們只指定了目錄名稱而不是檔案名稱。默認情況下，<code>store</code> 方法將生成一個唯一的 ID 作為檔案名稱。檔案的擴展名將通過檢查檔案的 MIME 類型來確定。檔案的路徑將由 <code>store</code> 方法返回，因此你可以將路徑（包括生成的檔案名稱）儲存在資料庫中。</p>
+<p>你也可以在 <code>Storage</code> Facade 上呼叫 <code>putFile</code> 方法來執行與上面示例相同的檔案儲存操作：</p>
+<div class="highlight"><pre><span></span><code>$path = Storage::putFile(&#39;avatars&#39;, $request-&gt;file(&#39;avatar&#39;));
+</code></pre></div>
+<h4 id="_21">指定一個檔案名稱<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h4>
+<p>如果你不希望檔案名稱被自動分配給你儲存的檔案，你可以使用 <code>storeAs</code> 方法，該方法接收路徑、檔案名稱和（可選的）磁碟作為其參數：</p>
+<div class="highlight"><pre><span></span><code>$path = $request-&gt;file(&#39;avatar&#39;)-&gt;storeAs(
+    &#39;avatars&#39;, $request-&gt;user()-&gt;id
+);
+</code></pre></div>
+<p>你也可以在 <code>Storage</code> Facade 使用 <code>putFileAs</code> 方法，它將執行與上面示例相同的檔案儲存操作：</p>
+<div class="highlight"><pre><span></span><code>$path = Storage::putFileAs(
+    &#39;avatars&#39;, $request-&gt;file(&#39;avatar&#39;), $request-&gt;user()-&gt;id
+);
+</code></pre></div>
+<blockquote>
+<p><strong>警告</strong>
+不可列印和無效的 Unicode 字元將自動從檔案路徑中刪除。因此，你可能希望在將檔案路徑傳遞給 Laravel 的檔案儲存方法之前對其進行清理。檔案路徑使用 <code>League\Flysystem\WhitespacePathNormalizer::normalizePath</code> 方法進行規範化。</p>
+</blockquote>
+<h4 id="_22">指定一個磁碟<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h4>
+<p>默認情況下，此上傳檔案的 <code>store</code> 方法將使用你的默認磁碟。如果你想指定另一個磁碟，將磁碟名稱作為第二個參數傳遞給 <code>store</code> 方法：</p>
+<div class="highlight"><pre><span></span><code>$path = $request-&gt;file(&#39;avatar&#39;)-&gt;store(
+    &#39;avatars/&#39;.$request-&gt;user()-&gt;id, &#39;s3&#39;
+);
+</code></pre></div>
+<p>如果你正在使用 <code>storeAs</code> 方法，你可以將磁碟名稱作為第三個參數傳遞給該方法：</p>
+<div class="highlight"><pre><span></span><code>$path = $request-&gt;file(&#39;avatar&#39;)-&gt;storeAs(
+    &#39;avatars&#39;,
+    $request-&gt;user()-&gt;id,
+    &#39;s3&#39;
+);
+</code></pre></div>
+<h4 id="_23">其他上傳檔案的資訊<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h4>
+<p>如果您想獲取上傳檔案的原始名稱和擴展名，可以使用 <code>getClientOriginalName</code> 和 <code>getClientOriginalExtension</code> 方法來實現：</p>
+<div class="highlight"><pre><span></span><code>$file = $request-&gt;file(&#39;avatar&#39;);
+
+$name = $file-&gt;getClientOriginalName();
+$extension = $file-&gt;getClientOriginalExtension();
+</code></pre></div>
+<p>然而，請記住，<code>getClientOriginalName</code> 和 <code>getClientOriginalExtension</code> 方法被認為是不安全的，因為檔案名稱和擴展名可能被惡意使用者篡改。因此，你通常應該更喜歡使用 <code>hashName</code> 和 <code>extension</code> 方法來獲取給定檔案上傳的名稱和擴展名：</p>
+<div class="highlight"><pre><span></span><code>$file = $request-&gt;file(&#39;avatar&#39;);
+
+$name = $file-&gt;hashName(); // 生成一個唯一的、隨機的名字...
+$extension = $file-&gt;extension(); // 根據檔案的 MIME 類型來確定檔案的擴展名...
+</code></pre></div>
+<h3 id="_24">檔案可見性<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h3>
+<p>在 Laravel 的 Flysystem 整合中，「visibility」 是跨多個平台的檔案權限的抽象。檔案可以被聲明為 <code>public</code> 或 <code>private</code>。當一個檔案被聲明為 <code>public</code> 時，你表示該檔案通常應該被其他人訪問。例如，在使用 S3 驅動程式時，你可以檢索 <code>public</code> 檔案的 URL。</p>
+<p>你可以通過 <code>put</code> 方法在寫入檔案時設定可見性：</p>
+<div class="highlight"><pre><span></span><code>use Illuminate\Support\Facades\Storage;
+
+Storage::put(&#39;file.jpg&#39;, $contents, &#39;public&#39;);
+</code></pre></div>
+<p>如果檔案已經被儲存，可以通過 <code>getVisibility</code> 和 <code>setVisibility</code> 方法檢索和設定其可見性：</p>
+<div class="highlight"><pre><span></span><code>$visibility = Storage::getVisibility(&#39;file.jpg&#39;);
+
+Storage::setVisibility(&#39;file.jpg&#39;, &#39;public&#39;);
+</code></pre></div>
+<p>在與上傳檔案互動時，你可以使用 <code>storePublicly</code> 和 <code>storePubliclyAs</code> 方法將上傳檔案儲存為 <code>public</code> 可見性</p>
+<div class="highlight"><pre><span></span><code>$path = $request-&gt;file(&#39;avatar&#39;)-&gt;storePublicly(&#39;avatars&#39;, &#39;s3&#39;);
+
+$path = $request-&gt;file(&#39;avatar&#39;)-&gt;storePubliclyAs(
+    &#39;avatars&#39;,
+    $request-&gt;user()-&gt;id,
+    &#39;s3&#39;
+);
+</code></pre></div>
+<h4 id="_25">本地檔案和可見性<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h4>
+<p>當使用 <code>local</code> 驅動時，<code>public</code><a href="#file-visibility">可見性</a>轉換為目錄的 <code>0755</code> 權限和檔案的 <code>0644</code> 權限。你可以在你的應用程式的 <code>filesystems</code> 組態檔案中修改權限對應：</p>
+<div class="highlight"><pre><span></span><code>&#39;local&#39; =&gt; [
+    &#39;driver&#39; =&gt; &#39;local&#39;,
+    &#39;root&#39; =&gt; storage_path(&#39;app&#39;),
+    &#39;permissions&#39; =&gt; [
+        &#39;file&#39; =&gt; [
+            &#39;public&#39; =&gt; 0644,
+            &#39;private&#39; =&gt; 0600,
+        ],
+        &#39;dir&#39; =&gt; [
+            &#39;public&#39; =&gt; 0755,
+            &#39;private&#39; =&gt; 0700,
+        ],
+    ],
+],
+</code></pre></div>
+<h2 id="_26">刪除檔案<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h2>
+<p><code>delete</code> 方法接收一個檔案名稱或一個檔案名稱陣列來將其從磁碟中刪除：</p>
+<div class="highlight"><pre><span></span><code>use Illuminate\Support\Facades\Storage;
+
+Storage::delete(&#39;file.jpg&#39;);
+
+Storage::delete([&#39;file.jpg&#39;, &#39;file2.jpg&#39;]);
+</code></pre></div>
+<p>如果需要，你可以指定應從哪個磁碟刪除檔案。</p>
+<div class="highlight"><pre><span></span><code>use Illuminate\Support\Facades\Storage;
+
+Storage::disk(&#39;s3&#39;)-&gt;delete(&#39;path/file.jpg&#39;);
+</code></pre></div>
+<h2 id="_27">目錄<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h2>
+<h4 id="_28">獲取目錄下所有的檔案<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h4>
+<p><code>files</code> 將以陣列的形式返回給定目錄下所有的檔案。如果你想要檢索給定目錄的所有檔案及其子目錄的所有檔案，你可以使用 <code>allFiles</code> 方法：</p>
+<div class="highlight"><pre><span></span><code>use Illuminate\Support\Facades\Storage;
+
+$files = Storage::files($directory);
+
+$files = Storage::allFiles($directory);
+</code></pre></div>
+<h4 id="_29">獲取特定目錄下的子目錄<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h4>
+<p><code>directories</code> 方法以陣列的形式返回給定目錄中的所有目錄。此外，你還可以使用 <code>allDirectories</code> 方法遞迴地獲取給定目錄中的所有目錄及其子目錄中的目錄：</p>
+<div class="highlight"><pre><span></span><code>$directories = Storage::directories($directory);
+
+$directories = Storage::allDirectories($directory);
+</code></pre></div>
+<h4 id="_30">建立目錄<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h4>
+<p><code>makeDirectory</code> 方法可遞迴的建立指定的目錄：</p>
+<div class="highlight"><pre><span></span><code>Storage::makeDirectory($directory);
+</code></pre></div>
+<h4 id="_31">刪除一個目錄<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h4>
+<p>最後，<code>deleteDirectory</code> 方法可用於刪除一個目錄及其下所有的檔案：</p>
+<div class="highlight"><pre><span></span><code>Storage::deleteDirectory($directory);
+</code></pre></div>
+<h2 id="_32">測試<a class="headerlink" href="#_32" title="Permanent link">&para;</a></h2>
+<p>The <code>Storage</code> facade's <code>fake</code> method allows you to easily generate a fake disk that, combined with the file generation utilities of the <code>Illuminate\Http\UploadedFile</code> class, greatly simplifies the testing of file uploads. For example:</p>
+<p><code>Storage</code> 門面類的 <code>fake</code> 方法可以輕鬆建立一個虛擬磁碟，與<code>Illuminate\Http\UploadedFile</code> 類配合使用，大大簡化了檔案的上傳測試。例如：</p>
+<div class="highlight"><pre><span></span><code>&lt;?php
+
+namespace Tests\Feature;
+
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
+use Tests\TestCase;
+
+class ExampleTest extends TestCase
+{
+    public function test_albums_can_be_uploaded(): void
+    {
+        Storage::fake(&#39;photos&#39;);
+
+        $response = $this-&gt;json(&#39;POST&#39;, &#39;/photos&#39;, [
+            UploadedFile::fake()-&gt;image(&#39;photo1.jpg&#39;),
+            UploadedFile::fake()-&gt;image(&#39;photo2.jpg&#39;)
+        ]);
+
+        // 斷言儲存了一個或多個檔案。
+        Storage::disk(&#39;photos&#39;)-&gt;assertExists(&#39;photo1.jpg&#39;);
+        Storage::disk(&#39;photos&#39;)-&gt;assertExists([&#39;photo1.jpg&#39;, &#39;photo2.jpg&#39;]);
+
+        // 斷言一個或多個檔案未儲存。
+        Storage::disk(&#39;photos&#39;)-&gt;assertMissing(&#39;missing.jpg&#39;);
+        Storage::disk(&#39;photos&#39;)-&gt;assertMissing([&#39;missing.jpg&#39;, &#39;non-existing.jpg&#39;]);
+
+        // 斷言給定目錄為空。
+        Storage::disk(&#39;photos&#39;)-&gt;assertDirectoryEmpty(&#39;/wallpapers&#39;);
+    }
+}
+</code></pre></div>
+<p>默認情況下，<code>fake</code> 方法將刪除臨時目錄中的所有檔案。如果你想保留這些檔案，你可以使用 "persistentFake" 方法代替。有關測試檔案上傳的更多資訊，您可以查閱 <a href="/docs/laravel/10.x/http-tests#testing-file-uploads">HTTP 測試文件的檔案上傳</a>.</p>
+<blockquote>
+<p><strong>警告</strong>
+<code>image</code> 方法需要 <a href="https://www.php.net/manual/en/book.image.php">GD 擴展</a> .</p>
+</blockquote>
+<h2 id="_33">自訂檔案系統<a class="headerlink" href="#_33" title="Permanent link">&para;</a></h2>
+<p>Laravel 內建的檔案系統提供了一些開箱即用的驅動；當然，它不僅僅是這些，它還提供了與其他儲存系統的介面卡。通過這些介面卡，你可以在你的 Laravel 應用中建立自訂驅動。</p>
+<p>要安裝自訂檔案系統，你可能需要一個檔案系統介面卡。讓我們將社區維護的 Dropbox 介面卡新增到項目中：</p>
+<div class="highlight"><pre><span></span><code>composer<span class="w"> </span>require<span class="w"> </span>spatie/flysystem-dropbox
+</code></pre></div>
+<p>接下來，你可以在 <a href="/docs/laravel/10.x/providers">服務提供者</a> 中註冊一個帶有 <code>boot</code> 方法的驅動。在提供者的 <code>boot</code> 方法中，你可以使用 <code>Storage</code> 門面的 <code>extend</code> 方法來定義一個自訂驅動：</p>
+<div class="highlight"><pre><span></span><code>&lt;?php
+
+namespace App\Providers;
+
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Filesystem\FilesystemAdapter;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\ServiceProvider;
+use League\Flysystem\Filesystem;
+use Spatie\Dropbox\Client as DropboxClient;
+use Spatie\FlysystemDropbox\DropboxAdapter;
+
+class AppServiceProvider extends ServiceProvider
+{
+    /**
+     * 註冊任意應用程式服務。
+     */
+    public function register(): void
+    {
+        // ...
+    }
+
+    /**
+     * 引導任何應用程式服務。
+     */
+    public function boot(): void
+    {
+        Storage::extend(&#39;dropbox&#39;, function (Application $app, array $config) {
+            $adapter = new DropboxAdapter(new DropboxClient(
+                $config[&#39;authorization_token&#39;]
+            ));
+
+            return new FilesystemAdapter(
+                new Filesystem($adapter, $config),
+                $adapter,
+                $config
+            );
+        });
+    }
+}
+</code></pre></div>
+<p><code>extend</code> 方法的第一個參數是驅動程式的名稱，第二個參數是接收 <code>$app</code> 和 <code>$config</code> 變數的閉包。閉包必須返回的實例 <code>League\Flysystem\Filesystem</code>。<code>$config</code> 變數包含 <code>config/filesystems.php</code> 為指定磁碟定義的值。</p>
+<p>一旦建立並註冊了擴展的服務提供商，就可以 <code>dropbox</code> 在 <code>config/filesystems.php</code> 組態檔案中使用該驅動程式。</p>
+
+
+
+
+
+                
+
+  <!-- Giscus -->
+  <h2 id="__comments">留言</h2>
+  <script src="https://giscus.app/client.js"
+          data-repo="tomleesm/notes"
+          data-repo-id="R_kgDOGuSz4g"
+          data-category="Announcements"
+          data-category-id="DIC_kwDOGuSz4s4CBI6T"
+          data-mapping="title"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="bottom"
+          data-theme="dark"
+          data-lang="zh-TW"
+          crossorigin="anonymous"
+          async>
+  </script>
+
+  <!-- Reload on palette change -->
+  <script>
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object")
+      if (palette.color.scheme === "slate") {
+        var giscus = document.querySelector("script[src*=giscus]")
+        giscus.setAttribute("data-theme", "dark")
+      }
+
+    /* Register event handlers after documented loaded */
+    document.addEventListener("DOMContentLoaded", function() {
+      var ref = document.querySelector("[data-md-component=palette]")
+      ref.addEventListener("change", function() {
+        var palette = __md_get("__palette")
+        if (palette && typeof palette.color === "object") {
+          var theme = palette.color.scheme === "slate" ? "dark" : "light"
+
+          /* Instruct Giscus to change theme */
+          var frame = document.querySelector(".giscus-frame")
+          frame.contentWindow.postMessage(
+            { giscus: { setConfig: { theme } } },
+            "https://giscus.app"
+          )
+        }
+      })
+    })
+  </script>
+
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            回到頂端
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tabs", "navigation.sections", "navigation.indexes", "navigation.top", "header.autohide", "search.highlight", "search.share"], "search": "../../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "\u5df2\u8907\u88fd", "clipboard.copy": "\u8907\u88fd", "search.result.more.one": "\u6b64\u9801\u5c1a\u6709 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.more.other": "\u6b64\u9801\u5c1a\u6709 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.none": "\u6c92\u6709\u7b26\u5408\u7684\u9805\u76ee", "search.result.one": "\u627e\u5230 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.other": "\u627e\u5230 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.placeholder": "\u6253\u5b57\u9032\u884c\u641c\u5c0b", "search.result.term.missing": "\u7f3a\u5c11\u5b57\u8a5e", "select.version": "\u9078\u64c7\u7248\u672c"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.dff1b7c8.min.js"></script>
+      
+    
+  </body>
+</html>
