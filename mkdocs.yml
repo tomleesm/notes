@@ -66,6 +66,37 @@ markdown_extensions:
 extra_css:
   - stylesheets/extra.css
 nav:
+  - 讀書筆記:
+    - HTTP 通訊協議簡介: book_notes/HTTP 通訊協議簡介.md
+    - PHP 物件導向語法筆記: book_notes/PHP 物件導向語法筆記.md
+    - PostgreSQL 筆記: book_notes/PostgreSQL 筆記.md
+    - RESTful API 簡介: book_notes/RESTful API 簡介.md
+    - 使用 API Blueprint 寫文件: book_notes/使用 API Blueprint 寫文件.md
+    - 使用 Docker Compose 安裝 Laravel 和 Vue.js 環境: book_notes/使用 Docker Compose 安裝 Laravel 和 Vue.js 環境.md
+    - 常用 Vim 指令清單: book_notes/常用 Vim 指令清單.md
+  - 雜記:
+    - 我為什麼想不開用 Vim 寫程式？: others/我為什麼想不開用 Vim 寫程式？.md
+    - 怎麽學 Vim ？: others/怎麽學 Vim ？.md
+    - 資料庫正規化，以魔法學校課程為例: others/資料庫正規化，以魔法學校課程為例.md
+    - Git rebase 是什麼？: others/Git rebase 是什麼？.md
+    - GitHub 預設分支 master 改名為 main: others/GitHub 預設分支 master 改名為 main.md
+    - Git 設定: others/Git 設定.md
+    - <好書推薦>為什麼他接的案子比我多: others/<好書推薦>為什麼他接的案子比我多.md
+    - 這週看了什麼書: others/這週看了什麼書.md
+    - 在 Dedian 11 安裝 LEMP 開發環境跑 Laravel 10: others/在 Dedian 11 安裝 LEMP 開發環境跑 Laravel 10.md
+    - 在 Dedian 12 安裝 LEMP 開發環境跑 Laravel 10: others/在 Dedian 12 安裝 LEMP 開發環境跑 Laravel 10.md
+    - 列印 Laravel 10 官方文件中文版: others/列印 Laravel 10 官方文件中文版.md
+    - 從 Vim 到 Neovim: others/從 Vim 到 Neovim.md
+    - Netrw 簡介: others/Netrw 簡介.md
+    - 為什麼要有例外處理？: others/為什麼要有例外處理？.md
+    - 解 UVa 線上解題系統的題目: others/解 UVa 線上解題系統的題目.md
+    - 用 Vim 把事情分得很細: others/用 Vim 把事情分得很細.md
+    - 時間管理方法: others/時間管理方法.md
+    - 用 Linux Mint 做為工作環境: others/用 Linux Mint 做為工作環境.md
+    - Windows Terminal 設定多個字體: others/Windows Terminal 設定多個字體.md
+    - 解決 VTE 為基礎的終端機程式游標問題: others/解決 VTE 為基礎的終端機程式游標問題.md
+    - Windows 10 推薦軟體: others/Windows 10 推薦軟體.md
+    - memos 安裝到 Debian 9: others/memos 安裝到 Debian 9.md
   - Laravel 10 語法速查表:
     - Artisan: cheatsheets/artisan.md
     - Auth 使用者認證: cheatsheets/auth.md
