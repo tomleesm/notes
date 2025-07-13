@@ -110,6 +110,29 @@ nav:
     - 解決 VTE 為基礎的終端機程式游標問題: others/解決 VTE 為基礎的終端機程式游標問題.md
     - Windows 10 推薦軟體: others/Windows 10 推薦軟體.md
     - memos 安裝到 Debian 9: others/memos 安裝到 Debian 9.md
+  - Shape Up:
+    - 前言 Foreword by Jason Fried: books/shape up/preface.md
+    - 第一章 Introduction 入門: books/shape up/ch01.md
+    - 第二章 Principles of Shaping 塑形原則: books/shape up/ch02.md
+    - 第三章 Set Boundaries 設定邊界: books/shape up/ch03.md
+    - 第四章 Find the Elements 找出元素: books/shape up/ch04.md
+    - 第五章 Risks and Rabbit Holes 風險與陷阱: books/shape up/ch05.md
+    - 第六章 Write the Pitch 撰寫提案: books/shape up/ch06.md
+    - 第七章 Bets, Not Backlogs 下注，而非待辦清單: books/shape up/ch07.md
+    - 第八章 The Betting Table 投注會議: books/shape up/ch08.md
+    - 第九章 Place Your Bets 下定決心: books/shape up/ch09.md
+    - 第十章 Hand Over Responsibility 移交責任: books/shape up/ch10.md
+    - 第十一章 Get One Piece Done 完成一個小目標: books/shape up/ch11.md
+    - 第十二章 Map the Scopes 繪製範圍: books/shape up/ch12.md
+    - 第十三章 Show Progress 顯示進度: books/shape up/ch13.md
+    - 第十四章 Decide When to Stop 決定何時停止: books/shape up/ch14.md
+    - 第十五章 Move On 繼續前進: books/shape up/ch15.md
+    - Conclusion 結論: books/shape up/conclusion.md
+    - How to Implement Shape Up in Basecamp 如何在 Basecamp 中實現 Shape Up: books/shape up/how to implement shape up in basecamp.md
+    - Adjust to Your Size 調整至你的規模: books/shape up/adjust to your size.md
+    - How to Begin to Shape Up 如何開始 Shape Up: books/shape up/how to begin to shape up.md
+    - Glossary 詞彙表: books/shape up/glossary.md
+    - About the Author 關於作者: books/shape up/about the author.md
   - Laravel 10 語法速查表:
     - Artisan: cheatsheets/artisan.md
     - Auth 使用者認證: cheatsheets/auth.md
