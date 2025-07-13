@@ -1,3 +1,8 @@
+---
+hide:
+  - toc
+---
+
 # memos 安裝到 Debian 9
 
 [memos](https://www.usememos.com/) 官網文件只有寫怎麼用 Docker 安裝，但是產生的 SQlite 檔案是 root 權限，所以試著編譯原始碼產生執行檔

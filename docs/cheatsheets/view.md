@@ -1,3 +1,8 @@
+---
+hide:
+  - toc
+---
+
 ``` php
 View::make('path/to/view');
 View::make('foo/bar')->with('key', 'value');

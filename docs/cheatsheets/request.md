@@ -1,3 +1,8 @@
+---
+hide:
+  - toc
+---
+
 ``` php
 //獲取請求參數 form-data 與 raw 請求類型
 request()->input();

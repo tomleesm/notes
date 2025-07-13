@@ -1,3 +1,8 @@
+---
+hide:
+  - toc
+---
+
 # GitHub 預設分支 master 改名為 main
 
 原文在 2023-05-08 完成

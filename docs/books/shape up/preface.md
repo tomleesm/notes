@@ -1,3 +1,8 @@
+---
+hide:
+  - toc
+---
+
 # 前言 Foreword by Jason Fried
 
 The way a team works has an enormous influence on what it can do. The process, the methods, the practices, the approach, the discipline, the trust, the communication style, the pace. The way—the how—is foundational and fundamental.

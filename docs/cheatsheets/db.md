@@ -1,3 +1,8 @@
+---
+hide:
+  - toc
+---
+
 ``` php
 基本使用
 DB::connection('connection_name');

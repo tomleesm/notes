@@ -1,3 +1,8 @@
+---
+hide:
+  - toc
+---
+
 ```shell
 // 針對命令顯示幫助資訊
 php artisan --help OR -h

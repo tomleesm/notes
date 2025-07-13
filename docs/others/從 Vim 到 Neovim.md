@@ -1,3 +1,8 @@
+---
+hide:
+  - toc
+---
+
 # 從 Vim 到 Neovim
 
 原文在 2024-04-15 完成
@@ -60,7 +65,7 @@ sections = {
 }
 ```
 
-然後在狀態列設定 [evil_lualine.lua](https://github.com/nvim-lualine/lualine.nvim/blob/master/examples/evil_lualine.lua) 把上述的程式碼貼上去，最後調整時間格式。時間格式來自於  
+然後在狀態列設定 [evil_lualine.lua](https://github.com/nvim-lualine/lualine.nvim/blob/master/examples/evil_lualine.lua) 把上述的程式碼貼上去，最後調整時間格式。時間格式來自於
 [vim-jp/vital.vim](https://github.com/vim-jp/vital.vim/blob/master/doc/vital/DateTime.txt#L325) 第 325 到 362 行。後來找到下來兩個連結，也可以用
 
 - [https://renenyffenegger.ch/notes/development/misc/strftime](https://renenyffenegger.ch/notes/development/misc/strftime)

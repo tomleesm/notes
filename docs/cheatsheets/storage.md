@@ -1,3 +1,8 @@
+---
+hide:
+  - toc
+---
+
 ``` php
 // 寫入檔案
 Storage::put('avatars/1', $fileContents);

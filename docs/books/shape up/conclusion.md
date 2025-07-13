@@ -1,3 +1,8 @@
+---
+hide:
+  - toc
+---
+
 # Conclusion 結論
 
 ## Key concepts 關鍵概念

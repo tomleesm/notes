@@ -1,3 +1,8 @@
+---
+hide:
+  - toc
+---
+
 ``` php
 // 等於 Cookie
 cookie();

@@ -1,3 +1,8 @@
+---
+hide:
+  - toc
+---
+
 ``` php
 $environment = app()->environment();
 $environment = App::environment();

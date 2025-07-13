@@ -1,3 +1,8 @@
+---
+hide:
+  - toc
+---
+
 ``` php
 // 將 UTF-8 的值直譯為 ASCII 類型的值
 Str::ascii($value)

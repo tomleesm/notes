@@ -1,3 +1,8 @@
+---
+hide:
+  - toc
+---
+
 ``` php
 // config/app.php 裡的 timezone 組態項
 Config::get('app.timezone')

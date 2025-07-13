@@ -1,3 +1,8 @@
+---
+hide:
+  - toc
+---
+
 ``` php
 return Redirect::to('foo/bar');
 return Redirect::to('foo/bar')->with('key', 'value');

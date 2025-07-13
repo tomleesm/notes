@@ -1,3 +1,8 @@
+---
+hide:
+  - toc
+---
+
 # 用 Linux Mint 做為工作環境
 
 之前用 Windows 10，但是現在又改回用 Linux Mint，因為有一些缺點讓我無法忍受：

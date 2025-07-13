@@ -1,3 +1,8 @@
+---
+hide:
+  - toc
+---
+
 # About the Author 關於作者
 
 Ryan Singer has worked on all levels of the software stack, from UI design to back-end programming to strategy.

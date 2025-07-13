@@ -1,3 +1,8 @@
+---
+hide:
+  - toc
+---
+
 # Git 設定
 
 使用 Neovim 編輯 commit 訊息，不套用 init.lua 設定，速度快

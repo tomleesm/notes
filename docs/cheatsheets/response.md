@@ -1,3 +1,8 @@
+---
+hide:
+  - toc
+---
+
 ``` php
 return Response::make($contents);
 return Response::make($contents, 200);

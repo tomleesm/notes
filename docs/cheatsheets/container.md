@@ -1,3 +1,8 @@
+---
+hide:
+  - toc
+---
+
 ``` php
 App::bind('foo', function($app){ return new Foo; });
 App::make('foo');

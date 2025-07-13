@@ -1,3 +1,8 @@
+---
+hide:
+  - toc
+---
+
 ``` php
 // 獲取快取對象，約等於 Cache
 cache()

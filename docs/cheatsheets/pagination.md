@@ -1,3 +1,8 @@
+---
+hide:
+  - toc
+---
+
 ``` php
 // 自動處理分頁邏輯
 Model::paginate(15);

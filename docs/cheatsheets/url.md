@@ -1,3 +1,8 @@
+---
+hide:
+  - toc
+---
+
 ``` php
 URL::full();
 URL::current();

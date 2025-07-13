@@ -1,3 +1,8 @@
+---
+hide:
+  - toc
+---
+
 ``` php
 Queue::push('SendMail', array('message' => $message));
 Queue::push('SendEmail@send', array('message' => $message));

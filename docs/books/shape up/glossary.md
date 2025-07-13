@@ -1,3 +1,8 @@
+---
+hide:
+  - toc
+---
+
 # Glossary 詞彙表
 
 Appetite 胃口

@@ -1,3 +1,8 @@
+---
+hide:
+  - toc
+---
+
 ``` php
 Session::get('key');
 // 從會話中讀取一個條目

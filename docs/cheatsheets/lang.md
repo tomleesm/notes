@@ -1,3 +1,8 @@
+---
+hide:
+  - toc
+---
+
 ``` php
 App::setLocale('en');
 Lang::get('messages.welcome');

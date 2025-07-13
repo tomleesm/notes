@@ -1,3 +1,8 @@
+---
+hide:
+  - toc
+---
+
 ```php
 // 獲取 Auth 對象，等同於 Auth Facade
 auth();

@@ -1,3 +1,8 @@
+---
+hide:
+  - toc
+---
+
 ``` shell
 composer create-project laravel/laravel folder_name
 composer create-project laravel/laravel folder_name --prefer-dist "5.8.*"
