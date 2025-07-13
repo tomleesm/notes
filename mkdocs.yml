@@ -20,6 +20,7 @@ theme:
     - header.autohide
     - search.highlight
     - search.share
+    - toc.follow
   icon:
     repo: fontawesome/brands/github
 repo_url: https://github.com/tomleesm/notes

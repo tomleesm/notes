@@ -17,7 +17,7 @@ VTE 是 Virtual Terminal Emulator（虛擬終端模擬器）的縮寫，為 Gnom
 
 資料參考
 
-* https://stackoverflow.com/questions/6488683/how-to-change-the-cursor-between-normal-and-insert-modes-in-vim
-* https://www.reddit.com/r/vim/comments/ar1xer/help_ive_tried_to_change_my_cursor_shape_for_hours/
-* https://vim.fandom.com/wiki/Change_cursor_shape_in_different_modes
-* https://blog.csdn.net/gitblog_00046/article/details/136756787
+* [How to change the cursor between Normal and Insert modes in Vim?](https://stackoverflow.com/questions/6488683/how-to-change-the-cursor-between-normal-and-insert-modes-in-vim)
+* [help I've tried to change my cursor shape for hours](https://www.reddit.com/r/vim/comments/ar1xer/help_ive_tried_to_change_my_cursor_shape_for_hours/)
+* [Change cursor shape in different modes](https://vim.fandom.com/wiki/Change_cursor_shape_in_different_modes)
+* [探索GNOME的VTE库：一个强大的终端模拟器引擎](https://blog.csdn.net/gitblog_00046/article/details/136756787)

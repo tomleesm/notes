@@ -11,4 +11,4 @@ Linux 我用 mpv 播放影片，Windows 10 也能用 mpv ，用 `scoop` 安裝[^
 3. 執行資料夾 installer 的 `mpv-install.bat` ，需要用系統管理員權限，所以右鍵 Run as administrator。如果沒有，可能是設定成預設用 Notepad++ 打開
 4. 執行完 `mpv-install.bat`，依照指示按鍵會出現 Default apps 設定，或是手動打開 Windows 的設定 > Apps > Default apps ，設定用 mpv 做為預設的音樂和影片播放器
 
-[^1]: https://mpv.io/installation/
+[^1]: [https://mpv.io/installation/](https://mpv.io/installation/)
