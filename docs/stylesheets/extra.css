@@ -2,7 +2,12 @@
 .md-main {
     letter-spacing: 1px;
 }
-
+/* 行高設定 2 倍 */
 .md-typeset {
     line-height: 2;
+}
+.md-grid {
+  /* 增加內容寬度，不顯示左右 margin */
+  max-width: 1440px; 
+  color: #ffffff;
 }
