@@ -1,8 +1,8 @@
-version: "2"
-
 services:
   notes:
-    image: squidfunk/mkdocs-material:latest
+    image: squidfunk/mkdocs-material:9.6
+    container_name: notes
+    restart: "no"
     ports:
       - "127.0.0.1:8001:8000"
     volumes:
