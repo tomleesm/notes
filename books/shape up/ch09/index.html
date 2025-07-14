@@ -1,0 +1,3694 @@
+
+<!doctype html>
+<html lang="zh-TW" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../ch08/">
+      
+      
+        <link rel="next" href="../ch10/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
+    
+    
+      
+        <title>第九章 Place Your Bets 下定決心 - Tom 除錯中</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+Traditional+Chinese:300,300i,400,400i,700,700i%7CSource+Code+Pro:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans Traditional Chinese";--md-code-font:"Source Code Pro"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="red" data-md-color-accent="red">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#place-your-bets" class="md-skip">
+          跳轉到
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="頁首">
+    <a href="../../.." title="Tom 除錯中" class="md-header__button md-logo" aria-label="Tom 除錯中" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Tom 除錯中
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              第九章 Place Your Bets 下定決心
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="red" data-md-color-accent="red"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜尋" placeholder="搜尋" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="搜尋">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清除" aria-label="清除" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜尋引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/tomleesm/notes" title="前往倉庫" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    tomleesm/notes
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="標籤" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../book_notes/HTTP%20%E9%80%9A%E8%A8%8A%E5%8D%94%E8%AD%B0%E7%B0%A1%E4%BB%8B/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  讀書筆記
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../others/%E6%88%91%E7%82%BA%E4%BB%80%E9%BA%BC%E6%83%B3%E4%B8%8D%E9%96%8B%E7%94%A8%20Vim%20%E5%AF%AB%E7%A8%8B%E5%BC%8F%EF%BC%9F/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  雜記
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../preface/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Shape Up
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../cheatsheets/artisan/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Laravel 10 語法速查表
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="導覽列" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Tom 除錯中" class="md-nav__button md-logo" aria-label="Tom 除錯中" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Tom 除錯中
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/tomleesm/notes" title="前往倉庫" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    tomleesm/notes
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    讀書筆記
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            讀書筆記
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../book_notes/HTTP%20%E9%80%9A%E8%A8%8A%E5%8D%94%E8%AD%B0%E7%B0%A1%E4%BB%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    HTTP 通訊協議簡介
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../book_notes/PHP%20%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%AA%9E%E6%B3%95%E7%AD%86%E8%A8%98/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    PHP 物件導向語法筆記
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../book_notes/PostgreSQL%20%E7%AD%86%E8%A8%98/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    PostgreSQL 筆記
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../book_notes/RESTful%20API%20%E7%B0%A1%E4%BB%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    RESTful API 簡介
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../book_notes/%E4%BD%BF%E7%94%A8%20API%20Blueprint%20%E5%AF%AB%E6%96%87%E4%BB%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    使用 API Blueprint 寫文件
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../book_notes/%E4%BD%BF%E7%94%A8%20Docker%20Compose%20%E5%AE%89%E8%A3%9D%20Laravel%20%E5%92%8C%20Vue.js%20%E7%92%B0%E5%A2%83/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    使用 Docker Compose 安裝 Laravel 和 Vue.js 環境
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../book_notes/%E5%B8%B8%E7%94%A8%20Vim%20%E6%8C%87%E4%BB%A4%E6%B8%85%E5%96%AE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    常用 Vim 指令清單
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../book_notes/Laravel%2010%20%E5%AE%98%E6%96%B9%E6%96%87%E4%BB%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Laravel 10 官方文件
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../book_notes/%E6%88%91%E8%83%BD%E8%AE%93%E4%BD%A0%E8%B3%BA%E5%A4%A7%E9%8C%A2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    我能讓你賺大錢
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../book_notes/%E7%94%A8%E4%BA%94%E5%80%8B%E7%82%BA%E4%BB%80%E9%BA%BC%EF%BC%8C%E6%89%BE%E5%87%BA%E5%95%8F%E9%A1%8C%E7%99%BC%E7%94%9F%E7%9A%84%E7%9C%9F%E5%9B%A0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    用五個為什麼，找出問題發生的真因
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../book_notes/%E8%AE%93%E4%BD%A0%E5%92%8C%E5%AD%A9%E5%AD%90%E6%9B%B4%E8%B2%BC%E5%BF%83%EF%BC%9A%E7%8F%BE%E4%BB%A3%E7%88%B6%E6%AF%8D%E6%95%88%E8%83%BD%E8%A8%93%E7%B7%B4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    讓你和孩子更貼心：現代父母效能訓練
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../book_notes/%E5%BB%9A%E6%88%BF%E5%86%8D%E4%B9%9F%E4%B8%8D%E9%BA%BB%E7%85%A9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    廚房再也不麻煩
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../book_notes/%E7%82%BA%E4%BB%80%E9%BA%BC%E4%BB%96%E6%8E%A5%E7%9A%84%E6%A1%88%E5%AD%90%E6%AF%94%E6%88%91%E5%A4%9A%EF%BC%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    為什麼他接的案子比我多？
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../book_notes/%E6%95%B8%E5%AD%B8%E6%80%9D%E8%80%83/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    數學思考
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../book_notes/%E6%8B%92%E7%9C%8B%E6%96%B0%E8%81%9E%E7%9A%84%E7%94%9F%E6%B4%BB%E8%97%9D%E8%A1%93/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    拒看新聞的生活藝術
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../book_notes/%E5%81%9A%E8%87%AA%E5%B7%B1%E7%9A%84%E7%94%9F%E5%91%BD%E8%A8%AD%E8%A8%88%E5%B8%AB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    做自己的生命設計師
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../book_notes/%E9%97%9C%E6%96%BC%E5%AF%AB%E4%BD%9C%EF%BC%9A%E4%B8%80%E9%9A%BB%E9%B3%A5%E6%8E%A5%E8%91%97%E4%B8%80%E9%9A%BB%E9%B3%A5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    關於寫作：一隻鳥接著一隻鳥
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../book_notes/%E5%8E%9F%E5%AD%90%E7%BF%92%E6%85%A3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    原子習慣
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../book_notes/%E5%88%BB%E6%84%8F%E7%B7%B4%E7%BF%92/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    刻意練習
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../book_notes/%E6%95%8F%E6%8D%B7%E8%88%87%20Scrum%20%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC%E9%80%9F%E6%88%90/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    敏捷與 Scrum 軟體開發速成
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    雜記
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            雜記
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../others/%E6%88%91%E7%82%BA%E4%BB%80%E9%BA%BC%E6%83%B3%E4%B8%8D%E9%96%8B%E7%94%A8%20Vim%20%E5%AF%AB%E7%A8%8B%E5%BC%8F%EF%BC%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    我為什麼想不開用 Vim 寫程式？
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../others/%E6%80%8E%E9%BA%BD%E5%AD%B8%20Vim%20%EF%BC%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    怎麽學 Vim ？
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../others/%E8%B3%87%E6%96%99%E5%BA%AB%E6%AD%A3%E8%A6%8F%E5%8C%96%EF%BC%8C%E4%BB%A5%E9%AD%94%E6%B3%95%E5%AD%B8%E6%A0%A1%E8%AA%B2%E7%A8%8B%E7%82%BA%E4%BE%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    資料庫正規化，以魔法學校課程為例
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../others/Git%20rebase%20%E6%98%AF%E4%BB%80%E9%BA%BC%EF%BC%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Git rebase 是什麼？
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../others/GitHub%20%E9%A0%90%E8%A8%AD%E5%88%86%E6%94%AF%20master%20%E6%94%B9%E5%90%8D%E7%82%BA%20main/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    GitHub 預設分支 master 改名為 main
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../others/Git%20%E8%A8%AD%E5%AE%9A/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Git 設定
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../others/%3C%E5%A5%BD%E6%9B%B8%E6%8E%A8%E8%96%A6%3E%E7%82%BA%E4%BB%80%E9%BA%BC%E4%BB%96%E6%8E%A5%E7%9A%84%E6%A1%88%E5%AD%90%E6%AF%94%E6%88%91%E5%A4%9A/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <好書推薦>為什麼他接的案子比我多
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../others/%E9%80%99%E9%80%B1%E7%9C%8B%E4%BA%86%E4%BB%80%E9%BA%BC%E6%9B%B8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    這週看了什麼書
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../others/%E5%9C%A8%20Dedian%2011%20%E5%AE%89%E8%A3%9D%20LEMP%20%E9%96%8B%E7%99%BC%E7%92%B0%E5%A2%83%E8%B7%91%20Laravel%2010/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    在 Dedian 11 安裝 LEMP 開發環境跑 Laravel 10
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../others/%E5%9C%A8%20Dedian%2012%20%E5%AE%89%E8%A3%9D%20LEMP%20%E9%96%8B%E7%99%BC%E7%92%B0%E5%A2%83%E8%B7%91%20Laravel%2010/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    在 Dedian 12 安裝 LEMP 開發環境跑 Laravel 10
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../others/%E5%88%97%E5%8D%B0%20Laravel%2010%20%E5%AE%98%E6%96%B9%E6%96%87%E4%BB%B6%E4%B8%AD%E6%96%87%E7%89%88/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    列印 Laravel 10 官方文件中文版
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../others/%E5%BE%9E%20Vim%20%E5%88%B0%20Neovim/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    從 Vim 到 Neovim
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../others/Netrw%20%E7%B0%A1%E4%BB%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Netrw 簡介
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../others/%E7%82%BA%E4%BB%80%E9%BA%BC%E8%A6%81%E6%9C%89%E4%BE%8B%E5%A4%96%E8%99%95%E7%90%86%EF%BC%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    為什麼要有例外處理？
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../others/%E8%A7%A3%20UVa%20%E7%B7%9A%E4%B8%8A%E8%A7%A3%E9%A1%8C%E7%B3%BB%E7%B5%B1%E7%9A%84%E9%A1%8C%E7%9B%AE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    解 UVa 線上解題系統的題目
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../others/%E7%94%A8%20Vim%20%E6%8A%8A%E4%BA%8B%E6%83%85%E5%88%86%E5%BE%97%E5%BE%88%E7%B4%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    用 Vim 把事情分得很細
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../others/%E6%99%82%E9%96%93%E7%AE%A1%E7%90%86%E6%96%B9%E6%B3%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    時間管理方法
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../others/%E7%94%A8%20Linux%20Mint%20%E5%81%9A%E7%82%BA%E5%B7%A5%E4%BD%9C%E7%92%B0%E5%A2%83/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    用 Linux Mint 做為工作環境
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../others/Windows%20Terminal%20%E8%A8%AD%E5%AE%9A%E5%A4%9A%E5%80%8B%E5%AD%97%E9%AB%94/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Windows Terminal 設定多個字體
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../others/%E8%A7%A3%E6%B1%BA%20VTE%20%E7%82%BA%E5%9F%BA%E7%A4%8E%E7%9A%84%E7%B5%82%E7%AB%AF%E6%A9%9F%E7%A8%8B%E5%BC%8F%E6%B8%B8%E6%A8%99%E5%95%8F%E9%A1%8C/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    解決 VTE 為基礎的終端機程式游標問題
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../others/Windows%2010%20%E6%8E%A8%E8%96%A6%E8%BB%9F%E9%AB%94/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Windows 10 推薦軟體
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../others/memos%20%E5%AE%89%E8%A3%9D%E5%88%B0%20Debian%209/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    memos 安裝到 Debian 9
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../others/%E4%BD%BF%E7%94%A8%20docker%20%E5%9F%B7%E8%A1%8C%20node.js/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    使用 docker 執行 node.js，問 AI 語法
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Shape Up
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Shape Up
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../preface/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    前言 Foreword by Jason Fried
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第一章 Introduction 入門
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第二章 Principles of Shaping 塑形原則
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第三章 Set Boundaries 設定邊界
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第四章 Find the Elements 找出元素
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第五章 Risks and Rabbit Holes 風險與陷阱
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第六章 Write the Pitch 撰寫提案
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第七章 Bets, Not Backlogs 下注，而非待辦清單
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第八章 The Betting Table 投注會議
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    第九章 Place Your Bets 下定決心
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    第九章 Place Your Bets 下定決心
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目錄">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目錄
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#look-where-you-are" class="md-nav__link">
+    <span class="md-ellipsis">
+      Look where you are 看看我們所處的位置
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#existing-products" class="md-nav__link">
+    <span class="md-ellipsis">
+      Existing products 現有產品
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#new-products" class="md-nav__link">
+    <span class="md-ellipsis">
+      New products 新產品
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rd-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      R&amp;D mode 研發模式
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#production-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Production mode 生產模式
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cleanup-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cleanup mode 清理模式
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Examples 範例
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Examples 範例">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-dot-grid-calendar-dot-grid" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Dot Grid Calendar Dot Grid 日曆
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-new-product-hey-hey" class="md-nav__link">
+    <span class="md-ellipsis">
+      A new product: HEY 新產品：HEY
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#an-experimental-feature-hill-charts-hill-charts" class="md-nav__link">
+    <span class="md-ellipsis">
+      An experimental feature: Hill Charts 一個實驗性功能：Hill Charts
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#questions-to-ask" class="md-nav__link">
+    <span class="md-ellipsis">
+      Questions to ask 要問的問題
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Questions to ask 要問的問題">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#does-the-problem-matter" class="md-nav__link">
+    <span class="md-ellipsis">
+      Does the problem matter? 這個問題重要嗎？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#is-the-appetite-right" class="md-nav__link">
+    <span class="md-ellipsis">
+      Is the appetite right? 是否「胃口」適當？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#is-the-solution-attractive" class="md-nav__link">
+    <span class="md-ellipsis">
+      Is the solution attractive? 解決方案有吸引力嗎？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#is-this-the-right-time" class="md-nav__link">
+    <span class="md-ellipsis">
+      Is this the right time? 這個時機對嗎？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#are-the-right-people-available" class="md-nav__link">
+    <span class="md-ellipsis">
+      Are the right people available? 對的人有沒有空？
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#post-the-kick-off-message" class="md-nav__link">
+    <span class="md-ellipsis">
+      Post the kick-off message 發布啟動消息
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第十章 Hand Over Responsibility 移交責任
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第十一章 Get One Piece Done 完成一個小目標
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第十二章 Map the Scopes 繪製範圍
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第十三章 Show Progress 顯示進度
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第十四章 Decide When to Stop 決定何時停止
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第十五章 Move On 繼續前進
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../conclusion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Conclusion 結論
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how%20to%20implement%20shape%20up%20in%20basecamp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    How to Implement Shape Up in Basecamp 如何在 Basecamp 中實現 Shape Up
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adjust%20to%20your%20size/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Adjust to Your Size 調整至你的規模
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how%20to%20begin%20to%20shape%20up/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    How to Begin to Shape Up 如何開始 Shape Up
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Glossary 詞彙表
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about%20the%20author/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    About the Author 關於作者
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Laravel 10 語法速查表
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Laravel 10 語法速查表
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cheatsheets/artisan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Artisan
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cheatsheets/auth/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Auth 使用者認證
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cheatsheets/blade/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Blade 範本
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cheatsheets/cache/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cache
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cheatsheets/collection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Collection
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cheatsheets/composer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Composer
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cheatsheets/config/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Config
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cheatsheets/container/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Container
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cheatsheets/cookie/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cookie
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cheatsheets/db/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Database
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cheatsheets/environment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Environment
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cheatsheets/event/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Event
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cheatsheets/file/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    File
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cheatsheets/helper/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Helper
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cheatsheets/input/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Input
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cheatsheets/lang/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lang
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cheatsheets/Log/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Log
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cheatsheets/mail/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mail
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cheatsheets/model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Model (Eloquent ORM)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cheatsheets/pagination/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Pagination
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cheatsheets/queue/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Queue
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cheatsheets/redirect/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Redirect
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cheatsheets/request/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Request
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cheatsheets/response/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Response
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cheatsheets/route/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Route
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cheatsheets/schema/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Schema 資料庫結構
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cheatsheets/security/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Security (Hash 和加解密)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cheatsheets/session/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Session
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cheatsheets/storage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Storage
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cheatsheets/string/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    String
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cheatsheets/unittest/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Unit Test 單元測試
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cheatsheets/url/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    URL
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cheatsheets/validation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Validation 表單驗證
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cheatsheets/view/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    View
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目錄">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目錄
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#look-where-you-are" class="md-nav__link">
+    <span class="md-ellipsis">
+      Look where you are 看看我們所處的位置
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#existing-products" class="md-nav__link">
+    <span class="md-ellipsis">
+      Existing products 現有產品
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#new-products" class="md-nav__link">
+    <span class="md-ellipsis">
+      New products 新產品
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rd-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      R&amp;D mode 研發模式
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#production-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Production mode 生產模式
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cleanup-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cleanup mode 清理模式
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Examples 範例
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Examples 範例">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-dot-grid-calendar-dot-grid" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Dot Grid Calendar Dot Grid 日曆
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-new-product-hey-hey" class="md-nav__link">
+    <span class="md-ellipsis">
+      A new product: HEY 新產品：HEY
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#an-experimental-feature-hill-charts-hill-charts" class="md-nav__link">
+    <span class="md-ellipsis">
+      An experimental feature: Hill Charts 一個實驗性功能：Hill Charts
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#questions-to-ask" class="md-nav__link">
+    <span class="md-ellipsis">
+      Questions to ask 要問的問題
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Questions to ask 要問的問題">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#does-the-problem-matter" class="md-nav__link">
+    <span class="md-ellipsis">
+      Does the problem matter? 這個問題重要嗎？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#is-the-appetite-right" class="md-nav__link">
+    <span class="md-ellipsis">
+      Is the appetite right? 是否「胃口」適當？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#is-the-solution-attractive" class="md-nav__link">
+    <span class="md-ellipsis">
+      Is the solution attractive? 解決方案有吸引力嗎？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#is-this-the-right-time" class="md-nav__link">
+    <span class="md-ellipsis">
+      Is this the right time? 這個時機對嗎？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#are-the-right-people-available" class="md-nav__link">
+    <span class="md-ellipsis">
+      Are the right people available? 對的人有沒有空？
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#post-the-kick-off-message" class="md-nav__link">
+    <span class="md-ellipsis">
+      Post the kick-off message 發布啟動消息
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+  
+                  
+
+
+  
+  
+
+
+<h1 id="place-your-bets">第九章 Place Your Bets 下定決心<a class="headerlink" href="#place-your-bets" title="Permanent link">&para;</a></h1>
+<h2 id="look-where-you-are">Look where you are 看看我們所處的位置<a class="headerlink" href="#look-where-you-are" title="Permanent link">&para;</a></h2>
+<p>Depending on whether we’re improving an existing product or building a new product, we’re going to set different expectations about what happens during the six-week cycle.</p>
+<p>根據我們是正在改善現有產品還是開發新產品，我們會設定不同的預期，關於在六週週期內會發生什麼。</p>
+<p>This invites us to reflect on where we are in the arc of our product’s development and bet accordingly.</p>
+<p>這讓我們反思自己在產品開發的進程中處於哪個階段，並根據這個階段來做出相應的投注。</p>
+<h2 id="existing-products">Existing products 現有產品<a class="headerlink" href="#existing-products" title="Permanent link">&para;</a></h2>
+<p>When we add features to an existing product, we follow the standard Shape Up process: shape the work, bet on it, and give it to a team to build. We expect the team to finish and ship some version of the shaped work by the end of the cycle.</p>
+<p>當我們為現有產品添加新功能時，我們遵循標準的 Shape Up 流程：規劃工作、下注並交給團隊來實現。我們預期團隊能夠在週期結束前完成並交付某個版本的已規劃工作。</p>
+<p>On an existing product, all of the existing code and design that <em>isn’t</em> going to change defines a kind of empty space that the new feature will fit into. Shaping and building is like crafting a piece of furniture for a house that is already built.</p>
+<p>在現有產品中，所有**不會**改動的現有代碼和設計，定義了一個空間，新功能將在這個空間中融入。規劃和建設就像是為一個已經建好的房子製作一件家具。</p>
+<h2 id="new-products">New products 新產品<a class="headerlink" href="#new-products" title="Permanent link">&para;</a></h2>
+<p>New products are different. Whereas adding to an existing product is like buying a couch for a room with fixed dimensions, new product development is like figuring out where the walls and the foundation should go so the building will stand.</p>
+<p>新產品則不同。與為現有產品添加功能類似於為一個固定尺寸的房間買一張沙發相比，新產品開發就像是決定牆壁和基礎應該放在哪裡，這樣建築才能穩固地立起來。</p>
+<p>We’ve noticed three phases of work when we build a new product from scratch. In each phase, the way that we shape and our expectations for how the team will work together during the cycle are different. These phases unfold over the course of multiple cycles, but we still only bet one cycle at a time.</p>
+<p>我們發現，當我們從零開始構建一個新產品時，有三個階段。在每個階段中，我們規劃的方式和我們對團隊在週期中如何協同工作的期望是不同的。這些階段會在多個週期中展開，但我們依然每次只投注一個週期。</p>
+<h2 id="rd-mode">R&amp;D mode 研發模式<a class="headerlink" href="#rd-mode" title="Permanent link">&para;</a></h2>
+<p>At the very earliest stages of a new product, our idea is just a theory or a glimmer. We don’t know if the bundle of features we imagine will hold together in reality, and the technical decisions about how to model them in code are even less clear.</p>
+<p>在新產品的最初階段，我們的想法只是一個理論或一線希望。我們不知道我們設想的功能組合在現實中是否能夠融為一體，而如何在代碼中模擬它們的技術決策則更不清楚。</p>
+<p>This means there is a lot of scrapwork. We might decide half-way to standing up a feature that it’s not what we want and try another approach instead.</p>
+<p>這意味著會有很多無用的工作。我們可能會在實現某個功能的過程中發現它不是我們想要的，然後改變方法，嘗試另一種方式。</p>
+<p>In other words, we can’t reliably shape what we want in advance and say: “This is what we want. We expect to ship it after six weeks.” We have to learn what we want by building it.</p>
+<p>換句話說，我們無法可靠地提前規劃出我們想要的東西，然後說：「這就是我們想要的，我們預期六週後會交付它。」我們必須通過構建它來學習我們真正需要的東西。</p>
+<p>We call this stage <code>R&amp;D mode</code> and adjust for it in three ways.</p>
+<p>我們稱這個階段為「研發模式」，並且會通過三種方式進行調整。</p>
+<ul>
+<li>Instead of betting on a well-shaped pitch, we mainly bet the <em>time</em> on spiking some key pieces of the new product idea. The shaping is much fuzzier because we expect to learn by building.</li>
+<li>我們並不是投注在一個已經規劃好的提案上，而是主要投注**時間**來測試新產品構想中的一些關鍵部分。規劃會變得模糊一些，因為我們預期通過建設來學習。</li>
+<li>Rather than delegating to a separate build team, our senior people make up the team. David (CTO) takes the programming role and works with Jason (CEO and designer) or a senior designer with Jason’s guidance. This is necessary for two reasons. First, you can’t delegate to other people when you don’t know what you want yourself. Second, the architectural decisions will determine what’s possible in the product’s future — they define the “holes” that future features fit into. At this phase the team needs to hold the vision of the product and be able to judge the long-term effects of design decisions.</li>
+<li>我們不會將工作委派給另一個專門的開發團隊，而是由我們的高級成員組成團隊。David（CTO）擔任程式設計角色，與 Jason（CEO 兼 設計師）或在 Jason 指導下的高級設計師一起工作。這樣做有兩個原因。首先，當你自己還不確定想要什麼時，無法將工作委託給其他人。第二，架構決策將決定產品未來的可能性——它們定義了未來功能嵌入的「空洞」。在這個階段，團隊需要掌握產品的願景，並能夠評估設計決策對未來的長期影響。</li>
+<li>Lastly, we don’t expect to ship anything at the end of an R&amp;D cycle. The aim is to spike, not to ship. In the best case we’ll have some UI and code committed to serve as the foundation for subsequent work. The goal is to learn what works so we can commit to some load-bearing structure: the main code and UI decisions that will define the form of the product going forward.</li>
+<li>最後，我們不期待在研發週期結束時交付任何產品。目標是進行測試，而不是交付。在最理想的情況下，我們將會有一些 UI 和代碼，這些將成為後續工作的基礎。目標是學習哪些部分有效，以便我們能夠確定一些具有承載能力的結構：主要的代碼和 UI 決策，這些將定義產品未來的形式。</li>
+</ul>
+<p>We can’t ship anything to customers with just a single cycle of R&amp;D work. But we still don’t commit to more than one cycle at a time. We may learn from the first cycle that we aren’t ready to tackle the product yet. Or we may discover that our intuition rang true and the product is coming together. Depending on how it goes, we’ll decide cycle-by-cycle whether to continue spending informal time in R&amp;D mode.</p>
+<p>我們無法僅依賴單一個研發週期就將任何東西交付給客戶。但我們仍然不會一次承諾超過一個週期。我們可能會從第一個週期中學到，我們還不準備好進行這個產品的開發。或者我們可能會發現我們的直覺是正確的，產品正在順利進展。根據進展情況，我們將會逐個週期地決定是否繼續投入非正式的研發模式。</p>
+<h2 id="production-mode">Production mode 生產模式<a class="headerlink" href="#production-mode" title="Permanent link">&para;</a></h2>
+<p>If we continue to get warmer after some R&amp;D cycles, we’ll eventually reach a point where the most important architectural decisions are settled. The product does those few essential things that define it, and the foundation is laid for the dozens of other things we’ll have to do before we can ship to customers.</p>
+<p>如果經過幾個研發週期後，我們仍然逐步接近目標，我們最終會達到一個階段，這時最重要的架構決策已經確定。產品完成了幾個關鍵的功能，這些功能定義了它的核心特性，並為我們在能夠交付給客戶之前需要完成的其他數十個功能奠定了基礎。</p>
+<p>With this structure in place, the senior team can bring in other people to contribute. This is the flip to <code>production mode</code>, where we work in formal cycles with clear-cut shaping, betting, and building phases. Production mode is like working on an existing product: the precedent set by the R&amp;D work enables new contributors to identify where new functionality belongs and how it fits into the whole.</p>
+<p>有了這個架構，資深團隊可以引入其他人來貢獻。這就是進入「生產模式」的轉折點，在這裡我們會以正式的週期進行工作，並擁有明確的形狀、下注和建設階段。生產模式就像是在現有產品上工作：研發工作的前例使新加入的人能夠識別新功能應該放在哪裡，以及它如何融入整體結構中。</p>
+<p>In production mode:</p>
+<p>在生產模式中：</p>
+<ul>
+<li>Shaping is deliberate again. The shaped work describes what we expect to see at the end of the cycle.</li>
+<li>The team that builds the projects is no longer limited to the senior group. It becomes possible to bet multiple teams in parallel (if you have them) and cover more ground.</li>
+<li>Shipping is the goal, not spiking. But because the product isn’t publicly available to customers yet, we define ‘shipping’ differently. Shipping means merging into the main codebase and expecting not to touch it again.</li>
+<li>形狀設定變得更加有計劃。形狀化的工作描述了我們期望在週期結束時看到的結果。</li>
+<li>建立專案的團隊不再僅限於資深團隊。若有多個團隊，現在可以進行平行下注，並覆蓋更多範圍。</li>
+<li>發佈是目標，而非探索性工作。但因為產品尚未公開對客戶提供，我們對「發佈」的定義有所不同。發佈意味著將工作合併進主代碼庫，並期望不再進行修改。</li>
+</ul>
+<p>Since we aren’t shipping to customers at the end of each cycle, we maintain the option to remove features from the final cut before launch. This means we can still be experimental. We can bet six weeks on a feature without knowing if we’ll want it in the final product. That’s not a problem as long as we set expectations to the build team: we can’t predict what we’ll want in the final cut, and we’re willing to risk this cycle to take our best swing at the idea.</p>
+<p>因為在每個週期結束時我們並未將產品發佈給客戶，所以我們保留了在最終發佈前移除功能的選項。這意味著我們仍然可以保持實驗性。我們可以在某個功能上下注六週，而不需要知道它是否會成為最終產品的一部分。只要我們對建設團隊設定了明確的預期：我們無法預測最終版本中會想要哪些功能，我們願意冒險，在這個週期內全力嘗試這個想法，這並不成問題。</p>
+<h2 id="cleanup-mode">Cleanup mode 清理模式<a class="headerlink" href="#cleanup-mode" title="Permanent link">&para;</a></h2>
+<p>In the final phase before launching the new product, we throw all structure out the window. We call this <code>cleanup mode</code>. It’s a free-for-all. We’ve built enough new products to learn that there are always things we forget, things we miss, details that aren’t right, and bugs that creep in over the course of the R&amp;D and production mode cycles.</p>
+<p>在推出新產品的最後階段，我們將所有的結構拋到一邊。我們稱之為「清理模式」(cleanup mode)。這是一場自由的混戰。我們已經建造了足夠多的新產品，學會了總會有一些我們忘記的東西、有些細節不對勁、還有在研發模式和生產模式的週期中潛藏進來的錯誤。</p>
+<p>There’s something about putting your finger near the launch button that makes your hair stand up. Everything suddenly gets “real.” Things we dismissed before pop out at us with new importance.</p>
+<p>在接近按下發佈按鈕的時候，總有一種讓人毛髮豎立的感覺。突然間，一切變得「真實」起來。我們之前忽略的事情，此刻突然以全新的重要性浮現出來。</p>
+<p>That’s why we reserve some capacity at the end for the unexpected. In cleanup mode:</p>
+<p>這就是為什麼我們在最後階段保留一些容量來處理意外情況。在清理模式下：</p>
+<ul>
+<li>There’s no shaping. The cycle is closer in spirit to the “bug smash” mentioned in the previous chapter. Leadership stands at the helm throughout the cycle, calling attention to what’s important and cutting away distractions.</li>
+<li>There aren’t clear team boundaries. Everyone jumps in to help however they can.</li>
+<li>Work is “shipped” (merged to the main codebase) continuously in as small bites as possible.</li>
+<li>沒有規劃。這個周期更像是上一章提到的「錯誤修復大會」。領導層在整個周期中處於掌舵位置，呼籲注意重要事項並去除干擾。</li>
+<li>團隊邊界不明確。每個人都會根據需要盡力幫忙。</li>
+<li>工作是「交付」的（合併到主代碼庫中），並且盡可能以最小的步驟進行。</li>
+</ul>
+<p>Discipline is still important. We have to check ourselves to make sure these are must-haves we’re working on, not just our cold feet begging us to delay launch. Cleanup shouldn’t last longer than two cycles.</p>
+<p>紀律仍然很重要。我們必須自我檢查，確保我們正在處理的是必須做的工作，而不是僅僅因為冷 feet 讓我們想拖延發佈。清理模式不應該超過兩個周期。</p>
+<p>Cleanup is also the phase where leadership makes those “final cut” decisions. A smaller surface area on a V1 means fewer questions to answer, less to support, and less we’re committing to maintain indefinitely. Sometimes we need to see all the features working as a whole to judge what we can live without and what might require deeper consideration before shipping it to customers.</p>
+<p>清理階段也是領導層做出「最終決定」的時候。版本 1 的較小範圍意味著更少的問題需要回答、更少的支援，以及我們不必無限期維護的東西。有時我們需要看到所有功能作為整體運作，才能判斷哪些是可以省略的，哪些可能需要更深入的考慮，再決定是否可以發佈給客戶。</p>
+<h2 id="examples">Examples 範例<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h2>
+<h3 id="the-dot-grid-calendar-dot-grid">The Dot Grid Calendar Dot Grid 日曆<a class="headerlink" href="#the-dot-grid-calendar-dot-grid" title="Permanent link">&para;</a></h3>
+<p>We built the Dot Grid Calendar (see Chapter 2) for Basecamp, an existing product. We shaped the project, bet six weeks on it, a team built it, and then we shipped it straight to customers.</p>
+<p>我們為 Basecamp 建立了 Dot Grid 日曆（見第 2 章），這是針對現有產品所做的。首先，我們對這個項目進行了形狀設計，接著投入了六週的時間來開發，團隊完成了開發後，我們直接將它發佈給客戶。</p>
+<h3 id="a-new-product-hey-hey">A new product: HEY 新產品：HEY<a class="headerlink" href="#a-new-product-hey-hey" title="Permanent link">&para;</a></h3>
+<p>In 2020, after two years of development, we launched a new email app and service called <a href="https://hey.com">HEY</a>. HEY was in <code>R&amp;D mode</code> for the first year of its development. A team of three, Jason (CEO), David (CTO), and Jonas (senior designer) explored a wide variety of ideas before settling on the core. Nearly a year of <code>production mode</code> cycles followed, where all of Basecamp’s teams fleshed out HEY’s feature set. We ended with two cycles of <code>cleanup</code> and significantly cut back the feature set to launch in July 2020.</p>
+<p>在 2020 年，經過兩年的開發，我們推出了名為 <a href="https://hey.com">HEY</a> 的全新電子郵件應用程式及服務。HEY 在開發的第一年處於「R&amp;D 模式」。由三位成員組成的團隊，Jason（CEO）、David（CTO）和 Jonas（資深設計師），在探索了各種不同的想法後，最終確定了其核心概念。隨後，進入了接近一年的「生產模式」週期，Basecamp 所有團隊一起完善了 HEY 的功能設置。我們最終經過了兩個 「清理」 週期，並大幅縮減了功能集，直到在 2020 年 7 月成功推出。</p>
+<p>To be precise, there was some overlap between R&amp;D and production mode after that first year. Basecamp was big enough as a company that the senior team could shape and delegate production-mode projects around parts of the app that were settled while continuing to explore new territory in R&amp;D mode themselves.</p>
+<p>確切來說，在第一年之後，R&amp;D 和生產模式之間是有些重疊的。Basecamp 作為一個大公司，資深團隊可以在探索新領域的同時，專注於已經確定的應用部分，進行生產模式的專案設計和委派。</p>
+<p>Every bet on HEY was placed one at a time. The betting table didn’t know they would be working on HEY for two years during those first few R&amp;D cycles. Gradually they gained confidence in the idea and grew a big-picture appetite for how many cycles they were willing to spend on HEY. But they made no specific commitments about what would go into those cycles. And flipping attention back to Basecamp, our existing product, was always on the table.</p>
+<p>每一項對 HEY 的投注都是一次一次地做出的。在那些早期的 R&amp;D 週期中，投注桌上沒有人知道他們會在接下來的兩年中致力於 HEY。隨著信心的增強，他們逐漸對這個想法有了更大局的預期，並且決定了願意在 HEY 上花多少個週期。但他們並沒有對這些週期的具體內容做出承諾。而且，將注意力轉回 Basecamp，我們的現有產品，始終是可以選擇的。</p>
+<h3 id="an-experimental-feature-hill-charts-hill-charts">An experimental feature: Hill Charts 一個實驗性功能：Hill Charts<a class="headerlink" href="#an-experimental-feature-hill-charts-hill-charts" title="Permanent link">&para;</a></h3>
+<p>A third example shows some grey area. When we built the Hill Charts feature in Basecamp (see Chapter 13), we had no idea if it was going to work out or not. Basecamp was an existing product, and it felt too risky to bet on releasing this experimental feature to customers. So we framed the project more like a production mode bet on a new product. We shaped a first version that was just functional enough to use ourselves. We didn’t expect to ship it to customers without doing an additional cycle on it. This was a risk: we bet one cycle, not two. If it didn’t work out, we’d scrap it. If something more important came up, we might not ever schedule the second cycle. But we ended up feeling confident after the first cycle. We shaped a project to round it out, decided to bet another cycle, and then shipped it to customers.</p>
+<p>第三個例子展示了一些灰色地帶。當我們在 Basecamp 中建立 Hill Charts 功能（參見第13章）時，我們並不知道這個功能是否會成功。Basecamp 是一個現有產品，我們覺得將這個實驗性功能直接推出給客戶風險太大。因此，我們把這個專案框架設計得更像是對新產品的生產模式投注。我們設計了一個初版，功能足夠讓我們自己使用。我們並不打算在額外的週期完成之前將它推出給客戶。這是一個風險：我們只投注了一個週期，而不是兩個。如果它沒有效果，我們就放棄它。如果有更重要的事情發生，我們甚至可能不會排定第二個週期。但最終在第一個週期結束後，我們對它充滿信心。於是我們重新塑造了這個專案，決定再投注一個週期，然後將它推向客戶。</p>
+<h2 id="questions-to-ask">Questions to ask 要問的問題<a class="headerlink" href="#questions-to-ask" title="Permanent link">&para;</a></h2>
+<p>Here are some common questions you might hear when people at the betting table are debating which bets to place.</p>
+<p>以下是一些當人們在投注桌上討論要進行哪些投注時，可能會聽到的常見問題。</p>
+<h3 id="does-the-problem-matter">Does the problem matter? 這個問題重要嗎？<a class="headerlink" href="#does-the-problem-matter" title="Permanent link">&para;</a></h3>
+<p>Just like in pitch write-ups, we always take care to separate problem and solution. The solution doesn’t matter if the problem isn’t worth solving.</p>
+<p>就像在提案撰寫中一樣，我們始終會小心地區分問題和解決方案。如果問題不值得解決，解決方案就沒有意義。</p>
+<p>Of course, any problem that affects customers matters. But we have to make choices because there will always be more problems than time to solve them. So we weigh problems against each other. Is <em>this</em> problem more important than <em>that</em> problem right now?</p>
+<p>當然，任何影響客戶的問題都是重要的。但我們必須做出選擇，因為總是有比我們時間更多的問題需要解決。因此，我們會將問題互相比較：現在，這個問題是否比那個問題更重要？</p>
+<p>How the people at the table judge problems depends on their perspective, role, and knowledge. For example, a problem might impact a small segment of customers but put a disproportionate burden on support. Depending on your exposure to support and which aspect of the business you’re focused on, you may weigh that differently.</p>
+<p>桌上的人如何判斷問題，取決於他們的觀點、角色和知識。例如，一個問題可能會影響少數客戶群，但會對支援團隊造成過度負擔。根據你對支援的接觸程度以及你關注的業務領域，你可能會對這個問題給出不同的權重。</p>
+<p>Sometimes a solution that is too complicated or too sweeping may invite questions about the problem. Do we really need to make so many changes across the app? Have we understood the problem specifically enough? Maybe there’s a way to narrow it down so that we get 80% of the benefit from 20% of the change.</p>
+<p>有時，一個過於複雜或過於全面的解決方案會引發對問題的質疑。我們真的需要在整個應用中做這麼多改動嗎？我們對問題的理解夠具體嗎？也許有辦法縮小範圍，讓我們能夠用20%的改動達到80%的效果。</p>
+<h3 id="is-the-appetite-right">Is the appetite right? 是否「胃口」適當？<a class="headerlink" href="#is-the-appetite-right" title="Permanent link">&para;</a></h3>
+<p>It’s good when we have a solution shaped to a reasonable time frame, like two or six weeks. But we might still debate whether it’s worth the time. Suppose a stakeholder says they aren’t interested in spending six weeks on a given pitch. The negotiation could go a couple directions from there:</p>
+<p>當我們有一個解決方案被塑造為合理的時間框架（例如兩週或六週）時，這是好的。但我們仍然可能會討論它是否值得花這麼多時間。假設一位利益相關者說他們對花六週時間在某個提案上不感興趣，接下來的討論可能會朝著幾個方向進行：</p>
+<ul>
+<li>Maybe the problem wasn’t articulated well enough, and there’s knowledge that the shaper can add to the conversation right now to swing opinion. For example, “Yeah it doesn’t happen often, but when it does people are so vocal about it that it really tarnishes perception of us.” Or “Maybe it sounds trivial, but support has to go through 11 time-consuming steps to get to resolution.”</li>
+<li>也許問題沒有表達清楚，這時候提案者可以立即補充一些知識來改變看法。例如：「對，這個問題不常發生，但每次發生時，使用者反應強烈，這會嚴重損害我們的品牌形象。」或者「也許聽起來微不足道，但客服需要經過11個繁瑣的步驟才能解決問題。」</li>
+<li>Sometimes saying “no” to the time commitment is really saying no to something else. Maybe there’s something about the solution or the technical implementation they don’t like. Asking “How would you feel if we could do it in two weeks?” can uncover that it’s not so much about the time. The CTO might answer, “I don’t want to introduce another dependency into that area of the app.”</li>
+<li>有時候說「不」對於時間的承諾，其實是在拒絕其他東西。可能是對解決方案或技術實現有些不滿。問一句「如果我們能在兩週內完成，你會怎麼想？」可以揭示出其實問題不在時間上。比如，CTO 可能會回答說：「我不想在那個區塊再增加一個依賴。」</li>
+<li>The shaper might just let the idea go if interest is too low.</li>
+<li>如果興趣太低，塑形者可能會選擇放棄這個想法。</li>
+<li>The shaper might go back to the drawing table and either work on a smaller version (for a shorter appetite) or do more research if they believe the problem is compelling but they weren’t armed well enough to present it.</li>
+<li>塑形者也可能會回到設計階段，嘗試將方案縮小版本（以適應更短的時間範圍），或是進行更多的研究，如果他們認為問題是有吸引力的，但當初提出時沒有足夠的資料來支撐。</li>
+</ul>
+<h3 id="is-the-solution-attractive">Is the solution attractive? 解決方案有吸引力嗎？<a class="headerlink" href="#is-the-solution-attractive" title="Permanent link">&para;</a></h3>
+<p>The problem may be important and the appetite fair, but there can be differences about the solution.</p>
+<p>問題可能很重要，並且時間預算也合理，但對於解決方案本身可能會有不同的看法。</p>
+<p>For example, adding interface elements to the screen carries an invisible cost: giving up the real estate. A button in the corner of the home page might perfectly solve the problem. But that real estate is valuable. If we give it up now, we won’t be able to use it in the future. Are we selling it too cheaply to solve this particular problem?</p>
+<p>例如，向螢幕上添加介面元素會帶來一個無形的成本：放棄這些空間。首頁角落的按鈕可能能完美解決這個問題，但這些空間是寶貴的。如果我們現在把它拿來用，未來就無法再利用它。為了解決這個特定問題，我們是不是把這些空間賣得太便宜了？</p>
+<p>If someone offers an immediate design solution, like “how about we move that button to an action menu instead,” we might discuss it. But generally we’ll avoid doing design work or discussing technical solutions for longer than a few moments at the betting table. If we catch ourselves spending too much time in the weeds we’ll remind ourselves “okay, we’re not doing design here” and move back up to the high level.</p>
+<p>如果有人提出即時的設計解決方案，例如「我們把那個按鈕移到操作菜單裡如何」，我們可能會討論這個想法。但一般來說，我們會避免在下注會議上做設計工作或討論技術解決方案太長時間。如果我們發現自己花太多時間在細節上，我們會提醒自己「好，我們不是在做設計」，然後回到高層次的討論。</p>
+<h3 id="is-this-the-right-time">Is this the right time? 這個時機對嗎？<a class="headerlink" href="#is-this-the-right-time" title="Permanent link">&para;</a></h3>
+<p>The kind of project we want to do next can depend on which projects we’ve done recently. Maybe it’s been too long since we’ve made a splash of news with a new feature. Or perhaps we’ve been building too many new features and feel overdue to fix some long-standing customer requests. Or if the teams spent the last couple cycles in the same area of the app, their morale may dip if we plan yet another project doing the same kind of work.</p>
+<p>我們接下來想做的專案可能會取決於我們最近做過哪些專案。也許我們很久沒有透過推出新功能來引起一波關注了，或者我們已經推出太多新功能，感覺該是解決一些長期以來的客戶需求的時候了。又或者，如果團隊在過去幾個週期中都在處理應用程式的相同區域，當我們計畫再做一次相同類型的工作時，他們的士氣可能會下降。</p>
+<p>Those are all reasons that we might pass on a project even though it’s perfectly well shaped and valuable. The project’s great; it’s just not the right time.</p>
+<p>這些都是即使專案本身已經非常完善並且有價值，我們還是可能選擇放棄的原因。專案本身很好，只是時機不對。</p>
+<h3 id="are-the-right-people-available">Are the right people available? 對的人有沒有空？<a class="headerlink" href="#are-the-right-people-available" title="Permanent link">&para;</a></h3>
+<p>As part of the betting process we choose who specifically will play which role on each team. That is, we’ll pair a project with a specific small team of a designer and one or two programmers. We have a “Core Product” team of designers and programmers and we select from that pool when planning teams for each cycle. The team will work with each other for the whole cycle and then the next cycle can be a different combination of people.</p>
+<p>在下注過程中，我們會選擇每個專案中具體由誰擔任哪個角色。也就是說，我們會為專案配對一個特定的小團隊，通常是由一位設計師和一到兩位程式員組成。我們有一個“核心產品”團隊，裡面有設計師和程式員，並且在計劃每個週期的團隊時會從這個池子中選擇。團隊會在整個週期內一起工作，而下一個週期則可以是不同的成員組合。</p>
+<p>Different projects require different expertise. Maybe we need some more front-end programming on this one. Or this other one is going to invite a lot of scope creep so we need someone who’s good with the <code>scope hammer</code>.</p>
+<p>不同的專案需要不同的專業知識。也許這個專案需要更多的前端程式設計技能，或者這個專案可能會引發大量範圍蔓延，因此我們需要一位擅長使用「範圍鎚」的專家。</p>
+<p>The type of work each person has been doing is another factor. Someone who’s done a long string of <code>small batch</code> projects might prefer to take on a <code>big batch</code>, or vice versa.</p>
+<p>每個人所從事的工作類型也是一個考量因素。做過一連串「小批量」專案的人可能會偏好接下來處理一個「大批量」的專案，反之亦然。</p>
+<p>And lastly there’s always a little Calendar Tetris with peoples’ availability. Vacations or sabbaticals affect which projects we can schedule in the coming cycle.</p>
+<p>最後，總是會有一點日程排程上的「日曆俄羅斯方塊」，因為員工的可用性會影響我們能在接下來的週期中排定哪些專案。休假或長期休假會影響我們能安排的專案。</p>
+<p>We’ve seen some other companies use a different model where instead of assigning the projects to people, they let the team members choose which projects they want to work on. Culturally, we are too meeting-averse for this extra step. But we’ve heard it can work well for some teams because the project teams have a little more buy-in.</p>
+<p>我們看到有些公司採用了不同的模式，他們不是將專案分配給人，而是讓團隊成員選擇自己想要參與的專案。從文化上來說，我們對這個額外步驟比較排斥，因為我們討厭開會。但我們聽過這對某些團隊來說很有效，因為這樣專案團隊會有更多的參與感和認同感。</p>
+<h2 id="post-the-kick-off-message">Post the kick-off message 發布啟動消息<a class="headerlink" href="#post-the-kick-off-message" title="Permanent link">&para;</a></h2>
+<p>After the bets are made, someone from the betting table will write a message that tells everyone which projects we’re betting on for the next cycle and who will be working on them.</p>
+<p>在所有的投注確定後，來自投注桌的人會寫一封消息，告訴大家我們將在下一個週期中投注哪些專案，並且會有誰負責這些專案的工作。</p>
+<p><a href="../images/kickoff_message.png"><img alt="A screenshot of a Message announcing a cycle in Basecamp. Jason, the author, introduces it with some remarks about the type of work in the cycle. Then headings below introduce each project in the cycle with a short paragraph of commentary each." src="../images/kickoff_message.png" /></a></p>
+<p>Jason announces the bets for the next cycle with a <a href="https://basecamp.com">Basecamp</a> message</p>
+<p>Jason 通過 <a href="https://basecamp.com">Basecamp</a> 發佈消息，宣布下一個週期的投注項目。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+
+  <!-- Giscus -->
+  <h2 id="__comments">留言</h2>
+  <script src="https://giscus.app/client.js"
+          data-repo="tomleesm/notes"
+          data-repo-id="R_kgDOGuSz4g"
+          data-category="Announcements"
+          data-category-id="DIC_kwDOGuSz4s4CBI6T"
+          data-mapping="title"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="bottom"
+          data-theme="dark"
+          data-lang="zh-TW"
+          crossorigin="anonymous"
+          async>
+  </script>
+
+  <!-- Reload on palette change -->
+  <script>
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object")
+      if (palette.color.scheme === "slate") {
+        var giscus = document.querySelector("script[src*=giscus]")
+        giscus.setAttribute("data-theme", "dark")
+      }
+
+    /* Register event handlers after documented loaded */
+    document.addEventListener("DOMContentLoaded", function() {
+      var ref = document.querySelector("[data-md-component=palette]")
+      ref.addEventListener("change", function() {
+        var palette = __md_get("__palette")
+        if (palette && typeof palette.color === "object") {
+          var theme = palette.color.scheme === "slate" ? "dark" : "light"
+
+          /* Instruct Giscus to change theme */
+          var frame = document.querySelector(".giscus-frame")
+          frame.contentWindow.postMessage(
+            { giscus: { setConfig: { theme } } },
+            "https://giscus.app"
+          )
+        }
+      })
+    })
+  </script>
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到頂端
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.tabs", "navigation.sections", "navigation.indexes", "navigation.top", "header.autohide", "search.highlight", "search.share", "toc.follow"], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u8907\u88fd", "clipboard.copy": "\u8907\u88fd", "search.result.more.one": "\u6b64\u9801\u5c1a\u6709 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.more.other": "\u6b64\u9801\u5c1a\u6709 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.none": "\u6c92\u6709\u7b26\u5408\u7684\u9805\u76ee", "search.result.one": "\u627e\u5230 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.other": "\u627e\u5230 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.placeholder": "\u6253\u5b57\u9032\u884c\u641c\u5c0b", "search.result.term.missing": "\u7f3a\u5c11\u5b57\u8a5e", "select.version": "\u9078\u64c7\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.56ea9cef.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,3549 @@
+
+<!doctype html>
+<html lang="zh-TW" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../ch05/">
+      
+      
+        <link rel="next" href="../ch07/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
+    
+    
+      
+        <title>第六章 Write the Pitch 撰寫提案 - Tom 除錯中</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+Traditional+Chinese:300,300i,400,400i,700,700i%7CSource+Code+Pro:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans Traditional Chinese";--md-code-font:"Source Code Pro"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="red" data-md-color-accent="red">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#write-the-pitch" class="md-skip">
+          跳轉到
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="頁首">
+    <a href="../../.." title="Tom 除錯中" class="md-header__button md-logo" aria-label="Tom 除錯中" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Tom 除錯中
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              第六章 Write the Pitch 撰寫提案
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="red" data-md-color-accent="red"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜尋" placeholder="搜尋" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="搜尋">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清除" aria-label="清除" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜尋引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/tomleesm/notes" title="前往倉庫" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    tomleesm/notes
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="標籤" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../book_notes/HTTP%20%E9%80%9A%E8%A8%8A%E5%8D%94%E8%AD%B0%E7%B0%A1%E4%BB%8B/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  讀書筆記
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../others/%E6%88%91%E7%82%BA%E4%BB%80%E9%BA%BC%E6%83%B3%E4%B8%8D%E9%96%8B%E7%94%A8%20Vim%20%E5%AF%AB%E7%A8%8B%E5%BC%8F%EF%BC%9F/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  雜記
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../preface/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Shape Up
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../cheatsheets/artisan/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Laravel 10 語法速查表
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="導覽列" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Tom 除錯中" class="md-nav__button md-logo" aria-label="Tom 除錯中" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Tom 除錯中
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/tomleesm/notes" title="前往倉庫" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    tomleesm/notes
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    讀書筆記
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            讀書筆記
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../book_notes/HTTP%20%E9%80%9A%E8%A8%8A%E5%8D%94%E8%AD%B0%E7%B0%A1%E4%BB%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    HTTP 通訊協議簡介
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../book_notes/PHP%20%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%AA%9E%E6%B3%95%E7%AD%86%E8%A8%98/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    PHP 物件導向語法筆記
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../book_notes/PostgreSQL%20%E7%AD%86%E8%A8%98/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    PostgreSQL 筆記
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../book_notes/RESTful%20API%20%E7%B0%A1%E4%BB%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    RESTful API 簡介
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../book_notes/%E4%BD%BF%E7%94%A8%20API%20Blueprint%20%E5%AF%AB%E6%96%87%E4%BB%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    使用 API Blueprint 寫文件
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../book_notes/%E4%BD%BF%E7%94%A8%20Docker%20Compose%20%E5%AE%89%E8%A3%9D%20Laravel%20%E5%92%8C%20Vue.js%20%E7%92%B0%E5%A2%83/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    使用 Docker Compose 安裝 Laravel 和 Vue.js 環境
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../book_notes/%E5%B8%B8%E7%94%A8%20Vim%20%E6%8C%87%E4%BB%A4%E6%B8%85%E5%96%AE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    常用 Vim 指令清單
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../book_notes/Laravel%2010%20%E5%AE%98%E6%96%B9%E6%96%87%E4%BB%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Laravel 10 官方文件
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../book_notes/%E6%88%91%E8%83%BD%E8%AE%93%E4%BD%A0%E8%B3%BA%E5%A4%A7%E9%8C%A2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    我能讓你賺大錢
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../book_notes/%E7%94%A8%E4%BA%94%E5%80%8B%E7%82%BA%E4%BB%80%E9%BA%BC%EF%BC%8C%E6%89%BE%E5%87%BA%E5%95%8F%E9%A1%8C%E7%99%BC%E7%94%9F%E7%9A%84%E7%9C%9F%E5%9B%A0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    用五個為什麼，找出問題發生的真因
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../book_notes/%E8%AE%93%E4%BD%A0%E5%92%8C%E5%AD%A9%E5%AD%90%E6%9B%B4%E8%B2%BC%E5%BF%83%EF%BC%9A%E7%8F%BE%E4%BB%A3%E7%88%B6%E6%AF%8D%E6%95%88%E8%83%BD%E8%A8%93%E7%B7%B4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    讓你和孩子更貼心：現代父母效能訓練
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../book_notes/%E5%BB%9A%E6%88%BF%E5%86%8D%E4%B9%9F%E4%B8%8D%E9%BA%BB%E7%85%A9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    廚房再也不麻煩
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../book_notes/%E7%82%BA%E4%BB%80%E9%BA%BC%E4%BB%96%E6%8E%A5%E7%9A%84%E6%A1%88%E5%AD%90%E6%AF%94%E6%88%91%E5%A4%9A%EF%BC%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    為什麼他接的案子比我多？
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../book_notes/%E6%95%B8%E5%AD%B8%E6%80%9D%E8%80%83/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    數學思考
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../book_notes/%E6%8B%92%E7%9C%8B%E6%96%B0%E8%81%9E%E7%9A%84%E7%94%9F%E6%B4%BB%E8%97%9D%E8%A1%93/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    拒看新聞的生活藝術
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../book_notes/%E5%81%9A%E8%87%AA%E5%B7%B1%E7%9A%84%E7%94%9F%E5%91%BD%E8%A8%AD%E8%A8%88%E5%B8%AB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    做自己的生命設計師
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../book_notes/%E9%97%9C%E6%96%BC%E5%AF%AB%E4%BD%9C%EF%BC%9A%E4%B8%80%E9%9A%BB%E9%B3%A5%E6%8E%A5%E8%91%97%E4%B8%80%E9%9A%BB%E9%B3%A5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    關於寫作：一隻鳥接著一隻鳥
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../book_notes/%E5%8E%9F%E5%AD%90%E7%BF%92%E6%85%A3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    原子習慣
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../book_notes/%E5%88%BB%E6%84%8F%E7%B7%B4%E7%BF%92/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    刻意練習
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../book_notes/%E6%95%8F%E6%8D%B7%E8%88%87%20Scrum%20%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC%E9%80%9F%E6%88%90/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    敏捷與 Scrum 軟體開發速成
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    雜記
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            雜記
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../others/%E6%88%91%E7%82%BA%E4%BB%80%E9%BA%BC%E6%83%B3%E4%B8%8D%E9%96%8B%E7%94%A8%20Vim%20%E5%AF%AB%E7%A8%8B%E5%BC%8F%EF%BC%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    我為什麼想不開用 Vim 寫程式？
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../others/%E6%80%8E%E9%BA%BD%E5%AD%B8%20Vim%20%EF%BC%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    怎麽學 Vim ？
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../others/%E8%B3%87%E6%96%99%E5%BA%AB%E6%AD%A3%E8%A6%8F%E5%8C%96%EF%BC%8C%E4%BB%A5%E9%AD%94%E6%B3%95%E5%AD%B8%E6%A0%A1%E8%AA%B2%E7%A8%8B%E7%82%BA%E4%BE%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    資料庫正規化，以魔法學校課程為例
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../others/Git%20rebase%20%E6%98%AF%E4%BB%80%E9%BA%BC%EF%BC%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Git rebase 是什麼？
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../others/GitHub%20%E9%A0%90%E8%A8%AD%E5%88%86%E6%94%AF%20master%20%E6%94%B9%E5%90%8D%E7%82%BA%20main/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    GitHub 預設分支 master 改名為 main
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../others/Git%20%E8%A8%AD%E5%AE%9A/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Git 設定
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../others/%3C%E5%A5%BD%E6%9B%B8%E6%8E%A8%E8%96%A6%3E%E7%82%BA%E4%BB%80%E9%BA%BC%E4%BB%96%E6%8E%A5%E7%9A%84%E6%A1%88%E5%AD%90%E6%AF%94%E6%88%91%E5%A4%9A/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <好書推薦>為什麼他接的案子比我多
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../others/%E9%80%99%E9%80%B1%E7%9C%8B%E4%BA%86%E4%BB%80%E9%BA%BC%E6%9B%B8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    這週看了什麼書
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../others/%E5%9C%A8%20Dedian%2011%20%E5%AE%89%E8%A3%9D%20LEMP%20%E9%96%8B%E7%99%BC%E7%92%B0%E5%A2%83%E8%B7%91%20Laravel%2010/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    在 Dedian 11 安裝 LEMP 開發環境跑 Laravel 10
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../others/%E5%9C%A8%20Dedian%2012%20%E5%AE%89%E8%A3%9D%20LEMP%20%E9%96%8B%E7%99%BC%E7%92%B0%E5%A2%83%E8%B7%91%20Laravel%2010/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    在 Dedian 12 安裝 LEMP 開發環境跑 Laravel 10
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../others/%E5%88%97%E5%8D%B0%20Laravel%2010%20%E5%AE%98%E6%96%B9%E6%96%87%E4%BB%B6%E4%B8%AD%E6%96%87%E7%89%88/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    列印 Laravel 10 官方文件中文版
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../others/%E5%BE%9E%20Vim%20%E5%88%B0%20Neovim/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    從 Vim 到 Neovim
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../others/Netrw%20%E7%B0%A1%E4%BB%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Netrw 簡介
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../others/%E7%82%BA%E4%BB%80%E9%BA%BC%E8%A6%81%E6%9C%89%E4%BE%8B%E5%A4%96%E8%99%95%E7%90%86%EF%BC%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    為什麼要有例外處理？
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../others/%E8%A7%A3%20UVa%20%E7%B7%9A%E4%B8%8A%E8%A7%A3%E9%A1%8C%E7%B3%BB%E7%B5%B1%E7%9A%84%E9%A1%8C%E7%9B%AE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    解 UVa 線上解題系統的題目
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../others/%E7%94%A8%20Vim%20%E6%8A%8A%E4%BA%8B%E6%83%85%E5%88%86%E5%BE%97%E5%BE%88%E7%B4%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    用 Vim 把事情分得很細
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../others/%E6%99%82%E9%96%93%E7%AE%A1%E7%90%86%E6%96%B9%E6%B3%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    時間管理方法
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../others/%E7%94%A8%20Linux%20Mint%20%E5%81%9A%E7%82%BA%E5%B7%A5%E4%BD%9C%E7%92%B0%E5%A2%83/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    用 Linux Mint 做為工作環境
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../others/Windows%20Terminal%20%E8%A8%AD%E5%AE%9A%E5%A4%9A%E5%80%8B%E5%AD%97%E9%AB%94/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Windows Terminal 設定多個字體
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../others/%E8%A7%A3%E6%B1%BA%20VTE%20%E7%82%BA%E5%9F%BA%E7%A4%8E%E7%9A%84%E7%B5%82%E7%AB%AF%E6%A9%9F%E7%A8%8B%E5%BC%8F%E6%B8%B8%E6%A8%99%E5%95%8F%E9%A1%8C/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    解決 VTE 為基礎的終端機程式游標問題
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../others/Windows%2010%20%E6%8E%A8%E8%96%A6%E8%BB%9F%E9%AB%94/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Windows 10 推薦軟體
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../others/memos%20%E5%AE%89%E8%A3%9D%E5%88%B0%20Debian%209/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    memos 安裝到 Debian 9
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../others/%E4%BD%BF%E7%94%A8%20docker%20%E5%9F%B7%E8%A1%8C%20node.js/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    使用 docker 執行 node.js，問 AI 語法
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Shape Up
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Shape Up
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../preface/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    前言 Foreword by Jason Fried
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第一章 Introduction 入門
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第二章 Principles of Shaping 塑形原則
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第三章 Set Boundaries 設定邊界
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第四章 Find the Elements 找出元素
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第五章 Risks and Rabbit Holes 風險與陷阱
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    第六章 Write the Pitch 撰寫提案
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    第六章 Write the Pitch 撰寫提案
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目錄">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目錄
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ingredient-1-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ingredient 1. Problem 要素一：問題
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ingredient-2-appetite" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ingredient 2. Appetite 要素二：需求範圍
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ingredient-3-solution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ingredient 3. Solution 要素三：解決方案
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#help-them-see-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      Help them see it 幫助他們理解
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#embedded-sketches" class="md-nav__link">
+    <span class="md-ellipsis">
+      Embedded sketches 嵌入式草圖
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#annotated-fat-marker-sketches" class="md-nav__link">
+    <span class="md-ellipsis">
+      Annotated fat marker sketches 標註過的粗筆畫草圖
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ingredient-4-rabbit-holes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ingredient 4. Rabbit holes 要素四：潛在風險
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ingredient-5-no-gos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ingredient 5. No Gos 要素五：不考慮的功能
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Examples 例子
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ready-to-present" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ready to present 準備好提案
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-we-do-it-in-basecamp-basecamp" class="md-nav__link">
+    <span class="md-ellipsis">
+      How we do it in Basecamp 我們在 Basecamp 的做法
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第七章 Bets, Not Backlogs 下注，而非待辦清單
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第八章 The Betting Table 投注會議
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第九章 Place Your Bets 下定決心
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第十章 Hand Over Responsibility 移交責任
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第十一章 Get One Piece Done 完成一個小目標
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第十二章 Map the Scopes 繪製範圍
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第十三章 Show Progress 顯示進度
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第十四章 Decide When to Stop 決定何時停止
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第十五章 Move On 繼續前進
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../conclusion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Conclusion 結論
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how%20to%20implement%20shape%20up%20in%20basecamp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    How to Implement Shape Up in Basecamp 如何在 Basecamp 中實現 Shape Up
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adjust%20to%20your%20size/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Adjust to Your Size 調整至你的規模
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how%20to%20begin%20to%20shape%20up/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    How to Begin to Shape Up 如何開始 Shape Up
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Glossary 詞彙表
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about%20the%20author/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    About the Author 關於作者
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Laravel 10 語法速查表
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Laravel 10 語法速查表
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cheatsheets/artisan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Artisan
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cheatsheets/auth/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Auth 使用者認證
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cheatsheets/blade/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Blade 範本
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cheatsheets/cache/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cache
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cheatsheets/collection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Collection
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cheatsheets/composer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Composer
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cheatsheets/config/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Config
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cheatsheets/container/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Container
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cheatsheets/cookie/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cookie
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cheatsheets/db/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Database
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cheatsheets/environment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Environment
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cheatsheets/event/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Event
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cheatsheets/file/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    File
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cheatsheets/helper/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Helper
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cheatsheets/input/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Input
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cheatsheets/lang/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lang
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cheatsheets/Log/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Log
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cheatsheets/mail/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mail
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cheatsheets/model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Model (Eloquent ORM)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cheatsheets/pagination/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Pagination
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cheatsheets/queue/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Queue
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cheatsheets/redirect/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Redirect
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cheatsheets/request/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Request
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cheatsheets/response/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Response
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cheatsheets/route/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Route
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cheatsheets/schema/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Schema 資料庫結構
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cheatsheets/security/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Security (Hash 和加解密)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cheatsheets/session/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Session
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cheatsheets/storage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Storage
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cheatsheets/string/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    String
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cheatsheets/unittest/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Unit Test 單元測試
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cheatsheets/url/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    URL
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cheatsheets/validation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Validation 表單驗證
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cheatsheets/view/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    View
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目錄">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目錄
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ingredient-1-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ingredient 1. Problem 要素一：問題
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ingredient-2-appetite" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ingredient 2. Appetite 要素二：需求範圍
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ingredient-3-solution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ingredient 3. Solution 要素三：解決方案
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#help-them-see-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      Help them see it 幫助他們理解
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#embedded-sketches" class="md-nav__link">
+    <span class="md-ellipsis">
+      Embedded sketches 嵌入式草圖
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#annotated-fat-marker-sketches" class="md-nav__link">
+    <span class="md-ellipsis">
+      Annotated fat marker sketches 標註過的粗筆畫草圖
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ingredient-4-rabbit-holes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ingredient 4. Rabbit holes 要素四：潛在風險
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ingredient-5-no-gos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ingredient 5. No Gos 要素五：不考慮的功能
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Examples 例子
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ready-to-present" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ready to present 準備好提案
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-we-do-it-in-basecamp-basecamp" class="md-nav__link">
+    <span class="md-ellipsis">
+      How we do it in Basecamp 我們在 Basecamp 的做法
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+  
+                  
+
+
+  
+  
+
+
+<h1 id="write-the-pitch">第六章 Write the Pitch 撰寫提案<a class="headerlink" href="#write-the-pitch" title="Permanent link">&para;</a></h1>
+<p><img alt="Cartoon. A person stands at a desk. To their right is a whiteboard with a breadboard and fat marker sketch. At the table in front of them is an open laptop and a tablet with a fat marker sketch drawn on it. The person holds a stylus above the tablet while thinking: Are they going to get it?" src="../images/ch06_intro_cartoon.png" /></p>
+<p>We’ve got the elements of a solution now, and we’ve de-risked our concept to the point that we’re confident it’s a good option to give a team. But the concept is still in our heads or in some hard-to-decipher drawings on the whiteboard or our notebook. Now we need to put the concept into a form that other people will be able to understand, digest, and respond to.</p>
+<p>我們現在已經擁有了解決方案的元素，並且將我們的概念去風險化，讓我們有信心它是交給團隊的好選擇。但這個概念仍然只在我們腦海中，或者只是白板或筆記本上難以解讀的圖示。現在，我們需要將這個概念轉換成其他人能理解、消化並作出回應的形式。</p>
+<p>This is where we say “Okay, this is ready to write up as a pitch.” In this chapter, we’ll walk through the ingredients of a pitch and show some fully worked out examples from real projects at Basecamp.</p>
+<p>這時候我們就可以說：「好了，這準備好可以寫成一份提案了。」在這一章中，我們將逐步介紹提案的要素，並展示來自Basecamp真實專案的完整範例。</p>
+<p>The purpose of the pitch is to present a good potential bet. It’s basically a presentation. The ingredients are all the things that we need to both capture the work done so far and present it in a form that will enable the people who schedule projects to make an informed bet.</p>
+<p>提案的目的是呈現一個好的潛在選擇。基本上，它是一個演示。所需的要素是所有我們需要的內容，既能捕捉到目前為止所做的工作，又能以一個讓負責安排專案的人能做出明智選擇的形式來呈現。</p>
+<p>There are five ingredients that we always want to include in a pitch:</p>
+<p>在提案中，我們總是希望包含以下五個要素：</p>
+<ul>
+<li><strong>Problem</strong> — The raw idea, a use case, or something we’ve seen that motivates us to work on this</li>
+<li><strong>Appetite</strong> — How much time we want to spend and how that constrains the solution</li>
+<li><strong>Solution</strong> — The core elements we came up with, presented in a form that’s easy for people to immediately understand</li>
+<li><strong>Rabbit holes</strong> — Details about the solution worth calling out to avoid problems</li>
+<li><strong>No-gos</strong> — Anything specifically excluded from the concept: functionality or use cases we intentionally aren’t covering to fit the appetite or make the problem tractable</li>
+<li><strong>問題</strong> — 原始的想法、一個使用案例，或是我們所看到的某些情境，激發我們去解決這個問題的動力。</li>
+<li><strong>需求範圍</strong> — 我們希望投入多少時間，以及這對解決方案的限制。</li>
+<li><strong>解決方案</strong> — 我們提出的核心要素，並以簡單易懂的方式呈現，讓人能夠立即理解。</li>
+<li><strong>潛在風險</strong> — 有關解決方案的細節，值得強調以避免未來的問題。</li>
+<li><strong>不考慮的功能</strong> — 明確排除在概念之外的部分：我們有意不覆蓋的功能或使用案例，以符合需求範圍或使問題可解決。</li>
+</ul>
+<h2 id="ingredient-1-problem">Ingredient 1. Problem 要素一：問題<a class="headerlink" href="#ingredient-1-problem" title="Permanent link">&para;</a></h2>
+<p>It’s critical to always present both a problem and a solution together. It sounds like an obvious point but it’s surprising how often teams, our own included, jump to a solution with the assumption that it’s obvious why it’s a good idea to build this thing.</p>
+<p>將問題與解決方案一起呈現是至關重要的。這聽起來像是一個顯而易見的觀點，但令人驚訝的是，團隊，包括我們自己，經常會在沒有清楚闡明問題的情況下，直接跳到解決方案，假設為何這個解決方案是好的想法是顯而易見的。</p>
+<p>Diving straight into “what to build”—the solution—is dangerous. You don’t establish any basis for discussing whether this solution is good or bad without a problem. “Add tabs to the iPad app” might be attractive to UI designers, but what’s to prevent the discussion from devolving into a long debate about different UI approaches? Without a specific problem, there’s no test of fitness to judge whether one solution is better than the other.</p>
+<p>直接跳入「要建什麼」——解決方案——是危險的。沒有問題作為基礎，我們無法討論這個解決方案是好還是不好。「為 iPad 應用程式添加標籤頁」可能對 UI 設計師有吸引力，但這樣的討論可能會變成一場關於不同 UI 方法的長時間辯論。如果沒有具體的問題，我們無法測試哪個解決方案更適合。</p>
+<p>Establishing the problem also lets us have a clearer conversation later when it’s time to pitch the idea or bet on it. The solution might be perfect, but what if the problem only happens to customers who are known to be a poor fit to the product? We could spend six weeks on an ingenious solution that only benefits a small percentage of customers known to have low retention. We want to be able to separate out that discussion about the demand so we don’t spend time on a good solution that doesn’t benefit the right people.</p>
+<p>明確提出問題還能讓我們在稍後提案或賭注時進行更清晰的討論。解決方案可能完美，但如果問題只是發生在那些顯然不適合該產品的客戶身上呢？我們可能會花六周時間解決一個巧妙的方案，但它只對一小部分客戶有效，而這些客戶的留存率低。我們希望能將這樣的需求討論分開，這樣我們就不會花時間在一個好解決方案上，而這個方案並不會惠及到正確的人群。</p>
+<p>How far you have to go to spell out the problem will depend on how much context you share with the people reading the write-up. The best problem definition consists of a single specific story that shows why the status quo doesn’t work. This gives you a <code>baseline</code> to test fitness against. People will be able to weigh the solution against this specific problem—or other solutions if a debate ensues—and judge whether or not that story has a better outcome with the new solution swapped in.</p>
+<p>你需要在多大程度上闡明問題，將取決於你與讀者共享的背景資訊。最好的問題定義是一個具體的故事，展示為何現狀無法解決問題。這為我們提供了一個「基準」來測試解決方案的適用性。人們將能夠將解決方案與這個具體的問題進行比較——如果發生辯論，也能將不同的解決方案進行對比——並評估這個故事在新解決方案替代舊方案後，是否能夠取得更好的結果。</p>
+<h2 id="ingredient-2-appetite">Ingredient 2. Appetite 要素二：需求範圍<a class="headerlink" href="#ingredient-2-appetite" title="Permanent link">&para;</a></h2>
+<p>You can think of the appetite as another part of the problem definition. Not only do we want to solve this use case, we want to come up with a way to do it in six weeks, not three months, or—in the case of a <code>small batch</code> project—two weeks, not the whole six weeks.</p>
+<p>你可以將「需求範圍」視為問題定義的另一部分。我們不僅希望解決這個使用案例，還希望在六週內完成，而不是三個月，或者在「小批量」專案的情況下，可能是兩週，而不是六週的全部時間。</p>
+<p>Stating the appetite in the pitch prevents unproductive conversations. There’s always a better solution. The question is, if we only care enough to spend two weeks on this now, how does <em>this specific solution</em> look?</p>
+<p>在提案中明確說明需求範圍可以防止無效的討論。總是有更好的解決方案，問題是，如果我們現在只願意投入兩週時間來解決這個問題，那麼**這個具體的解決方案**會是怎麼樣？</p>
+<p>Anybody can suggest expensive and complicated solutions. It takes work and design insight to get to a simple idea that fits in a small time box. Stating the appetite and embracing it as a constraint turns everyone into a partner in that process.</p>
+<p>任何人都可以提出昂貴且複雜的解決方案，但要達成一個簡單、符合時間限制的想法，則需要工作和設計的洞察力。明確說明需求範圍並將其視為一個限制條件，可以讓每個人都成為這個過程中的合作夥伴。</p>
+<h2 id="ingredient-3-solution">Ingredient 3. Solution 要素三：解決方案<a class="headerlink" href="#ingredient-3-solution" title="Permanent link">&para;</a></h2>
+<p>Like solutions with no problems, sometimes companies bet on problems with no solution. “We really need to make it easier to find things on the messages section. Customers are complaining about it.”</p>
+<p>就像沒有問題的解決方案一樣，有時候公司會對沒有解決方案的問題下注。「我們真的需要讓訊息區域更容易搜尋。客戶抱怨這個問題。」</p>
+<p>That’s not ready to pitch or bet on. A problem without a solution is unshaped work. Giving it to a team means pushing research and exploration down to the wrong level, where the skillsets, time limit, and risk profile (thin vs. heavy tailed) are all misaligned.</p>
+<p>這樣的問題還不能提案或下注。沒有解決方案的問題是未經塑造的工作。將這樣的問題交給團隊意味著將研究和探索推向錯誤的層級，在那裡，技能組合、時間限制和風險輪廓（薄尾 vs. 重尾）都會不對等。</p>
+<p>If the solution isn’t there, someone should go back and do the shaping work on the shaping track. It’s only ready to bet on when problem, appetite, and solution come together. Then you can scrutinize the fit between problem and solution and judge whether it’s a good bet or not.</p>
+<p>如果解決方案還沒想好，應該回過頭來在塑造的過程中進行深入探索。只有當問題、需求範圍和解決方案三者結合在一起時，才可以考慮下注。這時，你就能夠仔細檢視問題與解決方案之間的契合度，並判斷這是否是一個好的選擇。</p>
+<h2 id="help-them-see-it">Help them see it 幫助他們理解<a class="headerlink" href="#help-them-see-it" title="Permanent link">&para;</a></h2>
+<p>During the elements phase, it was critical to sketch ideas at the right level of abstraction so we didn’t slow down or lose any of the ideas appearing at the corners of our brains and tips of our tongues.</p>
+<p>在元素階段，關鍵是以合適的抽象層次草擬想法，以避免拖慢進度或錯過任何在我們腦海邊緣或口中一觸即發的想法。</p>
+<p>We also need to draw at the right level of detail when we write the pitch. Here the challenge is a little different. We have time to slow down and prepare a proper presentation. We need to stay high level, but add a little more concreteness than when we worked alone or with a partner. People who read the pitch and look at the drawings without much context need to “get” the idea.</p>
+<p>當我們撰寫提案時，我們也需要在適當的細節層次上進行繪製。這裡的挑戰稍微不同一些。我們有時間放慢腳步，準備一個正式的演示。我們需要保持高層次的視角，但也要比在獨立工作或與夥伴合作時更具具體性。那些閱讀提案並查看圖示但缺乏背景知識的人，需要能夠「理解」這個想法。</p>
+<p>We need more concreteness, but we don’t want to over-specify the design with wireframes or high-fidelity mocks. They’ll box in the designers who do the work later. We also risk side-tracking the discussion into topics like color, proportions, or layout that have nothing to do with the actual shaping work we did.</p>
+<p>我們需要更多的具體性，但又不想用線框圖或高保真原型來過度規範設計。這樣會限制後來負責設計的人的創作空間。我們也可能將討論偏離正題，討論一些與實際塑造工作無關的細節，比如顏色、比例或佈局。</p>
+<p>At the same time, hand-written breadboards have a “you had to be there” quality to them. To people who didn’t watch the breadboard unfold step by step, it can look like a soup of words and arrows.</p>
+<p>同時，手繪的模型圖有一種“你必須親身經歷過”的特質。對於那些沒有看到模型一步步展開的人來說，可能看起來像是充滿了文字和箭頭的混亂。</p>
+<p>Therefore we need some techniques to help people see the idea while still not going too far into irrelevant details.</p>
+<p>因此，我們需要一些技巧，幫助大家理解這個想法，同時避免過度涉及不相關的細節。</p>
+<h2 id="embedded-sketches">Embedded sketches 嵌入式草圖<a class="headerlink" href="#embedded-sketches" title="Permanent link">&para;</a></h2>
+<p>Suppose your breadboard from the shaping session looked like this:</p>
+<p>假設你在塑形階段所畫的模型圖看起來像這樣：</p>
+<p><img alt="A breadboard for the payments form. Under Dashboard: Go to Form, Send Form Link, and Change Form Settings. Go to Form points with an arrow to Simple Payment Form. Under Simple Payment Form: Name, Email, Company, Payment For, Payment Amount, CC Fields, Submit and FI Logo. Submit points to a Thank You screen." src="../images/payment_form_breadboard.png" /></p>
+<p>People might have trouble visualizing where these new affordances go on the Dashboard. We could sketch a new box on the Dashboard to make it clearer:</p>
+<p>人們可能會難以想像這些新的功能如何融入儀表板中。我們可以在儀表板上畫一個新框框來讓它更清楚：</p>
+<p><img alt="A screenshot of the dashboard with some hand drawing on top. A box is hand drawn at the top of the dashboard. Handwritten laters say: Payment form preview and links go here." src="../images/affordances_go_here.png" /></p>
+<p>But we’re still asking people to imagine too much. It’s worth the trade-off to go one step down into fat-marker detail here.</p>
+<p>但我們仍然要求人們想像太多。在這裡，將細節進一步呈現為粗筆畫風格是值得的權衡。</p>
+<p><img alt="The same screenshot again. This time in the box on top some small drawings are superimposed. They correspond to the elements in the breadboard. They are drawn roughly, in the fat marker style. In the left side, text appears saying: Send the link to customers. A squiggle below suggests a copyable URL. Below that a link is hand-drawn with the text: Change your Form Settings. A vetical line divides the box. To its right a rough sketch of a payment form appears with the words Go to Your Form above it." src="../images/fat_marker_dashboard.png" /></p>
+<p>This makes it easier to see what the elements are and evaluate how clearly the feature presents itself on the dashboard. The downside is we’ve gotten into some layout decisions that would have been nice to avoid. Designers should feel free to find a different design than the box divided with a vertical line. We’d add a disclaimer here in the pitch that reminds designers of the latitude they should take.</p>
+<p>這樣做使得更容易看出元素是什麼，並評估這個功能在儀表板上的呈現方式有多清楚。缺點是，我們已經進入了一些布局決策，這些決策本來可以避免的。設計師應該可以自由選擇不同於這個用垂直線分隔的框架設計。我們會在提案中加上一個免責聲明，提醒設計師他們可以有的設計空間。</p>
+<p>This is an example of selectively getting into more visual detail because we need it to sell the concept. Fortunately, we won’t need to make as many visual decisions in other parts of the concept. This was a “linchpin” part of the design that everybody had to see concretely in order to “get” it.</p>
+<p>這是一個根據需要選擇性地進入更多視覺細節的例子，因為我們需要這些細節來讓概念更容易理解。幸運的是，在概念的其他部分，我們不需要做這麼多視覺決策。這是設計中的「關鍵」部分，每個人必須具體看到這部分，才能真正理解整個概念。</p>
+<h2 id="annotated-fat-marker-sketches">Annotated fat marker sketches 標註過的粗筆畫草圖<a class="headerlink" href="#annotated-fat-marker-sketches" title="Permanent link">&para;</a></h2>
+<p>Sometimes ideas are inherently visual or a little too complicated to express in a schematic breadboard. Fat marker sketches can be very effective in a pitch; you just need to take more care to label them cleanly.</p>
+<p>有時候，想法本身就是視覺化的，或者太過複雜，無法用簡單的模型圖表達。粗筆畫草圖在提案中可以非常有效；你只需要更小心地為它們加上清晰的標註。</p>
+<p>Redrawing the sketch on an iPad—still with a fat brush size—works well. You can use different colors to separate the labels from the material parts of the sketch.</p>
+<p>在 iPad 上重新畫草圖——仍然使用粗筆刷——效果很好。你可以使用不同的顏色來區分標註與草圖中的具體元素。</p>
+<p><img alt="A fat marker sketch of the to-do groups concept, drawn a bit more neatly with different colors. The fat marker sketch itself is orange. To its right, labels hand drawn in purple point out the List Name, the Loose items and the Groups." src="../images/fat_marker_todo_groups.png" /></p>
+<p>Or you might add some call-outs to enable discussion of specific elements.</p>
+<p>或者，你也可以加入一些標註框來便於討論特定的元素。</p>
+<p><img alt="Two fat marker sketches are annotated with hand drawn numbers one and two on the left. The numbers are drawn neatly in white on black circles so they look like call-outs." src="../images/annotated_fat_marker_sketch.jpg" /></p>
+<h2 id="ingredient-4-rabbit-holes">Ingredient 4. Rabbit holes 要素四：潛在風險<a class="headerlink" href="#ingredient-4-rabbit-holes" title="Permanent link">&para;</a></h2>
+<p>Sometimes addressing a rabbit hole just requires a few lines of text. For example, in the Payment Form project above, the shapers wanted to call out a specific solution for how to create URLs. The URLs would never live on custom domains for v1 of the project. This is the kind of thing that’s not central to the concept, but spelling it out patches a potential rabbit hole.</p>
+<p>有時候，解決一個潛在問題只需要幾行文字。例如，在上述的付款表單專案中，塑造者希望特別說明一個處理 URL 的方案。在專案的 v1 版本中，這些 URL 不會存在於自訂網域上。這類細節雖然不是概念的核心，但明確寫出來可以避免潛在的問題發生。</p>
+<h2 id="ingredient-5-no-gos">Ingredient 5. No Gos 要素五：不考慮的功能<a class="headerlink" href="#ingredient-5-no-gos" title="Permanent link">&para;</a></h2>
+<p>Lastly if there’s anything we’re <em>not</em> doing in this concept, it’s good to mention it here. In the case of the Payment Form project, the team decided up front that they wouldn’t allow any kind of WYSIWYG editing of the form. Users would only be able to provide a logo and customize the header text on a separate “customize” page. WYSIWYG might be better in some peoples’ eyes, but given the appetite it was important to mark this as a no-go.</p>
+<p>最後，如果這個概念中有任何我們 <strong>不會</strong> 做的事情，也應該在這裡提及。例如，在付款表單專案中，團隊一開始就決定 <strong>不</strong> 支援任何形式的所見即所得編輯。使用者只能上傳標誌（logo）並在獨立的「自訂」頁面上修改標題文字。雖然有些人可能認為所見即所得會更好，但考量到需求範圍，明確將其標記為不考慮的功能是很重要的。</p>
+<h2 id="examples">Examples 例子<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h2>
+<p>Here are two examples of real pitches.</p>
+<p>以下是兩個真實提案的例子。</p>
+<p>This pitch for grouping to-dos together starts by showing a workaround people are using in the current design. Then it sketches out all the main ideas for how to enable optional to-do groupings.</p>
+<p>這份待辦事項分組的提案首先展示了使用者在當前設計下所採用的替代方案，然後勾勒出所有主要概念，說明如何實現可選的待辦事項分組。</p>
+<p><a href="../images/to-do_groups_pitch.png"><img alt="A scaled-down screenshot of a full pitch for the To-Dos feature. It looks like a document. The document starts with two screenshots demonstrating the workaround for grouping to-dos without the feature. Then five fat marker sketches follow that show the shaped idea. Paragraphs of explanatory text surround each sketch." src="../images/to-do_groups_pitch.png" /></a></p>
+<p>Two screenshots demonstrate the problem. Fat marker sketches describe the solution. Rabbit holes motivated some of the sketches.</p>
+<p>兩張截圖展示了問題所在，粗筆畫草圖則描述了解決方案。而某些草圖的產生則是為了應對潛在的問題。</p>
+<p>This pitch for changing how notifications work starts with two videos to demonstrate the problem. The black boxes toward the end are a visualization of user behavior data that supports a decision in the pitch.</p>
+<p>這份通知系統變更的提案則是透過兩段影片來呈現問題。最後的黑色框則是用來視覺化使用者行為數據，以支持提案中的決策。</p>
+<p><a href="../images/group_notifications_pitch.png"><img alt="Another scaled-down screenshot of a pitch. This one has two videos embedded in the document at the start. After some paragraphs, a fat marker sketch appears, followed by a screenshot thats annotated with handwriting. Two black boxes contain what looks like some data visualization. A breadboard is at the end. All the images are interspersed with short paragraphs of text." src="../images/group_notifications_pitch.png" /></a></p>
+<p>Two videos show the problem. A fat marker sketch and a breadboard describe the solution. The black boxes contain data visualizations that support trade-offs in the solution.</p>
+<p>兩段影片呈現了問題，粗筆畫草圖與模型圖（breadboard）描述了解決方案。黑色框內的數據視覺化則用來支持解決方案中的權衡取捨。</p>
+<h2 id="ready-to-present">Ready to present 準備好提案<a class="headerlink" href="#ready-to-present" title="Permanent link">&para;</a></h2>
+<p>The next step will be to make the case that this pitch describes a bet worth making. This can happen in a couple ways.</p>
+<p>下一步是說明這份提案值得下注，這可以透過幾種方式進行。</p>
+<p>We prefer asynchronous communication by default and escalate to real-time only when necessary. This gives everyone the maximum amount of time under their own control for doing real work. That means the first step for presenting a pitch is posting the write-up with all the ingredients above somewhere that stakeholders can read it on their own time. This keeps the <code>betting table</code> short and productive. In ideal conditions everyone has time to read the pitches in advance. And if that isn’t possible in some cases, the pitch is ready to pull up for a quick live sell.</p>
+<p>我們預設採用非同步溝通，僅在必要時才升級為即時討論。這樣可以讓每個人最大程度地掌控自己的時間，專注於實際工作。因此，提案的第一步是將完整的提案內容發佈到一個讓決策者可以自行閱讀的地方。這樣可以讓「決策會議」更精簡且高效。</p>
+<p>理想情況下，所有人都有時間事先閱讀提案。如果有些人無法提前看過，這份提案也已經準備好，可以在會議中快速進行即時說明。</p>
+<h2 id="how-we-do-it-in-basecamp-basecamp">How we do it in Basecamp 我們在 Basecamp 的做法<a class="headerlink" href="#how-we-do-it-in-basecamp-basecamp" title="Permanent link">&para;</a></h2>
+<p>We post pitches as Messages in Basecamp. We created a Message Category called <em>Pitch</em> so we can easily find them. Pitches are posted to a Team called <em>Product Strategy</em> that can be accessed by people on the betting table.</p>
+<p>我們將提案發佈為 Basecamp 中的 <strong>訊息（Messages）</strong>，並創建了一個名為 <strong>Pitch</strong> 的訊息分類，方便快速查找。這些提案會發佈到一個名為 <strong>Product Strategy</strong>（產品策略）的團隊中，讓決策團隊的成員能夠存取並審閱提案。</p>
+<p><a href="../images/message_board.png"><img alt="A screenshot of a Message Board in a Basecamp team called Product Strategy. Five Pitches appear in the list." src="../images/message_board.png" /></a></p>
+<p>Pitches on the Message Board of the Product Strategy team in Basecamp</p>
+<p>Basecamp 內 <strong>產品策略（Product Strategy）</strong> 團隊的 <strong>訊息看板（Message Board）</strong> 上會發佈提案（Pitches）。
+<a href="../images/sort_messages.png"><img alt="A screenshot of a Pitch posted as a Message in Basecamp. It is titled: Sort Messages Setting (Revised). It looks like a document. The first part of the pitch describes an example customer case. The second section is titled 'Looking for a 1-weeker' and describes the appetite." src="../images/sort_messages.png" /></a></p>
+<p>A pitch as a Message. Note the one-week <code>appetite</code>. This was a <code>Small Batch</code> project.</p>
+<p>一則作為 <strong>訊息（Message）</strong> 發佈的提案。請注意其中設定的一週時間範圍，這是一個小型專案。</p>
+<p>When we need to include a <code>fat marker sketch</code> in a pitch, we’ll draw it on an iPad (with <a href="https://www.gingerlabs.com">Notability</a>) and take a screenshot. Basecamp’s text editor makes it easy to insert images and caption them so they make sense in the flow of the pitch.</p>
+<p>當我們需要在提案中加入粗筆畫草圖時，會使用 iPad（透過 <a href="https://www.gingerlabs.com">Notability</a>）來繪製，然後截圖。Basecamp 的文字編輯器讓我們能夠輕鬆插入圖片並添加說明，確保草圖在提案的脈絡中清晰易懂。</p>
+<p><a href="../images/sketches_in_message.png"><img alt="Screenshot of another Pitch in Basecamp. The part of the pitch that is scrolled into view has a fat marker sketch embedded in the middle." src="../images/sketches_in_message.png" /></a></p>
+<p>A sketch drawn on an iPad in the middle of a pitch</p>
+<p>在提案內容中插入的 <strong>iPad 草圖</strong>。</p>
+<p>People comment on the pitch asynchronously. Not to say yes or no — that happens at the betting table — but to poke holes or contribute missing information.</p>
+<p>人們會以非同步方式在提案下留言，但不是用來直接決定同意或否決——這個決策會在決策會議進行。相反地，留言的目的是找出潛在問題或補充可能遺漏的重要資訊。</p>
+<p><a href="../images/sort_messages_comments.png"><img alt="A screenshot of a pitch that is scrolled down to the bottom. A breadboard appears at the end of the document. Below that, a comment thread begins. The first comment is by David, the CTO, providing information about what the pitch requires from a technical standpoint." src="../images/sort_messages_comments.png" /></a></p>
+<p>Our CTO responds with technical thoughts on the pitch.</p>
+<p>我們的 <strong>CTO</strong> 會針對提案提供技術性意見。</p>
+<hr />
+<p>In the next chapter we’ll look at the betting process in more detail to see where pitches go and how we turn them into scheduled projects</p>
+<p>在下一章，我們將更詳細地探討決策過程，了解提案的去向，以及我們如何將它們轉化為排定的專案。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+
+  <!-- Giscus -->
+  <h2 id="__comments">留言</h2>
+  <script src="https://giscus.app/client.js"
+          data-repo="tomleesm/notes"
+          data-repo-id="R_kgDOGuSz4g"
+          data-category="Announcements"
+          data-category-id="DIC_kwDOGuSz4s4CBI6T"
+          data-mapping="title"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="bottom"
+          data-theme="dark"
+          data-lang="zh-TW"
+          crossorigin="anonymous"
+          async>
+  </script>
+
+  <!-- Reload on palette change -->
+  <script>
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object")
+      if (palette.color.scheme === "slate") {
+        var giscus = document.querySelector("script[src*=giscus]")
+        giscus.setAttribute("data-theme", "dark")
+      }
+
+    /* Register event handlers after documented loaded */
+    document.addEventListener("DOMContentLoaded", function() {
+      var ref = document.querySelector("[data-md-component=palette]")
+      ref.addEventListener("change", function() {
+        var palette = __md_get("__palette")
+        if (palette && typeof palette.color === "object") {
+          var theme = palette.color.scheme === "slate" ? "dark" : "light"
+
+          /* Instruct Giscus to change theme */
+          var frame = document.querySelector(".giscus-frame")
+          frame.contentWindow.postMessage(
+            { giscus: { setConfig: { theme } } },
+            "https://giscus.app"
+          )
+        }
+      })
+    })
+  </script>
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到頂端
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.tabs", "navigation.sections", "navigation.indexes", "navigation.top", "header.autohide", "search.highlight", "search.share", "toc.follow"], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u8907\u88fd", "clipboard.copy": "\u8907\u88fd", "search.result.more.one": "\u6b64\u9801\u5c1a\u6709 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.more.other": "\u6b64\u9801\u5c1a\u6709 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.none": "\u6c92\u6709\u7b26\u5408\u7684\u9805\u76ee", "search.result.one": "\u627e\u5230 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.other": "\u627e\u5230 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.placeholder": "\u6253\u5b57\u9032\u884c\u641c\u5c0b", "search.result.term.missing": "\u7f3a\u5c11\u5b57\u8a5e", "select.version": "\u9078\u64c7\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.56ea9cef.min.js"></script>
+      
+    
+  </body>
+</html>
