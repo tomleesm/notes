@@ -111,6 +111,7 @@ nav:
     - 解決 VTE 為基礎的終端機程式游標問題: others/解決 VTE 為基礎的終端機程式游標問題.md
     - Windows 10 推薦軟體: others/Windows 10 推薦軟體.md
     - memos 安裝到 Debian 9: others/memos 安裝到 Debian 9.md
+    - 使用 docker 執行 node.js，問 AI 語法: others/使用 docker 執行 node.js.md
   - Shape Up:
     - 前言 Foreword by Jason Fried: books/shape up/preface.md
     - 第一章 Introduction 入門: books/shape up/ch01.md
